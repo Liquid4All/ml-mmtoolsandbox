@@ -1,0 +1,496 @@
+{
+  "name": "scenario_1026",
+  "base_scenario": "base",
+  "description": "The user is organizing team responsibilities for data visualization processing. They need to clean up their messages, update a note with the new assignments for time-series and cross-sectional charts, and then distribute a batch of five charts to the appropriate team members based on the data represented on each chart's x-axis.",
+  "difficulty": "easy",
+  "appworld_base_task": "_base_",
+  "device_state_id": "anita.burch@gmail.com",
+  "reference_time": "2026-04-17T00:21:25.522279+00:00",
+  "agentsandbox_entities": {},
+  "appworld_entities": {
+    "phone.contacts": [
+      {
+        "id": 200,
+        "user_id": 37,
+        "first_name": "Charlie",
+        "last_name": "Brown",
+        "email": "charlie.brown@gmail.com",
+        "phone_number": "5551234567",
+        "relationships": [
+          "coworker"
+        ],
+        "birthday": null,
+        "home_address": null,
+        "work_address": null,
+        "created_at": "2025-01-15T09:00:00"
+      },
+      {
+        "id": 201,
+        "user_id": 37,
+        "first_name": "Alice",
+        "last_name": "Smith",
+        "email": "alice.smith@gmail.com",
+        "phone_number": "5552345678",
+        "relationships": [
+          "coworker"
+        ],
+        "birthday": null,
+        "home_address": null,
+        "work_address": null,
+        "created_at": "2025-02-10T10:30:00"
+      },
+      {
+        "id": 202,
+        "user_id": 37,
+        "first_name": "Bob",
+        "last_name": "Jones",
+        "email": "bob.jones@gmail.com",
+        "phone_number": "5553456789",
+        "relationships": [
+          "coworker"
+        ],
+        "birthday": null,
+        "home_address": null,
+        "work_address": null,
+        "created_at": "2025-03-05T14:15:00"
+      }
+    ],
+    "phone.global_text_messages": [
+      {
+        "id": 200,
+        "sender_id": 200,
+        "receiver_id": 37,
+        "message": "Hey, just wanted to let you know that our meeting later today has been cancelled.",
+        "created_at": "2026-04-16T14:30:00"
+      }
+    ],
+    "phone.user_text_messages": [
+      {
+        "id": 200,
+        "global_text_message_id": 200,
+        "user_id": 37,
+        "created_at": "2026-04-16T14:30:00"
+      }
+    ],
+    "simple_note.notes": [
+      {
+        "id": 3200,
+        "user_id": 37,
+        "title": "Q1 Data Assignments",
+        "content": "Alice: Bar charts\nBob: Pie charts\nCharlie: Line graphs",
+        "tags": [
+          "work",
+          "assignments"
+        ],
+        "created_at": "2026-01-15T09:00:00",
+        "updated_at": "2026-01-15T09:00:00",
+        "pinned": false,
+        "data": null
+      },
+      {
+        "id": 3201,
+        "user_id": 37,
+        "title": "Q2 Data Assignments",
+        "content": "Alice: Scatter plots\nBob: Histograms\nCharlie: Area charts",
+        "tags": [
+          "work",
+          "assignments"
+        ],
+        "created_at": "2026-04-01T09:00:00",
+        "updated_at": "2026-04-01T09:00:00",
+        "pinned": false,
+        "data": null
+      }
+    ],
+    "gmail.users": [
+      {
+        "id": 200,
+        "first_name": "Charlie",
+        "last_name": "Brown",
+        "email": "charlie.brown@gmail.com",
+        "password": "default_password",
+        "status": "active",
+        "created_at": "2025-01-01T00:00:00",
+        "last_logged_in": "2025-01-01T00:00:00"
+      },
+      {
+        "id": 201,
+        "first_name": "Alice",
+        "last_name": "Smith",
+        "email": "alice.smith@gmail.com",
+        "password": "default_password",
+        "status": "active",
+        "created_at": "2025-01-01T00:00:00",
+        "last_logged_in": "2025-01-01T00:00:00"
+      },
+      {
+        "id": 202,
+        "first_name": "Bob",
+        "last_name": "Jones",
+        "email": "bob.jones@gmail.com",
+        "password": "default_password",
+        "status": "active",
+        "created_at": "2025-01-01T00:00:00",
+        "last_logged_in": "2025-01-01T00:00:00"
+      }
+    ],
+    "phone.users": [
+      {
+        "id": 200,
+        "first_name": "Charlie",
+        "last_name": "Brown",
+        "phone_number": "5551234567",
+        "password": "default_password",
+        "created_at": "2025-01-01T00:00:00",
+        "last_logged_in": "2025-01-01T00:00:00"
+      },
+      {
+        "id": 201,
+        "first_name": "Alice",
+        "last_name": "Smith",
+        "phone_number": "5552345678",
+        "password": "default_password",
+        "created_at": "2025-01-01T00:00:00",
+        "last_logged_in": "2025-01-01T00:00:00"
+      },
+      {
+        "id": 202,
+        "first_name": "Bob",
+        "last_name": "Jones",
+        "phone_number": "5553456789",
+        "password": "default_password",
+        "created_at": "2025-01-01T00:00:00",
+        "last_logged_in": "2025-01-01T00:00:00"
+      }
+    ]
+  },
+  "image_paths": [
+    "chartqapro/images/chart_1909.jpg",
+    "chartqapro/images/chart_1804.jpg",
+    "chartqapro/images/chart_0437.jpg",
+    "chartqapro/images/chart_0211.jpg",
+    "chartqapro/images/chart_1944.jpg"
+  ],
+  "messages": [
+    {
+      "sender": "SYSTEM",
+      "recipient": "USER",
+      "content": "{{USER_INSTRUCTION}}ROUND 1\nQuery: Delete the old text message from Charlie about the cancelled meeting, and update my 'Data Assignments' note to state that Alice handles Time-series charts and Bob handles Cross-sectional charts.\nInstructions: Ask the agent to delete the text message from Charlie regarding the cancelled meeting, and update your 'Data Assignments' note to reflect that Alice is responsible for time-series charts and Bob is responsible for cross-sectional charts. Since you have multiple notes with similar names (like Q1 and Q2), the agent should ask for clarification. When it does, specify that you want to update the 'Q2 Data Assignments' note. Wait for the agent to confirm the deletion and the note update before moving on.\n\nROUND 2 [provide: image_1, image_2, image_3, image_4, image_5]\nQuery: Here are the 5 charts. Check the note we just updated to confirm the assignments. Then, filter these charts based on their x-axis. For every single chart, send a separate text message to the correct person containing the chart's title. So if someone is assigned three charts, they should receive three individual text messages.\nInstructions: Provide the five chart images. Ask the agent to check the updated assignments note to determine who handles time-series charts (x-axis represents historical time) and who handles cross-sectional charts (x-axis does not represent historical time). Instruct the agent to filter the charts accordingly and send an individual text message for each chart to the appropriate person, with each message containing the title of the assigned chart. Emphasize that they should receive separate messages for each chart, not one combined message. If the agent asks for clarification on how to classify them, remind it to look at the x-axis of each chart. Conclude the conversation once all five messages have been sent.\n\nYou have 5 images available to share with the agent using the send_message_with_image tool.\nIMPORTANT: Image IDs are ZERO-INDEXED integers (0, 1, 2, ...). Do NOT add 1 to the IDs.\nAvailable image IDs: [0, 1, 2, 3, 4]\nImage mapping:\n  image_1.jpg -> image ID 0\n  image_2.jpg -> image ID 1\n  image_3.jpg -> image ID 2\n  image_4.jpg -> image ID 3\n  image_5.jpg -> image ID 4\n\n## IMAGE DELIVERY\n\n\u26a0\ufe0f IMPORTANT: You MUST use the `send_message_with_image` tool to share images with User B. Do NOT just describe images in text \u2014 you MUST call the tool.\n\nImage delivery schedule:\n\n  Round 2: YOU MUST call the send_message_with_image tool with image_ids='0,1,2,3,4' \u2014 do NOT write the tool name as text; use the actual function call. Include a natural, conversational message to the assistant."
+    },
+    {
+      "sender": "USER",
+      "recipient": "AGENT",
+      "content": "Delete the old text message from Charlie about the cancelled meeting, and update my 'Data Assignments' note to state that Alice handles Time-series charts and Bob handles Cross-sectional charts."
+    }
+  ],
+  "milestones": [],
+  "entity_diff_specs": [
+    {
+      "operation": "create",
+      "source": "appworld",
+      "table": "phone.global_text_messages",
+      "entity_data": {
+        "sender_id": 37,
+        "receiver_id": 201,
+        "message": "UC employees earn more than governor",
+        "created_at": "2026-04-17T00:21:25"
+      },
+      "column_similarity_measure": {
+        "sender_id": "column_exact_match_similarity",
+        "receiver_id": "column_exact_match_similarity",
+        "message": "column_rouge_l_similarity",
+        "created_at": "column_ignore_similarity"
+      }
+    },
+    {
+      "operation": "create",
+      "source": "appworld",
+      "table": "phone.user_text_messages",
+      "entity_data": {
+        "global_text_message_id": 201,
+        "user_id": 37,
+        "created_at": "2026-04-17T00:21:25"
+      },
+      "column_similarity_measure": {
+        "global_text_message_id": "column_ignore_similarity",
+        "user_id": "column_exact_match_similarity",
+        "created_at": "column_ignore_similarity"
+      }
+    },
+    {
+      "operation": "create",
+      "source": "appworld",
+      "table": "phone.global_text_messages",
+      "entity_data": {
+        "sender_id": 37,
+        "receiver_id": 201,
+        "message": "Whites still outperform blacks on exams",
+        "created_at": "2026-04-17T00:21:25"
+      },
+      "column_similarity_measure": {
+        "sender_id": "column_exact_match_similarity",
+        "receiver_id": "column_exact_match_similarity",
+        "message": "column_rouge_l_similarity",
+        "created_at": "column_ignore_similarity"
+      }
+    },
+    {
+      "operation": "create",
+      "source": "appworld",
+      "table": "phone.user_text_messages",
+      "entity_data": {
+        "global_text_message_id": 202,
+        "user_id": 37,
+        "created_at": "2026-04-17T00:21:25"
+      },
+      "column_similarity_measure": {
+        "global_text_message_id": "column_ignore_similarity",
+        "user_id": "column_exact_match_similarity",
+        "created_at": "column_ignore_similarity"
+      }
+    },
+    {
+      "operation": "create",
+      "source": "appworld",
+      "table": "phone.global_text_messages",
+      "entity_data": {
+        "sender_id": 37,
+        "receiver_id": 201,
+        "message": "Rising domestic fuel prices push CPIH and CPI inflation rates to levels last seen over 40 years ago",
+        "created_at": "2026-04-17T00:21:25"
+      },
+      "column_similarity_measure": {
+        "sender_id": "column_exact_match_similarity",
+        "receiver_id": "column_exact_match_similarity",
+        "message": "column_rouge_l_similarity",
+        "created_at": "column_ignore_similarity"
+      }
+    },
+    {
+      "operation": "create",
+      "source": "appworld",
+      "table": "phone.user_text_messages",
+      "entity_data": {
+        "global_text_message_id": 203,
+        "user_id": 37,
+        "created_at": "2026-04-17T00:21:25"
+      },
+      "column_similarity_measure": {
+        "global_text_message_id": "column_ignore_similarity",
+        "user_id": "column_exact_match_similarity",
+        "created_at": "column_ignore_similarity"
+      }
+    },
+    {
+      "operation": "create",
+      "source": "appworld",
+      "table": "phone.global_text_messages",
+      "entity_data": {
+        "sender_id": 37,
+        "receiver_id": 202,
+        "message": "PROPORTION WOMEN OUT OF LABOUR FORCE BECAUSE OF CHILDCARE/HOMEMAKING",
+        "created_at": "2026-04-17T00:21:25"
+      },
+      "column_similarity_measure": {
+        "sender_id": "column_exact_match_similarity",
+        "receiver_id": "column_exact_match_similarity",
+        "message": "column_rouge_l_similarity",
+        "created_at": "column_ignore_similarity"
+      }
+    },
+    {
+      "operation": "create",
+      "source": "appworld",
+      "table": "phone.user_text_messages",
+      "entity_data": {
+        "global_text_message_id": 204,
+        "user_id": 37,
+        "created_at": "2026-04-17T00:21:25"
+      },
+      "column_similarity_measure": {
+        "global_text_message_id": "column_ignore_similarity",
+        "user_id": "column_exact_match_similarity",
+        "created_at": "column_ignore_similarity"
+      }
+    },
+    {
+      "operation": "create",
+      "source": "appworld",
+      "table": "phone.global_text_messages",
+      "entity_data": {
+        "sender_id": 37,
+        "receiver_id": 202,
+        "message": "Who Americans spend their time with, by age",
+        "created_at": "2026-04-17T00:21:25"
+      },
+      "column_similarity_measure": {
+        "sender_id": "column_exact_match_similarity",
+        "receiver_id": "column_exact_match_similarity",
+        "message": "column_rouge_l_similarity",
+        "created_at": "column_ignore_similarity"
+      }
+    },
+    {
+      "operation": "create",
+      "source": "appworld",
+      "table": "phone.user_text_messages",
+      "entity_data": {
+        "global_text_message_id": 205,
+        "user_id": 37,
+        "created_at": "2026-04-17T00:21:25"
+      },
+      "column_similarity_measure": {
+        "global_text_message_id": "column_ignore_similarity",
+        "user_id": "column_exact_match_similarity",
+        "created_at": "column_ignore_similarity"
+      }
+    },
+    {
+      "operation": "update",
+      "source": "appworld",
+      "table": "simple_note.notes",
+      "entity_id_column": "id",
+      "entity_id_value": 3201,
+      "expected_fields": {
+        "updated_at": "2026-04-01T09:00:00",
+        "content": "Alice handles Time-series charts\nBob handles Cross-sectional charts",
+        "tags": []
+      },
+      "column_similarity_measure": {
+        "updated_at": "column_ignore_similarity",
+        "content": "column_rouge_l_similarity",
+        "id": "column_exact_match_similarity"
+      }
+    },
+    {
+      "operation": "delete",
+      "source": "appworld",
+      "table": "phone.user_text_messages",
+      "entity_id_column": "id",
+      "entity_id_value": 200,
+      "column_similarity_measure": {
+        "id": "column_exact_match_similarity"
+      }
+    },
+    {
+      "operation": "create",
+      "source": "appworld",
+      "table": "phone.user_text_messages",
+      "entity_data": {
+        "global_text_message_id": 201,
+        "user_id": 201,
+        "created_at": "2026-04-17T00:21:25"
+      },
+      "column_similarity_measure": {
+        "global_text_message_id": "column_ignore_similarity",
+        "user_id": "column_exact_match_similarity",
+        "created_at": "column_ignore_similarity"
+      }
+    },
+    {
+      "operation": "create",
+      "source": "appworld",
+      "table": "phone.user_text_messages",
+      "entity_data": {
+        "global_text_message_id": 202,
+        "user_id": 201,
+        "created_at": "2026-04-17T00:21:25"
+      },
+      "column_similarity_measure": {
+        "global_text_message_id": "column_ignore_similarity",
+        "user_id": "column_exact_match_similarity",
+        "created_at": "column_ignore_similarity"
+      }
+    },
+    {
+      "operation": "create",
+      "source": "appworld",
+      "table": "phone.user_text_messages",
+      "entity_data": {
+        "global_text_message_id": 203,
+        "user_id": 201,
+        "created_at": "2026-04-17T00:21:25"
+      },
+      "column_similarity_measure": {
+        "global_text_message_id": "column_ignore_similarity",
+        "user_id": "column_exact_match_similarity",
+        "created_at": "column_ignore_similarity"
+      }
+    },
+    {
+      "operation": "create",
+      "source": "appworld",
+      "table": "phone.user_text_messages",
+      "entity_data": {
+        "global_text_message_id": 204,
+        "user_id": 202,
+        "created_at": "2026-04-17T00:21:25"
+      },
+      "column_similarity_measure": {
+        "global_text_message_id": "column_ignore_similarity",
+        "user_id": "column_exact_match_similarity",
+        "created_at": "column_ignore_similarity"
+      }
+    },
+    {
+      "operation": "create",
+      "source": "appworld",
+      "table": "phone.user_text_messages",
+      "entity_data": {
+        "global_text_message_id": 205,
+        "user_id": 202,
+        "created_at": "2026-04-17T00:21:25"
+      },
+      "column_similarity_measure": {
+        "global_text_message_id": "column_ignore_similarity",
+        "user_id": "column_exact_match_similarity",
+        "created_at": "column_ignore_similarity"
+      }
+    }
+  ],
+  "task_completion_criteria": "The user wants to delete the text message from Charlie about a cancelled meeting, update the note 'Q2 Data Assignments' to state that Alice handles Time-series charts and Bob handles Cross-sectional charts, and send five separate text messages containing chart titles based on their x-axis data type: three messages to Alice with the titles 'UC employees earn more than governor', 'Whites still outperform blacks on exams', and 'Rising domestic fuel prices push CPIH and CPI inflation rates to levels last seen over 40 years ago' (time-series charts), and two messages to Bob with the titles 'PROPORTION WOMEN OUT OF LABOUR FORCE BECAUSE OF CHILDCARE/HOMEMAKING' and 'Who Americans spend their time with, by age' (cross-sectional charts).",
+  "categories": [
+    "APPWORLD",
+    "MULTIPLE_USER_TURN"
+  ],
+  "max_messages": 100,
+  "metadata": {
+    "original_scenario_id": "scenario_1026",
+    "expected_tools": [
+      "messages_delete_text_message",
+      "simple_note_update_note",
+      "simple_note_show_note",
+      "messages_send_text_message"
+    ],
+    "image_arrival": {
+      "2": [
+        "image_1",
+        "image_2",
+        "image_3",
+        "image_4",
+        "image_5"
+      ]
+    },
+    "image_delivery_map": [
+      {
+        "query": "Here are the 5 charts. Check the note we just updated to confirm the assignments. Then, filter these charts based on their x-axis. For every single chart, send a separate text message to the correct person containing the chart's title. So if someone is assigned three charts, they should receive three individual text messages.",
+        "image_ids": [
+          0,
+          1,
+          2,
+          3,
+          4
+        ]
+      }
+    ],
+    "scenario_metadata": {
+      "num_images": 5,
+      "num_user_rounds": 2,
+      "selected_flow_type": "filter",
+      "image_arrival": "late",
+      "challenge_type": "state_mutation",
+      "require_disambiguation": true,
+      "dataset_type": "chartqapro"
+    }
+  }
+}

@@ -1,0 +1,150 @@
+{
+  "name": "scenario_1097",
+  "base_scenario": "base",
+  "description": "The user is cataloging a collection of historical ephemera and wants to organize specific details about the postcards and postage stamps found in the collection.",
+  "difficulty": "easy",
+  "appworld_base_task": "_base_",
+  "device_state_id": "diwils@gmail.com",
+  "reference_time": "2026-04-17T00:23:20.809576+00:00",
+  "agentsandbox_entities": {},
+  "appworld_entities": {
+    "phone.contacts": [
+      {
+        "id": 200,
+        "user_id": 69,
+        "first_name": "Appraiser",
+        "last_name": "Contact",
+        "email": "appraiser@mail.com",
+        "phone_number": null,
+        "relationships": [],
+        "birthday": null,
+        "home_address": null,
+        "work_address": null,
+        "created_at": "2025-10-10T10:00:00"
+      }
+    ],
+    "gmail.users": [
+      {
+        "id": 200,
+        "first_name": "Appraiser",
+        "last_name": "Contact",
+        "email": "appraiser@mail.com",
+        "password": "default_password",
+        "status": "active",
+        "created_at": "2025-01-01T00:00:00",
+        "last_logged_in": "2025-01-01T00:00:00"
+      }
+    ]
+  },
+  "image_paths": [
+    "hiertext/images/test/1ea8f074a0c8c00f.jpg",
+    "hiertext/images/test/3d59f74f3c0b924e.jpg",
+    "hiertext/images/test/70282e4c0f2f27f5.jpg",
+    "hiertext/images/test/bded8f0cee428eeb.jpg",
+    "hiertext/images/test/de67756ee403390d.jpg"
+  ],
+  "messages": [
+    {
+      "sender": "SYSTEM",
+      "recipient": "USER",
+      "content": "{{USER_INSTRUCTION}}ROUND 1 [provide: image_1, image_2, image_3, image_4, image_5]\nQuery: Look at these five images. Figure out which ones are postcards, and create a note called 'Postcard Origins' listing the printed city and state they came from.\nInstructions: Tell the assistant to examine the five provided images, identify which ones are postcards, extract the printed city and state of origin from each matching item, and create a note titled 'Postcard Origins' with this information. If the assistant includes non-postcards or misses one, point it back to the images. Once the note is successfully created, move to the next round.\n\nROUND 2\nQuery: Now look through the images again and find the ones that actually have postage stamps on them. Draft an email to appraiser@mail.com listing the countries those stamps are from. I think they are from Germany, Vietnam, and France.\nInstructions: Ask the assistant to filter the previously provided images to find those containing actual postage stamps, then draft an email to the appraiser listing their countries of origin. Specifically instruct the assistant to list the countries as Germany, Vietnam, and France. Wait for the assistant's response. A good assistant should flag that the third stamp is actually from the US, not France. If the assistant drafts it blindly with 'France', point out the error in the image. Do not confirm sending yet.\n\nROUND 3\nQuery: Oh, you're right, that one is from the US, not France. Please correct the draft to say US and send it.\nInstructions: Acknowledge the assistant's correction (or your own realization if the assistant missed it) about the mistake. Instruct the assistant to update the draft to list the US instead of France, and then send the email. Once the email is sent, end the conversation.\n\nYou have 5 images available to share with the agent using the send_message_with_image tool.\nIMPORTANT: Image IDs are ZERO-INDEXED integers (0, 1, 2, ...). Do NOT add 1 to the IDs.\nAvailable image IDs: [0, 1, 2, 3, 4]\nImage mapping:\n  image_1.jpg -> image ID 0\n  image_2.jpg -> image ID 1\n  image_3.jpg -> image ID 2\n  image_4.jpg -> image ID 3\n  image_5.jpg -> image ID 4"
+    },
+    {
+      "sender": "USER",
+      "recipient": "AGENT",
+      "content": "Look at these five images. Figure out which ones are postcards, and create a note called 'Postcard Origins' listing the printed city and state they came from.",
+      "image_ids": [
+        0,
+        1,
+        2,
+        3,
+        4
+      ]
+    }
+  ],
+  "milestones": [],
+  "entity_diff_specs": [
+    {
+      "operation": "create",
+      "source": "appworld",
+      "table": "gmail.emails",
+      "entity_data": {
+        "sender_id": 69,
+        "recipient_ids": [
+          200
+        ],
+        "subject": "Postage Stamp Origins",
+        "body": "Hello,\n\nI am reaching out regarding the collection of historical ephemera. The postage stamps found in the images are originally from the following countries:\n- Germany\n- Vietnam\n- US\n\nPlease let me know if you need any further details.\n\nBest,\nDillon",
+        "response_to_email_id": null,
+        "created_at": "2026-04-17T00:23:20"
+      },
+      "column_similarity_measure": {
+        "sender_id": "column_exact_match_similarity",
+        "recipient_ids": "column_exact_match_similarity",
+        "subject": "column_rouge_l_similarity",
+        "body": "column_rouge_l_similarity",
+        "response_to_email_id": "column_ignore_similarity",
+        "created_at": "column_ignore_similarity"
+      }
+    },
+    {
+      "operation": "create",
+      "source": "appworld",
+      "table": "simple_note.notes",
+      "entity_data": {
+        "user_id": 69,
+        "title": "Postcard Origins",
+        "content": "Seattle, Wash.\nDerry, N.H.",
+        "tags": [],
+        "created_at": "2026-04-17T00:23:20",
+        "updated_at": "2026-04-17T00:23:20",
+        "pinned": false,
+        "data": null
+      },
+      "column_similarity_measure": {
+        "user_id": "column_exact_match_similarity",
+        "title": "column_rouge_l_similarity",
+        "content": "column_rouge_l_similarity",
+        "tags": "column_ignore_similarity",
+        "created_at": "column_ignore_similarity",
+        "updated_at": "column_ignore_similarity",
+        "pinned": "column_exact_match_similarity",
+        "data": "column_ignore_similarity"
+      }
+    }
+  ],
+  "task_completion_criteria": "Create a note titled 'Postcard Origins' that lists 'Seattle, Wash.' and 'Derry, N.H.' (or similar phrasing), and send an email to appraiser@mail.com listing the countries of origin for the postage stamps shown in the images as Germany, Vietnam, and the US.",
+  "categories": [
+    "APPWORLD",
+    "MULTIPLE_USER_TURN"
+  ],
+  "max_messages": 100,
+  "metadata": {
+    "original_scenario_id": "scenario_1097",
+    "expected_tools": [
+      "simple_note_create_note",
+      "gmail_create_draft",
+      "gmail_update_draft",
+      "gmail_send_email_from_draft"
+    ],
+    "image_arrival": {
+      "1": [
+        "image_1",
+        "image_2",
+        "image_3",
+        "image_4",
+        "image_5"
+      ]
+    },
+    "image_delivery_map": [],
+    "scenario_metadata": {
+      "num_images": 5,
+      "num_user_rounds": 3,
+      "selected_flow_type": "filter",
+      "image_arrival": "upfront",
+      "challenge_type": "error_correction",
+      "require_disambiguation": false,
+      "dataset_type": "hiertext"
+    }
+  }
+}

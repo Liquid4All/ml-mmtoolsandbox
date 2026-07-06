@@ -1,0 +1,307 @@
+{
+  "name": "scenario_0205",
+  "base_scenario": "base",
+  "description": "Patricia is working on a coding project that automates UI instructions in PowerPoint. She is managing her generated annotation data, tracking instruction coverage, debugging a dataset loading error, and documenting PowerPoint UI features.",
+  "difficulty": "easy",
+  "appworld_base_task": "_base_",
+  "device_state_id": "pa_ritter@gmail.com",
+  "reference_time": "2026-04-16T23:56:33.112677+00:00",
+  "agentsandbox_entities": {},
+  "appworld_entities": {
+    "phone.contacts": [
+      {
+        "id": 200,
+        "user_id": 94,
+        "first_name": "Sarah",
+        "last_name": "Doe",
+        "email": "sarah@example.com",
+        "phone_number": null,
+        "relationships": [],
+        "birthday": null,
+        "home_address": null,
+        "work_address": null,
+        "created_at": "2025-10-15T10:30:00"
+      }
+    ],
+    "file_system.directories": [
+      {
+        "id": 3600,
+        "path": "/home/patricia/annotations/",
+        "tilde_path": "~/annotations/",
+        "user_id": 94,
+        "created_at": "2024-10-27T21:00:00",
+        "updated_at": "2024-10-27T21:53:51"
+      },
+      {
+        "id": 3025,
+        "path": "/home/patricia/documents/",
+        "tilde_path": "~/documents/",
+        "user_id": 94,
+        "created_at": "2025-01-01T10:00:00",
+        "updated_at": "2026-04-10T14:20:00"
+      },
+      {
+        "id": 3602,
+        "path": "/home/patricia/desktop/",
+        "tilde_path": "~/desktop/",
+        "user_id": 94,
+        "created_at": "2025-01-01T10:00:00",
+        "updated_at": "2026-04-15T09:30:00"
+      }
+    ],
+    "file_system.files": [
+      {
+        "id": 26000,
+        "path": "/home/patricia/annotations/screenshot_2024-10-27_21-50-55.json",
+        "tilde_path": "~/annotations/screenshot_2024-10-27_21-50-55.json",
+        "user_id": 94,
+        "content": "{\n  \"timestamp\": \"2024-10-27T21:50:55Z\",\n  \"annotations\": []\n}",
+        "compressed_data": [],
+        "created_at": "2024-10-27T21:50:55",
+        "updated_at": "2024-10-27T21:50:55"
+      },
+      {
+        "id": 26001,
+        "path": "/home/patricia/annotations/screenshot_2024-10-27_21-51-37.json",
+        "tilde_path": "~/annotations/screenshot_2024-10-27_21-51-37.json",
+        "user_id": 94,
+        "content": "{\n  \"timestamp\": \"2024-10-27T21:51:37Z\",\n  \"annotations\": []\n}",
+        "compressed_data": [],
+        "created_at": "2024-10-27T21:51:37",
+        "updated_at": "2024-10-27T21:51:37"
+      },
+      {
+        "id": 26002,
+        "path": "/home/patricia/annotations/screenshot_2024-10-27_21-52-57.json",
+        "tilde_path": "~/annotations/screenshot_2024-10-27_21-52-57.json",
+        "user_id": 94,
+        "content": "{\n  \"timestamp\": \"2024-10-27T21:52:57Z\",\n  \"annotations\": []\n}",
+        "compressed_data": [],
+        "created_at": "2024-10-27T21:52:57",
+        "updated_at": "2024-10-27T21:52:57"
+      },
+      {
+        "id": 26003,
+        "path": "/home/patricia/annotations/screenshot_2024-10-27_21-53-51.json",
+        "tilde_path": "~/annotations/screenshot_2024-10-27_21-53-51.json",
+        "user_id": 94,
+        "content": "{\n  \"timestamp\": \"2024-10-27T21:53:51Z\",\n  \"annotations\": []\n}",
+        "compressed_data": [],
+        "created_at": "2024-10-27T21:53:51",
+        "updated_at": "2024-10-27T21:53:51"
+      },
+      {
+        "id": 26004,
+        "path": "/home/patricia/documents/target_instructions.txt",
+        "tilde_path": "~/documents/target_instructions.txt",
+        "user_id": 94,
+        "content": "Replace text\nSelect all\nSelect objects\nDisplay the selection pane\nChange the font color to yellow\nCenter the paragraph\nAlign the paragraph left\nInsert a table\nChange slide layout",
+        "compressed_data": [],
+        "created_at": "2026-04-10T14:20:00",
+        "updated_at": "2026-04-10T14:20:00"
+      },
+      {
+        "id": 26005,
+        "path": "/home/patricia/desktop/dataset_workarounds.txt",
+        "tilde_path": "~/desktop/dataset_workarounds.txt",
+        "user_id": 94,
+        "content": "wikitext: use split=\"train[:10%]\"\ncodeparrot/apps: add trust_remote_code=True to load_dataset\nmnist: use local copy",
+        "compressed_data": [],
+        "created_at": "2026-04-15T09:30:00",
+        "updated_at": "2026-04-15T09:30:00"
+      },
+      {
+        "id": 26006,
+        "path": "/home/patricia/desktop/generation.py",
+        "tilde_path": "~/desktop/generation.py",
+        "user_id": 94,
+        "content": "from datasets import load_dataset\n\ndef main():\n    # Load the dataset for instruction generation\n    dataset = load_dataset('codeparrot/apps')\n    print(f\"Loaded {len(dataset)} examples.\")\n\nif __name__ == '__main__':\n    main()",
+        "compressed_data": [],
+        "created_at": "2026-04-15T11:15:00",
+        "updated_at": "2026-04-16T20:45:00"
+      }
+    ],
+    "gmail.users": [
+      {
+        "id": 200,
+        "first_name": "Sarah",
+        "last_name": "Doe",
+        "email": "sarah@example.com",
+        "password": "default_password",
+        "status": "active",
+        "created_at": "2025-01-01T00:00:00",
+        "last_logged_in": "2025-01-01T00:00:00"
+      }
+    ]
+  },
+  "image_paths": [
+    "screenspotpro/images/ppt_windows/screenshot_2024-10-27_21-56-20.png",
+    "screenspotpro/images/ppt_windows/screenshot_2024-10-27_21-37-18.png",
+    "screenspotpro/images/ppt_windows/screenshot_2024-10-27_21-39-08.png",
+    "screenspotpro/images/ppt_windows/screenshot_2024-10-27_21-23-59.png",
+    "screenspotpro/images/ppt_windows/screenshot_2024-10-27_22-03-14.png",
+    "screenspotpro/images/ppt_windows/screenshot_2024-10-27_21-26-59.png"
+  ],
+  "messages": [
+    {
+      "sender": "SYSTEM",
+      "recipient": "USER",
+      "content": "{{USER_INSTRUCTION}}ROUND 1 [provide: image_1]\nQuery: I'm preparing to back up my generated data. Look at the terminal window in this screenshot. Check if the four JSON files listed there actually exist in the 'annotations' directory on my computer. If they do, create a new directory called 'session_1_logs' so we can move them later.\nInstructions: Ask the assistant to examine the terminal logs in the provided image, extract the exact filenames of the four saved JSON files, and check if they exist in the 'annotations' directory. Instruct it to create a 'session_1_logs' directory if the files are found. If the assistant asks for clarification on the file paths, point it back to the 'Saved annotations to:' lines in the terminal window. Wait for confirmation that the directory was created before proceeding.\n\nROUND 2 [provide: image_5]\nQuery: Actually, let's hold off on organizing files. Delete the 'session_1_logs' directory. I want to track my instruction coverage instead. Read the 'target_instructions.txt' file in my documents folder. Cross-reference its contents with all the instructions I've successfully recorded in the terminal logs from the first image and this new one. Create a note called 'Missing Instructions' and list the ones from the text file that I haven't recorded yet.\nInstructions: Tell the assistant that you've changed your mind and no longer want to organize the files, asking it to delete the 'session_1_logs' directory it just created. Then, instruct it to read the 'target_instructions.txt' file and cross-reference its list with the recorded instructions visible in the terminal logs across both the first image and the newly provided image. Ask it to create a note identifying the delta—the instructions from the text file that are missing from the logs. If the assistant misses any logs, remind it to check both terminal windows carefully.\n\nROUND 3 [provide: image_2, image_4]\nQuery: Now look at my VS Code editor and the GitHub issue in these two new screenshots. My script is failing with the exact same error shown in the issue. Read the 'dataset_workarounds.txt' file on my desktop. Identify which dataset I'm using in my code that's causing this, find its specific workaround in the text file, and update 'generation.py' with that fix.\nInstructions: Direct the assistant to examine the VS Code editor and the GitHub issue in the new images to identify the specific dataset that is failing to load. Ask the assistant to read the 'dataset_workarounds.txt' file, locate the workaround corresponding to that exact dataset, and update the 'generation.py' file with the fix. If the assistant is unsure which dataset to look for, tell it to check the `load_dataset` function call in the visible code.\n\nROUND 4 [provide: image_3, image_6]\nQuery: Finally, I'm writing a guide on PowerPoint's UI. Look at the context menus shown in the slides in these last two screenshots. I need to document the common options. Find the menu options that appear in BOTH of these menus, and send an email to sarah@example.com listing this intersection of options.\nInstructions: Ask the assistant to carefully compare the two right-click context menus open in the PowerPoint slides of the latest screenshots. Instruct it to identify the exact intersection—the options that are present in both menus—and send an email to sarah@example.com listing those common items. If the assistant includes options that only appear in one of the menus, correct it and ask it to verify against both images again. Once the email is sent, conclude the conversation.\n\nYou have 6 images available to share with the agent using the send_message_with_image tool.\nIMPORTANT: Image IDs are ZERO-INDEXED integers (0, 1, 2, ...). Do NOT add 1 to the IDs.\nAvailable image IDs: [0, 1, 2, 3, 4, 5]\nImage mapping:\n  image_1.jpg -> image ID 0\n  image_2.jpg -> image ID 1\n  image_3.jpg -> image ID 2\n  image_4.jpg -> image ID 3\n  image_5.jpg -> image ID 4\n  image_6.jpg -> image ID 5\n\n## IMAGE DELIVERY\n\n⚠️ IMPORTANT: You MUST use the `send_message_with_image` tool to share images with User B. Do NOT just describe images in text — you MUST call the tool.\n\nImage delivery schedule:\n\n  Round 2: YOU MUST call the send_message_with_image tool with image_ids='4' — do NOT write the tool name as text; use the actual function call. Include a natural, conversational message to the assistant.\n  Round 3: YOU MUST call the send_message_with_image tool with image_ids='1,3' — do NOT write the tool name as text; use the actual function call. Include a natural, conversational message to the assistant.\n  Round 4: YOU MUST call the send_message_with_image tool with image_ids='2,5' — do NOT write the tool name as text; use the actual function call. Include a natural, conversational message to the assistant."
+    },
+    {
+      "sender": "USER",
+      "recipient": "AGENT",
+      "content": "I'm preparing to back up my generated data. Look at the terminal window in this screenshot. Check if the four JSON files listed there actually exist in the 'annotations' directory on my computer. If they do, create a new directory called 'session_1_logs' so we can move them later.",
+      "image_ids": [
+        0
+      ]
+    }
+  ],
+  "milestones": [],
+  "entity_diff_specs": [
+    {
+      "operation": "create",
+      "source": "appworld",
+      "table": "gmail.emails",
+      "entity_data": {
+        "sender_id": 94,
+        "recipient_ids": [
+          200
+        ],
+        "subject": "Common PowerPoint Context Menu Options",
+        "body": "Hi Sarah,\n\nHere are the common menu options found in both context menus:\n- Search the menus\n- Cut\n- Copy\n- Paste Options\n- Hyperlink...\n- Translate\n- Format Shape...\n- New Comment\n\nBest,\nPatricia",
+        "response_to_email_id": null,
+        "created_at": "2026-04-16T23:56:33"
+      },
+      "column_similarity_measure": {
+        "sender_id": "column_exact_match_similarity",
+        "recipient_ids": "column_exact_match_similarity",
+        "subject": "column_rouge_l_similarity",
+        "body": "column_rouge_l_similarity",
+        "response_to_email_id": "column_ignore_similarity",
+        "created_at": "column_ignore_similarity"
+      }
+    },
+    {
+      "operation": "create",
+      "source": "appworld",
+      "table": "simple_note.notes",
+      "entity_data": {
+        "user_id": 94,
+        "title": "Missing Instructions",
+        "content": "Insert a table\nChange slide layout",
+        "tags": [],
+        "created_at": "2026-04-16T23:56:33",
+        "updated_at": "2026-04-16T23:56:33",
+        "pinned": false,
+        "data": null
+      },
+      "column_similarity_measure": {
+        "user_id": "column_exact_match_similarity",
+        "title": "column_rouge_l_similarity",
+        "content": "column_rouge_l_similarity",
+        "tags": "column_ignore_similarity",
+        "created_at": "column_ignore_similarity",
+        "updated_at": "column_ignore_similarity",
+        "pinned": "column_exact_match_similarity",
+        "data": "column_ignore_similarity"
+      }
+    },
+    {
+      "operation": "update",
+      "source": "appworld",
+      "table": "file_system.directories",
+      "entity_id_column": "id",
+      "entity_id_value": 3602,
+      "expected_fields": {
+        "updated_at": "2026-04-15T09:30:00"
+      },
+      "column_similarity_measure": {
+        "updated_at": "column_ignore_similarity",
+        "id": "column_exact_match_similarity"
+      }
+    },
+    {
+      "operation": "update",
+      "source": "appworld",
+      "table": "file_system.files",
+      "entity_id_column": "id",
+      "entity_id_value": 26006,
+      "expected_fields": {
+        "updated_at": "2026-04-16T20:45:00",
+        "content": "from datasets import load_dataset\n\ndef main():\n    # Load the dataset for instruction generation\n    dataset = load_dataset('codeparrot/apps', trust_remote_code=True)\n    print(f\"Loaded {len(dataset)} examples.\")\n\nif __name__ == '__main__':\n    main()"
+      },
+      "column_similarity_measure": {
+        "updated_at": "column_ignore_similarity",
+        "content": "column_rouge_l_similarity",
+        "id": "column_exact_match_similarity"
+      }
+    }
+  ],
+  "task_completion_criteria": "Create a note titled 'Missing Instructions' containing 'Insert a table' and 'Change slide layout', update the 'generation.py' file to include the workaround for the 'codeparrot/apps' dataset, and send an email to sarah@example.com listing the intersection of menu options: Search the menus, Cut, Copy, Paste Options, Hyperlink..., Translate, Format Shape..., and New Comment.",
+  "categories": [
+    "APPWORLD",
+    "MULTIPLE_USER_TURN"
+  ],
+  "max_messages": 100,
+  "metadata": {
+    "original_scenario_id": "scenario_0205",
+    "expected_tools": [
+      "file_system_file_exists",
+      "file_system_create_directory",
+      "file_system_delete_directory",
+      "file_system_show_file",
+      "simple_note_create_note",
+      "simple_note_add_content_to_note",
+      "file_system_update_file",
+      "gmail_send_email"
+    ],
+    "image_arrival": {
+      "1": [
+        "image_1"
+      ],
+      "2": [
+        "image_5"
+      ],
+      "3": [
+        "image_2",
+        "image_4"
+      ],
+      "4": [
+        "image_3",
+        "image_6"
+      ]
+    },
+    "image_delivery_map": [
+      {
+        "query": "Actually, let's hold off on organizing files. Delete the 'session_1_logs' directory. I want to track my instruction coverage instead. Read the 'target_instructions.txt' file in my documents folder. Cross-reference its contents with all the instructions I've successfully recorded in the terminal logs from the first image and this new one. Create a note called 'Missing Instructions' and list the ones from the text file that I haven't recorded yet.",
+        "image_ids": [
+          4
+        ]
+      },
+      {
+        "query": "Now look at my VS Code editor and the GitHub issue in these two new screenshots. My script is failing with the exact same error shown in the issue. Read the 'dataset_workarounds.txt' file on my desktop. Identify which dataset I'm using in my code that's causing this, find its specific workaround in the text file, and update 'generation.py' with that fix.",
+        "image_ids": [
+          1,
+          3
+        ]
+      },
+      {
+        "query": "Finally, I'm writing a guide on PowerPoint's UI. Look at the context menus shown in the slides in these last two screenshots. I need to document the common options. Find the menu options that appear in BOTH of these menus, and send an email to sarah@example.com listing this intersection of options.",
+        "image_ids": [
+          2,
+          5
+        ]
+      }
+    ],
+    "scenario_metadata": {
+      "num_images": 6,
+      "num_user_rounds": 4,
+      "selected_flow_type": "cross_reference",
+      "image_arrival": "progressive",
+      "challenge_type": "goal_change",
+      "require_disambiguation": false,
+      "dataset_type": "screenspotpro"
+    }
+  }
+}

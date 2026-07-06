@@ -1,0 +1,203 @@
+{
+  "name": "scenario_1034",
+  "base_scenario": "base",
+  "description": "The user is reviewing travel photos from recent trips to historical sites and wants to update their Todoist travel bucket list project based on the places they have visited.",
+  "difficulty": "easy",
+  "appworld_base_task": "_base_",
+  "device_state_id": "kathrynmaldonado@gmail.com",
+  "reference_time": "2026-04-17T00:21:39.290614+00:00",
+  "agentsandbox_entities": {},
+  "appworld_entities": {
+    "todoist.projects": [
+      {
+        "id": 400,
+        "user_id": 86,
+        "name": "Travel Bucket List",
+        "color": "blue",
+        "is_inbox": false,
+        "description": "Places I want to visit",
+        "created_at": "2025-01-01T10:00:00"
+      }
+    ],
+    "todoist.tasks": [
+      {
+        "id": 6500,
+        "project_id": 400,
+        "section_id": null,
+        "user_id": 86,
+        "title": "Temple of Artemis",
+        "description": null,
+        "due_date": null,
+        "priority": "medium",
+        "is_completed": false,
+        "duration": null,
+        "duration_unit": null,
+        "order_index": 1,
+        "assignee_id": null,
+        "assigner_id": null,
+        "created_at": "2025-01-01T10:05:00"
+      },
+      {
+        "id": 6501,
+        "project_id": 400,
+        "section_id": null,
+        "user_id": 86,
+        "title": "Mesa Verde",
+        "description": null,
+        "due_date": null,
+        "priority": "medium",
+        "is_completed": false,
+        "duration": null,
+        "duration_unit": null,
+        "order_index": 2,
+        "assignee_id": null,
+        "assigner_id": null,
+        "created_at": "2025-01-01T10:05:00"
+      },
+      {
+        "id": 6502,
+        "project_id": 400,
+        "section_id": null,
+        "user_id": 86,
+        "title": "Mohenjo-daro",
+        "description": null,
+        "due_date": null,
+        "priority": "medium",
+        "is_completed": false,
+        "duration": null,
+        "duration_unit": null,
+        "order_index": 3,
+        "assignee_id": null,
+        "assigner_id": null,
+        "created_at": "2025-01-01T10:05:00"
+      },
+      {
+        "id": 6503,
+        "project_id": 400,
+        "section_id": null,
+        "user_id": 86,
+        "title": "Machu Picchu",
+        "description": null,
+        "due_date": null,
+        "priority": "medium",
+        "is_completed": false,
+        "duration": null,
+        "duration_unit": null,
+        "order_index": 4,
+        "assignee_id": null,
+        "assigner_id": null,
+        "created_at": "2025-01-01T10:05:00"
+      }
+    ],
+    "todoist.project_collaborator_links": [
+      {
+        "id": 50400,
+        "project_id": 400,
+        "user_id": 86,
+        "is_favorite": false,
+        "is_archived": false,
+        "created_at": "2025-01-01T10:00:00"
+      }
+    ],
+    "gmail.users": []
+  },
+  "image_paths": [
+    "worldvqa/images/656.jpg",
+    "worldvqa/images/659.jpg",
+    "worldvqa/images/663.jpg"
+  ],
+  "messages": [
+    {
+      "sender": "SYSTEM",
+      "recipient": "USER",
+      "content": "{{USER_INSTRUCTION}}ROUND 1 [provide: image_1, image_2, image_3]\nQuery: I'm organizing my travel photos and want to cross off the places I've visited. I believe these three images show the Temple of Artemis, Mesa Verde, and Machu Picchu. Can you double-check what historical sites these images actually show, cross-reference them with my 'Travel Bucket List' project on Todoist, and mark the corresponding tasks as complete?\nInstructions: Ask the assistant to verify the historical sites shown in the three images and cross-reference them with your 'Travel Bucket List' project on Todoist to mark the corresponding tasks as complete. You have intentionally misidentified the third location in your query. If the assistant correctly identifies that your guess for the third image is wrong and pauses to ask how to proceed, acknowledge it and wait for the next turn. If the assistant blindly marks the incorrect task complete without verifying the image against your guess, point out that it failed to double-check the image contents as requested.\n\nROUND 2\nQuery: Ah, you're totally right, I got my photos mixed up. That third one is definitely Mohenjo-daro, not Machu Picchu. Please mark the task for Mohenjo-daro as complete instead.\nInstructions: Acknowledge your mistake regarding the third image. Instruct the assistant to mark the correct task for the location actually shown in the third image as complete instead. Once the assistant confirms the final task has been successfully updated, end the conversation.\n\nYou have 3 images available to share with the agent using the send_message_with_image tool.\nIMPORTANT: Image IDs are ZERO-INDEXED integers (0, 1, 2, ...). Do NOT add 1 to the IDs.\nAvailable image IDs: [0, 1, 2]\nImage mapping:\n  image_1.jpg -> image ID 0\n  image_2.jpg -> image ID 1\n  image_3.jpg -> image ID 2"
+    },
+    {
+      "sender": "USER",
+      "recipient": "AGENT",
+      "content": "I'm organizing my travel photos and want to cross off the places I've visited. I believe these three images show the Temple of Artemis, Mesa Verde, and Machu Picchu. Can you double-check what historical sites these images actually show, cross-reference them with my 'Travel Bucket List' project on Todoist, and mark the corresponding tasks as complete?",
+      "image_ids": [
+        0,
+        1,
+        2
+      ]
+    }
+  ],
+  "milestones": [],
+  "entity_diff_specs": [
+    {
+      "operation": "update",
+      "source": "appworld",
+      "table": "todoist.tasks",
+      "entity_id_column": "id",
+      "entity_id_value": 6500,
+      "expected_fields": {
+        "is_completed": true
+      },
+      "column_similarity_measure": {
+        "is_completed": "column_exact_match_similarity",
+        "id": "column_exact_match_similarity"
+      }
+    },
+    {
+      "operation": "update",
+      "source": "appworld",
+      "table": "todoist.tasks",
+      "entity_id_column": "id",
+      "entity_id_value": 6501,
+      "expected_fields": {
+        "is_completed": true
+      },
+      "column_similarity_measure": {
+        "is_completed": "column_exact_match_similarity",
+        "id": "column_exact_match_similarity"
+      }
+    },
+    {
+      "operation": "update",
+      "source": "appworld",
+      "table": "todoist.tasks",
+      "entity_id_column": "id",
+      "entity_id_value": 6502,
+      "expected_fields": {
+        "is_completed": true
+      },
+      "column_similarity_measure": {
+        "is_completed": "column_exact_match_similarity",
+        "id": "column_exact_match_similarity"
+      }
+    }
+  ],
+  "task_completion_criteria": "The Todoist tasks for 'Temple of Artemis', 'Mesa Verde', and 'Mohenjo-daro' in the 'Travel Bucket List' project are marked as complete.",
+  "categories": [
+    "APPWORLD",
+    "MULTIPLE_USER_TURN"
+  ],
+  "max_messages": 100,
+  "metadata": {
+    "original_scenario_id": "scenario_1034",
+    "expected_tools": [
+      "web_search_serper",
+      "todoist_show_project",
+      "todoist_show_tasks",
+      "todoist_update_task"
+    ],
+    "image_arrival": {
+      "1": [
+        "image_1",
+        "image_2",
+        "image_3"
+      ]
+    },
+    "image_delivery_map": [],
+    "scenario_metadata": {
+      "num_images": 3,
+      "num_user_rounds": 2,
+      "selected_flow_type": "cross_reference",
+      "image_arrival": "upfront",
+      "challenge_type": "error_correction",
+      "require_disambiguation": false,
+      "dataset_type": "worldvqa"
+    }
+  }
+}

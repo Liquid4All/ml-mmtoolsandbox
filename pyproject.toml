@@ -1,0 +1,159 @@
+[project]
+name = "mmtoolsandbox"
+version = "1.0.0"
+description = "A multimodal, stateful, conversational benchmark for evaluating LLM visual tool-calling"
+readme = "README.md"
+requires-python = ">=3.11,<3.13"
+license = {file = "LICENSE.md"}
+classifiers = [
+    "Development Status :: 4 - Beta",
+    "Operating System :: OS Independent",
+    "Programming Language :: Python :: 3",
+    "Programming Language :: Python :: 3.11",
+    "Programming Language :: Python :: 3.12",
+    "Programming Language :: Python :: 3 :: Only",
+]
+
+dependencies = [
+    # LLM API clients
+    "anthropic>=0.57.1",
+    "openai>=1.55.3",
+    # Core data & evaluation
+    "polars<1.0.0",
+    "pandas>=2.2.2",
+    "numpy>=1.26.4",
+    "scipy>=1.12.0",
+    "attrs>=23.1.0",
+    "pydantic>=2.9.1",
+    "pydantic-extra-types>=2.9.0",
+    # NLP & embeddings
+    "rouge-score>=0.1.2",
+    "sentence-transformers>=3.3.0,<3.5",
+    "sentencepiece>=0.2.0",
+    "torch>=2.1.1,<2.9",
+    "langchain>=0.3.26",
+    "rapidfuzz>=3.9.7",
+    "huggingface-hub>=0.24.7",
+    # Serialization & utilities
+    "dill>=0.3.7",
+    "docstring-parser>=0.16",
+    "jsonschema",
+    "StrEnum>=0.4.15",
+    "tenacity>=8.5.0",
+    "typeguard",
+    "typing-extensions>=4.12.2",
+    "tabulate>=0.9.0",
+    "pillow>=12.2.0",  # CVE: integer overflow on glyph processing fixed in 12.2.0
+    "matplotlib>=3.8.0",
+    "seaborn>=0.13.0",
+    # Networking
+    "requests>=2.32.3",
+    "httpx>=0.28.1",
+    "httpcore>=1.0.7",
+    "h11>=0.16.0",
+    "websockets>=12.0",
+    "boto3>=1.28.17",
+    "botocore>=1.31.17",
+    # Domain-specific
+    "ccy>=1.2.2",
+    "python-dateutil>=2.8.2",
+    "decorator>=5.1.1",
+    "geopy>=2.4.1",
+    "holidays<1.0",
+    "iso3166>=2.1.1",
+    "phonenumbers>=8.13.45",
+    "pint>=0.24.3",
+    "python-iso639>=2024.10.22",
+    "sqlalchemy>=2.0.0",
+]
+
+[project.scripts]
+mmtoolsandbox = "mmtoolsandbox.cli:main"
+visualize_results = "mmtoolsandbox.viz.visualize_results:main"
+
+[project.entry-points."typeguard.checker_lookup"]
+myplugin = "mmtoolsandbox.common.typecheck:custom_checker_lookup"
+
+[project.optional-dependencies]
+dev = [
+    "pytest",
+    "pytest-cov",
+    "pytest-xdist",
+    "mypy",
+    "ruff==0.11.10",
+    "pre-commit",
+    "pyarrow",
+    "lxml>=6.0.2",
+    "lxml-stubs>=0.5.1",
+    "pandas-stubs>=2.2.2",
+    "types-pyyaml>=6.0.12",
+    "types-requests>=2.32.0",
+    "types-python-dateutil>=2.9.0",
+    "types-jsonschema>=4.23.0",
+    "types-decorator>=5.1.8",
+    "types-tabulate>=0.9.0",
+    "datasets>=2.14.4",
+]
+
+[build-system]
+requires = ["hatchling"]
+build-backend = "hatchling.build"
+
+[tool.hatch.build.targets.wheel]
+packages = ["mmtoolsandbox"]
+
+# ── Ruff ──────────────────────────────────────────────────────────────────────
+[tool.ruff.format]
+docstring-code-format = true
+
+[tool.ruff.lint]
+extend-select = ["I"]
+ignore = ["F841"]
+
+# ── Pytest ────────────────────────────────────────────────────────────────────
+[tool.pytest.ini_options]
+addopts = "-n auto --import-mode=importlib --maxprocesses 4"
+filterwarnings = [
+    "ignore:Deprecated in traitlets 4.1, use the instance .metadata dictionary directly:DeprecationWarning",
+    "ignore:foo:UserWarning",
+    "ignore::DeprecationWarning:holidays",
+    "ignore:TypedStorage is deprecated:UserWarning:torch.*",
+    "ignore:Mixing V1 models*:UserWarning:pydantic",
+    "ignore::PendingDeprecationWarning:gradio",
+]
+testpaths = ["tests"]
+
+# ── Mypy ──────────────────────────────────────────────────────────────────────
+[tool.mypy]
+explicit_package_bases = true
+check_untyped_defs = true
+disallow_any_generics = true
+disallow_incomplete_defs = true
+disallow_subclassing_any = true
+disallow_untyped_calls = true
+disallow_untyped_decorators = true
+disallow_untyped_defs = true
+extra_checks = true
+implicit_reexport = false
+strict_equality = true
+warn_unused_configs = true
+warn_redundant_casts = true
+warn_return_any = true
+warn_unused_ignores = true
+enable_error_code = ["ignore-without-code"]
+disable_error_code = ["redundant-cast"]
+
+[[tool.mypy.overrides]]
+module = "appworld.*"
+ignore_missing_imports = true
+
+[[tool.mypy.overrides]]
+module = "datasets"
+ignore_missing_imports = true
+
+[[tool.mypy.overrides]]
+module = "tqdm.*"
+ignore_missing_imports = true
+
+# Targeted type: ignore comments are now used in each role file instead of
+# blanket disable_error_code overrides.

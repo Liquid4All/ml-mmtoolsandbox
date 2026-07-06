@@ -1,0 +1,156 @@
+{
+  "name": "scenario_0700",
+  "base_scenario": "base",
+  "description": "The user is brainstorming topics for a newsletter and comparing various statistics from Pew Research Center charts to decide what to write about.",
+  "difficulty": "easy",
+  "appworld_base_task": "_base_",
+  "device_state_id": "thomas.solomon@gmail.com",
+  "reference_time": "2026-04-17T00:11:51.657158+00:00",
+  "agentsandbox_entities": {},
+  "appworld_entities": {
+    "phone.contacts": [
+      {
+        "id": 200,
+        "user_id": 8,
+        "first_name": "Alex",
+        "last_name": "Smith",
+        "email": "alex@newsletter.com",
+        "phone_number": null,
+        "relationships": [
+          "coworker"
+        ],
+        "birthday": null,
+        "home_address": null,
+        "work_address": null,
+        "created_at": "2025-01-10T09:30:00"
+      }
+    ],
+    "gmail.users": [
+      {
+        "id": 200,
+        "first_name": "Alex",
+        "last_name": "Smith",
+        "email": "alex@newsletter.com",
+        "password": "default_password",
+        "status": "active",
+        "created_at": "2025-01-01T00:00:00",
+        "last_logged_in": "2025-01-01T00:00:00"
+      }
+    ]
+  },
+  "image_paths": [
+    "chartmuseum/images/worker_income_ai_impact.png",
+    "chartqapro/images/chart_1897.jpg",
+    "chartmuseum/images/teen_pressure.png",
+    "chartqapro/images/chart_1783.jpg",
+    "chartqapro/images/chart_1807.jpg",
+    "chartqapro/images/chart_0629.jpg"
+  ],
+  "messages": [
+    {
+      "sender": "SYSTEM",
+      "recipient": "USER",
+      "content": "{{USER_INSTRUCTION}}ROUND 1 [provide: image_1, image_3]\nQuery: I'm brainstorming for a newsletter. Compare the gap between lower and upper-income workers who say AI means 'Fewer' jobs in the first chart, with the gap between girls and boys feeling pressure to 'Look good' in the second chart. Draft an email to my co-author Alex at alex@newsletter.com proposing we write about the issue with the larger percentage point gap.\nInstructions: Ask the assistant to calculate the percentage point gaps for the specific data points you mentioned in the two charts, compare them, and draft an email to Alex proposing the topic with the larger gap. If the assistant asks for clarification on which bars to look at or provides the calculation, confirm it and ensure the draft is created. Once the draft is ready, proceed to the next round.\n\nROUND 2 [provide: image_4, image_6]\nQuery: Actually, let's pivot to a different theme entirely: trust and accuracy. Compare the 2019 confidence in 'Elected officials' in this first new chart with the balanced sample support for Trump in the polling chart here. Delete the email draft to Alex. Instead, create a note called 'Newsletter Ideas' and write down the subject that has the lower percentage.\nInstructions: Tell the assistant that you changed your mind and want to switch topics. Ask it to delete the previously created email draft. Then, instruct it to compare the specified percentages in the two new charts and create a note titled 'Newsletter Ideas' containing the subject with the lower percentage. If the assistant needs help finding the data points, guide it to the correct bars in the images. Once the note is created, move to the next round.\n\nROUND 3 [provide: image_2]\nQuery: Let's add some agency data to the mix. Compare the favorable rating of the CDC with the favorable rating of the EPA in this chart. Add the name of the agency with the higher favorable rating to the 'Newsletter Ideas' note.\nInstructions: Ask the assistant to find the favorable ratings for the CDC and EPA in the provided chart, compare them, and append the name of the agency with the higher rating to the 'Newsletter Ideas' note. If the assistant confirms the addition or asks if it should include the exact percentages, tell it just the agency name is fine. Proceed to the next round once the note is updated.\n\nROUND 4 [provide: image_5]\nQuery: Finally, check this chart on international views. Compare the percentage of people who say China does NOT contribute to peace with the percentage who say it does NOT take into account their interests. Update the note to include the statement with the highest percentage.\nInstructions: Instruct the assistant to locate the two specific negative percentages in the new chart, compare them, and add the statement associated with the higher percentage to the 'Newsletter Ideas' note. If the assistant completes the update and asks if anything else is needed, say no and conclude the conversation.\n\nYou have 6 images available to share with the agent using the send_message_with_image tool.\nIMPORTANT: Image IDs are ZERO-INDEXED integers (0, 1, 2, ...). Do NOT add 1 to the IDs.\nAvailable image IDs: [0, 1, 2, 3, 4, 5]\nImage mapping:\n  image_1.jpg -> image ID 0\n  image_2.jpg -> image ID 1\n  image_3.jpg -> image ID 2\n  image_4.jpg -> image ID 3\n  image_5.jpg -> image ID 4\n  image_6.jpg -> image ID 5\n\n## IMAGE DELIVERY\n\n\u26a0\ufe0f IMPORTANT: You MUST use the `send_message_with_image` tool to share images with User B. Do NOT just describe images in text \u2014 you MUST call the tool.\n\nImage delivery schedule:\n\n  Round 2: YOU MUST call the send_message_with_image tool with image_ids='3,5' \u2014 do NOT write the tool name as text; use the actual function call. Include a natural, conversational message to the assistant.\n  Round 3: YOU MUST call the send_message_with_image tool with image_ids='1' \u2014 do NOT write the tool name as text; use the actual function call. Include a natural, conversational message to the assistant.\n  Round 4: YOU MUST call the send_message_with_image tool with image_ids='4' \u2014 do NOT write the tool name as text; use the actual function call. Include a natural, conversational message to the assistant."
+    },
+    {
+      "sender": "USER",
+      "recipient": "AGENT",
+      "content": "I'm brainstorming for a newsletter. Compare the gap between lower and upper-income workers who say AI means 'Fewer' jobs in the first chart, with the gap between girls and boys feeling pressure to 'Look good' in the second chart. Draft an email to my co-author Alex at alex@newsletter.com proposing we write about the issue with the larger percentage point gap.",
+      "image_ids": [
+        0,
+        2
+      ]
+    }
+  ],
+  "milestones": [],
+  "entity_diff_specs": [
+    {
+      "operation": "create",
+      "source": "appworld",
+      "table": "simple_note.notes",
+      "entity_data": {
+        "user_id": 8,
+        "title": "Newsletter Ideas",
+        "content": "- Elected officials\n- CDC\n- China does not take into account the interests of countries like theirs",
+        "tags": [],
+        "created_at": "2026-04-17T00:11:51",
+        "updated_at": "2026-04-17T00:11:51",
+        "pinned": false,
+        "data": null
+      },
+      "column_similarity_measure": {
+        "user_id": "column_exact_match_similarity",
+        "title": "column_rouge_l_similarity",
+        "content": "column_rouge_l_similarity",
+        "tags": "column_ignore_similarity",
+        "created_at": "column_ignore_similarity",
+        "updated_at": "column_ignore_similarity",
+        "pinned": "column_exact_match_similarity",
+        "data": "column_ignore_similarity"
+      }
+    }
+  ],
+  "task_completion_criteria": "Create a note titled 'Newsletter Ideas' containing 'Elected officials', 'CDC', and 'China does not take into account the interests of countries like theirs' (or similar wording expressing those concepts based on the images).",
+  "categories": [
+    "APPWORLD",
+    "MULTIPLE_USER_TURN"
+  ],
+  "max_messages": 100,
+  "metadata": {
+    "original_scenario_id": "scenario_0700",
+    "expected_tools": [
+      "gmail_create_draft",
+      "gmail_show_draft",
+      "gmail_delete_draft",
+      "create_note",
+      "simple_note_show_note",
+      "simple_note_add_content_to_note"
+    ],
+    "image_arrival": {
+      "1": [
+        "image_1",
+        "image_3"
+      ],
+      "2": [
+        "image_4",
+        "image_6"
+      ],
+      "3": [
+        "image_2"
+      ],
+      "4": [
+        "image_5"
+      ]
+    },
+    "image_delivery_map": [
+      {
+        "query": "Actually, let's pivot to a different theme entirely: trust and accuracy. Compare the 2019 confidence in 'Elected officials' in this first new chart with the balanced sample support for Trump in the polling chart here. Delete the email draft to Alex. Instead, create a note called 'Newsletter Ideas' and write down the subject that has the lower percentage.",
+        "image_ids": [
+          3,
+          5
+        ]
+      },
+      {
+        "query": "Let's add some agency data to the mix. Compare the favorable rating of the CDC with the favorable rating of the EPA in this chart. Add the name of the agency with the higher favorable rating to the 'Newsletter Ideas' note.",
+        "image_ids": [
+          1
+        ]
+      },
+      {
+        "query": "Finally, check this chart on international views. Compare the percentage of people who say China does NOT contribute to peace with the percentage who say it does NOT take into account their interests. Update the note to include the statement with the highest percentage.",
+        "image_ids": [
+          4
+        ]
+      }
+    ],
+    "scenario_metadata": {
+      "num_images": 6,
+      "num_user_rounds": 4,
+      "selected_flow_type": "compare",
+      "image_arrival": "mixed",
+      "challenge_type": "goal_change",
+      "require_disambiguation": false,
+      "dataset_type": "chartqapro"
+    }
+  }
+}

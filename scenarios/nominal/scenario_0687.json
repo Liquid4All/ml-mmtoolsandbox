@@ -1,0 +1,130 @@
+{
+  "name": "scenario_0687",
+  "base_scenario": "base",
+  "description": "Cory is organizing and compiling historical research documents, initially trying to track them as tasks before pivoting to compiling a timeline in a note.",
+  "difficulty": "easy",
+  "appworld_base_task": "_base_",
+  "device_state_id": "corwils@gmail.com",
+  "reference_time": "2026-04-17T00:11:31.293743+00:00",
+  "agentsandbox_entities": {},
+  "appworld_entities": {
+    "simple_note.notes": [
+      {
+        "id": 3200,
+        "user_id": 72,
+        "title": "Research Timeline",
+        "content": "Initial research notes: 1930s sugar industry overview.",
+        "tags": [],
+        "created_at": "2026-04-15T14:30:00",
+        "updated_at": "2026-04-15T14:30:00",
+        "pinned": false,
+        "data": {}
+      }
+    ],
+    "gmail.users": []
+  },
+  "image_paths": [
+    "docvqa/images/56598.jpg",
+    "docvqa/images/60113.jpg",
+    "docvqa/images/61631.jpg",
+    "docvqa/images/45166.jpg",
+    "docvqa/images/63477.jpg",
+    "docvqa/images/57979.jpg"
+  ],
+  "messages": [
+    {
+      "sender": "SYSTEM",
+      "recipient": "USER",
+      "content": "{{USER_INSTRUCTION}}ROUND 1 [provide: image_1, image_2]\nQuery: Check if I have a Todoist project called 'Nutrition Research'. If not, create it. Then check for a section called 'To Review'. If it's missing, create that too. After that, validate that there aren't already tasks for these two documents. If there aren't, add a task to review the applications section from this first page, and another task to look up the Professor of Experimental Medicine from this second page.\nInstructions: Act as the user. Instruct the assistant to check for a Todoist project called 'Nutrition Research' and a section within it called 'To Review', creating them if they do not exist. Then, ask it to validate whether tasks for reviewing the applications section of the first document and looking up the specific professor mentioned in the second document already exist. If they do not, tell it to create those tasks. If the assistant asks for specific names or details, tell it to read the provided images. Once it confirms the tasks are added, proceed to the next round.\n\nROUND 2 [provide: image_3, image_4]\nQuery: Actually, change of plan. Task lists aren't working for this. Delete that 'Nutrition Research' project. Instead, let's compile a timeline in a note. Check if I have a note called 'Research Timeline'. If not, create it. Look at these next two documents\u2014check if the date of the bill in the first one and the date of the address in the second one are already written in the note. If they aren't, add both of those dates to it.\nInstructions: Act as the user. Tell the assistant you changed your mind and task lists won't work, so it should delete the 'Nutrition Research' project it just created. Then, ask it to check for a note titled 'Research Timeline' (creating it if it doesn't already exist) and validate whether the specific dates from the two new documents are already recorded there. If not, instruct it to add both dates to the note. Do not provide the actual dates; let the assistant extract them from the images. Once the assistant confirms the note is updated, move to the next round.\n\nROUND 3 [provide: image_5, image_6]\nQuery: Let's keep updating the note. Check if the 'Research Timeline' note mentions Barnes Hospital. If it doesn't, add the names of the Editors from this preface page. Also, check if it mentions Raloxifene; if not, add its effect on hot flushes from this table.\nInstructions: Act as the user. Instruct the assistant to continue updating the 'Research Timeline' note. Ask it to first validate if the note already mentions 'Barnes Hospital', and if it doesn't, to extract and add the names of the Editors from the preface document. Then, ask it to validate if the note mentions 'Raloxifene', and if not, to add its specific effect on hot flushes from the table in the last document. Remind the assistant to rely on the images for the exact names and effects. Once the assistant confirms the final updates are complete, conclude the conversation.\n\nYou have 6 images available to share with the agent using the send_message_with_image tool.\nIMPORTANT: Image IDs are ZERO-INDEXED integers (0, 1, 2, ...). Do NOT add 1 to the IDs.\nAvailable image IDs: [0, 1, 2, 3, 4, 5]\nImage mapping:\n  image_1.jpg -> image ID 0\n  image_2.jpg -> image ID 1\n  image_3.jpg -> image ID 2\n  image_4.jpg -> image ID 3\n  image_5.jpg -> image ID 4\n  image_6.jpg -> image ID 5\n\n## IMAGE DELIVERY\n\n\u26a0\ufe0f IMPORTANT: You MUST use the `send_message_with_image` tool to share images with User B. Do NOT just describe images in text \u2014 you MUST call the tool.\n\nImage delivery schedule:\n\n  Round 2: YOU MUST call the send_message_with_image tool with image_ids='2,3' \u2014 do NOT write the tool name as text; use the actual function call. Include a natural, conversational message to the assistant.\n  Round 3: YOU MUST call the send_message_with_image tool with image_ids='4,5' \u2014 do NOT write the tool name as text; use the actual function call. Include a natural, conversational message to the assistant."
+    },
+    {
+      "sender": "USER",
+      "recipient": "AGENT",
+      "content": "Check if I have a Todoist project called 'Nutrition Research'. If not, create it. Then check for a section called 'To Review'. If it's missing, create that too. After that, validate that there aren't already tasks for these two documents. If there aren't, add a task to review the applications section from this first page, and another task to look up the Professor of Experimental Medicine from this second page.",
+      "image_ids": [
+        0,
+        1
+      ]
+    }
+  ],
+  "milestones": [],
+  "entity_diff_specs": [
+    {
+      "operation": "update",
+      "source": "appworld",
+      "table": "simple_note.notes",
+      "entity_id_column": "id",
+      "entity_id_value": 3200,
+      "expected_fields": {
+        "updated_at": "2026-04-15T14:30:00",
+        "content": "Initial research notes: 1930s sugar industry overview.\n\nDates:\n- July 10, 1957\n- January 27, 1944\n\nEditors:\n- Kathleen Wachter McClusky\n- Pam King Grabeel\n- Julie Perkovich Scheel\n\nRaloxifene:\n- Has no effect on hot flushes but shows improvement in anxiety scores.",
+        "tags": []
+      },
+      "column_similarity_measure": {
+        "updated_at": "column_ignore_similarity",
+        "content": "column_rouge_l_similarity",
+        "id": "column_exact_match_similarity"
+      }
+    }
+  ],
+  "task_completion_criteria": "Update the 'Research Timeline' note to include the dates July 10, 1957 and January 27, 1944, the names Kathleen Wachter McClusky, Pam King Grabeel, and Julie Perkovich Scheel, and the information that Raloxifene has no effect on hot flushes but shows improvement in anxiety scores, or something similar expressing the same ideas.",
+  "categories": [
+    "APPWORLD",
+    "MULTIPLE_USER_TURN"
+  ],
+  "max_messages": 100,
+  "metadata": {
+    "original_scenario_id": "scenario_0687",
+    "expected_tools": [
+      "todoist_show_project",
+      "todoist_create_project",
+      "todoist_show_sections",
+      "todoist_create_section",
+      "todoist_show_tasks",
+      "todoist_create_task",
+      "todoist_delete_project",
+      "simple_note_show_note",
+      "create_note",
+      "simple_note_add_content_to_note"
+    ],
+    "image_arrival": {
+      "1": [
+        "image_1",
+        "image_2"
+      ],
+      "2": [
+        "image_3",
+        "image_4"
+      ],
+      "3": [
+        "image_5",
+        "image_6"
+      ]
+    },
+    "image_delivery_map": [
+      {
+        "query": "Actually, change of plan. Task lists aren't working for this. Delete that 'Nutrition Research' project. Instead, let's compile a timeline in a note. Check if I have a note called 'Research Timeline'. If not, create it. Look at these next two documents\u2014check if the date of the bill in the first one and the date of the address in the second one are already written in the note. If they aren't, add both of those dates to it.",
+        "image_ids": [
+          2,
+          3
+        ]
+      },
+      {
+        "query": "Let's keep updating the note. Check if the 'Research Timeline' note mentions Barnes Hospital. If it doesn't, add the names of the Editors from this preface page. Also, check if it mentions Raloxifene; if not, add its effect on hot flushes from this table.",
+        "image_ids": [
+          4,
+          5
+        ]
+      }
+    ],
+    "scenario_metadata": {
+      "num_images": 6,
+      "num_user_rounds": 3,
+      "selected_flow_type": "validate",
+      "image_arrival": "mixed",
+      "challenge_type": "goal_change",
+      "require_disambiguation": false,
+      "dataset_type": "docvqa"
+    }
+  }
+}

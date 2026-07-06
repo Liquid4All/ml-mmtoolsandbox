@@ -1,0 +1,339 @@
+{
+  "name": "scenario_0931",
+  "base_scenario": "base",
+  "description": "The user is organizing a shopping list of home goods, sporting equipment, and footwear they want to purchase, initially starting with a simple note before deciding to use Amazon directly.",
+  "difficulty": "easy",
+  "appworld_base_task": "_base_",
+  "device_state_id": "jack-maldonado@gmail.com",
+  "reference_time": "2026-04-17T00:18:23.820368+00:00",
+  "agentsandbox_entities": {},
+  "appworld_entities": {
+    "amazon.sellers": [
+      {
+        "id": 200,
+        "name": "Home Comforts",
+        "rating": 4.5
+      },
+      {
+        "id": 201,
+        "name": "SleepTech Innovations",
+        "rating": 4.8
+      },
+      {
+        "id": 202,
+        "name": "Zen Decor Shoppe",
+        "rating": 4.7
+      },
+      {
+        "id": 203,
+        "name": "Campagnolo Official",
+        "rating": 4.9
+      },
+      {
+        "id": 204,
+        "name": "Action Sports Co",
+        "rating": 4.6
+      },
+      {
+        "id": 205,
+        "name": "EcoFootwear",
+        "rating": 4.4
+      }
+    ],
+    "amazon.products": [
+      {
+        "id": 200,
+        "product_type": "furniture",
+        "name": "Minimalist Wooden Bed Frame",
+        "description": "Solid wood queen size bed frame with slat support.",
+        "seller_id": 200,
+        "price": 249.99,
+        "delivery_days": 5,
+        "inventory_quantity": 25,
+        "weight": 45.0,
+        "length": 80.0,
+        "width": 60.0,
+        "height": 14.0,
+        "color": "natural wood",
+        "relative_size": "extra-large",
+        "rating": 4.4,
+        "seller_rating": 4.5,
+        "has_variations": true
+      },
+      {
+        "id": 201,
+        "product_type": "mattresses",
+        "name": "Smart Sleep Tracking Mattress",
+        "description": "Queen size smart mattress with built-in sleep tracking sensors and temperature control.",
+        "seller_id": 201,
+        "price": 999.0,
+        "delivery_days": 3,
+        "inventory_quantity": 10,
+        "weight": 35.0,
+        "length": 80.0,
+        "width": 60.0,
+        "height": 12.0,
+        "color": "white",
+        "relative_size": "extra-large",
+        "rating": 4.8,
+        "seller_rating": 4.8,
+        "has_variations": false
+      },
+      {
+        "id": 202,
+        "product_type": "lighting",
+        "name": "Japanese-Style Paper Lampshade",
+        "description": "Traditional minimalist paper lampshade for warm ambient lighting.",
+        "seller_id": 202,
+        "price": 35.0,
+        "delivery_days": 2,
+        "inventory_quantity": 50,
+        "weight": 0.5,
+        "length": 15.0,
+        "width": 15.0,
+        "height": 18.0,
+        "color": "white",
+        "relative_size": "medium",
+        "rating": 4.6,
+        "seller_rating": 4.7,
+        "has_variations": false
+      },
+      {
+        "id": 203,
+        "product_type": "cycling",
+        "name": "NEW BORA ULTRA 35",
+        "description": "High-performance carbon fiber road bicycle wheels.",
+        "seller_id": 203,
+        "price": 2100.0,
+        "delivery_days": 4,
+        "inventory_quantity": 5,
+        "weight": 1.3,
+        "length": 28.0,
+        "width": 28.0,
+        "height": 5.0,
+        "color": "black",
+        "relative_size": "large",
+        "rating": 4.9,
+        "seller_rating": 4.9,
+        "has_variations": false
+      },
+      {
+        "id": 204,
+        "product_type": "shoes",
+        "name": "Classic Flat Outsole Skate Shoes",
+        "description": "Durable suede skate shoes with grippy flat outsoles.",
+        "seller_id": 204,
+        "price": 65.0,
+        "delivery_days": 2,
+        "inventory_quantity": 100,
+        "weight": 0.8,
+        "length": 12.0,
+        "width": 5.0,
+        "height": 4.0,
+        "color": "black",
+        "relative_size": "medium",
+        "rating": 4.7,
+        "seller_rating": 4.6,
+        "has_variations": true
+      },
+      {
+        "id": 205,
+        "product_type": "shoes",
+        "name": "Woven Hemp Casual Shoes",
+        "description": "Eco-friendly woven hemp shoes for breathable everyday wear.",
+        "seller_id": 205,
+        "price": 55.0,
+        "delivery_days": 3,
+        "inventory_quantity": 40,
+        "weight": 0.6,
+        "length": 11.0,
+        "width": 4.5,
+        "height": 3.5,
+        "color": "beige",
+        "relative_size": "medium",
+        "rating": 4.3,
+        "seller_rating": 4.4,
+        "has_variations": true
+      }
+    ],
+    "gmail.users": []
+  },
+  "image_paths": [
+    "worldvqa/images/524.jpg",
+    "worldvqa/images/1522.jpg",
+    "worldvqa/images/1689.jpg",
+    "hiertext/images/test/03bd6180458781cb.jpg",
+    "worldvqa/images/1374.jpg",
+    "worldvqa/images/1545.jpg"
+  ],
+  "messages": [
+    {
+      "sender": "SYSTEM",
+      "recipient": "USER",
+      "content": "{{USER_INSTRUCTION}}ROUND 1 [provide: image_1, image_2]\nQuery: I'm making a shopping list. Create a simple note called 'My Shopping List'. Look at these two images: add the interior architectural element shown in the first image, and the specific household item shown in the second image to the note.\nInstructions: Ask the assistant to create a new note titled 'My Shopping List' and add the interior architectural element from the first image and the household item from the second image. If the assistant is unsure what to extract, direct it back to the images to identify the main objects. Once the note is created and populated, move to the next round.\n\nROUND 2 [provide: image_3, image_4]\nQuery: Here are two more things. Add the specific piece of furniture shown in this new first image, and the bicycle wheels detailed in this spec sheet to the note.\nInstructions: Provide the next two images and ask the assistant to append the specific piece of furniture from the first new image and the bicycle wheels from the provided spec sheet to the same note. If the assistant omits the specific model name of the wheels, remind it to read the prominent text on the document. Once added, proceed.\n\nROUND 3 [provide: image_5, image_6]\nQuery: And two more items. Add the type of shoe shown in this first new image, judging by its outsole, and the kind of shoes in this second picture to the note.\nInstructions: Present the final two images and ask the assistant to add both shoe types to the note. For the single white shoe, ask it to deduce the type based on its flat outsole. For the woven shoes, ask it to identify the kind of shoes shown. Once the note contains all six items, move on.\n\nROUND 4\nQuery: Actually, change of plans. I don't want to manually track this in a note. Delete the 'My Shopping List' note entirely. Instead, search for all six of these items on Amazon and add them to my Amazon Wish List.\nInstructions: Tell the assistant you've changed your mind about using a note. Ask it to delete the 'My Shopping List' note entirely. Then, instruct it to search for all six items it previously identified on Amazon and add them to your Amazon Wish List. If it asks to confirm the deletion or the additions, approve them. Wait until all six are on the Wish List.\n\nROUND 5\nQuery: I need to order the bed and the smart mattress right away. Move those two items from my Wish List to my Cart.\nInstructions: Inform the assistant that you want to purchase the two specific bed-related items immediately. Ask it to move those two items from your Wish List to your Cart. Confirm that the other items remain on the Wish List, and once the move is complete, end the conversation.\n\nYou have 6 images available to share with the agent using the send_message_with_image tool.\nIMPORTANT: Image IDs are ZERO-INDEXED integers (0, 1, 2, ...). Do NOT add 1 to the IDs.\nAvailable image IDs: [0, 1, 2, 3, 4, 5]\nImage mapping:\n  image_1.jpg -> image ID 0\n  image_2.jpg -> image ID 1\n  image_3.jpg -> image ID 2\n  image_4.jpg -> image ID 3\n  image_5.jpg -> image ID 4\n  image_6.jpg -> image ID 5\n\n## IMAGE DELIVERY\n\n\u26a0\ufe0f IMPORTANT: You MUST use the `send_message_with_image` tool to share images with User B. Do NOT just describe images in text \u2014 you MUST call the tool.\n\nImage delivery schedule:\n\n  Round 2: YOU MUST call the send_message_with_image tool with image_ids='2,3' \u2014 do NOT write the tool name as text; use the actual function call. Include a natural, conversational message to the assistant.\n  Round 3: YOU MUST call the send_message_with_image tool with image_ids='4,5' \u2014 do NOT write the tool name as text; use the actual function call. Include a natural, conversational message to the assistant."
+    },
+    {
+      "sender": "USER",
+      "recipient": "AGENT",
+      "content": "I'm making a shopping list. Create a simple note called 'My Shopping List'. Look at these two images: add the interior architectural element shown in the first image, and the specific household item shown in the second image to the note.",
+      "image_ids": [
+        0,
+        1
+      ]
+    }
+  ],
+  "milestones": [],
+  "entity_diff_specs": [
+    {
+      "operation": "create",
+      "source": "appworld",
+      "table": "amazon.cart_entries",
+      "entity_data": {
+        "user_id": 84,
+        "product_id": 200,
+        "quantity": 1,
+        "gift_wrap_quantity": 0
+      },
+      "column_similarity_measure": {
+        "user_id": "column_exact_match_similarity",
+        "product_id": "column_exact_match_similarity",
+        "quantity": "column_exact_match_similarity",
+        "gift_wrap_quantity": "column_exact_match_similarity"
+      }
+    },
+    {
+      "operation": "create",
+      "source": "appworld",
+      "table": "amazon.cart_entries",
+      "entity_data": {
+        "user_id": 84,
+        "product_id": 201,
+        "quantity": 1,
+        "gift_wrap_quantity": 0
+      },
+      "column_similarity_measure": {
+        "user_id": "column_exact_match_similarity",
+        "product_id": "column_exact_match_similarity",
+        "quantity": "column_exact_match_similarity",
+        "gift_wrap_quantity": "column_exact_match_similarity"
+      }
+    },
+    {
+      "operation": "create",
+      "source": "appworld",
+      "table": "amazon.wish_list_entries",
+      "entity_data": {
+        "user_id": 84,
+        "product_id": 202,
+        "quantity": 1
+      },
+      "column_similarity_measure": {
+        "user_id": "column_exact_match_similarity",
+        "product_id": "column_exact_match_similarity",
+        "quantity": "column_exact_match_similarity"
+      }
+    },
+    {
+      "operation": "create",
+      "source": "appworld",
+      "table": "amazon.wish_list_entries",
+      "entity_data": {
+        "user_id": 84,
+        "product_id": 203,
+        "quantity": 1
+      },
+      "column_similarity_measure": {
+        "user_id": "column_exact_match_similarity",
+        "product_id": "column_exact_match_similarity",
+        "quantity": "column_exact_match_similarity"
+      }
+    },
+    {
+      "operation": "create",
+      "source": "appworld",
+      "table": "amazon.wish_list_entries",
+      "entity_data": {
+        "user_id": 84,
+        "product_id": 204,
+        "quantity": 1
+      },
+      "column_similarity_measure": {
+        "user_id": "column_exact_match_similarity",
+        "product_id": "column_exact_match_similarity",
+        "quantity": "column_exact_match_similarity"
+      }
+    },
+    {
+      "operation": "create",
+      "source": "appworld",
+      "table": "amazon.wish_list_entries",
+      "entity_data": {
+        "user_id": 84,
+        "product_id": 205,
+        "quantity": 1
+      },
+      "column_similarity_measure": {
+        "user_id": "column_exact_match_similarity",
+        "product_id": "column_exact_match_similarity",
+        "quantity": "column_exact_match_similarity"
+      }
+    }
+  ],
+  "task_completion_criteria": "The user wants a bed and a smart mattress in their Amazon Cart, and a Japanese-style lampshade, 'NEW BORA ULTRA 35' bicycle wheels, skate shoes, and hemp shoes in their Amazon Wish List. The initially created 'My Shopping List' note must be deleted.",
+  "categories": [
+    "APPWORLD",
+    "MULTIPLE_USER_TURN"
+  ],
+  "max_messages": 100,
+  "metadata": {
+    "original_scenario_id": "scenario_0931",
+    "expected_tools": [
+      "create_note",
+      "simple_note_add_content_to_note",
+      "simple_note_show_note",
+      "simple_note_delete_note",
+      "amazon_show_product",
+      "amazon_add_product_to_wish_list",
+      "amazon_move_product_from_wish_list_to_cart"
+    ],
+    "image_arrival": {
+      "1": [
+        "image_1",
+        "image_2"
+      ],
+      "2": [
+        "image_3",
+        "image_4"
+      ],
+      "3": [
+        "image_5",
+        "image_6"
+      ]
+    },
+    "image_delivery_map": [
+      {
+        "query": "Here are two more things. Add the specific piece of furniture shown in this new first image, and the bicycle wheels detailed in this spec sheet to the note.",
+        "image_ids": [
+          2,
+          3
+        ]
+      },
+      {
+        "query": "And two more items. Add the type of shoe shown in this first new image, judging by its outsole, and the kind of shoes in this second picture to the note.",
+        "image_ids": [
+          4,
+          5
+        ]
+      }
+    ],
+    "scenario_metadata": {
+      "num_images": 6,
+      "num_user_rounds": 5,
+      "selected_flow_type": "aggregate",
+      "image_arrival": "mixed",
+      "challenge_type": "goal_change",
+      "require_disambiguation": false,
+      "dataset_type": "worldvqa"
+    }
+  }
+}

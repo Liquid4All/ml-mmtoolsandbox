@@ -1,0 +1,294 @@
+{
+  "name": "scenario_0415",
+  "base_scenario": "base",
+  "description": "Spencer Powell is organizing project documentation from a mix of screenshots containing mechanical specs, FPGA development code, and system logs. He wants to extract specific details from each category of image and route them to the appropriate tools or teams.",
+  "difficulty": "easy",
+  "appworld_base_task": "_base_",
+  "device_state_id": "spencer.powell@gmail.com",
+  "reference_time": "2026-04-17T00:02:54.470099+00:00",
+  "agentsandbox_entities": {},
+  "appworld_entities": {
+    "phone.contacts": [
+      {
+        "id": 200,
+        "user_id": 26,
+        "first_name": "FPGA Team",
+        "last_name": "(Hardware)",
+        "email": "fpga-team@company.com",
+        "phone_number": null,
+        "relationships": [
+          "coworker"
+        ],
+        "birthday": null,
+        "home_address": null,
+        "work_address": null,
+        "created_at": "2025-10-15T09:30:00"
+      },
+      {
+        "id": 201,
+        "user_id": 26,
+        "first_name": "FPGA Team",
+        "last_name": "(Verification)",
+        "email": "fpga-verification@company.com",
+        "phone_number": null,
+        "relationships": [
+          "coworker"
+        ],
+        "birthday": null,
+        "home_address": null,
+        "work_address": null,
+        "created_at": "2025-10-15T09:30:00"
+      }
+    ],
+    "todoist.projects": [
+      {
+        "id": 400,
+        "user_id": 26,
+        "name": "Inbox",
+        "color": "charcoal",
+        "is_inbox": true,
+        "description": "Default inbox project",
+        "created_at": "2025-01-01T10:00:00"
+      }
+    ],
+    "gmail.users": [
+      {
+        "id": 200,
+        "first_name": "FPGA Team",
+        "last_name": "(Hardware)",
+        "email": "fpga-team@company.com",
+        "password": "default_password",
+        "status": "active",
+        "created_at": "2025-01-01T00:00:00",
+        "last_logged_in": "2025-01-01T00:00:00"
+      },
+      {
+        "id": 201,
+        "first_name": "FPGA Team",
+        "last_name": "(Verification)",
+        "email": "fpga-verification@company.com",
+        "password": "default_password",
+        "status": "active",
+        "created_at": "2025-01-01T00:00:00",
+        "last_logged_in": "2025-01-01T00:00:00"
+      }
+    ],
+    "todoist.project_collaborator_links": [
+      {
+        "id": 50400,
+        "project_id": 400,
+        "user_id": 26,
+        "is_favorite": false,
+        "is_archived": false,
+        "created_at": "2025-01-01T10:00:00"
+      }
+    ]
+  },
+  "image_paths": [
+    "screenspotpro/images/inventor_windows/screenshot_2024-11-24_12-40-09.png",
+    "screenspotpro/images/quartus_windows/screenshot_2024-11-02_18-51-40.png",
+    "screenspotpro/images/vivado_windows/screenshot_2024-12-10_00-26-13.png",
+    "screenspotpro/images/solidworks_windows/screenshot_2024-12-01_15-28-42.png",
+    "hiertext/images/test/4ba342b5166f790d.jpg"
+  ],
+  "messages": [
+    {
+      "sender": "SYSTEM",
+      "recipient": "USER",
+      "content": "{{USER_INSTRUCTION}}ROUND 1 [provide: image_1, image_2, image_3, image_4, image_5]\nQuery: Look at these screenshots. Find the ones showing mechanical specification tables. For each of those matching images, create a separate Todoist task listing the part specifications or references that require M10 bolts or threads.\nInstructions: Ask the assistant to review the five uploaded screenshots and identify the ones containing mechanical specification tables. Instruct it to extract the part specifications or references that require M10 bolts or threads from each matching image, and create a separate Todoist task for each image's extracted list. If the assistant asks which Todoist project to use, tell it the default Inbox is fine. Do not provide the specific part numbers or image details yourself. Once the assistant confirms the tasks are created, proceed to the next round.\n\nROUND 2\nQuery: Now, out of the remaining three screenshots, filter for the ones showing FPGA or HDL software interfaces. For each matching image, extract the software name and the module or component name being edited, and send a separate email to the FPGA team with those details.\nInstructions: Tell the assistant to look at the three remaining unprocessed screenshots and filter out the ones showing FPGA or HDL software interfaces. For each of these, ask it to extract the software name and the module or component name being edited, and send a separate email with these details to the 'FPGA team'. The assistant should find multiple contacts matching 'FPGA team' and ask you to clarify which one you mean. When it does, specify that you want the Hardware division. Do not reveal the software names or module details yourself. Once the emails are sent, move to the final round.\n\nROUND 3\nQuery: For the last remaining screenshot that we haven't processed yet, extract the AirPort MAC address and the Parallels Hypervisor version, and save them in a new simple note titled 'System Logs'.\nInstructions: Ask the assistant to look at the single remaining screenshot that hasn't been processed yet. Instruct it to extract the AirPort MAC address and the Parallels Hypervisor version, and save this information in a new simple note titled 'System Logs'. If it misreads the technical strings, point it back to the image to check carefully, but do not provide the exact characters yourself. Once the note is successfully created, end the conversation.\n\nYou have 5 images available to share with the agent using the send_message_with_image tool.\nIMPORTANT: Image IDs are ZERO-INDEXED integers (0, 1, 2, ...). Do NOT add 1 to the IDs.\nAvailable image IDs: [0, 1, 2, 3, 4]\nImage mapping:\n  image_1.jpg -> image ID 0\n  image_2.jpg -> image ID 1\n  image_3.jpg -> image ID 2\n  image_4.jpg -> image ID 3\n  image_5.jpg -> image ID 4"
+    },
+    {
+      "sender": "USER",
+      "recipient": "AGENT",
+      "content": "Look at these screenshots. Find the ones showing mechanical specification tables. For each of those matching images, create a separate Todoist task listing the part specifications or references that require M10 bolts or threads.",
+      "image_ids": [
+        0,
+        1,
+        2,
+        3,
+        4
+      ]
+    }
+  ],
+  "milestones": [],
+  "entity_diff_specs": [
+    {
+      "operation": "create",
+      "source": "appworld",
+      "table": "gmail.emails",
+      "entity_data": {
+        "sender_id": 26,
+        "recipient_ids": [
+          200
+        ],
+        "subject": "FPGA Software Details - Quartus II",
+        "body": "Software: Quartus II\nModule: invert",
+        "response_to_email_id": null,
+        "created_at": "2026-04-17T00:02:54"
+      },
+      "column_similarity_measure": {
+        "sender_id": "column_exact_match_similarity",
+        "recipient_ids": "column_exact_match_similarity",
+        "subject": "column_rouge_l_similarity",
+        "body": "column_rouge_l_similarity",
+        "response_to_email_id": "column_ignore_similarity",
+        "created_at": "column_ignore_similarity"
+      }
+    },
+    {
+      "operation": "create",
+      "source": "appworld",
+      "table": "gmail.emails",
+      "entity_data": {
+        "sender_id": 26,
+        "recipient_ids": [
+          200
+        ],
+        "subject": "FPGA Software Details - Vivado 2018.3",
+        "body": "Software: Vivado 2018.3\nComponent: <component_name>",
+        "response_to_email_id": null,
+        "created_at": "2026-04-17T00:02:54"
+      },
+      "column_similarity_measure": {
+        "sender_id": "column_exact_match_similarity",
+        "recipient_ids": "column_exact_match_similarity",
+        "subject": "column_rouge_l_similarity",
+        "body": "column_rouge_l_similarity",
+        "response_to_email_id": "column_ignore_similarity",
+        "created_at": "column_ignore_similarity"
+      }
+    },
+    {
+      "operation": "create",
+      "source": "appworld",
+      "table": "todoist.tasks",
+      "entity_data": {
+        "project_id": 400,
+        "section_id": null,
+        "user_id": 26,
+        "title": "Parts requiring M10 bolts or threads",
+        "description": "AFAG 19-6, AFKVG 26.9x5.6",
+        "due_date": null,
+        "priority": "medium",
+        "is_completed": false,
+        "duration": null,
+        "duration_unit": null,
+        "order_index": 0,
+        "assignee_id": null,
+        "assigner_id": null,
+        "created_at": "2026-04-17T00:02:54"
+      },
+      "column_similarity_measure": {
+        "project_id": "column_exact_match_similarity",
+        "section_id": "column_ignore_similarity",
+        "user_id": "column_exact_match_similarity",
+        "title": "column_rouge_l_similarity",
+        "description": "column_rouge_l_similarity",
+        "due_date": "column_ignore_similarity",
+        "priority": "column_exact_match_similarity",
+        "is_completed": "column_exact_match_similarity",
+        "duration": "column_ignore_similarity",
+        "duration_unit": "column_ignore_similarity",
+        "order_index": "column_ignore_similarity",
+        "assignee_id": "column_ignore_similarity",
+        "assigner_id": "column_ignore_similarity",
+        "created_at": "column_ignore_similarity"
+      }
+    },
+    {
+      "operation": "create",
+      "source": "appworld",
+      "table": "todoist.tasks",
+      "entity_data": {
+        "project_id": 400,
+        "section_id": null,
+        "user_id": 26,
+        "title": "Parts requiring M10 bolts or threads",
+        "description": "references 3003701* through 3003708* for Tube OD 25, 30, 32, 40",
+        "due_date": null,
+        "priority": "medium",
+        "is_completed": false,
+        "duration": null,
+        "duration_unit": null,
+        "order_index": 1,
+        "assignee_id": null,
+        "assigner_id": null,
+        "created_at": "2026-04-17T00:02:54"
+      },
+      "column_similarity_measure": {
+        "project_id": "column_exact_match_similarity",
+        "section_id": "column_ignore_similarity",
+        "user_id": "column_exact_match_similarity",
+        "title": "column_rouge_l_similarity",
+        "description": "column_rouge_l_similarity",
+        "due_date": "column_ignore_similarity",
+        "priority": "column_exact_match_similarity",
+        "is_completed": "column_exact_match_similarity",
+        "duration": "column_ignore_similarity",
+        "duration_unit": "column_ignore_similarity",
+        "order_index": "column_ignore_similarity",
+        "assignee_id": "column_ignore_similarity",
+        "assigner_id": "column_ignore_similarity",
+        "created_at": "column_ignore_similarity"
+      }
+    },
+    {
+      "operation": "create",
+      "source": "appworld",
+      "table": "simple_note.notes",
+      "entity_data": {
+        "user_id": 26,
+        "title": "System Logs",
+        "content": "AirPort MAC address: 00:26:08:e8:cc:65\nParallels Hypervisor version: 5.0.9220.531002",
+        "tags": [],
+        "created_at": "2026-04-17T00:02:54",
+        "updated_at": "2026-04-17T00:02:54",
+        "pinned": false,
+        "data": null
+      },
+      "column_similarity_measure": {
+        "user_id": "column_exact_match_similarity",
+        "title": "column_rouge_l_similarity",
+        "content": "column_rouge_l_similarity",
+        "tags": "column_ignore_similarity",
+        "created_at": "column_ignore_similarity",
+        "updated_at": "column_ignore_similarity",
+        "pinned": "column_exact_match_similarity",
+        "data": "column_ignore_similarity"
+      }
+    }
+  ],
+  "task_completion_criteria": "Filter 5 images to create Todoist tasks for M10 bolt/thread parts (AFAG 19-6, AFKVG 26.9x5.6, and references 3003701* through 3003708* for Tube OD 25, 30, 32, 40), send emails to fpga-team@company.com containing FPGA software and module names ('Quartus II' with module 'invert', and 'Vivado 2018.3' with component '<component_name>'), and create a simple note titled 'System Logs' with AirPort MAC address 00:26:08:e8:cc:65 and Parallels Hypervisor version 5.0.9220.531002.",
+  "categories": [
+    "APPWORLD",
+    "MULTIPLE_USER_TURN"
+  ],
+  "max_messages": 100,
+  "metadata": {
+    "original_scenario_id": "scenario_0415",
+    "expected_tools": [
+      "todoist_create_task",
+      "gmail_send_email",
+      "simple_note_create_note"
+    ],
+    "image_arrival": {
+      "1": [
+        "image_1",
+        "image_2",
+        "image_3",
+        "image_4",
+        "image_5"
+      ]
+    },
+    "image_delivery_map": [],
+    "scenario_metadata": {
+      "num_images": 5,
+      "num_user_rounds": 3,
+      "selected_flow_type": "filter",
+      "image_arrival": "upfront",
+      "challenge_type": "none",
+      "require_disambiguation": true,
+      "dataset_type": "hiertext"
+    }
+  }
+}

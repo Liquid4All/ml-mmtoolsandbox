@@ -1,0 +1,569 @@
+{
+  "name": "scenario_0533",
+  "base_scenario": "base",
+  "description": "Norman is restocking various household, personal, and hobby supplies by ordering them on Amazon and splitting the final cost with his housemates.",
+  "difficulty": "easy",
+  "appworld_base_task": "_base_",
+  "device_state_id": "normansmit@gmail.com",
+  "reference_time": "2026-04-17T00:06:35.594668+00:00",
+  "agentsandbox_entities": {},
+  "appworld_entities": {
+    "amazon.sellers": [
+      {
+        "id": 200,
+        "name": "Photo Supplies",
+        "rating": 4.5
+      },
+      {
+        "id": 201,
+        "name": "Art Store",
+        "rating": 4.8
+      },
+      {
+        "id": 202,
+        "name": "Grocery Store",
+        "rating": 4.2
+      },
+      {
+        "id": 203,
+        "name": "Phone Accessories",
+        "rating": 4.0
+      },
+      {
+        "id": 204,
+        "name": "Beauty Shop",
+        "rating": 4.6
+      },
+      {
+        "id": 205,
+        "name": "Health Store",
+        "rating": 4.7
+      }
+    ],
+    "amazon.products": [
+      {
+        "id": 200,
+        "product_type": "film",
+        "name": "Kentmere 400 Black & White Film",
+        "description": "35mm black and white photographic film.",
+        "seller_id": 200,
+        "price": 8.99,
+        "delivery_days": 5,
+        "inventory_quantity": 50,
+        "weight": 0.1,
+        "length": 2.0,
+        "width": 1.5,
+        "height": 1.5,
+        "color": null,
+        "relative_size": null,
+        "rating": 4.5,
+        "seller_rating": 4.5,
+        "has_variations": false
+      },
+      {
+        "id": 201,
+        "product_type": "cards",
+        "name": "Strathmore Toned Tan cards",
+        "description": "Blank cards with tan tone, featuring a meerkat drawing.",
+        "seller_id": 201,
+        "price": 12.5,
+        "delivery_days": 5,
+        "inventory_quantity": 30,
+        "weight": 0.5,
+        "length": 6.0,
+        "width": 4.0,
+        "height": 1.0,
+        "color": "tan",
+        "relative_size": null,
+        "rating": 4.8,
+        "seller_rating": 4.8,
+        "has_variations": false
+      },
+      {
+        "id": 202,
+        "product_type": "beverages",
+        "name": "Glaceau Vitaminwater xxx-triple berry",
+        "description": "Acai, blueberry, pomegranate flavored water.",
+        "seller_id": 202,
+        "price": 2.0,
+        "delivery_days": 5,
+        "inventory_quantity": 100,
+        "weight": 1.2,
+        "length": 3.0,
+        "width": 3.0,
+        "height": 8.0,
+        "color": "red",
+        "relative_size": null,
+        "rating": 4.2,
+        "seller_rating": 4.2,
+        "has_variations": false
+      },
+      {
+        "id": 203,
+        "product_type": "phone accessories",
+        "name": "Nokia Wireless Charging Cover CC-3065 (Man of Steel edition for Lumia 920)",
+        "description": "Superman wireless charging cover for Lumia 920.",
+        "seller_id": 203,
+        "price": 15.0,
+        "delivery_days": 5,
+        "inventory_quantity": 20,
+        "weight": 0.2,
+        "length": 6.0,
+        "width": 3.0,
+        "height": 0.5,
+        "color": "grey",
+        "relative_size": null,
+        "rating": 4.0,
+        "seller_rating": 4.0,
+        "has_variations": false
+      },
+      {
+        "id": 204,
+        "product_type": "phone accessories",
+        "name": "Nokia Wireless Charging Cover CC-3065 (Man of Steel edition for Lumia 925)",
+        "description": "Superman wireless charging cover for Lumia 925.",
+        "seller_id": 203,
+        "price": 15.0,
+        "delivery_days": 5,
+        "inventory_quantity": 20,
+        "weight": 0.2,
+        "length": 6.0,
+        "width": 3.0,
+        "height": 0.5,
+        "color": "grey",
+        "relative_size": null,
+        "rating": 4.0,
+        "seller_rating": 4.0,
+        "has_variations": false
+      },
+      {
+        "id": 205,
+        "product_type": "beauty",
+        "name": "Models Own HyperGel Gel Effect Polish",
+        "description": "High shine gel effect nail polish.",
+        "seller_id": 204,
+        "price": 9.0,
+        "delivery_days": 5,
+        "inventory_quantity": 40,
+        "weight": 0.1,
+        "length": 1.0,
+        "width": 1.0,
+        "height": 3.0,
+        "color": null,
+        "relative_size": null,
+        "rating": 4.6,
+        "seller_rating": 4.6,
+        "has_variations": false
+      },
+      {
+        "id": 206,
+        "product_type": "health",
+        "name": "Berkley Jensen Natural 4X Probiotic",
+        "description": "Digestive health probiotic supplement.",
+        "seller_id": 205,
+        "price": 24.99,
+        "delivery_days": 5,
+        "inventory_quantity": 60,
+        "weight": 0.3,
+        "length": 2.5,
+        "width": 2.5,
+        "height": 4.5,
+        "color": null,
+        "relative_size": null,
+        "rating": 4.7,
+        "seller_rating": 4.7,
+        "has_variations": false
+      }
+    ],
+    "splitwise.groups": [
+      {
+        "id": 400,
+        "user_id": 65,
+        "name": "House Supplies",
+        "description": "Shared house supplies",
+        "created_at": "2025-01-01T10:00:00",
+        "invitation_code": "HOUSE123",
+        "deleted": false
+      }
+    ],
+    "splitwise.users": [
+      {
+        "id": 200,
+        "first_name": "Alice",
+        "last_name": "Housemate",
+        "email": "alice@house.com",
+        "password": "default_password",
+        "created_at": "2025-01-01T10:00:00",
+        "last_logged_in": "2025-01-01T10:00:00",
+        "verified": true
+      },
+      {
+        "id": 201,
+        "first_name": "Bob",
+        "last_name": "Housemate",
+        "email": "bob@house.com",
+        "password": "default_password",
+        "created_at": "2025-01-01T10:00:00",
+        "last_logged_in": "2025-01-01T10:00:00",
+        "verified": true
+      }
+    ],
+    "splitwise.group_members": [
+      {
+        "id": 1100,
+        "group_id": 400,
+        "user_id": 65,
+        "joined_at": "2025-01-01T10:00:00"
+      },
+      {
+        "id": 1101,
+        "group_id": 400,
+        "user_id": 200,
+        "joined_at": "2025-01-01T10:00:00"
+      },
+      {
+        "id": 1102,
+        "group_id": 400,
+        "user_id": 201,
+        "joined_at": "2025-01-01T10:00:00"
+      }
+    ],
+    "gmail.users": []
+  },
+  "image_paths": [
+    "hiertext/images/test/daef973690a938a2.jpg",
+    "hiertext/images/test/e100117bdbc89ca4.jpg",
+    "hiertext/images/test/72357e99665bba20.jpg",
+    "hiertext/images/test/67320593e3910e8d.jpg",
+    "hiertext/images/test/ea53f7086f850b15.jpg",
+    "hiertext/images/test/76ce8cfa5151811a.jpg"
+  ],
+  "messages": [
+    {
+      "sender": "SYSTEM",
+      "recipient": "USER",
+      "content": "{{USER_INSTRUCTION}}ROUND 1 [provide: image_1, image_2]\nQuery: I need to restock some supplies. Please search Amazon for the film and the specific tan cards with the animal drawing shown in these images, and add them to my cart.\nInstructions: Instruct the assistant to find the photographic film and the specific tan blank cards shown in the images on Amazon and add them to the cart. If the assistant asks for clarification on which cards to select, point them to the one with the meerkat drawing. Once the assistant confirms both items are successfully added to the cart, proceed to the next round.\n\nROUND 2 [provide: image_3, image_4]\nQuery: Next, find the specific flavor of the drink shown here and add it to the cart. Also, look up the Superman wireless charging cover for the Nokia Lumia 920 shown in the other image and add it too.\nInstructions: Ask the assistant to search for the specific flavor of the bottled drink and the Superman wireless charging cover shown in the images, and add them to the Amazon cart. Note that you intentionally asked for a 'Lumia 920' cover, but the packaging in the image explicitly states it is for a different model. A good assistant should catch this discrepancy and ask for clarification. If the assistant blindly adds the 920 cover, point out the mistake. If they correctly flag the mismatch, acknowledge it and wait for the next round to provide the correction.\n\nROUND 3 [provide: image_5, image_6]\nQuery: Ah, good catch, the packaging does say Lumia 925! Please add the correct Lumia 925 cover to the cart instead. Finally, add the gel nail polish and the probiotic from these new images. Once everything is in the cart, place the order and record the total as an expense in my 'House Supplies' Splitwise group.\nInstructions: Acknowledge the phone model correction and confirm that the assistant should add the cover for the model actually printed on the box. Then, ask the assistant to add the gel effect nail polish and the probiotic supplement shown in the new images to the cart. After all items are added, tell the assistant to place the Amazon order and record the final total as an expense in your 'House Supplies' Splitwise group. Once the order is placed and the expense is recorded, end the conversation.\n\nYou have 6 images available to share with the agent using the send_message_with_image tool.\nIMPORTANT: Image IDs are ZERO-INDEXED integers (0, 1, 2, ...). Do NOT add 1 to the IDs.\nAvailable image IDs: [0, 1, 2, 3, 4, 5]\nImage mapping:\n  image_1.jpg -> image ID 0\n  image_2.jpg -> image ID 1\n  image_3.jpg -> image ID 2\n  image_4.jpg -> image ID 3\n  image_5.jpg -> image ID 4\n  image_6.jpg -> image ID 5\n\n## IMAGE DELIVERY\n\n⚠️ IMPORTANT: You MUST use the `send_message_with_image` tool to share images with User B. Do NOT just describe images in text — you MUST call the tool.\n\nImage delivery schedule:\n\n  Round 2: YOU MUST call the send_message_with_image tool with image_ids='2,3' — do NOT write the tool name as text; use the actual function call. Include a natural, conversational message to the assistant.\n  Round 3: YOU MUST call the send_message_with_image tool with image_ids='4,5' — do NOT write the tool name as text; use the actual function call. Include a natural, conversational message to the assistant."
+    },
+    {
+      "sender": "USER",
+      "recipient": "AGENT",
+      "content": "I need to restock some supplies. Please search Amazon for the film and the specific tan cards with the animal drawing shown in these images, and add them to my cart.",
+      "image_ids": [
+        0,
+        1
+      ]
+    }
+  ],
+  "milestones": [],
+  "entity_diff_specs": [
+    {
+      "operation": "create",
+      "source": "appworld",
+      "table": "amazon.orders",
+      "entity_data": {
+        "user_id": 65,
+        "address_id": null,
+        "tax": 5.0,
+        "delivery_fee": 0.0,
+        "gift_wrap_fee": 0.0,
+        "discount": 0.0,
+        "payment_card_id": null,
+        "created_at": "2026-04-17T00:06:35",
+        "address_text": "26157 Camacho Ports Suite 673, Seattle, Washington 73233",
+        "payment_card_digits": "1234",
+        "receipt_download_count": 0
+      },
+      "column_similarity_measure": {
+        "user_id": "column_exact_match_similarity",
+        "address_id": "column_ignore_similarity",
+        "tax": "column_ignore_similarity",
+        "delivery_fee": "column_ignore_similarity",
+        "gift_wrap_fee": "column_exact_match_similarity",
+        "discount": "column_exact_match_similarity",
+        "payment_card_id": "column_ignore_similarity",
+        "created_at": "column_ignore_similarity",
+        "address_text": "column_ignore_similarity",
+        "payment_card_digits": "column_ignore_similarity",
+        "receipt_download_count": "column_exact_match_similarity"
+      }
+    },
+    {
+      "operation": "create",
+      "source": "appworld",
+      "table": "amazon.order_items",
+      "entity_data": {
+        "order_id": 3300,
+        "product_id": 200,
+        "ordered_quantity": 1,
+        "returned_quantity": 0,
+        "gift_wrap_quantity": 0,
+        "price": 8.99,
+        "expected_delivery_at": "2026-04-22T23:59:59",
+        "delivered_at": null
+      },
+      "column_similarity_measure": {
+        "order_id": "column_ignore_similarity",
+        "product_id": "column_exact_match_similarity",
+        "ordered_quantity": "column_exact_match_similarity",
+        "returned_quantity": "column_exact_match_similarity",
+        "gift_wrap_quantity": "column_exact_match_similarity",
+        "price": "column_exact_match_similarity",
+        "expected_delivery_at": "column_ignore_similarity",
+        "delivered_at": "column_ignore_similarity"
+      }
+    },
+    {
+      "operation": "create",
+      "source": "appworld",
+      "table": "amazon.order_items",
+      "entity_data": {
+        "order_id": 3300,
+        "product_id": 201,
+        "ordered_quantity": 1,
+        "returned_quantity": 0,
+        "gift_wrap_quantity": 0,
+        "price": 12.5,
+        "expected_delivery_at": "2026-04-22T23:59:59",
+        "delivered_at": null
+      },
+      "column_similarity_measure": {
+        "order_id": "column_ignore_similarity",
+        "product_id": "column_exact_match_similarity",
+        "ordered_quantity": "column_exact_match_similarity",
+        "returned_quantity": "column_exact_match_similarity",
+        "gift_wrap_quantity": "column_exact_match_similarity",
+        "price": "column_exact_match_similarity",
+        "expected_delivery_at": "column_ignore_similarity",
+        "delivered_at": "column_ignore_similarity"
+      }
+    },
+    {
+      "operation": "create",
+      "source": "appworld",
+      "table": "amazon.order_items",
+      "entity_data": {
+        "order_id": 3300,
+        "product_id": 202,
+        "ordered_quantity": 1,
+        "returned_quantity": 0,
+        "gift_wrap_quantity": 0,
+        "price": 2.0,
+        "expected_delivery_at": "2026-04-22T23:59:59",
+        "delivered_at": null
+      },
+      "column_similarity_measure": {
+        "order_id": "column_ignore_similarity",
+        "product_id": "column_exact_match_similarity",
+        "ordered_quantity": "column_exact_match_similarity",
+        "returned_quantity": "column_exact_match_similarity",
+        "gift_wrap_quantity": "column_exact_match_similarity",
+        "price": "column_exact_match_similarity",
+        "expected_delivery_at": "column_ignore_similarity",
+        "delivered_at": "column_ignore_similarity"
+      }
+    },
+    {
+      "operation": "create",
+      "source": "appworld",
+      "table": "amazon.order_items",
+      "entity_data": {
+        "order_id": 3300,
+        "product_id": 204,
+        "ordered_quantity": 1,
+        "returned_quantity": 0,
+        "gift_wrap_quantity": 0,
+        "price": 15.0,
+        "expected_delivery_at": "2026-04-22T23:59:59",
+        "delivered_at": null
+      },
+      "column_similarity_measure": {
+        "order_id": "column_ignore_similarity",
+        "product_id": "column_exact_match_similarity",
+        "ordered_quantity": "column_exact_match_similarity",
+        "returned_quantity": "column_exact_match_similarity",
+        "gift_wrap_quantity": "column_exact_match_similarity",
+        "price": "column_exact_match_similarity",
+        "expected_delivery_at": "column_ignore_similarity",
+        "delivered_at": "column_ignore_similarity"
+      }
+    },
+    {
+      "operation": "create",
+      "source": "appworld",
+      "table": "amazon.order_items",
+      "entity_data": {
+        "order_id": 3300,
+        "product_id": 205,
+        "ordered_quantity": 1,
+        "returned_quantity": 0,
+        "gift_wrap_quantity": 0,
+        "price": 9.0,
+        "expected_delivery_at": "2026-04-22T23:59:59",
+        "delivered_at": null
+      },
+      "column_similarity_measure": {
+        "order_id": "column_ignore_similarity",
+        "product_id": "column_exact_match_similarity",
+        "ordered_quantity": "column_exact_match_similarity",
+        "returned_quantity": "column_exact_match_similarity",
+        "gift_wrap_quantity": "column_exact_match_similarity",
+        "price": "column_exact_match_similarity",
+        "expected_delivery_at": "column_ignore_similarity",
+        "delivered_at": "column_ignore_similarity"
+      }
+    },
+    {
+      "operation": "create",
+      "source": "appworld",
+      "table": "amazon.order_items",
+      "entity_data": {
+        "order_id": 3300,
+        "product_id": 206,
+        "ordered_quantity": 1,
+        "returned_quantity": 0,
+        "gift_wrap_quantity": 0,
+        "price": 24.99,
+        "expected_delivery_at": "2026-04-22T23:59:59",
+        "delivered_at": null
+      },
+      "column_similarity_measure": {
+        "order_id": "column_ignore_similarity",
+        "product_id": "column_exact_match_similarity",
+        "ordered_quantity": "column_exact_match_similarity",
+        "returned_quantity": "column_exact_match_similarity",
+        "gift_wrap_quantity": "column_exact_match_similarity",
+        "price": "column_exact_match_similarity",
+        "expected_delivery_at": "column_ignore_similarity",
+        "delivered_at": "column_ignore_similarity"
+      }
+    },
+    {
+      "operation": "create",
+      "source": "appworld",
+      "table": "splitwise.expenses",
+      "entity_data": {
+        "user_id": 65,
+        "group_id": 400,
+        "payer_id": 65,
+        "debtor_ids": [
+          200,
+          201
+        ],
+        "participant_ids": [
+          65,
+          200,
+          201
+        ],
+        "description": "Amazon order - Household and personal supplies",
+        "amount": 150.0,
+        "deleted": false,
+        "receipt_file_name": null,
+        "receipt_file_content": null,
+        "receipt_download_count": 0,
+        "created_at": "2026-04-17T00:06:35"
+      },
+      "column_similarity_measure": {
+        "user_id": "column_exact_match_similarity",
+        "group_id": "column_exact_match_similarity",
+        "payer_id": "column_exact_match_similarity",
+        "debtor_ids": "column_ignore_similarity",
+        "participant_ids": "column_ignore_similarity",
+        "description": "column_rouge_l_similarity",
+        "amount": "column_ignore_similarity",
+        "deleted": "column_ignore_similarity",
+        "receipt_file_name": "column_ignore_similarity",
+        "receipt_file_content": "column_ignore_similarity",
+        "receipt_download_count": "column_exact_match_similarity",
+        "created_at": "column_ignore_similarity"
+      }
+    },
+    {
+      "operation": "create",
+      "source": "appworld",
+      "table": "splitwise.expense_shares",
+      "entity_data": {
+        "expense_id": 5200,
+        "debtor_id": 200,
+        "share_amount": 50.0,
+        "created_at": "2026-04-17T00:06:35"
+      },
+      "column_similarity_measure": {
+        "expense_id": "column_ignore_similarity",
+        "debtor_id": "column_exact_match_similarity",
+        "share_amount": "column_ignore_similarity",
+        "created_at": "column_ignore_similarity"
+      }
+    },
+    {
+      "operation": "create",
+      "source": "appworld",
+      "table": "splitwise.expense_shares",
+      "entity_data": {
+        "expense_id": 5200,
+        "debtor_id": 201,
+        "share_amount": 50.0,
+        "created_at": "2026-04-17T00:06:35"
+      },
+      "column_similarity_measure": {
+        "expense_id": "column_ignore_similarity",
+        "debtor_id": "column_exact_match_similarity",
+        "share_amount": "column_ignore_similarity",
+        "created_at": "column_ignore_similarity"
+      }
+    }
+  ],
+  "task_completion_criteria": "Place an Amazon order containing Kentmere 400 Black & White Film, Strathmore Toned Tan cards, Glaceau Vitaminwater xxx-triple berry, a Nokia Wireless Charging Cover CC-3065 (Man of Steel edition for Lumia 925), Models Own HyperGel Gel Effect Polish, and Berkley Jensen Natural 4X Probiotic. After placing the order, record the total cost of the order as an expense in the 'House Supplies' Splitwise group.",
+  "categories": [
+    "APPWORLD",
+    "MULTIPLE_USER_TURN"
+  ],
+  "max_messages": 100,
+  "metadata": {
+    "original_scenario_id": "scenario_0533",
+    "expected_tools": [
+      "amazon_show_product",
+      "amazon_add_product_to_cart",
+      "amazon_place_order",
+      "splitwise_record_expense"
+    ],
+    "image_arrival": {
+      "1": [
+        "image_1",
+        "image_2"
+      ],
+      "2": [
+        "image_3",
+        "image_4"
+      ],
+      "3": [
+        "image_5",
+        "image_6"
+      ]
+    },
+    "image_delivery_map": [
+      {
+        "query": "Next, find the specific flavor of the drink shown here and add it to the cart. Also, look up the Superman wireless charging cover for the Nokia Lumia 920 shown in the other image and add it too.",
+        "image_ids": [
+          2,
+          3
+        ]
+      },
+      {
+        "query": "Ah, good catch, the packaging does say Lumia 925! Please add the correct Lumia 925 cover to the cart instead. Finally, add the gel nail polish and the probiotic from these new images. Once everything is in the cart, place the order and record the total as an expense in my 'House Supplies' Splitwise group.",
+        "image_ids": [
+          4,
+          5
+        ]
+      }
+    ],
+    "scenario_metadata": {
+      "num_images": 6,
+      "num_user_rounds": 3,
+      "selected_flow_type": "aggregate",
+      "image_arrival": "progressive",
+      "challenge_type": "error_correction",
+      "require_disambiguation": false,
+      "dataset_type": "hiertext"
+    }
+  }
+}

@@ -1,0 +1,119 @@
+{
+  "name": "scenario_0430",
+  "base_scenario": "base",
+  "description": "The user is reviewing various financial charts and indices to compile a summary of market trends.",
+  "difficulty": "easy",
+  "appworld_base_task": "_base_",
+  "device_state_id": "hun.weaver@gmail.com",
+  "reference_time": "2026-04-17T00:03:16.895523+00:00",
+  "agentsandbox_entities": {},
+  "appworld_entities": {
+    "gmail.users": [
+      {
+        "id": 200,
+        "first_name": "Research",
+        "last_name": "Team",
+        "email": "research@firm.com",
+        "password": "default_password",
+        "status": "active",
+        "created_at": "2025-01-01T00:00:00",
+        "last_logged_in": "2025-01-01T00:00:00"
+      }
+    ]
+  },
+  "image_paths": [
+    "chartqapro/images/chart_0292.jpg",
+    "chartqapro/images/chart_0597.jpg",
+    "chartqapro/images/chart_0803.jpg",
+    "chartqapro/images/chart_1482.jpg",
+    "chartqapro/images/chart_0867.jpg"
+  ],
+  "messages": [
+    {
+      "sender": "SYSTEM",
+      "recipient": "USER",
+      "content": "{{USER_INSTRUCTION}}ROUND 1 [provide: image_1, image_2, image_3]\nQuery: Draft an email to research@firm.com with the subject 'Initial Data'. In the body, list the top 3 holdings from the first chart, the name of the index focusing on pocketbook conditions from the second chart, and the name of the entity represented by the red line in the third chart.\nInstructions: Instruct the assistant to draft an email to research@firm.com with the subject 'Initial Data'. Tell the assistant to look at the three provided images and extract the top three holdings from the first image, the name of the index focusing on pocketbook conditions from the second image, and the entity represented by the red line from the third image, and include all of these in the email body. If the assistant asks for clarification or confirms the draft creation, acknowledge it and move on to the next round.\n\nROUND 2 [provide: image_4, image_5]\nQuery: Actually, let's change the plan. Delete that email draft. I want to aggregate all this data into a personal note instead. Create a note titled 'Market Trends Summary' and include the three data points I just asked for, plus the name of the company with the lowest revenue growth in Apr-Jun 2012 from this fourth chart, and the name of the index in the fifth chart.\nInstructions: Tell the assistant that you have changed your mind and ask it to delete the email draft it just created. Then, instruct it to create a new note titled 'Market Trends Summary' instead. Tell the assistant to include the three data points gathered in the previous round, and to add two new pieces of information: the company with the lowest revenue growth in the Apr-Jun 2012 quarter from the fourth image, and the name of the index shown in the fifth image. Once the assistant confirms that the note has been created with all five pieces of information, end the conversation.\n\nYou have 5 images available to share with the agent using the send_message_with_image tool.\nIMPORTANT: Image IDs are ZERO-INDEXED integers (0, 1, 2, ...). Do NOT add 1 to the IDs.\nAvailable image IDs: [0, 1, 2, 3, 4]\nImage mapping:\n  image_1.jpg -> image ID 0\n  image_2.jpg -> image ID 1\n  image_3.jpg -> image ID 2\n  image_4.jpg -> image ID 3\n  image_5.jpg -> image ID 4\n\n## IMAGE DELIVERY\n\n\u26a0\ufe0f IMPORTANT: You MUST use the `send_message_with_image` tool to share images with User B. Do NOT just describe images in text \u2014 you MUST call the tool.\n\nImage delivery schedule:\n\n  Round 2: YOU MUST call the send_message_with_image tool with image_ids='3,4' \u2014 do NOT write the tool name as text; use the actual function call. Include a natural, conversational message to the assistant."
+    },
+    {
+      "sender": "USER",
+      "recipient": "AGENT",
+      "content": "Draft an email to research@firm.com with the subject 'Initial Data'. In the body, list the top 3 holdings from the first chart, the name of the index focusing on pocketbook conditions from the second chart, and the name of the entity represented by the red line in the third chart.",
+      "image_ids": [
+        0,
+        1,
+        2
+      ]
+    }
+  ],
+  "milestones": [],
+  "entity_diff_specs": [
+    {
+      "operation": "create",
+      "source": "appworld",
+      "table": "simple_note.notes",
+      "entity_data": {
+        "user_id": 56,
+        "title": "Market Trends Summary",
+        "content": "Top 3 holdings: Microsoft, United Health Group, Oracle\nIndex focusing on pocketbook conditions: University of Michigan\nEntity represented by red line: Insurance Australia Group Daily\nLowest revenue growth in Apr-Jun 2012: Infosys\nIndex in fifth chart: S&P/ASX 200",
+        "tags": [],
+        "created_at": "2026-04-17T00:03:16",
+        "updated_at": "2026-04-17T00:03:16",
+        "pinned": false,
+        "data": null
+      },
+      "column_similarity_measure": {
+        "user_id": "column_exact_match_similarity",
+        "title": "column_rouge_l_similarity",
+        "content": "column_rouge_l_similarity",
+        "tags": "column_ignore_similarity",
+        "created_at": "column_ignore_similarity",
+        "updated_at": "column_ignore_similarity",
+        "pinned": "column_exact_match_similarity",
+        "data": "column_ignore_similarity"
+      }
+    }
+  ],
+  "task_completion_criteria": "Create a simple note titled 'Market Trends Summary' that contains the data points extracted from the charts: 'Microsoft', 'United Health Group', 'Oracle', 'University of Michigan', 'Insurance Australia Group Daily', 'Infosys', and 'S&P/ASX 200', or something similar expressing these specific entities.",
+  "categories": [
+    "APPWORLD",
+    "MULTIPLE_USER_TURN"
+  ],
+  "max_messages": 100,
+  "metadata": {
+    "original_scenario_id": "scenario_0430",
+    "expected_tools": [
+      "gmail_create_draft",
+      "gmail_delete_draft",
+      "simple_note_create_note"
+    ],
+    "image_arrival": {
+      "1": [
+        "image_1",
+        "image_2",
+        "image_3"
+      ],
+      "2": [
+        "image_4",
+        "image_5"
+      ]
+    },
+    "image_delivery_map": [
+      {
+        "query": "Actually, let's change the plan. Delete that email draft. I want to aggregate all this data into a personal note instead. Create a note titled 'Market Trends Summary' and include the three data points I just asked for, plus the name of the company with the lowest revenue growth in Apr-Jun 2012 from this fourth chart, and the name of the index in the fifth chart.",
+        "image_ids": [
+          3,
+          4
+        ]
+      }
+    ],
+    "scenario_metadata": {
+      "num_images": 5,
+      "num_user_rounds": 2,
+      "selected_flow_type": "aggregate",
+      "image_arrival": "progressive",
+      "challenge_type": "goal_change",
+      "require_disambiguation": false,
+      "dataset_type": "chartqapro"
+    }
+  }
+}

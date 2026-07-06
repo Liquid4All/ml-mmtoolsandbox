@@ -1,0 +1,161 @@
+{
+  "name": "scenario_1119",
+  "base_scenario": "base",
+  "description": "The user is compiling a digital dossier of various exhibition items for a museum, gathering information from images of the artifacts and specimens to create a comprehensive note before sending it to the museum curator.",
+  "difficulty": "easy",
+  "appworld_base_task": "_base_",
+  "device_state_id": "nicholas.weber@gmail.com",
+  "reference_time": "2026-04-17T00:24:05.696473+00:00",
+  "agentsandbox_entities": {},
+  "appworld_entities": {
+    "phone.contacts": [
+      {
+        "id": 200,
+        "user_id": 49,
+        "first_name": "Museum",
+        "last_name": "Curator",
+        "email": "curator@museum.org",
+        "phone_number": null,
+        "relationships": [],
+        "birthday": null,
+        "home_address": null,
+        "work_address": null,
+        "created_at": "2026-04-10T10:00:00"
+      }
+    ],
+    "gmail.users": [
+      {
+        "id": 200,
+        "first_name": "Museum",
+        "last_name": "Curator",
+        "email": "curator@museum.org",
+        "password": "default_password",
+        "status": "active",
+        "created_at": "2025-01-01T00:00:00",
+        "last_logged_in": "2025-01-01T00:00:00"
+      }
+    ]
+  },
+  "image_paths": [
+    "worldvqa/images/90.jpg",
+    "worldvqa/images/1160.jpg",
+    "worldvqa/images/1301.jpg"
+  ],
+  "messages": [
+    {
+      "sender": "SYSTEM",
+      "recipient": "USER",
+      "content": "{{USER_INSTRUCTION}}ROUND 1 [provide: image_1]\nQuery: Identify this pupa to the species level, look up its natural habitat online, and create a new note called 'Exhibition Items' with those details.\nInstructions: Ask the assistant to identify the insect pupa in the first image to the species level, search the web for its natural habitat, and create a new note called 'Exhibition Items' with this information. If the assistant asks for confirmation or clarifies the species name, confirm and tell it to proceed with the note creation. Once the note is created, move to the next round.\n\nROUND 2 [provide: image_2]\nQuery: Now look at this relic. Figure out what it is, search for the historical time period it typically belongs to, and add that info to the 'Exhibition Items' note.\nInstructions: Present the second image and ask the assistant to identify the ceramic vessel shown. Tell it to search the web for the historical time period it typically belongs to, and then append this information to the 'Exhibition Items' note. If the assistant provides the details, confirm they look good and wait for it to finish updating the note before moving on.\n\nROUND 3 [provide: image_3]\nQuery: Add a new heading for 'Meissen Porcelain' to the note based on this third item, and search for typical auction prices of Meissen porcelain to include under it.\nInstructions: Show the third image and tell the assistant to add a heading for 'Meissen Porcelain' to the note, and to search for typical auction prices of Meissen porcelain to include as well. If the assistant flags that the image actually shows Berlin porcelain instead of Meissen porcelain, acknowledge it but hold your official correction for the next turn. If the assistant proceeds without noticing the error, prepare to point it out next.\n\nROUND 4\nQuery: You're right, my mistake. That last item is actually Berlin porcelain. Update the note to change the heading to 'Berlin Porcelain', search for the history of Berlin porcelain instead, and append those details.\nInstructions: Acknowledge the mistake regarding the porcelain's origin. Instruct the assistant to update the note to change the heading to 'Berlin Porcelain'. Then, ask it to search the web for the history of Berlin porcelain and append those historical details to the note instead of the auction prices. Once the note is corrected and updated, move to the final round.\n\nROUND 5\nQuery: Grab the final text of the 'Exhibition Items' note and email it to the curator.\nInstructions: Ask the assistant to retrieve the final content of the 'Exhibition Items' note and send it in an email to the curator. If the assistant asks for the email address, tell it to use the one saved in contacts. Once the email is successfully sent, you can end the conversation.\n\nYou have 3 images available to share with the agent using the send_message_with_image tool.\nIMPORTANT: Image IDs are ZERO-INDEXED integers (0, 1, 2, ...). Do NOT add 1 to the IDs.\nAvailable image IDs: [0, 1, 2]\nImage mapping:\n  image_1.jpg -> image ID 0\n  image_2.jpg -> image ID 1\n  image_3.jpg -> image ID 2\n\n## IMAGE DELIVERY\n\n\u26a0\ufe0f IMPORTANT: You MUST use the `send_message_with_image` tool to share images with User B. Do NOT just describe images in text \u2014 you MUST call the tool.\n\nImage delivery schedule:\n\n  Round 2: YOU MUST call the send_message_with_image tool with image_ids='1' \u2014 do NOT write the tool name as text; use the actual function call. Include a natural, conversational message to the assistant.\n  Round 3: YOU MUST call the send_message_with_image tool with image_ids='2' \u2014 do NOT write the tool name as text; use the actual function call. Include a natural, conversational message to the assistant."
+    },
+    {
+      "sender": "USER",
+      "recipient": "AGENT",
+      "content": "Identify this pupa to the species level, look up its natural habitat online, and create a new note called 'Exhibition Items' with those details.",
+      "image_ids": [
+        0
+      ]
+    }
+  ],
+  "milestones": [],
+  "entity_diff_specs": [
+    {
+      "operation": "create",
+      "source": "appworld",
+      "table": "gmail.emails",
+      "entity_data": {
+        "sender_id": 49,
+        "recipient_ids": [
+          200
+        ],
+        "subject": "Exhibition Items",
+        "body": "Here are the notes for the exhibition items:\n\n1. Xylotrupes sumatrensis tanahmelayu pupa\nNatural Habitat: Tropical rainforests of Southeast Asia.\n\n2. Terracotta stirrup jar\nHistorical Time Period: Mycenaean period (c. 1400-1100 BC).\n\n3. Berlin Porcelain Vase\nHistory: Produced by the Royal Porcelain Factory in Berlin (KPM), founded in 1763 by Frederick the Great, known for its high-quality hard-paste porcelain.",
+        "response_to_email_id": null,
+        "created_at": "2026-04-17T00:24:05"
+      },
+      "column_similarity_measure": {
+        "sender_id": "column_exact_match_similarity",
+        "recipient_ids": "column_exact_match_similarity",
+        "subject": "column_rouge_l_similarity",
+        "body": "column_rouge_l_similarity",
+        "response_to_email_id": "column_ignore_similarity",
+        "created_at": "column_ignore_similarity"
+      }
+    },
+    {
+      "operation": "create",
+      "source": "appworld",
+      "table": "simple_note.notes",
+      "entity_data": {
+        "user_id": 49,
+        "title": "Exhibition Items",
+        "content": "Xylotrupes sumatrensis tanahmelayu pupa\nNatural Habitat: Tropical rainforests of Southeast Asia, particularly Malaysia and Indonesia.\n\nTerracotta stirrup jar\nHistorical Time Period: Late Helladic III period (Mycenaean Greece, c. 1400-1050 BC).\n\nBerlin Porcelain\nHistory: Founded in 1763 by King Frederick II of Prussia, the Royal Porcelain Factory in Berlin (KPM) became renowned for its high-quality hard-paste porcelain, detailed painting, and rococo and neoclassical designs.",
+        "tags": [],
+        "created_at": "2026-04-17T00:24:05",
+        "updated_at": "2026-04-17T00:24:05",
+        "pinned": false,
+        "data": null
+      },
+      "column_similarity_measure": {
+        "user_id": "column_exact_match_similarity",
+        "title": "column_rouge_l_similarity",
+        "content": "column_rouge_l_similarity",
+        "tags": "column_ignore_similarity",
+        "created_at": "column_ignore_similarity",
+        "updated_at": "column_ignore_similarity",
+        "pinned": "column_exact_match_similarity",
+        "data": "column_ignore_similarity"
+      }
+    }
+  ],
+  "task_completion_criteria": "Create a note titled 'Exhibition Items' containing the natural habitat of the Xylotrupes sumatrensis tanahmelayu pupa, the historical time period of the Terracotta stirrup jar, and the history of the Berlin porcelain vase, and email the final note contents to curator@museum.org.",
+  "categories": [
+    "APPWORLD",
+    "MULTIPLE_USER_TURN"
+  ],
+  "max_messages": 100,
+  "metadata": {
+    "original_scenario_id": "scenario_1119",
+    "expected_tools": [
+      "web_search_serper",
+      "simple_note_create_note",
+      "simple_note_add_content_to_note",
+      "simple_note_update_note",
+      "simple_note_show_note",
+      "gmail_send_email"
+    ],
+    "image_arrival": {
+      "1": [
+        "image_1"
+      ],
+      "2": [
+        "image_2"
+      ],
+      "3": [
+        "image_3"
+      ]
+    },
+    "image_delivery_map": [
+      {
+        "query": "Now look at this relic. Figure out what it is, search for the historical time period it typically belongs to, and add that info to the 'Exhibition Items' note.",
+        "image_ids": [
+          1
+        ]
+      },
+      {
+        "query": "Add a new heading for 'Meissen Porcelain' to the note based on this third item, and search for typical auction prices of Meissen porcelain to include under it.",
+        "image_ids": [
+          2
+        ]
+      }
+    ],
+    "scenario_metadata": {
+      "num_images": 3,
+      "num_user_rounds": 5,
+      "selected_flow_type": "aggregate",
+      "image_arrival": "mixed",
+      "challenge_type": "error_correction",
+      "require_disambiguation": false,
+      "dataset_type": "worldvqa"
+    }
+  }
+}

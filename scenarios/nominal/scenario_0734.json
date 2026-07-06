@@ -1,0 +1,311 @@
+{
+  "name": "scenario_0734",
+  "base_scenario": "base",
+  "description": "The user is planning a city trip using three reference photos of locations they want to visit or use as inspiration, and wants to compile a task-based itinerary to share with a travel companion.",
+  "difficulty": "easy",
+  "appworld_base_task": "_base_",
+  "device_state_id": "aa_burt@gmail.com",
+  "reference_time": "2026-04-17T00:12:48.762474+00:00",
+  "agentsandbox_entities": {},
+  "appworld_entities": {
+    "phone.contacts": [
+      {
+        "id": 200,
+        "user_id": 99,
+        "first_name": "Mark",
+        "last_name": "Adams",
+        "email": "mark@example.com",
+        "phone_number": null,
+        "relationships": [],
+        "birthday": null,
+        "home_address": null,
+        "work_address": null,
+        "created_at": "2025-01-10T10:00:00"
+      },
+      {
+        "id": 201,
+        "user_id": 99,
+        "first_name": "Mark",
+        "last_name": "Spencer",
+        "email": "mspencer@gmail.com",
+        "phone_number": null,
+        "relationships": [],
+        "birthday": null,
+        "home_address": null,
+        "work_address": null,
+        "created_at": "2025-01-15T14:30:00"
+      }
+    ],
+    "gmail.users": [
+      {
+        "id": 200,
+        "first_name": "Mark",
+        "last_name": "Adams",
+        "email": "mark@example.com",
+        "password": "default_password",
+        "status": "active",
+        "created_at": "2025-01-01T00:00:00",
+        "last_logged_in": "2025-01-01T00:00:00"
+      },
+      {
+        "id": 201,
+        "first_name": "Mark",
+        "last_name": "Spencer",
+        "email": "mspencer@gmail.com",
+        "password": "default_password",
+        "status": "active",
+        "created_at": "2025-01-01T00:00:00",
+        "last_logged_in": "2025-01-01T00:00:00"
+      }
+    ]
+  },
+  "image_paths": [
+    "worldvqa/images/821.jpg",
+    "hiertext/images/test/20fe66912bdffdab.jpg",
+    "hiertext/images/test/d70a29ec8ea64b34.jpg"
+  ],
+  "messages": [
+    {
+      "sender": "SYSTEM",
+      "recipient": "USER",
+      "content": "{{USER_INSTRUCTION}}ROUND 1 [provide: image_1, image_2, image_3]\nQuery: I'm planning a city trip and want to organize my itinerary. I've got these three pictures of places I want to check out. Please create a Todoist project called 'City Trip'. Then, looking at the first image of the tree-lined street, add a task to that project to take a walk around the specific village shown there.\nInstructions: Begin by asking the assistant to create a Todoist project called 'City Trip' and add a task to it about walking around the village shown in the first image. If the assistant asks for the village name, direct it to check the provided context. Once the project and task are created, move to the next round.\n\nROUND 2\nQuery: Looking at the black and white photo of the bar, I want to try the desserts they advertised. Add a task to the project to find a modern place that serves the two specific sweet items listed on the main banner.\nInstructions: Ask the assistant to look at the second image (the black and white photo) and add a task to the project to find a modern place serving the two sweet items listed on the main banner. If the assistant includes savory items like burgers or fries, correct it and specify you only want the two desserts mentioned. Proceed when the task is added.\n\nROUND 3\nQuery: For the restaurant in the third image, add a task to the project to get breakfast there. Make sure to include the restaurant's name, the address printed above the door, and their opening time in the task description.\nInstructions: Instruct the assistant to add a breakfast task for the restaurant in the third image. Emphasize that the task description must include the restaurant's name, the exact address printed above the door, and the opening time shown on the window poster. Once confirmed, move on.\n\nROUND 4\nQuery: I'll be driving, so we need to be careful about parking. Based on the sign attached to the wooden pole in that same diner image, add a task to the project reminding me not to park there during the specific enforced date and time shown.\nInstructions: Tell the assistant to add one more task based on the third image, specifically a parking reminder based on the sign attached to the wooden pole. Ensure it captures the exact enforced date and time window shown on that sign. Proceed to the final step once added.\n\nROUND 5\nQuery: Finally, retrieve all the tasks from the 'City Trip' project and send them in an email to Mark so he can review our aggregated itinerary.\nInstructions: Ask the assistant to retrieve all the tasks from the 'City Trip' project and email them to Mark so he can review the itinerary. The assistant should notice multiple contacts named Mark on the device and ask for clarification. When it does, specify that you mean the one with the 'example.com' email address. Once the email is successfully sent, end the conversation.\n\nYou have 3 images available to share with the agent using the send_message_with_image tool.\nIMPORTANT: Image IDs are ZERO-INDEXED integers (0, 1, 2, ...). Do NOT add 1 to the IDs.\nAvailable image IDs: [0, 1, 2]\nImage mapping:\n  image_1.jpg -> image ID 0\n  image_2.jpg -> image ID 1\n  image_3.jpg -> image ID 2"
+    },
+    {
+      "sender": "USER",
+      "recipient": "AGENT",
+      "content": "I'm planning a city trip and want to organize my itinerary. I've got these three pictures of places I want to check out. Please create a Todoist project called 'City Trip'. Then, looking at the first image of the tree-lined street, add a task to that project to take a walk around the specific village shown there.",
+      "image_ids": [
+        0,
+        1,
+        2
+      ]
+    }
+  ],
+  "milestones": [],
+  "entity_diff_specs": [
+    {
+      "operation": "create",
+      "source": "appworld",
+      "table": "gmail.emails",
+      "entity_data": {
+        "sender_id": 99,
+        "recipient_ids": [
+          200
+        ],
+        "subject": "City Trip Itinerary",
+        "body": "Here are the tasks for our City Trip:\n- Walk around Greenwich Village\n- Find a modern place that serves frozen custard and Italian ices\n- Get breakfast at River City Diner (7 N. 17 Street, opening at 7:00AM)\n- Avoid parking there on Sun Sept 13 from 6AM-6PM",
+        "response_to_email_id": null,
+        "created_at": "2026-04-17T00:12:48"
+      },
+      "column_similarity_measure": {
+        "sender_id": "column_exact_match_similarity",
+        "recipient_ids": "column_exact_match_similarity",
+        "subject": "column_rouge_l_similarity",
+        "body": "column_rouge_l_similarity",
+        "response_to_email_id": "column_ignore_similarity",
+        "created_at": "column_ignore_similarity"
+      }
+    },
+    {
+      "operation": "create",
+      "source": "appworld",
+      "table": "todoist.projects",
+      "entity_data": {
+        "user_id": 99,
+        "name": "City Trip",
+        "color": "charcoal",
+        "is_inbox": false,
+        "description": "",
+        "created_at": "2026-04-17T00:12:48"
+      },
+      "column_similarity_measure": {
+        "user_id": "column_exact_match_similarity",
+        "name": "column_rouge_l_similarity",
+        "color": "column_exact_match_similarity",
+        "is_inbox": "column_exact_match_similarity",
+        "description": "column_ignore_similarity",
+        "created_at": "column_ignore_similarity"
+      }
+    },
+    {
+      "operation": "create",
+      "source": "appworld",
+      "table": "todoist.tasks",
+      "entity_data": {
+        "project_id": 400,
+        "section_id": null,
+        "user_id": 99,
+        "title": "Walk around Greenwich Village",
+        "description": null,
+        "due_date": null,
+        "priority": "medium",
+        "is_completed": false,
+        "duration": null,
+        "duration_unit": null,
+        "order_index": 0,
+        "assignee_id": null,
+        "assigner_id": null,
+        "created_at": "2026-04-17T00:12:48"
+      },
+      "column_similarity_measure": {
+        "project_id": "column_ignore_similarity",
+        "section_id": "column_ignore_similarity",
+        "user_id": "column_exact_match_similarity",
+        "title": "column_rouge_l_similarity",
+        "description": "column_ignore_similarity",
+        "due_date": "column_ignore_similarity",
+        "priority": "column_exact_match_similarity",
+        "is_completed": "column_exact_match_similarity",
+        "duration": "column_ignore_similarity",
+        "duration_unit": "column_ignore_similarity",
+        "order_index": "column_ignore_similarity",
+        "assignee_id": "column_ignore_similarity",
+        "assigner_id": "column_ignore_similarity",
+        "created_at": "column_ignore_similarity"
+      }
+    },
+    {
+      "operation": "create",
+      "source": "appworld",
+      "table": "todoist.tasks",
+      "entity_data": {
+        "project_id": 400,
+        "section_id": null,
+        "user_id": 99,
+        "title": "Find a place that serves frozen custard and Italian ices",
+        "description": null,
+        "due_date": null,
+        "priority": "medium",
+        "is_completed": false,
+        "duration": null,
+        "duration_unit": null,
+        "order_index": 1,
+        "assignee_id": null,
+        "assigner_id": null,
+        "created_at": "2026-04-17T00:12:48"
+      },
+      "column_similarity_measure": {
+        "project_id": "column_ignore_similarity",
+        "section_id": "column_ignore_similarity",
+        "user_id": "column_exact_match_similarity",
+        "title": "column_rouge_l_similarity",
+        "description": "column_ignore_similarity",
+        "due_date": "column_ignore_similarity",
+        "priority": "column_exact_match_similarity",
+        "is_completed": "column_exact_match_similarity",
+        "duration": "column_ignore_similarity",
+        "duration_unit": "column_ignore_similarity",
+        "order_index": "column_ignore_similarity",
+        "assignee_id": "column_ignore_similarity",
+        "assigner_id": "column_ignore_similarity",
+        "created_at": "column_ignore_similarity"
+      }
+    },
+    {
+      "operation": "create",
+      "source": "appworld",
+      "table": "todoist.tasks",
+      "entity_data": {
+        "project_id": 400,
+        "section_id": null,
+        "user_id": 99,
+        "title": "Get breakfast at River City Diner",
+        "description": "7 N. 17 Street, opening at 7:00AM",
+        "due_date": null,
+        "priority": "medium",
+        "is_completed": false,
+        "duration": null,
+        "duration_unit": null,
+        "order_index": 2,
+        "assignee_id": null,
+        "assigner_id": null,
+        "created_at": "2026-04-17T00:12:48"
+      },
+      "column_similarity_measure": {
+        "project_id": "column_ignore_similarity",
+        "section_id": "column_ignore_similarity",
+        "user_id": "column_exact_match_similarity",
+        "title": "column_rouge_l_similarity",
+        "description": "column_rouge_l_similarity",
+        "due_date": "column_ignore_similarity",
+        "priority": "column_exact_match_similarity",
+        "is_completed": "column_exact_match_similarity",
+        "duration": "column_ignore_similarity",
+        "duration_unit": "column_ignore_similarity",
+        "order_index": "column_ignore_similarity",
+        "assignee_id": "column_ignore_similarity",
+        "assigner_id": "column_ignore_similarity",
+        "created_at": "column_ignore_similarity"
+      }
+    },
+    {
+      "operation": "create",
+      "source": "appworld",
+      "table": "todoist.tasks",
+      "entity_data": {
+        "project_id": 400,
+        "section_id": null,
+        "user_id": 99,
+        "title": "Avoid parking at River City Diner",
+        "description": "Do not park there on Sun Sept 13 from 6AM-6PM",
+        "due_date": "2026-09-13T06:00:00",
+        "priority": "medium",
+        "is_completed": false,
+        "duration": null,
+        "duration_unit": null,
+        "order_index": 3,
+        "assignee_id": null,
+        "assigner_id": null,
+        "created_at": "2026-04-17T00:12:48"
+      },
+      "column_similarity_measure": {
+        "project_id": "column_ignore_similarity",
+        "section_id": "column_ignore_similarity",
+        "user_id": "column_exact_match_similarity",
+        "title": "column_rouge_l_similarity",
+        "description": "column_rouge_l_similarity",
+        "due_date": "column_ignore_similarity",
+        "priority": "column_exact_match_similarity",
+        "is_completed": "column_exact_match_similarity",
+        "duration": "column_ignore_similarity",
+        "duration_unit": "column_ignore_similarity",
+        "order_index": "column_ignore_similarity",
+        "assignee_id": "column_ignore_similarity",
+        "assigner_id": "column_ignore_similarity",
+        "created_at": "column_ignore_similarity"
+      }
+    }
+  ],
+  "task_completion_criteria": "Create a Todoist project named 'City Trip' with four tasks: walking around Greenwich Village, finding a place that serves frozen custard and Italian ices, getting breakfast at River City Diner (at 7 N. 17 Street, opening at 7:00AM), and avoiding parking there on Sun Sept 13 from 6AM-6PM. Finally, email the aggregated tasks to mark@example.com.",
+  "categories": [
+    "APPWORLD",
+    "MULTIPLE_USER_TURN"
+  ],
+  "max_messages": 100,
+  "metadata": {
+    "original_scenario_id": "scenario_0734",
+    "expected_tools": [
+      "todoist_create_project",
+      "todoist_create_task",
+      "todoist_show_tasks",
+      "gmail_send_email"
+    ],
+    "image_arrival": {
+      "1": [
+        "image_1",
+        "image_2",
+        "image_3"
+      ]
+    },
+    "image_delivery_map": [],
+    "scenario_metadata": {
+      "num_images": 3,
+      "num_user_rounds": 5,
+      "selected_flow_type": "aggregate",
+      "image_arrival": "upfront",
+      "challenge_type": "none",
+      "require_disambiguation": true,
+      "dataset_type": "hiertext"
+    }
+  }
+}

@@ -1,0 +1,457 @@
+{
+  "name": "scenario_0912",
+  "base_scenario": "base",
+  "description": "Alex is working on his desktop, managing project files, training a machine learning model, handling an Android Studio bug, and listening to music. He needs help organizing his workspace, tracking tasks, and updating files based on what's visible across his multiple open windows.",
+  "difficulty": "easy",
+  "appworld_base_task": "_base_",
+  "device_state_id": "alexwhite@gmail.com",
+  "reference_time": "2026-04-17T00:17:45.262723+00:00",
+  "agentsandbox_entities": {},
+  "appworld_entities": {
+    "todoist.projects": [
+      {
+        "id": 400,
+        "user_id": 106,
+        "name": "Bugs",
+        "color": "charcoal",
+        "is_inbox": false,
+        "description": "",
+        "created_at": "2026-04-01T10:00:00"
+      }
+    ],
+    "todoist.tasks": [
+      {
+        "id": 6500,
+        "project_id": 400,
+        "section_id": null,
+        "user_id": 106,
+        "title": "Fix UI glitch",
+        "description": null,
+        "due_date": null,
+        "priority": "medium",
+        "is_completed": false,
+        "duration": null,
+        "duration_unit": null,
+        "order_index": 1,
+        "assignee_id": null,
+        "assigner_id": null,
+        "created_at": "2026-04-10T10:00:00"
+      }
+    ],
+    "spotify.artists": [
+      {
+        "id": 200,
+        "name": "Brian Eno",
+        "genre": "Ambient",
+        "created_at": "2020-01-01T00:00:00"
+      },
+      {
+        "id": 201,
+        "name": "Unknown Artist",
+        "genre": "Electronic",
+        "created_at": "2022-01-01T00:00:00"
+      }
+    ],
+    "spotify.songs": [
+      {
+        "id": 200,
+        "title": "Ambient 1",
+        "artist_ids": [
+          200
+        ],
+        "album_id": null,
+        "duration": 180,
+        "release_date": "2020-01-01T00:00:00",
+        "genre": "Ambient",
+        "play_count": 1000,
+        "rating": 4.5,
+        "like_count": 100,
+        "review_count": 10
+      },
+      {
+        "id": 201,
+        "title": "I was fascinated",
+        "artist_ids": [
+          201
+        ],
+        "album_id": null,
+        "duration": 210,
+        "release_date": "2023-05-15T00:00:00",
+        "genre": "Electronic",
+        "play_count": 5000,
+        "rating": 4.8,
+        "like_count": 500,
+        "review_count": 50
+      }
+    ],
+    "spotify.playlists": [
+      {
+        "id": 800,
+        "title": "Focus",
+        "user_id": 106,
+        "created_at": "2025-01-01T10:00:00",
+        "is_public": false,
+        "rating": 5.0,
+        "like_count": 0,
+        "review_count": 0
+      }
+    ],
+    "spotify.playlist_songs": [
+      {
+        "id": 200,
+        "playlist_id": 800,
+        "song_id": 200,
+        "added_at": "2025-01-02T10:00:00"
+      }
+    ],
+    "file_system.directories": [
+      {
+        "id": 3600,
+        "path": "/home/alex/backup/document/",
+        "tilde_path": "~/backup/document/",
+        "user_id": 106,
+        "created_at": "2024-01-09T10:00:00",
+        "updated_at": "2024-01-09T10:00:00"
+      },
+      {
+        "id": 3601,
+        "path": "/home/alex/project/",
+        "tilde_path": "~/project/",
+        "user_id": 106,
+        "created_at": "2026-01-10T09:00:00",
+        "updated_at": "2026-01-10T09:00:00"
+      },
+      {
+        "id": 3602,
+        "path": "/home/alex/desktop/document/",
+        "tilde_path": "~/desktop/document/",
+        "user_id": 106,
+        "created_at": "2026-04-01T11:00:00",
+        "updated_at": "2026-04-15T14:00:00"
+      },
+      {
+        "id": 3603,
+        "path": "/home/alex/llava_training/",
+        "tilde_path": "~/llava_training/",
+        "user_id": 106,
+        "created_at": "2026-04-10T10:00:00",
+        "updated_at": "2026-04-10T10:00:00"
+      },
+      {
+        "path": "/home/alex/backup/",
+        "tilde_path": "~/backup/",
+        "user_id": 106,
+        "created_at": "2025-01-01T00:00:00",
+        "updated_at": "2025-01-01T00:00:00",
+        "id": 3604
+      },
+      {
+        "path": "/home/alex/desktop/",
+        "tilde_path": "~/desktop/",
+        "user_id": 106,
+        "created_at": "2025-01-01T00:00:00",
+        "updated_at": "2025-01-01T00:00:00",
+        "id": 3605
+      },
+      {
+        "path": "/home/alexwhite/",
+        "tilde_path": "/home/alexwhite/",
+        "user_id": 106,
+        "created_at": "2025-01-01T00:00:00",
+        "updated_at": "2025-01-01T00:00:00",
+        "id": 3606
+      },
+      {
+        "path": "/home/alexwhite/backup/",
+        "tilde_path": "~/backup/",
+        "user_id": 106,
+        "created_at": "2025-01-01T00:00:00",
+        "updated_at": "2025-01-01T00:00:00",
+        "id": 3607
+      },
+      {
+        "path": "/home/alexwhite/backup/document/",
+        "tilde_path": "~/backup/document/",
+        "user_id": 106,
+        "created_at": "2025-01-01T00:00:00",
+        "updated_at": "2025-01-01T00:00:00",
+        "id": 3608
+      },
+      {
+        "path": "~/backup/",
+        "tilde_path": "~/backup/",
+        "user_id": 106,
+        "created_at": "2025-01-01T00:00:00",
+        "updated_at": "2025-01-01T00:00:00",
+        "id": 3609
+      },
+      {
+        "path": "~/desktop/",
+        "tilde_path": "~/desktop/",
+        "user_id": 106,
+        "created_at": "2025-01-01T00:00:00",
+        "updated_at": "2025-01-01T00:00:00",
+        "id": 3610
+      }
+    ],
+    "file_system.files": [
+      {
+        "id": 26000,
+        "path": "/home/alex/backup/document/2024-01-09.md",
+        "tilde_path": "~/backup/document/2024-01-09.md",
+        "user_id": 106,
+        "content": "# Backup log 2024-01-09\nNo issues found during routine backup.",
+        "compressed_data": [],
+        "created_at": "2024-01-09T10:05:00",
+        "updated_at": "2024-01-09T10:05:00"
+      },
+      {
+        "id": 26001,
+        "path": "/home/alex/project/requirements.txt",
+        "tilde_path": "~/project/requirements.txt",
+        "user_id": 106,
+        "content": "numpy\nrequests\n",
+        "compressed_data": [],
+        "created_at": "2026-01-10T09:05:00",
+        "updated_at": "2026-04-16T15:30:00"
+      },
+      {
+        "id": 26002,
+        "path": "/home/alex/desktop/document/deepspeed_finetune.md",
+        "tilde_path": "~/desktop/document/deepspeed_finetune.md",
+        "user_id": 106,
+        "content": "# DeepSpeed Finetuning Guide\nSteps to finetune models using DeepSpeed.",
+        "compressed_data": [],
+        "created_at": "2026-04-15T14:30:00",
+        "updated_at": "2026-04-15T14:30:00"
+      },
+      {
+        "id": 26003,
+        "path": "/home/alex/desktop/document/Welcome.md",
+        "tilde_path": "~/desktop/document/Welcome.md",
+        "user_id": 106,
+        "content": "# Welcome\nWelcome to the documentation folder.",
+        "compressed_data": [],
+        "created_at": "2026-04-01T11:05:00",
+        "updated_at": "2026-04-01T11:05:00"
+      },
+      {
+        "id": 26006,
+        "path": "/home/alex/desktop/document/LLM_training.md",
+        "tilde_path": "~/desktop/document/LLM_training.md",
+        "user_id": 106,
+        "content": "# LLM Training\nNotes on training large language models.",
+        "compressed_data": [],
+        "created_at": "2026-04-12T11:00:00",
+        "updated_at": "2026-04-12T11:00:00"
+      },
+      {
+        "id": 26007,
+        "path": "/home/alex/llava_training/train.py",
+        "tilde_path": "~/llava_training/train.py",
+        "user_id": 106,
+        "content": "import torch\nimport transformers\nimport tokenizers\nfrom PIL import Image\n\nprint('Training script started')",
+        "compressed_data": [],
+        "created_at": "2026-04-10T10:05:00",
+        "updated_at": "2026-04-16T20:00:00"
+      }
+    ],
+    "todoist.project_collaborator_links": [
+      {
+        "id": 50400,
+        "project_id": 400,
+        "user_id": 106,
+        "is_favorite": false,
+        "is_archived": false,
+        "created_at": "2026-04-01T10:00:00"
+      }
+    ],
+    "gmail.users": []
+  },
+  "image_paths": [
+    "screenspotpro/images/android_studio_mac/screenshot_2024-11-05_18-03-37.png",
+    "screenspotpro/images/android_studio_mac/screenshot_2024-11-07_15-38-30.png",
+    "screenspotpro/images/android_studio_mac/screenshot_2024-11-07_15-30-52.png",
+    "screenspotpro/images/android_studio_mac/screenshot_2024-11-05_16-08-03.png",
+    "screenspotpro/images/android_studio_mac/screenshot_2024-11-28_11-26-41.png",
+    "screenspotpro/images/android_studio_mac/screenshot_2024-11-05_17-58-41.png"
+  ],
+  "messages": [
+    {
+      "sender": "SYSTEM",
+      "recipient": "USER",
+      "content": "{{USER_INSTRUCTION}}ROUND 1 [provide: image_1, image_2, image_3, image_4, image_5, image_6]\nQuery: Look at the Finder window in the first image. I want to back up the files shown there. Check my local '~/backup/document' directory to see what's already there, then copy 'LLM_training.md' and 'train.py' from '~/Desktop/document' to the backup directory, since they are both in that document folder.\nInstructions: Tell the assistant to check the backup directory and copy the two files you mentioned from the document folder shown in the first image. If the assistant correctly points out that the python script is actually in a different folder (as seen in the code editor window), acknowledge the mistake and wait for the next turn. If the assistant blindly tries to copy it from the document folder without noticing the discrepancy, point out its error.\n\nROUND 2\nQuery: You're right, that python script is actually in the llava_training folder. Instead, just cross-reference and copy the file about deepspeed and the welcome file that you see in the document folder to my backup directory.\nInstructions: Acknowledge the correction about the script's location. Instruct the assistant to instead copy the deepspeed file and the welcome file from the document folder to your backup directory. Once the assistant confirms the files are copied, proceed to the next round.\n\nROUND 3\nQuery: Now let's check the python dependencies. Look at the imports in the training script shown in VS Code. Read my local '~/project/requirements.txt' file, cross-reference it with the external libraries imported in the script, and update the file to add any that are missing.\nInstructions: Ask the assistant to read your local requirements file and compare it with the external library imports visible in the Python script. Instruct it to update the file by adding any libraries that are missing. Wait for confirmation that the file has been updated before moving on.\n\nROUND 4\nQuery: I need to track the Android Studio issue. Look at the 5th image to find the specific error message in the notification panel. Cross-reference this error with my Todoist 'Bugs' project. If there isn't a task for this exact error, create one.\nInstructions: Instruct the assistant to look at the fifth image, find the specific error message in the notification panel, and check your 'Bugs' project. Tell it to create a new task for this exact error if one doesn't already exist. Proceed once the task is handled.\n\nROUND 5\nQuery: Finally, I need some focus music. Look at the 4th image, there's a song playing in the top menu bar. Cross-reference it with my Spotify 'Focus' playlist. If that song isn't already there, search for it and add it to the playlist.\nInstructions: Ask the assistant to read the name of the currently playing song from the menu bar in the fourth image. Instruct it to check your 'Focus' playlist and add the song if it's not already there. Conclude the conversation once the song is successfully added.\n\nYou have 6 images available to share with the agent using the send_message_with_image tool.\nIMPORTANT: Image IDs are ZERO-INDEXED integers (0, 1, 2, ...). Do NOT add 1 to the IDs.\nAvailable image IDs: [0, 1, 2, 3, 4, 5]\nImage mapping:\n  image_1.jpg -> image ID 0\n  image_2.jpg -> image ID 1\n  image_3.jpg -> image ID 2\n  image_4.jpg -> image ID 3\n  image_5.jpg -> image ID 4\n  image_6.jpg -> image ID 5"
+    },
+    {
+      "sender": "USER",
+      "recipient": "AGENT",
+      "content": "Look at the Finder window in the first image. I want to back up the files shown there. Check my local '~/backup/document' directory to see what's already there, then copy 'LLM_training.md' and 'train.py' from '~/Desktop/document' to the backup directory, since they are both in that document folder.",
+      "image_ids": [
+        0,
+        1,
+        2,
+        3,
+        4,
+        5
+      ]
+    }
+  ],
+  "milestones": [],
+  "entity_diff_specs": [
+    {
+      "operation": "create",
+      "source": "appworld",
+      "table": "todoist.tasks",
+      "entity_data": {
+        "project_id": 400,
+        "section_id": null,
+        "user_id": 106,
+        "title": "SDK not found",
+        "description": null,
+        "due_date": null,
+        "priority": "medium",
+        "is_completed": false,
+        "duration": null,
+        "duration_unit": null,
+        "order_index": 2,
+        "assignee_id": null,
+        "assigner_id": null,
+        "created_at": "2026-04-17T00:17:45"
+      },
+      "column_similarity_measure": {
+        "project_id": "column_exact_match_similarity",
+        "section_id": "column_ignore_similarity",
+        "user_id": "column_exact_match_similarity",
+        "title": "column_rouge_l_similarity",
+        "description": "column_ignore_similarity",
+        "due_date": "column_ignore_similarity",
+        "priority": "column_exact_match_similarity",
+        "is_completed": "column_exact_match_similarity",
+        "duration": "column_ignore_similarity",
+        "duration_unit": "column_ignore_similarity",
+        "order_index": "column_ignore_similarity",
+        "assignee_id": "column_ignore_similarity",
+        "assigner_id": "column_ignore_similarity",
+        "created_at": "column_ignore_similarity"
+      }
+    },
+    {
+      "operation": "create",
+      "source": "appworld",
+      "table": "spotify.playlist_songs",
+      "entity_data": {
+        "playlist_id": 800,
+        "song_id": 201,
+        "added_at": "2026-04-17T00:17:45"
+      },
+      "column_similarity_measure": {
+        "playlist_id": "column_exact_match_similarity",
+        "song_id": "column_exact_match_similarity",
+        "added_at": "column_ignore_similarity"
+      }
+    },
+    {
+      "operation": "create",
+      "source": "appworld",
+      "table": "file_system.files",
+      "entity_data": {
+        "path": "backup/document/deepspeed_finetune.md",
+        "tilde_path": "backup/document/deepspeed_finetune.md",
+        "user_id": 106,
+        "content": "# DeepSpeed Finetuning Guide\nSteps to finetune models using DeepSpeed.",
+        "compressed_data": [],
+        "created_at": "2026-04-17T00:17:45",
+        "updated_at": "2026-04-17T00:17:45"
+      },
+      "column_similarity_measure": {
+        "path": "column_contains_similarity",
+        "tilde_path": "column_contains_similarity",
+        "user_id": "column_exact_match_similarity",
+        "content": "column_rouge_l_similarity",
+        "compressed_data": "column_ignore_similarity",
+        "created_at": "column_ignore_similarity",
+        "updated_at": "column_ignore_similarity"
+      }
+    },
+    {
+      "operation": "create",
+      "source": "appworld",
+      "table": "file_system.files",
+      "entity_data": {
+        "path": "backup/document/Welcome.md",
+        "tilde_path": "backup/document/Welcome.md",
+        "user_id": 106,
+        "content": "# Welcome\nWelcome to the documentation folder.",
+        "compressed_data": [],
+        "created_at": "2026-04-17T00:17:45",
+        "updated_at": "2026-04-17T00:17:45"
+      },
+      "column_similarity_measure": {
+        "path": "column_contains_similarity",
+        "tilde_path": "column_contains_similarity",
+        "user_id": "column_exact_match_similarity",
+        "content": "column_rouge_l_similarity",
+        "compressed_data": "column_ignore_similarity",
+        "created_at": "column_ignore_similarity",
+        "updated_at": "column_ignore_similarity"
+      }
+    },
+    {
+      "operation": "update",
+      "source": "appworld",
+      "table": "file_system.files",
+      "entity_id_column": "id",
+      "entity_id_value": 26001,
+      "expected_fields": {
+        "updated_at": "2026-04-16T15:30:00",
+        "content": "numpy\nrequests\ntorch\ntransformers\ntokenizers\nPIL\n"
+      },
+      "column_similarity_measure": {
+        "updated_at": "column_ignore_similarity",
+        "content": "column_rouge_l_similarity",
+        "id": "column_exact_match_similarity"
+      }
+    }
+  ],
+  "task_completion_criteria": "Copy 'deepspeed_finetune.md' and 'Welcome.md' to '~/backup/document', add missing dependencies ('torch', 'transformers', 'tokenizers', 'PIL', or similar) to '~/project/requirements.txt', create a Todoist task for the 'SDK not found' error in the 'Bugs' project, and add the song 'I was fascinated' to the 'Focus' Spotify playlist.",
+  "categories": [
+    "APPWORLD",
+    "MULTIPLE_USER_TURN"
+  ],
+  "max_messages": 100,
+  "metadata": {
+    "original_scenario_id": "scenario_0912",
+    "expected_tools": [
+      "file_system_show_directory",
+      "file_system_copy_file",
+      "file_system_show_file",
+      "file_system_update_file",
+      "todoist_show_project",
+      "todoist_show_tasks",
+      "todoist_create_task",
+      "spotify_show_playlist",
+      "spotify_show_song",
+      "spotify_add_song_to_playlist"
+    ],
+    "image_arrival": {
+      "1": [
+        "image_1",
+        "image_2",
+        "image_3",
+        "image_4",
+        "image_5",
+        "image_6"
+      ]
+    },
+    "image_delivery_map": [],
+    "scenario_metadata": {
+      "num_images": 6,
+      "num_user_rounds": 5,
+      "selected_flow_type": "cross_reference",
+      "image_arrival": "upfront",
+      "challenge_type": "error_correction",
+      "require_disambiguation": false,
+      "dataset_type": "screenspotpro"
+    }
+  }
+}

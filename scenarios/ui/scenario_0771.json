@@ -1,0 +1,391 @@
+{
+  "name": "scenario_0771",
+  "base_scenario": "base",
+  "description": "The user is managing a hardware integration project and needs to purchase specific electronic and mechanical components based on benchmark data and technical specifications. (UI mode)",
+  "difficulty": "easy",
+  "appworld_base_task": "_base_",
+  "device_state_id": "caiburc@gmail.com",
+  "reference_time": "2026-04-17T00:13:47.872732+00:00",
+  "agentsandbox_entities": {},
+  "appworld_entities": {
+    "todoist.projects": [
+      {
+        "id": 400,
+        "user_id": 33,
+        "name": "ALPHA-99",
+        "color": "charcoal",
+        "is_inbox": false,
+        "description": "Hardware integration project",
+        "created_at": "2026-04-10T10:00:00"
+      }
+    ],
+    "todoist.tasks": [
+      {
+        "id": 6500,
+        "project_id": 400,
+        "section_id": null,
+        "user_id": 33,
+        "title": "Buy mounting bolts",
+        "description": null,
+        "due_date": null,
+        "priority": "medium",
+        "is_completed": false,
+        "duration": null,
+        "duration_unit": null,
+        "order_index": 1,
+        "assignee_id": null,
+        "assigner_id": null,
+        "created_at": "2026-04-10T10:05:00"
+      },
+      {
+        "id": 6501,
+        "project_id": 400,
+        "section_id": null,
+        "user_id": 33,
+        "title": "Buy electronic board",
+        "description": null,
+        "due_date": null,
+        "priority": "medium",
+        "is_completed": false,
+        "duration": null,
+        "duration_unit": null,
+        "order_index": 2,
+        "assignee_id": null,
+        "assigner_id": null,
+        "created_at": "2026-04-10T10:06:00"
+      },
+      {
+        "id": 6502,
+        "project_id": 400,
+        "section_id": null,
+        "user_id": 33,
+        "title": "Buy implement",
+        "description": null,
+        "due_date": null,
+        "priority": "medium",
+        "is_completed": false,
+        "duration": null,
+        "duration_unit": null,
+        "order_index": 3,
+        "assignee_id": null,
+        "assigner_id": null,
+        "created_at": "2026-04-10T10:07:00"
+      }
+    ],
+    "amazon.sellers": [
+      {
+        "id": 200,
+        "name": "TechHardware Store",
+        "rating": 4.8
+      }
+    ],
+    "amazon.products": [
+      {
+        "id": 200,
+        "product_type": "electronics",
+        "name": "Raspberry Pi 4 Model B",
+        "description": "High-performance board, perfect for the ALPHA-99 Wish List.",
+        "seller_id": 200,
+        "price": 45.99,
+        "delivery_days": 2,
+        "inventory_quantity": 50,
+        "weight": 0.1,
+        "length": 3.5,
+        "width": 2.2,
+        "height": 0.7,
+        "color": "Green",
+        "relative_size": "small",
+        "rating": 4.9,
+        "seller_rating": 4.8,
+        "has_variations": false
+      },
+      {
+        "id": 201,
+        "product_type": "tools",
+        "name": "Universal Hot Surface Igniter",
+        "description": "Black implement tool for mechanical assembly.",
+        "seller_id": 200,
+        "price": 15.5,
+        "delivery_days": 3,
+        "inventory_quantity": 100,
+        "weight": 0.2,
+        "length": 4.0,
+        "width": 1.0,
+        "height": 1.0,
+        "color": "Black",
+        "relative_size": "small",
+        "rating": 4.5,
+        "seller_rating": 4.8,
+        "has_variations": false
+      },
+      {
+        "id": 202,
+        "product_type": "hardware",
+        "name": "M12x40 Mounting Bolts (Pack of 20)",
+        "description": "Standard M12x40 bolts for AF**-6 410bar size 25-6.",
+        "seller_id": 200,
+        "price": 12.99,
+        "delivery_days": 2,
+        "inventory_quantity": 20,
+        "weight": 1.5,
+        "length": 5.0,
+        "width": 4.0,
+        "height": 2.0,
+        "color": "Silver",
+        "relative_size": "small",
+        "rating": 4.7,
+        "seller_rating": 4.8,
+        "has_variations": true
+      },
+      {
+        "id": 203,
+        "product_type": "hardware",
+        "name": "M8x30 Mounting Bolts (Pack of 50)",
+        "description": "Standard M8x30 bolts for AFAG 13-6.",
+        "seller_id": 200,
+        "price": 9.99,
+        "delivery_days": 2,
+        "inventory_quantity": 40,
+        "weight": 1.0,
+        "length": 4.0,
+        "width": 3.0,
+        "height": 1.5,
+        "color": "Silver",
+        "relative_size": "small",
+        "rating": 4.6,
+        "seller_rating": 4.8,
+        "has_variations": true
+      },
+      {
+        "id": 204,
+        "product_type": "hardware",
+        "name": "M12x65 Mounting Bolts (Pack of 20)",
+        "description": "Extended M12x65 bolts for AFKVG 33.7x7.1.",
+        "seller_id": 200,
+        "price": 14.99,
+        "delivery_days": 2,
+        "inventory_quantity": 30,
+        "weight": 2.0,
+        "length": 6.0,
+        "width": 4.0,
+        "height": 2.0,
+        "color": "Silver",
+        "relative_size": "small",
+        "rating": 4.8,
+        "seller_rating": 4.8,
+        "has_variations": true
+      }
+    ],
+    "simple_note.notes": [
+      {
+        "id": 3200,
+        "user_id": 33,
+        "title": "Current Project",
+        "content": "iPhone 12 Pro Max integration - Project code: ALPHA-99",
+        "tags": [
+          "project"
+        ],
+        "created_at": "2026-04-01T10:00:00",
+        "updated_at": "2026-04-01T10:00:00",
+        "pinned": false,
+        "data": {}
+      },
+      {
+        "id": 3201,
+        "user_id": 33,
+        "title": "Old Project",
+        "content": "iPhone 12 Pro Max teardown - Project code: BETA-44",
+        "tags": [
+          "project",
+          "archive"
+        ],
+        "created_at": "2025-10-01T10:00:00",
+        "updated_at": "2025-10-01T10:00:00",
+        "pinned": false,
+        "data": {}
+      }
+    ],
+    "todoist.project_collaborator_links": [
+      {
+        "id": 50400,
+        "project_id": 400,
+        "user_id": 33,
+        "is_favorite": false,
+        "is_archived": false,
+        "created_at": "2026-04-10T10:00:00"
+      }
+    ],
+    "gmail.users": []
+  },
+  "image_paths": [
+    "worldvqa/images/1535.jpg",
+    "chartqapro/images/chart_1510.jpg",
+    "screenspotpro/images/inventor_windows/screenshot_2024-11-24_12-34-26.png",
+    "hiertext/images/test/38361941a4133ebc.jpg",
+    "screenspotpro/images/inventor_windows/screenshot_2024-11-24_11-37-30.png",
+    "screenspotpro/images/inventor_windows/screenshot_2024-11-24_12-42-22.png"
+  ],
+  "messages": [
+    {
+      "sender": "SYSTEM",
+      "recipient": "USER",
+      "content": "{{USER_INSTRUCTION}}ROUND 1 [provide: image_2]\nQuery: Look at this chart. Figure out which smartphone has the highest multi-core score, and search my notes to find the project code associated with it.\nInstructions: Ask the assistant to identify the phone with the highest multi-core score from the chart and search your notes for its project code. Since you have multiple notes mentioning this phone, the assistant should present the matching notes for you to choose from. When it asks or presents the options, select 'Current Project' via `ui_user_interact`. If no interactive UI is shown, tell the assistant you need the code for the 'Current Project'. Once it gives you the project code, proceed to the next round.\n\nROUND 2\nQuery: Now look up the Todoist project matching that project code and check its tasks so we know what components need to be purchased.\nInstructions: Ask the assistant to find the Todoist project using the code retrieved in the previous step and list its tasks so you know what to buy. Wait for the assistant to read out the tasks, then move on.\n\nROUND 3 [provide: image_4, image_1]\nQuery: Here are the first two physical components we need. Identify the board in the first image and the specific tool in the second image. Search Amazon for both and add them to the project's wish list.\nInstructions: Provide the two images. Ask the assistant to identify the green circuit board in the first image and the black implement in the second image, then search Amazon for both items and add them to the project's wish list. If the assistant asks for the wish list name, tell it to use the wish list named after the project code. Once confirmed, proceed.\n\nROUND 4 [provide: image_3, image_5]\nQuery: Here are the technical docs for the mechanical assembly. Find the required bolt size for the AF**-6 410bar size 25-6 in the first spreadsheet, and for the AFAG 13-6 in the second document. Search Amazon for both bolt sizes and add them to the same wish list.\nInstructions: Share the two technical documents. Ask the assistant to find the bolt size for the 'AF**-6 410bar' size '25-6' in the first document, and the bolt size for the 'AFAG 13-6' in the second document. Then have it search Amazon for both bolt sizes and add them to the wish list. Once it confirms they are added, proceed.\n\nROUND 5 [provide: image_6]\nQuery: Wait, there's an updated spec sheet. Check this new document for the AFKVG 33.7x7.1 bolt size. Remove the bolts we added for the 25-6 size from the wish list, add these new ones instead, and mark the 'Buy mounting bolts' task as complete in Todoist.\nInstructions: Share the updated specification document. Ask the assistant to find the bolt size for the 'AFKVG 33.7x7.1' part. Instruct it to remove the bolts you previously added for the 25-6 size from the wish list, add the newly identified bolts, and then mark the 'Buy mounting bolts' task as complete in Todoist. Once the assistant confirms all actions are done, end the conversation.\n\nYou have 6 images available to share with the agent using the send_message_with_image tool.\nIMPORTANT: Image IDs are ZERO-INDEXED integers (0, 1, 2, ...). Do NOT add 1 to the IDs.\nAvailable image IDs: [0, 1, 2, 3, 4, 5]\nImage mapping:\n  image_1.jpg -> image ID 0\n  image_2.jpg -> image ID 1\n  image_3.jpg -> image ID 2\n  image_4.jpg -> image ID 3\n  image_5.jpg -> image ID 4\n  image_6.jpg -> image ID 5\n\n## IMAGE DELIVERY\n\n⚠️ IMPORTANT: You MUST use the `send_message_with_image` tool to share images with User B. Do NOT just describe images in text — you MUST call the tool.\n\nImage delivery schedule:\n\n  Round 3: YOU MUST call the send_message_with_image tool with image_ids='3,0' — do NOT write the tool name as text; use the actual function call. Include a natural, conversational message to the assistant.\n  Round 4: YOU MUST call the send_message_with_image tool with image_ids='2,4' — do NOT write the tool name as text; use the actual function call. Include a natural, conversational message to the assistant.\n  Round 5: YOU MUST call the send_message_with_image tool with image_ids='5' — do NOT write the tool name as text; use the actual function call. Include a natural, conversational message to the assistant."
+    },
+    {
+      "sender": "USER",
+      "recipient": "AGENT",
+      "content": "Look at this chart. Figure out which smartphone has the highest multi-core score, and search my notes to find the project code associated with it.",
+      "image_ids": [
+        1
+      ]
+    }
+  ],
+  "milestones": [],
+  "entity_diff_specs": [
+    {
+      "operation": "create",
+      "source": "appworld",
+      "table": "amazon.wish_list_entries",
+      "entity_data": {
+        "user_id": 33,
+        "product_id": 200,
+        "quantity": 1
+      },
+      "column_similarity_measure": {
+        "user_id": "column_exact_match_similarity",
+        "product_id": "column_exact_match_similarity",
+        "quantity": "column_exact_match_similarity"
+      }
+    },
+    {
+      "operation": "create",
+      "source": "appworld",
+      "table": "amazon.wish_list_entries",
+      "entity_data": {
+        "user_id": 33,
+        "product_id": 201,
+        "quantity": 1
+      },
+      "column_similarity_measure": {
+        "user_id": "column_exact_match_similarity",
+        "product_id": "column_exact_match_similarity",
+        "quantity": "column_exact_match_similarity"
+      }
+    },
+    {
+      "operation": "create",
+      "source": "appworld",
+      "table": "amazon.wish_list_entries",
+      "entity_data": {
+        "user_id": 33,
+        "product_id": 203,
+        "quantity": 1
+      },
+      "column_similarity_measure": {
+        "user_id": "column_exact_match_similarity",
+        "product_id": "column_exact_match_similarity",
+        "quantity": "column_exact_match_similarity"
+      }
+    },
+    {
+      "operation": "create",
+      "source": "appworld",
+      "table": "amazon.wish_list_entries",
+      "entity_data": {
+        "user_id": 33,
+        "product_id": 204,
+        "quantity": 1
+      },
+      "column_similarity_measure": {
+        "user_id": "column_exact_match_similarity",
+        "product_id": "column_exact_match_similarity",
+        "quantity": "column_exact_match_similarity"
+      }
+    },
+    {
+      "operation": "update",
+      "source": "appworld",
+      "table": "todoist.tasks",
+      "entity_id_column": "id",
+      "entity_id_value": 6500,
+      "expected_fields": {
+        "is_completed": true
+      },
+      "column_similarity_measure": {
+        "is_completed": "column_exact_match_similarity",
+        "id": "column_exact_match_similarity"
+      }
+    }
+  ],
+  "task_completion_criteria": "Identify the iPhone 12 Pro Max as the smartphone with the highest multi-core score from the chart, and find its project code (ALPHA-99) from the 'Current Project' note. Look up the 'ALPHA-99' Todoist project to check its tasks. Identify the Raspberry Pi and Igniter from the images and add them to the 'ALPHA-99 Wish List' on Amazon. Find the M12x40 bolts for the AF**-6 410bar size 25-6 and the M8x30 bolts for the AFAG 13-6 from the technical documents, and add both to the wish list. Finally, identify the M12x65 bolts for the AFKVG 33.7x7.1 from the updated document, remove the M12x40 bolts from the wish list, add the M12x65 bolts, and mark the 'Buy mounting bolts' task as complete in Todoist.\n\nUI Requirements:\n- Round 1: The agent must present the matching notes in a structured interactive UI that lets the user select which project note to use for the project code.",
+  "categories": [
+    "APPWORLD",
+    "MULTIPLE_USER_TURN",
+    "UI_MODE"
+  ],
+  "max_messages": 100,
+  "metadata": {
+    "original_scenario_id": "scenario_0771",
+    "expected_tools": [
+      "simple_note_show_note",
+      "todoist_show_project",
+      "todoist_show_tasks",
+      "amazon_show_product",
+      "amazon_add_product_to_wish_list",
+      "amazon_delete_product_from_wish_list",
+      "todoist_update_task",
+      "render_ui_screen",
+      "show_ui_to_user",
+      "ui_user_interact",
+      "ui_get_quick_start",
+      "ui_get_item_details"
+    ],
+    "image_arrival": {
+      "1": [
+        "image_2"
+      ],
+      "3": [
+        "image_4",
+        "image_1"
+      ],
+      "4": [
+        "image_3",
+        "image_5"
+      ],
+      "5": [
+        "image_6"
+      ]
+    },
+    "image_delivery_map": [
+      {
+        "query": "Here are the first two physical components we need. Identify the board in the first image and the specific tool in the second image. Search Amazon for both and add them to the project's wish list.",
+        "image_ids": [
+          3,
+          0
+        ]
+      },
+      {
+        "query": "Here are the technical docs for the mechanical assembly. Find the required bolt size for the AF**-6 410bar size 25-6 in the first spreadsheet, and for the AFAG 13-6 in the second document. Search Amazon for both bolt sizes and add them to the same wish list.",
+        "image_ids": [
+          2,
+          4
+        ]
+      },
+      {
+        "query": "Wait, there's an updated spec sheet. Check this new document for the AFKVG 33.7x7.1 bolt size. Remove the bolts we added for the 25-6 size from the wish list, add these new ones instead, and mark the 'Buy mounting bolts' task as complete in Todoist.",
+        "image_ids": [
+          5
+        ]
+      }
+    ],
+    "scenario_metadata": {
+      "num_images": 6,
+      "num_user_rounds": 5,
+      "selected_flow_type": "lookup_chain",
+      "image_arrival": "mixed",
+      "challenge_type": "state_mutation",
+      "require_disambiguation": true,
+      "dataset_type": "screenspotpro"
+    }
+  }
+}

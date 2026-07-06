@@ -1,0 +1,277 @@
+{
+  "name": "scenario_0865",
+  "base_scenario": "base",
+  "description": "The user is shopping for a gift for their nephew and initially decides on a Lego set, but later receives alternative toy suggestions from their sister. (UI mode)",
+  "difficulty": "easy",
+  "appworld_base_task": "_base_",
+  "device_state_id": "connorbrow@gmail.com",
+  "reference_time": "2026-04-17T00:16:27.860434+00:00",
+  "agentsandbox_entities": {},
+  "appworld_entities": {
+    "amazon.sellers": [
+      {
+        "id": 200,
+        "name": "Lego Official",
+        "rating": 4.8
+      },
+      {
+        "id": 201,
+        "name": "Funko Store",
+        "rating": 4.7
+      },
+      {
+        "id": 202,
+        "name": "Plush Toys Hub",
+        "rating": 4.6
+      },
+      {
+        "id": 203,
+        "name": "Smart Pals Inc",
+        "rating": 4.5
+      },
+      {
+        "id": 204,
+        "name": "NICI Official",
+        "rating": 4.6
+      },
+      {
+        "id": 205,
+        "name": "Jellycat Store",
+        "rating": 4.9
+      },
+      {
+        "id": 206,
+        "name": "Steiff Official",
+        "rating": 4.8
+      }
+    ],
+    "amazon.products": [
+      {
+        "id": 200,
+        "product_type": "toys",
+        "name": "Lego Star Wars Millennium Falcon",
+        "description": "Build the iconic Millennium Falcon from Star Wars.",
+        "seller_id": 200,
+        "price": 159.99,
+        "delivery_days": 2,
+        "inventory_quantity": 50,
+        "weight": 2.5,
+        "length": 15.0,
+        "width": 10.0,
+        "height": 5.0,
+        "color": null,
+        "relative_size": null,
+        "rating": 4.9,
+        "seller_rating": 4.8,
+        "has_variations": false
+      },
+      {
+        "id": 201,
+        "product_type": "toys",
+        "name": "Funko POP Star Wars Figure",
+        "description": "Collectible vinyl figure of a Star Wars character.",
+        "seller_id": 201,
+        "price": 11.99,
+        "delivery_days": 2,
+        "inventory_quantity": 100,
+        "weight": 0.3,
+        "length": 3.0,
+        "width": 3.0,
+        "height": 4.0,
+        "color": null,
+        "relative_size": null,
+        "rating": 4.7,
+        "seller_rating": 4.7,
+        "has_variations": false
+      },
+      {
+        "id": 202,
+        "product_type": "toys",
+        "name": "StellaLou Plush",
+        "description": "Soft and cuddly StellaLou plush bunny.",
+        "seller_id": 202,
+        "price": 24.99,
+        "delivery_days": 3,
+        "inventory_quantity": 30,
+        "weight": 0.5,
+        "length": 5.0,
+        "width": 4.0,
+        "height": 12.0,
+        "color": null,
+        "relative_size": null,
+        "rating": 4.8,
+        "seller_rating": 4.6,
+        "has_variations": false
+      },
+      {
+        "id": 203,
+        "product_type": "toys",
+        "name": "Poketomo Pocket Smart Pal",
+        "description": "Interactive virtual pet and smart pal.",
+        "seller_id": 203,
+        "price": 19.99,
+        "delivery_days": 4,
+        "inventory_quantity": 20,
+        "weight": 0.2,
+        "length": 2.5,
+        "width": 2.5,
+        "height": 1.0,
+        "color": null,
+        "relative_size": null,
+        "rating": 4.5,
+        "seller_rating": 4.5,
+        "has_variations": false
+      },
+      {
+        "id": 204,
+        "product_type": "toys",
+        "name": "NICI Winnie Wolf Plush",
+        "description": "Adorable Winnie Wolf plush toy.",
+        "seller_id": 204,
+        "price": 17.99,
+        "delivery_days": 3,
+        "inventory_quantity": 40,
+        "weight": 0.4,
+        "length": 6.0,
+        "width": 4.0,
+        "height": 8.0,
+        "color": null,
+        "relative_size": null,
+        "rating": 4.6,
+        "seller_rating": 4.6,
+        "has_variations": false
+      },
+      {
+        "id": 205,
+        "product_type": "toys",
+        "name": "Jellycat Sky Dragon",
+        "description": "Super soft and fluffy sky dragon plush.",
+        "seller_id": 205,
+        "price": 35.0,
+        "delivery_days": 2,
+        "inventory_quantity": 15,
+        "weight": 0.6,
+        "length": 10.0,
+        "width": 5.0,
+        "height": 5.0,
+        "color": null,
+        "relative_size": null,
+        "rating": 4.9,
+        "seller_rating": 4.9,
+        "has_variations": false
+      },
+      {
+        "id": 206,
+        "product_type": "toys",
+        "name": "Steiff Paddington Bear",
+        "description": "Classic collectible Paddington Bear.",
+        "seller_id": 206,
+        "price": 45.0,
+        "delivery_days": 5,
+        "inventory_quantity": 10,
+        "weight": 0.8,
+        "length": 6.0,
+        "width": 5.0,
+        "height": 10.0,
+        "color": null,
+        "relative_size": null,
+        "rating": 4.9,
+        "seller_rating": 4.8,
+        "has_variations": false
+      }
+    ],
+    "gmail.users": []
+  },
+  "image_paths": [
+    "worldvqa/images/1774.jpg",
+    "worldvqa/images/1602.jpg",
+    "worldvqa/images/1747.jpg",
+    "worldvqa/images/1767.jpg",
+    "worldvqa/images/1757.jpg",
+    "worldvqa/images/1758.jpg"
+  ],
+  "messages": [
+    {
+      "sender": "SYSTEM",
+      "recipient": "USER",
+      "content": "{{USER_INSTRUCTION}}ROUND 1\nQuery: Can you search for the Lego Star Wars Millennium Falcon on Amazon and add it to my shopping cart? I'm getting it for my nephew.\nInstructions: Ask the assistant to search Amazon for the 'Lego Star Wars Millennium Falcon' and add it to your shopping cart. If the assistant asks which specific model or edition to add, tell it to choose the standard or most popular one available. Once the assistant confirms the item has been added to the cart, move on to the next round.\n\nROUND 2 [provide: image_1, image_2, image_3, image_4, image_5, image_6]\nQuery: Actually, let's change the plan. My sister just sent me these photos of toys he might like better. Please find all six of these on Amazon and look up their prices — I'll pick the one I want. Oh, and remove that Lego set from my cart.\nInstructions: Tell the assistant you've changed your mind. Provide the images of the toys and ask the assistant to identify all of them, look up their current prices on Amazon, and present them for you to choose from. Also instruct the assistant to remove the Lego set from your shopping cart. When the assistant presents the toys with prices, select the cheapest one and add it to your wish list via `ui_user_interact`. If no interactive UI is shown, tell the assistant to add the cheapest one to your wish list. If the assistant struggles to identify any of the toys, encourage it to use the visual details from the images to search. Once the cheapest toy is on your wish list and the Lego set is removed from your cart, end the conversation.\n\nYou have 6 images available to share with the agent using the send_message_with_image tool.\nIMPORTANT: Image IDs are ZERO-INDEXED integers (0, 1, 2, ...). Do NOT add 1 to the IDs.\nAvailable image IDs: [0, 1, 2, 3, 4, 5]\nImage mapping:\n  image_1.jpg -> image ID 0\n  image_2.jpg -> image ID 1\n  image_3.jpg -> image ID 2\n  image_4.jpg -> image ID 3\n  image_5.jpg -> image ID 4\n  image_6.jpg -> image ID 5\n\n## IMAGE DELIVERY\n\n⚠️ IMPORTANT: You MUST use the `send_message_with_image` tool to share images with User B. Do NOT just describe images in text — you MUST call the tool.\n\nImage delivery schedule:\n\n  Round 2: YOU MUST call the send_message_with_image tool with image_ids='0,1,2,3,4,5' — do NOT write the tool name as text; use the actual function call. Include a natural, conversational message to the assistant."
+    },
+    {
+      "sender": "USER",
+      "recipient": "AGENT",
+      "content": "Can you search for the Lego Star Wars Millennium Falcon on Amazon and add it to my shopping cart? I'm getting it for my nephew."
+    }
+  ],
+  "milestones": [],
+  "entity_diff_specs": [
+    {
+      "operation": "create",
+      "source": "appworld",
+      "table": "amazon.wish_list_entries",
+      "entity_data": {
+        "user_id": 91,
+        "product_id": 201,
+        "quantity": 1
+      },
+      "column_similarity_measure": {
+        "user_id": "column_exact_match_similarity",
+        "product_id": "column_exact_match_similarity",
+        "quantity": "column_exact_match_similarity"
+      }
+    }
+  ],
+  "task_completion_criteria": "The cheapest toy among the Funko POP Star Wars figure, StellaLou plush, Poketomo Pocket Smart Pal, NICI Winnie Wolf plush, Jellycat Sky Dragon, and Steiff Paddington Bear is added to the user's Amazon wish list, and the user's Amazon shopping cart does not contain the Lego Star Wars Millennium Falcon.\n\nUI Requirements:\n- Round 2: The agent must present all six toy options with their Amazon prices in a structured interactive UI that lets the user select which toy to add to their wish list.",
+  "categories": [
+    "APPWORLD",
+    "MULTIPLE_USER_TURN",
+    "UI_MODE"
+  ],
+  "max_messages": 100,
+  "metadata": {
+    "original_scenario_id": "scenario_0865",
+    "expected_tools": [
+      "web_search_serper",
+      "amazon_show_product",
+      "amazon_add_product_to_cart",
+      "amazon_delete_product_from_cart",
+      "amazon_add_product_to_wish_list",
+      "render_ui_screen",
+      "show_ui_to_user",
+      "ui_user_interact",
+      "ui_get_quick_start",
+      "ui_get_item_details"
+    ],
+    "image_arrival": {
+      "2": [
+        "image_1",
+        "image_2",
+        "image_3",
+        "image_4",
+        "image_5",
+        "image_6"
+      ]
+    },
+    "image_delivery_map": [
+      {
+        "query": "Actually, let's change the plan. My sister just sent me these photos of toys he might like better. Please find all six of these on Amazon and look up their prices — I'll pick the one I want. Oh, and remove that Lego set from my cart.",
+        "image_ids": [
+          0,
+          1,
+          2,
+          3,
+          4,
+          5
+        ]
+      }
+    ],
+    "scenario_metadata": {
+      "num_images": 6,
+      "num_user_rounds": 2,
+      "selected_flow_type": "compare",
+      "image_arrival": "late",
+      "challenge_type": "goal_change",
+      "require_disambiguation": false,
+      "dataset_type": "worldvqa"
+    }
+  }
+}

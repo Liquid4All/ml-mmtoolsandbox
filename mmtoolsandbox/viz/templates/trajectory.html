@@ -1,0 +1,1670 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Trajectory Visualizer</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/styles/github.min.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/highlight.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/languages/python.min.js"></script>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
+            background: #f5f5f5;
+            padding: 10px;
+            line-height: 1.5;
+            font-size: 12px;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            background: white;
+            border-radius: 8px;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+            padding: 20px;
+        }
+
+        h1 {
+            color: #333;
+            margin-bottom: 20px;
+            padding-bottom: 8px;
+            font-size: 20px;
+        }
+
+        h2 {
+            color: #333;
+            margin-top: 30px;
+            margin-bottom: 15px;
+            font-size: 16px;
+        }
+
+        .message {
+            margin-bottom: 15px;
+            padding: 15px;
+            border-radius: 4px;
+            border: 1px solid #ddd;
+        }
+
+        .message.system {
+            background: #f0f0f0;
+            border-color: #9E9E9E;
+        }
+
+        .message.user {
+            background: #e3f2fd;
+            border-color: #2196F3;
+        }
+
+        .message.assistant {
+            background: #f1f8e9;
+            border-color: #4CAF50;
+        }
+
+        .message.tool,
+        .message.execution-result {
+            background: #fff3e0;
+            border-color: #FF9800;
+        }
+
+        .role {
+            font-weight: bold;
+            font-size: 9px;
+            text-transform: uppercase;
+            display: block;
+            margin-bottom: 4px;
+        }
+
+        .role.system {
+            color: #9E9E9E;
+        }
+
+        .role.user {
+            color: #2196F3;
+        }
+
+        .role.assistant {
+            color: #4CAF50;
+        }
+
+        .role.tool,
+        .role.execution-result {
+            color: #FF9800;
+        }
+
+        .content {
+            margin-top: 10px;
+            white-space: pre-wrap;
+            word-wrap: break-word;
+            font-size: 12px;
+        }
+
+        .text-content {
+            color: #333;
+        }
+
+        .reasoning-trace {
+            background: white;
+            padding: 8px;
+            border-radius: 4px;
+            margin-top: 8px;
+            border: 1px solid #FF9800;
+        }
+
+        .reasoning-label {
+            font-weight: bold;
+            font-size: 11px;
+            color: #FF9800;
+            text-transform: uppercase;
+            margin-bottom: 4px;
+        }
+
+        .reasoning-content {
+            font-size: 12px;
+            color: #333;
+            white-space: pre-wrap;
+            word-wrap: break-word;
+            margin: 0;
+            padding: 0;
+        }
+
+        .message.tool .text-content {
+            font-family: 'Monaco', 'Menlo', 'Courier New', monospace;
+            font-size: 11px;
+            background: white;
+            padding: 8px;
+            border-radius: 4px;
+            overflow-x: auto;
+            white-space: pre-wrap;
+        }
+
+        .tool-result-box {
+            background: white;
+            padding: 8px;
+            border-radius: 4px;
+            margin-top: 8px;
+            border: 1px solid #FF9800;
+        }
+
+        .tool-call {
+            background: white;
+            padding: 8px;
+            border-radius: 4px;
+            margin-top: 8px;
+            border: 1px solid #4CAF50;
+        }
+
+        .tool-name {
+            font-weight: bold;
+            color: #f57f17;
+            margin-bottom: 8px;
+        }
+
+        .tool-args {
+            font-family: 'Monaco', 'Menlo', 'Courier New', monospace;
+            font-size: 11px;
+            overflow-x: auto;
+            max-height: 300px;
+            overflow-y: auto;
+            white-space: pre-wrap;
+        }
+
+        .tool-result {
+            font-family: 'Monaco', 'Menlo', 'Courier New', monospace;
+            font-size: 11px;
+            overflow-x: auto;
+            max-height: 300px;
+            overflow-y: auto;
+            white-space: pre-wrap;
+        }
+
+        .image-container {
+            margin-top: 10px;
+            max-width: 100%;
+        }
+
+        .image-container img {
+            max-width: 512px;
+            max-height: 512px;
+            height: auto;
+            border-radius: 4px;
+        }
+
+        .image-placeholder {
+            background: #f5f5f5;
+            padding: 20px;
+            border-radius: 4px;
+            border: 2px dashed #ddd;
+            color: #666;
+            font-style: italic;
+        }
+
+        .content-separator {
+            border-top: 1px solid #ddd;
+            margin: 10px 0;
+        }
+
+        .message.system .content-separator {
+            border-color: #9E9E9E;
+        }
+
+        .message.user .content-separator {
+            border-color: #2196F3;
+        }
+
+        .message.assistant .content-separator {
+            border-color: #4CAF50;
+        }
+
+        .message.tool .content-separator,
+        .message.execution-result .content-separator {
+            border-color: #FF9800;
+        }
+
+        .execution-result-content {
+            font-family: 'Monaco', 'Menlo', 'Courier New', monospace;
+            font-size: 11px;
+            background: white;
+            padding: 8px;
+            border-radius: 4px;
+            white-space: pre-wrap;
+            overflow-x: auto;
+            border: 1px solid #FF9800;
+            margin-top: 8px;
+        }
+
+        .assistant-code-block {
+            margin: 8px 0;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+            overflow: hidden;
+        }
+
+        .assistant-code-block pre {
+            margin: 0;
+            padding: 0;
+            font-family: 'Monaco', 'Menlo', 'Courier New', monospace;
+            font-size: 11px;
+            overflow-x: auto;
+            background: #f8f8f8;
+        }
+
+        .assistant-text-segment {
+            white-space: pre-wrap;
+            word-wrap: break-word;
+            margin: 6px 0;
+            color: #333;
+            font-size: 12px;
+        }
+
+        .metadata {
+            font-size: 12px;
+            color: #666;
+            margin-top: 10px;
+            padding-top: 10px;
+            border-top: 1px solid #eee;
+        }
+
+        .json-view {
+            background: #f5f5f5;
+            padding: 10px;
+            border-radius: 4px;
+            font-family: 'Monaco', 'Menlo', 'Courier New', monospace;
+            font-size: 12px;
+            overflow-x: auto;
+            max-height: 400px;
+            overflow-y: auto;
+        }
+
+        .eval-results {
+            margin-bottom: 30px;
+        }
+
+        .eval-results h1 {
+            font-size: 18px;
+            margin-bottom: 15px;
+            color: #333;
+        }
+
+        .eval-results h2 {
+            font-size: 14px;
+            margin-top: 20px;
+            margin-bottom: 10px;
+            color: #333;
+        }
+
+        .eval-metrics {
+            background: #f5f5f5;
+            padding: 15px;
+            border-radius: 4px;
+            margin-bottom: 15px;
+            border: 1px solid #9E9E9E;
+        }
+
+        .eval-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+            gap: 10px;
+        }
+
+        .eval-metric {
+            background: white;
+            padding: 10px;
+            border-radius: 4px;
+            border: 1px solid #9E9E9E;
+        }
+
+        .eval-label {
+            font-size: 10px;
+            color: #666;
+            text-transform: uppercase;
+            margin-bottom: 5px;
+        }
+
+        .eval-value {
+            font-family: 'Monaco', 'Menlo', 'Courier New', monospace;
+            font-size: 16px;
+            font-weight: bold;
+        }
+
+        .eval-value.success {
+            color: #2E7D32;
+        }
+
+        .eval-value.warning {
+            color: #F57F17;
+        }
+
+        .eval-value.error {
+            color: #C62828;
+        }
+
+        .category-badge {
+            display: inline-block;
+            background: #e3f2fd;
+            color: #1976D2;
+            padding: 4px 8px;
+            border-radius: 3px;
+            margin-right: 5px;
+            margin-bottom: 5px;
+            font-size: 10px;
+            font-family: 'Monaco', 'Menlo', 'Courier New', monospace;
+        }
+
+        .error-box {
+            background: #ffebee;
+            border: 1px solid #C62828;
+            padding: 15px;
+            border-radius: 4px;
+            margin-top: 15px;
+        }
+
+        .error-type {
+            font-weight: bold;
+            color: #C62828;
+            margin-bottom: 10px;
+            font-size: 12px;
+        }
+
+        .traceback {
+            background: white;
+            padding: 10px;
+            border-radius: 4px;
+            font-family: 'Monaco', 'Menlo', 'Courier New', monospace;
+            font-size: 10px;
+            white-space: pre-wrap;
+            max-height: 300px;
+            overflow-y: auto;
+        }
+
+        .score-bar {
+            width: 100%;
+            height: 8px;
+            background: #eee;
+            border-radius: 4px;
+            margin-top: 5px;
+            overflow: hidden;
+        }
+
+        .score-fill {
+            height: 100%;
+            transition: width 0.3s;
+        }
+
+        .score-fill.excellent {
+            background: #4CAF50;
+        }
+
+        .score-fill.good {
+            background: #FFC107;
+        }
+
+        .score-fill.poor {
+            background: #F44336;
+        }
+
+        .nav-buttons {
+            display: flex;
+            gap: 10px;
+            margin-bottom: 20px;
+            flex-wrap: wrap;
+        }
+
+        .nav-button {
+            padding: 6px 12px;
+            background: #2196F3;
+            color: white;
+            text-decoration: none;
+            border-radius: 4px;
+            font-size: 11px;
+            transition: background 0.2s;
+            border: none;
+            cursor: pointer;
+        }
+
+        .nav-button:hover {
+            background: #1976D2;
+        }
+
+        .nav-button:disabled,
+        .nav-button.disabled {
+            background: #ccc;
+            color: #666;
+            cursor: not-allowed;
+            pointer-events: none;
+        }
+
+        .nav-button.home {
+            background: #4CAF50;
+        }
+
+        .nav-button.home:hover {
+            background: #45a049;
+        }
+
+        .code-execution-block {
+            margin-top: 8px;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+            overflow: hidden;
+        }
+
+        .code-header {
+            background: #f5f5f5;
+            padding: 5px 10px;
+            font-size: 10px;
+            font-weight: bold;
+            color: #666;
+            border-bottom: 1px solid #ddd;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .code-content {
+            margin: 0;
+            padding: 0; /* Let highlight.js handle padding */
+
+            font-family: 'Monaco', 'Menlo', 'Courier New', monospace;
+            font-size: 11px;
+            overflow-x: auto;
+            background: #f8f8f8;
+        }
+
+        /* Override highlight.js background to match our theme */
+        .hljs {
+            background: #f8f8f8;
+            padding: 10px;
+        }
+
+        /* --- Perspective Toggle & Badges --- */
+
+        .perspective-toggle {
+            display: flex;
+            gap: 8px;
+            align-items: center;
+            margin-bottom: 20px;
+            padding: 10px 14px;
+            background: #f5f5f5;
+            border-radius: 6px;
+            border: 1px solid #e0e0e0;
+        }
+
+        .perspective-toggle-label {
+            font-size: 11px;
+            font-weight: bold;
+            color: #666;
+            margin-right: 4px;
+        }
+
+        .perspective-btn {
+            padding: 5px 12px;
+            border: 2px solid #ccc;
+            border-radius: 4px;
+            background: white;
+            cursor: pointer;
+            font-size: 11px;
+            font-weight: bold;
+            color: #666;
+            transition: all 0.15s;
+        }
+
+        .perspective-btn:hover {
+            border-color: #90CAF9;
+        }
+
+        .perspective-btn.active {
+            border-color: #1976D2;
+            background: #e3f2fd;
+            color: #1976D2;
+        }
+
+        .perspective-badge {
+            position: absolute;
+            top: 6px;
+            right: 6px;
+            font-size: 8px;
+            font-weight: bold;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            padding: 2px 6px;
+            border-radius: 3px;
+        }
+
+        .badge-agent {
+            background: #E8F5E9;
+            color: #2E7D32;
+            border: 1px solid #A5D6A7;
+        }
+
+        .badge-user {
+            background: #E3F2FD;
+            color: #1565C0;
+            border: 1px solid #90CAF9;
+        }
+
+        .badge-both {
+            background: #F3E5F5;
+            color: #7B1FA2;
+            border: 1px solid #CE93D8;
+        }
+
+        /* User-specific message colors */
+        .message.user_system {
+            background: #EDE7F6;
+            border-color: #673AB7;
+        }
+
+        .role.user_system {
+            color: #673AB7;
+        }
+
+        .message.user_tool_call {
+            background: #e3f2fd;
+            border-color: #2196F3;
+        }
+
+        .role.user_tool_call {
+            color: #2196F3;
+        }
+
+        .message.user_tool_result {
+            background: #FFF8E1;
+            border-color: #FFC107;
+        }
+
+        .role.user_tool_result {
+            color: #FFC107;
+        }
+
+        /* CSS-based view filtering */
+        body.view-agent .view-user-only { display: none; }
+        body.view-user .view-agent-only { display: none; }
+        /* body.view-both shows everything (default) */
+
+        /* In user view, hide the agent's reasoning box — the user simulator
+           never saw it.  Scoped to agent-authored messages only; the user
+           sim's own reasoning (when --enable-user-reasoning is active) stays
+           visible in user view. */
+        body.view-user .agent-reasoning-trace { display: none; }
+
+        /* Scenario view: hide conversation, show scenario data */
+        body.view-scenario .conversation-section { display: none; }
+
+        /* Scenario data styles */
+        .scenario-section {
+            margin-bottom: 20px;
+        }
+
+        .scenario-section-header {
+            font-size: 12px;
+            font-weight: bold;
+            color: #333;
+            margin-bottom: 8px;
+        }
+
+        .scenario-box {
+            background: #f5f5f5;
+            padding: 10px;
+            border-radius: 4px;
+            border: 1px solid #9E9E9E;
+            font-size: 11px;
+        }
+
+        .scenario-table {
+            width: 100%;
+            border-collapse: collapse;
+            font-size: 10px;
+            background: white;
+        }
+
+        .scenario-table th {
+            padding: 4px 6px;
+            text-align: left;
+            white-space: nowrap;
+            background: #f5f5f5;
+            border-bottom: 2px solid #ddd;
+        }
+
+        .scenario-table td {
+            padding: 4px 6px;
+            font-family: monospace;
+            max-width: 300px;
+            overflow: hidden;
+            text-overflow: ellipsis;
+            white-space: nowrap;
+            border-bottom: 1px solid #eee;
+        }
+
+        .similarity-badge {
+            display: inline-block;
+            padding: 1px 5px;
+            border-radius: 3px;
+            font-size: 9px;
+            font-family: monospace;
+        }
+
+        .sim-exact { background: #E8F5E9; color: #2E7D32; }
+        .sim-rouge { background: #FFF3E0; color: #E65100; }
+        .sim-ignore { background: #F5F5F5; color: #9E9E9E; }
+        .sim-other { background: #E3F2FD; color: #1565C0; }
+
+    </style>
+    <script>
+        document.addEventListener('DOMContentLoaded', (event) => {
+            hljs.highlightAll();
+            // Restore perspective from session
+            var saved = sessionStorage.getItem('trajectory_perspective');
+            if (saved) { setPerspective(saved); }
+        });
+
+        function setPerspective(view) {
+            document.body.classList.remove('view-both', 'view-agent', 'view-user', 'view-scenario');
+            document.body.classList.add('view-' + view);
+            document.querySelectorAll('.perspective-btn').forEach(function(btn) {
+                btn.classList.toggle('active', btn.getAttribute('data-view') === view);
+            });
+            document.querySelectorAll('.perspective-badge').forEach(function(badge) {
+                badge.style.display = (view === 'both') ? '' : 'none';
+            });
+            // Toggle scenario view vs conversation view
+            var scenarioSection = document.getElementById('scenario-data');
+            if (view === 'scenario') {
+                if (scenarioSection) scenarioSection.style.display = 'block';
+            } else {
+                if (scenarioSection) scenarioSection.style.display = 'none';
+            }
+            sessionStorage.setItem('trajectory_perspective', view);
+        }
+    </script>
+</head>
+<body>
+    <div class="container">
+        {% set exp_q = ('&experiment=' ~ (current_experiment | urlquote)) if current_experiment else '' %}
+        {% set index_q = ('?experiment=' ~ (current_experiment | urlquote)) if current_experiment else '' %}
+
+        {% if experiments and experiments|length > 1 %}
+        <div style="margin-bottom: 12px; font-size: 12px;">
+            <label for="experiment-select" style="font-weight: bold; color: #555;">Experiment:</label>
+            <select id="experiment-select" onchange="switchExperiment(this.value)" style="margin-left: 6px; padding: 4px 8px; font-size: 12px;">
+                {% for exp in experiments %}
+                <option value="{{ exp }}"{% if exp == current_experiment %} selected{% endif %}>{{ exp }}</option>
+                {% endfor %}
+            </select>
+        </div>
+        <script>
+            function switchExperiment(name) {
+                var url = new URL(window.location.href);
+                url.searchParams.set('experiment', name);
+                window.location.href = url.toString();
+            }
+        </script>
+        {% endif %}
+
+        {% if scenario_name %}
+        <h1>{{ scenario_name }}</h1>
+        {% endif %}
+
+        {% if scenario_result and scenario_result.get('categories') %}
+        <div style="margin-bottom: 15px;">
+            {% for category in scenario_result.get('categories', []) %}
+            <span class="category-badge">{{ category }}</span>
+            {% endfor %}
+        </div>
+        {% endif %}
+
+        {% if nav_info %}
+        <div class="nav-buttons">
+            <a href="/{{ index_q }}" class="nav-button home">↑ Index</a>
+
+            {% if nav_info.prev_scenario %}
+            <a href="{% if nav_info.prev_scenario.startswith('?') %}/view{{ nav_info.prev_scenario }}{{ exp_q }}{% else %}/view?path={{ nav_info.prev_scenario | urlquote }}{{ exp_q }}{% endif %}" class="nav-button">← Prev Scenario</a>
+            {% else %}
+            <span class="nav-button disabled">← Prev Scenario</span>
+            {% endif %}
+
+            {% if nav_info.prev_run %}
+            <a href="{% if nav_info.prev_run.startswith('?') %}/view{{ nav_info.prev_run }}{{ exp_q }}{% else %}/view?path={{ nav_info.prev_run | urlquote }}{{ exp_q }}{% endif %}" class="nav-button">← Prev Run</a>
+            {% else %}
+            <span class="nav-button disabled">← Prev Run</span>
+            {% endif %}
+
+            {% if nav_info.next_run %}
+            <a href="{% if nav_info.next_run.startswith('?') %}/view{{ nav_info.next_run }}{{ exp_q }}{% else %}/view?path={{ nav_info.next_run | urlquote }}{{ exp_q }}{% endif %}" class="nav-button">Next Run →</a>
+            {% else %}
+            <span class="nav-button disabled">Next Run →</span>
+            {% endif %}
+
+            {% if nav_info.next_scenario %}
+            <a href="{% if nav_info.next_scenario.startswith('?') %}/view{{ nav_info.next_scenario }}{{ exp_q }}{% else %}/view?path={{ nav_info.next_scenario | urlquote }}{{ exp_q }}{% endif %}" class="nav-button">Next Scenario →</a>
+            {% else %}
+            <span class="nav-button disabled">Next Scenario →</span>
+            {% endif %}
+        </div>
+        {% endif %}
+
+        {% if has_perspectives or scenario_json %}
+        <div class="perspective-toggle">
+            <span class="perspective-toggle-label">View:</span>
+            {% if has_perspectives %}
+            <button class="perspective-btn active" data-view="both" onclick="setPerspective('both')">Both</button>
+            <button class="perspective-btn" data-view="agent" onclick="setPerspective('agent')">Agent View</button>
+            <button class="perspective-btn" data-view="user" onclick="setPerspective('user')">User View</button>
+            {% endif %}
+            {% if scenario_json %}
+            <button class="perspective-btn" data-view="scenario" onclick="setPerspective('scenario')" style="background: #FFF8E1; border-color: #FFB300;">Raw Scenario</button>
+            {% endif %}
+        </div>
+        {% endif %}
+
+        <div class="conversation-section">
+        {% if scenario_result %}
+        <h2>Evaluation</h2>
+        <div class="eval-results">
+            <div class="eval-metrics">
+                <div class="eval-grid">
+                    <div class="eval-metric">
+                        <div class="eval-label">Turn Count</div>
+                        <div class="eval-value">{{ scenario_result.get('turn_count', 'N/A') }}</div>
+                    </div>
+                </div>
+
+                {% if scenario_result.task_completion_criteria %}
+                <h3 style="font-size: 12px; margin-top: 15px; margin-bottom: 8px; color: #333;">Task Completion Criteria</h3>
+                <div style="background: white; padding: 10px; border-radius: 4px; border: 1px solid #9E9E9E; font-size: 11px; margin-bottom: 10px; white-space: pre-wrap;">{{ scenario_result.task_completion_criteria | trim }}</div>
+                {% endif %}
+
+                {% if scenario_result.judge_result %}
+                <h3 style="font-size: 12px; margin-top: 15px; margin-bottom: 8px; color: #333;">Judge Result</h3>
+                <div class="eval-metric" style="margin-bottom: 10px;">
+                    <div class="eval-label">Completion Status</div>
+                    <div class="eval-value {% if scenario_result.judge_result.result %}success{% else %}error{% endif %}">
+                        {% if scenario_result.judge_result.result %}SUCCESS{% else %}FAILURE{% endif %}
+                    </div>
+                </div>
+                {% if scenario_result.judge_result.reasoning %}
+                <div style="background: white; padding: 10px; border-radius: 4px; border: 1px solid #9E9E9E; font-size: 11px; margin-bottom: 10px;">
+                    <strong>Reasoning:</strong><br>
+                    {{ scenario_result.judge_result.reasoning }}
+                </div>
+                {% endif %}
+                {% if scenario_result.judge_result.criteria_evaluation %}
+                <details style="margin-bottom: 10px;">
+                    <summary style="cursor: pointer; font-size: 11px; font-weight: bold; color: #555; padding: 5px 0;">
+                        View Rubric Details ({{ scenario_result.judge_result.criteria_evaluation|length }} criteria)
+                    </summary>
+                    <table style="width: 100%; border-collapse: collapse; font-size: 11px; margin-top: 5px;">
+                        <thead>
+                            <tr style="background: #f5f5f5; border-bottom: 2px solid #ddd;">
+                                <th style="padding: 6px 8px; text-align: left; width: 20%;">Criterion</th>
+                                <th style="padding: 6px 8px; text-align: center; width: 8%;">Result</th>
+                                <th style="padding: 6px 8px; text-align: left; width: 42%;">Analysis</th>
+                                <th style="padding: 6px 8px; text-align: left; width: 30%;">Evidence</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            {% for criterion in scenario_result.judge_result.criteria_evaluation %}
+                            <tr style="border-bottom: 1px solid #eee;">
+                                <td style="padding: 6px 8px; font-family: monospace;">{{ criterion.criterion }}</td>
+                                <td style="padding: 6px 8px; text-align: center;">
+                                    {% if criterion.pass %}<span style="color: #4CAF50; font-weight: bold;">PASS</span>{% else %}<span style="color: #f44336; font-weight: bold;">FAIL</span>{% endif %}
+                                </td>
+                                <td style="padding: 6px 8px; color: #555;">{{ criterion.analysis }}</td>
+                                <td style="padding: 6px 8px; color: #333;">{{ criterion.evidence }}</td>
+                            </tr>
+                            {% endfor %}
+                        </tbody>
+                    </table>
+                </details>
+                {% endif %}
+                {% endif %}
+
+                {% if scenario_result.ui_judge_result %}
+                <h3 style="font-size: 12px; margin-top: 15px; margin-bottom: 8px; color: #333;">UI Quality Judge</h3>
+                <div class="eval-metric" style="margin-bottom: 10px;">
+                    <div class="eval-label">UI Quality</div>
+                    <div class="eval-value {% if scenario_result.ui_judge_result.result %}success{% else %}error{% endif %}">
+                        {% if scenario_result.ui_judge_result.result %}PASS{% else %}FAIL{% endif %}
+                    </div>
+                </div>
+                {% if scenario_result.ui_judge_result.reasoning %}
+                <div style="background: white; padding: 10px; border-radius: 4px; border: 1px solid #9E9E9E; font-size: 11px; margin-bottom: 10px;">
+                    <strong>UI Reasoning:</strong><br>
+                    {{ scenario_result.ui_judge_result.reasoning }}
+                </div>
+                {% endif %}
+                {% if scenario_result.ui_judge_result.criteria_evaluation %}
+                <details style="margin-bottom: 10px;">
+                    <summary style="cursor: pointer; font-size: 11px; font-weight: bold; color: #555; padding: 5px 0;">
+                        View UI Rubric Details ({{ scenario_result.ui_judge_result.criteria_evaluation|length }} criteria)
+                    </summary>
+                    <table style="width: 100%; border-collapse: collapse; font-size: 11px; margin-top: 5px;">
+                        <thead>
+                            <tr style="background: #e8f0fe; border-bottom: 2px solid #aac8e8;">
+                                <th style="padding: 6px 8px; text-align: left; width: 20%;">Criterion</th>
+                                <th style="padding: 6px 8px; text-align: center; width: 8%;">Result</th>
+                                <th style="padding: 6px 8px; text-align: left; width: 42%;">Analysis</th>
+                                <th style="padding: 6px 8px; text-align: left; width: 30%;">Evidence</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            {% for criterion in scenario_result.ui_judge_result.criteria_evaluation %}
+                            <tr style="border-bottom: 1px solid #eee;">
+                                <td style="padding: 6px 8px; font-family: monospace;">{{ criterion.criterion }}</td>
+                                <td style="padding: 6px 8px; text-align: center;">
+                                    {% if criterion.pass %}<span style="color: #4CAF50; font-weight: bold;">PASS</span>{% else %}<span style="color: #f44336; font-weight: bold;">FAIL</span>{% endif %}
+                                </td>
+                                <td style="padding: 6px 8px; color: #555;">{{ criterion.analysis }}</td>
+                                <td style="padding: 6px 8px; color: #333;">{{ criterion.evidence }}</td>
+                            </tr>
+                            {% endfor %}
+                        </tbody>
+                    </table>
+                </details>
+                {% endif %}
+                {% endif %}
+
+                {% if scenario_result.user_judge_result %}
+                <h3 style="font-size: 12px; margin-top: 15px; margin-bottom: 8px; color: #333;">User Simulator Judge</h3>
+                <div class="eval-metric" style="margin-bottom: 10px;">
+                    <div class="eval-label">User Quality</div>
+                    <div class="eval-value {% if scenario_result.user_judge_result.result %}success{% else %}error{% endif %}">
+                        {% if scenario_result.user_judge_result.result %}PASS{% else %}FAIL{% endif %}
+                    </div>
+                </div>
+                {% if scenario_result.user_judge_result.reasoning %}
+                <div style="background: white; padding: 10px; border-radius: 4px; border: 1px solid #9E9E9E; font-size: 11px; margin-bottom: 10px;">
+                    <strong>User Reasoning:</strong><br>
+                    {{ scenario_result.user_judge_result.reasoning }}
+                </div>
+                {% endif %}
+                {% if scenario_result.user_judge_result.criteria_evaluation %}
+                <details style="margin-bottom: 10px;">
+                    <summary style="cursor: pointer; font-size: 11px; font-weight: bold; color: #555; padding: 5px 0;">
+                        View User Rubric Details ({{ scenario_result.user_judge_result.criteria_evaluation|length }} criteria)
+                    </summary>
+                    <table style="width: 100%; border-collapse: collapse; font-size: 11px; margin-top: 5px;">
+                        <thead>
+                            <tr style="background: #fce4ec; border-bottom: 2px solid #e8a0b0;">
+                                <th style="padding: 6px 8px; text-align: left; width: 20%;">Criterion</th>
+                                <th style="padding: 6px 8px; text-align: center; width: 8%;">Result</th>
+                                <th style="padding: 6px 8px; text-align: left; width: 42%;">Analysis</th>
+                                <th style="padding: 6px 8px; text-align: left; width: 30%;">Evidence</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            {% for criterion in scenario_result.user_judge_result.criteria_evaluation %}
+                            <tr style="border-bottom: 1px solid #eee;">
+                                <td style="padding: 6px 8px; font-family: monospace;">{{ criterion.criterion }}</td>
+                                <td style="padding: 6px 8px; text-align: center;">
+                                    {% if criterion.pass %}<span style="color: #4CAF50; font-weight: bold;">PASS</span>{% else %}<span style="color: #f44336; font-weight: bold;">FAIL</span>{% endif %}
+                                </td>
+                                <td style="padding: 6px 8px; color: #555;">{{ criterion.analysis }}</td>
+                                <td style="padding: 6px 8px; color: #333;">{{ criterion.evidence }}</td>
+                            </tr>
+                            {% endfor %}
+                        </tbody>
+                    </table>
+                </details>
+                {% endif %}
+                {% endif %}
+            </div>
+        </div>
+        {% endif %}
+
+        {% if tools %}
+        <details style="margin-bottom: 20px;">
+            <summary style="cursor: pointer; font-size: 16px; font-weight: bold; color: #333; padding: 10px 0;">
+                <span class="perspective-badge badge-agent" style="position: static; font-size: 9px; margin-right: 6px;">Agent</span>
+                Available Tools ({{ tools|length }})
+            </summary>
+            <div style="background: #f5f5f5; border: 1px solid #ddd; border-radius: 4px; padding: 15px; margin-top: 10px; max-height: 400px; overflow-y: auto;">
+                {% for tool in tools %}
+                <div style="margin-bottom: 15px; padding: 10px; background: white; border-radius: 4px; border: 1px solid #e0e0e0;">
+                    <div style="font-family: monospace; font-weight: bold; color: #1976D2; margin-bottom: 5px;">
+                        {{ tool.function.name }}
+                    </div>
+                    {% if tool.function.description %}
+                    <div style="font-size: 11px; color: #666; margin-bottom: 8px;">
+                        {{ tool.function.description }}
+                    </div>
+                    {% endif %}
+                    {% if tool.function.parameters and tool.function.parameters.properties %}
+                    <div style="font-size: 10px; color: #888;">
+                        <strong>Parameters:</strong>
+                        {% for param_name, param_info in tool.function.parameters.properties.items() %}
+                        <span style="display: inline-block; background: #e3f2fd; padding: 2px 6px; border-radius: 3px; margin: 2px;">
+                            {{ param_name }}{% if param_info.type %}: {{ param_info.type }}{% endif %}
+                        </span>
+                        {% endfor %}
+                    </div>
+                    {% endif %}
+                </div>
+                {% endfor %}
+            </div>
+        </details>
+        {% endif %}
+
+        {% if user_tools %}
+        <details style="margin-bottom: 20px;">
+            <summary style="cursor: pointer; font-size: 16px; font-weight: bold; color: #333; padding: 10px 0;">
+                <span class="perspective-badge badge-user" style="position: static; font-size: 9px; margin-right: 6px;">User</span>
+                Available Tools ({{ user_tools|length }})
+            </summary>
+            <div style="background: #f5f5f5; border: 1px solid #ddd; border-radius: 4px; padding: 15px; margin-top: 10px; max-height: 400px; overflow-y: auto;">
+                {% for tool in user_tools %}
+                <div style="margin-bottom: 15px; padding: 10px; background: white; border-radius: 4px; border-left: 3px solid #1565C0; border-top: 1px solid #e0e0e0; border-right: 1px solid #e0e0e0; border-bottom: 1px solid #e0e0e0;">
+                    <div style="font-family: monospace; font-weight: bold; color: #1565C0; margin-bottom: 5px;">
+                        {{ tool.function.name }}
+                    </div>
+                    {% if tool.function.description %}
+                    <div style="font-size: 11px; color: #666; margin-bottom: 8px;">
+                        {{ tool.function.description }}
+                    </div>
+                    {% endif %}
+                    {% if tool.function.parameters and tool.function.parameters.properties %}
+                    <div style="font-size: 10px; color: #888;">
+                        <strong>Parameters:</strong>
+                        {% for param_name, param_info in tool.function.parameters.properties.items() %}
+                        <span style="display: inline-block; background: #E3F2FD; padding: 2px 6px; border-radius: 3px; margin: 2px;">
+                            {{ param_name }}{% if param_info.type %}: {{ param_info.type }}{% endif %}
+                        </span>
+                        {% endfor %}
+                    </div>
+                    {% endif %}
+                </div>
+                {% endfor %}
+            </div>
+        </details>
+        {% endif %}
+
+        <h2>Messages</h2>
+
+        {% if scenario_result and scenario_result.get('exception_type') %}
+        <div class="error-box">
+            <div class="error-type">Exception: {{ scenario_result.get('exception_type') }}</div>
+            {% if scenario_result.get('traceback') %}
+            <div class="traceback">{{ scenario_result.get('traceback') }}</div>
+            {% endif %}
+        </div>
+        {% endif %}
+
+        {% if messages %}
+        {% for message in messages %}
+
+        {# --- Skip end_conversation tool calls and their results --- #}
+        {% set is_end_conv = (message.tool_calls is defined and message.tool_calls and message.tool_calls[0].function.name == 'end_conversation')
+            or (message.name is defined and message.name == 'end_conversation')
+            or (message.content is string and 'end_conversation' in message.content and message.role in ['user_tool_call', 'user_tool_result']) %}
+        {% if is_end_conv %}
+
+        {# --- Code-execution mode: execution result (user message with <execution_results>) --- #}
+        {% elif message.execution_results is defined and message.execution_results %}
+        <div class="message execution-result {{ message.perspective_class|default('') }}" style="position: relative;">
+            <span class="role execution-result">execution environment</span>
+            {% for result in message.execution_results %}
+                {% if not loop.first %}
+                <div class="content-separator"></div>
+                {% endif %}
+                <div class="execution-result-content">{{ result }}</div>
+            {% endfor %}
+        </div>
+
+        {# --- Code-execution mode: assistant message with code segments --- #}
+        {% elif message.content_segments is defined and message.content_segments %}
+        <div class="message assistant {{ message.perspective_class|default('') }}" style="position: relative;">
+            <span class="role assistant">{{ message.role }}</span>
+            {%- if message.reasoning_trace is defined and message.reasoning_trace %}
+            <div class="reasoning-trace{% if message.perspective is defined and message.perspective and message.perspective.sender == 'AGENT' %} agent-reasoning-trace{% endif %}">
+                <div class="reasoning-label">Reasoning</div>
+                <div class="reasoning-content">{{ message.reasoning_trace }}</div>
+            </div>
+            {%- endif %}
+            {% for segment in message.content_segments %}
+                {% if segment.type == 'text' %}
+                    <div class="assistant-text-segment">{{ segment.content }}</div>
+                {% elif segment.type == 'code' %}
+                    <div class="assistant-code-block">
+                        <div class="code-header">Python Code</div>
+                        <pre><code class="language-python">{{ segment.content }}</code></pre>
+                    </div>
+                {% endif %}
+            {% endfor %}
+        </div>
+
+        {# --- Standard rendering for all other messages --- #}
+        {% else %}
+        <div class="message {{ message.role }} {{ message.perspective_class|default('') }}" style="position: relative;">
+            {# Perspective badge #}
+            {% if has_perspectives and message.perspective is defined and message.perspective %}
+                {% set views = message.perspective.views %}
+                {% if 'agent' in views and 'user' in views %}
+                    <span class="perspective-badge badge-both">Both</span>
+                {% elif 'agent' in views %}
+                    <span class="perspective-badge badge-agent">Agent</span>
+                {% elif 'user' in views %}
+                    <span class="perspective-badge badge-user">User</span>
+                {% endif %}
+            {% endif %}
+
+            {% if message.role == 'user_system' %}
+                <span class="role user_system">user system</span>
+            {% elif message.role == 'user_tool_call' %}
+                <span class="role user_tool_call">user tool call</span>
+            {% elif message.role == 'user_tool_result' %}
+                <span class="role user_tool_result">user tool result</span>
+            {% elif message.role == 'env_event' %}
+                <span class="role execution-result">environment</span>
+            {% elif message.role == 'tool' %}
+                <span class="role tool">assistant tool result</span>
+            {% elif message.role == 'user' and message.perspective is defined and message.perspective and message.perspective.sender == 'EXECUTION_ENVIRONMENT' %}
+                <span class="role execution-result">environment</span>
+            {% else %}
+                <span class="role {{ message.role }}">{{ message.role }}</span>
+            {% endif %}
+
+            {%- if message.reasoning_trace is defined and message.reasoning_trace %}
+            <div class="reasoning-trace{% if message.perspective is defined and message.perspective and message.perspective.sender == 'AGENT' %} agent-reasoning-trace{% endif %}">
+                <div class="reasoning-label">Reasoning</div>
+                <div class="reasoning-content">{{ message.reasoning_trace }}</div>
+            </div>
+            {%- endif %}
+
+            {% if message.content is string %}
+                {% if message.content %}
+                    {% if message.role == 'tool' or message.role == 'user_tool_result' %}
+                        <div class="tool-result-box">
+                            <div class="tool-result">{{ message.content }}</div>
+                            {% if message.tool_call_id %}
+                            <div style="font-size: 9px; color: #666; margin-top: 8px;">Tool Call ID: {{ message.tool_call_id }}</div>
+                            {% endif %}
+                            {% if message.name %}
+                            <div style="font-size: 9px; color: #666;">Tool Name: {{ message.name }}</div>
+                            {% endif %}
+                        </div>
+                    {% else %}
+                        <div class="content text-content">{{ message.content }}</div>
+                    {% endif %}
+                {% endif %}
+            {% elif message.content is iterable %}
+                {% if message.role == 'tool' %}
+                    <div class="tool-result-box">
+                        {% for content_item in message.content %}
+                            {% if not loop.first %}
+                            <div class="content-separator"></div>
+                            {% endif %}
+                            {% if content_item.type == 'text' %}
+                                <div class="tool-result">{{ content_item.text }}</div>
+                            {% elif content_item.type == 'image_url' %}
+                                {% set image_url = content_item.image_url.url %}
+                                {% if image_url.startswith('data:image') %}
+                                    <div class="image-container">
+                                        <img src="{{ image_url }}" alt="Image from tool">
+                                    </div>
+                                {% else %}
+                                    <div class="image-placeholder">Image URL: {{ image_url }}</div>
+                                {% endif %}
+                            {% endif %}
+                        {% endfor %}
+                        {% if message.tool_call_id %}
+                        <div style="font-size: 9px; color: #666; margin-top: 8px;">Tool Call ID: {{ message.tool_call_id }}</div>
+                        {% endif %}
+                        {% if message.name %}
+                        <div style="font-size: 9px; color: #666;">Tool Name: {{ message.name }}</div>
+                        {% endif %}
+                    </div>
+                {% else %}
+                    {% for content_item in message.content %}
+                        {% if not loop.first %}
+                        <div class="content-separator"></div>
+                        {% endif %}
+                        {% if content_item.type == 'text' %}
+                            <div class="content text-content">{{ content_item.text }}</div>
+                        {% elif content_item.type == 'image_url' %}
+                            {% set image_url = content_item.image_url.url %}
+                            {% if image_url.startswith('data:image') %}
+                                <div class="image-container">
+                                    <img src="{{ image_url }}" alt="Image from message">
+                                </div>
+                            {% else %}
+                                <div class="image-placeholder">Image URL: {{ image_url }}</div>
+                            {% endif %}
+                        {% endif %}
+                    {% endfor %}
+                {% endif %}
+            {% endif %}
+
+            {# --- Inline rendered UI images (resolved from ImageResult references) --- #}
+            {% if message.inline_images is defined and message.inline_images %}
+                {% for img in message.inline_images %}
+                <div class="image-container" style="margin-top: 10px;">
+                    <div style="font-size: 9px; color: #666; margin-bottom: 4px;">Rendered UI (image_id={{ img.image_id }})</div>
+                    <img src="{{ img.data_url }}" alt="Rendered UI image_id={{ img.image_id }}" style="max-width: 512px; max-height: 512px; border: 1px solid #ddd; border-radius: 4px;">
+                </div>
+                {% endfor %}
+            {% endif %}
+
+            {% if message.tool_calls %}
+                {% for tool_call in message.tool_calls %}
+                <div class="tool-call">
+                    {% if tool_call.function.is_code_execution %}
+                        <div class="code-execution-block">
+                            <div class="code-header">
+                                <span>Python Code Execution</span>
+                                <span style="font-weight: normal; font-size: 9px;">{{ tool_call.function.name }}</span>
+                            </div>
+                            <pre class="code-content"><code class="language-python">{{ tool_call.function.formatted_code }}</code></pre>
+                        </div>
+                    {% else %}
+                        <div class="tool-args">{{ tool_call.function.name }}({{ tool_call.function.formatted_args }})</div>
+                    {% endif %}
+
+                    {% if tool_call.id %}
+                    <div style="font-size: 9px; color: #666; margin-top: 8px;">ID: {{ tool_call.id }}</div>
+                    {% endif %}
+                </div>
+                {% endfor %}
+            {% endif %}
+        </div>
+        {% endif %}
+
+        {% endfor %}
+        {% else %}
+        <p style="color: #666; font-style: italic; padding: 10px;">No message data available. This scenario failed before generating messages.</p>
+        {% endif %}
+        </div><!-- end conversation-section -->
+
+        {% if scenario_json %}
+        <div id="scenario-data" style="display: none;">
+            <h2>Raw Scenario Definition</h2>
+
+            {# --- Description --- #}
+            {% if scenario_json.description %}
+            <div class="scenario-section">
+                <div class="scenario-section-header">Description</div>
+                <div class="scenario-box" style="white-space: pre-wrap;">{{ scenario_json.description }}</div>
+            </div>
+            {% endif %}
+
+            {# --- Metadata row --- #}
+            <div class="scenario-section">
+                <div class="scenario-box" style="display: flex; gap: 20px; flex-wrap: wrap;">
+                    {% if scenario_json.metadata and scenario_json.metadata.scenario_metadata %}
+                    {% for key, val in scenario_json.metadata.scenario_metadata.items() %}
+                    <div{% if key in ('challenge_type', 'require_disambiguation') %} style="background: #FFF3E0; padding: 2px 8px; border-radius: 4px; border: 1px solid #FFB300;"{% endif %}>
+                        <strong style="font-size: 10px; color: {% if key in ('challenge_type', 'require_disambiguation') %}#E65100{% else %}#666{% endif %};">{{ key | upper }}:</strong>
+                        <span style="font-family: monospace; {% if key in ('challenge_type', 'require_disambiguation') %}font-weight: bold;{% endif %}">{{ val }}</span>
+                    </div>
+                    {% endfor %}
+                    {% endif %}
+                    {% if scenario_json.difficulty %}
+                    <div><strong style="font-size: 10px; color: #666;">DIFFICULTY:</strong> <span style="font-family: monospace;">{{ scenario_json.difficulty }}</span></div>
+                    {% endif %}
+                    {% if scenario_json.max_messages %}
+                    <div><strong style="font-size: 10px; color: #666;">MAX MESSAGES:</strong> <span style="font-family: monospace;">{{ scenario_json.max_messages }}</span></div>
+                    {% endif %}
+                    {% if scenario_json.base_scenario %}
+                    <div><strong style="font-size: 10px; color: #666;">BASE SCENARIO:</strong> <span style="font-family: monospace;">{{ scenario_json.base_scenario }}</span></div>
+                    {% endif %}
+                    {% if scenario_json.appworld_base_task %}
+                    <div><strong style="font-size: 10px; color: #666;">APPWORLD TASK:</strong> <span style="font-family: monospace;">{{ scenario_json.appworld_base_task }}</span></div>
+                    {% endif %}
+                    {% if scenario_json.device_state_id %}
+                    <div><strong style="font-size: 10px; color: #666;">DEVICE STATE:</strong> <span style="font-family: monospace;">{{ scenario_json.device_state_id }}</span></div>
+                    {% endif %}
+                    {% if scenario_json.reference_time %}
+                    <div><strong style="font-size: 10px; color: #666;">REF TIME:</strong> <span style="font-family: monospace;">{{ scenario_json.reference_time }}</span></div>
+                    {% endif %}
+                </div>
+            </div>
+
+            {# --- Categories --- #}
+            {% if scenario_json.categories %}
+            <div class="scenario-section">
+                <div class="scenario-section-header">Categories</div>
+                <div>
+                    {% for cat in scenario_json.categories %}
+                    <span class="category-badge">{{ cat }}</span>
+                    {% endfor %}
+                </div>
+            </div>
+            {% endif %}
+
+            {# --- User Profile & Social Circle --- #}
+            {% if user_profile %}
+            <details class="scenario-section" open>
+                <summary style="cursor: pointer; font-size: 12px; font-weight: bold; color: #333; padding: 5px 0;">
+                    User Profile &amp; Social Circle
+                </summary>
+                <div style="margin-top: 5px; display: flex; gap: 15px; flex-wrap: wrap;">
+                    {# --- Self card --- #}
+                    <div style="flex: 0 0 280px; padding: 10px; background: #E8F5E9; border-radius: 4px; border: 1px solid #A5D6A7;">
+                        <div style="font-size: 11px; font-weight: bold; color: #2E7D32; margin-bottom: 6px;">{{ user_profile.first_name }} {{ user_profile.last_name }}</div>
+                        <div style="font-size: 10px; color: #555; line-height: 1.6;">
+                            <div><strong>ID:</strong> <span style="font-family: monospace;">{{ user_profile.user_id }}</span></div>
+                            <div><strong>Email:</strong> <span style="font-family: monospace;">{{ user_profile.email }}</span></div>
+                            <div><strong>Phone:</strong> <span style="font-family: monospace;">{{ user_profile.phone_number }}</span></div>
+                            <div><strong>Birthday:</strong> {{ user_profile.birthday }}</div>
+                            {% if user_profile.company_name %}
+                            <div><strong>Company:</strong> {{ user_profile.company_name }}</div>
+                            {% endif %}
+                            {% if user_profile.home_address %}
+                            <div><strong>Home:</strong> {{ user_profile.home_address.get('city', '') }}, {{ user_profile.home_address.get('state', '') }}</div>
+                            {% endif %}
+                        </div>
+                    </div>
+                    {# --- Social circle table --- #}
+                    {% if user_profile.social_circle %}
+                    <div style="flex: 1; min-width: 400px;">
+                        <table class="scenario-table">
+                            <thead>
+                                <tr>
+                                    <th>Relation</th>
+                                    <th>Name</th>
+                                    <th>ID</th>
+                                    <th>Email</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                {% for person in user_profile.social_circle %}
+                                <tr>
+                                    <td><span style="display: inline-block; padding: 1px 6px; border-radius: 3px; font-size: 9px;
+                                        {% if person.relation == 'spouse' %}background: #FCE4EC; color: #C62828;
+                                        {% elif person.relation == 'child' %}background: #FFF3E0; color: #E65100;
+                                        {% elif person.relation == 'friend' %}background: #E3F2FD; color: #1565C0;
+                                        {% elif person.relation == 'manager' %}background: #F3E5F5; color: #7B1FA2;
+                                        {% elif person.relation == 'coworker' %}background: #F5F5F5; color: #616161;
+                                        {% else %}background: #F5F5F5; color: #666;{% endif %}">{{ person.relation }}</span></td>
+                                    <td style="font-weight: bold;">{{ person.name }}</td>
+                                    <td>{{ person.id }}</td>
+                                    <td>{{ person.email }}</td>
+                                </tr>
+                                {% endfor %}
+                            </tbody>
+                        </table>
+                    </div>
+                    {% endif %}
+                </div>
+            </details>
+            {% endif %}
+
+            {# --- Task Completion Criteria --- #}
+            {% if scenario_json.task_completion_criteria %}
+            <div class="scenario-section">
+                <div class="scenario-section-header">Task Completion Criteria</div>
+                <div class="scenario-box" style="white-space: pre-wrap;">{{ scenario_json.task_completion_criteria | trim }}</div>
+            </div>
+            {% endif %}
+
+            {# --- Expected Tools (from metadata) --- #}
+            {% if scenario_json.metadata and scenario_json.metadata.expected_tools %}
+            <div class="scenario-section">
+                <div class="scenario-section-header">Expected Tools</div>
+                <div class="scenario-box">
+                    {% for tool in scenario_json.metadata.expected_tools %}
+                    <span style="display: inline-block; background: #E8F5E9; color: #2E7D32; padding: 2px 8px; border-radius: 3px; margin: 2px; font-family: monospace; font-size: 11px;">{{ tool }}</span>
+                    {% endfor %}
+                </div>
+            </div>
+            {% endif %}
+
+            {# --- Messages (user script / initial messages) --- #}
+            {% if scenario_json.messages %}
+            <details class="scenario-section" open>
+                <summary style="cursor: pointer; font-size: 12px; font-weight: bold; color: #333; padding: 5px 0;">
+                    Messages ({{ scenario_json.messages|length }})
+                </summary>
+                <div style="margin-top: 5px;">
+                    {% for msg in scenario_json.messages %}
+                    <div style="margin-bottom: 10px; padding: 10px; border-radius: 4px; border: 1px solid #ddd;
+                        {% if msg.sender == 'SYSTEM' and msg.recipient == 'USER' %}background: #EDE7F6; border-color: #673AB7;
+                        {% elif msg.sender == 'USER' %}background: #e3f2fd; border-color: #2196F3;
+                        {% elif msg.sender == 'SYSTEM' %}background: #f0f0f0; border-color: #9E9E9E;
+                        {% else %}background: #f1f8e9; border-color: #4CAF50;{% endif %}">
+                        <div style="font-size: 9px; font-weight: bold; text-transform: uppercase; margin-bottom: 4px;
+                            {% if msg.sender == 'SYSTEM' and msg.recipient == 'USER' %}color: #673AB7;
+                            {% elif msg.sender == 'USER' %}color: #2196F3;
+                            {% elif msg.sender == 'SYSTEM' %}color: #9E9E9E;
+                            {% else %}color: #4CAF50;{% endif %}">
+                            {{ msg.sender }} → {{ msg.recipient }}
+                        </div>
+                        {% if msg.content is string %}
+                        <div style="white-space: pre-wrap; font-size: 11px; word-wrap: break-word;">{{ msg.content }}</div>
+                        {% elif msg.content is iterable %}
+                        {% for part in msg.content %}
+                            {% if part.type == 'text' %}
+                            <div style="white-space: pre-wrap; font-size: 11px; word-wrap: break-word;">{{ part.text }}</div>
+                            {% elif part.type == 'image_url' %}
+                            <div class="image-container" style="margin: 5px 0;">
+                                {% if part.image_url.url.startswith('data:image') %}
+                                <img src="{{ part.image_url.url }}" alt="Scenario image" style="max-width: 512px; max-height: 512px; border: 1px solid #ddd; border-radius: 4px;">
+                                {% else %}
+                                <div style="background: #f5f5f5; padding: 8px; border: 2px dashed #ddd; border-radius: 4px; color: #666; font-style: italic; font-size: 10px;">Image: {{ part.image_url.url }}</div>
+                                {% endif %}
+                            </div>
+                            {% endif %}
+                        {% endfor %}
+                        {% endif %}
+                    </div>
+                    {% endfor %}
+                </div>
+            </details>
+            {% endif %}
+
+            {# --- Image Paths --- #}
+            {% if scenario_json.image_paths %}
+            <div class="scenario-section">
+                <div class="scenario-section-header">Image Paths ({{ scenario_json.image_paths|length }})</div>
+                <div class="scenario-box">
+                    {% for path in scenario_json.image_paths %}
+                    <div style="font-family: monospace;">{{ path }}</div>
+                    {% endfor %}
+                </div>
+            </div>
+            {% endif %}
+
+            {# --- Image Delivery Map (from metadata) --- #}
+            {% if scenario_json.metadata and scenario_json.metadata.image_arrival %}
+            <div class="scenario-section">
+                <div class="scenario-section-header">Image Arrival Schedule</div>
+                <div class="scenario-box">
+                    {% for round, images in scenario_json.metadata.image_arrival.items() %}
+                    <div style="margin-bottom: 4px;">
+                        <strong style="color: #1976D2;">Round {{ round }}:</strong>
+                        {% for img in images %}
+                        <span style="display: inline-block; background: #E3F2FD; padding: 1px 6px; border-radius: 3px; margin: 1px; font-family: monospace; font-size: 10px;">{{ img }}</span>
+                        {% endfor %}
+                    </div>
+                    {% endfor %}
+                </div>
+            </div>
+            {% endif %}
+
+            {# --- Staging Entities: agentsandbox_entities --- #}
+            {% if scenario_json.agentsandbox_entities %}
+            <details class="scenario-section">
+                <summary style="cursor: pointer; font-size: 12px; font-weight: bold; color: #333; padding: 5px 0;">
+                    AgentSandbox Staging Entities
+                </summary>
+                {% for namespace, rows in scenario_json.agentsandbox_entities.items() %}
+                {% if rows %}
+                <div style="margin-top: 10px;">
+                    <h4 style="font-size: 11px; color: #1976D2; font-family: monospace; margin-bottom: 5px;">{{ namespace }} ({{ rows|length }} rows)</h4>
+                    <div style="overflow-x: auto;">
+                        <table class="scenario-table">
+                            <thead>
+                                <tr>
+                                    {% for col in rows[0].keys() %}
+                                    <th>{{ col }}</th>
+                                    {% endfor %}
+                                </tr>
+                            </thead>
+                            <tbody>
+                                {% for row in rows %}
+                                <tr>
+                                    {% for val in row.values() %}
+                                    <td title="{{ val }}">{{ val }}</td>
+                                    {% endfor %}
+                                </tr>
+                                {% endfor %}
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+                {% endif %}
+                {% endfor %}
+            </details>
+            {% endif %}
+
+            {# --- Staging Entities: appworld_entities --- #}
+            {% if scenario_json.appworld_entities %}
+            <details class="scenario-section">
+                <summary style="cursor: pointer; font-size: 12px; font-weight: bold; color: #333; padding: 5px 0;">
+                    AppWorld Staging Entities
+                </summary>
+                {% for table_name, rows in scenario_json.appworld_entities.items() %}
+                <div style="margin-top: 10px;">
+                    <h4 style="font-size: 11px; color: #1976D2; font-family: monospace; margin-bottom: 5px;">{{ table_name }} ({{ rows|length }} {% if rows|length == 1 %}row{% else %}rows{% endif %})</h4>
+                    {% if rows %}
+                    <div style="overflow-x: auto;">
+                        <table class="scenario-table">
+                            <thead>
+                                <tr>
+                                    {% for col in rows[0].keys() %}
+                                    <th>{{ col }}</th>
+                                    {% endfor %}
+                                </tr>
+                            </thead>
+                            <tbody>
+                                {% for row in rows %}
+                                <tr>
+                                    {% for val in row.values() %}
+                                    <td title="{{ val }}">{{ val }}</td>
+                                    {% endfor %}
+                                </tr>
+                                {% endfor %}
+                            </tbody>
+                        </table>
+                    </div>
+                    {% else %}
+                    <div style="color: #999; font-style: italic; font-size: 10px; padding: 4px;">empty</div>
+                    {% endif %}
+                </div>
+                {% endfor %}
+            </details>
+            {% endif %}
+
+            {# --- Entity Diff Specs --- #}
+            {% if scenario_json.entity_diff_specs %}
+            <details class="scenario-section" open>
+                <summary style="cursor: pointer; font-size: 12px; font-weight: bold; color: #333; padding: 5px 0;">
+                    Entity Diff Specs ({{ scenario_json.entity_diff_specs|length }} expected changes)
+                </summary>
+                <div style="margin-top: 5px;">
+                    {% for spec in scenario_json.entity_diff_specs %}
+                    {% set match = entity_diff_matches[loop.index0] if entity_diff_matches else None %}
+                    <div style="margin-bottom: 12px; padding: 10px; background: white; border-radius: 4px; border: 1px solid #e0e0e0; border-left: 3px solid
+                        {% if spec.operation == 'create' %}#4CAF50{% elif spec.operation == 'update' %}#2196F3{% elif spec.operation == 'delete' %}#f44336{% else %}#9E9E9E{% endif %};">
+                        <div style="display: flex; gap: 10px; align-items: center; margin-bottom: 6px;">
+                            <span style="font-size: 10px; font-weight: bold; text-transform: uppercase; padding: 2px 6px; border-radius: 3px;
+                                {% if spec.operation == 'create' %}background: #E8F5E9; color: #2E7D32;
+                                {% elif spec.operation == 'update' %}background: #E3F2FD; color: #1565C0;
+                                {% elif spec.operation == 'delete' %}background: #FFEBEE; color: #C62828;
+                                {% else %}background: #F5F5F5; color: #666;{% endif %}">
+                                {{ spec.operation }}
+                            </span>
+                            <span style="font-family: monospace; font-size: 11px; font-weight: bold; color: #1976D2;">
+                                {% if spec.table %}{{ spec.table }}{% elif spec.namespace %}{{ spec.namespace }}{% endif %}
+                            </span>
+                            <span style="font-size: 9px; color: #999;">source: {{ spec.source }}</span>
+                            {% if match %}
+                            <span style="margin-left: auto; font-size: 11px; font-weight: bold; padding: 2px 8px; border-radius: 3px;
+                                {% if match.score >= 1.0 %}background: #E8F5E9; color: #2E7D32;
+                                {% elif match.score >= 0.5 %}background: #FFF3E0; color: #E65100;
+                                {% else %}background: #FFEBEE; color: #C62828;{% endif %}">
+                                {{ "%.1f"|format(match.score * 100) }}%
+                            </span>
+                            {% endif %}
+                        </div>
+                        {% if spec.entity_data %}
+                        <table class="scenario-table" style="margin-top: 4px;">
+                            <thead>
+                                <tr>
+                                    <th style="width: 18%;">Column</th>
+                                    <th style="width: 28%;">Expected Value</th>
+                                    {% if match and match.actual_values is defined %}
+                                    <th style="width: 28%;">Actual Value</th>
+                                    {% endif %}
+                                    <th style="width: 13%;">Similarity</th>
+                                    {% if match and match.column_scores %}
+                                    <th style="width: 13%;">Eval Score</th>
+                                    {% endif %}
+                                </tr>
+                            </thead>
+                            <tbody>
+                                {% for col, val in spec.entity_data.items() %}
+                                <tr{% if match and match.column_scores and match.column_scores.get(col, 1.0) < 1.0 %} style="background: #FFF8E1;"{% endif %}>
+                                    <td style="font-weight: bold;">{{ col }}</td>
+                                    <td title="{{ val }}">{{ val }}</td>
+                                    {% if match and match.actual_values is defined %}
+                                    {% set actual_val = match.actual_values.get(col) %}
+                                    <td title="{{ actual_val if actual_val is not none else '' }}" style="{% if match.column_scores and match.column_scores.get(col, 1.0) < 1.0 %}color: #C62828;{% endif %}">
+                                        {% if actual_val is none %}<span style="color: #999; font-style: italic;">—</span>{% else %}{{ actual_val }}{% endif %}
+                                    </td>
+                                    {% endif %}
+                                    <td>
+                                        {% if spec.column_similarity_measure and col in spec.column_similarity_measure %}
+                                            {% set sim = spec.column_similarity_measure[col] %}
+                                            {% if 'ignore' in sim %}
+                                            <span class="similarity-badge sim-ignore">ignore</span>
+                                            {% elif 'exact' in sim %}
+                                            <span class="similarity-badge sim-exact">exact</span>
+                                            {% elif 'rouge' in sim %}
+                                            <span class="similarity-badge sim-rouge">rouge-L</span>
+                                            {% else %}
+                                            <span class="similarity-badge sim-other">{{ sim | replace('column_', '') | replace('_similarity', '') }}</span>
+                                            {% endif %}
+                                        {% endif %}
+                                    </td>
+                                    {% if match and match.column_scores %}
+                                    <td>
+                                        {% set col_score = match.column_scores.get(col) %}
+                                        {% if col_score is not none %}
+                                        <span style="font-family: monospace; font-size: 10px; font-weight: bold;
+                                            {% if col_score >= 1.0 %}color: #2E7D32;
+                                            {% elif col_score >= 0.5 %}color: #E65100;
+                                            {% else %}color: #C62828;{% endif %}">
+                                            {{ "%.2f"|format(col_score) }}
+                                        </span>
+                                        {% endif %}
+                                    </td>
+                                    {% endif %}
+                                </tr>
+                                {% endfor %}
+                            </tbody>
+                        </table>
+                        {% endif %}
+                        {% if spec.expected_fields %}
+                        <div style="margin-top: 6px;">
+                            <strong style="font-size: 10px; color: #666;">EXPECTED FIELDS:</strong>
+                            <table class="scenario-table" style="margin-top: 4px;">
+                                <thead>
+                                    <tr>
+                                        <th>Column</th>
+                                        <th>Expected Value</th>
+                                        {% if match and match.actual_values is defined %}
+                                        <th>Actual Value</th>
+                                        {% endif %}
+                                        <th>Similarity</th>
+                                        {% if match and match.column_scores %}
+                                        <th>Eval Score</th>
+                                        {% endif %}
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    {% for col, val in spec.expected_fields.items() %}
+                                    <tr{% if match and match.column_scores and match.column_scores.get(col, 1.0) < 1.0 %} style="background: #FFF8E1;"{% endif %}>
+                                        <td style="font-weight: bold;">{{ col }}</td>
+                                        <td title="{{ val }}">{{ val }}</td>
+                                        {% if match and match.actual_values is defined %}
+                                        {% set actual_val = match.actual_values.get(col) %}
+                                        <td title="{{ actual_val if actual_val is not none else '' }}" style="{% if match.column_scores and match.column_scores.get(col, 1.0) < 1.0 %}color: #C62828;{% endif %}">
+                                            {% if actual_val is none %}<span style="color: #999; font-style: italic;">—</span>{% else %}{{ actual_val }}{% endif %}
+                                        </td>
+                                        {% endif %}
+                                        <td>
+                                            {% if spec.column_similarity_measure and col in spec.column_similarity_measure %}
+                                                {% set sim = spec.column_similarity_measure[col] %}
+                                                {% if 'ignore' in sim %}
+                                                <span class="similarity-badge sim-ignore">ignore</span>
+                                                {% elif 'exact' in sim %}
+                                                <span class="similarity-badge sim-exact">exact</span>
+                                                {% elif 'rouge' in sim %}
+                                                <span class="similarity-badge sim-rouge">rouge-L</span>
+                                                {% else %}
+                                                <span class="similarity-badge sim-other">{{ sim | replace('column_', '') | replace('_similarity', '') }}</span>
+                                                {% endif %}
+                                            {% endif %}
+                                        </td>
+                                        {% if match and match.column_scores %}
+                                        <td>
+                                            {% set col_score = match.column_scores.get(col) %}
+                                            {% if col_score is not none %}
+                                            <span style="font-family: monospace; font-size: 10px; font-weight: bold;
+                                                {% if col_score >= 1.0 %}color: #2E7D32;
+                                                {% elif col_score >= 0.5 %}color: #E65100;
+                                                {% else %}color: #C62828;{% endif %}">
+                                                {{ "%.2f"|format(col_score) }}
+                                            </span>
+                                            {% endif %}
+                                        </td>
+                                        {% endif %}
+                                    </tr>
+                                    {% endfor %}
+                                </tbody>
+                            </table>
+                        </div>
+                        {% endif %}
+                    </div>
+                    {% endfor %}
+                </div>
+            </details>
+
+            {# --- Extra (Unmatched) Entities --- #}
+            {% if entity_diff_extras %}
+            <details class="scenario-section">
+                <summary style="cursor: pointer; font-size: 12px; font-weight: bold; color: #C62828; padding: 5px 0;">
+                    Unmatched Extra Entities ({{ entity_diff_extras|length }} groups with extras)
+                </summary>
+                <div style="margin-top: 5px;">
+                    {% for extra in entity_diff_extras %}
+                    <div style="margin-bottom: 8px; padding: 8px; background: #FFEBEE; border-radius: 4px; border: 1px solid #EF9A9A;">
+                        <span style="font-family: monospace; font-size: 11px; font-weight: bold; color: #C62828;">{{ extra.table_key }}</span>
+                        <span style="font-size: 10px; text-transform: uppercase; color: #C62828; margin-left: 6px;">{{ extra.operation }}</span>
+                        <span style="font-size: 10px; color: #666; margin-left: 10px;">
+                            Agent created {{ extra.num_actual }} but only {{ extra.num_expected }} expected
+                            (+{{ extra.num_extra }} extra) — precision: {{ "%.1f"|format(extra.precision * 100) }}%
+                        </span>
+                    </div>
+                    {% endfor %}
+                </div>
+            </details>
+            {% endif %}
+
+            {% endif %}
+
+            {# --- Milestones --- #}
+            {% if scenario_json.milestones %}
+            <details class="scenario-section">
+                <summary style="cursor: pointer; font-size: 12px; font-weight: bold; color: #333; padding: 5px 0;">
+                    Milestones ({{ scenario_json.milestones|length }})
+                </summary>
+                <div class="scenario-box" style="margin-top: 5px;">
+                    <pre style="margin: 0; font-size: 11px; white-space: pre-wrap;">{{ scenario_json.milestones | tojson(indent=2) }}</pre>
+                </div>
+            </details>
+            {% endif %}
+
+            {# --- Full Metadata --- #}
+            {% if scenario_json.metadata %}
+            <details class="scenario-section">
+                <summary style="cursor: pointer; font-size: 12px; font-weight: bold; color: #333; padding: 5px 0;">
+                    Full Metadata
+                </summary>
+                <div class="scenario-box" style="margin-top: 5px;">
+                    <pre style="margin: 0; font-size: 11px; white-space: pre-wrap;">{{ scenario_json.metadata | tojson(indent=2) }}</pre>
+                </div>
+            </details>
+            {% endif %}
+        </div><!-- end #scenario-data -->
+        {% endif %}
+
+    </div>
+</body>
+</html>

@@ -1,0 +1,245 @@
+{
+  "name": "scenario_0744",
+  "base_scenario": "base",
+  "description": "The user is working on an infographics project and needs to reply to a client's email with specific statistics extracted from six different infographic images. The user uses a note to keep track of the project's email thread ID.",
+  "difficulty": "easy",
+  "appworld_base_task": "_base_",
+  "device_state_id": "joyce-weav@gmail.com",
+  "reference_time": "2026-04-17T00:12:58.357374+00:00",
+  "agentsandbox_entities": {},
+  "appworld_entities": {
+    "gmail.emails": [
+      {
+        "id": 5100,
+        "sender_id": 200,
+        "recipient_ids": [
+          57
+        ],
+        "subject": "Infographics Project Data Requests",
+        "body": "Hi Joyce,\n\nCould you please review the infographics and extract the following 6 data points for me?\n1. UK 2013 Clothes & Sports Goods percentage\n2. managers' social recruiting percentage\n3. top Australian VOD service\n4. percentage of small businesses on Facebook\n5. percentage of Original Graphics used by marketers\n6. number of regulatory authorized diagnostic tests for Covid-19\n\nThanks,\nClient",
+        "response_to_email_id": null,
+        "created_at": "2026-04-16T10:00:00"
+      }
+    ],
+    "gmail.global_email_threads": [
+      {
+        "id": 789,
+        "email_ids": [
+          5100
+        ],
+        "created_at": "2026-04-16T10:00:00",
+        "updated_at": "2026-04-16T10:00:00"
+      }
+    ],
+    "gmail.user_email_threads": [
+      {
+        "id": 47820,
+        "global_email_thread_id": 789,
+        "user_id": 57,
+        "email_ids": [
+          5100
+        ],
+        "incoming": true,
+        "outgoing": false,
+        "read": true,
+        "label": "INBOX",
+        "starred": false,
+        "archived": false,
+        "spam": false,
+        "sender_email_addresses": [
+          "client@example.com"
+        ],
+        "sender_names": [
+          "Client"
+        ],
+        "recipient_email_addresses": [
+          "joyce-weav@gmail.com"
+        ],
+        "recipient_names": [
+          "Joyce Weaver"
+        ],
+        "created_at": "2026-04-16T10:00:00",
+        "updated_at": "2026-04-16T10:00:00",
+        "has_attachments": false,
+        "snoozed_until": null
+      }
+    ],
+    "simple_note.notes": [
+      {
+        "id": 3200,
+        "user_id": 57,
+        "title": "Project Requests",
+        "content": "Infographics project - Email thread ID: thread_789",
+        "tags": [],
+        "created_at": "2026-04-15T10:00:00",
+        "updated_at": "2026-04-15T10:00:00",
+        "pinned": false,
+        "data": null
+      }
+    ],
+    "gmail.users": [
+      {
+        "id": 200,
+        "first_name": "User",
+        "email": "stub_user_200@example.com",
+        "password": "stub_password",
+        "created_at": "2025-01-01T00:00:00",
+        "last_logged_in": "2025-01-01T00:00:00",
+        "last_name": "200",
+        "status": "active"
+      }
+    ]
+  },
+  "image_paths": [
+    "chartqapro/images/chart_0488.jpg",
+    "infographicvqa/images/92644.jpg",
+    "infographicvqa/images/94073.jpg",
+    "infographicvqa/images/92460.jpg",
+    "chartqapro/images/chart_0123.jpg",
+    "infographicvqa/images/78000.jpg"
+  ],
+  "messages": [
+    {
+      "sender": "SYSTEM",
+      "recipient": "USER",
+      "content": "{{USER_INSTRUCTION}}ROUND 1\nQuery: Can you open my note titled 'Client Requests'? I need the email thread ID for the infographics project from it. Once you have it, pull up that email thread in Gmail so I can see what specific stats the client is asking for.\nInstructions: Ask the assistant to open your note titled 'Client Requests' to find the email thread ID for the infographics project, and then open that email thread in Gmail so you can see the requested statistics. If the assistant informs you that the note 'Client Requests' does not exist or cannot be found, acknowledge the issue and wait for the next turn to provide the correction. Do not provide the correct note name yet.\n\nROUND 2 [provide: image_1, image_2, image_3, image_4, image_5, image_6]\nQuery: My mistake, the note is actually called 'Project Requests'. Please check that note to get the email thread ID, then show the email thread to see the client's questions. I have now uploaded the 6 infographics they sent. Extract the requested statistics from these images and reply to the email thread with the answers.\nInstructions: Acknowledge your mistake and tell the assistant the note is actually called 'Project Requests'. Instruct the assistant to check this correct note for the thread ID, read the client's questions in the email thread, and then use the six uploaded infographics to extract the requested statistics. Ask the assistant to reply directly to the email thread with the answers. If the assistant asks for help reading the images, encourage it to look closely at the charts and numbers provided. Once the assistant confirms the reply has been sent, you can end the conversation.\n\nYou have 6 images available to share with the agent using the send_message_with_image tool.\nIMPORTANT: Image IDs are ZERO-INDEXED integers (0, 1, 2, ...). Do NOT add 1 to the IDs.\nAvailable image IDs: [0, 1, 2, 3, 4, 5]\nImage mapping:\n  image_1.jpg -> image ID 0\n  image_2.jpg -> image ID 1\n  image_3.jpg -> image ID 2\n  image_4.jpg -> image ID 3\n  image_5.jpg -> image ID 4\n  image_6.jpg -> image ID 5\n\n## IMAGE DELIVERY\n\n⚠️ IMPORTANT: You MUST use the `send_message_with_image` tool to share images with User B. Do NOT just describe images in text — you MUST call the tool.\n\nImage delivery schedule:\n\n  Round 2: YOU MUST call the send_message_with_image tool with image_ids='0,1,2,3,4,5' — do NOT write the tool name as text; use the actual function call. Include a natural, conversational message to the assistant."
+    },
+    {
+      "sender": "USER",
+      "recipient": "AGENT",
+      "content": "Can you open my note titled 'Client Requests'? I need the email thread ID for the infographics project from it. Once you have it, pull up that email thread in Gmail so I can see what specific stats the client is asking for."
+    }
+  ],
+  "milestones": [],
+  "entity_diff_specs": [
+    {
+      "operation": "create",
+      "source": "appworld",
+      "table": "gmail.emails",
+      "entity_data": {
+        "sender_id": 57,
+        "recipient_ids": [
+          200
+        ],
+        "subject": "Re: Infographics Project Data Requests",
+        "body": "Hi,\n\nHere are the statistics you requested, extracted from the infographics:\n1. 51% (UK 2013 Clothes & Sports Goods)\n2. 42% (managers' social recruiting)\n3. YouTube (top Australian VOD service)\n4. 90% (small businesses on Facebook)\n5. 37% (Original Graphics)\n6. 41 (regulatory authorized diagnostic tests)\n\nLet me know if you need anything else.\n\nBest,\nJoyce",
+        "response_to_email_id": 5100,
+        "created_at": "2026-04-17T00:12:58"
+      },
+      "column_similarity_measure": {
+        "sender_id": "column_exact_match_similarity",
+        "recipient_ids": "column_exact_match_similarity",
+        "subject": "column_rouge_l_similarity",
+        "body": "column_rouge_l_similarity",
+        "response_to_email_id": "column_ignore_similarity",
+        "created_at": "column_ignore_similarity"
+      }
+    },
+    {
+      "operation": "update",
+      "source": "appworld",
+      "table": "gmail.global_email_threads",
+      "entity_id_column": "id",
+      "entity_id_value": 789,
+      "expected_fields": {
+        "updated_at": "2026-04-16T10:00:00",
+        "email_ids": [
+          5100,
+          5101
+        ]
+      },
+      "column_similarity_measure": {
+        "updated_at": "column_ignore_similarity",
+        "email_ids": "column_ignore_similarity",
+        "id": "column_exact_match_similarity"
+      }
+    },
+    {
+      "operation": "update",
+      "source": "appworld",
+      "table": "gmail.user_email_threads",
+      "entity_id_column": "id",
+      "entity_id_value": 789,
+      "expected_fields": {
+        "recipient_names": [
+          "Joyce Weaver",
+          "Client"
+        ],
+        "outgoing": true,
+        "email_ids": [
+          5100,
+          5101
+        ],
+        "updated_at": "2026-04-16T10:00:00",
+        "sender_names": [
+          "Client",
+          "Joyce Weaver"
+        ],
+        "sender_email_addresses": [
+          "client@example.com",
+          "joyce-weav@gmail.com"
+        ],
+        "recipient_email_addresses": [
+          "joyce-weav@gmail.com",
+          "client@example.com"
+        ]
+      },
+      "column_similarity_measure": {
+        "recipient_names": "column_ignore_similarity",
+        "outgoing": "column_exact_match_similarity",
+        "email_ids": "column_ignore_similarity",
+        "updated_at": "column_ignore_similarity",
+        "sender_names": "column_ignore_similarity",
+        "sender_email_addresses": "column_ignore_similarity",
+        "recipient_email_addresses": "column_ignore_similarity",
+        "id": "column_exact_match_similarity"
+      }
+    }
+  ],
+  "task_completion_criteria": "Reply to the email thread 'thread_789' (found via the 'Project Requests' note) with the answers to the client's questions extracted from the images: 51% (UK 2013 Clothes & Sports Goods), 42% (managers' social recruiting), YouTube (top Australian VOD service), 90% (small businesses on Facebook), 37% (Original Graphics), and 41 (regulatory authorized diagnostic tests).",
+  "categories": [
+    "APPWORLD",
+    "MULTIPLE_USER_TURN"
+  ],
+  "max_messages": 100,
+  "metadata": {
+    "original_scenario_id": "scenario_0744",
+    "expected_tools": [
+      "simple_note_show_note",
+      "gmail_show_thread",
+      "gmail_reply_to_email"
+    ],
+    "image_arrival": {
+      "2": [
+        "image_1",
+        "image_2",
+        "image_3",
+        "image_4",
+        "image_5",
+        "image_6"
+      ]
+    },
+    "image_delivery_map": [
+      {
+        "query": "My mistake, the note is actually called 'Project Requests'. Please check that note to get the email thread ID, then show the email thread to see the client's questions. I have now uploaded the 6 infographics they sent. Extract the requested statistics from these images and reply to the email thread with the answers.",
+        "image_ids": [
+          0,
+          1,
+          2,
+          3,
+          4,
+          5
+        ]
+      }
+    ],
+    "scenario_metadata": {
+      "num_images": 6,
+      "num_user_rounds": 2,
+      "selected_flow_type": "lookup_chain",
+      "image_arrival": "late",
+      "challenge_type": "error_correction",
+      "require_disambiguation": false,
+      "dataset_type": "infographicvqa"
+    }
+  }
+}

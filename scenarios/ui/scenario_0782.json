@@ -1,0 +1,330 @@
+{
+  "name": "scenario_0782",
+  "base_scenario": "base",
+  "description": "The user is conducting a literature review and wants to organize follow-ups with the corresponding authors of recent scientific papers (published after 2010) to request additional materials. (UI mode)",
+  "difficulty": "easy",
+  "appworld_base_task": "_base_",
+  "device_state_id": "cheweber@gmail.com",
+  "reference_time": "2026-04-17T00:14:03.224293+00:00",
+  "agentsandbox_entities": {},
+  "appworld_entities": {
+    "gmail.users": [
+      {
+        "id": 10100,
+        "first_name": "Jmfernandezreal",
+        "last_name": "Girona",
+        "email": "jmfernandezreal.girona.ics@gencat.cat",
+        "password": "placeholder_password",
+        "status": "active"
+      },
+      {
+        "id": 10101,
+        "first_name": "Ahoffmann",
+        "last_name": "",
+        "email": "ahoffmann@ucla.edu",
+        "password": "placeholder_password",
+        "status": "active"
+      },
+      {
+        "id": 10102,
+        "first_name": "Carlos",
+        "last_name": "Telleria",
+        "email": "carlos.telleria@mcgill.ca",
+        "password": "placeholder_password",
+        "status": "active"
+      }
+    ]
+  },
+  "image_paths": [
+    "omnidocbench/images/000258.jpg",
+    "omnidocbench/images/000253.jpg",
+    "omnidocbench/images/000075.jpg",
+    "omnidocbench/images/000275.jpg",
+    "omnidocbench/images/000070.jpg",
+    "omnidocbench/images/000269.jpg"
+  ],
+  "messages": [
+    {
+      "sender": "SYSTEM",
+      "recipient": "USER",
+      "content": "{{USER_INSTRUCTION}}ROUND 1 [provide: image_1, image_2, image_3]\nQuery: I'm organizing my literature review. Please look at these papers and pull up their publication details — I need to decide which ones to add corresponding authors for in my contacts.\nInstructions: Ask the assistant to review the three provided scientific papers and present their titles and publication years. When the assistant presents the papers with their details, select only the ones published after 2010 and ask to add their corresponding authors to your contacts with email addresses via `ui_user_interact`. If no interactive UI is shown, tell the assistant to add contacts for the papers published after 2010. If the assistant asks for confirmation or completes the task, acknowledge it and move on to the next round.\n\nROUND 2 [provide: image_4, image_5, image_6]\nQuery: Here are three more papers. Actually, I changed my mind about adding authors to my phone contacts—it'll get too cluttered. Please delete the contacts you just created. Instead, let's track this in Todoist. Create a project called 'Literature Review' and add a task to email the corresponding author for EVERY paper published after 2010 from all six images. Include their name and email in the task description.\nInstructions: Tell the assistant that you've changed your mind about adding the authors to your contacts and ask it to delete the contacts it just created. Then, ask it to create a new Todoist project called 'Literature Review'. Instruct the assistant to review the three new papers along with the previous three, and for every paper published after 2010, create a task in the new project to email the corresponding author. Emphasize that the task description should include the author's name and email. If the assistant misses any papers or asks for clarification, point it back to the images to check the publication years. Once confirmed, proceed to the next round.\n\nROUND 3\nQuery: Create a new label called 'reprint_request' in Todoist and add it to all the tasks you just created in that project.\nInstructions: Ask the assistant to create a new label called 'reprint_request' in Todoist and apply it to all the tasks it just created in the 'Literature Review' project. If the assistant needs help finding the tasks, remind it they are in the project you just created. Once the label is applied to all relevant tasks, move on to the next round.\n\nROUND 4\nQuery: I want to get a head start on one of them. Send an email to the author of the lung carcinoma paper asking for a copy of their supplementary data.\nInstructions: Instruct the assistant to send an email to the corresponding author of the lung carcinoma paper from the provided images, asking for a copy of their supplementary data. If the assistant asks which paper or author you mean, remind it to check the titles of the papers provided earlier. Once the email is sent, you can end the conversation.\n\nYou have 6 images available to share with the agent using the send_message_with_image tool.\nIMPORTANT: Image IDs are ZERO-INDEXED integers (0, 1, 2, ...). Do NOT add 1 to the IDs.\nAvailable image IDs: [0, 1, 2, 3, 4, 5]\nImage mapping:\n  image_1.jpg -> image ID 0\n  image_2.jpg -> image ID 1\n  image_3.jpg -> image ID 2\n  image_4.jpg -> image ID 3\n  image_5.jpg -> image ID 4\n  image_6.jpg -> image ID 5\n\n## IMAGE DELIVERY\n\n⚠️ IMPORTANT: You MUST use the `send_message_with_image` tool to share images with User B. Do NOT just describe images in text — you MUST call the tool.\n\nImage delivery schedule:\n\n  Round 2: YOU MUST call the send_message_with_image tool with image_ids='3,4,5' — do NOT write the tool name as text; use the actual function call. Include a natural, conversational message to the assistant."
+    },
+    {
+      "sender": "USER",
+      "recipient": "AGENT",
+      "content": "I'm organizing my literature review. Please look at these papers and pull up their publication details — I need to decide which ones to add corresponding authors for in my contacts.",
+      "image_ids": [
+        0,
+        1,
+        2
+      ]
+    }
+  ],
+  "milestones": [],
+  "entity_diff_specs": [
+    {
+      "operation": "create",
+      "source": "appworld",
+      "table": "gmail.emails",
+      "entity_data": {
+        "sender_id": 51,
+        "recipient_ids": [
+          10102
+        ],
+        "subject": "Request for supplementary data",
+        "body": "Dear Dr. Telleria,\n\nI am currently conducting a literature review and found your paper on lung carcinoma very insightful. Would it be possible to get a copy of the supplementary data for this paper?\n\nThank you,\nCheryl Martinez",
+        "response_to_email_id": null,
+        "created_at": "2026-04-17T00:14:03"
+      },
+      "column_similarity_measure": {
+        "sender_id": "column_exact_match_similarity",
+        "recipient_ids": "column_exact_match_similarity",
+        "subject": "column_rouge_l_similarity",
+        "body": "column_rouge_l_similarity",
+        "response_to_email_id": "column_ignore_similarity",
+        "created_at": "column_ignore_similarity"
+      }
+    },
+    {
+      "operation": "create",
+      "source": "appworld",
+      "table": "todoist.projects",
+      "entity_data": {
+        "user_id": 51,
+        "name": "Literature Review",
+        "color": "charcoal",
+        "is_inbox": false,
+        "description": "",
+        "created_at": "2026-04-17T00:14:03"
+      },
+      "column_similarity_measure": {
+        "user_id": "column_exact_match_similarity",
+        "name": "column_rouge_l_similarity",
+        "color": "column_exact_match_similarity",
+        "is_inbox": "column_exact_match_similarity",
+        "description": "column_ignore_similarity",
+        "created_at": "column_ignore_similarity"
+      }
+    },
+    {
+      "operation": "create",
+      "source": "appworld",
+      "table": "todoist.labels",
+      "entity_data": {
+        "user_id": 51,
+        "name": "reprint_request",
+        "color": "charcoal"
+      },
+      "column_similarity_measure": {
+        "user_id": "column_exact_match_similarity",
+        "name": "column_rouge_l_similarity",
+        "color": "column_exact_match_similarity"
+      }
+    },
+    {
+      "operation": "create",
+      "source": "appworld",
+      "table": "todoist.tasks",
+      "entity_data": {
+        "project_id": 400,
+        "section_id": null,
+        "user_id": 51,
+        "title": "Email José Manuel Fernández-Real",
+        "description": "Name: José Manuel Fernández-Real, Email: jmfernandezreal.girona.ics@gencat.cat",
+        "due_date": null,
+        "priority": "medium",
+        "is_completed": false,
+        "duration": null,
+        "duration_unit": null,
+        "order_index": 0,
+        "assignee_id": null,
+        "assigner_id": null,
+        "created_at": "2026-04-17T00:14:03"
+      },
+      "column_similarity_measure": {
+        "project_id": "column_ignore_similarity",
+        "section_id": "column_ignore_similarity",
+        "user_id": "column_exact_match_similarity",
+        "title": "column_rouge_l_similarity",
+        "description": "column_rouge_l_similarity",
+        "due_date": "column_ignore_similarity",
+        "priority": "column_exact_match_similarity",
+        "is_completed": "column_exact_match_similarity",
+        "duration": "column_ignore_similarity",
+        "duration_unit": "column_ignore_similarity",
+        "order_index": "column_ignore_similarity",
+        "assignee_id": "column_ignore_similarity",
+        "assigner_id": "column_ignore_similarity",
+        "created_at": "column_ignore_similarity"
+      }
+    },
+    {
+      "operation": "create",
+      "source": "appworld",
+      "table": "todoist.tasks",
+      "entity_data": {
+        "project_id": 400,
+        "section_id": null,
+        "user_id": 51,
+        "title": "Email Alexander Hoffmann",
+        "description": "Name: Alexander Hoffmann, Email: ahoffmann@ucla.edu",
+        "due_date": null,
+        "priority": "medium",
+        "is_completed": false,
+        "duration": null,
+        "duration_unit": null,
+        "order_index": 1,
+        "assignee_id": null,
+        "assigner_id": null,
+        "created_at": "2026-04-17T00:14:03"
+      },
+      "column_similarity_measure": {
+        "project_id": "column_ignore_similarity",
+        "section_id": "column_ignore_similarity",
+        "user_id": "column_exact_match_similarity",
+        "title": "column_rouge_l_similarity",
+        "description": "column_rouge_l_similarity",
+        "due_date": "column_ignore_similarity",
+        "priority": "column_exact_match_similarity",
+        "is_completed": "column_exact_match_similarity",
+        "duration": "column_ignore_similarity",
+        "duration_unit": "column_ignore_similarity",
+        "order_index": "column_ignore_similarity",
+        "assignee_id": "column_ignore_similarity",
+        "assigner_id": "column_ignore_similarity",
+        "created_at": "column_ignore_similarity"
+      }
+    },
+    {
+      "operation": "create",
+      "source": "appworld",
+      "table": "todoist.tasks",
+      "entity_data": {
+        "project_id": 400,
+        "section_id": null,
+        "user_id": 51,
+        "title": "Email Carlos M. Telleria",
+        "description": "Name: Carlos M. Telleria, Email: carlos.telleria@mcgill.ca",
+        "due_date": null,
+        "priority": "medium",
+        "is_completed": false,
+        "duration": null,
+        "duration_unit": null,
+        "order_index": 2,
+        "assignee_id": null,
+        "assigner_id": null,
+        "created_at": "2026-04-17T00:14:03"
+      },
+      "column_similarity_measure": {
+        "project_id": "column_ignore_similarity",
+        "section_id": "column_ignore_similarity",
+        "user_id": "column_exact_match_similarity",
+        "title": "column_rouge_l_similarity",
+        "description": "column_rouge_l_similarity",
+        "due_date": "column_ignore_similarity",
+        "priority": "column_exact_match_similarity",
+        "is_completed": "column_exact_match_similarity",
+        "duration": "column_ignore_similarity",
+        "duration_unit": "column_ignore_similarity",
+        "order_index": "column_ignore_similarity",
+        "assignee_id": "column_ignore_similarity",
+        "assigner_id": "column_ignore_similarity",
+        "created_at": "column_ignore_similarity"
+      }
+    },
+    {
+      "operation": "create",
+      "source": "appworld",
+      "table": "todoist.task_label_links",
+      "entity_data": {
+        "task_id": 6500,
+        "label_id": 2400
+      },
+      "column_similarity_measure": {
+        "task_id": "column_ignore_similarity",
+        "label_id": "column_ignore_similarity"
+      }
+    },
+    {
+      "operation": "create",
+      "source": "appworld",
+      "table": "todoist.task_label_links",
+      "entity_data": {
+        "task_id": 6501,
+        "label_id": 2400
+      },
+      "column_similarity_measure": {
+        "task_id": "column_ignore_similarity",
+        "label_id": "column_ignore_similarity"
+      }
+    },
+    {
+      "operation": "create",
+      "source": "appworld",
+      "table": "todoist.task_label_links",
+      "entity_data": {
+        "task_id": 6502,
+        "label_id": 2400
+      },
+      "column_similarity_measure": {
+        "task_id": "column_ignore_similarity",
+        "label_id": "column_ignore_similarity"
+      }
+    }
+  ],
+  "task_completion_criteria": "A Todoist project named 'Literature Review' exists. Within this project, there are three tasks to email the corresponding authors of the papers published after 2010: José Manuel Fernández-Real (jmfernandezreal.girona.ics@gencat.cat), Alexander Hoffmann (ahoffmann@ucla.edu), and Carlos M. Telleria (carlos.telleria@mcgill.ca), with their names and emails included in the task descriptions. All three tasks have the Todoist label 'reprint_request' applied. Additionally, an email has been sent to Carlos M. Telleria (carlos.telleria@mcgill.ca) requesting a copy of their supplementary data, or something similar expressing the same idea.\n\nUI Requirements:\n- Round 1: The agent must present the scientific papers with their publication details in a structured interactive UI that lets the user select which papers to track.",
+  "categories": [
+    "APPWORLD",
+    "MULTIPLE_USER_TURN",
+    "UI_MODE"
+  ],
+  "max_messages": 100,
+  "metadata": {
+    "original_scenario_id": "scenario_0782",
+    "expected_tools": [
+      "contacts_add_contact",
+      "contacts_delete_contact",
+      "todoist_create_project",
+      "todoist_create_task",
+      "todoist_create_label",
+      "todoist_add_label_to_task",
+      "gmail_send_email",
+      "render_ui_screen",
+      "show_ui_to_user",
+      "ui_user_interact",
+      "ui_get_quick_start",
+      "ui_get_item_details"
+    ],
+    "image_arrival": {
+      "1": [
+        "image_1",
+        "image_2",
+        "image_3"
+      ],
+      "2": [
+        "image_4",
+        "image_5",
+        "image_6"
+      ]
+    },
+    "image_delivery_map": [
+      {
+        "query": "Here are three more papers. Actually, I changed my mind about adding authors to my phone contacts—it'll get too cluttered. Please delete the contacts you just created. Instead, let's track this in Todoist. Create a project called 'Literature Review' and add a task to email the corresponding author for EVERY paper published after 2010 from all six images. Include their name and email in the task description.",
+        "image_ids": [
+          3,
+          4,
+          5
+        ]
+      }
+    ],
+    "scenario_metadata": {
+      "num_images": 6,
+      "num_user_rounds": 4,
+      "selected_flow_type": "filter",
+      "image_arrival": "mixed",
+      "challenge_type": "goal_change",
+      "require_disambiguation": false,
+      "dataset_type": "omnidocbench"
+    }
+  }
+}

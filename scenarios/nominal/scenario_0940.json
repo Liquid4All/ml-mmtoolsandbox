@@ -1,0 +1,191 @@
+{
+  "name": "scenario_0940",
+  "base_scenario": "base",
+  "description": "The user is setting up a workspace to analyze various business charts and dashboards and wants to aggregate key findings into a single task.",
+  "difficulty": "easy",
+  "appworld_base_task": "_base_",
+  "device_state_id": "vicpowe@gmail.com",
+  "reference_time": "2026-04-17T00:19:11.867723+00:00",
+  "agentsandbox_entities": {},
+  "appworld_entities": {
+    "gmail.users": []
+  },
+  "image_paths": [
+    "chartmuseum/images/forcastSalesOrderBar.png",
+    "chartqapro/images/chart_0726.jpg",
+    "chartqapro/images/chart_1707.jpg"
+  ],
+  "messages": [
+    {
+      "sender": "SYSTEM",
+      "recipient": "USER",
+      "content": "{{USER_INSTRUCTION}}ROUND 1\nQuery: Create a new Todoist project called 'Business Analytics' and add a task named 'Chart Summaries' to it.\nInstructions: Ask the assistant to create a new Todoist project called 'Business Analytics' and add a task named 'Chart Summaries' inside it. Once the assistant confirms both have been created successfully, proceed to the next round.\n\nROUND 2 [provide: image_1, image_2]\nQuery: I've uploaded two charts. Please add a comment to the 'Chart Summaries' task saying the highest sales order in this first chart was in October 2025. Then look at this second chart and add another comment stating the 2019 revenue amount.\nInstructions: Instruct the assistant to add two comments to the 'Chart Summaries' task based on the uploaded images. For the first chart, tell it to comment that the highest sales order was in October 2025. For the second chart, ask it to extract the 2019 revenue amount and post it as a second comment. If the assistant correctly points out that October 2025 actually shows a drop and is not the highest month, insist that it post October 2025 anyway for now since you will review it later. Once both comments are posted, proceed to the next round.\n\nROUND 3 [provide: image_3]\nQuery: Wait, I misread that first chart earlier, October was actually a drop. Please check the first chart again to find the actual highest sales order month and update that first comment with the correct month. Also, look at this new dashboard and add a third comment stating which loan category has the highest predicted default.\nInstructions: Acknowledge that you made a mistake about the first chart. Ask the assistant to re-examine the first chart to find the actual highest sales order month and update the first comment with the correct information. Then, ask it to look at the newly uploaded dashboard and add a third comment stating the name of the loan category with the highest predicted default. Once the assistant confirms the comment has been updated and the new one added, end the conversation.\n\nYou have 3 images available to share with the agent using the send_message_with_image tool.\nIMPORTANT: Image IDs are ZERO-INDEXED integers (0, 1, 2, ...). Do NOT add 1 to the IDs.\nAvailable image IDs: [0, 1, 2]\nImage mapping:\n  image_1.jpg -> image ID 0\n  image_2.jpg -> image ID 1\n  image_3.jpg -> image ID 2\n\n## IMAGE DELIVERY\n\n\u26a0\ufe0f IMPORTANT: You MUST use the `send_message_with_image` tool to share images with User B. Do NOT just describe images in text \u2014 you MUST call the tool.\n\nImage delivery schedule:\n\n  Round 2: YOU MUST call the send_message_with_image tool with image_ids='0,1' \u2014 do NOT write the tool name as text; use the actual function call. Include a natural, conversational message to the assistant.\n  Round 3: YOU MUST call the send_message_with_image tool with image_ids='2' \u2014 do NOT write the tool name as text; use the actual function call. Include a natural, conversational message to the assistant."
+    },
+    {
+      "sender": "USER",
+      "recipient": "AGENT",
+      "content": "Create a new Todoist project called 'Business Analytics' and add a task named 'Chart Summaries' to it."
+    }
+  ],
+  "milestones": [],
+  "entity_diff_specs": [
+    {
+      "operation": "create",
+      "source": "appworld",
+      "table": "todoist.projects",
+      "entity_data": {
+        "user_id": 27,
+        "name": "Business Analytics",
+        "color": "charcoal",
+        "is_inbox": false,
+        "description": "",
+        "created_at": "2026-04-17T00:19:11"
+      },
+      "column_similarity_measure": {
+        "user_id": "column_exact_match_similarity",
+        "name": "column_rouge_l_similarity",
+        "color": "column_exact_match_similarity",
+        "is_inbox": "column_exact_match_similarity",
+        "description": "column_ignore_similarity",
+        "created_at": "column_ignore_similarity"
+      }
+    },
+    {
+      "operation": "create",
+      "source": "appworld",
+      "table": "todoist.tasks",
+      "entity_data": {
+        "project_id": 400,
+        "section_id": null,
+        "user_id": 27,
+        "title": "Chart Summaries",
+        "description": null,
+        "due_date": null,
+        "priority": "medium",
+        "is_completed": false,
+        "duration": null,
+        "duration_unit": null,
+        "order_index": 1,
+        "assignee_id": null,
+        "assigner_id": null,
+        "created_at": "2026-04-17T00:19:11"
+      },
+      "column_similarity_measure": {
+        "project_id": "column_ignore_similarity",
+        "section_id": "column_ignore_similarity",
+        "user_id": "column_exact_match_similarity",
+        "title": "column_rouge_l_similarity",
+        "description": "column_ignore_similarity",
+        "due_date": "column_ignore_similarity",
+        "priority": "column_exact_match_similarity",
+        "is_completed": "column_exact_match_similarity",
+        "duration": "column_ignore_similarity",
+        "duration_unit": "column_ignore_similarity",
+        "order_index": "column_ignore_similarity",
+        "assignee_id": "column_ignore_similarity",
+        "assigner_id": "column_ignore_similarity",
+        "created_at": "column_ignore_similarity"
+      }
+    },
+    {
+      "operation": "create",
+      "source": "appworld",
+      "table": "todoist.task_comments",
+      "entity_data": {
+        "task_id": 6500,
+        "user_id": 27,
+        "content": "The highest sales order was in April 2025.",
+        "created_at": "2026-04-17T00:19:11"
+      },
+      "column_similarity_measure": {
+        "task_id": "column_ignore_similarity",
+        "user_id": "column_exact_match_similarity",
+        "content": "column_rouge_l_similarity",
+        "created_at": "column_ignore_similarity"
+      }
+    },
+    {
+      "operation": "create",
+      "source": "appworld",
+      "table": "todoist.task_comments",
+      "entity_data": {
+        "task_id": 6500,
+        "user_id": 27,
+        "content": "The 2019 revenue amount was over 1400k SGD.",
+        "created_at": "2026-04-17T00:19:11"
+      },
+      "column_similarity_measure": {
+        "task_id": "column_ignore_similarity",
+        "user_id": "column_exact_match_similarity",
+        "content": "column_rouge_l_similarity",
+        "created_at": "column_ignore_similarity"
+      }
+    },
+    {
+      "operation": "create",
+      "source": "appworld",
+      "table": "todoist.task_comments",
+      "entity_data": {
+        "task_id": 6500,
+        "user_id": 27,
+        "content": "Car Loan has the highest predicted default.",
+        "created_at": "2026-04-17T00:19:11"
+      },
+      "column_similarity_measure": {
+        "task_id": "column_ignore_similarity",
+        "user_id": "column_exact_match_similarity",
+        "content": "column_rouge_l_similarity",
+        "created_at": "column_ignore_similarity"
+      }
+    }
+  ],
+  "task_completion_criteria": "Create a Todoist project named 'Business Analytics' with a task named 'Chart Summaries'. Add three comments to this task: one stating that the highest sales order was in April 2025, a second stating the 2019 revenue amount (over 1400k SGD), and a third stating that 'Car Loan' has the highest predicted default, or similar phrasing expressing these facts.",
+  "categories": [
+    "APPWORLD",
+    "MULTIPLE_USER_TURN"
+  ],
+  "max_messages": 100,
+  "metadata": {
+    "original_scenario_id": "scenario_0940",
+    "expected_tools": [
+      "todoist_create_project",
+      "todoist_create_task",
+      "todoist_post_task_comment",
+      "todoist_show_task_comments",
+      "todoist_update_task_comment"
+    ],
+    "image_arrival": {
+      "2": [
+        "image_1",
+        "image_2"
+      ],
+      "3": [
+        "image_3"
+      ]
+    },
+    "image_delivery_map": [
+      {
+        "query": "I've uploaded two charts. Please add a comment to the 'Chart Summaries' task saying the highest sales order in this first chart was in October 2025. Then look at this second chart and add another comment stating the 2019 revenue amount.",
+        "image_ids": [
+          0,
+          1
+        ]
+      },
+      {
+        "query": "Wait, I misread that first chart earlier, October was actually a drop. Please check the first chart again to find the actual highest sales order month and update that first comment with the correct month. Also, look at this new dashboard and add a third comment stating which loan category has the highest predicted default.",
+        "image_ids": [
+          2
+        ]
+      }
+    ],
+    "scenario_metadata": {
+      "num_images": 3,
+      "num_user_rounds": 3,
+      "selected_flow_type": "aggregate",
+      "image_arrival": "late",
+      "challenge_type": "error_correction",
+      "require_disambiguation": false,
+      "dataset_type": "chartqapro"
+    }
+  }
+}

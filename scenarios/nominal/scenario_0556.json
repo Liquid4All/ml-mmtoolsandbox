@@ -1,0 +1,319 @@
+{
+  "name": "scenario_0556",
+  "base_scenario": "base",
+  "description": "The user is organizing professional and emergency contacts from various infographics, applying specific filtering rules based on their existing notes.",
+  "difficulty": "easy",
+  "appworld_base_task": "_base_",
+  "device_state_id": "lindseysimpson@gmail.com",
+  "reference_time": "2026-04-17T00:07:15.060945+00:00",
+  "agentsandbox_entities": {},
+  "appworld_entities": {
+    "phone.contacts": [
+      {
+        "id": 200,
+        "user_id": 62,
+        "first_name": "Kids Help",
+        "last_name": "(Local)",
+        "email": "",
+        "phone_number": "555-0199",
+        "relationships": [],
+        "birthday": null,
+        "home_address": null,
+        "work_address": null,
+        "created_at": "2025-10-15T08:00:00"
+      },
+      {
+        "id": 201,
+        "user_id": 62,
+        "first_name": "Kids Help",
+        "last_name": "(National)",
+        "email": "",
+        "phone_number": "555-0100",
+        "relationships": [],
+        "birthday": null,
+        "home_address": null,
+        "work_address": null,
+        "created_at": "2025-10-15T08:00:00"
+      }
+    ],
+    "simple_note.notes": [
+      {
+        "id": 3200,
+        "user_id": 62,
+        "title": "Approved Domains",
+        "content": "db.com",
+        "tags": [],
+        "created_at": "2026-04-10T10:00:00",
+        "updated_at": "2026-04-10T10:00:00",
+        "pinned": false,
+        "data": {}
+      },
+      {
+        "id": 3201,
+        "user_id": 62,
+        "title": "Blacklist",
+        "content": "spammer@example.com",
+        "tags": [],
+        "created_at": "2026-04-10T10:05:00",
+        "updated_at": "2026-04-10T10:05:00",
+        "pinned": false,
+        "data": {}
+      }
+    ],
+    "phone.users": [
+      {
+        "id": 200,
+        "first_name": "Kids Help",
+        "last_name": "(Local)",
+        "phone_number": "555-0199",
+        "password": "default_password",
+        "created_at": "2025-01-01T00:00:00",
+        "last_logged_in": "2025-01-01T00:00:00"
+      },
+      {
+        "id": 201,
+        "first_name": "Kids Help",
+        "last_name": "(National)",
+        "phone_number": "555-0100",
+        "password": "default_password",
+        "created_at": "2025-01-01T00:00:00",
+        "last_logged_in": "2025-01-01T00:00:00"
+      }
+    ],
+    "gmail.users": [
+      {
+        "id": 10100,
+        "first_name": "Himanshu",
+        "last_name": "Porwal",
+        "email": "himanshu.porwal@db.com",
+        "password": "placeholder_password",
+        "status": "active"
+      },
+      {
+        "id": 10101,
+        "first_name": "Jim",
+        "last_name": "Reid",
+        "email": "jim.reid@db.com",
+        "password": "placeholder_password",
+        "status": "active"
+      },
+      {
+        "id": 10102,
+        "first_name": "Quinn",
+        "last_name": "Brody",
+        "email": "quinn.brody@db.com",
+        "password": "placeholder_password",
+        "status": "active"
+      },
+      {
+        "id": 10103,
+        "first_name": "Joshua",
+        "last_name": "Tapley",
+        "email": "joshtapley@gmail.com",
+        "password": "placeholder_password",
+        "status": "active"
+      }
+    ]
+  },
+  "image_paths": [
+    "infographicvqa/images/93095.jpg",
+    "infographicvqa/images/98469.jpg",
+    "infographicvqa/images/78051.jpg",
+    "infographicvqa/images/80022.jpg",
+    "chartqapro/images/chart_0611.jpg"
+  ],
+  "messages": [
+    {
+      "sender": "SYSTEM",
+      "recipient": "USER",
+      "content": "{{USER_INSTRUCTION}}ROUND 1 [provide: image_1, image_2, image_3]\nQuery: Check my 'Approved Domains' note first. Then, look at the professionals listed in these first three infographics and add them to my contacts, but only if their email domain is on that approved list.\nInstructions: Ask the assistant to read your 'Approved Domains' note, then extract the names and email addresses of the professionals from the provided infographics. Instruct it to validate each email against the approved domains and only create new contacts for the ones that match, skipping any that don't. If the assistant asks for confirmation about skipping certain contacts, confirm that it should only add those with the approved domain. Once it confirms the valid contacts have been added, proceed to the next round.\n\nROUND 2 [provide: image_4, image_5]\nQuery: Now check my 'Blacklist' note. Validate that the data visualization leader's email from this resume isn't on it, and if he's clear, add him to my contacts. Also, find the Kids Help Phone number on this mental health poster, verify it starts with the toll-free 1-800 prefix, and update my existing Kids Help contact with this new number.\nInstructions: Ask the assistant to read your 'Blacklist' note and verify that the data visualization leader's email from the resume isn't on it. If it's not blacklisted, tell the assistant to add him as a new contact. Then, instruct it to find the Kids Help Phone number on the mental health poster, validate that it starts with '1-800', and update your existing 'Kids Help' contact with this new number. When the assistant inevitably asks which 'Kids Help' contact to update (since you have both a Local and a National one saved), clarify that it should update the 'National' one. Once the new contact is added and the existing one is updated, conclude the conversation.\n\nYou have 5 images available to share with the agent using the send_message_with_image tool.\nIMPORTANT: Image IDs are ZERO-INDEXED integers (0, 1, 2, ...). Do NOT add 1 to the IDs.\nAvailable image IDs: [0, 1, 2, 3, 4]\nImage mapping:\n  image_1.jpg -> image ID 0\n  image_2.jpg -> image ID 1\n  image_3.jpg -> image ID 2\n  image_4.jpg -> image ID 3\n  image_5.jpg -> image ID 4\n\n## IMAGE DELIVERY\n\n\u26a0\ufe0f IMPORTANT: You MUST use the `send_message_with_image` tool to share images with User B. Do NOT just describe images in text \u2014 you MUST call the tool.\n\nImage delivery schedule:\n\n  Round 2: YOU MUST call the send_message_with_image tool with image_ids='3,4' \u2014 do NOT write the tool name as text; use the actual function call. Include a natural, conversational message to the assistant."
+    },
+    {
+      "sender": "USER",
+      "recipient": "AGENT",
+      "content": "Check my 'Approved Domains' note first. Then, look at the professionals listed in these first three infographics and add them to my contacts, but only if their email domain is on that approved list.",
+      "image_ids": [
+        0,
+        1,
+        2
+      ]
+    }
+  ],
+  "milestones": [],
+  "entity_diff_specs": [
+    {
+      "operation": "create",
+      "source": "appworld",
+      "table": "phone.contacts",
+      "entity_data": {
+        "user_id": 62,
+        "first_name": "Himanshu",
+        "last_name": "Porwal",
+        "email": "himanshu.porwal@db.com",
+        "phone_number": null,
+        "relationships": [],
+        "birthday": null,
+        "home_address": null,
+        "work_address": null,
+        "created_at": "2026-04-17T00:07:15"
+      },
+      "column_similarity_measure": {
+        "user_id": "column_exact_match_similarity",
+        "first_name": "column_exact_match_similarity",
+        "last_name": "column_exact_match_similarity",
+        "email": "column_exact_match_similarity",
+        "phone_number": "column_ignore_similarity",
+        "relationships": "column_ignore_similarity",
+        "birthday": "column_ignore_similarity",
+        "home_address": "column_ignore_similarity",
+        "work_address": "column_ignore_similarity",
+        "created_at": "column_ignore_similarity"
+      }
+    },
+    {
+      "operation": "create",
+      "source": "appworld",
+      "table": "phone.contacts",
+      "entity_data": {
+        "user_id": 62,
+        "first_name": "Jim",
+        "last_name": "Reid",
+        "email": "jim.reid@db.com",
+        "phone_number": null,
+        "relationships": [],
+        "birthday": null,
+        "home_address": null,
+        "work_address": null,
+        "created_at": "2026-04-17T00:07:15"
+      },
+      "column_similarity_measure": {
+        "user_id": "column_exact_match_similarity",
+        "first_name": "column_exact_match_similarity",
+        "last_name": "column_exact_match_similarity",
+        "email": "column_exact_match_similarity",
+        "phone_number": "column_ignore_similarity",
+        "relationships": "column_ignore_similarity",
+        "birthday": "column_ignore_similarity",
+        "home_address": "column_ignore_similarity",
+        "work_address": "column_ignore_similarity",
+        "created_at": "column_ignore_similarity"
+      }
+    },
+    {
+      "operation": "create",
+      "source": "appworld",
+      "table": "phone.contacts",
+      "entity_data": {
+        "user_id": 62,
+        "first_name": "Quinn",
+        "last_name": "Brody",
+        "email": "quinn.brody@db.com",
+        "phone_number": null,
+        "relationships": [],
+        "birthday": null,
+        "home_address": null,
+        "work_address": null,
+        "created_at": "2026-04-17T00:07:15"
+      },
+      "column_similarity_measure": {
+        "user_id": "column_exact_match_similarity",
+        "first_name": "column_exact_match_similarity",
+        "last_name": "column_exact_match_similarity",
+        "email": "column_exact_match_similarity",
+        "phone_number": "column_ignore_similarity",
+        "relationships": "column_ignore_similarity",
+        "birthday": "column_ignore_similarity",
+        "home_address": "column_ignore_similarity",
+        "work_address": "column_ignore_similarity",
+        "created_at": "column_ignore_similarity"
+      }
+    },
+    {
+      "operation": "create",
+      "source": "appworld",
+      "table": "phone.contacts",
+      "entity_data": {
+        "user_id": 62,
+        "first_name": "Joshua",
+        "last_name": "Tapley",
+        "email": "joshtapley@gmail.com",
+        "phone_number": null,
+        "relationships": [],
+        "birthday": null,
+        "home_address": null,
+        "work_address": null,
+        "created_at": "2026-04-17T00:07:15"
+      },
+      "column_similarity_measure": {
+        "user_id": "column_exact_match_similarity",
+        "first_name": "column_exact_match_similarity",
+        "last_name": "column_exact_match_similarity",
+        "email": "column_exact_match_similarity",
+        "phone_number": "column_ignore_similarity",
+        "relationships": "column_ignore_similarity",
+        "birthday": "column_ignore_similarity",
+        "home_address": "column_ignore_similarity",
+        "work_address": "column_ignore_similarity",
+        "created_at": "column_ignore_similarity"
+      }
+    },
+    {
+      "operation": "update",
+      "source": "appworld",
+      "table": "phone.contacts",
+      "entity_id_column": "id",
+      "entity_id_value": 201,
+      "expected_fields": {
+        "phone_number": "1-800-668-6868",
+        "relationships": []
+      },
+      "column_similarity_measure": {
+        "phone_number": "column_exact_match_similarity",
+        "id": "column_exact_match_similarity"
+      }
+    }
+  ],
+  "task_completion_criteria": "Add Himanshu Porwal (himanshu.porwal@db.com), Jim Reid (jim.reid@db.com), and Quinn Brody (quinn.brody@db.com) to contacts, skip Patrik Li due to domain restrictions, add Joshua Tapley (joshtapley@gmail.com) to contacts, and update the phone number for the existing 'Kids Help (National)' contact to 1-800-668-6868.",
+  "categories": [
+    "APPWORLD",
+    "MULTIPLE_USER_TURN"
+  ],
+  "max_messages": 100,
+  "metadata": {
+    "original_scenario_id": "scenario_0556",
+    "expected_tools": [
+      "show_note",
+      "add_contact",
+      "update_contact"
+    ],
+    "image_arrival": {
+      "1": [
+        "image_1",
+        "image_2",
+        "image_3"
+      ],
+      "2": [
+        "image_4",
+        "image_5"
+      ]
+    },
+    "image_delivery_map": [
+      {
+        "query": "Now check my 'Blacklist' note. Validate that the data visualization leader's email from this resume isn't on it, and if he's clear, add him to my contacts. Also, find the Kids Help Phone number on this mental health poster, verify it starts with the toll-free 1-800 prefix, and update my existing Kids Help contact with this new number.",
+        "image_ids": [
+          3,
+          4
+        ]
+      }
+    ],
+    "scenario_metadata": {
+      "num_images": 5,
+      "num_user_rounds": 2,
+      "selected_flow_type": "validate",
+      "image_arrival": "progressive",
+      "challenge_type": "state_mutation",
+      "require_disambiguation": true,
+      "dataset_type": "chartqapro"
+    }
+  }
+}

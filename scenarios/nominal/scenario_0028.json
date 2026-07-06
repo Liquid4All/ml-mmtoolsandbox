@@ -1,0 +1,412 @@
+{
+  "name": "scenario_0028",
+  "base_scenario": "base",
+  "description": "Sierra is sorting through a batch of scanned historical business documents. She wants to track official approvals by creating tasks for them and updating her contacts with relevant senders.",
+  "difficulty": "easy",
+  "appworld_base_task": "_base_",
+  "device_state_id": "siwhit@gmail.com",
+  "reference_time": "2026-04-16T23:51:15.754639+00:00",
+  "agentsandbox_entities": {},
+  "appworld_entities": {
+    "todoist.projects": [
+      {
+        "id": 400,
+        "user_id": 105,
+        "name": "Inbox",
+        "color": "charcoal",
+        "is_inbox": true,
+        "description": "Default inbox project",
+        "created_at": "2025-01-01T10:00:00"
+      }
+    ],
+    "todoist.project_collaborator_links": [
+      {
+        "id": 50400,
+        "project_id": 400,
+        "user_id": 105,
+        "is_favorite": false,
+        "is_archived": false,
+        "created_at": "2025-01-01T10:00:00"
+      }
+    ],
+    "gmail.users": [
+      {
+        "id": 10100,
+        "first_name": "Rhonda",
+        "last_name": "Bailey",
+        "email": "rhonda_bailey@ama-assn.org",
+        "password": "placeholder_password",
+        "status": "active"
+      }
+    ]
+  },
+  "image_paths": [
+    "docvqa/images/4908.jpg",
+    "docvqa/images/16584.jpg",
+    "docvqa/images/5769.jpg",
+    "hiertext/images/test/7379aa5050dd4f8a.jpg",
+    "docvqa/images/43185.jpg",
+    "docvqa/images/58359.jpg"
+  ],
+  "messages": [
+    {
+      "sender": "SYSTEM",
+      "recipient": "USER",
+      "content": "{{USER_INSTRUCTION}}ROUND 1 [provide: image_1, image_2, image_3]\nQuery: Review these documents and filter out the ones that contain explicit approval signatures or state 'PERMISSION GRANTED'. For each matching document, create a Todoist task called 'File approval: [Document Subject]' and create a label with the approver's name to attach to the task.\nInstructions: Provide the first three documents to the assistant. Ask it to review them and identify which ones have explicit approval signatures or state that permission is granted. For any document that matches this criteria, instruct the assistant to create a Todoist task named 'File approval: [Subject]' and to create and attach a label with the approver's name to that task. If the assistant asks what to use for the subject, tell it to use its best judgment based on the document's main title or purpose. Once it confirms the tasks are created, proceed to the next round.\n\nROUND 2 [provide: image_4, image_5]\nQuery: Apply the same filter to these two new documents: if they contain an official authorization signature or approval, create a 'File approval' task for them and label it with the authorizer's name.\nInstructions: Provide two more documents. Ask the assistant to apply the exact same filtering rule: if a document contains an official authorization signature or approval, it should create a 'File approval' task and label it with the authorizer's name just like before. Wait for the assistant to process these and confirm the new task creation before moving on.\n\nROUND 3 [provide: image_6]\nQuery: Add Stephanie Brown to my contacts with the phone number 555-0199. Also, since this document is an approval from her, create a 'File approval' task for it too.\nInstructions: Provide the final document. Ask the assistant to add the person the document is addressed to to your contacts with the phone number 555-0199, and to create a 'File approval' task for the document because it's an approval from her. (Note: The document is actually a proposal FOR her, not an approval). If the assistant correctly points out your mistake and asks if you still want to proceed, acknowledge it and wait for the next turn. If the assistant blindly agrees and tries to create the task, point out that it's actually a proposal.\n\nROUND 4\nQuery: You're completely right, my mistake. Skip creating the task for the proposal, and actually don't add Stephanie to my contacts either. Instead, let's add Rhonda Bailey from that earlier AMA permission letter to my contacts, using her email and phone number from that document.\nInstructions: Acknowledge the mistake about the proposal. Tell the assistant to skip creating the task and cancel adding the previous person to contacts. Instead, ask it to add the sender from the earlier permission letter (from the very first batch of documents) to your contacts, making sure to extract her email and phone number directly from that letter. Wait for confirmation that the contact was added.\n\nROUND 5\nQuery: Now, look at the approval tasks we created earlier. Filter for the ones that correspond to documents dated in the year 2003, and post a comment on those specific tasks saying 'Audit required'.\nInstructions: Ask the assistant to review the approval tasks it created in the first two rounds. Instruct it to filter for the tasks that correspond to the documents dated in the year 2003, and to post a comment saying 'Audit required' on those specific tasks. If it asks for clarification on which ones, encourage it to check the dates on the documents it already processed. End the conversation once it confirms the comments are posted.\n\nYou have 6 images available to share with the agent using the send_message_with_image tool.\nIMPORTANT: Image IDs are ZERO-INDEXED integers (0, 1, 2, ...). Do NOT add 1 to the IDs.\nAvailable image IDs: [0, 1, 2, 3, 4, 5]\nImage mapping:\n  image_1.jpg -> image ID 0\n  image_2.jpg -> image ID 1\n  image_3.jpg -> image ID 2\n  image_4.jpg -> image ID 3\n  image_5.jpg -> image ID 4\n  image_6.jpg -> image ID 5\n\n## IMAGE DELIVERY\n\n\u26a0\ufe0f IMPORTANT: You MUST use the `send_message_with_image` tool to share images with User B. Do NOT just describe images in text \u2014 you MUST call the tool.\n\nImage delivery schedule:\n\n  Round 2: YOU MUST call the send_message_with_image tool with image_ids='3,4' \u2014 do NOT write the tool name as text; use the actual function call. Include a natural, conversational message to the assistant.\n  Round 3: YOU MUST call the send_message_with_image tool with image_ids='5' \u2014 do NOT write the tool name as text; use the actual function call. Include a natural, conversational message to the assistant."
+    },
+    {
+      "sender": "USER",
+      "recipient": "AGENT",
+      "content": "Review these documents and filter out the ones that contain explicit approval signatures or state 'PERMISSION GRANTED'. For each matching document, create a Todoist task called 'File approval: [Document Subject]' and create a label with the approver's name to attach to the task.",
+      "image_ids": [
+        0,
+        1,
+        2
+      ]
+    }
+  ],
+  "milestones": [],
+  "entity_diff_specs": [
+    {
+      "operation": "create",
+      "source": "appworld",
+      "table": "phone.contacts",
+      "entity_data": {
+        "user_id": 105,
+        "first_name": "Rhonda",
+        "last_name": "Bailey",
+        "email": "rhonda_bailey@ama-assn.org",
+        "phone_number": "312 464-2513",
+        "relationships": [],
+        "birthday": null,
+        "home_address": null,
+        "work_address": null,
+        "created_at": "2026-04-16T23:51:15"
+      },
+      "column_similarity_measure": {
+        "user_id": "column_exact_match_similarity",
+        "first_name": "column_exact_match_similarity",
+        "last_name": "column_exact_match_similarity",
+        "email": "column_exact_match_similarity",
+        "phone_number": "column_exact_match_similarity",
+        "relationships": "column_ignore_similarity",
+        "birthday": "column_ignore_similarity",
+        "home_address": "column_ignore_similarity",
+        "work_address": "column_ignore_similarity",
+        "created_at": "column_ignore_similarity"
+      }
+    },
+    {
+      "operation": "create",
+      "source": "appworld",
+      "table": "todoist.tasks",
+      "entity_data": {
+        "project_id": 400,
+        "section_id": null,
+        "user_id": 105,
+        "title": "File approval: AMA permission letter",
+        "description": null,
+        "due_date": null,
+        "priority": "medium",
+        "is_completed": false,
+        "duration": null,
+        "duration_unit": null,
+        "order_index": 1,
+        "assignee_id": null,
+        "assigner_id": null,
+        "created_at": "2026-04-16T23:51:15"
+      },
+      "column_similarity_measure": {
+        "project_id": "column_exact_match_similarity",
+        "section_id": "column_ignore_similarity",
+        "user_id": "column_exact_match_similarity",
+        "title": "column_rouge_l_similarity",
+        "description": "column_ignore_similarity",
+        "due_date": "column_ignore_similarity",
+        "priority": "column_exact_match_similarity",
+        "is_completed": "column_exact_match_similarity",
+        "duration": "column_ignore_similarity",
+        "duration_unit": "column_ignore_similarity",
+        "order_index": "column_ignore_similarity",
+        "assignee_id": "column_ignore_similarity",
+        "assigner_id": "column_ignore_similarity",
+        "created_at": "column_ignore_similarity"
+      }
+    },
+    {
+      "operation": "create",
+      "source": "appworld",
+      "table": "todoist.tasks",
+      "entity_data": {
+        "project_id": 400,
+        "section_id": null,
+        "user_id": 105,
+        "title": "File approval: Salem Mass Sampling clearance sheet",
+        "description": null,
+        "due_date": null,
+        "priority": "medium",
+        "is_completed": false,
+        "duration": null,
+        "duration_unit": null,
+        "order_index": 2,
+        "assignee_id": null,
+        "assigner_id": null,
+        "created_at": "2026-04-16T23:51:15"
+      },
+      "column_similarity_measure": {
+        "project_id": "column_exact_match_similarity",
+        "section_id": "column_ignore_similarity",
+        "user_id": "column_exact_match_similarity",
+        "title": "column_rouge_l_similarity",
+        "description": "column_ignore_similarity",
+        "due_date": "column_ignore_similarity",
+        "priority": "column_exact_match_similarity",
+        "is_completed": "column_exact_match_similarity",
+        "duration": "column_ignore_similarity",
+        "duration_unit": "column_ignore_similarity",
+        "order_index": "column_ignore_similarity",
+        "assignee_id": "column_ignore_similarity",
+        "assigner_id": "column_ignore_similarity",
+        "created_at": "column_ignore_similarity"
+      }
+    },
+    {
+      "operation": "create",
+      "source": "appworld",
+      "table": "todoist.tasks",
+      "entity_data": {
+        "project_id": 400,
+        "section_id": null,
+        "user_id": 105,
+        "title": "File approval: Employee Status Notice",
+        "description": null,
+        "due_date": null,
+        "priority": "medium",
+        "is_completed": false,
+        "duration": null,
+        "duration_unit": null,
+        "order_index": 3,
+        "assignee_id": null,
+        "assigner_id": null,
+        "created_at": "2026-04-16T23:51:15"
+      },
+      "column_similarity_measure": {
+        "project_id": "column_exact_match_similarity",
+        "section_id": "column_ignore_similarity",
+        "user_id": "column_exact_match_similarity",
+        "title": "column_rouge_l_similarity",
+        "description": "column_ignore_similarity",
+        "due_date": "column_ignore_similarity",
+        "priority": "column_exact_match_similarity",
+        "is_completed": "column_exact_match_similarity",
+        "duration": "column_ignore_similarity",
+        "duration_unit": "column_ignore_similarity",
+        "order_index": "column_ignore_similarity",
+        "assignee_id": "column_ignore_similarity",
+        "assigner_id": "column_ignore_similarity",
+        "created_at": "column_ignore_similarity"
+      }
+    },
+    {
+      "operation": "create",
+      "source": "appworld",
+      "table": "todoist.labels",
+      "entity_data": {
+        "user_id": 105,
+        "name": "Rhonda Bailey",
+        "color": "charcoal"
+      },
+      "column_similarity_measure": {
+        "user_id": "column_exact_match_similarity",
+        "name": "column_rouge_l_similarity",
+        "color": "column_exact_match_similarity"
+      }
+    },
+    {
+      "operation": "create",
+      "source": "appworld",
+      "table": "todoist.labels",
+      "entity_data": {
+        "user_id": 105,
+        "name": "Jack Bellis",
+        "color": "charcoal"
+      },
+      "column_similarity_measure": {
+        "user_id": "column_exact_match_similarity",
+        "name": "column_rouge_l_similarity",
+        "color": "column_exact_match_similarity"
+      }
+    },
+    {
+      "operation": "create",
+      "source": "appworld",
+      "table": "todoist.labels",
+      "entity_data": {
+        "user_id": 105,
+        "name": "Nancy Bowland",
+        "color": "charcoal"
+      },
+      "column_similarity_measure": {
+        "user_id": "column_exact_match_similarity",
+        "name": "column_rouge_l_similarity",
+        "color": "column_exact_match_similarity"
+      }
+    },
+    {
+      "operation": "create",
+      "source": "appworld",
+      "table": "todoist.labels",
+      "entity_data": {
+        "user_id": 105,
+        "name": "Regina A Johnson",
+        "color": "charcoal"
+      },
+      "column_similarity_measure": {
+        "user_id": "column_exact_match_similarity",
+        "name": "column_rouge_l_similarity",
+        "color": "column_exact_match_similarity"
+      }
+    },
+    {
+      "operation": "create",
+      "source": "appworld",
+      "table": "todoist.task_label_links",
+      "entity_data": {
+        "task_id": 6500,
+        "label_id": 2400
+      },
+      "column_similarity_measure": {
+        "task_id": "column_ignore_similarity",
+        "label_id": "column_ignore_similarity"
+      }
+    },
+    {
+      "operation": "create",
+      "source": "appworld",
+      "table": "todoist.task_label_links",
+      "entity_data": {
+        "task_id": 6501,
+        "label_id": 2401
+      },
+      "column_similarity_measure": {
+        "task_id": "column_ignore_similarity",
+        "label_id": "column_ignore_similarity"
+      }
+    },
+    {
+      "operation": "create",
+      "source": "appworld",
+      "table": "todoist.task_label_links",
+      "entity_data": {
+        "task_id": 6501,
+        "label_id": 2402
+      },
+      "column_similarity_measure": {
+        "task_id": "column_ignore_similarity",
+        "label_id": "column_ignore_similarity"
+      }
+    },
+    {
+      "operation": "create",
+      "source": "appworld",
+      "table": "todoist.task_label_links",
+      "entity_data": {
+        "task_id": 6502,
+        "label_id": 2403
+      },
+      "column_similarity_measure": {
+        "task_id": "column_ignore_similarity",
+        "label_id": "column_ignore_similarity"
+      }
+    },
+    {
+      "operation": "create",
+      "source": "appworld",
+      "table": "todoist.task_comments",
+      "entity_data": {
+        "task_id": 6501,
+        "user_id": 105,
+        "content": "Audit required",
+        "created_at": "2026-04-16T23:51:15"
+      },
+      "column_similarity_measure": {
+        "task_id": "column_ignore_similarity",
+        "user_id": "column_exact_match_similarity",
+        "content": "column_rouge_l_similarity",
+        "created_at": "column_ignore_similarity"
+      }
+    },
+    {
+      "operation": "create",
+      "source": "appworld",
+      "table": "todoist.task_comments",
+      "entity_data": {
+        "task_id": 6502,
+        "user_id": 105,
+        "content": "Audit required",
+        "created_at": "2026-04-16T23:51:15"
+      },
+      "column_similarity_measure": {
+        "task_id": "column_ignore_similarity",
+        "user_id": "column_exact_match_similarity",
+        "content": "column_rouge_l_similarity",
+        "created_at": "column_ignore_similarity"
+      }
+    }
+  ],
+  "task_completion_criteria": "Create Todoist tasks titled 'File approval: [Document Subject]' for the AMA permission letter, the Salem Mass Sampling clearance sheet, and the Employee Status Notice. Attach labels to these tasks for the respective approvers: Rhonda Bailey, Jack Bellis and/or Nancy Bowland, and Regina A Johnson. Add Rhonda Bailey to contacts with the phone number 312 464-2513 and email rhonda_bailey@ama-assn.org. Finally, post a task comment saying 'Audit required' on the tasks for the clearance sheet and the employee status notice, as those are the documents from 2003.",
+  "categories": [
+    "APPWORLD",
+    "MULTIPLE_USER_TURN"
+  ],
+  "max_messages": 100,
+  "metadata": {
+    "original_scenario_id": "scenario_0028",
+    "expected_tools": [
+      "todoist_create_task",
+      "todoist_create_label",
+      "todoist_add_label_to_task",
+      "contacts_add_contact",
+      "todoist_show_tasks",
+      "todoist_post_task_comment"
+    ],
+    "image_arrival": {
+      "1": [
+        "image_1",
+        "image_2",
+        "image_3"
+      ],
+      "2": [
+        "image_4",
+        "image_5"
+      ],
+      "3": [
+        "image_6"
+      ]
+    },
+    "image_delivery_map": [
+      {
+        "query": "Apply the same filter to these two new documents: if they contain an official authorization signature or approval, create a 'File approval' task for them and label it with the authorizer's name.",
+        "image_ids": [
+          3,
+          4
+        ]
+      },
+      {
+        "query": "Add Stephanie Brown to my contacts with the phone number 555-0199. Also, since this document is an approval from her, create a 'File approval' task for it too.",
+        "image_ids": [
+          5
+        ]
+      }
+    ],
+    "scenario_metadata": {
+      "num_images": 6,
+      "num_user_rounds": 5,
+      "selected_flow_type": "filter",
+      "image_arrival": "mixed",
+      "challenge_type": "error_correction",
+      "require_disambiguation": false,
+      "dataset_type": "docvqa"
+    }
+  }
+}

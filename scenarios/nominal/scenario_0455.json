@@ -1,0 +1,224 @@
+{
+  "name": "scenario_0455",
+  "base_scenario": "base",
+  "description": "The user is organizing historical archives, extracting names of key individuals to track in a note and adding specific people to their contacts.",
+  "difficulty": "easy",
+  "appworld_base_task": "_base_",
+  "device_state_id": "va-blac@gmail.com",
+  "reference_time": "2026-04-17T00:04:00.566032+00:00",
+  "agentsandbox_entities": {},
+  "appworld_entities": {
+    "simple_note.notes": [
+      {
+        "id": 3200,
+        "user_id": 39,
+        "title": "Archived People",
+        "content": "Jay I. Goodman",
+        "tags": [],
+        "created_at": "2026-04-15T12:00:00",
+        "updated_at": "2026-04-15T12:00:00",
+        "pinned": false,
+        "data": null
+      }
+    ],
+    "gmail.users": [
+      {
+        "id": 10100,
+        "first_name": "Jay I.",
+        "last_name": "Goodman",
+        "email": "goodman3@msu.edu",
+        "password": "placeholder_password",
+        "status": "active"
+      },
+      {
+        "id": 10101,
+        "first_name": "Justin",
+        "last_name": "Pope",
+        "email": "jpope@ap.org",
+        "password": "placeholder_password",
+        "status": "active"
+      }
+    ]
+  },
+  "image_paths": [
+    "docvqa/images/1675.jpg",
+    "docvqa/images/35201.jpg",
+    "docvqa/images/5196.jpg",
+    "docvqa/images/61200.jpg",
+    "docvqa/images/63029.jpg",
+    "docvqa/images/51507.jpg"
+  ],
+  "messages": [
+    {
+      "sender": "SYSTEM",
+      "recipient": "USER",
+      "content": "{{USER_INSTRUCTION}}ROUND 1 [provide: image_4, image_6]\nQuery: I'm tracking people from these historical archives. Please check my 'Archived People' note. Cross-reference it with the sender of the letter in the second image and the first three doctors listed in the seminar document. Add any of these names to the note if they are missing. Also, add the sender of the letter to my contacts with his email address.\nInstructions: Instruct the assistant to read your 'Archived People' note and compare its contents with the sender of the recommendation letter and the first three doctors on the seminar list. Tell the assistant to add any of these names that are not already present in the note. Also, ask the assistant to create a new contact for the sender of the letter using his email address. If the assistant asks for confirmation of the extracted names or email, verify them against the images. Once the note is updated and the contact is created, move to the next round.\n\nROUND 2 [provide: image_1, image_2]\nQuery: Here are two more documents. Cross-reference the sender of the AP letter and the recipient of the Takeda letter with my 'Archived People' note, adding them if they aren't there. Also, add Justin Pope to my contacts using his email from the AP letter, which is ebell@ap.org.\nInstructions: Ask the assistant to check the 'Archived People' note again and add the sender of the AP letter and the recipient of the other letter if they are missing. Then, tell the assistant to add the reporter mentioned in the AP letter to your contacts, but intentionally give the assistant the wrong email address (the sender's email instead of the reporter's). Crucially, wait to see if the assistant notices that the email you provided actually belongs to the sender, not the reporter. If the assistant flags this error, acknowledge it and wait for the next round to provide the correction. If the assistant blindly attempts to create the contact with the wrong email, point out the mistake and tell it to wait for your correction.\n\nROUND 3 [provide: image_3, image_5]\nQuery: Good catch, ebell@ap.org is Edward Bell's email. Please add Justin Pope to my contacts with his correct email, jpope@ap.org. Next, cross-reference the name on the bio sheet with the 'Archived People' note and add him if missing. Finally, create a new note called 'Archive Addresses' and save the address from the postcard into it.\nInstructions: Acknowledge the email mistake from the previous round and instruct the assistant to add the reporter to your contacts with his correct email from the AP letter. Then, ask the assistant to extract the name from the biographical sheet and add it to the 'Archived People' note if it's not already there. Finally, ask the assistant to create a new note named 'Archive Addresses' and transcribe the full mailing address from the postcard into it. If the assistant asks to confirm the address details, tell it to use exactly what is printed on the card. Conclude the conversation once all updates and creations are confirmed.\n\nYou have 6 images available to share with the agent using the send_message_with_image tool.\nIMPORTANT: Image IDs are ZERO-INDEXED integers (0, 1, 2, ...). Do NOT add 1 to the IDs.\nAvailable image IDs: [0, 1, 2, 3, 4, 5]\nImage mapping:\n  image_1.jpg -> image ID 0\n  image_2.jpg -> image ID 1\n  image_3.jpg -> image ID 2\n  image_4.jpg -> image ID 3\n  image_5.jpg -> image ID 4\n  image_6.jpg -> image ID 5\n\n## IMAGE DELIVERY\n\n\u26a0\ufe0f IMPORTANT: You MUST use the `send_message_with_image` tool to share images with User B. Do NOT just describe images in text \u2014 you MUST call the tool.\n\nImage delivery schedule:\n\n  Round 2: YOU MUST call the send_message_with_image tool with image_ids='0,1' \u2014 do NOT write the tool name as text; use the actual function call. Include a natural, conversational message to the assistant.\n  Round 3: YOU MUST call the send_message_with_image tool with image_ids='2,4' \u2014 do NOT write the tool name as text; use the actual function call. Include a natural, conversational message to the assistant."
+    },
+    {
+      "sender": "USER",
+      "recipient": "AGENT",
+      "content": "I'm tracking people from these historical archives. Please check my 'Archived People' note. Cross-reference it with the sender of the letter in the second image and the first three doctors listed in the seminar document. Add any of these names to the note if they are missing. Also, add the sender of the letter to my contacts with his email address.",
+      "image_ids": [
+        3,
+        5
+      ]
+    }
+  ],
+  "milestones": [],
+  "entity_diff_specs": [
+    {
+      "operation": "create",
+      "source": "appworld",
+      "table": "phone.contacts",
+      "entity_data": {
+        "user_id": 39,
+        "first_name": "Jay I.",
+        "last_name": "Goodman",
+        "email": "goodman3@msu.edu",
+        "phone_number": null,
+        "relationships": [],
+        "birthday": null,
+        "home_address": null,
+        "work_address": null,
+        "created_at": "2026-04-17T00:04:00"
+      },
+      "column_similarity_measure": {
+        "user_id": "column_exact_match_similarity",
+        "first_name": "column_exact_match_similarity",
+        "last_name": "column_exact_match_similarity",
+        "email": "column_exact_match_similarity",
+        "phone_number": "column_ignore_similarity",
+        "relationships": "column_ignore_similarity",
+        "birthday": "column_ignore_similarity",
+        "home_address": "column_ignore_similarity",
+        "work_address": "column_ignore_similarity",
+        "created_at": "column_ignore_similarity"
+      }
+    },
+    {
+      "operation": "create",
+      "source": "appworld",
+      "table": "phone.contacts",
+      "entity_data": {
+        "user_id": 39,
+        "first_name": "Justin",
+        "last_name": "Pope",
+        "email": "jpope@ap.org",
+        "phone_number": null,
+        "relationships": [],
+        "birthday": null,
+        "home_address": null,
+        "work_address": null,
+        "created_at": "2026-04-17T00:04:00"
+      },
+      "column_similarity_measure": {
+        "user_id": "column_exact_match_similarity",
+        "first_name": "column_exact_match_similarity",
+        "last_name": "column_exact_match_similarity",
+        "email": "column_exact_match_similarity",
+        "phone_number": "column_ignore_similarity",
+        "relationships": "column_ignore_similarity",
+        "birthday": "column_ignore_similarity",
+        "home_address": "column_ignore_similarity",
+        "work_address": "column_ignore_similarity",
+        "created_at": "column_ignore_similarity"
+      }
+    },
+    {
+      "operation": "create",
+      "source": "appworld",
+      "table": "simple_note.notes",
+      "entity_data": {
+        "user_id": 39,
+        "title": "Archive Addresses",
+        "content": "Food Chemicals Codex, Food Protection Committee, National Research Council, 2101 Constitution Avenue, Washington 25, D. C.",
+        "tags": [],
+        "created_at": "2026-04-17T00:04:00",
+        "updated_at": "2026-04-17T00:04:00",
+        "pinned": false,
+        "data": null
+      },
+      "column_similarity_measure": {
+        "user_id": "column_exact_match_similarity",
+        "title": "column_rouge_l_similarity",
+        "content": "column_rouge_l_similarity",
+        "tags": "column_ignore_similarity",
+        "created_at": "column_ignore_similarity",
+        "updated_at": "column_ignore_similarity",
+        "pinned": "column_exact_match_similarity",
+        "data": "column_ignore_similarity"
+      }
+    },
+    {
+      "operation": "update",
+      "source": "appworld",
+      "table": "simple_note.notes",
+      "entity_id_column": "id",
+      "entity_id_value": 3200,
+      "expected_fields": {
+        "updated_at": "2026-04-15T12:00:00",
+        "content": "Jay I. Goodman\nDr. Melvin Tess\nDr. Elaine Thomas\nDr. E. J. Bieri\nEdward Bell\nPatricia L. Ruppel\nGeo. W. Atkinson, Jr.",
+        "tags": []
+      },
+      "column_similarity_measure": {
+        "updated_at": "column_ignore_similarity",
+        "content": "column_rouge_l_similarity",
+        "id": "column_exact_match_similarity"
+      }
+    }
+  ],
+  "task_completion_criteria": "The user wants to cross-reference and update their 'Archived People' note by adding missing names from the provided historical documents: Dr. Melvin Tess, Dr. Elaine Thomas, Dr. E. J. Bieri, Edward Bell, Patricia L. Ruppel, and Geo. W. Atkinson, Jr. Additionally, the user wants to add Jay I. Goodman (goodman3@msu.edu) and Justin Pope (jpope@ap.org) to their contacts, and create a new note named 'Archive Addresses' containing the address: Food Chemicals Codex, Food Protection Committee, National Research Council, 2101 Constitution Avenue, Washington 25, D. C.",
+  "categories": [
+    "APPWORLD",
+    "MULTIPLE_USER_TURN"
+  ],
+  "max_messages": 100,
+  "metadata": {
+    "original_scenario_id": "scenario_0455",
+    "expected_tools": [
+      "simple_note_show_note",
+      "simple_note_update_note",
+      "contacts_add_contact",
+      "simple_note_create_note"
+    ],
+    "image_arrival": {
+      "1": [
+        "image_4",
+        "image_6"
+      ],
+      "2": [
+        "image_1",
+        "image_2"
+      ],
+      "3": [
+        "image_3",
+        "image_5"
+      ]
+    },
+    "image_delivery_map": [
+      {
+        "query": "Here are two more documents. Cross-reference the sender of the AP letter and the recipient of the Takeda letter with my 'Archived People' note, adding them if they aren't there. Also, add Justin Pope to my contacts using his email from the AP letter, which is ebell@ap.org.",
+        "image_ids": [
+          0,
+          1
+        ]
+      },
+      {
+        "query": "Good catch, ebell@ap.org is Edward Bell's email. Please add Justin Pope to my contacts with his correct email, jpope@ap.org. Next, cross-reference the name on the bio sheet with the 'Archived People' note and add him if missing. Finally, create a new note called 'Archive Addresses' and save the address from the postcard into it.",
+        "image_ids": [
+          2,
+          4
+        ]
+      }
+    ],
+    "scenario_metadata": {
+      "num_images": 6,
+      "num_user_rounds": 3,
+      "selected_flow_type": "cross_reference",
+      "image_arrival": "progressive",
+      "challenge_type": "error_correction",
+      "require_disambiguation": false,
+      "dataset_type": "docvqa"
+    }
+  }
+}

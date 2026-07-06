@@ -1,0 +1,339 @@
+{
+  "name": "scenario_0740",
+  "base_scenario": "base",
+  "description": "Alexander is organizing his work schedule, coordinating with colleagues, and running some coding tests based on various screenshots and references he has collected.",
+  "difficulty": "easy",
+  "appworld_base_task": "_base_",
+  "device_state_id": "alexander-ridd@gmail.com",
+  "reference_time": "2026-04-17T00:12:55.002373+00:00",
+  "agentsandbox_entities": {
+    "calendars": [
+      {
+        "calendar_id": "calendar_100",
+        "title": "Default Calendar"
+      }
+    ]
+  },
+  "appworld_entities": {
+    "phone.contacts": [
+      {
+        "id": 200,
+        "user_id": 20,
+        "first_name": "P.B.",
+        "last_name": "Rage",
+        "email": "pbrage@gmail.com",
+        "phone_number": null,
+        "relationships": [],
+        "birthday": null,
+        "home_address": null,
+        "work_address": null,
+        "created_at": "2026-01-01T10:00:00"
+      }
+    ],
+    "gmail.emails": [
+      {
+        "id": 5100,
+        "sender_id": 200,
+        "recipient_ids": [
+          20
+        ],
+        "subject": "Team Feedback",
+        "body": "Hi Alexander, here is the initial document for the team feedback. Let me know if you need anything else.",
+        "response_to_email_id": null,
+        "created_at": "2026-04-16T10:00:00"
+      }
+    ],
+    "gmail.global_email_threads": [
+      {
+        "id": 200,
+        "email_ids": [
+          5100
+        ],
+        "created_at": "2026-04-16T10:00:00",
+        "updated_at": "2026-04-16T10:00:00"
+      }
+    ],
+    "gmail.user_email_threads": [
+      {
+        "id": 48000,
+        "global_email_thread_id": 200,
+        "user_id": 20,
+        "email_ids": [
+          5100
+        ],
+        "incoming": true,
+        "outgoing": false,
+        "read": true,
+        "label": "INBOX",
+        "starred": false,
+        "archived": false,
+        "spam": false,
+        "sender_email_addresses": [
+          "pbrage@gmail.com"
+        ],
+        "sender_names": [
+          "P.B. Rage"
+        ],
+        "recipient_email_addresses": [
+          "alexander-ridd@gmail.com"
+        ],
+        "recipient_names": [
+          "Alexander Riddick"
+        ],
+        "created_at": "2026-04-16T10:00:00",
+        "updated_at": "2026-04-16T10:00:00",
+        "has_attachments": false,
+        "snoozed_until": null
+      }
+    ],
+    "gmail.users": [
+      {
+        "id": 200,
+        "first_name": "P.B.",
+        "last_name": "Rage",
+        "email": "pbrage@gmail.com",
+        "password": "default_password",
+        "status": "active",
+        "created_at": "2025-01-01T00:00:00",
+        "last_logged_in": "2025-01-01T00:00:00"
+      }
+    ]
+  },
+  "image_paths": [
+    "screenspotpro/images/common_mac/screenshot_2024-11-28_19-13-24.png",
+    "hiertext/images/test/17b414ea611e8d50.jpg",
+    "hiertext/images/test/423e7976eb83dca8.jpg",
+    "screenspotpro/images/common_mac/screenshot_2024-11-28_18-25-42.png",
+    "screenspotpro/images/pycharm_mac/screenshot_2024-11-04_15-03-56.png"
+  ],
+  "messages": [
+    {
+      "sender": "SYSTEM",
+      "recipient": "USER",
+      "content": "{{USER_INSTRUCTION}}ROUND 1 [provide: image_3]\nQuery: Create a calendar event for next Monday at 9:00 AM titled 'Morning Sessions'. Make its duration equal to the total time from the start of the 'Welcome and Introduction' to the end of the 'Panel' session shown in this schedule.\nInstructions: Ask the assistant to create a calendar event for next Monday at 9:00 AM titled 'Morning Sessions', setting its duration to match the total time span from the start of the 'Welcome and Introduction' session to the end of the 'Panel' session shown in the provided schedule image. If the assistant asks for the exact duration, point it back to the schedule to calculate the time difference itself. Once the event is created, move on to the next round.\n\nROUND 2 [provide: image_2, image_4]\nQuery: Draft an email to the sender of the email visible on this laptop screen. Remind them to send their feedback exactly 2 hours before my 'Review team feedback' task time from my to-do list.\nInstructions: Instruct the assistant to draft an email to the sender of the email shown on the laptop screen. The email should remind them to send their feedback exactly two hours prior to the 'Review team feedback' task scheduled on the provided to-do list. Do not calculate the time for the assistant; let it figure out the task time and do the math. If the assistant asks for the sender's email address or the specific time, tell it to check the images. Once the draft is ready, proceed.\n\nROUND 3 [provide: image_5]\nQuery: Create a calendar event for next Wednesday titled 'Work on train.py' and set it to last for 5 days, which is the length of the 'National Day' holiday shown in this calendar.\nInstructions: Ask the assistant to create a calendar event for next Wednesday titled 'Work on train.py' lasting for 5 days, claiming that this is the duration of the National Day holiday shown in the calendar image. This is a deliberate mistake. If the assistant points out that the holiday actually spans a different number of days, acknowledge the correction but insist on 5 days for now just to get it on the calendar. If it blindly creates the 5-day event without noticing the discrepancy, just proceed to the next round.\n\nROUND 4\nQuery: Wait, I misread that calendar. The National Day holiday is actually 7 days long. Please update the 'Work on train.py' calendar event to last for 7 days instead.\nInstructions: Tell the assistant that you misread the previous calendar image and realized the National Day holiday is actually 7 days long. Ask it to update the 'Work on train.py' calendar event to last for 7 days instead. Once the event duration is updated, move on to the final round.\n\nROUND 5 [provide: image_1]\nQuery: Look at the python code in this screenshot. I need to calculate a bounding box using that exact logic. If start_x is 100, end_x is 50, start_y is 200, end_y is 150, and both scaling factors are 2, create a simple note with the final calculated self.bbox values.\nInstructions: Direct the assistant to the Python code in the screenshot and ask it to calculate a bounding box using that specific logic. Provide the inputs: start_x=100, end_x=50, start_y=200, end_y=150, and both scaling factors as 2. Ask it to create a simple note containing the final calculated bounding box values. Do not do the math or swapping logic for the assistant. If it provides the wrong values, tell it to carefully re-read the swapping logic and scaling division in the code. Once the note is created with the correct values, end the conversation.\n\nYou have 5 images available to share with the agent using the send_message_with_image tool.\nIMPORTANT: Image IDs are ZERO-INDEXED integers (0, 1, 2, ...). Do NOT add 1 to the IDs.\nAvailable image IDs: [0, 1, 2, 3, 4]\nImage mapping:\n  image_1.jpg -> image ID 0\n  image_2.jpg -> image ID 1\n  image_3.jpg -> image ID 2\n  image_4.jpg -> image ID 3\n  image_5.jpg -> image ID 4\n\n## IMAGE DELIVERY\n\n⚠️ IMPORTANT: You MUST use the `send_message_with_image` tool to share images with User B. Do NOT just describe images in text — you MUST call the tool.\n\nImage delivery schedule:\n\n  Round 2: YOU MUST call the send_message_with_image tool with image_ids='1,3' — do NOT write the tool name as text; use the actual function call. Include a natural, conversational message to the assistant.\n  Round 3: YOU MUST call the send_message_with_image tool with image_ids='4' — do NOT write the tool name as text; use the actual function call. Include a natural, conversational message to the assistant.\n  Round 5: YOU MUST call the send_message_with_image tool with image_ids='0' — do NOT write the tool name as text; use the actual function call. Include a natural, conversational message to the assistant."
+    },
+    {
+      "sender": "USER",
+      "recipient": "AGENT",
+      "content": "Create a calendar event for next Monday at 9:00 AM titled 'Morning Sessions'. Make its duration equal to the total time from the start of the 'Welcome and Introduction' to the end of the 'Panel' session shown in this schedule.",
+      "image_ids": [
+        2
+      ]
+    }
+  ],
+  "milestones": [],
+  "entity_diff_specs": [
+    {
+      "operation": "create",
+      "source": "appworld",
+      "table": "gmail.drafts",
+      "entity_data": {
+        "user_id": 20,
+        "recipient_ids": [
+          200
+        ],
+        "recipient_email_addresses": [
+          "pbrage@gmail.com"
+        ],
+        "recipient_names": [
+          "P.B. Rage"
+        ],
+        "subject": "Re: Team Feedback",
+        "body": "Hi P.B., please remember to send your feedback by 3:00 PM today. Thanks!",
+        "belongs_to_email_thread_id": null,
+        "response_to_email_id": 5100,
+        "scheduled_send_at": null,
+        "created_at": "2026-04-17T00:12:55",
+        "updated_at": "2026-04-17T00:12:55"
+      },
+      "column_similarity_measure": {
+        "user_id": "column_exact_match_similarity",
+        "recipient_ids": "column_exact_match_similarity",
+        "recipient_email_addresses": "column_exact_match_similarity",
+        "recipient_names": "column_exact_match_similarity",
+        "subject": "column_rouge_l_similarity",
+        "body": "column_rouge_l_similarity",
+        "belongs_to_email_thread_id": "column_ignore_similarity",
+        "response_to_email_id": "column_exact_match_similarity",
+        "scheduled_send_at": "column_ignore_similarity",
+        "created_at": "column_ignore_similarity",
+        "updated_at": "column_ignore_similarity"
+      }
+    },
+    {
+      "operation": "create",
+      "source": "appworld",
+      "table": "simple_note.notes",
+      "entity_data": {
+        "user_id": 20,
+        "title": "Bounding Box Values",
+        "content": "25, 75, 50, 100",
+        "tags": [],
+        "created_at": "2026-04-17T00:12:55",
+        "updated_at": "2026-04-17T00:12:55",
+        "pinned": false,
+        "data": null
+      },
+      "column_similarity_measure": {
+        "user_id": "column_exact_match_similarity",
+        "title": "column_rouge_l_similarity",
+        "content": "column_rouge_l_similarity",
+        "tags": "column_ignore_similarity",
+        "created_at": "column_ignore_similarity",
+        "updated_at": "column_ignore_similarity",
+        "pinned": "column_exact_match_similarity",
+        "data": "column_ignore_similarity"
+      }
+    },
+    {
+      "operation": "create",
+      "source": "agentsandbox",
+      "namespace": "CALENDAR_EVENTS",
+      "entity_data": {
+        "calendar_event_id": "event_100",
+        "calendar_id": "calendar_100",
+        "title": "Morning Sessions",
+        "description": null,
+        "start_datetime": "2026-04-20T09:00:00Z",
+        "end_datetime": "2026-04-20T12:45:00Z",
+        "is_all_day": false,
+        "recurrence_frequency": null,
+        "recurrence_interval": null,
+        "recurrence_until_datetime": null,
+        "recurrence_parent_id": null,
+        "recurrence_exclude_datetime": [],
+        "latitude": null,
+        "longitude": null,
+        "place_id": null,
+        "formatted_address": null,
+        "attendee_names": [],
+        "attendee_emails": []
+      },
+      "column_similarity_measure": {
+        "calendar_event_id": "column_ignore_similarity",
+        "calendar_id": "column_ignore_similarity",
+        "title": "column_rouge_l_similarity",
+        "description": "column_ignore_similarity",
+        "start_datetime": "column_datetime_naive_equal_similarity",
+        "end_datetime": "column_datetime_naive_equal_similarity",
+        "is_all_day": "column_exact_match_similarity",
+        "recurrence_frequency": "column_ignore_similarity",
+        "recurrence_interval": "column_ignore_similarity",
+        "recurrence_until_datetime": "column_ignore_similarity",
+        "recurrence_parent_id": "column_ignore_similarity",
+        "recurrence_exclude_datetime": "column_ignore_similarity",
+        "latitude": "column_ignore_similarity",
+        "longitude": "column_ignore_similarity",
+        "place_id": "column_ignore_similarity",
+        "formatted_address": "column_ignore_similarity",
+        "attendee_names": "column_ignore_similarity",
+        "attendee_emails": "column_ignore_similarity"
+      }
+    },
+    {
+      "operation": "create",
+      "source": "agentsandbox",
+      "namespace": "CALENDAR_EVENTS",
+      "entity_data": {
+        "calendar_event_id": "event_101",
+        "calendar_id": "calendar_100",
+        "title": "Work on train.py",
+        "description": null,
+        "start_datetime": "2026-04-22T00:00:00Z",
+        "end_datetime": "2026-04-29T00:00:00Z",
+        "is_all_day": true,
+        "recurrence_frequency": null,
+        "recurrence_interval": null,
+        "recurrence_until_datetime": null,
+        "recurrence_parent_id": null,
+        "recurrence_exclude_datetime": [],
+        "latitude": null,
+        "longitude": null,
+        "place_id": null,
+        "formatted_address": null,
+        "attendee_names": [],
+        "attendee_emails": []
+      },
+      "column_similarity_measure": {
+        "calendar_event_id": "column_ignore_similarity",
+        "calendar_id": "column_ignore_similarity",
+        "title": "column_rouge_l_similarity",
+        "description": "column_ignore_similarity",
+        "start_datetime": "column_datetime_naive_equal_similarity",
+        "end_datetime": "column_datetime_naive_equal_similarity",
+        "is_all_day": "column_exact_match_similarity",
+        "recurrence_frequency": "column_ignore_similarity",
+        "recurrence_interval": "column_ignore_similarity",
+        "recurrence_until_datetime": "column_ignore_similarity",
+        "recurrence_parent_id": "column_ignore_similarity",
+        "recurrence_exclude_datetime": "column_ignore_similarity",
+        "latitude": "column_ignore_similarity",
+        "longitude": "column_ignore_similarity",
+        "place_id": "column_ignore_similarity",
+        "formatted_address": "column_ignore_similarity",
+        "attendee_names": "column_ignore_similarity",
+        "attendee_emails": "column_ignore_similarity"
+      }
+    }
+  ],
+  "task_completion_criteria": "Create a calendar event for April 20, 2026 at 9:00 AM titled 'Morning Sessions' with a duration of 3 hours and 45 minutes, draft an email to P.B. Rage reminding them to send feedback by 3:00 PM, create a calendar event for April 22, 2026 titled 'Work on train.py' with a duration of 7 days, and create a note containing the computed bounding box values 25, 75, 50, and 100.",
+  "categories": [
+    "APPWORLD",
+    "MULTIPLE_USER_TURN"
+  ],
+  "max_messages": 100,
+  "metadata": {
+    "original_scenario_id": "scenario_0740",
+    "expected_tools": [
+      "create_calendar_event",
+      "gmail_create_draft",
+      "modify_calendar_event",
+      "simple_note_create_note"
+    ],
+    "image_arrival": {
+      "1": [
+        "image_3"
+      ],
+      "2": [
+        "image_2",
+        "image_4"
+      ],
+      "3": [
+        "image_5"
+      ],
+      "5": [
+        "image_1"
+      ]
+    },
+    "image_delivery_map": [
+      {
+        "query": "Draft an email to the sender of the email visible on this laptop screen. Remind them to send their feedback exactly 2 hours before my 'Review team feedback' task time from my to-do list.",
+        "image_ids": [
+          1,
+          3
+        ]
+      },
+      {
+        "query": "Create a calendar event for next Wednesday titled 'Work on train.py' and set it to last for 5 days, which is the length of the 'National Day' holiday shown in this calendar.",
+        "image_ids": [
+          4
+        ]
+      },
+      {
+        "query": "Look at the python code in this screenshot. I need to calculate a bounding box using that exact logic. If start_x is 100, end_x is 50, start_y is 200, end_y is 150, and both scaling factors are 2, create a simple note with the final calculated self.bbox values.",
+        "image_ids": [
+          0
+        ]
+      }
+    ],
+    "scenario_metadata": {
+      "num_images": 5,
+      "num_user_rounds": 5,
+      "selected_flow_type": "compute",
+      "image_arrival": "mixed",
+      "challenge_type": "error_correction",
+      "require_disambiguation": false,
+      "dataset_type": "screenspotpro"
+    }
+  }
+}

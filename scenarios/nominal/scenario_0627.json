@@ -1,0 +1,473 @@
+{
+  "name": "scenario_0627",
+  "base_scenario": "base",
+  "description": "The user is organizing their collections, library, and shopping lists by cross-referencing physical items and images with their digital notes, tasks, and emails.",
+  "difficulty": "easy",
+  "appworld_base_task": "_base_",
+  "device_state_id": "william_mart@gmail.com",
+  "reference_time": "2026-04-17T00:09:17.312349+00:00",
+  "agentsandbox_entities": {},
+  "appworld_entities": {
+    "gmail.drafts": [
+      {
+        "id": 700,
+        "user_id": 78,
+        "recipient_ids": [],
+        "recipient_email_addresses": [],
+        "recipient_names": [],
+        "subject": "Gift Ideas",
+        "body": "Some gift ideas for the upcoming holidays:\n- King Jim Ice Stamp\n- A nice fountain pen\n- Maybe some artisanal coffee",
+        "belongs_to_email_thread_id": null,
+        "response_to_email_id": null,
+        "scheduled_send_at": null,
+        "created_at": "2026-04-15T10:00:00",
+        "updated_at": "2026-04-15T10:00:00"
+      }
+    ],
+    "todoist.projects": [
+      {
+        "id": 400,
+        "user_id": 78,
+        "name": "Library",
+        "color": "charcoal",
+        "is_inbox": false,
+        "description": "",
+        "created_at": "2026-04-10T10:00:00"
+      },
+      {
+        "id": 401,
+        "user_id": 78,
+        "name": "Errands",
+        "color": "charcoal",
+        "is_inbox": false,
+        "description": "",
+        "created_at": "2026-04-10T10:00:00"
+      }
+    ],
+    "todoist.tasks": [
+      {
+        "id": 6500,
+        "project_id": 400,
+        "section_id": null,
+        "user_id": 78,
+        "title": "INDUSTRIAL DEMOCRACY",
+        "description": null,
+        "due_date": null,
+        "priority": "medium",
+        "is_completed": false,
+        "duration": null,
+        "duration_unit": null,
+        "order_index": 1,
+        "assignee_id": null,
+        "assigner_id": null,
+        "created_at": "2026-04-10T10:05:00"
+      },
+      {
+        "id": 6501,
+        "project_id": 400,
+        "section_id": null,
+        "user_id": 78,
+        "title": "ENGLISH LOCAL GOVERNMENT",
+        "description": null,
+        "due_date": null,
+        "priority": "medium",
+        "is_completed": false,
+        "duration": null,
+        "duration_unit": null,
+        "order_index": 2,
+        "assignee_id": null,
+        "assigner_id": null,
+        "created_at": "2026-04-10T10:06:00"
+      },
+      {
+        "id": 6502,
+        "project_id": 401,
+        "section_id": null,
+        "user_id": 78,
+        "title": "buy milk",
+        "description": null,
+        "due_date": null,
+        "priority": "medium",
+        "is_completed": false,
+        "duration": null,
+        "duration_unit": null,
+        "order_index": 1,
+        "assignee_id": null,
+        "assigner_id": null,
+        "created_at": "2026-04-10T10:05:00"
+      }
+    ],
+    "amazon.sellers": [
+      {
+        "id": 200,
+        "name": "Global Wares",
+        "rating": 4.5
+      }
+    ],
+    "amazon.products": [
+      {
+        "id": 200,
+        "product_type": "home",
+        "name": "Aynsley Bone China Teacup and Saucer",
+        "description": "Vintage Aynsley bone china teacup and saucer set with floral pattern.",
+        "seller_id": 200,
+        "price": 45.99,
+        "delivery_days": 3,
+        "inventory_quantity": 10,
+        "weight": 0.5,
+        "length": 6.0,
+        "width": 6.0,
+        "height": 4.0,
+        "color": null,
+        "relative_size": null,
+        "rating": 4.8,
+        "seller_rating": 4.5,
+        "has_variations": false
+      },
+      {
+        "id": 201,
+        "product_type": "crafts",
+        "name": "Sola Wood Flowers",
+        "description": "Pack of 50 natural sola wood flowers for crafting and home decor.",
+        "seller_id": 200,
+        "price": 24.99,
+        "delivery_days": 2,
+        "inventory_quantity": 50,
+        "weight": 0.3,
+        "length": 10.0,
+        "width": 8.0,
+        "height": 4.0,
+        "color": null,
+        "relative_size": null,
+        "rating": 4.6,
+        "seller_rating": 4.5,
+        "has_variations": false
+      },
+      {
+        "id": 202,
+        "product_type": "jewelry",
+        "name": "Coral Necklace",
+        "description": "Handcrafted natural red coral beaded necklace.",
+        "seller_id": 200,
+        "price": 89.99,
+        "delivery_days": 4,
+        "inventory_quantity": 5,
+        "weight": 0.1,
+        "length": 18.0,
+        "width": 0.5,
+        "height": 0.5,
+        "color": null,
+        "relative_size": null,
+        "rating": 4.7,
+        "seller_rating": 4.5,
+        "has_variations": false
+      },
+      {
+        "id": 203,
+        "product_type": "office",
+        "name": "King Jim Ice Stamp",
+        "description": "King Jim decorative ice stamp for journaling and planners.",
+        "seller_id": 200,
+        "price": 12.5,
+        "delivery_days": 2,
+        "inventory_quantity": 20,
+        "weight": 0.2,
+        "length": 2.0,
+        "width": 2.0,
+        "height": 3.0,
+        "color": null,
+        "relative_size": null,
+        "rating": 4.5,
+        "seller_rating": 4.5,
+        "has_variations": false
+      }
+    ],
+    "simple_note.notes": [
+      {
+        "id": 3200,
+        "user_id": 78,
+        "title": "Inventory",
+        "content": "Current Inventory:\n- Aynsley bone china\n- Coral necklace\n- Vintage typewriter\n- Silver spoon set",
+        "tags": [
+          "inventory",
+          "collections"
+        ],
+        "created_at": "2026-04-10T10:00:00",
+        "updated_at": "2026-04-10T10:00:00",
+        "pinned": false,
+        "data": null
+      }
+    ],
+    "todoist.project_collaborator_links": [
+      {
+        "id": 50400,
+        "project_id": 400,
+        "user_id": 78,
+        "is_favorite": false,
+        "is_archived": false,
+        "created_at": "2026-04-10T10:00:00"
+      },
+      {
+        "id": 50401,
+        "project_id": 401,
+        "user_id": 78,
+        "is_favorite": false,
+        "is_archived": false,
+        "created_at": "2026-04-10T10:00:00"
+      }
+    ],
+    "gmail.users": []
+  },
+  "image_paths": [
+    "worldvqa/images/1294.jpg",
+    "worldvqa/images/1413.jpg",
+    "worldvqa/images/1074.jpg",
+    "hiertext/images/test/9f8bed4d96cb32c6.jpg",
+    "worldvqa/images/899.jpg",
+    "worldvqa/images/1661.jpg"
+  ],
+  "messages": [
+    {
+      "sender": "SYSTEM",
+      "recipient": "USER",
+      "content": "{{USER_INSTRUCTION}}ROUND 1 [provide: image_1, image_2, image_3, image_4, image_5, image_6]\nQuery: Read my 'Inventory' note. Then, look at the first, third, fifth, and sixth images I just sent. Cross-reference the items shown in those four pictures with the note. For any item that is NOT already listed in the note, search for it on Amazon and add it to my cart.\nInstructions: Ask the assistant to check your 'Inventory' note and compare it with the items shown in the first, third, fifth, and sixth images. Instruct it to find the items from those images that are missing from the note, search for them on Amazon, and add them to your cart. If the assistant asks for clarification on what the items are, tell it to do its best to identify them from the visuals. Proceed to the next round once the missing items have been added to the cart.\n\nROUND 2\nQuery: Now look at the stained glass window in the fourth image. Cross-reference the legible book titles at the bottom with my 'Library' project in Todoist. For any title that is NOT already a task in that project, create a new task for it.\nInstructions: Direct the assistant to read the book titles stacked at the bottom of the stained glass window in the fourth image. Tell it to check the 'Library' project in Todoist and create a new task for any book title from the image that isn't already listed in that project. If it misses any titles or misreads them, point it back to the image. Move on when the missing tasks are successfully created.\n\nROUND 3\nQuery: I have an email draft titled 'Gift Ideas'. Read it and cross-reference the items mentioned there with the items we just added to the Amazon cart. If any of those cart items are also in the email draft, update their quantity in the cart to 2.\nInstructions: Ask the assistant to open your email draft titled 'Gift Ideas' and compare its contents with the items currently in your Amazon cart. Instruct it to update the cart quantity to 2 for any item that appears in both places. Confirm the updates and proceed to the next round.\n\nROUND 4\nQuery: Check my 'Errands' project in Todoist. I need to get the item shown in the second image. Cross-reference it with the tasks in 'Errands', and if it's not already on the list, create a task to buy birch bark.\nInstructions: Tell the assistant to check the 'Errands' project in Todoist and see if the item from the second image is listed. Tell it to create a task to buy 'birch bark' if it's missing. If the assistant correctly points out that the item in the image is actually something else, acknowledge the mistake. If it blindly proceeds to create the task for birch bark without noticing the discrepancy, let it finish, as you will correct it in the next turn.\n\nROUND 5\nQuery: Ah, my mistake, the image actually shows cinnamon bark, not birch bark. Please create the task to buy 'cinnamon bark' in the 'Errands' project instead.\nInstructions: Acknowledge that you made a mistake regarding the name of the item in the second image. Instruct the assistant to create the task to buy the correct item, which is cinnamon bark, in the 'Errands' project. End the conversation once this is confirmed.\n\nYou have 6 images available to share with the agent using the send_message_with_image tool.\nIMPORTANT: Image IDs are ZERO-INDEXED integers (0, 1, 2, ...). Do NOT add 1 to the IDs.\nAvailable image IDs: [0, 1, 2, 3, 4, 5]\nImage mapping:\n  image_1.jpg -> image ID 0\n  image_2.jpg -> image ID 1\n  image_3.jpg -> image ID 2\n  image_4.jpg -> image ID 3\n  image_5.jpg -> image ID 4\n  image_6.jpg -> image ID 5"
+    },
+    {
+      "sender": "USER",
+      "recipient": "AGENT",
+      "content": "Read my 'Inventory' note. Then, look at the first, third, fifth, and sixth images I just sent. Cross-reference the items shown in those four pictures with the note. For any item that is NOT already listed in the note, search for it on Amazon and add it to my cart.",
+      "image_ids": [
+        0,
+        1,
+        2,
+        3,
+        4,
+        5
+      ]
+    }
+  ],
+  "milestones": [],
+  "entity_diff_specs": [
+    {
+      "operation": "create",
+      "source": "appworld",
+      "table": "todoist.tasks",
+      "entity_data": {
+        "project_id": 400,
+        "section_id": null,
+        "user_id": 78,
+        "title": "MINORITY REPORT ON THE POOR LAW",
+        "description": null,
+        "due_date": null,
+        "priority": "medium",
+        "is_completed": false,
+        "duration": null,
+        "duration_unit": null,
+        "order_index": 3,
+        "assignee_id": null,
+        "assigner_id": null,
+        "created_at": "2026-04-17T00:09:17"
+      },
+      "column_similarity_measure": {
+        "project_id": "column_exact_match_similarity",
+        "section_id": "column_ignore_similarity",
+        "user_id": "column_exact_match_similarity",
+        "title": "column_rouge_l_similarity",
+        "description": "column_ignore_similarity",
+        "due_date": "column_ignore_similarity",
+        "priority": "column_exact_match_similarity",
+        "is_completed": "column_exact_match_similarity",
+        "duration": "column_ignore_similarity",
+        "duration_unit": "column_ignore_similarity",
+        "order_index": "column_ignore_similarity",
+        "assignee_id": "column_ignore_similarity",
+        "assigner_id": "column_ignore_similarity",
+        "created_at": "column_ignore_similarity"
+      }
+    },
+    {
+      "operation": "create",
+      "source": "appworld",
+      "table": "todoist.tasks",
+      "entity_data": {
+        "project_id": 400,
+        "section_id": null,
+        "user_id": 78,
+        "title": "HISTORY OF TRADE UNIONISM",
+        "description": null,
+        "due_date": null,
+        "priority": "medium",
+        "is_completed": false,
+        "duration": null,
+        "duration_unit": null,
+        "order_index": 4,
+        "assignee_id": null,
+        "assigner_id": null,
+        "created_at": "2026-04-17T00:09:17"
+      },
+      "column_similarity_measure": {
+        "project_id": "column_exact_match_similarity",
+        "section_id": "column_ignore_similarity",
+        "user_id": "column_exact_match_similarity",
+        "title": "column_rouge_l_similarity",
+        "description": "column_ignore_similarity",
+        "due_date": "column_ignore_similarity",
+        "priority": "column_exact_match_similarity",
+        "is_completed": "column_exact_match_similarity",
+        "duration": "column_ignore_similarity",
+        "duration_unit": "column_ignore_similarity",
+        "order_index": "column_ignore_similarity",
+        "assignee_id": "column_ignore_similarity",
+        "assigner_id": "column_ignore_similarity",
+        "created_at": "column_ignore_similarity"
+      }
+    },
+    {
+      "operation": "create",
+      "source": "appworld",
+      "table": "todoist.tasks",
+      "entity_data": {
+        "project_id": 400,
+        "section_id": null,
+        "user_id": 78,
+        "title": "FABIAN TRACTS AND ESSAYS",
+        "description": null,
+        "due_date": null,
+        "priority": "medium",
+        "is_completed": false,
+        "duration": null,
+        "duration_unit": null,
+        "order_index": 5,
+        "assignee_id": null,
+        "assigner_id": null,
+        "created_at": "2026-04-17T00:09:17"
+      },
+      "column_similarity_measure": {
+        "project_id": "column_exact_match_similarity",
+        "section_id": "column_ignore_similarity",
+        "user_id": "column_exact_match_similarity",
+        "title": "column_rouge_l_similarity",
+        "description": "column_ignore_similarity",
+        "due_date": "column_ignore_similarity",
+        "priority": "column_exact_match_similarity",
+        "is_completed": "column_exact_match_similarity",
+        "duration": "column_ignore_similarity",
+        "duration_unit": "column_ignore_similarity",
+        "order_index": "column_ignore_similarity",
+        "assignee_id": "column_ignore_similarity",
+        "assigner_id": "column_ignore_similarity",
+        "created_at": "column_ignore_similarity"
+      }
+    },
+    {
+      "operation": "create",
+      "source": "appworld",
+      "table": "todoist.tasks",
+      "entity_data": {
+        "project_id": 401,
+        "section_id": null,
+        "user_id": 78,
+        "title": "buy cinnamon bark",
+        "description": null,
+        "due_date": null,
+        "priority": "medium",
+        "is_completed": false,
+        "duration": null,
+        "duration_unit": null,
+        "order_index": 2,
+        "assignee_id": null,
+        "assigner_id": null,
+        "created_at": "2026-04-17T00:09:17"
+      },
+      "column_similarity_measure": {
+        "project_id": "column_exact_match_similarity",
+        "section_id": "column_ignore_similarity",
+        "user_id": "column_exact_match_similarity",
+        "title": "column_rouge_l_similarity",
+        "description": "column_ignore_similarity",
+        "due_date": "column_ignore_similarity",
+        "priority": "column_exact_match_similarity",
+        "is_completed": "column_exact_match_similarity",
+        "duration": "column_ignore_similarity",
+        "duration_unit": "column_ignore_similarity",
+        "order_index": "column_ignore_similarity",
+        "assignee_id": "column_ignore_similarity",
+        "assigner_id": "column_ignore_similarity",
+        "created_at": "column_ignore_similarity"
+      }
+    },
+    {
+      "operation": "create",
+      "source": "appworld",
+      "table": "amazon.cart_entries",
+      "entity_data": {
+        "user_id": 78,
+        "product_id": 201,
+        "quantity": 1,
+        "gift_wrap_quantity": 0
+      },
+      "column_similarity_measure": {
+        "user_id": "column_exact_match_similarity",
+        "product_id": "column_exact_match_similarity",
+        "quantity": "column_exact_match_similarity",
+        "gift_wrap_quantity": "column_exact_match_similarity"
+      }
+    },
+    {
+      "operation": "create",
+      "source": "appworld",
+      "table": "amazon.cart_entries",
+      "entity_data": {
+        "user_id": 78,
+        "product_id": 203,
+        "quantity": 2,
+        "gift_wrap_quantity": 0
+      },
+      "column_similarity_measure": {
+        "user_id": "column_exact_match_similarity",
+        "product_id": "column_exact_match_similarity",
+        "quantity": "column_exact_match_similarity",
+        "gift_wrap_quantity": "column_exact_match_similarity"
+      }
+    }
+  ],
+  "task_completion_criteria": "Cross-reference the 'Inventory' note with the Aynsley bone china, sola flower, coral necklace, and King Jim Ice Stamp from the images, adding any missing items to the Amazon cart. Then, add any missing book titles from the stained glass window ('MINORITY REPORT ON THE POOR LAW', 'INDUSTRIAL DEMOCRACY', 'HISTORY OF TRADE UNIONISM', 'ENGLISH LOCAL GOVERNMENT', 'FABIAN TRACTS AND ESSAYS') to the 'Library' Todoist project. Next, update the Amazon cart quantity to 2 for any items that also appear in the 'Gift Ideas' email draft. Finally, create a task to buy 'cinnamon bark' in the 'Errands' Todoist project.",
+  "categories": [
+    "APPWORLD",
+    "MULTIPLE_USER_TURN"
+  ],
+  "max_messages": 100,
+  "metadata": {
+    "original_scenario_id": "scenario_0627",
+    "expected_tools": [
+      "simple_note_show_note",
+      "amazon_show_product",
+      "amazon_add_product_to_cart",
+      "todoist_show_project",
+      "todoist_show_tasks",
+      "todoist_create_task",
+      "gmail_show_draft",
+      "amazon_update_product_quantity_in_cart"
+    ],
+    "image_arrival": {
+      "1": [
+        "image_1",
+        "image_2",
+        "image_3",
+        "image_4",
+        "image_5",
+        "image_6"
+      ]
+    },
+    "image_delivery_map": [],
+    "scenario_metadata": {
+      "num_images": 6,
+      "num_user_rounds": 5,
+      "selected_flow_type": "cross_reference",
+      "image_arrival": "upfront",
+      "challenge_type": "error_correction",
+      "require_disambiguation": false,
+      "dataset_type": "worldvqa"
+    }
+  }
+}

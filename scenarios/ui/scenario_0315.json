@@ -1,0 +1,313 @@
+{
+  "name": "scenario_0315",
+  "base_scenario": "base",
+  "description": "The user is preparing for some upcoming gift shopping and wants to use their device to organize options and compare prices and ratings for several potential gifts. (UI mode)",
+  "difficulty": "easy",
+  "appworld_base_task": "_base_",
+  "device_state_id": "masmith@gmail.com",
+  "reference_time": "2026-04-16T23:59:44.936294+00:00",
+  "agentsandbox_entities": {},
+  "appworld_entities": {
+    "amazon.sellers": [
+      {
+        "id": 200,
+        "name": "Toy World",
+        "rating": 4.5
+      },
+      {
+        "id": 201,
+        "name": "Pet Store",
+        "rating": 4.8
+      },
+      {
+        "id": 202,
+        "name": "Decor Store",
+        "rating": 4.9
+      }
+    ],
+    "amazon.products": [
+      {
+        "id": 200,
+        "product_type": "toys",
+        "name": "Self-Mocking Bear",
+        "description": "A funny self-mocking plush bear.",
+        "seller_id": 200,
+        "price": 19.99,
+        "delivery_days": 2,
+        "inventory_quantity": 20,
+        "weight": 0.3,
+        "length": 6.0,
+        "width": 4.0,
+        "height": 8.0,
+        "color": null,
+        "relative_size": null,
+        "rating": 4.2,
+        "seller_rating": 4.5,
+        "has_variations": false
+      },
+      {
+        "id": 201,
+        "product_type": "toys",
+        "name": "Monster High Jester Doll",
+        "description": "Monster High collectible jester doll.",
+        "seller_id": 200,
+        "price": 49.99,
+        "delivery_days": 3,
+        "inventory_quantity": 15,
+        "weight": 0.5,
+        "length": 3.0,
+        "width": 2.0,
+        "height": 11.0,
+        "color": null,
+        "relative_size": null,
+        "rating": 4.5,
+        "seller_rating": 4.5,
+        "has_variations": false
+      },
+      {
+        "id": 202,
+        "product_type": "toys",
+        "name": "Steiff Teddy Bear Horst Lichter",
+        "description": "Classic Steiff teddy bear.",
+        "seller_id": 200,
+        "price": 129.99,
+        "delivery_days": 4,
+        "inventory_quantity": 5,
+        "weight": 0.6,
+        "length": 5.0,
+        "width": 4.0,
+        "height": 12.0,
+        "color": null,
+        "relative_size": null,
+        "rating": 4.8,
+        "seller_rating": 4.5,
+        "has_variations": false
+      },
+      {
+        "id": 203,
+        "product_type": "pet supplies",
+        "name": "KONG AirDog Squeaker Bone",
+        "description": "Durable squeaky bone toy for dogs.",
+        "seller_id": 201,
+        "price": 12.99,
+        "delivery_days": 2,
+        "inventory_quantity": 50,
+        "weight": 0.2,
+        "length": 6.0,
+        "width": 3.0,
+        "height": 2.0,
+        "color": null,
+        "relative_size": null,
+        "rating": 4.9,
+        "seller_rating": 4.8,
+        "has_variations": false
+      },
+      {
+        "id": 204,
+        "product_type": "home decor",
+        "name": "LLADRO Ceramic Figurine",
+        "description": "Elegant handcrafted ceramic figurine.",
+        "seller_id": 202,
+        "price": 150.0,
+        "delivery_days": 5,
+        "inventory_quantity": 3,
+        "weight": 1.5,
+        "length": 4.0,
+        "width": 4.0,
+        "height": 10.0,
+        "color": null,
+        "relative_size": null,
+        "rating": 4.6,
+        "seller_rating": 4.9,
+        "has_variations": false
+      },
+      {
+        "id": 205,
+        "product_type": "toys",
+        "name": "Chiikawa Plush in Pajamas",
+        "description": "Cute Chiikawa plush wearing pajamas.",
+        "seller_id": 200,
+        "price": 25.0,
+        "delivery_days": 2,
+        "inventory_quantity": 30,
+        "weight": 0.4,
+        "length": 5.0,
+        "width": 5.0,
+        "height": 8.0,
+        "color": null,
+        "relative_size": null,
+        "rating": 4.7,
+        "seller_rating": 4.5,
+        "has_variations": false
+      },
+      {
+        "id": 206,
+        "product_type": "pet supplies",
+        "name": "Nylabone Durable Chew Toy",
+        "description": "Nylabone durable chew toy.",
+        "seller_id": 201,
+        "price": 8.99,
+        "delivery_days": 2,
+        "inventory_quantity": 40,
+        "weight": 0.3,
+        "length": 5.0,
+        "width": 2.0,
+        "height": 1.5,
+        "color": null,
+        "relative_size": null,
+        "rating": 4.4,
+        "seller_rating": 4.8,
+        "has_variations": false
+      }
+    ],
+    "gmail.users": []
+  },
+  "image_paths": [
+    "worldvqa/images/1605.jpg",
+    "worldvqa/images/1775.jpg",
+    "worldvqa/images/1759.jpg",
+    "hiertext/images/test/2db54db64c2b0a22.jpg",
+    "worldvqa/images/1297.jpg",
+    "worldvqa/images/1606.jpg"
+  ],
+  "messages": [
+    {
+      "sender": "SYSTEM",
+      "recipient": "USER",
+      "content": "{{USER_INSTRUCTION}}ROUND 1\nQuery: I need to get organized for some gift shopping. Can you create a note called 'Gift Comparison' and set a reminder for tomorrow at 10 AM to 'Finalize gift purchases'?\nInstructions: Ask the assistant to create a note titled 'Gift Comparison' and set a reminder for tomorrow at 10:00 AM to finalize your gift purchases. Confirm when the assistant has successfully completed both tasks, then move on to the next round.\n\nROUND 2 [provide: image_1, image_2, image_3]\nQuery: I'm thinking about getting one of these three dolls as a gift. Can you look them up on Amazon and compare their prices? I'll pick which one to note down.\nInstructions: Share the three images of the dolls. Ask the assistant to search Amazon for the items shown and compare their prices. When the assistant presents the dolls with prices, select the cheapest one and ask the assistant to update the 'Gift Comparison' note with its name and price via `ui_user_interact`. If no interactive UI is shown, tell the assistant to put the cheapest option in the note. If the assistant asks for clarification on the exact items, tell it to use its best judgment based on the visual details. Once it confirms the note is updated, proceed to the next round.\n\nROUND 3 [provide: image_4, image_5, image_6]\nQuery: Here are three more items to consider. Search Amazon for the ceramic figurine, the plush in pajamas, and that Nylabone bone toy shown next to the dog. Compare their customer ratings and add the highest-rated one to my cart.\nInstructions: Share the next three images. Ask the assistant to search Amazon for the ceramic figurine, the plush in pajamas, and specifically refer to the dog toy as a 'Nylabone'. Request that it compares their customer ratings and adds the highest-rated item to your cart. A good assistant should flag that the dog toy in the image is actually a different brand. If the assistant points out the correct brand from the image, acknowledge the correction and move to the next round. If the assistant proceeds without noticing the error, you will need to point out the mistake yourself in the next round.\n\nROUND 4\nQuery: Good catch, I misread the logo — it is a KONG AirDog. Look up the KONG AirDog toy, and compare its rating with the ceramic figurine and the plush in pajamas. I'll decide which one to add to my cart.\nInstructions: Acknowledge the correction regarding the dog toy's brand. Instruct the assistant to search for the correct dog toy, compare its customer rating with the ratings of the ceramic figurine and the pajama plush from the previous round. When the assistant presents the three items with their ratings, select the highest-rated one and add it to your cart via `ui_user_interact`. If no interactive UI is shown, tell the assistant to add the highest-rated item to your cart. Once the assistant confirms the item has been added, end the conversation.\n\nYou have 6 images available to share with the agent using the send_message_with_image tool.\nIMPORTANT: Image IDs are ZERO-INDEXED integers (0, 1, 2, ...). Do NOT add 1 to the IDs.\nAvailable image IDs: [0, 1, 2, 3, 4, 5]\nImage mapping:\n  image_1.jpg -> image ID 0\n  image_2.jpg -> image ID 1\n  image_3.jpg -> image ID 2\n  image_4.jpg -> image ID 3\n  image_5.jpg -> image ID 4\n  image_6.jpg -> image ID 5\n\n## IMAGE DELIVERY\n\n⚠️ IMPORTANT: You MUST use the `send_message_with_image` tool to share images with User B. Do NOT just describe images in text — you MUST call the tool.\n\nImage delivery schedule:\n\n  Round 2: YOU MUST call the send_message_with_image tool with image_ids='0,1,2' — do NOT write the tool name as text; use the actual function call. Include a natural, conversational message to the assistant.\n  Round 3: YOU MUST call the send_message_with_image tool with image_ids='3,4,5' — do NOT write the tool name as text; use the actual function call. Include a natural, conversational message to the assistant."
+    },
+    {
+      "sender": "USER",
+      "recipient": "AGENT",
+      "content": "I need to get organized for some gift shopping. Can you create a note called 'Gift Comparison' and set a reminder for tomorrow at 10 AM to 'Finalize gift purchases'?"
+    }
+  ],
+  "milestones": [],
+  "entity_diff_specs": [
+    {
+      "operation": "create",
+      "source": "appworld",
+      "table": "amazon.cart_entries",
+      "entity_data": {
+        "user_id": 63,
+        "product_id": 203,
+        "quantity": 1,
+        "gift_wrap_quantity": 0
+      },
+      "column_similarity_measure": {
+        "user_id": "column_exact_match_similarity",
+        "product_id": "column_exact_match_similarity",
+        "quantity": "column_exact_match_similarity",
+        "gift_wrap_quantity": "column_exact_match_similarity"
+      }
+    },
+    {
+      "operation": "create",
+      "source": "appworld",
+      "table": "simple_note.notes",
+      "entity_data": {
+        "user_id": 63,
+        "title": "Gift Comparison",
+        "content": "Cheapest doll option:\nSelf-Mocking Bear - $19.99",
+        "tags": [],
+        "created_at": "2026-04-16T23:59:44",
+        "updated_at": "2026-04-16T23:59:44",
+        "pinned": false,
+        "data": null
+      },
+      "column_similarity_measure": {
+        "user_id": "column_exact_match_similarity",
+        "title": "column_rouge_l_similarity",
+        "content": "column_rouge_l_similarity",
+        "tags": "column_ignore_similarity",
+        "created_at": "column_ignore_similarity",
+        "updated_at": "column_ignore_similarity",
+        "pinned": "column_exact_match_similarity",
+        "data": "column_ignore_similarity"
+      }
+    },
+    {
+      "operation": "create",
+      "source": "agentsandbox",
+      "namespace": "REMINDER",
+      "entity_data": {
+        "reminder_id": "reminder_100",
+        "content": "Finalize gift purchases",
+        "latitude": null,
+        "longitude": null,
+        "creation_datetime": "2026-04-16T23:59:44Z",
+        "reminder_datetime": "2026-04-17T10:00:00Z"
+      },
+      "column_similarity_measure": {
+        "reminder_id": "column_ignore_similarity",
+        "content": "column_rouge_l_similarity",
+        "latitude": "column_ignore_similarity",
+        "longitude": "column_ignore_similarity",
+        "creation_datetime": "column_ignore_similarity",
+        "reminder_datetime": "column_datetime_naive_equal_similarity"
+      }
+    }
+  ],
+  "task_completion_criteria": "Create a note titled 'Gift Comparison' and a reminder for tomorrow at 10:00 AM to 'Finalize gift purchases'. Update the 'Gift Comparison' note with the name and price of the cheapest item among the Self-Mocking Bear, Monster High jester doll, and Steiff teddy bear Horst Lichter. Finally, compare the Amazon customer ratings of the KONG AirDog toy, LLADRO ceramic figurine, and Chiikawa plush, and add the highest-rated item of those three to the user's Amazon cart.\n\nUI Requirements:\n- Round 2: The agent must present the three dolls with their Amazon prices in a structured interactive UI that lets the user select which one to record in the note.\n- Round 4: The agent must present the three items with their customer ratings in a structured interactive UI that lets the user select which one to add to the cart.",
+  "categories": [
+    "APPWORLD",
+    "MULTIPLE_USER_TURN",
+    "UI_MODE"
+  ],
+  "max_messages": 100,
+  "metadata": {
+    "original_scenario_id": "scenario_0315",
+    "expected_tools": [
+      "simple_note_create_note",
+      "add_reminder",
+      "amazon_show_product",
+      "simple_note_update_note",
+      "amazon_show_product_rating_distribution",
+      "amazon_add_product_to_cart",
+      "render_ui_screen",
+      "show_ui_to_user",
+      "ui_user_interact",
+      "ui_get_quick_start",
+      "ui_get_item_details"
+    ],
+    "image_arrival": {
+      "2": [
+        "image_1",
+        "image_2",
+        "image_3"
+      ],
+      "3": [
+        "image_4",
+        "image_5",
+        "image_6"
+      ]
+    },
+    "image_delivery_map": [
+      {
+        "query": "I'm thinking about getting one of these three dolls as a gift. Can you look them up on Amazon and compare their prices? I'll pick which one to note down.",
+        "image_ids": [
+          0,
+          1,
+          2
+        ]
+      },
+      {
+        "query": "Here are three more items to consider. Search Amazon for the ceramic figurine, the plush in pajamas, and that Nylabone bone toy shown next to the dog. Compare their customer ratings and add the highest-rated one to my cart.",
+        "image_ids": [
+          3,
+          4,
+          5
+        ]
+      }
+    ],
+    "scenario_metadata": {
+      "num_images": 6,
+      "num_user_rounds": 4,
+      "selected_flow_type": "compare",
+      "image_arrival": "late",
+      "challenge_type": "error_correction",
+      "require_disambiguation": false,
+      "dataset_type": "worldvqa"
+    }
+  }
+}

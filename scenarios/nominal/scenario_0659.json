@@ -1,0 +1,346 @@
+{
+  "name": "scenario_0659",
+  "base_scenario": "base",
+  "description": "The user is taking inventory of household and personal care items they are running low on and wants to compile a unified shopping list to order them online.",
+  "difficulty": "easy",
+  "appworld_base_task": "_base_",
+  "device_state_id": "erikabail@gmail.com",
+  "reference_time": "2026-04-17T00:10:36.920192+00:00",
+  "agentsandbox_entities": {},
+  "appworld_entities": {
+    "amazon.sellers": [
+      {
+        "id": 200,
+        "name": "Advil Official",
+        "rating": 4.8
+      },
+      {
+        "id": 201,
+        "name": "Listerine Official",
+        "rating": 4.7
+      },
+      {
+        "id": 202,
+        "name": "Tide Official",
+        "rating": 4.9
+      },
+      {
+        "id": 203,
+        "name": "Mead Johnson Official",
+        "rating": 4.8
+      }
+    ],
+    "amazon.products": [
+      {
+        "id": 200,
+        "product_type": "health",
+        "name": "Advil Liqui-Gels Pain Reliever, 160 Count",
+        "description": "160-count Advil Liqui-Gels pain reliever",
+        "seller_id": 200,
+        "price": 15.99,
+        "delivery_days": 2,
+        "inventory_quantity": 50,
+        "weight": 0.5,
+        "length": 4.0,
+        "width": 2.0,
+        "height": 2.0,
+        "color": null,
+        "relative_size": null,
+        "rating": 4.8,
+        "seller_rating": 4.8,
+        "has_variations": false
+      },
+      {
+        "id": 201,
+        "product_type": "personal care",
+        "name": "Listerine Ultraclean Cool Mint Mouthwash, 500mL",
+        "description": "500mL Ultraclean Cool Mint mouthwash",
+        "seller_id": 201,
+        "price": 6.99,
+        "delivery_days": 2,
+        "inventory_quantity": 50,
+        "weight": 1.2,
+        "length": 8.0,
+        "width": 3.0,
+        "height": 3.0,
+        "color": null,
+        "relative_size": null,
+        "rating": 4.7,
+        "seller_rating": 4.7,
+        "has_variations": false
+      },
+      {
+        "id": 202,
+        "product_type": "personal care",
+        "name": "Listerine Freshburst Pocketmist, 2-Pack",
+        "description": "2-pack of Freshburst breath mist",
+        "seller_id": 201,
+        "price": 8.99,
+        "delivery_days": 2,
+        "inventory_quantity": 50,
+        "weight": 0.1,
+        "length": 3.0,
+        "width": 1.0,
+        "height": 4.0,
+        "color": null,
+        "relative_size": null,
+        "rating": 4.6,
+        "seller_rating": 4.7,
+        "has_variations": false
+      },
+      {
+        "id": 203,
+        "product_type": "household",
+        "name": "Tide Original Scent Laundry Detergent, 50 oz",
+        "description": "50 oz bottle of original scent laundry detergent",
+        "seller_id": 202,
+        "price": 12.99,
+        "delivery_days": 2,
+        "inventory_quantity": 50,
+        "weight": 3.5,
+        "length": 10.0,
+        "width": 5.0,
+        "height": 7.0,
+        "color": null,
+        "relative_size": null,
+        "rating": 4.8,
+        "seller_rating": 4.9,
+        "has_variations": false
+      },
+      {
+        "id": 204,
+        "product_type": "baby",
+        "name": "Enfamil Premium Infant Formula",
+        "description": "Premium infant formula manufactured by Mead Johnson",
+        "seller_id": 203,
+        "price": 35.99,
+        "delivery_days": 2,
+        "inventory_quantity": 50,
+        "weight": 2.0,
+        "length": 6.0,
+        "width": 6.0,
+        "height": 6.0,
+        "color": null,
+        "relative_size": null,
+        "rating": 4.9,
+        "seller_rating": 4.8,
+        "has_variations": false
+      }
+    ],
+    "simple_note.notes": [
+      {
+        "id": 3200,
+        "user_id": 82,
+        "title": "Weekly Restock List",
+        "content": "apples, milk, bread",
+        "tags": [],
+        "created_at": "2026-04-10T09:00:00",
+        "updated_at": "2026-04-15T14:30:00",
+        "pinned": false,
+        "data": null
+      },
+      {
+        "id": 3201,
+        "user_id": 82,
+        "title": "Monthly Restock List",
+        "content": "furnace filters, light bulbs",
+        "tags": [],
+        "created_at": "2026-04-01T09:00:00",
+        "updated_at": "2026-04-01T09:00:00",
+        "pinned": false,
+        "data": null
+      }
+    ],
+    "gmail.users": []
+  },
+  "image_paths": [
+    "hiertext/images/test/355509ba37363901.jpg",
+    "hiertext/images/test/500597e5ad4b0d77.jpg",
+    "hiertext/images/test/539aaf6fc29ced16.jpg",
+    "hiertext/images/test/55e4dc8812493d31.jpg",
+    "worldvqa/images/1694.jpg"
+  ],
+  "messages": [
+    {
+      "sender": "SYSTEM",
+      "recipient": "USER",
+      "content": "{{USER_INSTRUCTION}}ROUND 1 [provide: image_1]\nQuery: I'm running out of these. Delete my restock list, then create a new note called 'Master Restock List' and add this exact 160-count pain reliever to it.\nInstructions: Ask the assistant to delete your restock list, then create a new note called 'Master Restock List' and add the exact pain reliever shown in the image to it, including the count. The assistant will likely ask which restock list to delete since you have multiple matching that description; clarify that you want to delete the weekly one. Once the old note is deleted and the new one is created with the item, move to the next round.\n\nROUND 2 [provide: image_2]\nQuery: I also need more mouthwash. Add this 500mL Cool Mint one to the 'Master Restock List' note.\nInstructions: Tell the assistant you also need more mouthwash and ask it to add the one shown in the image to the 'Master Restock List'. Make sure it includes the size and flavor visible on the bottle. Proceed to the next round when confirmed.\n\nROUND 3 [provide: image_3]\nQuery: Add the 2-pack of breath mist shown on the right side of this package to the 'Master Restock List' note.\nInstructions: Direct the assistant to add the 2-pack item on the right side of the provided image to your 'Master Restock List'. If the assistant mistakenly adds the breath strips from the left side, correct it and specify you only want the mist. Move on once the list is accurately updated.\n\nROUND 4 [provide: image_4]\nQuery: Add this 50 oz bottle of original scent laundry detergent to the 'Master Restock List'.\nInstructions: Ask the assistant to add the laundry detergent shown in the image to the 'Master Restock List', ensuring it notes the specific size and scent. Wait for confirmation that the note has been updated before proceeding.\n\nROUND 5 [provide: image_5]\nQuery: Finally, add this infant formula to the 'Master Restock List'. Make sure to find out and write down its specific corporate manufacturer so I get the right brand. After you update the list, read all the items on it, search for them on Amazon to add them to my cart, and then delete the note since I won't need it anymore.\nInstructions: Instruct the assistant to add the infant formula from the image to the 'Master Restock List', but require it to first search the web to find the corporate manufacturer so you get the exact right brand. After the note is updated, tell the assistant to read all the items on the list, search for each one on Amazon, add them to your cart, and finally delete the 'Master Restock List' note since you're done with it. End the conversation once all items are successfully in the cart and the note is deleted.\n\nYou have 5 images available to share with the agent using the send_message_with_image tool.\nIMPORTANT: Image IDs are ZERO-INDEXED integers (0, 1, 2, ...). Do NOT add 1 to the IDs.\nAvailable image IDs: [0, 1, 2, 3, 4]\nImage mapping:\n  image_1.jpg -> image ID 0\n  image_2.jpg -> image ID 1\n  image_3.jpg -> image ID 2\n  image_4.jpg -> image ID 3\n  image_5.jpg -> image ID 4\n\n## IMAGE DELIVERY\n\n\u26a0\ufe0f IMPORTANT: You MUST use the `send_message_with_image` tool to share images with User B. Do NOT just describe images in text \u2014 you MUST call the tool.\n\nImage delivery schedule:\n\n  Round 2: YOU MUST call the send_message_with_image tool with image_ids='1' \u2014 do NOT write the tool name as text; use the actual function call. Include a natural, conversational message to the assistant.\n  Round 3: YOU MUST call the send_message_with_image tool with image_ids='2' \u2014 do NOT write the tool name as text; use the actual function call. Include a natural, conversational message to the assistant.\n  Round 4: YOU MUST call the send_message_with_image tool with image_ids='3' \u2014 do NOT write the tool name as text; use the actual function call. Include a natural, conversational message to the assistant.\n  Round 5: YOU MUST call the send_message_with_image tool with image_ids='4' \u2014 do NOT write the tool name as text; use the actual function call. Include a natural, conversational message to the assistant."
+    },
+    {
+      "sender": "USER",
+      "recipient": "AGENT",
+      "content": "I'm running out of these. Delete my restock list, then create a new note called 'Master Restock List' and add this exact 160-count pain reliever to it.",
+      "image_ids": [
+        0
+      ]
+    }
+  ],
+  "milestones": [],
+  "entity_diff_specs": [
+    {
+      "operation": "create",
+      "source": "appworld",
+      "table": "amazon.cart_entries",
+      "entity_data": {
+        "user_id": 82,
+        "product_id": 200,
+        "quantity": 1,
+        "gift_wrap_quantity": 0
+      },
+      "column_similarity_measure": {
+        "user_id": "column_exact_match_similarity",
+        "product_id": "column_exact_match_similarity",
+        "quantity": "column_exact_match_similarity",
+        "gift_wrap_quantity": "column_exact_match_similarity"
+      }
+    },
+    {
+      "operation": "create",
+      "source": "appworld",
+      "table": "amazon.cart_entries",
+      "entity_data": {
+        "user_id": 82,
+        "product_id": 201,
+        "quantity": 1,
+        "gift_wrap_quantity": 0
+      },
+      "column_similarity_measure": {
+        "user_id": "column_exact_match_similarity",
+        "product_id": "column_exact_match_similarity",
+        "quantity": "column_exact_match_similarity",
+        "gift_wrap_quantity": "column_exact_match_similarity"
+      }
+    },
+    {
+      "operation": "create",
+      "source": "appworld",
+      "table": "amazon.cart_entries",
+      "entity_data": {
+        "user_id": 82,
+        "product_id": 202,
+        "quantity": 1,
+        "gift_wrap_quantity": 0
+      },
+      "column_similarity_measure": {
+        "user_id": "column_exact_match_similarity",
+        "product_id": "column_exact_match_similarity",
+        "quantity": "column_exact_match_similarity",
+        "gift_wrap_quantity": "column_exact_match_similarity"
+      }
+    },
+    {
+      "operation": "create",
+      "source": "appworld",
+      "table": "amazon.cart_entries",
+      "entity_data": {
+        "user_id": 82,
+        "product_id": 203,
+        "quantity": 1,
+        "gift_wrap_quantity": 0
+      },
+      "column_similarity_measure": {
+        "user_id": "column_exact_match_similarity",
+        "product_id": "column_exact_match_similarity",
+        "quantity": "column_exact_match_similarity",
+        "gift_wrap_quantity": "column_exact_match_similarity"
+      }
+    },
+    {
+      "operation": "create",
+      "source": "appworld",
+      "table": "amazon.cart_entries",
+      "entity_data": {
+        "user_id": 82,
+        "product_id": 204,
+        "quantity": 1,
+        "gift_wrap_quantity": 0
+      },
+      "column_similarity_measure": {
+        "user_id": "column_exact_match_similarity",
+        "product_id": "column_exact_match_similarity",
+        "quantity": "column_exact_match_similarity",
+        "gift_wrap_quantity": "column_exact_match_similarity"
+      }
+    },
+    {
+      "operation": "delete",
+      "source": "appworld",
+      "table": "simple_note.notes",
+      "entity_id_column": "id",
+      "entity_id_value": 3200,
+      "column_similarity_measure": {
+        "id": "column_exact_match_similarity"
+      }
+    }
+  ],
+  "task_completion_criteria": "Delete the preexisting 'Weekly Restock List' note. Create a new note called 'Master Restock List' and progressively aggregate the following items into it: 160-count Advil Liqui-Gels, 500mL Listerine Ultraclean Cool Mint mouthwash, 2-pack of Listerine Freshburst Pocketmist, 50 oz Tide Original laundry detergent, and Enfamil Premium Infant Formula (with Mead Johnson identified via web search as the manufacturer). Finally, add all five items to the user's Amazon cart and delete the 'Master Restock List' note.",
+  "categories": [
+    "APPWORLD",
+    "MULTIPLE_USER_TURN"
+  ],
+  "max_messages": 100,
+  "metadata": {
+    "original_scenario_id": "scenario_0659",
+    "expected_tools": [
+      "create_note",
+      "simple_note_show_note",
+      "simple_note_update_note",
+      "web_search_serper",
+      "amazon_show_product",
+      "amazon_add_product_to_cart",
+      "simple_note_delete_note"
+    ],
+    "image_arrival": {
+      "1": [
+        "image_1"
+      ],
+      "2": [
+        "image_2"
+      ],
+      "3": [
+        "image_3"
+      ],
+      "4": [
+        "image_4"
+      ],
+      "5": [
+        "image_5"
+      ]
+    },
+    "image_delivery_map": [
+      {
+        "query": "I also need more mouthwash. Add this 500mL Cool Mint one to the 'Master Restock List' note.",
+        "image_ids": [
+          1
+        ]
+      },
+      {
+        "query": "Add the 2-pack of breath mist shown on the right side of this package to the 'Master Restock List' note.",
+        "image_ids": [
+          2
+        ]
+      },
+      {
+        "query": "Add this 50 oz bottle of original scent laundry detergent to the 'Master Restock List'.",
+        "image_ids": [
+          3
+        ]
+      },
+      {
+        "query": "Finally, add this infant formula to the 'Master Restock List'. Make sure to find out and write down its specific corporate manufacturer so I get the right brand. After you update the list, read all the items on it, search for them on Amazon to add them to my cart, and then delete the note since I won't need it anymore.",
+        "image_ids": [
+          4
+        ]
+      }
+    ],
+    "scenario_metadata": {
+      "num_images": 5,
+      "num_user_rounds": 5,
+      "selected_flow_type": "aggregate",
+      "image_arrival": "progressive",
+      "challenge_type": "state_mutation",
+      "require_disambiguation": true,
+      "dataset_type": "worldvqa"
+    }
+  }
+}

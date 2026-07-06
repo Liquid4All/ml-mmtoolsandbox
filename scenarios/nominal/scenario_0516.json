@@ -1,0 +1,142 @@
+{
+  "name": "scenario_0516",
+  "base_scenario": "base",
+  "description": "The user is compiling a set of economic indicators from various charts into a single note, which will eventually be emailed to a research team.",
+  "difficulty": "easy",
+  "appworld_base_task": "_base_",
+  "device_state_id": "stmcco@gmail.com",
+  "reference_time": "2026-04-17T00:06:00.483162+00:00",
+  "agentsandbox_entities": {},
+  "appworld_entities": {
+    "gmail.users": [
+      {
+        "id": 10100,
+        "first_name": "Research",
+        "last_name": "",
+        "email": "research@company.com",
+        "password": "placeholder_password",
+        "status": "active"
+      }
+    ]
+  },
+  "image_paths": [
+    "chartqapro/images/chart_0724.jpg",
+    "chartqapro/images/chart_1301.jpg",
+    "chartqapro/images/chart_1634.jpg"
+  ],
+  "messages": [
+    {
+      "sender": "SYSTEM",
+      "recipient": "USER",
+      "content": "{{USER_INSTRUCTION}}ROUND 1 [provide: image_1]\nQuery: Create a new note titled 'Economic Indicators' and add the 2017 electricity price for South Australia from this chart.\nInstructions: Ask the agent to create a new note titled 'Economic Indicators' and extract the 2017 electricity price for South Australia from the provided chart to add to it. If the agent misreads the value, correct it by pointing back to the chart. Once the agent confirms the note is created with the information, proceed to the next round.\n\nROUND 2 [provide: image_2]\nQuery: Now add the source URL from the bottom of this second chart to the note. Also, record that Australia's debt ratio in 2018 was under 150%.\nInstructions: Instruct the agent to update the note with the source URL found at the bottom of the new chart. Also, tell it to record that Australia's debt ratio in 2018 was under 150%. This is a deliberate mistake on your part to test the agent. If the agent correctly points out that the chart actually shows the value is over 200%, acknowledge it and wait for the next turn to give the correction. If the agent blindly accepts your wrong value, point out that it should have checked the chart more carefully.\n\nROUND 3\nQuery: Ah, you're right, I completely misread that line. Update the note to say Australia's 2018 debt ratio was actually over 200%. While you're at it, add Germany's 2018 ratio from that same chart.\nInstructions: Acknowledge the correction about Australia's debt ratio and ask the agent to update the note with the correct value. Additionally, ask it to look at the previous chart again and extract Germany's 2018 debt ratio to add to the note. Wait for confirmation that the note has been successfully updated before proceeding.\n\nROUND 4 [provide: image_3]\nQuery: Finally, add the projected 2050 loss for the Services Sector from this last chart to the note. Once that's added, email the completed note to research@company.com.\nInstructions: Provide the final chart and ask the agent to extract the projected 2050 loss for the Services Sector to add to the note. Then, instruct the agent to send the entire aggregated contents of this completed note in an email to research@company.com. Once the agent confirms the email has been sent, conclude the conversation.\n\nYou have 3 images available to share with the agent using the send_message_with_image tool.\nIMPORTANT: Image IDs are ZERO-INDEXED integers (0, 1, 2, ...). Do NOT add 1 to the IDs.\nAvailable image IDs: [0, 1, 2]\nImage mapping:\n  image_1.jpg -> image ID 0\n  image_2.jpg -> image ID 1\n  image_3.jpg -> image ID 2\n\n## IMAGE DELIVERY\n\n\u26a0\ufe0f IMPORTANT: You MUST use the `send_message_with_image` tool to share images with User B. Do NOT just describe images in text \u2014 you MUST call the tool.\n\nImage delivery schedule:\n\n  Round 2: YOU MUST call the send_message_with_image tool with image_ids='1' \u2014 do NOT write the tool name as text; use the actual function call. Include a natural, conversational message to the assistant.\n  Round 4: YOU MUST call the send_message_with_image tool with image_ids='2' \u2014 do NOT write the tool name as text; use the actual function call. Include a natural, conversational message to the assistant."
+    },
+    {
+      "sender": "USER",
+      "recipient": "AGENT",
+      "content": "Create a new note titled 'Economic Indicators' and add the 2017 electricity price for South Australia from this chart.",
+      "image_ids": [
+        0
+      ]
+    }
+  ],
+  "milestones": [],
+  "entity_diff_specs": [
+    {
+      "operation": "create",
+      "source": "appworld",
+      "table": "gmail.emails",
+      "entity_data": {
+        "sender_id": 1,
+        "recipient_ids": [
+          10100
+        ],
+        "subject": "Economic Indicators",
+        "body": "Here is the compiled note on Economic Indicators:\n- 2017 electricity price for South Australia: over $3,000\n- OECD source URL: https://data.oecd.org/hha/household-debt.htm\n- Australia's 2018 household debt ratio: over 200%\n- Germany's 2018 household debt ratio: around 100%\n- Projected 2050 economic loss for Pakistan's Services Sector: approximately 240 billion Rs",
+        "response_to_email_id": null,
+        "created_at": "2026-04-17T00:06:00"
+      },
+      "column_similarity_measure": {
+        "sender_id": "column_exact_match_similarity",
+        "recipient_ids": "column_exact_match_similarity",
+        "subject": "column_rouge_l_similarity",
+        "body": "column_rouge_l_similarity",
+        "response_to_email_id": "column_ignore_similarity",
+        "created_at": "column_ignore_similarity"
+      }
+    },
+    {
+      "operation": "create",
+      "source": "appworld",
+      "table": "simple_note.notes",
+      "entity_data": {
+        "user_id": 1,
+        "title": "Economic Indicators",
+        "content": "- 2017 electricity price for South Australia: over $3,000\n- OECD source URL: https://data.oecd.org/hha/household-debt.htm\n- Australia's 2018 household debt ratio: over 200%\n- Germany's 2018 household debt ratio: around 100%\n- Projected 2050 economic loss for Pakistan's Services Sector: approximately 240 billion Rs",
+        "tags": [],
+        "created_at": "2026-04-17T00:06:00",
+        "updated_at": "2026-04-17T00:06:00",
+        "pinned": false,
+        "data": null
+      },
+      "column_similarity_measure": {
+        "user_id": "column_exact_match_similarity",
+        "title": "column_rouge_l_similarity",
+        "content": "column_rouge_l_similarity",
+        "tags": "column_ignore_similarity",
+        "created_at": "column_ignore_similarity",
+        "updated_at": "column_ignore_similarity",
+        "pinned": "column_exact_match_similarity",
+        "data": "column_ignore_similarity"
+      }
+    }
+  ],
+  "task_completion_criteria": "Create a note titled 'Economic Indicators' and send an email to research@company.com containing the aggregated data from the charts: the 2017 electricity price for South Australia (over $3,000), the OECD source URL (https://data.oecd.org/hha/household-debt.htm), Australia's 2018 household debt ratio (over 200%), Germany's 2018 household debt ratio (around 100%), and the projected 2050 economic loss for Pakistan's Services Sector (approximately 240 billion Rs).",
+  "categories": [
+    "APPWORLD",
+    "MULTIPLE_USER_TURN"
+  ],
+  "max_messages": 100,
+  "metadata": {
+    "original_scenario_id": "scenario_0516",
+    "expected_tools": [
+      "simple_note_create_note",
+      "simple_note_update_note",
+      "simple_note_show_note",
+      "gmail_send_email"
+    ],
+    "image_arrival": {
+      "1": [
+        "image_1"
+      ],
+      "2": [
+        "image_2"
+      ],
+      "4": [
+        "image_3"
+      ]
+    },
+    "image_delivery_map": [
+      {
+        "query": "Now add the source URL from the bottom of this second chart to the note. Also, record that Australia's debt ratio in 2018 was under 150%.",
+        "image_ids": [
+          1
+        ]
+      },
+      {
+        "query": "Finally, add the projected 2050 loss for the Services Sector from this last chart to the note. Once that's added, email the completed note to research@company.com.",
+        "image_ids": [
+          2
+        ]
+      }
+    ],
+    "scenario_metadata": {
+      "num_images": 3,
+      "num_user_rounds": 4,
+      "selected_flow_type": "aggregate",
+      "image_arrival": "progressive",
+      "challenge_type": "error_correction",
+      "require_disambiguation": false,
+      "dataset_type": "chartqapro"
+    }
+  }
+}

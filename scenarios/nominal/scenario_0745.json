@@ -1,0 +1,164 @@
+{
+  "name": "scenario_0745",
+  "base_scenario": "base",
+  "description": "The user is working on a history project compiling statistics about various conflicts. They are using several infographics to calculate financial costs and personnel numbers.",
+  "difficulty": "easy",
+  "appworld_base_task": "_base_",
+  "device_state_id": "brenda.webe@gmail.com",
+  "reference_time": "2026-04-17T00:12:59.716859+00:00",
+  "agentsandbox_entities": {},
+  "appworld_entities": {
+    "phone.contacts": [
+      {
+        "id": 200,
+        "user_id": 50,
+        "first_name": "Sarah",
+        "last_name": "Unknown",
+        "email": "sarah@example.com",
+        "phone_number": null,
+        "relationships": [],
+        "birthday": null,
+        "home_address": null,
+        "work_address": null,
+        "created_at": "2025-01-01T12:00:00"
+      },
+      {
+        "id": 201,
+        "user_id": 50,
+        "first_name": "John",
+        "last_name": "Unknown",
+        "email": "john@example.com",
+        "phone_number": null,
+        "relationships": [],
+        "birthday": null,
+        "home_address": null,
+        "work_address": null,
+        "created_at": "2025-01-01T12:00:00"
+      }
+    ],
+    "gmail.users": [
+      {
+        "id": 200,
+        "first_name": "Sarah",
+        "last_name": "Unknown",
+        "email": "sarah@example.com",
+        "password": "default_password",
+        "status": "active",
+        "created_at": "2025-01-01T00:00:00",
+        "last_logged_in": "2025-01-01T00:00:00"
+      },
+      {
+        "id": 201,
+        "first_name": "John",
+        "last_name": "Unknown",
+        "email": "john@example.com",
+        "password": "default_password",
+        "status": "active",
+        "created_at": "2025-01-01T00:00:00",
+        "last_logged_in": "2025-01-01T00:00:00"
+      }
+    ]
+  },
+  "image_paths": [
+    "infographicvqa/images/93264.jpg",
+    "infographicvqa/images/93299.jpg",
+    "chartmuseum/images/anto_military_personnel.png",
+    "infographicvqa/images/93652.jpg"
+  ],
+  "messages": [
+    {
+      "sender": "SYSTEM",
+      "recipient": "USER",
+      "content": "{{USER_INSTRUCTION}}ROUND 1 [provide: image_1, image_2]\nQuery: I'm working on a history project. From the first infographic here, add up the military budgets for the two countries. If the total is over $20 Billion, draft an email to Sarah with this number; if it's under, draft it to John. Also, from the second image, calculate the combined financial cost for Germany and Austria-Hungary and include that in the draft too.\nInstructions: Instruct the assistant to calculate the total combined military budget of the two countries shown in the first image. Tell it that if the total exceeds $20 Billion, it should draft an email to Sarah with this number; otherwise, draft it to John. Also, ask it to calculate the combined financial cost of WWI for Germany and Austria-Hungary from the second image and include that total in the draft. If the assistant asks for clarification on the numbers, point it to the budget figures and the WWI cost bars for those specific countries. Once the assistant confirms the draft is created, move on to the next round.\n\nROUND 2 [provide: image_3]\nQuery: Actually, change of plans. Delete that email draft, I'm pivoting to personnel stats instead. Look at this new chart. Calculate the total active military personnel for the US, UK, and France combined. If the total is over 1.5 million, create a simple note titled 'Large Militaries' with this sum. Otherwise, name it 'Small Militaries'.\nInstructions: Tell the assistant that you have changed your mind and ask it to delete the email draft it just created. Explain that you are pivoting to personnel stats instead. Instruct the assistant to look at the new image provided and calculate the total active military personnel for the US, UK, and France combined. Direct it to create a simple note with this sum, titled 'Large Militaries' if the total is over 1.5 million, or 'Small Militaries' if it is under. If the assistant needs help interpreting the 'M' and 'K' abbreviations, clarify that they stand for millions and thousands. Once the note is created, proceed to the next round.\n\nROUND 3 [provide: image_4]\nQuery: Look at this Civil War infographic. Calculate the total forces engaged for both sides combined, and subtract the total casualties for both sides combined to find the number of surviving forces. If this number is greater than 50,000, add a 'High Priority' flag and this number to the note, otherwise just add the number.\nInstructions: Ask the assistant to look at the Civil War infographic and calculate the total number of surviving forces. Explain that it should do this by adding the forces engaged for both sides, and then subtracting the combined casualties for both sides. Instruct the assistant to update the note created in the previous round with this surviving forces number, and to add a 'High Priority' flag to the note if the number is greater than 50,000. If the assistant uses the rounded total casualty number instead of adding the exact casualties, accept it as long as the math is correct. Once the note is updated, end the conversation.\n\nYou have 4 images available to share with the agent using the send_message_with_image tool.\nIMPORTANT: Image IDs are ZERO-INDEXED integers (0, 1, 2, ...). Do NOT add 1 to the IDs.\nAvailable image IDs: [0, 1, 2, 3]\nImage mapping:\n  image_1.jpg -> image ID 0\n  image_2.jpg -> image ID 1\n  image_3.jpg -> image ID 2\n  image_4.jpg -> image ID 3\n\n## IMAGE DELIVERY\n\n\u26a0\ufe0f IMPORTANT: You MUST use the `send_message_with_image` tool to share images with User B. Do NOT just describe images in text \u2014 you MUST call the tool.\n\nImage delivery schedule:\n\n  Round 2: YOU MUST call the send_message_with_image tool with image_ids='2' \u2014 do NOT write the tool name as text; use the actual function call. Include a natural, conversational message to the assistant.\n  Round 3: YOU MUST call the send_message_with_image tool with image_ids='3' \u2014 do NOT write the tool name as text; use the actual function call. Include a natural, conversational message to the assistant."
+    },
+    {
+      "sender": "USER",
+      "recipient": "AGENT",
+      "content": "I'm working on a history project. From the first infographic here, add up the military budgets for the two countries. If the total is over $20 Billion, draft an email to Sarah with this number; if it's under, draft it to John. Also, from the second image, calculate the combined financial cost for Germany and Austria-Hungary and include that in the draft too.",
+      "image_ids": [
+        0,
+        1
+      ]
+    }
+  ],
+  "milestones": [],
+  "entity_diff_specs": [
+    {
+      "operation": "create",
+      "source": "appworld",
+      "table": "simple_note.notes",
+      "entity_data": {
+        "user_id": 50,
+        "title": "Large Militaries",
+        "content": "Total active military personnel (US, UK, France): 1,684,000\nCivil War surviving forces: 90,367\nHigh Priority",
+        "tags": [
+          "High Priority"
+        ],
+        "created_at": "2026-04-17T00:12:59",
+        "updated_at": "2026-04-17T00:12:59",
+        "pinned": false,
+        "data": null
+      },
+      "column_similarity_measure": {
+        "user_id": "column_exact_match_similarity",
+        "title": "column_rouge_l_similarity",
+        "content": "column_rouge_l_similarity",
+        "tags": "column_ignore_similarity",
+        "created_at": "column_ignore_similarity",
+        "updated_at": "column_ignore_similarity",
+        "pinned": "column_exact_match_similarity",
+        "data": "column_ignore_similarity"
+      }
+    }
+  ],
+  "task_completion_criteria": "A simple note titled 'Large Militaries' exists, containing the calculated NATO personnel sum of 1,684,000 (or 1.684 million) and the calculated Civil War surviving forces of 90,367 (or 90,400 if using the rounded casualty figure), along with a 'High Priority' label or text flag.",
+  "categories": [
+    "APPWORLD",
+    "MULTIPLE_USER_TURN"
+  ],
+  "max_messages": 100,
+  "metadata": {
+    "original_scenario_id": "scenario_0745",
+    "expected_tools": [
+      "gmail_create_draft",
+      "gmail_delete_draft",
+      "create_note",
+      "simple_note_update_note"
+    ],
+    "image_arrival": {
+      "1": [
+        "image_1",
+        "image_2"
+      ],
+      "2": [
+        "image_3"
+      ],
+      "3": [
+        "image_4"
+      ]
+    },
+    "image_delivery_map": [
+      {
+        "query": "Actually, change of plans. Delete that email draft, I'm pivoting to personnel stats instead. Look at this new chart. Calculate the total active military personnel for the US, UK, and France combined. If the total is over 1.5 million, create a simple note titled 'Large Militaries' with this sum. Otherwise, name it 'Small Militaries'.",
+        "image_ids": [
+          2
+        ]
+      },
+      {
+        "query": "Look at this Civil War infographic. Calculate the total forces engaged for both sides combined, and subtract the total casualties for both sides combined to find the number of surviving forces. If this number is greater than 50,000, add a 'High Priority' flag and this number to the note, otherwise just add the number.",
+        "image_ids": [
+          3
+        ]
+      }
+    ],
+    "scenario_metadata": {
+      "num_images": 4,
+      "num_user_rounds": 3,
+      "selected_flow_type": "compute",
+      "image_arrival": "progressive",
+      "challenge_type": "goal_change",
+      "require_disambiguation": false,
+      "dataset_type": "infographicvqa"
+    }
+  }
+}

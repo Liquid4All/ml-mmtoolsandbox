@@ -1,0 +1,160 @@
+{
+  "name": "scenario_0412",
+  "base_scenario": "base",
+  "description": "The user is compiling a weekly data insights report for their research team, pulling statistics from various charts across multiple turns to build a single comprehensive email.",
+  "difficulty": "easy",
+  "appworld_base_task": "_base_",
+  "device_state_id": "ismill@gmail.com",
+  "reference_time": "2026-04-17T00:02:50.325996+00:00",
+  "agentsandbox_entities": {},
+  "appworld_entities": {
+    "phone.contacts": [
+      {
+        "id": 200,
+        "user_id": 21,
+        "first_name": "Research",
+        "last_name": "Team",
+        "email": "team@research.org",
+        "phone_number": null,
+        "relationships": [
+          "coworker"
+        ],
+        "birthday": null,
+        "home_address": null,
+        "work_address": null,
+        "created_at": "2025-10-12T09:00:00"
+      },
+      {
+        "id": 201,
+        "user_id": 21,
+        "first_name": "Research",
+        "last_name": "Team Leads",
+        "email": "leads@research.org",
+        "phone_number": null,
+        "relationships": [
+          "coworker"
+        ],
+        "birthday": null,
+        "home_address": null,
+        "work_address": null,
+        "created_at": "2025-10-12T09:05:00"
+      }
+    ],
+    "gmail.users": [
+      {
+        "id": 200,
+        "first_name": "Research",
+        "last_name": "Team",
+        "email": "team@research.org",
+        "password": "default_password",
+        "status": "active",
+        "created_at": "2025-01-01T00:00:00",
+        "last_logged_in": "2025-01-01T00:00:00"
+      },
+      {
+        "id": 201,
+        "first_name": "Research",
+        "last_name": "Team Leads",
+        "email": "leads@research.org",
+        "password": "default_password",
+        "status": "active",
+        "created_at": "2025-01-01T00:00:00",
+        "last_logged_in": "2025-01-01T00:00:00"
+      }
+    ]
+  },
+  "image_paths": [
+    "chartmuseum/images/school-shootings-data-pie.png",
+    "chartqapro/images/chart_1021.jpg",
+    "chartqapro/images/chart_1091.jpg",
+    "chartqapro/images/chart_1236.jpg"
+  ],
+  "messages": [
+    {
+      "sender": "SYSTEM",
+      "recipient": "USER",
+      "content": "{{USER_INSTRUCTION}}ROUND 1\nQuery: Start a new draft email to the research team with the subject 'Weekly Data Insights'. The body should just say 'Here are the key statistics for this week:'\nInstructions: Tell the assistant to start a draft email. If the assistant asks which research team to send it to (since there are multiple research team contacts), clarify that it should go to the main one at team@research.org. Once the assistant confirms the draft is created, move to the next round.\n\nROUND 2 [provide: image_1, image_2]\nQuery: Add two bullet points to that draft using these charts. For the first one, include the percentage of school shootings in elementary schools since 2020. For the second, include the number of full-time statehouse reporters in 2022.\nInstructions: Ask the assistant to update the email draft by adding two specific bullet points extracted from the two provided charts. If the assistant asks for the exact numbers, point it back to the charts to find the elementary school percentage for 'Since 2020' and the full-time reporter count for 2022. Once the assistant confirms the draft is updated, proceed to the next round.\n\nROUND 3 [provide: image_3, image_4]\nQuery: Add two more bullet points to the draft using these new charts: the percentage of kids ages 6-9 in California with cavities, and the 2015 rate of opioid hospital stays for the 65 and older group. After you add those, go ahead and send the email.\nInstructions: Ask the assistant to add two final bullet points to the draft using the new charts, and then send the email. If the assistant is unsure about the data, direct it to find the California percentage for ages 6-9 and the 2015 rate for the 65+ age group in the images. Once the assistant confirms the email has been sent, end the conversation.\n\nYou have 4 images available to share with the agent using the send_message_with_image tool.\nIMPORTANT: Image IDs are ZERO-INDEXED integers (0, 1, 2, ...). Do NOT add 1 to the IDs.\nAvailable image IDs: [0, 1, 2, 3]\nImage mapping:\n  image_1.jpg -> image ID 0\n  image_2.jpg -> image ID 1\n  image_3.jpg -> image ID 2\n  image_4.jpg -> image ID 3\n\n## IMAGE DELIVERY\n\n\u26a0\ufe0f IMPORTANT: You MUST use the `send_message_with_image` tool to share images with User B. Do NOT just describe images in text \u2014 you MUST call the tool.\n\nImage delivery schedule:\n\n  Round 2: YOU MUST call the send_message_with_image tool with image_ids='0,1' \u2014 do NOT write the tool name as text; use the actual function call. Include a natural, conversational message to the assistant.\n  Round 3: YOU MUST call the send_message_with_image tool with image_ids='2,3' \u2014 do NOT write the tool name as text; use the actual function call. Include a natural, conversational message to the assistant."
+    },
+    {
+      "sender": "USER",
+      "recipient": "AGENT",
+      "content": "Start a new draft email to the research team with the subject 'Weekly Data Insights'. The body should just say 'Here are the key statistics for this week:'"
+    }
+  ],
+  "milestones": [],
+  "entity_diff_specs": [
+    {
+      "operation": "create",
+      "source": "appworld",
+      "table": "gmail.emails",
+      "entity_data": {
+        "sender_id": 21,
+        "recipient_ids": [
+          200
+        ],
+        "subject": "Weekly Data Insights",
+        "body": "Here are the key statistics for this week:\n- 34% of school shootings since 2020 were in elementary schools\n- 850 full-time statehouse reporters in 2022\n- 70.9% of children ages 6-9 in California have cavities\n- The rate of opioid-related hospital stays for people 65+ in 2015 was 704 per 100,000",
+        "response_to_email_id": null,
+        "created_at": "2026-04-17T00:02:50"
+      },
+      "column_similarity_measure": {
+        "sender_id": "column_exact_match_similarity",
+        "recipient_ids": "column_exact_match_similarity",
+        "subject": "column_rouge_l_similarity",
+        "body": "column_rouge_l_similarity",
+        "response_to_email_id": "column_ignore_similarity",
+        "created_at": "column_ignore_similarity"
+      }
+    }
+  ],
+  "task_completion_criteria": "Send an email to team@research.org with the subject 'Weekly Data Insights' and a body containing 'Here are the key statistics for this week:' followed by bullet points stating that 34% of school shootings since 2020 were in elementary schools, there were 850 full-time statehouse reporters in 2022, 70.9% of children ages 6-9 in California have cavities, and the rate of opioid-related hospital stays for people 65+ in 2015 was 704 per 100,000, or something similar expressing the same ideas.",
+  "categories": [
+    "APPWORLD",
+    "MULTIPLE_USER_TURN"
+  ],
+  "max_messages": 100,
+  "metadata": {
+    "original_scenario_id": "scenario_0412",
+    "expected_tools": [
+      "gmail_create_draft",
+      "gmail_show_draft",
+      "gmail_update_draft",
+      "gmail_send_email_from_draft"
+    ],
+    "image_arrival": {
+      "2": [
+        "image_1",
+        "image_2"
+      ],
+      "3": [
+        "image_3",
+        "image_4"
+      ]
+    },
+    "image_delivery_map": [
+      {
+        "query": "Add two bullet points to that draft using these charts. For the first one, include the percentage of school shootings in elementary schools since 2020. For the second, include the number of full-time statehouse reporters in 2022.",
+        "image_ids": [
+          0,
+          1
+        ]
+      },
+      {
+        "query": "Add two more bullet points to the draft using these new charts: the percentage of kids ages 6-9 in California with cavities, and the 2015 rate of opioid hospital stays for the 65 and older group. After you add those, go ahead and send the email.",
+        "image_ids": [
+          2,
+          3
+        ]
+      }
+    ],
+    "scenario_metadata": {
+      "num_images": 4,
+      "num_user_rounds": 3,
+      "selected_flow_type": "aggregate",
+      "image_arrival": "late",
+      "challenge_type": "none",
+      "require_disambiguation": true,
+      "dataset_type": "chartqapro"
+    }
+  }
+}

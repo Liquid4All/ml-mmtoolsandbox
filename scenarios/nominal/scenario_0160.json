@@ -1,0 +1,115 @@
+{
+  "name": "scenario_0160",
+  "base_scenario": "base",
+  "description": "Sandra Martinez is gathering financial data across multiple assets and needs to compile a summary report for her broker.",
+  "difficulty": "easy",
+  "appworld_base_task": "_base_",
+  "device_state_id": "saritt@gmail.com",
+  "reference_time": "2026-04-16T23:55:18.684514+00:00",
+  "agentsandbox_entities": {},
+  "appworld_entities": {
+    "gmail.users": [
+      {
+        "id": 10100,
+        "first_name": "Broker",
+        "last_name": "",
+        "email": "broker@example.com",
+        "password": "placeholder_password",
+        "status": "active"
+      }
+    ]
+  },
+  "image_paths": [
+    "chartqapro/images/chart_0814.jpg",
+    "chartqapro/images/chart_1282.jpg",
+    "chartqapro/images/chart_1287.jpg"
+  ],
+  "messages": [
+    {
+      "sender": "SYSTEM",
+      "recipient": "USER",
+      "content": "{{USER_INSTRUCTION}}ROUND 1\nQuery: I want to start organizing my financial research. Please create a new Todoist project called 'Investment Research' and add three tasks to it: 'Review Dechra', 'Review Avast', and 'Review Gold'.\nInstructions: Instruct the assistant to create a new Todoist project named 'Investment Research' and populate it with the three specific review tasks you mentioned. If the assistant asks for due dates or task descriptions, clarify that none are needed right now. Once the assistant confirms the project and tasks have been created, proceed to the next round.\n\nROUND 2 [provide: image_1, image_3]\nQuery: Actually, let's skip the tasks and just send a summary to my broker. Delete that 'Investment Research' project. Instead, create an email draft to broker@example.com with the subject 'Q3 Data'. I've attached two charts. In the draft, write down Dechra's 2018 EU revenue and Avast's 2018 Consumer Direct Desktop revenue based on these.\nInstructions: Tell the assistant that you changed your mind and want to delete the project it just created. Then, ask it to draft an email to the provided email address with the specified subject. Direct the assistant to look at the two attached charts and extract the exact revenue numbers you requested for the email body. If the assistant extracts data for the wrong year, region, or division, point it back to the images to correct the error. Once it successfully creates the draft with the right numbers, move on to the next round.\n\nROUND 3 [provide: image_2]\nQuery: Here is the last chart. Update the email draft to also include the 12-month gold price forecast shown by the dashed line in this image.\nInstructions: Provide the new chart and ask the assistant to update the existing email draft. Instruct it to find the forecast value indicated by the specific dashed line you mentioned and append it to the draft's body. If the assistant accidentally uses the 6-month forecast line instead, correct it and ask it to look at the 12-month line. Once the draft is updated, proceed to the final round.\n\nROUND 4\nQuery: The summary is perfect. Go ahead and send the email draft.\nInstructions: Instruct the assistant to finalize and send the email draft it has been working on. If it asks for a final confirmation before sending, give it the go-ahead. Once the assistant confirms the email has been sent, end the conversation.\n\nYou have 3 images available to share with the agent using the send_message_with_image tool.\nIMPORTANT: Image IDs are ZERO-INDEXED integers (0, 1, 2, ...). Do NOT add 1 to the IDs.\nAvailable image IDs: [0, 1, 2]\nImage mapping:\n  image_1.jpg -> image ID 0\n  image_2.jpg -> image ID 1\n  image_3.jpg -> image ID 2\n\n## IMAGE DELIVERY\n\n\u26a0\ufe0f IMPORTANT: You MUST use the `send_message_with_image` tool to share images with User B. Do NOT just describe images in text \u2014 you MUST call the tool.\n\nImage delivery schedule:\n\n  Round 2: YOU MUST call the send_message_with_image tool with image_ids='0,2' \u2014 do NOT write the tool name as text; use the actual function call. Include a natural, conversational message to the assistant.\n  Round 3: YOU MUST call the send_message_with_image tool with image_ids='1' \u2014 do NOT write the tool name as text; use the actual function call. Include a natural, conversational message to the assistant."
+    },
+    {
+      "sender": "USER",
+      "recipient": "AGENT",
+      "content": "I want to start organizing my financial research. Please create a new Todoist project called 'Investment Research' and add three tasks to it: 'Review Dechra', 'Review Avast', and 'Review Gold'."
+    }
+  ],
+  "milestones": [],
+  "entity_diff_specs": [
+    {
+      "operation": "create",
+      "source": "appworld",
+      "table": "gmail.emails",
+      "entity_data": {
+        "sender_id": 98,
+        "recipient_ids": [
+          10100
+        ],
+        "subject": "Q3 Data",
+        "body": "Here is the summary report for Q3:\n\n- Dechra 2018 EU revenue: \u00a3258.7m\n- Avast 2018 Consumer Direct Desktop revenue: $278.5M\n- 12-month gold price forecast: $1650",
+        "response_to_email_id": null,
+        "created_at": "2026-04-16T23:55:18"
+      },
+      "column_similarity_measure": {
+        "sender_id": "column_exact_match_similarity",
+        "recipient_ids": "column_exact_match_similarity",
+        "subject": "column_rouge_l_similarity",
+        "body": "column_rouge_l_similarity",
+        "response_to_email_id": "column_ignore_similarity",
+        "created_at": "column_ignore_similarity"
+      }
+    }
+  ],
+  "task_completion_criteria": "Send an email to broker@example.com with the subject 'Q3 Data' containing Dechra's 2018 EU revenue (\u00a3258.7m), Avast's 2018 Consumer Direct Desktop revenue ($278.5M), and the 12-month gold price forecast ($1650), or something similar expressing the same idea.",
+  "categories": [
+    "APPWORLD",
+    "MULTIPLE_USER_TURN"
+  ],
+  "max_messages": 100,
+  "metadata": {
+    "original_scenario_id": "scenario_0160",
+    "expected_tools": [
+      "todoist_create_project",
+      "todoist_create_task",
+      "todoist_delete_project",
+      "gmail_create_draft",
+      "gmail_update_draft",
+      "gmail_send_email_from_draft"
+    ],
+    "image_arrival": {
+      "2": [
+        "image_1",
+        "image_3"
+      ],
+      "3": [
+        "image_2"
+      ]
+    },
+    "image_delivery_map": [
+      {
+        "query": "Actually, let's skip the tasks and just send a summary to my broker. Delete that 'Investment Research' project. Instead, create an email draft to broker@example.com with the subject 'Q3 Data'. I've attached two charts. In the draft, write down Dechra's 2018 EU revenue and Avast's 2018 Consumer Direct Desktop revenue based on these.",
+        "image_ids": [
+          0,
+          2
+        ]
+      },
+      {
+        "query": "Here is the last chart. Update the email draft to also include the 12-month gold price forecast shown by the dashed line in this image.",
+        "image_ids": [
+          1
+        ]
+      }
+    ],
+    "scenario_metadata": {
+      "num_images": 3,
+      "num_user_rounds": 4,
+      "selected_flow_type": "aggregate",
+      "image_arrival": "late",
+      "challenge_type": "goal_change",
+      "require_disambiguation": false,
+      "dataset_type": "chartqapro"
+    }
+  }
+}

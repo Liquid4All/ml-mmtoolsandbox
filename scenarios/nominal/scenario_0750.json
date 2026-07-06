@@ -1,0 +1,259 @@
+{
+  "name": "scenario_0750",
+  "base_scenario": "base",
+  "description": "The user is compiling a research report from various infographics and needs to extract specific data points into a template file before emailing the final data to the research team.",
+  "difficulty": "easy",
+  "appworld_base_task": "_base_",
+  "device_state_id": "ta.weav@gmail.com",
+  "reference_time": "2026-04-17T00:13:13.950113+00:00",
+  "agentsandbox_entities": {},
+  "appworld_entities": {
+    "todoist.projects": [
+      {
+        "id": 400,
+        "user_id": 58,
+        "name": "Marketing",
+        "color": "red",
+        "is_inbox": false,
+        "description": "",
+        "created_at": "2026-04-10T10:00:00"
+      },
+      {
+        "id": 401,
+        "user_id": 58,
+        "name": "HR",
+        "color": "blue",
+        "is_inbox": false,
+        "description": "",
+        "created_at": "2026-04-10T10:00:00"
+      }
+    ],
+    "todoist.tasks": [
+      {
+        "id": 6500,
+        "project_id": 400,
+        "section_id": null,
+        "user_id": 58,
+        "title": "Extract data points",
+        "description": "Folder path: /Documents/Marketing_Research",
+        "due_date": null,
+        "priority": "medium",
+        "is_completed": false,
+        "duration": null,
+        "duration_unit": null,
+        "order_index": 0,
+        "assignee_id": null,
+        "assigner_id": null,
+        "created_at": "2026-04-16T10:00:00"
+      },
+      {
+        "id": 6501,
+        "project_id": 401,
+        "section_id": null,
+        "user_id": 58,
+        "title": "Extract data points",
+        "description": "Folder path: /Documents/HR_Research",
+        "due_date": null,
+        "priority": "medium",
+        "is_completed": false,
+        "duration": null,
+        "duration_unit": null,
+        "order_index": 0,
+        "assignee_id": null,
+        "assigner_id": null,
+        "created_at": "2026-04-16T10:00:00"
+      }
+    ],
+    "file_system.directories": [
+      {
+        "id": 3600,
+        "path": "/Documents/Marketing_Research/",
+        "tilde_path": "/Documents/Marketing_Research/",
+        "user_id": 58,
+        "created_at": "2026-04-15T09:00:00",
+        "updated_at": "2026-04-15T09:00:00"
+      },
+      {
+        "path": "/Documents/",
+        "tilde_path": "/Documents/",
+        "user_id": 58,
+        "created_at": "2025-01-01T00:00:00",
+        "updated_at": "2025-01-01T00:00:00",
+        "id": 3601
+      }
+    ],
+    "file_system.files": [
+      {
+        "id": 26000,
+        "path": "/Documents/Marketing_Research/data_template.txt",
+        "tilde_path": "/Documents/Marketing_Research/data_template.txt",
+        "user_id": 58,
+        "content": "Research Data Points Needed:\n- Gen X Messenger usage: \n- Entry-level online degree acceptance: \n- People feeling less stress: \n- Athletes at 2010 Vancouver Olympics: \n- Tweets per day: \n- Top industry running contests: ",
+        "compressed_data": [],
+        "created_at": "2026-04-16T10:00:00",
+        "updated_at": "2026-04-16T10:00:00"
+      }
+    ],
+    "todoist.project_collaborator_links": [
+      {
+        "id": 50400,
+        "project_id": 400,
+        "user_id": 58,
+        "is_favorite": false,
+        "is_archived": false,
+        "created_at": "2026-04-10T10:00:00"
+      },
+      {
+        "id": 50401,
+        "project_id": 401,
+        "user_id": 58,
+        "is_favorite": false,
+        "is_archived": false,
+        "created_at": "2026-04-10T10:00:00"
+      }
+    ],
+    "gmail.users": [
+      {
+        "id": 10100,
+        "first_name": "Research",
+        "last_name": "",
+        "email": "research@company.com",
+        "password": "placeholder_password",
+        "status": "active"
+      }
+    ]
+  },
+  "image_paths": [
+    "chartqapro/images/chart_1033.jpg",
+    "infographicvqa/images/94821.jpg",
+    "hiertext/images/test/a40f4fd19a221603.jpg",
+    "infographicvqa/images/97332.jpg",
+    "infographicvqa/images/98104.jpg",
+    "infographicvqa/images/98304.jpg"
+  ],
+  "messages": [
+    {
+      "sender": "SYSTEM",
+      "recipient": "USER",
+      "content": "{{USER_INSTRUCTION}}ROUND 1\nQuery: Check my Todoist tasks for the 'Extract data points' task to find the name of the research project folder. Then, look inside that directory to find the text file, and read it so we know what data points we need to extract.\nInstructions: Ask the assistant to find the 'Extract data points' task in your Todoist, extract the project folder name from it, locate the text file inside that folder, and read its contents. The assistant will likely find two tasks with the same name and ask you to clarify which one you mean. Tell it you want the one in the Marketing project. Once the assistant reads the file and tells you the data points needed, confirm and move to the next round.\n\nROUND 2 [provide: image_1, image_2]\nQuery: Here are the first two infographics. Update the text file by adding the Messenger usage percentage for Gen X from the first image, and the overall acceptance rate for entry-level online degrees from the second image.\nInstructions: Provide the first two infographics to the assistant. Instruct it to update the text file it found earlier by adding the data for Gen X's Messenger usage from the first image and the overall acceptance rate for entry-level online degrees from the second image. If the assistant asks for clarification or struggles to find the numbers, guide it to look at the 'Instant Messengers' section for Gen X in the first image, and the 'How acceptable is an online degree credential' chart in the second image. Once it confirms the file has been updated, proceed to the next round.\n\nROUND 3 [provide: image_3, image_4, image_5]\nQuery: Here are three more images. Update the text file with the percentage of people who feel 'Less Stress' from the presentation slide, the number of athletes at the 2010 Vancouver Olympics from the Olympics infographic, and the number of tweets per day from the monster infographic.\nInstructions: Share the next three images with the assistant. Ask it to update the text file again with three new data points: the percentage for 'Less Stress' from the presentation slide, the athlete count for the 2010 Vancouver Olympics from the Olympics infographic, and the daily tweet count from the monster infographic. If the assistant cannot find the data, tell it to check the test tube chart in the presentation, the top left section of the Olympics image, and the bottom right section of the monster image. Wait for confirmation that the file has been updated before moving on.\n\nROUND 4 [provide: image_6]\nQuery: Here is the final infographic. Update the file with the #1 top industry running contests. Then, email the final contents of this file to research@company.com with the subject 'Research Data', and delete the file since we're done.\nInstructions: Give the final infographic to the assistant. Ask it to update the file one last time with the number one industry running contests. After updating, instruct the assistant to email the entire contents of the completed file to research@company.com with the subject 'Research Data', and finally, delete the text file. If the assistant needs help finding the industry, point it to the 'COMPANIES RUNNING CONTESTS' section. Once the email is sent and the file is deleted, you can end the conversation.\n\nYou have 6 images available to share with the agent using the send_message_with_image tool.\nIMPORTANT: Image IDs are ZERO-INDEXED integers (0, 1, 2, ...). Do NOT add 1 to the IDs.\nAvailable image IDs: [0, 1, 2, 3, 4, 5]\nImage mapping:\n  image_1.jpg -> image ID 0\n  image_2.jpg -> image ID 1\n  image_3.jpg -> image ID 2\n  image_4.jpg -> image ID 3\n  image_5.jpg -> image ID 4\n  image_6.jpg -> image ID 5\n\n## IMAGE DELIVERY\n\n⚠️ IMPORTANT: You MUST use the `send_message_with_image` tool to share images with User B. Do NOT just describe images in text — you MUST call the tool.\n\nImage delivery schedule:\n\n  Round 2: YOU MUST call the send_message_with_image tool with image_ids='0,1' — do NOT write the tool name as text; use the actual function call. Include a natural, conversational message to the assistant.\n  Round 3: YOU MUST call the send_message_with_image tool with image_ids='2,3,4' — do NOT write the tool name as text; use the actual function call. Include a natural, conversational message to the assistant.\n  Round 4: YOU MUST call the send_message_with_image tool with image_ids='5' — do NOT write the tool name as text; use the actual function call. Include a natural, conversational message to the assistant."
+    },
+    {
+      "sender": "USER",
+      "recipient": "AGENT",
+      "content": "Check my Todoist tasks for the 'Extract data points' task to find the name of the research project folder. Then, look inside that directory to find the text file, and read it so we know what data points we need to extract."
+    }
+  ],
+  "milestones": [],
+  "entity_diff_specs": [
+    {
+      "operation": "create",
+      "source": "appworld",
+      "table": "gmail.emails",
+      "entity_data": {
+        "sender_id": 58,
+        "recipient_ids": [
+          10100
+        ],
+        "subject": "Research Data",
+        "body": "Here is the extracted research data:\n- 34% for Gen X Messenger usage\n- 97% for entry-level online degree acceptance\n- 59% for feeling less stress\n- 2,566 athletes at the 2010 Vancouver Olympics\n- 400 Million tweets per day\n- Entertainment as the top industry running contests",
+        "response_to_email_id": null,
+        "created_at": "2026-04-17T00:13:13"
+      },
+      "column_similarity_measure": {
+        "sender_id": "column_exact_match_similarity",
+        "recipient_ids": "column_exact_match_similarity",
+        "subject": "column_rouge_l_similarity",
+        "body": "column_rouge_l_similarity",
+        "response_to_email_id": "column_ignore_similarity",
+        "created_at": "column_ignore_similarity"
+      }
+    },
+    {
+      "operation": "update",
+      "source": "appworld",
+      "table": "file_system.directories",
+      "entity_id_column": "id",
+      "entity_id_value": 3600,
+      "expected_fields": {
+        "updated_at": "2026-04-15T09:00:00"
+      },
+      "column_similarity_measure": {
+        "updated_at": "column_ignore_similarity",
+        "id": "column_exact_match_similarity"
+      }
+    },
+    {
+      "operation": "delete",
+      "source": "appworld",
+      "table": "file_system.files",
+      "entity_id_column": "id",
+      "entity_id_value": 26000,
+      "column_similarity_measure": {
+        "id": "column_exact_match_similarity"
+      }
+    }
+  ],
+  "task_completion_criteria": "Email the contents of the completed research data file to research@company.com with the subject 'Research Data', containing the following extracted data points: 34% for Gen X Messenger usage, 97% for entry-level online degree acceptance, 59% for feeling less stress, 2,566 athletes at the 2010 Vancouver Olympics, 400 Million tweets per day, and Entertainment as the top industry running contests. Finally, ensure the original text file in the '/Documents/Marketing_Research' directory is deleted.",
+  "categories": [
+    "APPWORLD",
+    "MULTIPLE_USER_TURN"
+  ],
+  "max_messages": 100,
+  "metadata": {
+    "original_scenario_id": "scenario_0750",
+    "expected_tools": [
+      "todoist_show_tasks",
+      "file_system_show_directory",
+      "file_system_show_file",
+      "file_system_update_file",
+      "gmail_send_email",
+      "file_system_delete_file"
+    ],
+    "image_arrival": {
+      "2": [
+        "image_1",
+        "image_2"
+      ],
+      "3": [
+        "image_3",
+        "image_4",
+        "image_5"
+      ],
+      "4": [
+        "image_6"
+      ]
+    },
+    "image_delivery_map": [
+      {
+        "query": "Here are the first two infographics. Update the text file by adding the Messenger usage percentage for Gen X from the first image, and the overall acceptance rate for entry-level online degrees from the second image.",
+        "image_ids": [
+          0,
+          1
+        ]
+      },
+      {
+        "query": "Here are three more images. Update the text file with the percentage of people who feel 'Less Stress' from the presentation slide, the number of athletes at the 2010 Vancouver Olympics from the Olympics infographic, and the number of tweets per day from the monster infographic.",
+        "image_ids": [
+          2,
+          3,
+          4
+        ]
+      },
+      {
+        "query": "Here is the final infographic. Update the file with the #1 top industry running contests. Then, email the final contents of this file to research@company.com with the subject 'Research Data', and delete the file since we're done.",
+        "image_ids": [
+          5
+        ]
+      }
+    ],
+    "scenario_metadata": {
+      "num_images": 6,
+      "num_user_rounds": 4,
+      "selected_flow_type": "lookup_chain",
+      "image_arrival": "late",
+      "challenge_type": "state_mutation",
+      "require_disambiguation": true,
+      "dataset_type": "infographicvqa"
+    }
+  }
+}

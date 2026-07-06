@@ -1,0 +1,303 @@
+{
+  "name": "scenario_0279",
+  "base_scenario": "base",
+  "description": "The user is out car spotting and wants to cross-reference the vehicles they see with their existing notes and task lists, updating their records and messaging their spouse accordingly.",
+  "difficulty": "easy",
+  "appworld_base_task": "_base_",
+  "device_state_id": "joseharr@gmail.com",
+  "reference_time": "2026-04-16T23:58:47.811037+00:00",
+  "agentsandbox_entities": {},
+  "appworld_entities": {
+    "todoist.projects": [
+      {
+        "id": 400,
+        "user_id": 14,
+        "name": "Car Research",
+        "color": "charcoal",
+        "is_inbox": false,
+        "description": "",
+        "created_at": "2026-04-10T10:00:00"
+      }
+    ],
+    "todoist.tasks": [
+      {
+        "id": 6500,
+        "project_id": 400,
+        "section_id": null,
+        "user_id": 14,
+        "title": "Test drive Honda UR-V",
+        "description": null,
+        "due_date": null,
+        "priority": "medium",
+        "is_completed": false,
+        "duration": null,
+        "duration_unit": null,
+        "order_index": 0,
+        "assignee_id": null,
+        "assigner_id": null,
+        "created_at": "2026-04-10T10:05:00"
+      },
+      {
+        "id": 6501,
+        "project_id": 400,
+        "section_id": null,
+        "user_id": 14,
+        "title": "Research Ford Explorer",
+        "description": null,
+        "due_date": null,
+        "priority": "medium",
+        "is_completed": false,
+        "duration": null,
+        "duration_unit": null,
+        "order_index": 1,
+        "assignee_id": null,
+        "assigner_id": null,
+        "created_at": "2026-04-10T10:06:00"
+      }
+    ],
+    "simple_note.notes": [
+      {
+        "id": 3200,
+        "user_id": 14,
+        "title": "Car Shortlist - Daily Drivers",
+        "content": "Toyota Camry, Audi RS 4, BMW M3",
+        "tags": [],
+        "created_at": "2026-04-10T14:30:00",
+        "updated_at": "2026-04-10T14:30:00",
+        "pinned": false,
+        "data": {}
+      },
+      {
+        "id": 3201,
+        "user_id": 14,
+        "title": "Car Shortlist - Weekend",
+        "content": "Porsche 911, Mazda MX-5",
+        "tags": [],
+        "created_at": "2026-04-12T09:15:00",
+        "updated_at": "2026-04-12T09:15:00",
+        "pinned": false,
+        "data": {}
+      }
+    ],
+    "todoist.project_collaborator_links": [
+      {
+        "id": 50400,
+        "project_id": 400,
+        "user_id": 14,
+        "is_favorite": false,
+        "is_archived": false,
+        "created_at": "2026-04-10T10:00:00"
+      }
+    ],
+    "gmail.users": []
+  },
+  "image_paths": [
+    "worldvqa/images/2042.jpg",
+    "worldvqa/images/2043.jpg",
+    "worldvqa/images/2050.jpg",
+    "worldvqa/images/2055.jpg"
+  ],
+  "messages": [
+    {
+      "sender": "SYSTEM",
+      "recipient": "USER",
+      "content": "{{USER_INSTRUCTION}}ROUND 1 [provide: image_1, image_2]\nQuery: I spotted these two cars today. Check my 'Car Shortlist' note. If either of these car models is already in the note, send a text message to my spouse saying 'I found the [Car Model]!'. If the model is NOT in the note, add it to the note.\nInstructions: Ask the assistant to check your 'Car Shortlist' note for the two cars shown in the images. Tell the assistant to text your spouse if a car is already on the list, or add it to the note if it isn't. Because you have multiple notes with similar names, the assistant should ask you to clarify which note you mean. When it asks, tell it you mean the 'Daily Drivers' note. If the assistant struggles to identify the cars, tell it to look at the grille logos and overall design. Once it confirms the note is updated and the message is sent, move on to the next round.\n\nROUND 2 [provide: image_3, image_4]\nQuery: Here are two more cars I saw. Cross-reference these models with my 'Car Research' project in Todoist. For the model that is already listed as a task, add a 'Spotted' label to it (create the label first if it doesn't exist). For the model that is NOT in the project, send a text message to my spouse asking 'What do you think about the [Car Model]?'\nInstructions: Share the two new car photos and ask the assistant to cross-reference them with your 'Car Research' Todoist project. Instruct the assistant to add a 'Spotted' label to any task that matches a car in the photos, and to text your spouse asking for their opinion on any car that isn't in the project. If the assistant asks for the specific names of the cars to look up, remind it to identify the models directly from the images provided. Conclude the conversation once the assistant confirms the Todoist project has been updated and the text message has been sent.\n\nYou have 4 images available to share with the agent using the send_message_with_image tool.\nIMPORTANT: Image IDs are ZERO-INDEXED integers (0, 1, 2, ...). Do NOT add 1 to the IDs.\nAvailable image IDs: [0, 1, 2, 3]\nImage mapping:\n  image_1.jpg -> image ID 0\n  image_2.jpg -> image ID 1\n  image_3.jpg -> image ID 2\n  image_4.jpg -> image ID 3\n\n## IMAGE DELIVERY\n\n\u26a0\ufe0f IMPORTANT: You MUST use the `send_message_with_image` tool to share images with User B. Do NOT just describe images in text \u2014 you MUST call the tool.\n\nImage delivery schedule:\n\n  Round 2: YOU MUST call the send_message_with_image tool with image_ids='2,3' \u2014 do NOT write the tool name as text; use the actual function call. Include a natural, conversational message to the assistant."
+    },
+    {
+      "sender": "USER",
+      "recipient": "AGENT",
+      "content": "I spotted these two cars today. Check my 'Car Shortlist' note. If either of these car models is already in the note, send a text message to my spouse saying 'I found the [Car Model]!'. If the model is NOT in the note, add it to the note.",
+      "image_ids": [
+        0,
+        1
+      ]
+    }
+  ],
+  "milestones": [],
+  "entity_diff_specs": [
+    {
+      "operation": "create",
+      "source": "appworld",
+      "table": "phone.global_text_messages",
+      "entity_data": {
+        "sender_id": 14,
+        "receiver_id": 12,
+        "message": "I found the Audi RS 4!",
+        "created_at": "2026-04-16T23:58:47"
+      },
+      "column_similarity_measure": {
+        "sender_id": "column_exact_match_similarity",
+        "receiver_id": "column_exact_match_similarity",
+        "message": "column_rouge_l_similarity",
+        "created_at": "column_ignore_similarity"
+      }
+    },
+    {
+      "operation": "create",
+      "source": "appworld",
+      "table": "phone.user_text_messages",
+      "entity_data": {
+        "global_text_message_id": 200,
+        "user_id": 14,
+        "created_at": "2026-04-16T23:58:47"
+      },
+      "column_similarity_measure": {
+        "global_text_message_id": "column_ignore_similarity",
+        "user_id": "column_exact_match_similarity",
+        "created_at": "column_ignore_similarity"
+      }
+    },
+    {
+      "operation": "create",
+      "source": "appworld",
+      "table": "phone.global_text_messages",
+      "entity_data": {
+        "sender_id": 14,
+        "receiver_id": 12,
+        "message": "What do you think about the Changan UNI-K?",
+        "created_at": "2026-04-16T23:58:47"
+      },
+      "column_similarity_measure": {
+        "sender_id": "column_exact_match_similarity",
+        "receiver_id": "column_exact_match_similarity",
+        "message": "column_rouge_l_similarity",
+        "created_at": "column_ignore_similarity"
+      }
+    },
+    {
+      "operation": "create",
+      "source": "appworld",
+      "table": "phone.user_text_messages",
+      "entity_data": {
+        "global_text_message_id": 201,
+        "user_id": 14,
+        "created_at": "2026-04-16T23:58:47"
+      },
+      "column_similarity_measure": {
+        "global_text_message_id": "column_ignore_similarity",
+        "user_id": "column_exact_match_similarity",
+        "created_at": "column_ignore_similarity"
+      }
+    },
+    {
+      "operation": "create",
+      "source": "appworld",
+      "table": "todoist.labels",
+      "entity_data": {
+        "user_id": 14,
+        "name": "Spotted",
+        "color": "charcoal"
+      },
+      "column_similarity_measure": {
+        "user_id": "column_exact_match_similarity",
+        "name": "column_rouge_l_similarity",
+        "color": "column_exact_match_similarity"
+      }
+    },
+    {
+      "operation": "create",
+      "source": "appworld",
+      "table": "todoist.task_label_links",
+      "entity_data": {
+        "task_id": 6500,
+        "label_id": 2400
+      },
+      "column_similarity_measure": {
+        "task_id": "column_exact_match_similarity",
+        "label_id": "column_ignore_similarity"
+      }
+    },
+    {
+      "operation": "update",
+      "source": "appworld",
+      "table": "simple_note.notes",
+      "entity_id_column": "id",
+      "entity_id_value": 3200,
+      "expected_fields": {
+        "updated_at": "2026-04-10T14:30:00",
+        "content": "Toyota Camry, Audi RS 4, BMW M3, Volkswagen Magotan",
+        "tags": []
+      },
+      "column_similarity_measure": {
+        "updated_at": "column_ignore_similarity",
+        "content": "column_rouge_l_similarity",
+        "id": "column_exact_match_similarity"
+      }
+    },
+    {
+      "operation": "create",
+      "source": "appworld",
+      "table": "phone.user_text_messages",
+      "entity_data": {
+        "global_text_message_id": 200,
+        "user_id": 12,
+        "created_at": "2026-04-16T23:58:47"
+      },
+      "column_similarity_measure": {
+        "global_text_message_id": "column_ignore_similarity",
+        "user_id": "column_exact_match_similarity",
+        "created_at": "column_ignore_similarity"
+      }
+    },
+    {
+      "operation": "create",
+      "source": "appworld",
+      "table": "phone.user_text_messages",
+      "entity_data": {
+        "global_text_message_id": 201,
+        "user_id": 12,
+        "created_at": "2026-04-16T23:58:47"
+      },
+      "column_similarity_measure": {
+        "global_text_message_id": "column_ignore_similarity",
+        "user_id": "column_exact_match_similarity",
+        "created_at": "column_ignore_similarity"
+      }
+    }
+  ],
+  "task_completion_criteria": "The agent must cross-reference the four car models shown in the images with device data and take appropriate actions. For the first two images, the agent must send a text message to Ronald Harrison containing 'I found the Audi RS 4' (or similar) since it is already in the 'Car Shortlist - Daily Drivers' note, and append 'Volkswagen Magotan' to that same note because it is missing. For the last two images, the agent must create/add a 'Spotted' label to the existing Honda UR-V task in the 'Car Research' Todoist project, and send a text message to Ronald Harrison asking 'What do you think about the Changan UNI-K?' (or similar) because it is missing from the project.",
+  "categories": [
+    "APPWORLD",
+    "MULTIPLE_USER_TURN"
+  ],
+  "max_messages": 100,
+  "metadata": {
+    "original_scenario_id": "scenario_0279",
+    "expected_tools": [
+      "simple_note_show_note",
+      "messages_send_text_message",
+      "simple_note_update_note",
+      "todoist_show_tasks",
+      "todoist_create_label",
+      "todoist_add_label_to_task"
+    ],
+    "image_arrival": {
+      "1": [
+        "image_1",
+        "image_2"
+      ],
+      "2": [
+        "image_3",
+        "image_4"
+      ]
+    },
+    "image_delivery_map": [
+      {
+        "query": "Here are two more cars I saw. Cross-reference these models with my 'Car Research' project in Todoist. For the model that is already listed as a task, add a 'Spotted' label to it (create the label first if it doesn't exist). For the model that is NOT in the project, send a text message to my spouse asking 'What do you think about the [Car Model]?'",
+        "image_ids": [
+          2,
+          3
+        ]
+      }
+    ],
+    "scenario_metadata": {
+      "num_images": 4,
+      "num_user_rounds": 2,
+      "selected_flow_type": "cross_reference",
+      "image_arrival": "progressive",
+      "challenge_type": "none",
+      "require_disambiguation": true,
+      "dataset_type": "worldvqa"
+    }
+  }
+}

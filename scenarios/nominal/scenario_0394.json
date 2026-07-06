@@ -1,0 +1,475 @@
+{
+  "name": "scenario_0394",
+  "base_scenario": "base",
+  "description": "Marcus is compiling a master wishlist of books from various sources, including web searches, best-seller lists, and physical bookshelves. He wants to consolidate them into his existing notes before purchasing a specific subset.",
+  "difficulty": "easy",
+  "appworld_base_task": "_base_",
+  "device_state_id": "ma_smith@gmail.com",
+  "reference_time": "2026-04-17T00:02:11.883032+00:00",
+  "agentsandbox_entities": {},
+  "appworld_entities": {
+    "amazon.sellers": [
+      {
+        "id": 200,
+        "name": "Amazon Books",
+        "rating": 4.5
+      }
+    ],
+    "amazon.products": [
+      {
+        "id": 200,
+        "product_type": "books",
+        "name": "Snow Crash",
+        "description": "A science fiction novel by Neal Stephenson.",
+        "seller_id": 200,
+        "price": 14.99,
+        "delivery_days": 2,
+        "inventory_quantity": 50,
+        "weight": 1.0,
+        "length": 8.0,
+        "width": 5.0,
+        "height": 1.0,
+        "color": null,
+        "relative_size": null,
+        "rating": 4.5,
+        "seller_rating": 4.5,
+        "has_variations": false
+      },
+      {
+        "id": 201,
+        "product_type": "books",
+        "name": "The Number of the Beast",
+        "description": "A science fiction novel by Robert A. Heinlein.",
+        "seller_id": 200,
+        "price": 15.99,
+        "delivery_days": 2,
+        "inventory_quantity": 50,
+        "weight": 1.1,
+        "length": 8.2,
+        "width": 5.2,
+        "height": 1.2,
+        "color": null,
+        "relative_size": null,
+        "rating": 4.6,
+        "seller_rating": 4.5,
+        "has_variations": false
+      },
+      {
+        "id": 202,
+        "product_type": "books",
+        "name": "Job: A Comedy of Justice",
+        "description": "A science fiction novel by Robert A. Heinlein.",
+        "seller_id": 200,
+        "price": 13.99,
+        "delivery_days": 2,
+        "inventory_quantity": 50,
+        "weight": 1.0,
+        "length": 8.0,
+        "width": 5.0,
+        "height": 1.1,
+        "color": null,
+        "relative_size": null,
+        "rating": 4.4,
+        "seller_rating": 4.5,
+        "has_variations": false
+      },
+      {
+        "id": 203,
+        "product_type": "books",
+        "name": "Tunnel in the Sky",
+        "description": "A science fiction novel by Robert A. Heinlein.",
+        "seller_id": 200,
+        "price": 12.99,
+        "delivery_days": 2,
+        "inventory_quantity": 50,
+        "weight": 0.9,
+        "length": 7.8,
+        "width": 5.0,
+        "height": 0.9,
+        "color": null,
+        "relative_size": null,
+        "rating": 4.5,
+        "seller_rating": 4.5,
+        "has_variations": false
+      },
+      {
+        "id": 204,
+        "product_type": "books",
+        "name": "The Best of Robert Heinlein",
+        "description": "A collection of science fiction stories by Robert A. Heinlein.",
+        "seller_id": 200,
+        "price": 18.99,
+        "delivery_days": 2,
+        "inventory_quantity": 50,
+        "weight": 1.5,
+        "length": 9.0,
+        "width": 6.0,
+        "height": 1.5,
+        "color": null,
+        "relative_size": null,
+        "rating": 4.7,
+        "seller_rating": 4.5,
+        "has_variations": false
+      },
+      {
+        "id": 205,
+        "product_type": "books",
+        "name": "The Green Hills of Earth",
+        "description": "A collection of science fiction stories by Robert A. Heinlein.",
+        "seller_id": 200,
+        "price": 14.99,
+        "delivery_days": 2,
+        "inventory_quantity": 50,
+        "weight": 1.0,
+        "length": 8.0,
+        "width": 5.0,
+        "height": 1.0,
+        "color": null,
+        "relative_size": null,
+        "rating": 4.6,
+        "seller_rating": 4.5,
+        "has_variations": false
+      },
+      {
+        "id": 206,
+        "product_type": "books",
+        "name": "I Will Fear No Evil",
+        "description": "A science fiction novel by Robert A. Heinlein.",
+        "seller_id": 200,
+        "price": 16.99,
+        "delivery_days": 2,
+        "inventory_quantity": 50,
+        "weight": 1.2,
+        "length": 8.5,
+        "width": 5.5,
+        "height": 1.3,
+        "color": null,
+        "relative_size": null,
+        "rating": 4.3,
+        "seller_rating": 4.5,
+        "has_variations": false
+      },
+      {
+        "id": 207,
+        "product_type": "books",
+        "name": "The Man Who Sold the Moon",
+        "description": "A collection of science fiction stories by Robert A. Heinlein.",
+        "seller_id": 200,
+        "price": 15.99,
+        "delivery_days": 2,
+        "inventory_quantity": 50,
+        "weight": 1.1,
+        "length": 8.2,
+        "width": 5.2,
+        "height": 1.1,
+        "color": null,
+        "relative_size": null,
+        "rating": 4.5,
+        "seller_rating": 4.5,
+        "has_variations": false
+      },
+      {
+        "id": 208,
+        "product_type": "books",
+        "name": "Space Cadet",
+        "description": "A science fiction novel by Robert A. Heinlein.",
+        "seller_id": 200,
+        "price": 11.99,
+        "delivery_days": 2,
+        "inventory_quantity": 50,
+        "weight": 0.8,
+        "length": 7.5,
+        "width": 4.8,
+        "height": 0.8,
+        "color": null,
+        "relative_size": null,
+        "rating": 4.4,
+        "seller_rating": 4.5,
+        "has_variations": false
+      }
+    ],
+    "simple_note.notes": [
+      {
+        "id": 3200,
+        "user_id": 66,
+        "title": "Book Wishlist",
+        "content": "Where the Crawdads Sing, Space Cadet, A Pali Grammar",
+        "tags": [
+          "books",
+          "wishlist"
+        ],
+        "created_at": "2026-04-10T10:00:00",
+        "updated_at": "2026-04-15T12:00:00",
+        "pinned": false,
+        "data": null
+      },
+      {
+        "id": 3201,
+        "user_id": 66,
+        "title": "Book Wishlist (Gifts)",
+        "content": "Harry Potter and the Sorcerer's Stone, The Hobbit",
+        "tags": [
+          "books",
+          "gifts"
+        ],
+        "created_at": "2026-04-10T10:05:00",
+        "updated_at": "2026-04-15T12:05:00",
+        "pinned": false,
+        "data": null
+      }
+    ],
+    "gmail.users": []
+  },
+  "image_paths": [
+    "hiertext/images/test/8054b2f27fd43638.jpg",
+    "omnidocbench/images/000195.jpg",
+    "hiertext/images/test/bb4358431b90be07.jpg",
+    "hiertext/images/test/caf7db1e8c2939de.jpg",
+    "hiertext/images/test/8b8ba1e0c389b510.jpg",
+    "hiertext/images/test/43d4268b7dc8aae9.jpg"
+  ],
+  "messages": [
+    {
+      "sender": "SYSTEM",
+      "recipient": "USER",
+      "content": "{{USER_INSTRUCTION}}ROUND 1 [provide: image_1, image_2, image_3]\nQuery: Check my book wishlist note and see which of the books from these three images are already on it. Add the ones I'm missing.\nInstructions: Tell the assistant to check your book wishlist note and compare its contents against the books shown in the three provided images, adding only the ones that are missing. Because you have multiple notes with similar names on your device, the assistant will likely ask you to clarify which note to use. When it does, specify that you want the main personal one, not the gifts list. Ensure the assistant extracts the titles and confirms what it added.\n\nROUND 2 [provide: image_4, image_5]\nQuery: Here are a few more. Check the list again and append these new books if they aren't on there yet.\nInstructions: Ask the assistant to check the same note again and add the books from these two new images if they are missing. The assistant should process the antique book and the language books, skipping any that are already in the note. Wait for confirmation that the note has been updated.\n\nROUND 3 [provide: image_6]\nQuery: One last one. Is this survival guide on the list? If not, throw it on there.\nInstructions: Instruct the assistant to check if the book in the final image is currently on the wishlist note. If it isn't, ask the assistant to add it. Wait for the assistant to confirm the addition.\n\nROUND 4\nQuery: Okay, I'm ready to buy some. Filter the wishlist for just the science fiction books - that's the Neal Stephenson one and the Heinlein ones. Search for them on Amazon, add them to my cart, and then update the note to remove the ones you just bought.\nInstructions: Tell the assistant to look at the current wishlist note and identify the science fiction books (specifically the Neal Stephenson book and the Heinlein titles you just mentioned). Ask it to search for these on Amazon and add them to your cart. Crucially, instruct the assistant to update the wishlist note by deleting the books it just added to the cart, leaving the rest of the unpurchased list intact. Once the cart is loaded and the note is updated, end the conversation.\n\nYou have 6 images available to share with the agent using the send_message_with_image tool.\nIMPORTANT: Image IDs are ZERO-INDEXED integers (0, 1, 2, ...). Do NOT add 1 to the IDs.\nAvailable image IDs: [0, 1, 2, 3, 4, 5]\nImage mapping:\n  image_1.jpg -> image ID 0\n  image_2.jpg -> image ID 1\n  image_3.jpg -> image ID 2\n  image_4.jpg -> image ID 3\n  image_5.jpg -> image ID 4\n  image_6.jpg -> image ID 5\n\n## IMAGE DELIVERY\n\n⚠️ IMPORTANT: You MUST use the `send_message_with_image` tool to share images with User B. Do NOT just describe images in text — you MUST call the tool.\n\nImage delivery schedule:\n\n  Round 2: YOU MUST call the send_message_with_image tool with image_ids='3,4' — do NOT write the tool name as text; use the actual function call. Include a natural, conversational message to the assistant.\n  Round 3: YOU MUST call the send_message_with_image tool with image_ids='5' — do NOT write the tool name as text; use the actual function call. Include a natural, conversational message to the assistant."
+    },
+    {
+      "sender": "USER",
+      "recipient": "AGENT",
+      "content": "Check my book wishlist note and see which of the books from these three images are already on it. Add the ones I'm missing.",
+      "image_ids": [
+        0,
+        1,
+        2
+      ]
+    }
+  ],
+  "milestones": [],
+  "entity_diff_specs": [
+    {
+      "operation": "create",
+      "source": "appworld",
+      "table": "amazon.cart_entries",
+      "entity_data": {
+        "user_id": 66,
+        "product_id": 200,
+        "quantity": 1,
+        "gift_wrap_quantity": 0
+      },
+      "column_similarity_measure": {
+        "user_id": "column_exact_match_similarity",
+        "product_id": "column_exact_match_similarity",
+        "quantity": "column_exact_match_similarity",
+        "gift_wrap_quantity": "column_exact_match_similarity"
+      }
+    },
+    {
+      "operation": "create",
+      "source": "appworld",
+      "table": "amazon.cart_entries",
+      "entity_data": {
+        "user_id": 66,
+        "product_id": 201,
+        "quantity": 1,
+        "gift_wrap_quantity": 0
+      },
+      "column_similarity_measure": {
+        "user_id": "column_exact_match_similarity",
+        "product_id": "column_exact_match_similarity",
+        "quantity": "column_exact_match_similarity",
+        "gift_wrap_quantity": "column_exact_match_similarity"
+      }
+    },
+    {
+      "operation": "create",
+      "source": "appworld",
+      "table": "amazon.cart_entries",
+      "entity_data": {
+        "user_id": 66,
+        "product_id": 202,
+        "quantity": 1,
+        "gift_wrap_quantity": 0
+      },
+      "column_similarity_measure": {
+        "user_id": "column_exact_match_similarity",
+        "product_id": "column_exact_match_similarity",
+        "quantity": "column_exact_match_similarity",
+        "gift_wrap_quantity": "column_exact_match_similarity"
+      }
+    },
+    {
+      "operation": "create",
+      "source": "appworld",
+      "table": "amazon.cart_entries",
+      "entity_data": {
+        "user_id": 66,
+        "product_id": 203,
+        "quantity": 1,
+        "gift_wrap_quantity": 0
+      },
+      "column_similarity_measure": {
+        "user_id": "column_exact_match_similarity",
+        "product_id": "column_exact_match_similarity",
+        "quantity": "column_exact_match_similarity",
+        "gift_wrap_quantity": "column_exact_match_similarity"
+      }
+    },
+    {
+      "operation": "create",
+      "source": "appworld",
+      "table": "amazon.cart_entries",
+      "entity_data": {
+        "user_id": 66,
+        "product_id": 204,
+        "quantity": 1,
+        "gift_wrap_quantity": 0
+      },
+      "column_similarity_measure": {
+        "user_id": "column_exact_match_similarity",
+        "product_id": "column_exact_match_similarity",
+        "quantity": "column_exact_match_similarity",
+        "gift_wrap_quantity": "column_exact_match_similarity"
+      }
+    },
+    {
+      "operation": "create",
+      "source": "appworld",
+      "table": "amazon.cart_entries",
+      "entity_data": {
+        "user_id": 66,
+        "product_id": 205,
+        "quantity": 1,
+        "gift_wrap_quantity": 0
+      },
+      "column_similarity_measure": {
+        "user_id": "column_exact_match_similarity",
+        "product_id": "column_exact_match_similarity",
+        "quantity": "column_exact_match_similarity",
+        "gift_wrap_quantity": "column_exact_match_similarity"
+      }
+    },
+    {
+      "operation": "create",
+      "source": "appworld",
+      "table": "amazon.cart_entries",
+      "entity_data": {
+        "user_id": 66,
+        "product_id": 206,
+        "quantity": 1,
+        "gift_wrap_quantity": 0
+      },
+      "column_similarity_measure": {
+        "user_id": "column_exact_match_similarity",
+        "product_id": "column_exact_match_similarity",
+        "quantity": "column_exact_match_similarity",
+        "gift_wrap_quantity": "column_exact_match_similarity"
+      }
+    },
+    {
+      "operation": "create",
+      "source": "appworld",
+      "table": "amazon.cart_entries",
+      "entity_data": {
+        "user_id": 66,
+        "product_id": 207,
+        "quantity": 1,
+        "gift_wrap_quantity": 0
+      },
+      "column_similarity_measure": {
+        "user_id": "column_exact_match_similarity",
+        "product_id": "column_exact_match_similarity",
+        "quantity": "column_exact_match_similarity",
+        "gift_wrap_quantity": "column_exact_match_similarity"
+      }
+    },
+    {
+      "operation": "create",
+      "source": "appworld",
+      "table": "amazon.cart_entries",
+      "entity_data": {
+        "user_id": 66,
+        "product_id": 208,
+        "quantity": 1,
+        "gift_wrap_quantity": 0
+      },
+      "column_similarity_measure": {
+        "user_id": "column_exact_match_similarity",
+        "product_id": "column_exact_match_similarity",
+        "quantity": "column_exact_match_similarity",
+        "gift_wrap_quantity": "column_exact_match_similarity"
+      }
+    },
+    {
+      "operation": "update",
+      "source": "appworld",
+      "table": "simple_note.notes",
+      "entity_id_column": "id",
+      "entity_id_value": 3200,
+      "expected_fields": {
+        "updated_at": "2026-04-15T12:00:00",
+        "content": "Where the Crawdads Sing, A Pali Grammar, The Summer I Turned Pretty, The Inn on Harmony Island, It's Not Summer Without You, It Ends with Us, Refiner's Fire, The Adventures of Gil Blas, Introduction to Pali, The Zombie Survival Guide",
+        "tags": []
+      },
+      "column_similarity_measure": {
+        "updated_at": "column_ignore_similarity",
+        "content": "column_rouge_l_similarity",
+        "id": "column_exact_match_similarity"
+      }
+    }
+  ],
+  "task_completion_criteria": "The agent must read the 'Book Wishlist' note and append the missing books from the provided images: 'Snow Crash', 'The Summer I Turned Pretty', 'The Inn on Harmony Island', 'It's Not Summer Without You', 'It Ends with Us', 'The Number of the Beast', 'Job: A Comedy of Justice', 'Tunnel in the Sky', 'The Best of Robert Heinlein', 'Refiner's Fire', 'The Green Hills of Earth', 'I Will Fear No Evil', 'The Man Who Sold the Moon', 'The Adventures of Gil Blas', 'Introduction to Pali', and 'The Zombie Survival Guide'. It must skip 'Where the Crawdads Sing', 'Space Cadet', and 'A Pali Grammar' which are already on the list. Finally, the agent must search Amazon to add 'Snow Crash' and all Robert A. Heinlein books (including 'Space Cadet' which was already on the list) to the cart, and update the 'Book Wishlist' note to delete those specific purchased books.",
+  "categories": [
+    "APPWORLD",
+    "MULTIPLE_USER_TURN"
+  ],
+  "max_messages": 100,
+  "metadata": {
+    "original_scenario_id": "scenario_0394",
+    "expected_tools": [
+      "simple_note_show_note",
+      "simple_note_add_content_to_note",
+      "amazon_show_product",
+      "amazon_add_product_to_cart",
+      "simple_note_update_note"
+    ],
+    "image_arrival": {
+      "1": [
+        "image_1",
+        "image_2",
+        "image_3"
+      ],
+      "2": [
+        "image_4",
+        "image_5"
+      ],
+      "3": [
+        "image_6"
+      ]
+    },
+    "image_delivery_map": [
+      {
+        "query": "Here are a few more. Check the list again and append these new books if they aren't on there yet.",
+        "image_ids": [
+          3,
+          4
+        ]
+      },
+      {
+        "query": "One last one. Is this survival guide on the list? If not, throw it on there.",
+        "image_ids": [
+          5
+        ]
+      }
+    ],
+    "scenario_metadata": {
+      "num_images": 6,
+      "num_user_rounds": 4,
+      "selected_flow_type": "filter",
+      "image_arrival": "mixed",
+      "challenge_type": "state_mutation",
+      "require_disambiguation": true,
+      "dataset_type": "hiertext"
+    }
+  }
+}

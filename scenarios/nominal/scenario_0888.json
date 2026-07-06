@@ -1,0 +1,210 @@
+{
+  "name": "scenario_0888",
+  "base_scenario": "base",
+  "description": "The user is digitizing historical documents and extracting contact information. They are filtering the documents based on whether a phone number is provided, saving those with numbers as device contacts and compiling those without into a single text note.",
+  "difficulty": "easy",
+  "appworld_base_task": "_base_",
+  "device_state_id": "caiburc@gmail.com",
+  "reference_time": "2026-04-17T00:17:00.558154+00:00",
+  "agentsandbox_entities": {},
+  "appworld_entities": {
+    "gmail.users": [
+      {
+        "id": 10100,
+        "first_name": "Archive",
+        "last_name": "",
+        "email": "archive@history.org",
+        "password": "placeholder_password",
+        "status": "active"
+      }
+    ]
+  },
+  "image_paths": [
+    "docvqa/images/29023.jpg",
+    "docvqa/images/32982.jpg",
+    "docvqa/images/2230.jpg",
+    "docvqa/images/60025.jpg",
+    "docvqa/images/46368.jpg",
+    "docvqa/images/50870.jpg"
+  ],
+  "messages": [
+    {
+      "sender": "SYSTEM",
+      "recipient": "USER",
+      "content": "{{USER_INSTRUCTION}}ROUND 1 [provide: image_1, image_4, image_6]\nQuery: I am digitizing some historical records. Please look at the sender or main letterhead in these three documents. Filter them by whether they have a phone number listed. For those that do, add them as new phone contacts. For the one that doesn't, create a new note called 'Historical Addresses' and save the name and address there.\nInstructions: Ask the assistant to review the three provided documents and check the sender or letterhead for a phone number. Instruct it to create new phone contacts for the entities that have a phone number, and for the one without a phone number, tell it to create a new note titled 'Historical Addresses' containing their name and address. If the assistant asks for confirmation on which details to extract, tell it to use the main return address or letterhead info. Once the contacts and note are created, proceed to the next round.\n\nROUND 2 [provide: image_2, image_3]\nQuery: Here are two more documents. Process them with the same filter: check if they have a phone number. Since neither seems to have one, retrieve the 'Historical Addresses' note and update it by appending the names and mailing addresses from these.\nInstructions: Present the next two documents and ask the assistant to apply the same filter. Point out that neither has a phone number, so instruct the assistant to append their names and addresses to the 'Historical Addresses' note. Once the assistant confirms the note has been updated, move to the next round.\n\nROUND 3 [provide: image_5]\nQuery: Here is the last document. Fetch the 'Historical Addresses' note. The corresponding author here doesn't have a phone number listed, so prepare to update the note with his address. I believe the zip code is Roma 00164, so use that when you add him.\nInstructions: Provide the final document and ask the assistant to update the 'Historical Addresses' note with the correspondence address shown. Intentionally state the wrong zip code (Roma 00164) as part of your instruction. If the assistant points out that the zip code in the image is actually different, acknowledge the correction and wait for the next round. If the assistant blindly proceeds with the wrong zip code, correct it by pointing it back to the image.\n\nROUND 4\nQuery: Good catch, I misread it. Please use Roma 00163 and update the note with the correct address.\nInstructions: Confirm the correct zip code that the assistant pointed out, and ask it to finalize updating the note with the accurate address. Once confirmed, proceed to the final round.\n\nROUND 5\nQuery: Now, please email the full contents of the 'Historical Addresses' note to my colleague at archive@history.org with the subject 'Digitized Addresses'.\nInstructions: Instruct the assistant to read the final contents of the 'Historical Addresses' note and send it in an email to archive@history.org with the subject 'Digitized Addresses'. Once the email is sent, end the conversation.\n\nYou have 6 images available to share with the agent using the send_message_with_image tool.\nIMPORTANT: Image IDs are ZERO-INDEXED integers (0, 1, 2, ...). Do NOT add 1 to the IDs.\nAvailable image IDs: [0, 1, 2, 3, 4, 5]\nImage mapping:\n  image_1.jpg -> image ID 0\n  image_2.jpg -> image ID 1\n  image_3.jpg -> image ID 2\n  image_4.jpg -> image ID 3\n  image_5.jpg -> image ID 4\n  image_6.jpg -> image ID 5\n\n## IMAGE DELIVERY\n\n\u26a0\ufe0f IMPORTANT: You MUST use the `send_message_with_image` tool to share images with User B. Do NOT just describe images in text \u2014 you MUST call the tool.\n\nImage delivery schedule:\n\n  Round 2: YOU MUST call the send_message_with_image tool with image_ids='1,2' \u2014 do NOT write the tool name as text; use the actual function call. Include a natural, conversational message to the assistant.\n  Round 3: YOU MUST call the send_message_with_image tool with image_ids='4' \u2014 do NOT write the tool name as text; use the actual function call. Include a natural, conversational message to the assistant."
+    },
+    {
+      "sender": "USER",
+      "recipient": "AGENT",
+      "content": "I am digitizing some historical records. Please look at the sender or main letterhead in these three documents. Filter them by whether they have a phone number listed. For those that do, add them as new phone contacts. For the one that doesn't, create a new note called 'Historical Addresses' and save the name and address there.",
+      "image_ids": [
+        0,
+        3,
+        5
+      ]
+    }
+  ],
+  "milestones": [],
+  "entity_diff_specs": [
+    {
+      "operation": "create",
+      "source": "appworld",
+      "table": "phone.contacts",
+      "entity_data": {
+        "user_id": 33,
+        "first_name": "International Sugar Research",
+        "last_name": "Foundation",
+        "email": "",
+        "phone_number": "(301) 654-8950",
+        "relationships": [],
+        "birthday": null,
+        "home_address": null,
+        "work_address": null,
+        "created_at": "2026-04-17T00:17:00"
+      },
+      "column_similarity_measure": {
+        "user_id": "column_exact_match_similarity",
+        "first_name": "column_exact_match_similarity",
+        "last_name": "column_exact_match_similarity",
+        "email": "column_ignore_similarity",
+        "phone_number": "column_exact_match_similarity",
+        "relationships": "column_ignore_similarity",
+        "birthday": "column_ignore_similarity",
+        "home_address": "column_ignore_similarity",
+        "work_address": "column_ignore_similarity",
+        "created_at": "column_ignore_similarity"
+      }
+    },
+    {
+      "operation": "create",
+      "source": "appworld",
+      "table": "phone.contacts",
+      "entity_data": {
+        "user_id": 33,
+        "first_name": "Channing H.",
+        "last_name": "Lushbough",
+        "email": "",
+        "phone_number": "GReenleaf 7-4440",
+        "relationships": [],
+        "birthday": null,
+        "home_address": null,
+        "work_address": null,
+        "created_at": "2026-04-17T00:17:00"
+      },
+      "column_similarity_measure": {
+        "user_id": "column_exact_match_similarity",
+        "first_name": "column_exact_match_similarity",
+        "last_name": "column_exact_match_similarity",
+        "email": "column_ignore_similarity",
+        "phone_number": "column_exact_match_similarity",
+        "relationships": "column_ignore_similarity",
+        "birthday": "column_ignore_similarity",
+        "home_address": "column_ignore_similarity",
+        "work_address": "column_ignore_similarity",
+        "created_at": "column_ignore_similarity"
+      }
+    },
+    {
+      "operation": "create",
+      "source": "appworld",
+      "table": "gmail.emails",
+      "entity_data": {
+        "sender_id": 33,
+        "recipient_ids": [
+          10100
+        ],
+        "subject": "Digitized Addresses",
+        "body": "Historical Addresses:\n\nDr. Robert Shank\nSt. Louis, MO\n\nCalifornia State Department of Public Health\nBerkeley, CA\n\nMr. and Mrs. Edward Lehman\nLongmont, CO\n\nGiuseppe M.C. Rosano\nRoma 00163, Italy",
+        "response_to_email_id": null,
+        "created_at": "2026-04-17T00:17:00"
+      },
+      "column_similarity_measure": {
+        "sender_id": "column_exact_match_similarity",
+        "recipient_ids": "column_exact_match_similarity",
+        "subject": "column_rouge_l_similarity",
+        "body": "column_rouge_l_similarity",
+        "response_to_email_id": "column_ignore_similarity",
+        "created_at": "column_ignore_similarity"
+      }
+    },
+    {
+      "operation": "create",
+      "source": "appworld",
+      "table": "simple_note.notes",
+      "entity_data": {
+        "user_id": 33,
+        "title": "Historical Addresses",
+        "content": "Dr. Robert Shank\nSt. Louis, MO\n\nCalifornia State Department of Public Health\nBerkeley, CA\n\nMr. and Mrs. Edward Lehman\nLongmont, CO\n\nGiuseppe M.C. Rosano\nRoma 00163, Italy",
+        "tags": [],
+        "created_at": "2026-04-17T00:17:00",
+        "updated_at": "2026-04-17T00:17:00",
+        "pinned": false,
+        "data": null
+      },
+      "column_similarity_measure": {
+        "user_id": "column_exact_match_similarity",
+        "title": "column_rouge_l_similarity",
+        "content": "column_rouge_l_similarity",
+        "tags": "column_ignore_similarity",
+        "created_at": "column_ignore_similarity",
+        "updated_at": "column_ignore_similarity",
+        "pinned": "column_exact_match_similarity",
+        "data": "column_ignore_similarity"
+      }
+    }
+  ],
+  "task_completion_criteria": "Create new contacts for International Sugar Research Foundation with phone (301) 654-8950 and Channing H. Lushbough with phone GReenleaf 7-4440. Create a note titled 'Historical Addresses' containing the names and addresses for Dr. Robert Shank (St. Louis, MO), California State Department of Public Health (Berkeley, CA), Mr. and Mrs. Edward Lehman (Longmont, CO), and Giuseppe M.C. Rosano (Roma 00163, Italy), or similar representations of these addresses. Finally, send an email to archive@history.org with the subject 'Digitized Addresses' containing the full compiled text of the 'Historical Addresses' note.",
+  "categories": [
+    "APPWORLD",
+    "MULTIPLE_USER_TURN"
+  ],
+  "max_messages": 100,
+  "metadata": {
+    "original_scenario_id": "scenario_0888",
+    "expected_tools": [
+      "contacts_add_contact",
+      "simple_note_create_note",
+      "simple_note_show_note",
+      "simple_note_update_note",
+      "gmail_send_email"
+    ],
+    "image_arrival": {
+      "1": [
+        "image_1",
+        "image_4",
+        "image_6"
+      ],
+      "2": [
+        "image_2",
+        "image_3"
+      ],
+      "3": [
+        "image_5"
+      ]
+    },
+    "image_delivery_map": [
+      {
+        "query": "Here are two more documents. Process them with the same filter: check if they have a phone number. Since neither seems to have one, retrieve the 'Historical Addresses' note and update it by appending the names and mailing addresses from these.",
+        "image_ids": [
+          1,
+          2
+        ]
+      },
+      {
+        "query": "Here is the last document. Fetch the 'Historical Addresses' note. The corresponding author here doesn't have a phone number listed, so prepare to update the note with his address. I believe the zip code is Roma 00164, so use that when you add him.",
+        "image_ids": [
+          4
+        ]
+      }
+    ],
+    "scenario_metadata": {
+      "num_images": 6,
+      "num_user_rounds": 5,
+      "selected_flow_type": "filter",
+      "image_arrival": "mixed",
+      "challenge_type": "error_correction",
+      "require_disambiguation": false,
+      "dataset_type": "docvqa"
+    }
+  }
+}

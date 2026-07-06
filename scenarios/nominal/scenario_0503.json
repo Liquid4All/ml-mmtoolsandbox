@@ -1,0 +1,282 @@
+{
+  "name": "scenario_0503",
+  "base_scenario": "base",
+  "description": "The user has a note of pending contacts they need to add to their phone, and a collection of various images containing contact information to cross-reference.",
+  "difficulty": "easy",
+  "appworld_base_task": "_base_",
+  "device_state_id": "jefsmith@gmail.com",
+  "reference_time": "2026-04-17T00:05:40.879485+00:00",
+  "agentsandbox_entities": {},
+  "appworld_entities": {
+    "simple_note.notes": [
+      {
+        "id": 3200,
+        "user_id": 67,
+        "title": "Pending Contacts",
+        "content": "Anna Belladelli\nGuardian Customer Service\nWeChat Course\nDarko",
+        "tags": [],
+        "created_at": "2026-04-16T10:30:00",
+        "updated_at": "2026-04-16T10:30:00",
+        "pinned": false,
+        "data": null
+      }
+    ],
+    "gmail.users": [
+      {
+        "id": 10100,
+        "first_name": "Anna",
+        "last_name": "Belladelli",
+        "email": "anna.belladelli@univr.it",
+        "password": "placeholder_password",
+        "status": "active"
+      }
+    ]
+  },
+  "image_paths": [
+    "omnidocbench/images/000186.jpg",
+    "hiertext/images/test/894ad6512ddb9811.jpg",
+    "omnidocbench/images/000408.jpg",
+    "hiertext/images/test/32d63962fff12097.jpg",
+    "hiertext/images/test/a83aefeb2c33d641.jpg",
+    "omnidocbench/images/000351.jpg"
+  ],
+  "messages": [
+    {
+      "sender": "SYSTEM",
+      "recipient": "USER",
+      "content": "{{USER_INSTRUCTION}}ROUND 1 [provide: image_1, image_2, image_3, image_4, image_5, image_6]\nQuery: Open my note titled 'Pending Contacts'. Cross-reference the names in it with the details in these images and add the matching ones to my contacts. I think Darko's number on that blue poster is 05/37-34-660. If I got his number wrong, skip adding him and let me know, but go ahead and add the others.\nInstructions: Instruct the agent to open your note titled 'Pending Contacts' and cross-reference the names in it with the contact information found in the provided images. Ask it to add the matching contacts to your phone. Explicitly state your belief that Darko's number on the blue poster is 05/37-34-660, and tell the agent that if you are mistaken about his number, it should skip adding him, let you know, but still add the others. If the agent fails to notice the discrepancy with Darko's number and tries to add him anyway with the wrong number, point out that the number you provided might be the main company number instead of his personal one. Once the agent successfully adds the other contacts and informs you of the discrepancy regarding Darko, proceed to the next turn.\n\nROUND 2\nQuery: Thanks for catching that. Go ahead and add Darko to my contacts with his correct personal number. Also, add the main freeNET company number as a separate contact. Finally, draft an email to Anna Belladelli asking if we can arrange an appointment before her next class.\nInstructions: Acknowledge the agent's correction. Instruct the agent to add Darko to your contacts using his actual personal number, and to add the main freeNET company number as a completely separate contact. Also, ask the agent to draft an email to Anna Belladelli requesting to arrange an appointment before her next class. If the agent asks for clarification on any of the numbers or the email content, refer it back to the images. Conclude the conversation once the contacts are added and the email is drafted.\n\nYou have 6 images available to share with the agent using the send_message_with_image tool.\nIMPORTANT: Image IDs are ZERO-INDEXED integers (0, 1, 2, ...). Do NOT add 1 to the IDs.\nAvailable image IDs: [0, 1, 2, 3, 4, 5]\nImage mapping:\n  image_1.jpg -> image ID 0\n  image_2.jpg -> image ID 1\n  image_3.jpg -> image ID 2\n  image_4.jpg -> image ID 3\n  image_5.jpg -> image ID 4\n  image_6.jpg -> image ID 5"
+    },
+    {
+      "sender": "USER",
+      "recipient": "AGENT",
+      "content": "Open my note titled 'Pending Contacts'. Cross-reference the names in it with the details in these images and add the matching ones to my contacts. I think Darko's number on that blue poster is 05/37-34-660. If I got his number wrong, skip adding him and let me know, but go ahead and add the others.",
+      "image_ids": [
+        0,
+        1,
+        2,
+        3,
+        4,
+        5
+      ]
+    }
+  ],
+  "milestones": [],
+  "entity_diff_specs": [
+    {
+      "operation": "create",
+      "source": "appworld",
+      "table": "phone.contacts",
+      "entity_data": {
+        "user_id": 67,
+        "first_name": "Anna",
+        "last_name": "Belladelli",
+        "email": "anna.belladelli@univr.it",
+        "phone_number": null,
+        "relationships": [],
+        "birthday": null,
+        "home_address": null,
+        "work_address": null,
+        "created_at": "2026-04-17T00:05:40"
+      },
+      "column_similarity_measure": {
+        "user_id": "column_exact_match_similarity",
+        "first_name": "column_exact_match_similarity",
+        "last_name": "column_exact_match_similarity",
+        "email": "column_exact_match_similarity",
+        "phone_number": "column_ignore_similarity",
+        "relationships": "column_ignore_similarity",
+        "birthday": "column_ignore_similarity",
+        "home_address": "column_ignore_similarity",
+        "work_address": "column_ignore_similarity",
+        "created_at": "column_ignore_similarity"
+      }
+    },
+    {
+      "operation": "create",
+      "source": "appworld",
+      "table": "phone.contacts",
+      "entity_data": {
+        "user_id": 67,
+        "first_name": "Guardian",
+        "last_name": "Customer Service",
+        "email": "",
+        "phone_number": "0330 333 6946",
+        "relationships": [],
+        "birthday": null,
+        "home_address": null,
+        "work_address": null,
+        "created_at": "2026-04-17T00:05:40"
+      },
+      "column_similarity_measure": {
+        "user_id": "column_exact_match_similarity",
+        "first_name": "column_exact_match_similarity",
+        "last_name": "column_exact_match_similarity",
+        "email": "column_ignore_similarity",
+        "phone_number": "column_exact_match_similarity",
+        "relationships": "column_ignore_similarity",
+        "birthday": "column_ignore_similarity",
+        "home_address": "column_ignore_similarity",
+        "work_address": "column_ignore_similarity",
+        "created_at": "column_ignore_similarity"
+      }
+    },
+    {
+      "operation": "create",
+      "source": "appworld",
+      "table": "phone.contacts",
+      "entity_data": {
+        "user_id": 67,
+        "first_name": "WeChat",
+        "last_name": "Course",
+        "email": "",
+        "phone_number": "1354622",
+        "relationships": [],
+        "birthday": null,
+        "home_address": null,
+        "work_address": null,
+        "created_at": "2026-04-17T00:05:40"
+      },
+      "column_similarity_measure": {
+        "user_id": "column_exact_match_similarity",
+        "first_name": "column_exact_match_similarity",
+        "last_name": "column_exact_match_similarity",
+        "email": "column_ignore_similarity",
+        "phone_number": "column_exact_match_similarity",
+        "relationships": "column_ignore_similarity",
+        "birthday": "column_ignore_similarity",
+        "home_address": "column_ignore_similarity",
+        "work_address": "column_ignore_similarity",
+        "created_at": "column_ignore_similarity"
+      }
+    },
+    {
+      "operation": "create",
+      "source": "appworld",
+      "table": "phone.contacts",
+      "entity_data": {
+        "user_id": 67,
+        "first_name": "Darko",
+        "last_name": "Unknown",
+        "email": "",
+        "phone_number": "031622010",
+        "relationships": [],
+        "birthday": null,
+        "home_address": null,
+        "work_address": null,
+        "created_at": "2026-04-17T00:05:40"
+      },
+      "column_similarity_measure": {
+        "user_id": "column_exact_match_similarity",
+        "first_name": "column_exact_match_similarity",
+        "last_name": "column_exact_match_similarity",
+        "email": "column_ignore_similarity",
+        "phone_number": "column_exact_match_similarity",
+        "relationships": "column_ignore_similarity",
+        "birthday": "column_ignore_similarity",
+        "home_address": "column_ignore_similarity",
+        "work_address": "column_ignore_similarity",
+        "created_at": "column_ignore_similarity"
+      }
+    },
+    {
+      "operation": "create",
+      "source": "appworld",
+      "table": "phone.contacts",
+      "entity_data": {
+        "user_id": 67,
+        "first_name": "freeNET",
+        "last_name": "Company",
+        "email": "",
+        "phone_number": "05/37-34-660",
+        "relationships": [],
+        "birthday": null,
+        "home_address": null,
+        "work_address": null,
+        "created_at": "2026-04-17T00:05:40"
+      },
+      "column_similarity_measure": {
+        "user_id": "column_exact_match_similarity",
+        "first_name": "column_exact_match_similarity",
+        "last_name": "column_exact_match_similarity",
+        "email": "column_ignore_similarity",
+        "phone_number": "column_exact_match_similarity",
+        "relationships": "column_ignore_similarity",
+        "birthday": "column_ignore_similarity",
+        "home_address": "column_ignore_similarity",
+        "work_address": "column_ignore_similarity",
+        "created_at": "column_ignore_similarity"
+      }
+    },
+    {
+      "operation": "create",
+      "source": "appworld",
+      "table": "gmail.drafts",
+      "entity_data": {
+        "user_id": 67,
+        "recipient_ids": [
+          10100
+        ],
+        "recipient_email_addresses": [
+          "anna.belladelli@univr.it"
+        ],
+        "recipient_names": [
+          "Anna Belladelli"
+        ],
+        "subject": "Appointment Request",
+        "body": "Hi Anna,\n\nI was wondering if we could arrange an appointment before your next class. Please let me know what time works best for you.\n\nBest,\nJeffrey",
+        "belongs_to_email_thread_id": null,
+        "response_to_email_id": null,
+        "scheduled_send_at": null,
+        "created_at": "2026-04-17T00:05:40",
+        "updated_at": "2026-04-17T00:05:40"
+      },
+      "column_similarity_measure": {
+        "user_id": "column_exact_match_similarity",
+        "recipient_ids": "column_exact_match_similarity",
+        "recipient_email_addresses": "column_exact_match_similarity",
+        "recipient_names": "column_exact_match_similarity",
+        "subject": "column_rouge_l_similarity",
+        "body": "column_rouge_l_similarity",
+        "belongs_to_email_thread_id": "column_ignore_similarity",
+        "response_to_email_id": "column_ignore_similarity",
+        "scheduled_send_at": "column_ignore_similarity",
+        "created_at": "column_ignore_similarity",
+        "updated_at": "column_ignore_similarity"
+      }
+    }
+  ],
+  "task_completion_criteria": "The user wants to add several contacts by cross-referencing a note with the provided images, resulting in new contacts for Anna Belladelli (anna.belladelli@univr.it), Guardian Customer Service (0330 333 6946), WeChat Course (1354622), Darko (031622010), and freeNET (05/37-34-660). The user also wants a draft email created for Anna Belladelli asking to arrange an appointment before her next class.",
+  "categories": [
+    "APPWORLD",
+    "MULTIPLE_USER_TURN"
+  ],
+  "max_messages": 100,
+  "metadata": {
+    "original_scenario_id": "scenario_0503",
+    "expected_tools": [
+      "simple_note_show_note",
+      "contacts_add_contact",
+      "gmail_create_draft"
+    ],
+    "image_arrival": {
+      "1": [
+        "image_1",
+        "image_2",
+        "image_3",
+        "image_4",
+        "image_5",
+        "image_6"
+      ]
+    },
+    "image_delivery_map": [],
+    "scenario_metadata": {
+      "num_images": 6,
+      "num_user_rounds": 2,
+      "selected_flow_type": "cross_reference",
+      "image_arrival": "upfront",
+      "challenge_type": "error_correction",
+      "require_disambiguation": false,
+      "dataset_type": "omnidocbench"
+    }
+  }
+}

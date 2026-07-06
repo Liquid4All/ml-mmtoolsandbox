@@ -1,0 +1,308 @@
+{
+  "name": "scenario_1144",
+  "base_scenario": "base",
+  "description": "The user is organizing their active video editing and 3D modeling projects by backing them up and logging their locations and key settings.",
+  "difficulty": "easy",
+  "appworld_base_task": "_base_",
+  "device_state_id": "connorbrow@gmail.com",
+  "reference_time": "2026-04-17T00:24:43.015714+00:00",
+  "agentsandbox_entities": {},
+  "appworld_entities": {
+    "simple_note.notes": [
+      {
+        "id": 3200,
+        "user_id": 91,
+        "title": "System Backup Log",
+        "content": "Old system backup configurations:\n- C:\\Windows\\System32\\config\n- D:\\Backups\\SystemImage",
+        "tags": [],
+        "created_at": "2026-04-10T12:00:00",
+        "updated_at": "2026-04-10T12:00:00",
+        "pinned": false,
+        "data": null
+      }
+    ],
+    "file_system.files": [
+      {
+        "id": 26000,
+        "path": "/C:/Users/Kaixin Li/Desktop/pr/模板文件/可莉pv开头模板_1.prproj",
+        "tilde_path": "/C:/Users/Kaixin Li/Desktop/pr/模板文件/可莉pv开头模板_1.prproj",
+        "user_id": 91,
+        "content": "",
+        "compressed_data": [],
+        "created_at": "2026-04-10T10:00:00",
+        "updated_at": "2026-04-10T10:00:00"
+      },
+      {
+        "id": 26001,
+        "path": "/D:/Data/Blender/donut_test.blend",
+        "tilde_path": "/D:/Data/Blender/donut_test.blend",
+        "user_id": 91,
+        "content": "",
+        "compressed_data": [],
+        "created_at": "2026-04-12T14:30:00",
+        "updated_at": "2026-04-12T14:30:00"
+      }
+    ],
+    "gmail.users": [],
+    "file_system.directories": [
+      {
+        "path": "/C:/",
+        "tilde_path": "/C:/",
+        "user_id": 91,
+        "created_at": "2025-01-01T00:00:00",
+        "updated_at": "2025-01-01T00:00:00",
+        "id": 3600
+      },
+      {
+        "path": "/C:/Users/",
+        "tilde_path": "/C:/Users/",
+        "user_id": 91,
+        "created_at": "2025-01-01T00:00:00",
+        "updated_at": "2025-01-01T00:00:00",
+        "id": 3601
+      },
+      {
+        "path": "/C:/Users/Kaixin Li/",
+        "tilde_path": "/C:/Users/Kaixin Li/",
+        "user_id": 91,
+        "created_at": "2025-01-01T00:00:00",
+        "updated_at": "2025-01-01T00:00:00",
+        "id": 3602
+      },
+      {
+        "path": "/C:/Users/Kaixin Li/Desktop/",
+        "tilde_path": "/C:/Users/Kaixin Li/Desktop/",
+        "user_id": 91,
+        "created_at": "2025-01-01T00:00:00",
+        "updated_at": "2025-01-01T00:00:00",
+        "id": 3603
+      },
+      {
+        "path": "/C:/Users/Kaixin Li/Desktop/pr/",
+        "tilde_path": "/C:/Users/Kaixin Li/Desktop/pr/",
+        "user_id": 91,
+        "created_at": "2025-01-01T00:00:00",
+        "updated_at": "2025-01-01T00:00:00",
+        "id": 3604
+      },
+      {
+        "path": "/C:/Users/Kaixin Li/Desktop/pr/模板文件/",
+        "tilde_path": "/C:/Users/Kaixin Li/Desktop/pr/模板文件/",
+        "user_id": 91,
+        "created_at": "2025-01-01T00:00:00",
+        "updated_at": "2025-01-01T00:00:00",
+        "id": 3605
+      },
+      {
+        "path": "/D:/",
+        "tilde_path": "/D:/",
+        "user_id": 91,
+        "created_at": "2025-01-01T00:00:00",
+        "updated_at": "2025-01-01T00:00:00",
+        "id": 3606
+      },
+      {
+        "path": "/D:/Data/",
+        "tilde_path": "/D:/Data/",
+        "user_id": 91,
+        "created_at": "2025-01-01T00:00:00",
+        "updated_at": "2025-01-01T00:00:00",
+        "id": 3607
+      },
+      {
+        "path": "/D:/Data/Blender/",
+        "tilde_path": "/D:/Data/Blender/",
+        "user_id": 91,
+        "created_at": "2025-01-01T00:00:00",
+        "updated_at": "2025-01-01T00:00:00",
+        "id": 3608
+      }
+    ]
+  },
+  "image_paths": [
+    "screenspotpro/images/premiere_windows/screenshot_2024-12-07_22-54-36.png",
+    "screenspotpro/images/blender_windows/screenshot_2024-12-02_15-57-47.png",
+    "screenspotpro/images/blender_windows/screenshot_2024-12-02_16-45-03.png",
+    "screenspotpro/images/blender_windows/screenshot_2024-12-02_13-11-44.png",
+    "screenspotpro/images/premiere_windows/screenshot_2024-12-07_22-42-06.png",
+    "screenspotpro/images/blender_windows/screenshot_2024-12-02_16-00-21.png"
+  ],
+  "messages": [
+    {
+      "sender": "SYSTEM",
+      "recipient": "USER",
+      "content": "{{USER_INSTRUCTION}}ROUND 1\nQuery: Can you create a new folder at C:\\Project_Backups? Also, please create a new note called Project Backup Log.\nInstructions: Ask the assistant to create a new directory at 'C:\\Project_Backups' and a new note titled 'Project Backup Log'. Wait for the assistant to confirm both actions have been completed before moving to the next round.\n\nROUND 2 [provide: image_1, image_2, image_3]\nQuery: Please copy the project files shown in these screenshots to the new backup folder, and record their original paths in the backup log note.\nInstructions: Ask the assistant to extract the file paths from the title bars of the provided screenshots, copy those files to the backup folder you just created, and log their original paths in the backup log note. Because there is another note called 'System Backup Log' on the device, the assistant should ask you to clarify which backup note you mean. When it asks, specify that you want to use the 'Project Backup Log'. Once the files are copied and the note is updated, proceed to the next round.\n\nROUND 3 [provide: image_4, image_5, image_6]\nQuery: I also need to save some project settings. From these new screenshots, grab the Roughness value and Render samples for the 3D project, and the exact name of the distortion effect for the video project. Append them to the same note.\nInstructions: Ask the assistant to look at the new screenshots and extract specific settings: the Roughness value and Render samples for the 3D project, and the distortion effect name for the video project. Instruct it to append these details to the Project Backup Log note. If the assistant asks for clarification on where to find the values, direct it to the material properties, render settings, and effect controls panels respectively. Conclude the conversation once the note is successfully updated.\n\nYou have 6 images available to share with the agent using the send_message_with_image tool.\nIMPORTANT: Image IDs are ZERO-INDEXED integers (0, 1, 2, ...). Do NOT add 1 to the IDs.\nAvailable image IDs: [0, 1, 2, 3, 4, 5]\nImage mapping:\n  image_1.jpg -> image ID 0\n  image_2.jpg -> image ID 1\n  image_3.jpg -> image ID 2\n  image_4.jpg -> image ID 3\n  image_5.jpg -> image ID 4\n  image_6.jpg -> image ID 5\n\n## IMAGE DELIVERY\n\n⚠️ IMPORTANT: You MUST use the `send_message_with_image` tool to share images with User B. Do NOT just describe images in text — you MUST call the tool.\n\nImage delivery schedule:\n\n  Round 2: YOU MUST call the send_message_with_image tool with image_ids='0,1,2' — do NOT write the tool name as text; use the actual function call. Include a natural, conversational message to the assistant.\n  Round 3: YOU MUST call the send_message_with_image tool with image_ids='3,4,5' — do NOT write the tool name as text; use the actual function call. Include a natural, conversational message to the assistant."
+    },
+    {
+      "sender": "USER",
+      "recipient": "AGENT",
+      "content": "Can you create a new folder at C:\\Project_Backups? Also, please create a new note called Project Backup Log."
+    }
+  ],
+  "milestones": [],
+  "entity_diff_specs": [
+    {
+      "operation": "create",
+      "source": "appworld",
+      "table": "simple_note.notes",
+      "entity_data": {
+        "user_id": 91,
+        "title": "Project Backup Log",
+        "content": "C:\\Users\\Kaixin Li\\Desktop\\pr\\模板文件\\可莉pv开头模板_1.prproj\nD:\\Data\\Blender\\donut_test.blend\nRoughness: 0.500\nRender samples: 64\nDistortion effect: VR Digital Glitch",
+        "tags": [],
+        "created_at": "2026-04-17T00:24:43",
+        "updated_at": "2026-04-17T00:24:43",
+        "pinned": false,
+        "data": null
+      },
+      "column_similarity_measure": {
+        "user_id": "column_exact_match_similarity",
+        "title": "column_rouge_l_similarity",
+        "content": "column_rouge_l_similarity",
+        "tags": "column_ignore_similarity",
+        "created_at": "column_ignore_similarity",
+        "updated_at": "column_ignore_similarity",
+        "pinned": "column_exact_match_similarity",
+        "data": "column_ignore_similarity"
+      }
+    },
+    {
+      "operation": "create",
+      "source": "appworld",
+      "table": "file_system.directories",
+      "entity_data": {
+        "path": "Project_Backups",
+        "tilde_path": "Project_Backups",
+        "user_id": 91,
+        "created_at": "2026-04-17T00:24:43",
+        "updated_at": "2026-04-17T00:24:43"
+      },
+      "column_similarity_measure": {
+        "path": "column_contains_similarity",
+        "tilde_path": "column_contains_similarity",
+        "user_id": "column_exact_match_similarity",
+        "created_at": "column_ignore_similarity",
+        "updated_at": "column_ignore_similarity"
+      }
+    },
+    {
+      "operation": "create",
+      "source": "appworld",
+      "table": "file_system.directories",
+      "entity_data": {
+        "path": "Project_Backups",
+        "tilde_path": "Project_Backups",
+        "user_id": 91,
+        "created_at": "2026-04-17T00:24:43",
+        "updated_at": "2026-04-17T00:24:43"
+      },
+      "column_similarity_measure": {
+        "path": "column_contains_similarity",
+        "tilde_path": "column_contains_similarity",
+        "user_id": "column_exact_match_similarity",
+        "created_at": "column_ignore_similarity",
+        "updated_at": "column_ignore_similarity"
+      }
+    },
+    {
+      "operation": "create",
+      "source": "appworld",
+      "table": "file_system.files",
+      "entity_data": {
+        "path": "Project_Backups/可莉pv开头模板_1.prproj",
+        "tilde_path": "Project_Backups/可莉pv开头模板_1.prproj",
+        "user_id": 91,
+        "content": "",
+        "compressed_data": [],
+        "created_at": "2026-04-17T00:24:43",
+        "updated_at": "2026-04-17T00:24:43"
+      },
+      "column_similarity_measure": {
+        "path": "column_contains_similarity",
+        "tilde_path": "column_contains_similarity",
+        "user_id": "column_exact_match_similarity",
+        "content": "column_ignore_similarity",
+        "compressed_data": "column_ignore_similarity",
+        "created_at": "column_ignore_similarity",
+        "updated_at": "column_ignore_similarity"
+      }
+    },
+    {
+      "operation": "create",
+      "source": "appworld",
+      "table": "file_system.files",
+      "entity_data": {
+        "path": "Project_Backups/donut_test.blend",
+        "tilde_path": "Project_Backups/donut_test.blend",
+        "user_id": 91,
+        "content": "",
+        "compressed_data": [],
+        "created_at": "2026-04-17T00:24:43",
+        "updated_at": "2026-04-17T00:24:43"
+      },
+      "column_similarity_measure": {
+        "path": "column_contains_similarity",
+        "tilde_path": "column_contains_similarity",
+        "user_id": "column_exact_match_similarity",
+        "content": "column_ignore_similarity",
+        "compressed_data": "column_ignore_similarity",
+        "created_at": "column_ignore_similarity",
+        "updated_at": "column_ignore_similarity"
+      }
+    }
+  ],
+  "task_completion_criteria": "Create a directory at 'C:\\Project_Backups' and a note titled 'Project Backup Log'. Copy the files 'C:\\Users\\Kaixin Li\\Desktop\\pr\\模板文件\\可莉pv开头模板_1.prproj' and 'D:\\Data\\Blender\\donut_test.blend' to 'C:\\Project_Backups'. Append the original file paths, the Roughness value (0.500), the Render samples (64), and the distortion effect name (VR Digital Glitch) to the 'Project Backup Log' note.",
+  "categories": [
+    "APPWORLD",
+    "MULTIPLE_USER_TURN"
+  ],
+  "max_messages": 100,
+  "metadata": {
+    "original_scenario_id": "scenario_1144",
+    "expected_tools": [
+      "file_system_create_directory",
+      "create_note",
+      "file_system_copy_file",
+      "simple_note_add_content_to_note"
+    ],
+    "image_arrival": {
+      "2": [
+        "image_1",
+        "image_2",
+        "image_3"
+      ],
+      "3": [
+        "image_4",
+        "image_5",
+        "image_6"
+      ]
+    },
+    "image_delivery_map": [
+      {
+        "query": "Please copy the project files shown in these screenshots to the new backup folder, and record their original paths in the backup log note.",
+        "image_ids": [
+          0,
+          1,
+          2
+        ]
+      },
+      {
+        "query": "I also need to save some project settings. From these new screenshots, grab the Roughness value and Render samples for the 3D project, and the exact name of the distortion effect for the video project. Append them to the same note.",
+        "image_ids": [
+          3,
+          4,
+          5
+        ]
+      }
+    ],
+    "scenario_metadata": {
+      "num_images": 6,
+      "num_user_rounds": 3,
+      "selected_flow_type": "aggregate",
+      "image_arrival": "late",
+      "challenge_type": "none",
+      "require_disambiguation": true,
+      "dataset_type": "screenspotpro"
+    }
+  }
+}

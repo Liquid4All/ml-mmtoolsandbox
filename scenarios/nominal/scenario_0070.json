@@ -1,0 +1,162 @@
+{
+  "name": "scenario_0070",
+  "base_scenario": "base",
+  "description": "The user is reviewing historical medical and pharmaceutical documents and wants to organize contacts and schedule review sessions based on the vendors and clients involved.",
+  "difficulty": "easy",
+  "appworld_base_task": "_base_",
+  "device_state_id": "cheweber@gmail.com",
+  "reference_time": "2026-04-16T23:52:46.462741+00:00",
+  "agentsandbox_entities": {
+    "calendars": [
+      {
+        "calendar_id": "calendar_100",
+        "title": "Work"
+      }
+    ]
+  },
+  "appworld_entities": {
+    "gmail.users": [
+      {
+        "id": 10100,
+        "first_name": "Jeff",
+        "last_name": "Solomon",
+        "email": "jeff.solomon@wyeth-ayerst.com",
+        "password": "placeholder_password",
+        "status": "active"
+      }
+    ]
+  },
+  "image_paths": [
+    "docvqa/images/16910.jpg",
+    "docvqa/images/24417.jpg",
+    "docvqa/images/47783.jpg",
+    "docvqa/images/58063.jpg"
+  ],
+  "messages": [
+    {
+      "sender": "SYSTEM",
+      "recipient": "USER",
+      "content": "{{USER_INSTRUCTION}}ROUND 1 [provide: image_1, image_2, image_3, image_4]\nQuery: I want to keep track of the people in these historical documents. Please add a contact for Jeff Solomon, who is the recipient of the proposals here. Put his company down as the International Sugar Research Foundation.\nInstructions: Ask the assistant to add a contact for the proposal recipient shown in the images, but intentionally give the wrong company name by referencing the organization from the 1969 document. If the assistant points out that the images show a different company for this person, acknowledge the catch and say you'll correct it next. If the assistant proceeds without noticing the mismatch, just move on to the next round.\n\nROUND 2\nQuery: Wait, my mistake. The International Sugar Research Foundation is from that 1969 symposium document. Jeff Solomon's company is actually Wyeth-Ayerst. Please update his contact to show the correct company.\nInstructions: Acknowledge your mistake from the previous turn. Tell the assistant that the company you mentioned earlier actually belongs to the 1969 symposium document, and ask it to update the contact's company to the correct one shown in his proposals. Once the assistant confirms the contact has been updated, proceed to the next round.\n\nROUND 3\nQuery: I need to review the Wyeth plan that was done by a different vendor. Please look at the documents prepared for Wyeth or Wyeth-Ayerst, find the one that wasn't prepared by DesignWrite, and schedule a calendar event for tomorrow at 10 AM to review it. Use the document's main title as the event name.\nInstructions: Ask the assistant to schedule a calendar event for tomorrow at 10 AM to review one of the plans. Instruct it to cross-reference the documents prepared for Wyeth or Wyeth-Ayerst, identify the single document that was NOT prepared by DesignWrite, and use its main title as the event name. If the assistant asks for the specific title, remind it to find the title on the correct document cover in the images rather than providing the answer yourself. End the conversation once the event is successfully created.\n\nYou have 4 images available to share with the agent using the send_message_with_image tool.\nIMPORTANT: Image IDs are ZERO-INDEXED integers (0, 1, 2, ...). Do NOT add 1 to the IDs.\nAvailable image IDs: [0, 1, 2, 3]\nImage mapping:\n  image_1.jpg -> image ID 0\n  image_2.jpg -> image ID 1\n  image_3.jpg -> image ID 2\n  image_4.jpg -> image ID 3"
+    },
+    {
+      "sender": "USER",
+      "recipient": "AGENT",
+      "content": "I want to keep track of the people in these historical documents. Please add a contact for Jeff Solomon, who is the recipient of the proposals here. Put his company down as the International Sugar Research Foundation.",
+      "image_ids": [
+        0,
+        1,
+        2,
+        3
+      ]
+    }
+  ],
+  "milestones": [],
+  "entity_diff_specs": [
+    {
+      "operation": "create",
+      "source": "appworld",
+      "table": "phone.contacts",
+      "entity_data": {
+        "user_id": 51,
+        "first_name": "Jeff",
+        "last_name": "Solomon",
+        "email": "jeff.solomon@wyeth-ayerst.com",
+        "phone_number": null,
+        "relationships": [],
+        "birthday": null,
+        "home_address": null,
+        "work_address": "Wyeth-Ayerst Pharmaceuticals",
+        "created_at": "2026-04-16T23:52:46"
+      },
+      "column_similarity_measure": {
+        "user_id": "column_exact_match_similarity",
+        "first_name": "column_exact_match_similarity",
+        "last_name": "column_exact_match_similarity",
+        "email": "column_exact_match_similarity",
+        "phone_number": "column_ignore_similarity",
+        "relationships": "column_ignore_similarity",
+        "birthday": "column_ignore_similarity",
+        "home_address": "column_ignore_similarity",
+        "work_address": "column_exact_match_similarity",
+        "created_at": "column_ignore_similarity"
+      }
+    },
+    {
+      "operation": "create",
+      "source": "agentsandbox",
+      "namespace": "CALENDAR_EVENTS",
+      "entity_data": {
+        "calendar_event_id": "event_100",
+        "calendar_id": "calendar_100",
+        "title": "PUBLICATION PLAN 2002 PREMARIN/TRIMEGESTONE HRT",
+        "description": null,
+        "start_datetime": "2026-04-17T10:00:00Z",
+        "end_datetime": "2026-04-17T11:00:00Z",
+        "is_all_day": false,
+        "recurrence_frequency": null,
+        "recurrence_interval": null,
+        "recurrence_until_datetime": null,
+        "recurrence_parent_id": null,
+        "recurrence_exclude_datetime": [],
+        "latitude": null,
+        "longitude": null,
+        "place_id": null,
+        "formatted_address": null,
+        "attendee_names": [],
+        "attendee_emails": []
+      },
+      "column_similarity_measure": {
+        "calendar_event_id": "column_ignore_similarity",
+        "calendar_id": "column_ignore_similarity",
+        "title": "column_rouge_l_similarity",
+        "description": "column_ignore_similarity",
+        "start_datetime": "column_datetime_naive_equal_similarity",
+        "end_datetime": "column_datetime_naive_equal_similarity",
+        "is_all_day": "column_exact_match_similarity",
+        "recurrence_frequency": "column_ignore_similarity",
+        "recurrence_interval": "column_ignore_similarity",
+        "recurrence_until_datetime": "column_ignore_similarity",
+        "recurrence_parent_id": "column_ignore_similarity",
+        "recurrence_exclude_datetime": "column_ignore_similarity",
+        "latitude": "column_ignore_similarity",
+        "longitude": "column_ignore_similarity",
+        "place_id": "column_ignore_similarity",
+        "formatted_address": "column_ignore_similarity",
+        "attendee_names": "column_ignore_similarity",
+        "attendee_emails": "column_ignore_similarity"
+      }
+    }
+  ],
+  "task_completion_criteria": "A contact exists for Jeff Solomon with the company set to Wyeth-Ayerst Pharmaceuticals (or Wyeth-Ayerst Laboratories), and a calendar event is scheduled for tomorrow at 10:00 AM titled 'PUBLICATION PLAN 2002 PREMARIN/TRIMEGESTONE HRT' or similar.",
+  "categories": [
+    "APPWORLD",
+    "MULTIPLE_USER_TURN"
+  ],
+  "max_messages": 100,
+  "metadata": {
+    "original_scenario_id": "scenario_0070",
+    "expected_tools": [
+      "contacts_add_contact",
+      "contacts_update_contact",
+      "create_calendar_event"
+    ],
+    "image_arrival": {
+      "1": [
+        "image_1",
+        "image_2",
+        "image_3",
+        "image_4"
+      ]
+    },
+    "image_delivery_map": [],
+    "scenario_metadata": {
+      "num_images": 4,
+      "num_user_rounds": 3,
+      "selected_flow_type": "cross_reference",
+      "image_arrival": "upfront",
+      "challenge_type": "error_correction",
+      "require_disambiguation": false,
+      "dataset_type": "docvqa"
+    }
+  }
+}

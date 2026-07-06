@@ -1,0 +1,459 @@
+{
+  "name": "scenario_1095",
+  "base_scenario": "base",
+  "description": "Brenda is doing some online shopping based on various items she has seen in photos and wants to keep track of her incoming deliveries.",
+  "difficulty": "easy",
+  "appworld_base_task": "_base_",
+  "device_state_id": "brenda.webe@gmail.com",
+  "reference_time": "2026-04-17T00:23:17.301830+00:00",
+  "agentsandbox_entities": {},
+  "appworld_entities": {
+    "todoist.projects": [
+      {
+        "id": 400,
+        "user_id": 50,
+        "name": "Online Orders Tracking",
+        "color": "charcoal",
+        "is_inbox": false,
+        "description": "Track online purchases and deliveries",
+        "created_at": "2026-04-10T14:00:00"
+      },
+      {
+        "id": 401,
+        "user_id": 50,
+        "name": "In-Store Purchases Tracking",
+        "color": "charcoal",
+        "is_inbox": false,
+        "description": "Track items bought in physical stores",
+        "created_at": "2026-04-10T14:05:00"
+      }
+    ],
+    "amazon.sellers": [
+      {
+        "id": 200,
+        "name": "Toy Store",
+        "rating": 4.5
+      },
+      {
+        "id": 201,
+        "name": "Luxury Toys",
+        "rating": 4.9
+      },
+      {
+        "id": 202,
+        "name": "Home Goods",
+        "rating": 4.7
+      },
+      {
+        "id": 203,
+        "name": "CAH Official",
+        "rating": 4.8
+      },
+      {
+        "id": 204,
+        "name": "Dance Wear",
+        "rating": 4.6
+      }
+    ],
+    "amazon.products": [
+      {
+        "id": 200,
+        "product_type": "toys",
+        "name": "Magnetic Dinosaur Toy",
+        "description": "Magnetic building blocks dinosaur toy",
+        "seller_id": 200,
+        "price": 25.99,
+        "delivery_days": 3,
+        "inventory_quantity": 50,
+        "weight": 1.0,
+        "length": 5.0,
+        "width": 5.0,
+        "height": 5.0,
+        "color": "green",
+        "relative_size": "small",
+        "rating": 4.8,
+        "seller_rating": 4.5,
+        "has_variations": false
+      },
+      {
+        "id": 201,
+        "product_type": "toys",
+        "name": "Steiff & Tiffany Collab Teddy Bear",
+        "description": "Exclusive Steiff and Tiffany & Co. collaborative teddy bear",
+        "seller_id": 201,
+        "price": 450.0,
+        "delivery_days": 3,
+        "inventory_quantity": 10,
+        "weight": 0.5,
+        "length": 10.0,
+        "width": 6.0,
+        "height": 4.0,
+        "color": "brown",
+        "relative_size": "medium",
+        "rating": 5.0,
+        "seller_rating": 4.9,
+        "has_variations": false
+      },
+      {
+        "id": 202,
+        "product_type": "home",
+        "name": "Clear Square Glass Vase",
+        "description": "Elegant clear square glass vase for flowers",
+        "seller_id": 202,
+        "price": 15.99,
+        "delivery_days": 3,
+        "inventory_quantity": 100,
+        "weight": 2.0,
+        "length": 4.0,
+        "width": 4.0,
+        "height": 8.0,
+        "color": "clear",
+        "relative_size": "medium",
+        "rating": 4.6,
+        "seller_rating": 4.7,
+        "has_variations": false
+      },
+      {
+        "id": 203,
+        "product_type": "games",
+        "name": "Cards Against Humanity",
+        "description": "A party game for horrible people",
+        "seller_id": 203,
+        "price": 29.0,
+        "delivery_days": 3,
+        "inventory_quantity": 20,
+        "weight": 2.2,
+        "length": 8.0,
+        "width": 4.1,
+        "height": 2.7,
+        "color": "black",
+        "relative_size": "medium",
+        "rating": 4.9,
+        "seller_rating": 4.8,
+        "has_variations": false
+      },
+      {
+        "id": 204,
+        "product_type": "shoes",
+        "name": "Latin Dance Shoes",
+        "description": "Professional Latin dance shoes for women",
+        "seller_id": 204,
+        "price": 45.99,
+        "delivery_days": 3,
+        "inventory_quantity": 30,
+        "weight": 1.2,
+        "length": 11.0,
+        "width": 4.0,
+        "height": 4.0,
+        "color": "tan",
+        "relative_size": "medium",
+        "rating": 4.5,
+        "seller_rating": 4.6,
+        "has_variations": true
+      }
+    ],
+    "todoist.project_collaborator_links": [
+      {
+        "id": 50400,
+        "project_id": 400,
+        "user_id": 50,
+        "is_favorite": false,
+        "is_archived": false,
+        "created_at": "2026-04-10T14:00:00"
+      },
+      {
+        "id": 50401,
+        "project_id": 401,
+        "user_id": 50,
+        "is_favorite": false,
+        "is_archived": false,
+        "created_at": "2026-04-10T14:05:00"
+      }
+    ],
+    "gmail.users": []
+  },
+  "image_paths": [
+    "worldvqa/images/1497.jpg",
+    "worldvqa/images/1760.jpg",
+    "worldvqa/images/451.jpg",
+    "worldvqa/images/1618.jpg",
+    "hiertext/images/test/329b45b15bb875b1.jpg",
+    "worldvqa/images/1376.jpg"
+  ],
+  "messages": [
+    {
+      "sender": "SYSTEM",
+      "recipient": "USER",
+      "content": "{{USER_INSTRUCTION}}ROUND 1 [provide: image_1, image_2]\nQuery: Find the exact toy shown in the first image and the specific toy the person is holding in the second image on Amazon. Add one of each to my cart.\nInstructions: Ask the assistant to search Amazon for the toys shown in the two provided images and add one of each to your cart. If the assistant asks for more details, tell it to use its visual capabilities to identify the toys. Once both items are confirmed to be in the cart, proceed to the next round.\n\nROUND 2 [provide: image_3, image_4]\nQuery: Look at the first new image and find a clear square glass vase like the one on the table on Amazon. Then, find the specific style of outerwear shown in the second new image on Amazon. Add one of each to my cart.\nInstructions: Instruct the assistant to find a vase similar to the clear square one on the table in the first new image, and the style of outerwear worn in the second new image on Amazon, and add one of each to your cart. Do not explicitly name the items; let the assistant identify them from the images. Once added, move to the next round.\n\nROUND 3 [provide: image_5]\nQuery: Count the number of people holding the white signs in this image. Find this exact card game on Amazon and add a quantity equal to the number of people you counted to my cart.\nInstructions: Tell the assistant to count the people holding signs in the new image, find the card game written on the signs on Amazon, and add a quantity of that game equal to the number of people counted to your cart. If the assistant asks for the count or the game name, remind it to look closely at the image text and the people. Wait for confirmation that the correct quantity was added before proceeding.\n\nROUND 4 [provide: image_6]\nQuery: Find the specific type of shoes shown in this image on Amazon and add one pair to my cart. Then, calculate the total number of individual items currently in my cart and create a task in my tracking project that says 'Track delivery of X items', replacing X with the computed total.\nInstructions: Ask the assistant to find the shoes shown in the image on Amazon and add one pair to your cart. Then, ask it to calculate the total number of individual items currently in your cart and create a Todoist task in your tracking project to track their delivery, replacing 'X' with the total count. The assistant should notice there are multiple tracking projects in your Todoist account and ask for clarification. When it does, specify that you mean the online orders one. Once the task is created with the computed total, proceed to the next round.\n\nROUND 5\nQuery: I changed my mind about the outerwear from earlier. Remove it from my Amazon cart. Recalculate the total number of items, update the Todoist task to reflect the new count, and then place the Amazon order.\nInstructions: Instruct the assistant to remove the outerwear added in round 2 from your Amazon cart. Then, tell it to recalculate the total number of items, update the Todoist task created in the previous round with the new total, and finally place the Amazon order. If the assistant asks which outerwear, refer back to the item from the second image of round 2. Once the order is placed and the task is updated, end the conversation.\n\nYou have 6 images available to share with the agent using the send_message_with_image tool.\nIMPORTANT: Image IDs are ZERO-INDEXED integers (0, 1, 2, ...). Do NOT add 1 to the IDs.\nAvailable image IDs: [0, 1, 2, 3, 4, 5]\nImage mapping:\n  image_1.jpg -> image ID 0\n  image_2.jpg -> image ID 1\n  image_3.jpg -> image ID 2\n  image_4.jpg -> image ID 3\n  image_5.jpg -> image ID 4\n  image_6.jpg -> image ID 5\n\n## IMAGE DELIVERY\n\n\u26a0\ufe0f IMPORTANT: You MUST use the `send_message_with_image` tool to share images with User B. Do NOT just describe images in text \u2014 you MUST call the tool.\n\nImage delivery schedule:\n\n  Round 2: YOU MUST call the send_message_with_image tool with image_ids='2,3' \u2014 do NOT write the tool name as text; use the actual function call. Include a natural, conversational message to the assistant.\n  Round 3: YOU MUST call the send_message_with_image tool with image_ids='4' \u2014 do NOT write the tool name as text; use the actual function call. Include a natural, conversational message to the assistant.\n  Round 4: YOU MUST call the send_message_with_image tool with image_ids='5' \u2014 do NOT write the tool name as text; use the actual function call. Include a natural, conversational message to the assistant."
+    },
+    {
+      "sender": "USER",
+      "recipient": "AGENT",
+      "content": "Find the exact toy shown in the first image and the specific toy the person is holding in the second image on Amazon. Add one of each to my cart.",
+      "image_ids": [
+        0,
+        1
+      ]
+    }
+  ],
+  "milestones": [],
+  "entity_diff_specs": [
+    {
+      "operation": "create",
+      "source": "appworld",
+      "table": "todoist.tasks",
+      "entity_data": {
+        "project_id": 400,
+        "section_id": null,
+        "user_id": 50,
+        "title": "Track delivery of 9 items",
+        "description": null,
+        "due_date": null,
+        "priority": "medium",
+        "is_completed": false,
+        "duration": null,
+        "duration_unit": null,
+        "order_index": 1,
+        "assignee_id": null,
+        "assigner_id": null,
+        "created_at": "2026-04-17T00:23:17"
+      },
+      "column_similarity_measure": {
+        "project_id": "column_exact_match_similarity",
+        "section_id": "column_ignore_similarity",
+        "user_id": "column_exact_match_similarity",
+        "title": "column_rouge_l_similarity",
+        "description": "column_ignore_similarity",
+        "due_date": "column_ignore_similarity",
+        "priority": "column_exact_match_similarity",
+        "is_completed": "column_exact_match_similarity",
+        "duration": "column_ignore_similarity",
+        "duration_unit": "column_ignore_similarity",
+        "order_index": "column_ignore_similarity",
+        "assignee_id": "column_ignore_similarity",
+        "assigner_id": "column_ignore_similarity",
+        "created_at": "column_ignore_similarity"
+      }
+    },
+    {
+      "operation": "create",
+      "source": "appworld",
+      "table": "amazon.orders",
+      "entity_data": {
+        "user_id": 50,
+        "address_id": null,
+        "tax": 0.0,
+        "delivery_fee": 0.0,
+        "gift_wrap_fee": 0.0,
+        "discount": 0.0,
+        "payment_card_id": null,
+        "created_at": "2026-04-17T00:23:17",
+        "address_text": "3516 Kevin Village Suite 778, Seattle, Washington 86248",
+        "payment_card_digits": "1234",
+        "receipt_download_count": 0
+      },
+      "column_similarity_measure": {
+        "user_id": "column_exact_match_similarity",
+        "address_id": "column_ignore_similarity",
+        "tax": "column_ignore_similarity",
+        "delivery_fee": "column_ignore_similarity",
+        "gift_wrap_fee": "column_exact_match_similarity",
+        "discount": "column_exact_match_similarity",
+        "payment_card_id": "column_ignore_similarity",
+        "created_at": "column_ignore_similarity",
+        "address_text": "column_ignore_similarity",
+        "payment_card_digits": "column_ignore_similarity",
+        "receipt_download_count": "column_exact_match_similarity"
+      }
+    },
+    {
+      "operation": "create",
+      "source": "appworld",
+      "table": "amazon.order_items",
+      "entity_data": {
+        "order_id": 3300,
+        "product_id": 200,
+        "ordered_quantity": 1,
+        "returned_quantity": 0,
+        "gift_wrap_quantity": 0,
+        "price": 25.99,
+        "expected_delivery_at": "2026-04-20T23:59:59",
+        "delivered_at": null
+      },
+      "column_similarity_measure": {
+        "order_id": "column_ignore_similarity",
+        "product_id": "column_exact_match_similarity",
+        "ordered_quantity": "column_exact_match_similarity",
+        "returned_quantity": "column_exact_match_similarity",
+        "gift_wrap_quantity": "column_exact_match_similarity",
+        "price": "column_exact_match_similarity",
+        "expected_delivery_at": "column_ignore_similarity",
+        "delivered_at": "column_ignore_similarity"
+      }
+    },
+    {
+      "operation": "create",
+      "source": "appworld",
+      "table": "amazon.order_items",
+      "entity_data": {
+        "order_id": 3300,
+        "product_id": 201,
+        "ordered_quantity": 1,
+        "returned_quantity": 0,
+        "gift_wrap_quantity": 0,
+        "price": 450.0,
+        "expected_delivery_at": "2026-04-20T23:59:59",
+        "delivered_at": null
+      },
+      "column_similarity_measure": {
+        "order_id": "column_ignore_similarity",
+        "product_id": "column_exact_match_similarity",
+        "ordered_quantity": "column_exact_match_similarity",
+        "returned_quantity": "column_exact_match_similarity",
+        "gift_wrap_quantity": "column_exact_match_similarity",
+        "price": "column_exact_match_similarity",
+        "expected_delivery_at": "column_ignore_similarity",
+        "delivered_at": "column_ignore_similarity"
+      }
+    },
+    {
+      "operation": "create",
+      "source": "appworld",
+      "table": "amazon.order_items",
+      "entity_data": {
+        "order_id": 3300,
+        "product_id": 202,
+        "ordered_quantity": 1,
+        "returned_quantity": 0,
+        "gift_wrap_quantity": 0,
+        "price": 15.99,
+        "expected_delivery_at": "2026-04-20T23:59:59",
+        "delivered_at": null
+      },
+      "column_similarity_measure": {
+        "order_id": "column_ignore_similarity",
+        "product_id": "column_exact_match_similarity",
+        "ordered_quantity": "column_exact_match_similarity",
+        "returned_quantity": "column_exact_match_similarity",
+        "gift_wrap_quantity": "column_exact_match_similarity",
+        "price": "column_exact_match_similarity",
+        "expected_delivery_at": "column_ignore_similarity",
+        "delivered_at": "column_ignore_similarity"
+      }
+    },
+    {
+      "operation": "create",
+      "source": "appworld",
+      "table": "amazon.order_items",
+      "entity_data": {
+        "order_id": 3300,
+        "product_id": 203,
+        "ordered_quantity": 5,
+        "returned_quantity": 0,
+        "gift_wrap_quantity": 0,
+        "price": 29.0,
+        "expected_delivery_at": "2026-04-20T23:59:59",
+        "delivered_at": null
+      },
+      "column_similarity_measure": {
+        "order_id": "column_ignore_similarity",
+        "product_id": "column_exact_match_similarity",
+        "ordered_quantity": "column_exact_match_similarity",
+        "returned_quantity": "column_exact_match_similarity",
+        "gift_wrap_quantity": "column_exact_match_similarity",
+        "price": "column_exact_match_similarity",
+        "expected_delivery_at": "column_ignore_similarity",
+        "delivered_at": "column_ignore_similarity"
+      }
+    },
+    {
+      "operation": "create",
+      "source": "appworld",
+      "table": "amazon.order_items",
+      "entity_data": {
+        "order_id": 3300,
+        "product_id": 204,
+        "ordered_quantity": 1,
+        "returned_quantity": 0,
+        "gift_wrap_quantity": 0,
+        "price": 45.99,
+        "expected_delivery_at": "2026-04-20T23:59:59",
+        "delivered_at": null
+      },
+      "column_similarity_measure": {
+        "order_id": "column_ignore_similarity",
+        "product_id": "column_exact_match_similarity",
+        "ordered_quantity": "column_exact_match_similarity",
+        "returned_quantity": "column_exact_match_similarity",
+        "gift_wrap_quantity": "column_exact_match_similarity",
+        "price": "column_exact_match_similarity",
+        "expected_delivery_at": "column_ignore_similarity",
+        "delivered_at": "column_ignore_similarity"
+      }
+    }
+  ],
+  "task_completion_criteria": "The user wants to purchase a magnetic dinosaur toy, a Steiff & Tiffany collab teddy bear, a clear square glass vase, 5 copies of Cards Against Humanity, and one pair of Latin dance shoes on Amazon, create and update a Todoist task in the 'Online Orders Tracking' project titled 'Track delivery of 9 items', and place the Amazon order.",
+  "categories": [
+    "APPWORLD",
+    "MULTIPLE_USER_TURN"
+  ],
+  "max_messages": 100,
+  "metadata": {
+    "original_scenario_id": "scenario_1095",
+    "expected_tools": [
+      "web_search_serper",
+      "amazon_show_product",
+      "amazon_add_product_to_cart",
+      "todoist_create_task",
+      "amazon_delete_product_from_cart",
+      "todoist_update_task",
+      "amazon_place_order"
+    ],
+    "image_arrival": {
+      "1": [
+        "image_1",
+        "image_2"
+      ],
+      "2": [
+        "image_3",
+        "image_4"
+      ],
+      "3": [
+        "image_5"
+      ],
+      "4": [
+        "image_6"
+      ]
+    },
+    "image_delivery_map": [
+      {
+        "query": "Look at the first new image and find a clear square glass vase like the one on the table on Amazon. Then, find the specific style of outerwear shown in the second new image on Amazon. Add one of each to my cart.",
+        "image_ids": [
+          2,
+          3
+        ]
+      },
+      {
+        "query": "Count the number of people holding the white signs in this image. Find this exact card game on Amazon and add a quantity equal to the number of people you counted to my cart.",
+        "image_ids": [
+          4
+        ]
+      },
+      {
+        "query": "Find the specific type of shoes shown in this image on Amazon and add one pair to my cart. Then, calculate the total number of individual items currently in my cart and create a task in my tracking project that says 'Track delivery of X items', replacing X with the computed total.",
+        "image_ids": [
+          5
+        ]
+      }
+    ],
+    "scenario_metadata": {
+      "num_images": 6,
+      "num_user_rounds": 5,
+      "selected_flow_type": "compute",
+      "image_arrival": "progressive",
+      "challenge_type": "state_mutation",
+      "require_disambiguation": true,
+      "dataset_type": "worldvqa"
+    }
+  }
+}

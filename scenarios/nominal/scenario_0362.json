@@ -1,0 +1,354 @@
+{
+  "name": "scenario_0362",
+  "base_scenario": "base",
+  "description": "The user is organizing information from various physical items they've collected, saving contacts and aggregating all associated websites into a single note.",
+  "difficulty": "easy",
+  "appworld_base_task": "_base_",
+  "device_state_id": "william_mart@gmail.com",
+  "reference_time": "2026-04-17T00:01:00.175497+00:00",
+  "agentsandbox_entities": {},
+  "appworld_entities": {
+    "phone.contacts": [
+      {
+        "id": 200,
+        "user_id": 78,
+        "first_name": "Oud Beersel",
+        "last_name": "Brewery",
+        "email": "info@oudbeersel.com",
+        "phone_number": null,
+        "relationships": [],
+        "birthday": null,
+        "home_address": null,
+        "work_address": null,
+        "created_at": "2025-06-12T10:30:00"
+      },
+      {
+        "id": 201,
+        "user_id": 78,
+        "first_name": "Oud Beersel",
+        "last_name": "Pub",
+        "email": "pub@oudbeersel.com",
+        "phone_number": null,
+        "relationships": [],
+        "birthday": null,
+        "home_address": null,
+        "work_address": null,
+        "created_at": "2025-06-12T10:35:00"
+      }
+    ],
+    "gmail.users": [
+      {
+        "id": 200,
+        "first_name": "Oud Beersel",
+        "last_name": "Brewery",
+        "email": "info@oudbeersel.com",
+        "password": "default_password",
+        "status": "active",
+        "created_at": "2025-01-01T00:00:00",
+        "last_logged_in": "2025-01-01T00:00:00"
+      },
+      {
+        "id": 201,
+        "first_name": "Oud Beersel",
+        "last_name": "Pub",
+        "email": "pub@oudbeersel.com",
+        "password": "default_password",
+        "status": "active",
+        "created_at": "2025-01-01T00:00:00",
+        "last_logged_in": "2025-01-01T00:00:00"
+      },
+      {
+        "id": 10102,
+        "first_name": "Power Plant",
+        "last_name": "Live",
+        "email": "info@powerplantlive.com",
+        "password": "placeholder_password",
+        "status": "active"
+      },
+      {
+        "id": 10103,
+        "first_name": "TransLink",
+        "last_name": "Customer Info",
+        "email": "customerservice@translink.bc.ca",
+        "password": "placeholder_password",
+        "status": "active"
+      },
+      {
+        "id": 10104,
+        "first_name": "Sebastian",
+        "last_name": "Jansson",
+        "email": "sebastian.jansson@example.com",
+        "password": "placeholder_password",
+        "status": "active"
+      },
+      {
+        "id": 10105,
+        "first_name": "Geocache",
+        "last_name": "Activity",
+        "email": "moooment@gmx.de",
+        "password": "placeholder_password",
+        "status": "active"
+      },
+      {
+        "id": 10106,
+        "first_name": "S&D Beverage Innovations",
+        "last_name": "LLC",
+        "email": "contact@sdbeverage.com",
+        "password": "placeholder_password",
+        "status": "active"
+      }
+    ]
+  },
+  "image_paths": [
+    "hiertext/images/test/0d95799c585f2b79.jpg",
+    "hiertext/images/test/c6ddad7b0da2373f.jpg",
+    "hiertext/images/test/e3ef48e164ee82ff.jpg",
+    "hiertext/images/test/1f754d67170f842b.jpg",
+    "hiertext/images/test/5fcb30407d54c93d.jpg",
+    "hiertext/images/test/725779a6ec7a44a6.jpg"
+  ],
+  "messages": [
+    {
+      "sender": "SYSTEM",
+      "recipient": "USER",
+      "content": "{{USER_INSTRUCTION}}ROUND 1 [provide: image_2, image_3]\nQuery: Create a new contact for the venue in this first poster with its phone number and address, and another for the transit service in the second notice with its customer info number. Also, create a new note called 'Websites' and save the URLs from both of these images there.\nInstructions: Ask the assistant to create contacts for the venue and transit service shown in the images, extracting their respective phone numbers and the venue's address. Also ask it to create a 'Websites' note and put the URLs from both images in it. If the assistant asks for clarification on names, tell it to use the prominent names from the images. Move to the next round once the contacts and note are created.\n\nROUND 2 [provide: image_4, image_5]\nQuery: Now add the guy on this badge to my contacts, and create a contact for the activity in this logbook using the email address provided. Please also update the 'Websites' note by adding the websites found in these two images.\nInstructions: Tell the assistant to create a contact for the person on the badge and another for the activity in the logbook (using the email shown). Also ask it to append the websites from both images to your existing 'Websites' note. If it misses any details, point it back to the images. Proceed when all tasks are confirmed.\n\nROUND 3 [provide: image_1, image_6]\nQuery: I already have a contact for the brand on this beer label, so please update it by adding the website from the label, and append that website to the 'Websites' note too. Also, create a new contact for the marketer on this product label using the consumer questions number.\nInstructions: Ask the assistant to update your existing contact for the beer brand with the website shown on its label, append that same website to your 'Websites' note, and create a new contact for the marketer on the product label using the consumer questions number. The assistant will likely find multiple contacts for the beer brand and ask which one to update. Clarify that it should update the 'Brewery' contact. Once the contact is updated, the note is appended, and the new contact is created, you can end the conversation.\n\nYou have 6 images available to share with the agent using the send_message_with_image tool.\nIMPORTANT: Image IDs are ZERO-INDEXED integers (0, 1, 2, ...). Do NOT add 1 to the IDs.\nAvailable image IDs: [0, 1, 2, 3, 4, 5]\nImage mapping:\n  image_1.jpg -> image ID 0\n  image_2.jpg -> image ID 1\n  image_3.jpg -> image ID 2\n  image_4.jpg -> image ID 3\n  image_5.jpg -> image ID 4\n  image_6.jpg -> image ID 5\n\n## IMAGE DELIVERY\n\n\u26a0\ufe0f IMPORTANT: You MUST use the `send_message_with_image` tool to share images with User B. Do NOT just describe images in text \u2014 you MUST call the tool.\n\nImage delivery schedule:\n\n  Round 2: YOU MUST call the send_message_with_image tool with image_ids='3,4' \u2014 do NOT write the tool name as text; use the actual function call. Include a natural, conversational message to the assistant.\n  Round 3: YOU MUST call the send_message_with_image tool with image_ids='0,5' \u2014 do NOT write the tool name as text; use the actual function call. Include a natural, conversational message to the assistant."
+    },
+    {
+      "sender": "USER",
+      "recipient": "AGENT",
+      "content": "Create a new contact for the venue in this first poster with its phone number and address, and another for the transit service in the second notice with its customer info number. Also, create a new note called 'Websites' and save the URLs from both of these images there.",
+      "image_ids": [
+        1,
+        2
+      ]
+    }
+  ],
+  "milestones": [],
+  "entity_diff_specs": [
+    {
+      "operation": "create",
+      "source": "appworld",
+      "table": "phone.contacts",
+      "entity_data": {
+        "user_id": 78,
+        "first_name": "Power Plant",
+        "last_name": "Live",
+        "email": "info@powerplantlive.com",
+        "phone_number": "410.244.8854",
+        "relationships": [],
+        "birthday": null,
+        "home_address": null,
+        "work_address": "20 Market Place Baltimore, MD",
+        "created_at": "2026-04-17T00:01:00"
+      },
+      "column_similarity_measure": {
+        "user_id": "column_exact_match_similarity",
+        "first_name": "column_exact_match_similarity",
+        "last_name": "column_exact_match_similarity",
+        "email": "column_exact_match_similarity",
+        "phone_number": "column_exact_match_similarity",
+        "relationships": "column_ignore_similarity",
+        "birthday": "column_ignore_similarity",
+        "home_address": "column_ignore_similarity",
+        "work_address": "column_exact_match_similarity",
+        "created_at": "column_ignore_similarity"
+      }
+    },
+    {
+      "operation": "create",
+      "source": "appworld",
+      "table": "phone.contacts",
+      "entity_data": {
+        "user_id": 78,
+        "first_name": "TransLink",
+        "last_name": "Customer Info",
+        "email": "customerservice@translink.bc.ca",
+        "phone_number": "604-953-3333",
+        "relationships": [],
+        "birthday": null,
+        "home_address": null,
+        "work_address": null,
+        "created_at": "2026-04-17T00:01:00"
+      },
+      "column_similarity_measure": {
+        "user_id": "column_exact_match_similarity",
+        "first_name": "column_exact_match_similarity",
+        "last_name": "column_exact_match_similarity",
+        "email": "column_exact_match_similarity",
+        "phone_number": "column_exact_match_similarity",
+        "relationships": "column_ignore_similarity",
+        "birthday": "column_ignore_similarity",
+        "home_address": "column_ignore_similarity",
+        "work_address": "column_ignore_similarity",
+        "created_at": "column_ignore_similarity"
+      }
+    },
+    {
+      "operation": "create",
+      "source": "appworld",
+      "table": "phone.contacts",
+      "entity_data": {
+        "user_id": 78,
+        "first_name": "Sebastian",
+        "last_name": "Jansson",
+        "email": "sebastian.jansson@example.com",
+        "phone_number": null,
+        "relationships": [],
+        "birthday": null,
+        "home_address": null,
+        "work_address": null,
+        "created_at": "2026-04-17T00:01:00"
+      },
+      "column_similarity_measure": {
+        "user_id": "column_exact_match_similarity",
+        "first_name": "column_exact_match_similarity",
+        "last_name": "column_exact_match_similarity",
+        "email": "column_exact_match_similarity",
+        "phone_number": "column_ignore_similarity",
+        "relationships": "column_ignore_similarity",
+        "birthday": "column_ignore_similarity",
+        "home_address": "column_ignore_similarity",
+        "work_address": "column_ignore_similarity",
+        "created_at": "column_ignore_similarity"
+      }
+    },
+    {
+      "operation": "create",
+      "source": "appworld",
+      "table": "phone.contacts",
+      "entity_data": {
+        "user_id": 78,
+        "first_name": "Geocache",
+        "last_name": "Activity",
+        "email": "moooment@gmx.de",
+        "phone_number": null,
+        "relationships": [],
+        "birthday": null,
+        "home_address": null,
+        "work_address": null,
+        "created_at": "2026-04-17T00:01:00"
+      },
+      "column_similarity_measure": {
+        "user_id": "column_exact_match_similarity",
+        "first_name": "column_exact_match_similarity",
+        "last_name": "column_exact_match_similarity",
+        "email": "column_exact_match_similarity",
+        "phone_number": "column_ignore_similarity",
+        "relationships": "column_ignore_similarity",
+        "birthday": "column_ignore_similarity",
+        "home_address": "column_ignore_similarity",
+        "work_address": "column_ignore_similarity",
+        "created_at": "column_ignore_similarity"
+      }
+    },
+    {
+      "operation": "create",
+      "source": "appworld",
+      "table": "phone.contacts",
+      "entity_data": {
+        "user_id": 78,
+        "first_name": "S&D Beverage Innovations",
+        "last_name": "LLC",
+        "email": "contact@sdbeverage.com",
+        "phone_number": "1-855-MILKPLZ",
+        "relationships": [],
+        "birthday": null,
+        "home_address": null,
+        "work_address": null,
+        "created_at": "2026-04-17T00:01:00"
+      },
+      "column_similarity_measure": {
+        "user_id": "column_exact_match_similarity",
+        "first_name": "column_exact_match_similarity",
+        "last_name": "column_exact_match_similarity",
+        "email": "column_exact_match_similarity",
+        "phone_number": "column_exact_match_similarity",
+        "relationships": "column_ignore_similarity",
+        "birthday": "column_ignore_similarity",
+        "home_address": "column_ignore_similarity",
+        "work_address": "column_ignore_similarity",
+        "created_at": "column_ignore_similarity"
+      }
+    },
+    {
+      "operation": "create",
+      "source": "appworld",
+      "table": "simple_note.notes",
+      "entity_data": {
+        "user_id": 78,
+        "title": "Websites",
+        "content": "powerplantlive.com\nwww.translink.bc.ca\nMemoto.com\nwww.geocaching.com\nwww.horal.be",
+        "tags": [],
+        "created_at": "2026-04-17T00:01:00",
+        "updated_at": "2026-04-17T00:01:00",
+        "pinned": false,
+        "data": null
+      },
+      "column_similarity_measure": {
+        "user_id": "column_exact_match_similarity",
+        "title": "column_rouge_l_similarity",
+        "content": "column_rouge_l_similarity",
+        "tags": "column_ignore_similarity",
+        "created_at": "column_ignore_similarity",
+        "updated_at": "column_ignore_similarity",
+        "pinned": "column_exact_match_similarity",
+        "data": "column_ignore_similarity"
+      }
+    }
+  ],
+  "task_completion_criteria": "The user wants to aggregate websites from various physical media into a single 'Websites' note, while also creating or updating contacts for the entities shown. By the end, the 'Websites' note should contain the URLs powerplantlive.com, www.translink.bc.ca, Memoto.com, www.geocaching.com, and www.horal.be. Additionally, new contacts should be created for 'Power Plant Live' (with phone 410.244.8854 and address 20 Market Place Baltimore, MD), 'TransLink' (with phone 604-953-3333), 'Sebastian Jansson', 'Geocache' or similar (with email moooment@gmx.de), and 'S&D Beverage Innovations LLC' (with phone 1-855-MILKPLZ). The preexisting 'Oud Beersel Brewery' contact must be updated with the website www.horal.be stored in a suitable contact field.",
+  "categories": [
+    "APPWORLD",
+    "MULTIPLE_USER_TURN"
+  ],
+  "max_messages": 100,
+  "metadata": {
+    "original_scenario_id": "scenario_0362",
+    "expected_tools": [
+      "contacts_add_contact",
+      "simple_note_create_note",
+      "simple_note_show_note",
+      "simple_note_update_note",
+      "contacts_update_contact"
+    ],
+    "image_arrival": {
+      "1": [
+        "image_2",
+        "image_3"
+      ],
+      "2": [
+        "image_4",
+        "image_5"
+      ],
+      "3": [
+        "image_1",
+        "image_6"
+      ]
+    },
+    "image_delivery_map": [
+      {
+        "query": "Now add the guy on this badge to my contacts, and create a contact for the activity in this logbook using the email address provided. Please also update the 'Websites' note by adding the websites found in these two images.",
+        "image_ids": [
+          3,
+          4
+        ]
+      },
+      {
+        "query": "I already have a contact for the brand on this beer label, so please update it by adding the website from the label, and append that website to the 'Websites' note too. Also, create a new contact for the marketer on this product label using the consumer questions number.",
+        "image_ids": [
+          0,
+          5
+        ]
+      }
+    ],
+    "scenario_metadata": {
+      "num_images": 6,
+      "num_user_rounds": 3,
+      "selected_flow_type": "aggregate",
+      "image_arrival": "progressive",
+      "challenge_type": "state_mutation",
+      "require_disambiguation": true,
+      "dataset_type": "hiertext"
+    }
+  }
+}

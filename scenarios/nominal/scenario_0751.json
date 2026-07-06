@@ -1,0 +1,176 @@
+{
+  "name": "scenario_0751",
+  "base_scenario": "base",
+  "description": "The user is processing a batch of historical archive documents, extracting specific data points from various scans to compile a summary report before emailing it to the archive director.",
+  "difficulty": "easy",
+  "appworld_base_task": "_base_",
+  "device_state_id": "je.simpson@gmail.com",
+  "reference_time": "2026-04-17T00:13:17.776104+00:00",
+  "agentsandbox_entities": {},
+  "appworld_entities": {
+    "gmail.users": [
+      {
+        "id": 10100,
+        "first_name": "Director",
+        "last_name": "",
+        "email": "director@archives.org",
+        "password": "placeholder_password",
+        "status": "active"
+      }
+    ]
+  },
+  "image_paths": [
+    "docvqa/images/58714.jpg",
+    "docvqa/images/51666.jpg",
+    "docvqa/images/3035.jpg",
+    "docvqa/images/61836.jpg",
+    "docvqa/images/60828.jpg",
+    "docvqa/images/3108.jpg"
+  ],
+  "messages": [
+    {
+      "sender": "SYSTEM",
+      "recipient": "USER",
+      "content": "{{USER_INSTRUCTION}}ROUND 1 [provide: image_2, image_6]\nQuery: Create a new directory called 'Processed_Batch' and a file named 'archive_summary.txt' inside it. Extract the Factory name and the 'TOTAL DISSOLVED SOLIDS AT 105° C' from both of these water analysis reports and write them into the file.\nInstructions: Instruct the assistant to create the specified directory and file, then read the two provided water analysis documents to extract the factory names and their respective total dissolved solids values. Tell it to write this extracted data into the new file. If the assistant asks for clarification on where to find the values, point it to the bottom of the tables in the images. Proceed to the next round once the assistant confirms the file is created and populated.\n\nROUND 2 [provide: image_1]\nQuery: Add a new section for 'Manufacturing' to that summary file. Extract the date of this memo and the efficiency performance specifically for the 'MULFI' section, and append it to the file.\nInstructions: Ask the assistant to update the summary file with a new 'Manufacturing' section. Instruct it to find the date on the newly provided memo and the efficiency performance specifically under the 'MULFI' heading, and append this information to the file. If the assistant confuses the MULFI section with the Glass Fiber section, correct it to focus only on MULFI. Move on when the assistant confirms the file has been updated.\n\nROUND 3 [provide: image_4]\nQuery: Now add a 'Medical Data' section to the summary file. Look at this Hypertension program document and record the processing data for Chicago. Note that the mean time is 38.1.\nInstructions: Tell the assistant to add a 'Medical Data' section to the file and record the processing data for Chicago from the provided table. Include the specific instruction that the mean time is 38.1. This is an intentional error on your part, as the image shows a different value for the mean time. If the assistant notices the discrepancy and points out that 38.1 is actually the standard deviation, acknowledge the catch but tell it to wait for your next instruction. If it blindly applies the incorrect value, just proceed to the next round where you will correct it.\n\nROUND 4\nQuery: Wait, I misread the table. 38.1 is actually the standard deviation for Chicago, not the mean time. The correct mean time is 46.1. Please update the summary file to fix the Chicago mean time.\nInstructions: Acknowledge the mistake from the previous round. Instruct the assistant to correct the 'Medical Data' section in the summary file so that Chicago's mean time is accurately listed and the standard deviation is correctly assigned. Once the assistant confirms the file has been updated with the corrected values, proceed to the final round.\n\nROUND 5 [provide: image_3, image_5]\nQuery: Finally, append two more items to the summary file: the name of the file folder we need to prepare according to the handwritten transmittal memo, and the specific cause of billing problems in County hospitals mentioned in point (c) of the typed document fragment. After updating it, read the final file and email its contents to director@archives.org with the subject 'Digitization Summary'.\nInstructions: Ask the assistant to extract two final pieces of information from the new images: the folder name mentioned in the handwritten notes, and the cause of billing problems from point (c) in the typed fragment. Have it append these details to the summary file. Then, instruct the assistant to read the completed file and email its entire contents to the specified director email address with the subject 'Digitization Summary'. Conclude the conversation once the assistant confirms the email has been sent.\n\nYou have 6 images available to share with the agent using the send_message_with_image tool.\nIMPORTANT: Image IDs are ZERO-INDEXED integers (0, 1, 2, ...). Do NOT add 1 to the IDs.\nAvailable image IDs: [0, 1, 2, 3, 4, 5]\nImage mapping:\n  image_1.jpg -> image ID 0\n  image_2.jpg -> image ID 1\n  image_3.jpg -> image ID 2\n  image_4.jpg -> image ID 3\n  image_5.jpg -> image ID 4\n  image_6.jpg -> image ID 5\n\n## IMAGE DELIVERY\n\n⚠️ IMPORTANT: You MUST use the `send_message_with_image` tool to share images with User B. Do NOT just describe images in text — you MUST call the tool.\n\nImage delivery schedule:\n\n  Round 2: YOU MUST call the send_message_with_image tool with image_ids='0' — do NOT write the tool name as text; use the actual function call. Include a natural, conversational message to the assistant.\n  Round 3: YOU MUST call the send_message_with_image tool with image_ids='3' — do NOT write the tool name as text; use the actual function call. Include a natural, conversational message to the assistant.\n  Round 5: YOU MUST call the send_message_with_image tool with image_ids='2,4' — do NOT write the tool name as text; use the actual function call. Include a natural, conversational message to the assistant."
+    },
+    {
+      "sender": "USER",
+      "recipient": "AGENT",
+      "content": "Create a new directory called 'Processed_Batch' and a file named 'archive_summary.txt' inside it. Extract the Factory name and the 'TOTAL DISSOLVED SOLIDS AT 105° C' from both of these water analysis reports and write them into the file.",
+      "image_ids": [
+        1,
+        5
+      ]
+    }
+  ],
+  "milestones": [],
+  "entity_diff_specs": [
+    {
+      "operation": "create",
+      "source": "appworld",
+      "table": "gmail.emails",
+      "entity_data": {
+        "sender_id": 59,
+        "recipient_ids": [
+          10100
+        ],
+        "subject": "Digitization Summary",
+        "body": "Johnstown Factory total dissolved solids: 1428.80\nBillings Factory total dissolved solids: 316.60\n\nManufacturing\nDate: April 18, 1988\nMULFI efficiency: .6% above planned\n\nMedical Data\nChicago mean time: 46.1\nChicago standard deviation: 38.1\n\nFolder name: Nutrition\nCause of billing problems: Medicare and Medi-Cal reimbursements",
+        "response_to_email_id": null,
+        "created_at": "2026-04-17T00:13:17"
+      },
+      "column_similarity_measure": {
+        "sender_id": "column_exact_match_similarity",
+        "recipient_ids": "column_exact_match_similarity",
+        "subject": "column_rouge_l_similarity",
+        "body": "column_rouge_l_similarity",
+        "response_to_email_id": "column_ignore_similarity",
+        "created_at": "column_ignore_similarity"
+      }
+    },
+    {
+      "operation": "create",
+      "source": "appworld",
+      "table": "file_system.directories",
+      "entity_data": {
+        "path": "Processed_Batch",
+        "tilde_path": "Processed_Batch",
+        "user_id": 59,
+        "created_at": "2026-04-17T00:13:17",
+        "updated_at": "2026-04-17T00:13:17"
+      },
+      "column_similarity_measure": {
+        "path": "column_contains_similarity",
+        "tilde_path": "column_contains_similarity",
+        "user_id": "column_exact_match_similarity",
+        "created_at": "column_ignore_similarity",
+        "updated_at": "column_ignore_similarity"
+      }
+    },
+    {
+      "operation": "create",
+      "source": "appworld",
+      "table": "file_system.files",
+      "entity_data": {
+        "path": "Processed_Batch/archive_summary.txt",
+        "tilde_path": "Processed_Batch/archive_summary.txt",
+        "user_id": 59,
+        "content": "Archive Summary\n\nWater Analysis Reports:\n- Johnstown Factory TOTAL DISSOLVED SOLIDS AT 105° C: 1428.80\n- Billings Factory TOTAL DISSOLVED SOLIDS AT 105° C: 316.60\n\nManufacturing:\n- Date: April 18, 1988\n- MULFI efficiency: .6% above planned\n\nMedical Data:\n- Chicago Mean Time: 46.1\n- Chicago Standard Deviation: 38.1\n\nAdditional Notes:\n- Folder name: Nutrition\n- Cause of billing problems: Medicare and Medi-Cal reimbursements",
+        "compressed_data": [],
+        "created_at": "2026-04-17T00:13:17",
+        "updated_at": "2026-04-17T00:13:17"
+      },
+      "column_similarity_measure": {
+        "path": "column_contains_similarity",
+        "tilde_path": "column_contains_similarity",
+        "user_id": "column_exact_match_similarity",
+        "content": "column_rouge_l_similarity",
+        "compressed_data": "column_ignore_similarity",
+        "created_at": "column_ignore_similarity",
+        "updated_at": "column_ignore_similarity"
+      }
+    }
+  ],
+  "task_completion_criteria": "Create a directory named 'Processed_Batch' containing a file named 'archive_summary.txt'. The file must contain the following extracted information: Johnstown Factory total dissolved solids (1428.80), Billings Factory total dissolved solids (316.60), a Manufacturing section noting the date April 18, 1988 and MULFI efficiency at .6% above planned, a Medical Data section noting Chicago's mean time as 46.1 and standard deviation as 38.1, the folder name 'Nutrition', and the cause of billing problems being Medicare and Medi-Cal reimbursements. Finally, send an email to director@archives.org with the subject 'Digitization Summary' containing the full contents of this file.",
+  "categories": [
+    "APPWORLD",
+    "MULTIPLE_USER_TURN"
+  ],
+  "max_messages": 100,
+  "metadata": {
+    "original_scenario_id": "scenario_0751",
+    "expected_tools": [
+      "file_system_create_directory",
+      "file_system_create_file",
+      "file_system_update_file",
+      "file_system_show_file",
+      "gmail_send_email"
+    ],
+    "image_arrival": {
+      "1": [
+        "image_2",
+        "image_6"
+      ],
+      "2": [
+        "image_1"
+      ],
+      "3": [
+        "image_4"
+      ],
+      "5": [
+        "image_3",
+        "image_5"
+      ]
+    },
+    "image_delivery_map": [
+      {
+        "query": "Add a new section for 'Manufacturing' to that summary file. Extract the date of this memo and the efficiency performance specifically for the 'MULFI' section, and append it to the file.",
+        "image_ids": [
+          0
+        ]
+      },
+      {
+        "query": "Now add a 'Medical Data' section to the summary file. Look at this Hypertension program document and record the processing data for Chicago. Note that the mean time is 38.1.",
+        "image_ids": [
+          3
+        ]
+      },
+      {
+        "query": "Finally, append two more items to the summary file: the name of the file folder we need to prepare according to the handwritten transmittal memo, and the specific cause of billing problems in County hospitals mentioned in point (c) of the typed document fragment. After updating it, read the final file and email its contents to director@archives.org with the subject 'Digitization Summary'.",
+        "image_ids": [
+          2,
+          4
+        ]
+      }
+    ],
+    "scenario_metadata": {
+      "num_images": 6,
+      "num_user_rounds": 5,
+      "selected_flow_type": "aggregate",
+      "image_arrival": "progressive",
+      "challenge_type": "error_correction",
+      "require_disambiguation": false,
+      "dataset_type": "docvqa"
+    }
+  }
+}

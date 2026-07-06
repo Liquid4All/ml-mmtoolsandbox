@@ -1,0 +1,632 @@
+{
+  "name": "scenario_0948",
+  "base_scenario": "base",
+  "description": "The user is setting up their work office IT infrastructure and managing their gaming library. They are cross-referencing physical items they already own or have found with their task lists, notes, and expense groups to update their records and purchase missing equipment. (UI mode)",
+  "difficulty": "easy",
+  "appworld_base_task": "_base_",
+  "device_state_id": "siwhit@gmail.com",
+  "reference_time": "2026-04-17T00:19:21.094241+00:00",
+  "agentsandbox_entities": {},
+  "appworld_entities": {
+    "todoist.projects": [
+      {
+        "id": 400,
+        "user_id": 105,
+        "name": "Work Office IT Setup",
+        "color": "charcoal",
+        "is_inbox": false,
+        "description": "",
+        "created_at": "2026-04-10T10:00:00"
+      },
+      {
+        "id": 401,
+        "user_id": 105,
+        "name": "Home Office IT Setup",
+        "color": "charcoal",
+        "is_inbox": false,
+        "description": "",
+        "created_at": "2026-04-10T10:10:00"
+      }
+    ],
+    "todoist.tasks": [
+      {
+        "id": 6500,
+        "project_id": 400,
+        "section_id": null,
+        "user_id": 105,
+        "title": "Buy 1TB NAS",
+        "description": null,
+        "due_date": null,
+        "priority": "medium",
+        "is_completed": false,
+        "duration": null,
+        "duration_unit": null,
+        "order_index": 1,
+        "assignee_id": null,
+        "assigner_id": null,
+        "created_at": "2026-04-10T10:05:00"
+      },
+      {
+        "id": 6501,
+        "project_id": 400,
+        "section_id": null,
+        "user_id": 105,
+        "title": "Get external batteries",
+        "description": null,
+        "due_date": null,
+        "priority": "medium",
+        "is_completed": false,
+        "duration": null,
+        "duration_unit": null,
+        "order_index": 2,
+        "assignee_id": null,
+        "assigner_id": null,
+        "created_at": "2026-04-10T10:06:00"
+      },
+      {
+        "id": 6502,
+        "project_id": 400,
+        "section_id": null,
+        "user_id": 105,
+        "title": "Buy lightning cable",
+        "description": null,
+        "due_date": null,
+        "priority": "medium",
+        "is_completed": false,
+        "duration": null,
+        "duration_unit": null,
+        "order_index": 3,
+        "assignee_id": null,
+        "assigner_id": null,
+        "created_at": "2026-04-10T10:07:00"
+      },
+      {
+        "id": 6503,
+        "project_id": 400,
+        "section_id": null,
+        "user_id": 105,
+        "title": "Buy a gaming console",
+        "description": null,
+        "due_date": null,
+        "priority": "medium",
+        "is_completed": false,
+        "duration": null,
+        "duration_unit": null,
+        "order_index": 4,
+        "assignee_id": null,
+        "assigner_id": null,
+        "created_at": "2026-04-10T10:08:00"
+      },
+      {
+        "id": 6504,
+        "project_id": 400,
+        "section_id": null,
+        "user_id": 105,
+        "title": "Buy 2TB portable hard drive",
+        "description": null,
+        "due_date": null,
+        "priority": "medium",
+        "is_completed": false,
+        "duration": null,
+        "duration_unit": null,
+        "order_index": 5,
+        "assignee_id": null,
+        "assigner_id": null,
+        "created_at": "2026-04-10T10:09:00"
+      },
+      {
+        "id": 6505,
+        "project_id": 401,
+        "section_id": null,
+        "user_id": 105,
+        "title": "Buy 1TB NAS",
+        "description": null,
+        "due_date": null,
+        "priority": "medium",
+        "is_completed": false,
+        "duration": null,
+        "duration_unit": null,
+        "order_index": 1,
+        "assignee_id": null,
+        "assigner_id": null,
+        "created_at": "2026-04-10T10:11:00"
+      },
+      {
+        "id": 6506,
+        "project_id": 401,
+        "section_id": null,
+        "user_id": 105,
+        "title": "Get external batteries",
+        "description": null,
+        "due_date": null,
+        "priority": "medium",
+        "is_completed": false,
+        "duration": null,
+        "duration_unit": null,
+        "order_index": 2,
+        "assignee_id": null,
+        "assigner_id": null,
+        "created_at": "2026-04-10T10:12:00"
+      },
+      {
+        "id": 6507,
+        "project_id": 401,
+        "section_id": null,
+        "user_id": 105,
+        "title": "Buy lightning cable",
+        "description": null,
+        "due_date": null,
+        "priority": "medium",
+        "is_completed": false,
+        "duration": null,
+        "duration_unit": null,
+        "order_index": 3,
+        "assignee_id": null,
+        "assigner_id": null,
+        "created_at": "2026-04-10T10:13:00"
+      }
+    ],
+    "amazon.sellers": [
+      {
+        "id": 200,
+        "name": "ZyXEL Official",
+        "rating": 4.5
+      },
+      {
+        "id": 201,
+        "name": "Seagate Store",
+        "rating": 4.8
+      },
+      {
+        "id": 202,
+        "name": "ZAGG Official",
+        "rating": 4.2
+      }
+    ],
+    "amazon.products": [
+      {
+        "id": 200,
+        "product_type": "modems",
+        "name": "ZyXEL P-2602HW-D1A over POTS",
+        "description": "High-speed ADSL2+ gateway over POTS with 4-port switch",
+        "seller_id": 200,
+        "price": 49.99,
+        "delivery_days": 3,
+        "inventory_quantity": 50,
+        "weight": 1.5,
+        "length": 8.0,
+        "width": 6.0,
+        "height": 2.0,
+        "color": "black",
+        "relative_size": "medium",
+        "rating": 4.5,
+        "seller_rating": 4.5,
+        "has_variations": false
+      },
+      {
+        "id": 201,
+        "product_type": "hard drives",
+        "name": "Seagate Backup Plus Slim 2TB Portable Hard Drive",
+        "description": "2TB External Hard Drive HDD – USB 3.0 for PC Laptop and Mac",
+        "seller_id": 201,
+        "price": 69.99,
+        "delivery_days": 2,
+        "inventory_quantity": 100,
+        "weight": 0.35,
+        "length": 4.5,
+        "width": 3.0,
+        "height": 0.5,
+        "color": "black",
+        "relative_size": "small",
+        "rating": 4.8,
+        "seller_rating": 4.8,
+        "has_variations": true
+      },
+      {
+        "id": 202,
+        "product_type": "keyboards",
+        "name": "ZAGG KEYS MINI Keyboard for iPad Mini",
+        "description": "Ultra-thin Bluetooth keyboard and case for iPad Mini",
+        "seller_id": 202,
+        "price": 39.99,
+        "delivery_days": 4,
+        "inventory_quantity": 30,
+        "weight": 0.8,
+        "length": 8.0,
+        "width": 5.5,
+        "height": 0.3,
+        "color": "black",
+        "relative_size": "small",
+        "rating": 4.2,
+        "seller_rating": 4.2,
+        "has_variations": false
+      }
+    ],
+    "simple_note.notes": [
+      {
+        "id": 3200,
+        "user_id": 105,
+        "title": "Game Library",
+        "content": "Halo 3\nGears of War",
+        "tags": [
+          "games"
+        ],
+        "created_at": "2026-04-10T10:00:00",
+        "updated_at": "2026-04-10T10:00:00",
+        "pinned": false,
+        "data": null
+      },
+      {
+        "id": 3201,
+        "user_id": 105,
+        "title": "ISP Requirements",
+        "content": "Supported modems: P-2602HW-D1A over POTS",
+        "tags": [
+          "isp",
+          "network"
+        ],
+        "created_at": "2026-04-12T11:00:00",
+        "updated_at": "2026-04-12T11:00:00",
+        "pinned": false,
+        "data": null
+      }
+    ],
+    "splitwise.groups": [
+      {
+        "id": 400,
+        "user_id": 105,
+        "name": "Office Expenses",
+        "description": "Shared expenses for the work office setup",
+        "created_at": "2026-01-10T10:00:00",
+        "invitation_code": "OFFICE2026",
+        "deleted": false
+      }
+    ],
+    "splitwise.group_members": [
+      {
+        "id": 1100,
+        "group_id": 400,
+        "user_id": 105,
+        "joined_at": "2026-01-10T10:00:00"
+      },
+      {
+        "id": 1101,
+        "group_id": 400,
+        "user_id": 70,
+        "joined_at": "2026-01-10T10:05:00"
+      }
+    ],
+    "splitwise.expenses": [
+      {
+        "id": 5200,
+        "user_id": 105,
+        "group_id": 400,
+        "payer_id": 105,
+        "debtor_ids": [
+          70
+        ],
+        "participant_ids": [
+          105,
+          70
+        ],
+        "description": "Printer Ink",
+        "amount": 45.0,
+        "deleted": false,
+        "receipt_file_name": null,
+        "receipt_file_content": null,
+        "receipt_download_count": 0,
+        "created_at": "2026-03-01T14:00:00"
+      },
+      {
+        "id": 5201,
+        "user_id": 70,
+        "group_id": 400,
+        "payer_id": 70,
+        "debtor_ids": [
+          105
+        ],
+        "participant_ids": [
+          105,
+          70
+        ],
+        "description": "Coffee Pods",
+        "amount": 30.0,
+        "deleted": false,
+        "receipt_file_name": null,
+        "receipt_file_content": null,
+        "receipt_download_count": 0,
+        "created_at": "2026-04-10T09:30:00"
+      }
+    ],
+    "splitwise.expense_shares": [
+      {
+        "id": 200,
+        "expense_id": 5200,
+        "debtor_id": 70,
+        "share_amount": 22.5,
+        "created_at": "2026-03-01T14:00:00"
+      },
+      {
+        "id": 201,
+        "expense_id": 5201,
+        "debtor_id": 105,
+        "share_amount": 15.0,
+        "created_at": "2026-04-10T09:30:00"
+      }
+    ],
+    "todoist.project_collaborator_links": [
+      {
+        "id": 50400,
+        "project_id": 400,
+        "user_id": 105,
+        "is_favorite": false,
+        "is_archived": false,
+        "created_at": "2026-04-10T10:00:00"
+      },
+      {
+        "id": 50401,
+        "project_id": 401,
+        "user_id": 105,
+        "is_favorite": false,
+        "is_archived": false,
+        "created_at": "2026-04-10T10:10:00"
+      }
+    ],
+    "gmail.users": []
+  },
+  "image_paths": [
+    "hiertext/images/test/9737c597a69a6b1e.jpg",
+    "hiertext/images/test/9e33ee139feb1ff1.jpg",
+    "hiertext/images/test/28b39fa8e14637e1.jpg",
+    "hiertext/images/test/6ba3d5150de2f098.jpg",
+    "worldvqa/images/1446.jpg",
+    "hiertext/images/test/b8057296fa8f593a.jpg"
+  ],
+  "messages": [
+    {
+      "sender": "SYSTEM",
+      "recipient": "USER",
+      "content": "{{USER_INSTRUCTION}}ROUND 1 [provide: image_1, image_2]\nQuery: I'm looking at some networking and power accessories I already own here. Check my Office IT Setup project and cross off the tasks for these items since I don't need to buy them anymore.\nInstructions: Ask the assistant to check your 'Office IT Setup' project and delete the tasks corresponding to the items shown in the images, as you already own them. The assistant should find multiple projects with similar names ('Work Office IT Setup' and 'Home Office IT Setup') and present them or ask for clarification. When it does, select the work one via `ui_user_interact`. If no interactive UI is shown, tell the assistant you mean the work office project. If it asks to confirm the specific tasks to delete, confirm them based on the images. Once the tasks are deleted, proceed to the next round.\n\nROUND 2 [provide: image_3]\nQuery: I also found this bundle. Check my Game Library note and add the included game if it's missing, then go back to that same IT setup project and cross off the task for the console.\nInstructions: Instruct the assistant to check your 'Game Library' note and add the specific game included in the console bundle shown in the image if it isn't already listed. Then, ask it to delete the task for a gaming console from the IT setup project you accessed in the previous round. If the assistant misidentifies the game, point it back to the image. Once the note is updated and the task is deleted, move on.\n\nROUND 3 [provide: image_4]\nQuery: Now look at this modem box. Check my ISP Requirements note to see if the exact model checked here is supported. If it is, find it on Amazon and put it in my cart.\nInstructions: Ask the assistant to cross-reference the exact modem model checked on the box in the image with your 'ISP Requirements' note. If the note confirms the model is supported, tell the assistant to search for it on Amazon and add it to your cart. If the assistant reads the wrong model from the box, correct it by referring to the checked box in the image. Once the item is added to the cart, proceed.\n\nROUND 4 [provide: image_5]\nQuery: Next, I need to buy this exact portable hard drive. Check the IT setup project to find out what capacity I need, then select that capacity and add the product to my Amazon cart.\nInstructions: Tell the assistant you want to buy the portable hard drive shown in the image. Ask it to check the IT setup project to find out the required storage capacity, then find the product on Amazon, select that specific capacity from the options, and add it to your cart. If it asks for the exact product name, tell it to look at the image context. Once the correct capacity is added to the cart, move to the next round.\n\nROUND 5 [provide: image_6]\nQuery: Finally, I need these keyboards for the office. Check the Office Expenses Splitwise group to see if they've been expensed yet. If not, find them on Amazon, add two to my cart, and place the order.\nInstructions: Ask the assistant to check the 'Office Expenses' Splitwise group to see if the exact keyboards shown in the image have already been expensed. If they haven't, ask it to find them on Amazon, add a quantity of two to your cart, and place the order. If the assistant asks for confirmation before placing the order, approve it. End the conversation once the order is successfully placed.\n\nYou have 6 images available to share with the agent using the send_message_with_image tool.\nIMPORTANT: Image IDs are ZERO-INDEXED integers (0, 1, 2, ...). Do NOT add 1 to the IDs.\nAvailable image IDs: [0, 1, 2, 3, 4, 5]\nImage mapping:\n  image_1.jpg -> image ID 0\n  image_2.jpg -> image ID 1\n  image_3.jpg -> image ID 2\n  image_4.jpg -> image ID 3\n  image_5.jpg -> image ID 4\n  image_6.jpg -> image ID 5\n\n## IMAGE DELIVERY\n\n⚠️ IMPORTANT: You MUST use the `send_message_with_image` tool to share images with User B. Do NOT just describe images in text — you MUST call the tool.\n\nImage delivery schedule:\n\n  Round 2: YOU MUST call the send_message_with_image tool with image_ids='2' — do NOT write the tool name as text; use the actual function call. Include a natural, conversational message to the assistant.\n  Round 3: YOU MUST call the send_message_with_image tool with image_ids='3' — do NOT write the tool name as text; use the actual function call. Include a natural, conversational message to the assistant.\n  Round 4: YOU MUST call the send_message_with_image tool with image_ids='4' — do NOT write the tool name as text; use the actual function call. Include a natural, conversational message to the assistant.\n  Round 5: YOU MUST call the send_message_with_image tool with image_ids='5' — do NOT write the tool name as text; use the actual function call. Include a natural, conversational message to the assistant."
+    },
+    {
+      "sender": "USER",
+      "recipient": "AGENT",
+      "content": "I'm looking at some networking and power accessories I already own here. Check my Office IT Setup project and cross off the tasks for these items since I don't need to buy them anymore.",
+      "image_ids": [
+        0,
+        1
+      ]
+    }
+  ],
+  "milestones": [],
+  "entity_diff_specs": [
+    {
+      "operation": "create",
+      "source": "appworld",
+      "table": "amazon.cart_entries",
+      "entity_data": {
+        "user_id": 105,
+        "product_id": 200,
+        "quantity": 1,
+        "gift_wrap_quantity": 0
+      },
+      "column_similarity_measure": {
+        "user_id": "column_exact_match_similarity",
+        "product_id": "column_exact_match_similarity",
+        "quantity": "column_exact_match_similarity",
+        "gift_wrap_quantity": "column_exact_match_similarity"
+      }
+    },
+    {
+      "operation": "create",
+      "source": "appworld",
+      "table": "amazon.cart_entries",
+      "entity_data": {
+        "user_id": 105,
+        "product_id": 201,
+        "quantity": 1,
+        "gift_wrap_quantity": 0
+      },
+      "column_similarity_measure": {
+        "user_id": "column_exact_match_similarity",
+        "product_id": "column_exact_match_similarity",
+        "quantity": "column_exact_match_similarity",
+        "gift_wrap_quantity": "column_exact_match_similarity"
+      }
+    },
+    {
+      "operation": "create",
+      "source": "appworld",
+      "table": "amazon.orders",
+      "entity_data": {
+        "user_id": 105,
+        "address_id": null,
+        "tax": 6.4,
+        "delivery_fee": 0.0,
+        "gift_wrap_fee": 0.0,
+        "discount": 0.0,
+        "payment_card_id": null,
+        "created_at": "2026-04-17T00:19:21",
+        "address_text": "265 Carpenter Loop Suite 064, Seattle, Washington 44564",
+        "payment_card_digits": "1234",
+        "receipt_download_count": 0
+      },
+      "column_similarity_measure": {
+        "user_id": "column_exact_match_similarity",
+        "address_id": "column_ignore_similarity",
+        "tax": "column_ignore_similarity",
+        "delivery_fee": "column_ignore_similarity",
+        "gift_wrap_fee": "column_ignore_similarity",
+        "discount": "column_ignore_similarity",
+        "payment_card_id": "column_ignore_similarity",
+        "created_at": "column_ignore_similarity",
+        "address_text": "column_ignore_similarity",
+        "payment_card_digits": "column_ignore_similarity",
+        "receipt_download_count": "column_ignore_similarity"
+      }
+    },
+    {
+      "operation": "create",
+      "source": "appworld",
+      "table": "amazon.order_items",
+      "entity_data": {
+        "order_id": 3300,
+        "product_id": 202,
+        "ordered_quantity": 2,
+        "returned_quantity": 0,
+        "gift_wrap_quantity": 0,
+        "price": 39.99,
+        "expected_delivery_at": "2026-04-21T23:59:59",
+        "delivered_at": null
+      },
+      "column_similarity_measure": {
+        "order_id": "column_ignore_similarity",
+        "product_id": "column_exact_match_similarity",
+        "ordered_quantity": "column_exact_match_similarity",
+        "returned_quantity": "column_exact_match_similarity",
+        "gift_wrap_quantity": "column_exact_match_similarity",
+        "price": "column_exact_match_similarity",
+        "expected_delivery_at": "column_ignore_similarity",
+        "delivered_at": "column_ignore_similarity"
+      }
+    },
+    {
+      "operation": "update",
+      "source": "appworld",
+      "table": "simple_note.notes",
+      "entity_id_column": "id",
+      "entity_id_value": 3200,
+      "expected_fields": {
+        "updated_at": "2026-04-10T10:00:00",
+        "content": "Halo 3\nGears of War\nTom Clancy's Splinter Cell Conviction",
+        "tags": []
+      },
+      "column_similarity_measure": {
+        "updated_at": "column_ignore_similarity",
+        "content": "column_rouge_l_similarity",
+        "id": "column_exact_match_similarity"
+      }
+    },
+    {
+      "operation": "delete",
+      "source": "appworld",
+      "table": "todoist.tasks",
+      "entity_id_column": "id",
+      "entity_id_value": 6500,
+      "column_similarity_measure": {
+        "id": "column_exact_match_similarity"
+      }
+    },
+    {
+      "operation": "delete",
+      "source": "appworld",
+      "table": "todoist.tasks",
+      "entity_id_column": "id",
+      "entity_id_value": 6501,
+      "column_similarity_measure": {
+        "id": "column_exact_match_similarity"
+      }
+    },
+    {
+      "operation": "delete",
+      "source": "appworld",
+      "table": "todoist.tasks",
+      "entity_id_column": "id",
+      "entity_id_value": 6502,
+      "column_similarity_measure": {
+        "id": "column_exact_match_similarity"
+      }
+    },
+    {
+      "operation": "delete",
+      "source": "appworld",
+      "table": "todoist.tasks",
+      "entity_id_column": "id",
+      "entity_id_value": 6503,
+      "column_similarity_measure": {
+        "id": "column_exact_match_similarity"
+      }
+    }
+  ],
+  "task_completion_criteria": "The user wants to update their 'Work Office IT Setup' Todoist project by deleting tasks for a 1TB NAS, external batteries, a lightning cable, and a gaming console, as they already have these items. They also want to add the game 'Tom Clancy's Splinter Cell Conviction' to their 'Game Library' note. Additionally, they want to verify that the ZyXEL P-2602HW-D1A over POTS modem is supported in their 'ISP Requirements' note and add it to their Amazon cart, check their IT setup project to confirm they need a 2TB capacity for the Seagate Backup Plus Slim portable hard drive before adding it to their cart, and ensure ZAGG KEYS MINI keyboards for iPad Mini haven't been expensed in the 'Office Expenses' Splitwise group before ordering two of them on Amazon.\n\nUI Requirements:\n- Round 1: The agent must present the matching IT setup projects in a structured interactive UI that lets the user select which project to update.",
+  "categories": [
+    "APPWORLD",
+    "MULTIPLE_USER_TURN",
+    "UI_MODE"
+  ],
+  "max_messages": 100,
+  "metadata": {
+    "original_scenario_id": "scenario_0948",
+    "expected_tools": [
+      "todoist_show_project",
+      "todoist_show_tasks",
+      "todoist_delete_task",
+      "simple_note_show_note",
+      "simple_note_update_note",
+      "amazon_show_product",
+      "amazon_add_product_to_cart",
+      "amazon_show_product_feature_choices",
+      "splitwise_show_group_expenses",
+      "amazon_update_product_quantity_in_cart",
+      "amazon_place_order",
+      "render_ui_screen",
+      "show_ui_to_user",
+      "ui_user_interact",
+      "ui_get_quick_start",
+      "ui_get_item_details"
+    ],
+    "image_arrival": {
+      "1": [
+        "image_1",
+        "image_2"
+      ],
+      "2": [
+        "image_3"
+      ],
+      "3": [
+        "image_4"
+      ],
+      "4": [
+        "image_5"
+      ],
+      "5": [
+        "image_6"
+      ]
+    },
+    "image_delivery_map": [
+      {
+        "query": "I also found this bundle. Check my Game Library note and add the included game if it's missing, then go back to that same IT setup project and cross off the task for the console.",
+        "image_ids": [
+          2
+        ]
+      },
+      {
+        "query": "Now look at this modem box. Check my ISP Requirements note to see if the exact model checked here is supported. If it is, find it on Amazon and put it in my cart.",
+        "image_ids": [
+          3
+        ]
+      },
+      {
+        "query": "Next, I need to buy this exact portable hard drive. Check the IT setup project to find out what capacity I need, then select that capacity and add the product to my Amazon cart.",
+        "image_ids": [
+          4
+        ]
+      },
+      {
+        "query": "Finally, I need these keyboards for the office. Check the Office Expenses Splitwise group to see if they've been expensed yet. If not, find them on Amazon, add two to my cart, and place the order.",
+        "image_ids": [
+          5
+        ]
+      }
+    ],
+    "scenario_metadata": {
+      "num_images": 6,
+      "num_user_rounds": 5,
+      "selected_flow_type": "cross_reference",
+      "image_arrival": "progressive",
+      "challenge_type": "state_mutation",
+      "require_disambiguation": true,
+      "dataset_type": "hiertext"
+    }
+  }
+}

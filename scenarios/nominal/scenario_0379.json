@@ -1,0 +1,123 @@
+{
+  "name": "scenario_0379",
+  "base_scenario": "base",
+  "description": "The user is organizing a batch of scanned historical documents and wants to extract and categorize those related to a specific brand.",
+  "difficulty": "easy",
+  "appworld_base_task": "_base_",
+  "device_state_id": "as_moore@gmail.com",
+  "reference_time": "2026-04-17T00:01:41.219598+00:00",
+  "agentsandbox_entities": {},
+  "appworld_entities": {
+    "gmail.users": [],
+    "file_system.directories": [
+      {
+        "path": "/home/user/",
+        "tilde_path": "/home/user/",
+        "user_id": 54,
+        "created_at": "2025-01-01T00:00:00",
+        "updated_at": "2025-01-01T00:00:00",
+        "id": 3600
+      }
+    ]
+  },
+  "image_paths": [
+    "docvqa/images/51510.jpg",
+    "docvqa/images/5679.jpg",
+    "docvqa/images/38449.jpg",
+    "docvqa/images/59674.jpg",
+    "docvqa/images/56765.jpg",
+    "docvqa/images/58564.jpg"
+  ],
+  "messages": [
+    {
+      "sender": "SYSTEM",
+      "recipient": "USER",
+      "content": "{{USER_INSTRUCTION}}ROUND 1 [provide: image_1, image_2, image_3, image_4]\nQuery: I need to organize these 4 scanned documents. First, check if a directory called 'Winston_Archive' already exists on my file system. If it doesn't, create it. Then, filter these documents and for any that mention the brand 'Winston', create a text file inside that directory with a brief summary of the document.\nInstructions: Instruct the assistant to check if the directory mentioned in your prompt exists, and create it if it doesn't. Then, ask the assistant to review the four provided images and identify any that mention the specific brand you asked for. For each matching document, tell the assistant to create a text file inside that directory containing a brief summary of the document. If the assistant asks what to name the files, tell it to use the document titles. Wait for the assistant to confirm the files are created before moving on.\n\nROUND 2 [provide: image_5, image_6]\nQuery: Here are 2 more documents to check. Actually, I changed my mind about how to organize this—individual files will be too cluttered. Please delete the 'Winston_Archive' directory. Instead, filter all 6 documents we've looked at to find the ones that mention 'Winston', and create a single simple note listing the main title or topic of each matching document.\nInstructions: Provide the two new document images and tell the assistant you've changed your mind about how to organize them. Ask the assistant to delete the directory it just created. Then, instruct it to evaluate all six documents shown so far, find the ones that mention the target brand, and create a single simple note that lists the main title or topic of each matching document. If the assistant asks what to name the note, suggest a generic title like 'Brand Documents'. Once the agent confirms the note is created, you can end the conversation.\n\nYou have 6 images available to share with the agent using the send_message_with_image tool.\nIMPORTANT: Image IDs are ZERO-INDEXED integers (0, 1, 2, ...). Do NOT add 1 to the IDs.\nAvailable image IDs: [0, 1, 2, 3, 4, 5]\nImage mapping:\n  image_1.jpg -> image ID 0\n  image_2.jpg -> image ID 1\n  image_3.jpg -> image ID 2\n  image_4.jpg -> image ID 3\n  image_5.jpg -> image ID 4\n  image_6.jpg -> image ID 5\n\n## IMAGE DELIVERY\n\n⚠️ IMPORTANT: You MUST use the `send_message_with_image` tool to share images with User B. Do NOT just describe images in text — you MUST call the tool.\n\nImage delivery schedule:\n\n  Round 2: YOU MUST call the send_message_with_image tool with image_ids='4,5' — do NOT write the tool name as text; use the actual function call. Include a natural, conversational message to the assistant."
+    },
+    {
+      "sender": "USER",
+      "recipient": "AGENT",
+      "content": "I need to organize these 4 scanned documents. First, check if a directory called 'Winston_Archive' already exists on my file system. If it doesn't, create it. Then, filter these documents and for any that mention the brand 'Winston', create a text file inside that directory with a brief summary of the document.",
+      "image_ids": [
+        0,
+        1,
+        2,
+        3
+      ]
+    }
+  ],
+  "milestones": [],
+  "entity_diff_specs": [
+    {
+      "operation": "create",
+      "source": "appworld",
+      "table": "simple_note.notes",
+      "entity_data": {
+        "user_id": 54,
+        "title": "Brand Documents",
+        "content": "- PROMOTION MATERIAL APPROVALS\n- RIVERSIDE REGION performance report\n- Consumer survey about cigarettes",
+        "tags": [],
+        "created_at": "2026-04-17T00:01:41",
+        "updated_at": "2026-04-17T00:01:41",
+        "pinned": false,
+        "data": null
+      },
+      "column_similarity_measure": {
+        "user_id": "column_exact_match_similarity",
+        "title": "column_rouge_l_similarity",
+        "content": "column_rouge_l_similarity",
+        "tags": "column_ignore_similarity",
+        "created_at": "column_ignore_similarity",
+        "updated_at": "column_ignore_similarity",
+        "pinned": "column_exact_match_similarity",
+        "data": "column_ignore_similarity"
+      }
+    }
+  ],
+  "task_completion_criteria": "Create a simple note listing the titles or main topics of the three documents that mention 'Winston' (the 'PROMOTION MATERIAL APPROVALS' document, the 'RIVERSIDE REGION' performance report, and the consumer survey about cigarettes), or something similar expressing the same idea.",
+  "categories": [
+    "APPWORLD",
+    "MULTIPLE_USER_TURN"
+  ],
+  "max_messages": 100,
+  "metadata": {
+    "original_scenario_id": "scenario_0379",
+    "expected_tools": [
+      "file_system_directory_exists",
+      "file_system_create_directory",
+      "file_system_create_file",
+      "file_system_delete_directory",
+      "simple_note_create_note"
+    ],
+    "image_arrival": {
+      "1": [
+        "image_1",
+        "image_2",
+        "image_3",
+        "image_4"
+      ],
+      "2": [
+        "image_5",
+        "image_6"
+      ]
+    },
+    "image_delivery_map": [
+      {
+        "query": "Here are 2 more documents to check. Actually, I changed my mind about how to organize this—individual files will be too cluttered. Please delete the 'Winston_Archive' directory. Instead, filter all 6 documents we've looked at to find the ones that mention 'Winston', and create a single simple note listing the main title or topic of each matching document.",
+        "image_ids": [
+          4,
+          5
+        ]
+      }
+    ],
+    "scenario_metadata": {
+      "num_images": 6,
+      "num_user_rounds": 2,
+      "selected_flow_type": "filter",
+      "image_arrival": "mixed",
+      "challenge_type": "goal_change",
+      "require_disambiguation": false,
+      "dataset_type": "docvqa"
+    }
+  }
+}

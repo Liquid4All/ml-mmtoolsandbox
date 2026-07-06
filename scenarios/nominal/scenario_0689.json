@@ -1,0 +1,185 @@
+{
+  "name": "scenario_0689",
+  "base_scenario": "base",
+  "description": "Ashley is organizing a batch of vintage scanned documents and wants to extract specific information from them based on their topics, updating her records and notifying her team.",
+  "difficulty": "easy",
+  "appworld_base_task": "_base_",
+  "device_state_id": "as_moore@gmail.com",
+  "reference_time": "2026-04-17T00:11:35.200784+00:00",
+  "agentsandbox_entities": {},
+  "appworld_entities": {
+    "phone.contacts": [
+      {
+        "id": 200,
+        "user_id": 54,
+        "first_name": "Corporate",
+        "last_name": "Accounting",
+        "email": "corp.accounting@quantum-pulse.com",
+        "phone_number": null,
+        "relationships": [
+          "coworker"
+        ],
+        "birthday": null,
+        "home_address": null,
+        "work_address": null,
+        "created_at": "2025-10-15T09:30:00"
+      },
+      {
+        "id": 201,
+        "user_id": 54,
+        "first_name": "Travel",
+        "last_name": "Accounting",
+        "email": "travel.accounting@quantum-pulse.com",
+        "phone_number": null,
+        "relationships": [
+          "coworker"
+        ],
+        "birthday": null,
+        "home_address": null,
+        "work_address": null,
+        "created_at": "2025-10-15T09:35:00"
+      }
+    ],
+    "simple_note.notes": [
+      {
+        "id": 3200,
+        "user_id": 54,
+        "title": "Nutrition Archives",
+        "content": "Historical diet records:",
+        "tags": [],
+        "created_at": "2026-04-16T10:00:00",
+        "updated_at": "2026-04-16T10:00:00",
+        "pinned": false,
+        "data": null
+      }
+    ],
+    "gmail.users": [
+      {
+        "id": 200,
+        "first_name": "Corporate",
+        "last_name": "Accounting",
+        "email": "corp.accounting@quantum-pulse.com",
+        "password": "default_password",
+        "status": "active",
+        "created_at": "2025-01-01T00:00:00",
+        "last_logged_in": "2025-01-01T00:00:00"
+      },
+      {
+        "id": 201,
+        "first_name": "Travel",
+        "last_name": "Accounting",
+        "email": "travel.accounting@quantum-pulse.com",
+        "password": "default_password",
+        "status": "active",
+        "created_at": "2025-01-01T00:00:00",
+        "last_logged_in": "2025-01-01T00:00:00"
+      }
+    ]
+  },
+  "image_paths": [
+    "hiertext/images/test/186e69cb35b7fd46.jpg",
+    "docvqa/images/60627.jpg",
+    "docvqa/images/31217.jpg",
+    "docvqa/images/63126.jpg",
+    "docvqa/images/37507.jpg",
+    "docvqa/images/64639.jpg"
+  ],
+  "messages": [
+    {
+      "sender": "SYSTEM",
+      "recipient": "USER",
+      "content": "{{USER_INSTRUCTION}}ROUND 1 [provide: image_1, image_2, image_3, image_4, image_5, image_6]\nQuery: I need to organize this batch of scanned documents. Please look through all of these and filter for the ones that are related to nutrition, food, or diet. Update my existing 'Nutrition Archives' note by adding the main heading or organization name for each of those matching documents.\nInstructions: Ask the assistant to review the provided images, identify the ones related to nutrition, food, or diet, and update your existing 'Nutrition Archives' note with the main heading or organization name from each matching document. If the assistant asks you to verify the extracted headings, confirm they are correct and tell it to save the changes. Once the note is updated, proceed to the next round.\n\nROUND 2\nQuery: Out of those nutrition-related documents we just found, filter them to find the ones that are data tables showing protein amounts in grams. Please update that same note by adding the highest single protein value listed in each of those specific tables.\nInstructions: Instruct the assistant to look specifically at the nutrition-related documents it just identified and filter for the ones that are data tables showing protein amounts in grams. Ask it to extract the highest single protein value from each of those tables and add them to the note. If the assistant lists the extracted numbers for you to review, confirm them and tell it to finalize the note update. Move on to the next round once this is done.\n\nROUND 3\nQuery: Now check the remaining documents that weren't about nutrition. Filter them to find the airline passenger ticket. Please send an email to accounting with the 10-digit ticket number, the date of issue, and the total fare amount shown on that ticket.\nInstructions: Tell the assistant to look at the remaining documents from the original batch that were not about nutrition, find the airline passenger ticket, and extract its 10-digit ticket number, date of issue, and total fare amount. Ask it to send an email to accounting with these details. The assistant should notice there are multiple accounting contacts in your address book and ask which one you mean. Clarify that the email should go to the travel accounting department. Once the assistant confirms the email has been sent, you can end the conversation.\n\nYou have 6 images available to share with the agent using the send_message_with_image tool.\nIMPORTANT: Image IDs are ZERO-INDEXED integers (0, 1, 2, ...). Do NOT add 1 to the IDs.\nAvailable image IDs: [0, 1, 2, 3, 4, 5]\nImage mapping:\n  image_1.jpg -> image ID 0\n  image_2.jpg -> image ID 1\n  image_3.jpg -> image ID 2\n  image_4.jpg -> image ID 3\n  image_5.jpg -> image ID 4\n  image_6.jpg -> image ID 5"
+    },
+    {
+      "sender": "USER",
+      "recipient": "AGENT",
+      "content": "I need to organize this batch of scanned documents. Please look through all of these and filter for the ones that are related to nutrition, food, or diet. Update my existing 'Nutrition Archives' note by adding the main heading or organization name for each of those matching documents.",
+      "image_ids": [
+        0,
+        1,
+        2,
+        3,
+        4,
+        5
+      ]
+    }
+  ],
+  "milestones": [],
+  "entity_diff_specs": [
+    {
+      "operation": "create",
+      "source": "appworld",
+      "table": "gmail.emails",
+      "entity_data": {
+        "sender_id": 54,
+        "recipient_ids": [
+          201
+        ],
+        "subject": "Airline Ticket Details",
+        "body": "Here are the details from the airline passenger ticket:\n\nTicket Number: 8804494441\nDate of Issue: 12 FEB 76\nTotal Fare: 228.45",
+        "response_to_email_id": null,
+        "created_at": "2026-04-17T00:11:35"
+      },
+      "column_similarity_measure": {
+        "sender_id": "column_exact_match_similarity",
+        "recipient_ids": "column_exact_match_similarity",
+        "subject": "column_rouge_l_similarity",
+        "body": "column_rouge_l_similarity",
+        "response_to_email_id": "column_ignore_similarity",
+        "created_at": "column_ignore_similarity"
+      }
+    },
+    {
+      "operation": "update",
+      "source": "appworld",
+      "table": "simple_note.notes",
+      "entity_id_column": "id",
+      "entity_id_value": 3200,
+      "expected_fields": {
+        "updated_at": "2026-04-16T10:00:00",
+        "content": "Historical diet records:\nThe Nutrition Foundation, Inc.\nTABLE II Emergency Protein Allowances\nAPPENDIX TABLE 8 ETHIOPIA 1958: COMPOSITE OFFICERS' FAMILY SURVEY NUMBER 6\n95\n108",
+        "tags": []
+      },
+      "column_similarity_measure": {
+        "updated_at": "column_ignore_similarity",
+        "content": "column_rouge_l_similarity",
+        "id": "column_exact_match_similarity"
+      }
+    }
+  ],
+  "task_completion_criteria": "Update the preexisting 'Nutrition Archives' note by appending the headings from the nutrition documents ('The Nutrition Foundation, Inc.', 'TABLE II Emergency Protein Allowances', and 'APPENDIX TABLE 8 ETHIOPIA 1958: COMPOSITE OFFICERS' FAMILY SURVEY NUMBER 6'), update the note again with the highest protein values from the two data tables (95 and 108), and send an email to Travel Accounting (travel.accounting@quantum-pulse.com) containing the ticket number 8804494441, the date of issue 12 FEB 76, and the total fare 228.45 extracted from the airline ticket.",
+  "categories": [
+    "APPWORLD",
+    "MULTIPLE_USER_TURN"
+  ],
+  "max_messages": 100,
+  "metadata": {
+    "original_scenario_id": "scenario_0689",
+    "expected_tools": [
+      "create_note",
+      "simple_note_show_note",
+      "simple_note_update_note",
+      "gmail_send_email"
+    ],
+    "image_arrival": {
+      "1": [
+        "image_1",
+        "image_2",
+        "image_3",
+        "image_4",
+        "image_5",
+        "image_6"
+      ]
+    },
+    "image_delivery_map": [],
+    "scenario_metadata": {
+      "num_images": 6,
+      "num_user_rounds": 3,
+      "selected_flow_type": "filter",
+      "image_arrival": "upfront",
+      "challenge_type": "state_mutation",
+      "require_disambiguation": true,
+      "dataset_type": "docvqa"
+    }
+  }
+}

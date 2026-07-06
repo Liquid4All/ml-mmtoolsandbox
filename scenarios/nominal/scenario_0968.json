@@ -1,0 +1,189 @@
+{
+  "name": "scenario_0968",
+  "base_scenario": "base",
+  "description": "Stacy is compiling a master study guide for an interdisciplinary final exam. She needs to extract specific concepts from a business case study, a marketing infographic, and a literature rubric, combine them into a single note, and then email the compiled notes to her study group.",
+  "difficulty": "easy",
+  "appworld_base_task": "_base_",
+  "device_state_id": "st-maldonado@gmail.com",
+  "reference_time": "2026-04-17T00:20:01.924162+00:00",
+  "agentsandbox_entities": {},
+  "appworld_entities": {
+    "phone.contacts": [
+      {
+        "id": 200,
+        "user_id": 85,
+        "first_name": "Study Group",
+        "last_name": "History",
+        "email": "history-study@university.edu",
+        "phone_number": null,
+        "relationships": [
+          "study group"
+        ],
+        "birthday": null,
+        "home_address": null,
+        "work_address": null,
+        "created_at": "2026-01-10T14:00:00"
+      },
+      {
+        "id": 201,
+        "user_id": 85,
+        "first_name": "Study Group",
+        "last_name": "Interdisciplinary",
+        "email": "studygroup@university.edu",
+        "phone_number": null,
+        "relationships": [
+          "study group"
+        ],
+        "birthday": null,
+        "home_address": null,
+        "work_address": null,
+        "created_at": "2026-01-15T09:30:00"
+      }
+    ],
+    "gmail.users": [
+      {
+        "id": 200,
+        "first_name": "Study Group",
+        "last_name": "History",
+        "email": "history-study@university.edu",
+        "password": "default_password",
+        "status": "active",
+        "created_at": "2025-01-01T00:00:00",
+        "last_logged_in": "2025-01-01T00:00:00"
+      },
+      {
+        "id": 201,
+        "first_name": "Study Group",
+        "last_name": "Interdisciplinary",
+        "email": "studygroup@university.edu",
+        "password": "default_password",
+        "status": "active",
+        "created_at": "2025-01-01T00:00:00",
+        "last_logged_in": "2025-01-01T00:00:00"
+      }
+    ]
+  },
+  "image_paths": [
+    "docvqa/images/391.jpg",
+    "hiertext/images/test/bed95ab28f7a64a4.jpg",
+    "omnidocbench/images/000360.jpg"
+  ],
+  "messages": [
+    {
+      "sender": "SYSTEM",
+      "recipient": "USER",
+      "content": "{{USER_INSTRUCTION}}ROUND 1\nQuery: I need to start compiling a centralized study guide for my interdisciplinary final exam. Can you create a new note titled 'Master Exam Prep'?\nInstructions: Ask the assistant to create a new note with the specified title. Wait for confirmation that the note has been successfully created before proceeding to the next step.\n\nROUND 2 [provide: image_1]\nQuery: Here's the first document for the study guide. Extract the two-column list of investigated areas and their corresponding departments from this, and append it to the 'Master Exam Prep' note under the heading 'Business Case Study'.\nInstructions: Instruct the assistant to extract the specific two-column list from the provided document and append it to the note under the requested heading. If the assistant asks for clarification on which list, direct it to the section under 'The Following Areas Were Investigated'. Proceed once the note is updated.\n\nROUND 3 [provide: image_2]\nQuery: Next is this marketing infographic. Pull the 6 drivers of influence listed in the red boxes on the left, and append them to the note under the heading 'Marketing Psychology'.\nInstructions: Ask the assistant to extract the text from the six red boxes on the left side of the infographic and add them to the master note under the specified heading. Ensure it only grabs the terms in the red boxes, not the longer explanations on the right. Move on once the assistant confirms the addition.\n\nROUND 4 [provide: image_3]\nQuery: Finally, here's a literature rubric. Extract the types of longer works mentioned at the very end, and append them to the note under the heading 'Literature Formats'.\nInstructions: Tell the assistant to look at the very end of the provided rubric text, extract the list of longer literary works, and append them to the note under the new heading. Once it confirms the final addition, proceed to the last step.\n\nROUND 5\nQuery: Great, now retrieve the full content of the 'Master Exam Prep' note and email it to my study group with the subject 'Final Exam Master Notes'.\nInstructions: Ask the assistant to email the compiled note to your study group. Because you have multiple study groups saved in your contacts, the assistant should ask for clarification on which one you mean. When it does, specify that you want to send it to the 'Interdisciplinary' study group. Conclude the conversation once the email is sent.\n\nYou have 3 images available to share with the agent using the send_message_with_image tool.\nIMPORTANT: Image IDs are ZERO-INDEXED integers (0, 1, 2, ...). Do NOT add 1 to the IDs.\nAvailable image IDs: [0, 1, 2]\nImage mapping:\n  image_1.jpg -> image ID 0\n  image_2.jpg -> image ID 1\n  image_3.jpg -> image ID 2\n\n## IMAGE DELIVERY\n\n\u26a0\ufe0f IMPORTANT: You MUST use the `send_message_with_image` tool to share images with User B. Do NOT just describe images in text \u2014 you MUST call the tool.\n\nImage delivery schedule:\n\n  Round 2: YOU MUST call the send_message_with_image tool with image_ids='0' \u2014 do NOT write the tool name as text; use the actual function call. Include a natural, conversational message to the assistant.\n  Round 3: YOU MUST call the send_message_with_image tool with image_ids='1' \u2014 do NOT write the tool name as text; use the actual function call. Include a natural, conversational message to the assistant.\n  Round 4: YOU MUST call the send_message_with_image tool with image_ids='2' \u2014 do NOT write the tool name as text; use the actual function call. Include a natural, conversational message to the assistant."
+    },
+    {
+      "sender": "USER",
+      "recipient": "AGENT",
+      "content": "I need to start compiling a centralized study guide for my interdisciplinary final exam. Can you create a new note titled 'Master Exam Prep'?"
+    }
+  ],
+  "milestones": [],
+  "entity_diff_specs": [
+    {
+      "operation": "create",
+      "source": "appworld",
+      "table": "gmail.emails",
+      "entity_data": {
+        "sender_id": 85,
+        "recipient_ids": [
+          201
+        ],
+        "subject": "Final Exam Master Notes",
+        "body": "Master Exam Prep\n\nBusiness Case Study\n- Blends - Leaf Blending\n- Design - Product Development\n- Casings / Flavor - Product Development\n- Recon - Recon\n- Newport Study - Analytical / Research Services\n- Process - Engineering\n- Implementation - Manufacturing\n\nMarketing Psychology\n- Reciprocation\n- Consistency\n- Social proof\n- Liking\n- Authority\n- Scarcity\n\nLiterature Formats\n- novels, autobiographies, films, anthologies, television series, websites and plays",
+        "response_to_email_id": null,
+        "created_at": "2026-04-17T00:20:01"
+      },
+      "column_similarity_measure": {
+        "sender_id": "column_exact_match_similarity",
+        "recipient_ids": "column_exact_match_similarity",
+        "subject": "column_rouge_l_similarity",
+        "body": "column_rouge_l_similarity",
+        "response_to_email_id": "column_ignore_similarity",
+        "created_at": "column_ignore_similarity"
+      }
+    },
+    {
+      "operation": "create",
+      "source": "appworld",
+      "table": "simple_note.notes",
+      "entity_data": {
+        "user_id": 85,
+        "title": "Master Exam Prep",
+        "content": "Business Case Study\n- Blends - Leaf Blending\n- Design - Product Development\n- Casings / Flavor - Product Development\n- Recon - Recon\n- Newport Study - Analytical / Research Services\n- Process - Engineering\n- Implementation - Manufacturing\n\nMarketing Psychology\n- Reciprocation\n- Consistency\n- Social proof\n- Liking\n- Authority\n- Scarcity\n\nLiterature Formats\nnovels, autobiographies, films, anthologies, television series, websites and plays",
+        "tags": [],
+        "created_at": "2026-04-17T00:20:01",
+        "updated_at": "2026-04-17T00:20:01",
+        "pinned": false,
+        "data": null
+      },
+      "column_similarity_measure": {
+        "user_id": "column_exact_match_similarity",
+        "title": "column_rouge_l_similarity",
+        "content": "column_rouge_l_similarity",
+        "tags": "column_ignore_similarity",
+        "created_at": "column_ignore_similarity",
+        "updated_at": "column_ignore_similarity",
+        "pinned": "column_exact_match_similarity",
+        "data": "column_ignore_similarity"
+      }
+    }
+  ],
+  "task_completion_criteria": "Create a note titled 'Master Exam Prep' that contains the following extracted information: under 'Business Case Study', the pairs 'Blends - Leaf Blending', 'Design - Product Development', 'Casings / Flavor - Product Development', 'Recon - Recon', 'Newport Study - Analytical / Research Services', 'Process - Engineering', and 'Implementation - Manufacturing'; under 'Marketing Psychology', the terms 'Reciprocation', 'Consistency', 'Social proof', 'Liking', 'Authority', and 'Scarcity'; and under 'Literature Formats', the items 'novels, autobiographies, films, anthologies, television series, websites and plays'. Finally, send an email to studygroup@university.edu with the subject 'Final Exam Master Notes' containing the full compiled text.",
+  "categories": [
+    "APPWORLD",
+    "MULTIPLE_USER_TURN"
+  ],
+  "max_messages": 100,
+  "metadata": {
+    "original_scenario_id": "scenario_0968",
+    "expected_tools": [
+      "create_note",
+      "simple_note_add_content_to_note",
+      "simple_note_show_note",
+      "gmail_send_email"
+    ],
+    "image_arrival": {
+      "2": [
+        "image_1"
+      ],
+      "3": [
+        "image_2"
+      ],
+      "4": [
+        "image_3"
+      ]
+    },
+    "image_delivery_map": [
+      {
+        "query": "Here's the first document for the study guide. Extract the two-column list of investigated areas and their corresponding departments from this, and append it to the 'Master Exam Prep' note under the heading 'Business Case Study'.",
+        "image_ids": [
+          0
+        ]
+      },
+      {
+        "query": "Next is this marketing infographic. Pull the 6 drivers of influence listed in the red boxes on the left, and append them to the note under the heading 'Marketing Psychology'.",
+        "image_ids": [
+          1
+        ]
+      },
+      {
+        "query": "Finally, here's a literature rubric. Extract the types of longer works mentioned at the very end, and append them to the note under the heading 'Literature Formats'.",
+        "image_ids": [
+          2
+        ]
+      }
+    ],
+    "scenario_metadata": {
+      "num_images": 3,
+      "num_user_rounds": 5,
+      "selected_flow_type": "aggregate",
+      "image_arrival": "mixed",
+      "challenge_type": "none",
+      "require_disambiguation": true,
+      "dataset_type": "omnidocbench"
+    }
+  }
+}

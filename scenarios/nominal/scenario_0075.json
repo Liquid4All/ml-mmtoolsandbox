@@ -1,0 +1,246 @@
+{
+  "name": "scenario_0075",
+  "base_scenario": "base",
+  "description": "The user is working on a MATLAB project for 3D plot annotations and needs to validate files, check plot properties against constraints, track tasks, and log collaboration details.",
+  "difficulty": "easy",
+  "appworld_base_task": "_base_",
+  "device_state_id": "thomas.solomon@gmail.com",
+  "reference_time": "2026-04-16T23:52:56.801627+00:00",
+  "agentsandbox_entities": {},
+  "appworld_entities": {
+    "todoist.projects": [
+      {
+        "id": 400,
+        "user_id": 8,
+        "name": "Old MATLAB Project",
+        "color": "charcoal",
+        "is_inbox": false,
+        "description": "",
+        "created_at": "2026-04-10T10:00:00"
+      }
+    ],
+    "todoist.tasks": [
+      {
+        "id": 6500,
+        "project_id": 400,
+        "section_id": null,
+        "user_id": 8,
+        "title": "Update light position x-coordinate",
+        "description": null,
+        "due_date": null,
+        "priority": "medium",
+        "is_completed": false,
+        "duration": null,
+        "duration_unit": null,
+        "order_index": 1,
+        "assignee_id": null,
+        "assigner_id": null,
+        "created_at": "2026-04-10T10:05:00"
+      }
+    ],
+    "file_system.directories": [
+      {
+        "id": 3600,
+        "path": "/D/annotation/",
+        "tilde_path": "/D/annotation/",
+        "user_id": 8,
+        "created_at": "2026-04-10T10:00:00",
+        "updated_at": "2026-04-10T10:00:00"
+      },
+      {
+        "path": "/D/",
+        "tilde_path": "/D/",
+        "user_id": 8,
+        "created_at": "2025-01-01T00:00:00",
+        "updated_at": "2025-01-01T00:00:00",
+        "id": 3601
+      },
+      {
+        "path": "~/D/",
+        "tilde_path": "~/D/",
+        "user_id": 8,
+        "created_at": "2025-01-01T00:00:00",
+        "updated_at": "2025-01-01T00:00:00",
+        "id": 3602
+      },
+      {
+        "path": "~/D/annotation/",
+        "tilde_path": "~/D/annotation/",
+        "user_id": 8,
+        "created_at": "2025-01-01T00:00:00",
+        "updated_at": "2025-01-01T00:00:00",
+        "id": 3603
+      }
+    ],
+    "todoist.project_collaborator_links": [
+      {
+        "id": 50400,
+        "project_id": 400,
+        "user_id": 8,
+        "is_favorite": false,
+        "is_archived": false,
+        "created_at": "2026-04-10T10:00:00"
+      }
+    ],
+    "gmail.users": []
+  },
+  "image_paths": [
+    "screenspotpro/images/matlab_mac/screenshot_2024-12-01_19-24-00.png",
+    "screenspotpro/images/matlab_mac/screenshot_2024-12-01_19-30-25.png",
+    "screenspotpro/images/matlab_mac/screenshot_2024-12-01_19-26-32.png",
+    "screenspotpro/images/matlab_mac/screenshot_2024-12-01_19-30-51.png",
+    "screenspotpro/images/matlab_mac/screenshot_2024-12-01_19-26-52.png",
+    "screenspotpro/images/matlab_mac/screenshot_2024-12-01_19-31-33.png"
+  ],
+  "messages": [
+    {
+      "sender": "SYSTEM",
+      "recipient": "USER",
+      "content": "{{USER_INSTRUCTION}}ROUND 1 [provide: image_1]\nQuery: I'm preparing my annotation project. Look at the directory path shown in the folder pane here. Check if there's a 'readme.txt' file in that directory on my disk. If it's missing, create a 'validation_report.txt' file there that says 'readme.txt is missing'.\nInstructions: Ask the assistant to validate if a 'readme.txt' file exists in the directory path shown in the 'Current Folder' pane of the provided image. Instruct it to create a 'validation_report.txt' file in that same directory stating that the readme is missing, since it won't be found. If the assistant asks for the path, tell it to read it directly from the folder pane in the screenshot. Once the assistant confirms the file has been created, move on to the next round.\n\nROUND 2 [provide: image_2, image_4]\nQuery: The guidelines require the plot's light style to be 'ambient' and the position's x-coordinate to be less than -0.7. Validate these parameters using the inspector panels in these screenshots. Since the x-coordinate fails, create a Todoist project called 'MATLAB Fixes' and add a task to 'Update light position x-coordinate'.\nInstructions: Instruct the assistant to check the light style and position x-coordinate shown in the property inspector panels of the new screenshots against your project constraints (style must be 'ambient' and x-coordinate must be less than -0.7). Because the x-coordinate violates this rule, ask the assistant to create a Todoist project named 'MATLAB Fixes' and add a task titled 'Update light position x-coordinate'. If the assistant points out the violation, confirm that it should proceed with creating the project and task. Proceed to the next round once the task is added.\n\nROUND 3 [provide: image_6]\nQuery: I've adjusted it in this new screenshot. Check if the x-coordinate passes the constraint now. Since it does, find the task for updating the light position x-coordinate and delete it.\nInstructions: Ask the assistant to validate if the updated x-coordinate in the new screenshot now meets the constraint (x < -0.7). Since it is valid, ask the assistant to find the task for updating the light position x-coordinate and delete it. The assistant will likely find multiple tasks with this name (one in 'Old MATLAB Project' and the one just created in 'MATLAB Fixes') and ask for clarification. Clarify that you mean the one in the 'MATLAB Fixes' project. Once the correct task is deleted, proceed to the next round.\n\nROUND 4 [provide: image_3, image_5]\nQuery: I need to track sharing this with the colleague I'm chatting with here. Check if a 'collab.txt' file exists in my working directory. If it doesn't, create it and add a note to send the plot with the highlighted box to the person shown in this chat.\nInstructions: Ask the assistant to check if a 'collab.txt' file exists in your working directory. If it doesn't, instruct the assistant to create it and update it with a note to send the highlighted plot to the colleague shown in the chat window. If the assistant asks for the colleague's name, tell it to extract the name directly from the active chat header in the image. End the conversation once the file is successfully created and updated.\n\nYou have 6 images available to share with the agent using the send_message_with_image tool.\nIMPORTANT: Image IDs are ZERO-INDEXED integers (0, 1, 2, ...). Do NOT add 1 to the IDs.\nAvailable image IDs: [0, 1, 2, 3, 4, 5]\nImage mapping:\n  image_1.jpg -> image ID 0\n  image_2.jpg -> image ID 1\n  image_3.jpg -> image ID 2\n  image_4.jpg -> image ID 3\n  image_5.jpg -> image ID 4\n  image_6.jpg -> image ID 5\n\n## IMAGE DELIVERY\n\n⚠️ IMPORTANT: You MUST use the `send_message_with_image` tool to share images with User B. Do NOT just describe images in text — you MUST call the tool.\n\nImage delivery schedule:\n\n  Round 2: YOU MUST call the send_message_with_image tool with image_ids='1,3' — do NOT write the tool name as text; use the actual function call. Include a natural, conversational message to the assistant.\n  Round 3: YOU MUST call the send_message_with_image tool with image_ids='5' — do NOT write the tool name as text; use the actual function call. Include a natural, conversational message to the assistant.\n  Round 4: YOU MUST call the send_message_with_image tool with image_ids='2,4' — do NOT write the tool name as text; use the actual function call. Include a natural, conversational message to the assistant."
+    },
+    {
+      "sender": "USER",
+      "recipient": "AGENT",
+      "content": "I'm preparing my annotation project. Look at the directory path shown in the folder pane here. Check if there's a 'readme.txt' file in that directory on my disk. If it's missing, create a 'validation_report.txt' file there that says 'readme.txt is missing'.",
+      "image_ids": [
+        0
+      ]
+    }
+  ],
+  "milestones": [],
+  "entity_diff_specs": [
+    {
+      "operation": "create",
+      "source": "appworld",
+      "table": "todoist.projects",
+      "entity_data": {
+        "user_id": 8,
+        "name": "MATLAB Fixes",
+        "color": "charcoal",
+        "is_inbox": false,
+        "description": "",
+        "created_at": "2026-04-16T23:52:56"
+      },
+      "column_similarity_measure": {
+        "user_id": "column_exact_match_similarity",
+        "name": "column_rouge_l_similarity",
+        "color": "column_exact_match_similarity",
+        "is_inbox": "column_exact_match_similarity",
+        "description": "column_ignore_similarity",
+        "created_at": "column_ignore_similarity"
+      }
+    },
+    {
+      "operation": "create",
+      "source": "appworld",
+      "table": "file_system.files",
+      "entity_data": {
+        "path": "annotation/validation_report.txt",
+        "tilde_path": "annotation/validation_report.txt",
+        "user_id": 8,
+        "content": "readme.txt is missing",
+        "compressed_data": [],
+        "created_at": "2026-04-16T23:52:56",
+        "updated_at": "2026-04-16T23:52:56"
+      },
+      "column_similarity_measure": {
+        "path": "column_contains_similarity",
+        "tilde_path": "column_contains_similarity",
+        "user_id": "column_exact_match_similarity",
+        "content": "column_rouge_l_similarity",
+        "compressed_data": "column_ignore_similarity",
+        "created_at": "column_ignore_similarity",
+        "updated_at": "column_ignore_similarity"
+      }
+    },
+    {
+      "operation": "create",
+      "source": "appworld",
+      "table": "file_system.files",
+      "entity_data": {
+        "path": "annotation/collab.txt",
+        "tilde_path": "annotation/collab.txt",
+        "user_id": 8,
+        "content": "Send the plot with the highlighted box to 胡馨蕾",
+        "compressed_data": [],
+        "created_at": "2026-04-16T23:52:56",
+        "updated_at": "2026-04-16T23:52:56"
+      },
+      "column_similarity_measure": {
+        "path": "column_contains_similarity",
+        "tilde_path": "column_contains_similarity",
+        "user_id": "column_exact_match_similarity",
+        "content": "column_rouge_l_similarity",
+        "compressed_data": "column_ignore_similarity",
+        "created_at": "column_ignore_similarity",
+        "updated_at": "column_ignore_similarity"
+      }
+    }
+  ],
+  "task_completion_criteria": "Validate the presence of a 'readme.txt' file in 'D:\\annotation\\' and create 'validation_report.txt' stating it is missing. Validate the light style ('ambient') and x-coordinate (< -0.7) from the property inspector, create a 'MATLAB Fixes' Todoist project, and add an 'Update light position x-coordinate' task due to the x-coordinate being -0.6037. Validate the updated x-coordinate (-0.7948) in a new screenshot, then delete the 'Update light position x-coordinate' task in the 'MATLAB Fixes' project. Check for 'collab.txt' in 'D:\\annotation\\', create it if missing, and update it with a note to send the plot with the highlighted box to 胡馨蕾, or something similar.",
+  "categories": [
+    "APPWORLD",
+    "MULTIPLE_USER_TURN"
+  ],
+  "max_messages": 100,
+  "metadata": {
+    "original_scenario_id": "scenario_0075",
+    "expected_tools": [
+      "file_system_show_directory",
+      "file_system_create_file",
+      "todoist_create_project",
+      "todoist_create_task",
+      "todoist_show_tasks",
+      "todoist_delete_task",
+      "file_system_file_exists",
+      "file_system_update_file"
+    ],
+    "image_arrival": {
+      "1": [
+        "image_1"
+      ],
+      "2": [
+        "image_2",
+        "image_4"
+      ],
+      "3": [
+        "image_6"
+      ],
+      "4": [
+        "image_3",
+        "image_5"
+      ]
+    },
+    "image_delivery_map": [
+      {
+        "query": "The guidelines require the plot's light style to be 'ambient' and the position's x-coordinate to be less than -0.7. Validate these parameters using the inspector panels in these screenshots. Since the x-coordinate fails, create a Todoist project called 'MATLAB Fixes' and add a task to 'Update light position x-coordinate'.",
+        "image_ids": [
+          1,
+          3
+        ]
+      },
+      {
+        "query": "I've adjusted it in this new screenshot. Check if the x-coordinate passes the constraint now. Since it does, find the task for updating the light position x-coordinate and delete it.",
+        "image_ids": [
+          5
+        ]
+      },
+      {
+        "query": "I need to track sharing this with the colleague I'm chatting with here. Check if a 'collab.txt' file exists in my working directory. If it doesn't, create it and add a note to send the plot with the highlighted box to the person shown in this chat.",
+        "image_ids": [
+          2,
+          4
+        ]
+      }
+    ],
+    "scenario_metadata": {
+      "num_images": 6,
+      "num_user_rounds": 4,
+      "selected_flow_type": "validate",
+      "image_arrival": "progressive",
+      "challenge_type": "none",
+      "require_disambiguation": true,
+      "dataset_type": "screenspotpro"
+    }
+  }
+}

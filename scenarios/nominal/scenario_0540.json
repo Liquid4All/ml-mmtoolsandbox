@@ -1,0 +1,377 @@
+{
+  "name": "scenario_0540",
+  "base_scenario": "base",
+  "description": "The user is reviewing a camera roll of various signs, flyers, and locations they recently photographed. They want to organize their upcoming schedule by extracting event information and plan an outing with a friend.",
+  "difficulty": "easy",
+  "appworld_base_task": "_base_",
+  "device_state_id": "thomas.solomon@gmail.com",
+  "reference_time": "2026-04-17T00:06:45.764223+00:00",
+  "agentsandbox_entities": {
+    "contact": [
+      {
+        "person_id": "self",
+        "name": "Thomas Solomon",
+        "phone_number": "2192158297",
+        "relationship": null,
+        "is_self": true
+      },
+      {
+        "person_id": "contacts_contact_100",
+        "name": "John Davis",
+        "phone_number": "555-0199",
+        "relationship": "friend",
+        "is_self": false
+      },
+      {
+        "person_id": "contacts_contact_101",
+        "name": "John Miller",
+        "phone_number": "555-0299",
+        "relationship": null,
+        "is_self": false
+      }
+    ],
+    "calendars": [
+      {
+        "calendar_id": "calendar_100",
+        "title": "Personal"
+      }
+    ]
+  },
+  "appworld_entities": {
+    "phone.contacts": [
+      {
+        "id": 200,
+        "user_id": 8,
+        "first_name": "John",
+        "last_name": "Davis",
+        "email": "john.davis@gmail.com",
+        "phone_number": "555-0199",
+        "relationships": [
+          "friend"
+        ],
+        "birthday": null,
+        "home_address": null,
+        "work_address": null,
+        "created_at": "2025-10-15T14:30:00"
+      },
+      {
+        "id": 201,
+        "user_id": 8,
+        "first_name": "John",
+        "last_name": "Miller",
+        "email": "john.miller@gmail.com",
+        "phone_number": "555-0299",
+        "relationships": [],
+        "birthday": null,
+        "home_address": null,
+        "work_address": null,
+        "created_at": "2025-11-20T09:15:00"
+      }
+    ],
+    "gmail.users": [
+      {
+        "id": 200,
+        "first_name": "John",
+        "last_name": "Davis",
+        "email": "john.davis@gmail.com",
+        "password": "default_password",
+        "status": "active",
+        "created_at": "2025-01-01T00:00:00",
+        "last_logged_in": "2025-01-01T00:00:00"
+      },
+      {
+        "id": 201,
+        "first_name": "John",
+        "last_name": "Miller",
+        "email": "john.miller@gmail.com",
+        "password": "default_password",
+        "status": "active",
+        "created_at": "2025-01-01T00:00:00",
+        "last_logged_in": "2025-01-01T00:00:00"
+      }
+    ],
+    "phone.users": [
+      {
+        "id": 200,
+        "first_name": "John",
+        "last_name": "Davis",
+        "phone_number": "555-0199",
+        "password": "default_password",
+        "created_at": "2025-01-01T00:00:00",
+        "last_logged_in": "2025-01-01T00:00:00"
+      },
+      {
+        "id": 201,
+        "first_name": "John",
+        "last_name": "Miller",
+        "phone_number": "555-0299",
+        "password": "default_password",
+        "created_at": "2025-01-01T00:00:00",
+        "last_logged_in": "2025-01-01T00:00:00"
+      }
+    ]
+  },
+  "image_paths": [
+    "worldvqa/images/743.jpg",
+    "hiertext/images/test/f9a5f14f332cba11.jpg",
+    "hiertext/images/test/f52f5b12abad70e8.jpg",
+    "hiertext/images/test/addfc6ee73d4b8b7.jpg",
+    "hiertext/images/test/656246f283a7f766.jpg",
+    "hiertext/images/test/c43751ee7e039f22.jpg"
+  ],
+  "messages": [
+    {
+      "sender": "SYSTEM",
+      "recipient": "USER",
+      "content": "{{USER_INSTRUCTION}}ROUND 1 [provide: image_1, image_2, image_3, image_4, image_5, image_6]\nQuery: I took pictures of a bunch of signs and flyers recently. Filter through these and find the ones advertising specific upcoming events. Ignore any past events, general business hours, or just plain locations. For each upcoming event, add it to my calendar for the next available date.\nInstructions: Tell the assistant to look at all six images and identify which ones advertise specific upcoming events. It should filter out any past events, regular business hours, or general locations. It should then create calendar events for the three upcoming events it finds. If it tries to create an event for the historical billboard or the bank sign, correct it and point it back to your filtering instructions. Once it successfully creates the three calendar events, move on to the next round.\n\nROUND 2\nQuery: Actually, I just realized I have a major scheduling conflict next March. Please delete the calendar event we just made for that month.\nInstructions: Ask the assistant to remove the calendar event scheduled for March that was just created. If it asks for confirmation to delete the event, provide it. Once the event is successfully removed from the calendar, proceed to the next round.\n\nROUND 3\nQuery: Send a text to John. Give him the titles and dates of the two events we kept, and suggest we meet up beforehand at the place shown in the very first picture I sent you.\nInstructions: Ask the assistant to text John with the titles and dates of the two remaining events, and suggest meeting at the location from the first image. The assistant should notice there are multiple contacts named John and ask for clarification. When it does, clarify that you mean John Davis. If the assistant needs help identifying the location from the first image, remind it to check the provided context for that image. Once the text message is sent, end the conversation.\n\nYou have 6 images available to share with the agent using the send_message_with_image tool.\nIMPORTANT: Image IDs are ZERO-INDEXED integers (0, 1, 2, ...). Do NOT add 1 to the IDs.\nAvailable image IDs: [0, 1, 2, 3, 4, 5]\nImage mapping:\n  image_1.jpg -> image ID 0\n  image_2.jpg -> image ID 1\n  image_3.jpg -> image ID 2\n  image_4.jpg -> image ID 3\n  image_5.jpg -> image ID 4\n  image_6.jpg -> image ID 5"
+    },
+    {
+      "sender": "USER",
+      "recipient": "AGENT",
+      "content": "I took pictures of a bunch of signs and flyers recently. Filter through these and find the ones advertising specific upcoming events. Ignore any past events, general business hours, or just plain locations. For each upcoming event, add it to my calendar for the next available date.",
+      "image_ids": [
+        0,
+        1,
+        2,
+        3,
+        4,
+        5
+      ]
+    }
+  ],
+  "milestones": [],
+  "entity_diff_specs": [
+    {
+      "operation": "create",
+      "source": "appworld",
+      "table": "phone.global_text_messages",
+      "entity_data": {
+        "sender_id": 8,
+        "receiver_id": 200,
+        "message": "Hi John, I have two events saved: 'The Alzheimer's Project' on May 10 and 'Walk Against Warming' on November 11. Do you want to meet up beforehand at Bellevue Hall?",
+        "created_at": "2026-04-17T00:06:45"
+      },
+      "column_similarity_measure": {
+        "sender_id": "column_exact_match_similarity",
+        "receiver_id": "column_exact_match_similarity",
+        "message": "column_rouge_l_similarity",
+        "created_at": "column_ignore_similarity"
+      }
+    },
+    {
+      "operation": "create",
+      "source": "appworld",
+      "table": "phone.user_text_messages",
+      "entity_data": {
+        "global_text_message_id": 200,
+        "user_id": 8,
+        "created_at": "2026-04-17T00:06:45"
+      },
+      "column_similarity_measure": {
+        "global_text_message_id": "column_ignore_similarity",
+        "user_id": "column_exact_match_similarity",
+        "created_at": "column_ignore_similarity"
+      }
+    },
+    {
+      "operation": "create",
+      "source": "agentsandbox",
+      "namespace": "CALENDAR_EVENTS",
+      "entity_data": {
+        "calendar_event_id": "event_100",
+        "calendar_id": "calendar_100",
+        "title": "The Alzheimer's Project",
+        "description": null,
+        "start_datetime": "2026-05-10T21:00:00Z",
+        "end_datetime": "2026-05-10T22:00:00Z",
+        "is_all_day": false,
+        "recurrence_frequency": null,
+        "recurrence_interval": null,
+        "recurrence_until_datetime": null,
+        "recurrence_parent_id": null,
+        "recurrence_exclude_datetime": [],
+        "latitude": null,
+        "longitude": null,
+        "place_id": null,
+        "formatted_address": null,
+        "attendee_names": [],
+        "attendee_emails": []
+      },
+      "column_similarity_measure": {
+        "calendar_event_id": "column_ignore_similarity",
+        "calendar_id": "column_ignore_similarity",
+        "title": "column_rouge_l_similarity",
+        "description": "column_ignore_similarity",
+        "start_datetime": "column_datetime_naive_equal_similarity",
+        "end_datetime": "column_datetime_naive_equal_similarity",
+        "is_all_day": "column_exact_match_similarity",
+        "recurrence_frequency": "column_ignore_similarity",
+        "recurrence_interval": "column_ignore_similarity",
+        "recurrence_until_datetime": "column_ignore_similarity",
+        "recurrence_parent_id": "column_ignore_similarity",
+        "recurrence_exclude_datetime": "column_ignore_similarity",
+        "latitude": "column_ignore_similarity",
+        "longitude": "column_ignore_similarity",
+        "place_id": "column_ignore_similarity",
+        "formatted_address": "column_ignore_similarity",
+        "attendee_names": "column_ignore_similarity",
+        "attendee_emails": "column_ignore_similarity"
+      }
+    },
+    {
+      "operation": "create",
+      "source": "agentsandbox",
+      "namespace": "CALENDAR_EVENTS",
+      "entity_data": {
+        "calendar_event_id": "event_101",
+        "calendar_id": "calendar_100",
+        "title": "Walk Against Warming",
+        "description": null,
+        "start_datetime": "2026-11-11T13:00:00Z",
+        "end_datetime": "2026-11-11T14:00:00Z",
+        "is_all_day": false,
+        "recurrence_frequency": null,
+        "recurrence_interval": null,
+        "recurrence_until_datetime": null,
+        "recurrence_parent_id": null,
+        "recurrence_exclude_datetime": [],
+        "latitude": null,
+        "longitude": null,
+        "place_id": null,
+        "formatted_address": null,
+        "attendee_names": [],
+        "attendee_emails": []
+      },
+      "column_similarity_measure": {
+        "calendar_event_id": "column_ignore_similarity",
+        "calendar_id": "column_ignore_similarity",
+        "title": "column_rouge_l_similarity",
+        "description": "column_ignore_similarity",
+        "start_datetime": "column_datetime_naive_equal_similarity",
+        "end_datetime": "column_datetime_naive_equal_similarity",
+        "is_all_day": "column_exact_match_similarity",
+        "recurrence_frequency": "column_ignore_similarity",
+        "recurrence_interval": "column_ignore_similarity",
+        "recurrence_until_datetime": "column_ignore_similarity",
+        "recurrence_parent_id": "column_ignore_similarity",
+        "recurrence_exclude_datetime": "column_ignore_similarity",
+        "latitude": "column_ignore_similarity",
+        "longitude": "column_ignore_similarity",
+        "place_id": "column_ignore_similarity",
+        "formatted_address": "column_ignore_similarity",
+        "attendee_names": "column_ignore_similarity",
+        "attendee_emails": "column_ignore_similarity"
+      }
+    },
+    {
+      "operation": "update",
+      "source": "appworld",
+      "table": "phone.contacts",
+      "entity_id_column": "id",
+      "entity_id_value": 200,
+      "expected_fields": {
+        "user_id": null,
+        "last_name": null,
+        "first_name": null,
+        "name": "John Davis",
+        "email": null,
+        "relationship": "friend",
+        "created_at": "2025-10-15T14:30:00",
+        "person_id": 200,
+        "is_self": false,
+        "relationships": []
+      },
+      "column_similarity_measure": {
+        "user_id": "column_ignore_similarity",
+        "last_name": "column_ignore_similarity",
+        "first_name": "column_ignore_similarity",
+        "name": "column_rouge_l_similarity",
+        "email": "column_ignore_similarity",
+        "relationship": "column_exact_match_similarity",
+        "created_at": "column_ignore_similarity",
+        "person_id": "column_ignore_similarity",
+        "is_self": "column_exact_match_similarity",
+        "relationships": "column_ignore_similarity",
+        "id": "column_exact_match_similarity"
+      }
+    },
+    {
+      "operation": "update",
+      "source": "appworld",
+      "table": "phone.contacts",
+      "entity_id_column": "id",
+      "entity_id_value": 201,
+      "expected_fields": {
+        "user_id": null,
+        "last_name": null,
+        "first_name": null,
+        "name": "John Miller",
+        "email": null,
+        "created_at": "2025-11-20T09:15:00",
+        "person_id": 201,
+        "is_self": false,
+        "relationships": []
+      },
+      "column_similarity_measure": {
+        "user_id": "column_ignore_similarity",
+        "last_name": "column_ignore_similarity",
+        "first_name": "column_ignore_similarity",
+        "name": "column_rouge_l_similarity",
+        "email": "column_ignore_similarity",
+        "created_at": "column_ignore_similarity",
+        "person_id": "column_ignore_similarity",
+        "is_self": "column_exact_match_similarity",
+        "id": "column_exact_match_similarity"
+      }
+    },
+    {
+      "operation": "create",
+      "source": "appworld",
+      "table": "phone.user_text_messages",
+      "entity_data": {
+        "global_text_message_id": 200,
+        "user_id": 200,
+        "created_at": "2026-04-17T00:06:45"
+      },
+      "column_similarity_measure": {
+        "global_text_message_id": "column_ignore_similarity",
+        "user_id": "column_exact_match_similarity",
+        "created_at": "column_ignore_similarity"
+      }
+    }
+  ],
+  "task_completion_criteria": "Create a calendar event for 'The Alzheimer's Project' on May 10 at 9 PM and a calendar event for 'Walk Against Warming' on November 11 at 1 PM. Send a text message to John Davis (phone 555-0199) mentioning 'The Alzheimer's Project' on May 10, 'Walk Against Warming' on November 11, and suggesting a meetup at 'Bellevue Hall'.",
+  "categories": [
+    "APPWORLD",
+    "MULTIPLE_USER_TURN"
+  ],
+  "max_messages": 100,
+  "metadata": {
+    "original_scenario_id": "scenario_0540",
+    "expected_tools": [
+      "create_calendar_event",
+      "remove_calendar_event",
+      "messages_send_text_message"
+    ],
+    "image_arrival": {
+      "1": [
+        "image_1",
+        "image_2",
+        "image_3",
+        "image_4",
+        "image_5",
+        "image_6"
+      ]
+    },
+    "image_delivery_map": [],
+    "scenario_metadata": {
+      "num_images": 6,
+      "num_user_rounds": 3,
+      "selected_flow_type": "filter",
+      "image_arrival": "upfront",
+      "challenge_type": "state_mutation",
+      "require_disambiguation": true,
+      "dataset_type": "hiertext"
+    }
+  }
+}

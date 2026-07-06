@@ -1,0 +1,421 @@
+{
+  "name": "scenario_0212",
+  "base_scenario": "base",
+  "description": "The user is preparing for a camping trip and is cross-referencing items they already have at home (shown in images) with a Todoist packing list to figure out what tasks to delete and what still needs to be bought on Amazon.",
+  "difficulty": "easy",
+  "appworld_base_task": "_base_",
+  "device_state_id": "glenn.burton@gmail.com",
+  "reference_time": "2026-04-16T23:56:42.887662+00:00",
+  "agentsandbox_entities": {},
+  "appworld_entities": {
+    "todoist.projects": [
+      {
+        "id": 400,
+        "user_id": 102,
+        "name": "Camping Prep",
+        "color": "charcoal",
+        "is_inbox": false,
+        "description": "",
+        "created_at": "2026-04-10T10:00:00"
+      }
+    ],
+    "todoist.tasks": [
+      {
+        "id": 6500,
+        "project_id": 400,
+        "section_id": null,
+        "user_id": 102,
+        "title": "Buy Hardtack",
+        "description": null,
+        "due_date": null,
+        "priority": "medium",
+        "is_completed": false,
+        "duration": null,
+        "duration_unit": null,
+        "order_index": 1,
+        "assignee_id": null,
+        "assigner_id": null,
+        "created_at": "2026-04-10T10:05:00"
+      },
+      {
+        "id": 6501,
+        "project_id": 400,
+        "section_id": null,
+        "user_id": 102,
+        "title": "Buy Canned luncheon meat",
+        "description": null,
+        "due_date": null,
+        "priority": "medium",
+        "is_completed": false,
+        "duration": null,
+        "duration_unit": null,
+        "order_index": 2,
+        "assignee_id": null,
+        "assigner_id": null,
+        "created_at": "2026-04-10T10:06:00"
+      },
+      {
+        "id": 6502,
+        "project_id": 400,
+        "section_id": null,
+        "user_id": 102,
+        "title": "Buy Marseille soap",
+        "description": null,
+        "due_date": null,
+        "priority": "medium",
+        "is_completed": false,
+        "duration": null,
+        "duration_unit": null,
+        "order_index": 3,
+        "assignee_id": null,
+        "assigner_id": null,
+        "created_at": "2026-04-10T10:07:00"
+      },
+      {
+        "id": 6503,
+        "project_id": 400,
+        "section_id": null,
+        "user_id": 102,
+        "title": "Buy Basque chicken stew",
+        "description": null,
+        "due_date": null,
+        "priority": "medium",
+        "is_completed": false,
+        "duration": null,
+        "duration_unit": null,
+        "order_index": 4,
+        "assignee_id": null,
+        "assigner_id": null,
+        "created_at": "2026-04-10T10:08:00"
+      },
+      {
+        "id": 6504,
+        "project_id": 400,
+        "section_id": null,
+        "user_id": 102,
+        "title": "Buy Meat grinder",
+        "description": null,
+        "due_date": null,
+        "priority": "medium",
+        "is_completed": false,
+        "duration": null,
+        "duration_unit": null,
+        "order_index": 5,
+        "assignee_id": null,
+        "assigner_id": null,
+        "created_at": "2026-04-10T10:09:00"
+      },
+      {
+        "id": 6505,
+        "project_id": 400,
+        "section_id": null,
+        "user_id": 102,
+        "title": "Buy Electric grill plate",
+        "description": null,
+        "due_date": null,
+        "priority": "medium",
+        "is_completed": false,
+        "duration": null,
+        "duration_unit": null,
+        "order_index": 6,
+        "assignee_id": null,
+        "assigner_id": null,
+        "created_at": "2026-04-10T10:10:00"
+      }
+    ],
+    "amazon.sellers": [
+      {
+        "id": 200,
+        "name": "Gourmet Foods",
+        "rating": 0.0
+      },
+      {
+        "id": 201,
+        "name": "Kitchen Appliances Direct",
+        "rating": 0.0
+      }
+    ],
+    "amazon.products": [
+      {
+        "id": 200,
+        "product_type": "groceries",
+        "name": "Canned Basque Chicken Stew",
+        "description": "Canned Basque chicken stew.",
+        "seller_id": 200,
+        "price": 8.99,
+        "delivery_days": 2,
+        "inventory_quantity": 50,
+        "weight": 1.0,
+        "length": 4.0,
+        "width": 3.0,
+        "height": 3.0,
+        "color": null,
+        "relative_size": null,
+        "rating": 0.0,
+        "seller_rating": 0.0,
+        "has_variations": false
+      },
+      {
+        "id": 201,
+        "product_type": "appliances",
+        "name": "Meat Grinder",
+        "description": "Electric meat grinder.",
+        "seller_id": 201,
+        "price": 49.99,
+        "delivery_days": 3,
+        "inventory_quantity": 20,
+        "weight": 5.0,
+        "length": 10.0,
+        "width": 6.0,
+        "height": 8.0,
+        "color": null,
+        "relative_size": null,
+        "rating": 0.0,
+        "seller_rating": 0.0,
+        "has_variations": false
+      }
+    ],
+    "amazon.addresses": [
+      {
+        "id": 400,
+        "user_id": 102,
+        "name": "Home",
+        "street_address": "816 Brittney Overpass Suite 48",
+        "city": "Seattle",
+        "state": "Washington",
+        "country": "USA",
+        "zip_code": 44756
+      }
+    ],
+    "todoist.project_collaborator_links": [
+      {
+        "id": 50400,
+        "project_id": 400,
+        "user_id": 102,
+        "is_favorite": false,
+        "is_archived": false,
+        "created_at": "2026-04-10T10:00:00"
+      }
+    ],
+    "gmail.users": []
+  },
+  "image_paths": [
+    "worldvqa/images/1385.jpg",
+    "worldvqa/images/1384.jpg",
+    "worldvqa/images/1198.jpg",
+    "worldvqa/images/1725.jpg",
+    "worldvqa/images/1455.jpg",
+    "worldvqa/images/1460.jpg"
+  ],
+  "messages": [
+    {
+      "sender": "SYSTEM",
+      "recipient": "USER",
+      "content": "{{USER_INSTRUCTION}}ROUND 1 [provide: image_1, image_2, image_3]\nQuery: Look at these three items I just packed. Check my 'Camping Prep' project on Todoist and cross off the ones I already have here.\nInstructions: Ask the assistant to identify the three items in the provided images and check your 'Camping Prep' Todoist project. Instruct it to delete the tasks corresponding to these packed items. If the assistant asks for confirmation, approve it. Once it confirms the deletions, move on to the next round.\n\nROUND 2 [provide: image_4]\nQuery: I also made a batch of this for the trip. Cross it off the list too, but actually, let's just buy 5 canned versions of this exact meal on Amazon and add them to my cart instead of making more.\nInstructions: Instruct the agent to identify the dish shown in the new image and delete its corresponding task from the Todoist project. Then, ask it to search Amazon for canned versions of that specific meal and add 5 of them to your cart. Once the agent confirms the task is deleted and the items are in the cart, proceed to the next round.\n\nROUND 3 [provide: image_5]\nQuery: Alright, I just found my electric grill plate, as you can see in this picture. Go ahead and delete the electric grill plate task from Todoist, and add the other appliance left on the list to my Amazon cart.\nInstructions: Present the new image and explicitly refer to it as your electric grill plate. Ask the agent to delete the electric grill plate task from Todoist and add the *other* remaining appliance from your list to the Amazon cart. Note that the image actually shows a meat grinder, so a good agent should flag this mismatch. If the agent points out that the image is a meat grinder and not a grill plate, acknowledge the confusion and tell it to hold on for a second. If the agent blindly proceeds without noticing the error, stop it and say you need to double-check something.\n\nROUND 4 [provide: image_6]\nQuery: Whoops, you were right, my bad! This new picture is the actual electric grill plate. Delete the electric grill plate task from Todoist now. Since I don't have the meat grinder, add a meat grinder to my Amazon cart and go ahead and place the order for everything in the cart.\nInstructions: Acknowledge the mistake from the previous round and provide the correct image of the electric grill plate. Instruct the agent to now delete the electric grill plate task from Todoist. Then, ask it to add a meat grinder to your Amazon cart and place the order for all items currently in the cart. Once the agent confirms the order is placed, conclude the conversation.\n\nYou have 6 images available to share with the agent using the send_message_with_image tool.\nIMPORTANT: Image IDs are ZERO-INDEXED integers (0, 1, 2, ...). Do NOT add 1 to the IDs.\nAvailable image IDs: [0, 1, 2, 3, 4, 5]\nImage mapping:\n  image_1.jpg -> image ID 0\n  image_2.jpg -> image ID 1\n  image_3.jpg -> image ID 2\n  image_4.jpg -> image ID 3\n  image_5.jpg -> image ID 4\n  image_6.jpg -> image ID 5\n\n## IMAGE DELIVERY\n\n\u26a0\ufe0f IMPORTANT: You MUST use the `send_message_with_image` tool to share images with User B. Do NOT just describe images in text \u2014 you MUST call the tool.\n\nImage delivery schedule:\n\n  Round 2: YOU MUST call the send_message_with_image tool with image_ids='3' \u2014 do NOT write the tool name as text; use the actual function call. Include a natural, conversational message to the assistant.\n  Round 3: YOU MUST call the send_message_with_image tool with image_ids='4' \u2014 do NOT write the tool name as text; use the actual function call. Include a natural, conversational message to the assistant.\n  Round 4: YOU MUST call the send_message_with_image tool with image_ids='5' \u2014 do NOT write the tool name as text; use the actual function call. Include a natural, conversational message to the assistant."
+    },
+    {
+      "sender": "USER",
+      "recipient": "AGENT",
+      "content": "Look at these three items I just packed. Check my 'Camping Prep' project on Todoist and cross off the ones I already have here.",
+      "image_ids": [
+        0,
+        1,
+        2
+      ]
+    }
+  ],
+  "milestones": [],
+  "entity_diff_specs": [
+    {
+      "operation": "create",
+      "source": "appworld",
+      "table": "amazon.orders",
+      "entity_data": {
+        "user_id": 102,
+        "address_id": 400,
+        "tax": 0.0,
+        "delivery_fee": 0.0,
+        "gift_wrap_fee": 0.0,
+        "discount": 0.0,
+        "payment_card_id": null,
+        "created_at": "2026-04-16T23:56:42",
+        "address_text": "816 Brittney Overpass Suite 48, Seattle, Washington 44756",
+        "payment_card_digits": "1234",
+        "receipt_download_count": 0
+      },
+      "column_similarity_measure": {
+        "user_id": "column_exact_match_similarity",
+        "address_id": "column_exact_match_similarity",
+        "tax": "column_ignore_similarity",
+        "delivery_fee": "column_ignore_similarity",
+        "gift_wrap_fee": "column_exact_match_similarity",
+        "discount": "column_exact_match_similarity",
+        "payment_card_id": "column_ignore_similarity",
+        "created_at": "column_ignore_similarity",
+        "address_text": "column_ignore_similarity",
+        "payment_card_digits": "column_ignore_similarity",
+        "receipt_download_count": "column_exact_match_similarity"
+      }
+    },
+    {
+      "operation": "create",
+      "source": "appworld",
+      "table": "amazon.order_items",
+      "entity_data": {
+        "order_id": 3300,
+        "product_id": 200,
+        "ordered_quantity": 5,
+        "returned_quantity": 0,
+        "gift_wrap_quantity": 0,
+        "price": 8.99,
+        "expected_delivery_at": "2026-04-18T23:56:42",
+        "delivered_at": null
+      },
+      "column_similarity_measure": {
+        "order_id": "column_ignore_similarity",
+        "product_id": "column_exact_match_similarity",
+        "ordered_quantity": "column_exact_match_similarity",
+        "returned_quantity": "column_exact_match_similarity",
+        "gift_wrap_quantity": "column_exact_match_similarity",
+        "price": "column_exact_match_similarity",
+        "expected_delivery_at": "column_ignore_similarity",
+        "delivered_at": "column_ignore_similarity"
+      }
+    },
+    {
+      "operation": "create",
+      "source": "appworld",
+      "table": "amazon.order_items",
+      "entity_data": {
+        "order_id": 3300,
+        "product_id": 201,
+        "ordered_quantity": 1,
+        "returned_quantity": 0,
+        "gift_wrap_quantity": 0,
+        "price": 49.99,
+        "expected_delivery_at": "2026-04-19T23:56:42",
+        "delivered_at": null
+      },
+      "column_similarity_measure": {
+        "order_id": "column_ignore_similarity",
+        "product_id": "column_exact_match_similarity",
+        "ordered_quantity": "column_exact_match_similarity",
+        "returned_quantity": "column_exact_match_similarity",
+        "gift_wrap_quantity": "column_exact_match_similarity",
+        "price": "column_exact_match_similarity",
+        "expected_delivery_at": "column_ignore_similarity",
+        "delivered_at": "column_ignore_similarity"
+      }
+    },
+    {
+      "operation": "delete",
+      "source": "appworld",
+      "table": "todoist.tasks",
+      "entity_id_column": "id",
+      "entity_id_value": 6500,
+      "column_similarity_measure": {
+        "id": "column_exact_match_similarity"
+      }
+    },
+    {
+      "operation": "delete",
+      "source": "appworld",
+      "table": "todoist.tasks",
+      "entity_id_column": "id",
+      "entity_id_value": 6501,
+      "column_similarity_measure": {
+        "id": "column_exact_match_similarity"
+      }
+    },
+    {
+      "operation": "delete",
+      "source": "appworld",
+      "table": "todoist.tasks",
+      "entity_id_column": "id",
+      "entity_id_value": 6502,
+      "column_similarity_measure": {
+        "id": "column_exact_match_similarity"
+      }
+    },
+    {
+      "operation": "delete",
+      "source": "appworld",
+      "table": "todoist.tasks",
+      "entity_id_column": "id",
+      "entity_id_value": 6503,
+      "column_similarity_measure": {
+        "id": "column_exact_match_similarity"
+      }
+    },
+    {
+      "operation": "delete",
+      "source": "appworld",
+      "table": "todoist.tasks",
+      "entity_id_column": "id",
+      "entity_id_value": 6505,
+      "column_similarity_measure": {
+        "id": "column_exact_match_similarity"
+      }
+    }
+  ],
+  "task_completion_criteria": "Delete the Todoist tasks for 'Buy Hardtack', 'Buy Canned luncheon meat', 'Buy Marseille soap', 'Buy Basque chicken stew', and 'Buy Electric grill plate' from the 'Camping Prep' project. Add 5 cans of Basque chicken stew and 1 meat grinder to the Amazon cart, and place the Amazon order.",
+  "categories": [
+    "APPWORLD",
+    "MULTIPLE_USER_TURN"
+  ],
+  "max_messages": 100,
+  "metadata": {
+    "original_scenario_id": "scenario_0212",
+    "expected_tools": [
+      "todoist_show_tasks",
+      "todoist_delete_task",
+      "amazon_add_product_to_cart",
+      "amazon_place_order"
+    ],
+    "image_arrival": {
+      "1": [
+        "image_1",
+        "image_2",
+        "image_3"
+      ],
+      "2": [
+        "image_4"
+      ],
+      "3": [
+        "image_5"
+      ],
+      "4": [
+        "image_6"
+      ]
+    },
+    "image_delivery_map": [
+      {
+        "query": "I also made a batch of this for the trip. Cross it off the list too, but actually, let's just buy 5 canned versions of this exact meal on Amazon and add them to my cart instead of making more.",
+        "image_ids": [
+          3
+        ]
+      },
+      {
+        "query": "Alright, I just found my electric grill plate, as you can see in this picture. Go ahead and delete the electric grill plate task from Todoist, and add the other appliance left on the list to my Amazon cart.",
+        "image_ids": [
+          4
+        ]
+      },
+      {
+        "query": "Whoops, you were right, my bad! This new picture is the actual electric grill plate. Delete the electric grill plate task from Todoist now. Since I don't have the meat grinder, add a meat grinder to my Amazon cart and go ahead and place the order for everything in the cart.",
+        "image_ids": [
+          5
+        ]
+      }
+    ],
+    "scenario_metadata": {
+      "num_images": 6,
+      "num_user_rounds": 4,
+      "selected_flow_type": "cross_reference",
+      "image_arrival": "mixed",
+      "challenge_type": "error_correction",
+      "require_disambiguation": false,
+      "dataset_type": "worldvqa"
+    }
+  }
+}

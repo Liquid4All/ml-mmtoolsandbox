@@ -1,0 +1,207 @@
+{
+  "name": "scenario_0849",
+  "base_scenario": "base",
+  "description": "The user is organizing contact information from various international documents and consolidating them into a single note and their contacts list.",
+  "difficulty": "easy",
+  "appworld_base_task": "_base_",
+  "device_state_id": "brenda.webe@gmail.com",
+  "reference_time": "2026-04-17T00:16:02.661921+00:00",
+  "agentsandbox_entities": {},
+  "appworld_entities": {
+    "gmail.users": [
+      {
+        "id": 10100,
+        "first_name": "Solid",
+        "last_name": "Security",
+        "email": "solid@solidsecurity.pl",
+        "password": "placeholder_password",
+        "status": "active"
+      }
+    ]
+  },
+  "image_paths": [
+    "hiertext/images/test/3a05f16b4d7e7b94.jpg",
+    "hiertext/images/test/6813719aa8b6be3f.jpg",
+    "hiertext/images/test/fa26c06f59875e7c.jpg"
+  ],
+  "messages": [
+    {
+      "sender": "SYSTEM",
+      "recipient": "USER",
+      "content": "{{USER_INSTRUCTION}}ROUND 1 [provide: image_1]\nQuery: Create a new note called 'International Entities' and add the sender of this envelope to it. Also, create a new contact for them.\nInstructions: Ask the assistant to create a note named 'International Entities' and add the sender's name from the provided envelope. Also ask it to create a new contact for that sender. If the assistant asks for clarification on which part is the sender, guide it to the top section of the envelope. Once the note and contact are created, proceed to the next round.\n\nROUND 2 [provide: image_2]\nQuery: Add the email address from the gridded paper in this image to the 'International Entities' note, and create a new contact named 'Solid Security' with the email 'solid@security.pl'.\nInstructions: Ask the assistant to add the email address from the gridded paper to the 'International Entities' note, and to create a new contact named 'Solid Security' using the email 'solid@security.pl'. Note that you have intentionally provided an incorrect email address that doesn't match the image. If the assistant points out the discrepancy, tell it to use your provided email anyway for now. If it proceeds without noticing, just let it happen. Once the actions are complete, move to the next round.\n\nROUND 3\nQuery: Wait, I made a mistake reading that paper earlier. The email should be exactly what's printed on it. Please update the Solid Security contact and correct the email in the note.\nInstructions: Acknowledge that you made a mistake with the email address in the previous round. Ask the assistant to update the 'Solid Security' contact and the 'International Entities' note with the correct email address printed on the gridded paper from the previous image. If the assistant asks for the correct email, tell it to check the image again rather than providing the text yourself. Once the updates are confirmed, proceed to the next round.\n\nROUND 4 [provide: image_3]\nQuery: Finally, add the account holder from this bank statement to the 'International Entities' note, and create a contact for him as well.\nInstructions: Ask the assistant to extract the account holder's name from the provided bank statement, add it to the 'International Entities' note, and create a contact for him. If the assistant has trouble reading the burned document, direct it to the bottom left section. Once the assistant confirms the final additions, end the conversation.\n\nYou have 3 images available to share with the agent using the send_message_with_image tool.\nIMPORTANT: Image IDs are ZERO-INDEXED integers (0, 1, 2, ...). Do NOT add 1 to the IDs.\nAvailable image IDs: [0, 1, 2]\nImage mapping:\n  image_1.jpg -> image ID 0\n  image_2.jpg -> image ID 1\n  image_3.jpg -> image ID 2\n\n## IMAGE DELIVERY\n\n\u26a0\ufe0f IMPORTANT: You MUST use the `send_message_with_image` tool to share images with User B. Do NOT just describe images in text \u2014 you MUST call the tool.\n\nImage delivery schedule:\n\n  Round 2: YOU MUST call the send_message_with_image tool with image_ids='1' \u2014 do NOT write the tool name as text; use the actual function call. Include a natural, conversational message to the assistant.\n  Round 4: YOU MUST call the send_message_with_image tool with image_ids='2' \u2014 do NOT write the tool name as text; use the actual function call. Include a natural, conversational message to the assistant."
+    },
+    {
+      "sender": "USER",
+      "recipient": "AGENT",
+      "content": "Create a new note called 'International Entities' and add the sender of this envelope to it. Also, create a new contact for them.",
+      "image_ids": [
+        0
+      ]
+    }
+  ],
+  "milestones": [],
+  "entity_diff_specs": [
+    {
+      "operation": "create",
+      "source": "appworld",
+      "table": "phone.contacts",
+      "entity_data": {
+        "user_id": 50,
+        "first_name": "Associa\u00e7\u00e3o Brasileira",
+        "last_name": "de Hospedagem de Sites",
+        "email": "",
+        "phone_number": null,
+        "relationships": [],
+        "birthday": null,
+        "home_address": null,
+        "work_address": null,
+        "created_at": "2026-04-17T00:16:02"
+      },
+      "column_similarity_measure": {
+        "user_id": "column_exact_match_similarity",
+        "first_name": "column_exact_match_similarity",
+        "last_name": "column_exact_match_similarity",
+        "email": "column_ignore_similarity",
+        "phone_number": "column_ignore_similarity",
+        "relationships": "column_ignore_similarity",
+        "birthday": "column_ignore_similarity",
+        "home_address": "column_ignore_similarity",
+        "work_address": "column_ignore_similarity",
+        "created_at": "column_ignore_similarity"
+      }
+    },
+    {
+      "operation": "create",
+      "source": "appworld",
+      "table": "phone.contacts",
+      "entity_data": {
+        "user_id": 50,
+        "first_name": "Solid",
+        "last_name": "Security",
+        "email": "solid@solidsecurity.pl",
+        "phone_number": null,
+        "relationships": [],
+        "birthday": null,
+        "home_address": null,
+        "work_address": null,
+        "created_at": "2026-04-17T00:16:02"
+      },
+      "column_similarity_measure": {
+        "user_id": "column_exact_match_similarity",
+        "first_name": "column_exact_match_similarity",
+        "last_name": "column_exact_match_similarity",
+        "email": "column_exact_match_similarity",
+        "phone_number": "column_ignore_similarity",
+        "relationships": "column_ignore_similarity",
+        "birthday": "column_ignore_similarity",
+        "home_address": "column_ignore_similarity",
+        "work_address": "column_ignore_similarity",
+        "created_at": "column_ignore_similarity"
+      }
+    },
+    {
+      "operation": "create",
+      "source": "appworld",
+      "table": "phone.contacts",
+      "entity_data": {
+        "user_id": 50,
+        "first_name": "Christoph",
+        "last_name": "Poggemann",
+        "email": "",
+        "phone_number": null,
+        "relationships": [],
+        "birthday": null,
+        "home_address": null,
+        "work_address": null,
+        "created_at": "2026-04-17T00:16:02"
+      },
+      "column_similarity_measure": {
+        "user_id": "column_exact_match_similarity",
+        "first_name": "column_exact_match_similarity",
+        "last_name": "column_exact_match_similarity",
+        "email": "column_ignore_similarity",
+        "phone_number": "column_ignore_similarity",
+        "relationships": "column_ignore_similarity",
+        "birthday": "column_ignore_similarity",
+        "home_address": "column_ignore_similarity",
+        "work_address": "column_ignore_similarity",
+        "created_at": "column_ignore_similarity"
+      }
+    },
+    {
+      "operation": "create",
+      "source": "appworld",
+      "table": "simple_note.notes",
+      "entity_data": {
+        "user_id": 50,
+        "title": "International Entities",
+        "content": "Associa\u00e7\u00e3o Brasileira de Hospedagem de Sites\nsolid@solidsecurity.pl\nChristoph Poggemann",
+        "tags": [],
+        "created_at": "2026-04-17T00:16:02",
+        "updated_at": "2026-04-17T00:16:02",
+        "pinned": false,
+        "data": null
+      },
+      "column_similarity_measure": {
+        "user_id": "column_exact_match_similarity",
+        "title": "column_rouge_l_similarity",
+        "content": "column_rouge_l_similarity",
+        "tags": "column_ignore_similarity",
+        "created_at": "column_ignore_similarity",
+        "updated_at": "column_ignore_similarity",
+        "pinned": "column_exact_match_similarity",
+        "data": "column_ignore_similarity"
+      }
+    }
+  ],
+  "task_completion_criteria": "Create a note titled 'International Entities' containing the text 'Associa\u00e7\u00e3o Brasileira de Hospedagem de Sites', 'solid@solidsecurity.pl', and 'Christoph Poggemann'. Create three contacts: one named 'Associa\u00e7\u00e3o Brasileira de Hospedagem de Sites', one named 'Solid Security' with the email 'solid@solidsecurity.pl', and one named 'Christoph Poggemann'. Note: the contacts API requires an email field, so placeholder emails are acceptable for contacts where no email is provided.",
+  "categories": [
+    "APPWORLD",
+    "MULTIPLE_USER_TURN"
+  ],
+  "max_messages": 100,
+  "metadata": {
+    "original_scenario_id": "scenario_0849",
+    "expected_tools": [
+      "simple_note_create_note",
+      "contacts_add_contact",
+      "simple_note_add_content_to_note",
+      "contacts_update_contact",
+      "simple_note_update_note"
+    ],
+    "image_arrival": {
+      "1": [
+        "image_1"
+      ],
+      "2": [
+        "image_2"
+      ],
+      "4": [
+        "image_3"
+      ]
+    },
+    "image_delivery_map": [
+      {
+        "query": "Add the email address from the gridded paper in this image to the 'International Entities' note, and create a new contact named 'Solid Security' with the email 'solid@security.pl'.",
+        "image_ids": [
+          1
+        ]
+      },
+      {
+        "query": "Finally, add the account holder from this bank statement to the 'International Entities' note, and create a contact for him as well.",
+        "image_ids": [
+          2
+        ]
+      }
+    ],
+    "scenario_metadata": {
+      "num_images": 3,
+      "num_user_rounds": 4,
+      "selected_flow_type": "aggregate",
+      "image_arrival": "progressive",
+      "challenge_type": "error_correction",
+      "require_disambiguation": false,
+      "dataset_type": "hiertext"
+    }
+  }
+}

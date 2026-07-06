@@ -1,0 +1,374 @@
+{
+  "name": "scenario_0791",
+  "base_scenario": "base",
+  "description": "The user is curating their Spotify library and playlists based on various songs, albums, and playlists they encountered while working and browsing across different desktop environments. (UI mode)",
+  "difficulty": "easy",
+  "appworld_base_task": "_base_",
+  "device_state_id": "mar_blac@gmail.com",
+  "reference_time": "2026-04-17T00:14:18.000024+00:00",
+  "agentsandbox_entities": {},
+  "appworld_entities": {
+    "spotify.users": [
+      {
+        "id": 200,
+        "first_name": "John",
+        "last_name": "Doe",
+        "email": "john.doe@example.com",
+        "password": "default_password",
+        "created_at": "2020-01-01T00:00:00",
+        "last_logged_in": "2020-01-01T00:00:00",
+        "verified": true
+      }
+    ],
+    "spotify.artists": [
+      {
+        "id": 200,
+        "name": "Beverley Knight",
+        "genre": "R&B",
+        "created_at": "2020-01-01T00:00:00"
+      },
+      {
+        "id": 201,
+        "name": "Dua Lipa",
+        "genre": "Pop",
+        "created_at": "2020-01-01T00:00:00"
+      },
+      {
+        "id": 202,
+        "name": "Jacob Luttrell",
+        "genre": "Pop",
+        "created_at": "2020-01-01T00:00:00"
+      },
+      {
+        "id": 203,
+        "name": "Unknown Artist",
+        "genre": "Pop",
+        "created_at": "2020-01-01T00:00:00"
+      },
+      {
+        "id": 204,
+        "name": "Wolfgang Amadeus Mozart",
+        "genre": "Classical",
+        "created_at": "2020-01-01T00:00:00"
+      }
+    ],
+    "spotify.songs": [
+      {
+        "id": 200,
+        "title": "Shoulda Woulda Coulda",
+        "artist_ids": [
+          200
+        ],
+        "album_id": null,
+        "duration": 210,
+        "release_date": "2002-01-01T00:00:00",
+        "genre": "R&B",
+        "play_count": 1000,
+        "rating": 4.5,
+        "like_count": 500,
+        "review_count": 50
+      },
+      {
+        "id": 201,
+        "title": "Satisfied",
+        "artist_ids": [
+          201
+        ],
+        "album_id": null,
+        "duration": 180,
+        "release_date": "2020-01-01T00:00:00",
+        "genre": "Pop",
+        "play_count": 10000,
+        "rating": 4.8,
+        "like_count": 5000,
+        "review_count": 500
+      },
+      {
+        "id": 202,
+        "title": "Mad (Live Session, Los Angeles, CA 2021 | Explicit)",
+        "artist_ids": [
+          202
+        ],
+        "album_id": null,
+        "duration": 240,
+        "release_date": "2021-01-01T00:00:00",
+        "genre": "Pop",
+        "play_count": 2000,
+        "rating": 4.6,
+        "like_count": 800,
+        "review_count": 80
+      },
+      {
+        "id": 203,
+        "title": "We Just Call It Love",
+        "artist_ids": [
+          203
+        ],
+        "album_id": null,
+        "duration": 200,
+        "release_date": "2010-01-01T00:00:00",
+        "genre": "Pop",
+        "play_count": 1500,
+        "rating": 4.2,
+        "like_count": 300,
+        "review_count": 20
+      }
+    ],
+    "spotify.albums": [
+      {
+        "id": 200,
+        "title": "Mozart: Symphonies No. 40 & 41",
+        "artist_ids": [
+          204
+        ],
+        "release_date": "1990-01-01T00:00:00",
+        "genre": "Classical",
+        "rating": 4.9,
+        "like_count": 10000,
+        "review_count": 1000
+      },
+      {
+        "id": 201,
+        "title": "Mozart: Piano Concertos No. 20 & 23",
+        "artist_ids": [
+          204
+        ],
+        "release_date": "1995-01-01T00:00:00",
+        "genre": "Classical",
+        "rating": 4.8,
+        "like_count": 8000,
+        "review_count": 800
+      }
+    ],
+    "spotify.playlists": [
+      {
+        "id": 800,
+        "title": "City Pop: 霓虹东京80年代的浪漫",
+        "user_id": 200,
+        "created_at": "2023-01-01T00:00:00",
+        "is_public": true,
+        "rating": 4.7,
+        "like_count": 2000,
+        "review_count": 100
+      },
+      {
+        "id": 801,
+        "title": "City Pop Classics",
+        "user_id": 200,
+        "created_at": "2023-01-01T00:00:00",
+        "is_public": true,
+        "rating": 4.5,
+        "like_count": 1000,
+        "review_count": 50
+      }
+    ],
+    "spotify.user_library_albums": [
+      {
+        "id": 800,
+        "user_id": 42,
+        "album_id": 200,
+        "created_at": "2025-01-01T00:00:00"
+      }
+    ],
+    "gmail.users": []
+  },
+  "image_paths": [
+    "screenspotpro/images/android_studio_mac/screenshot_2024-11-28_18-03-58.png",
+    "screenspotpro/images/common_mac/Screenshot 2024-11-07 at 1.51.42 PM.png",
+    "screenspotpro/images/pycharm_mac/screenshot_2024-10-24_11-47-22.png",
+    "screenspotpro/images/vivado_windows/screenshot_2024-12-09_23-54-20.png",
+    "screenspotpro/images/android_studio_mac/screenshot_2024-11-28_17-01-46.png",
+    "screenspotpro/images/android_studio_mac/screenshot_2024-11-28_18-01-01.png"
+  ],
+  "messages": [
+    {
+      "sender": "SYSTEM",
+      "recipient": "USER",
+      "content": "{{USER_INSTRUCTION}}ROUND 1 [provide: image_1, image_6]\nQuery: Create a Spotify playlist called 'Screenshot Mix'. Then find the songs currently playing in the music players of these two screenshots and add them to it.\nInstructions: Ask the assistant to create a new Spotify playlist named 'Screenshot Mix', and to add the two songs currently playing in the music players shown in the screenshots to this new playlist. If the assistant asks where to find the songs, direct it to the center windows showing a record player interface. Once the assistant confirms the playlist is created and the songs are added, proceed to the next round.\n\nROUND 2 [provide: image_4, image_5]\nQuery: Find the 'City Pop' playlist shown in the music app of the first new screenshot and like it on Spotify — I'll confirm which one if there are multiple matches. Then, find the live session song playing in the second screenshot and add it to my 'Screenshot Mix' playlist.\nInstructions: Ask the assistant to like the 'City Pop' playlist visible in the music app screenshot, and to add the live session song from the second screenshot to your 'Screenshot Mix' playlist. The assistant should find multiple playlists matching 'City Pop' on Spotify. When it presents them or asks which one to like, select the one with Chinese characters in its title (matching the screenshot exactly) via `ui_user_interact`. If no interactive UI is shown, tell the assistant you want the one with the Chinese characters in the title, exactly as it appears in the screenshot. Once both actions are confirmed, proceed to the next round.\n\nROUND 3 [provide: image_2, image_3]\nQuery: I've decided I don't want the Dua Lipa song in the 'Screenshot Mix' playlist anymore, so please remove it. Also, remove the old Mozart symphonies album from my library, and instead add the Mozart album shown in the top right of the first new screenshot. Finally, look at the top menu bar of the second screenshot to find the playing song, and add it to the 'Screenshot Mix' playlist.\nInstructions: Ask the assistant to remove the Dua Lipa song from your 'Screenshot Mix' playlist, remove your existing Mozart symphonies album from your library, and add the Mozart album visible in the top right of the Apple Music window in the first screenshot to your library. Also, ask it to add the song playing in the top menu bar of the second screenshot to the 'Screenshot Mix' playlist. If the assistant needs help finding the new Mozart album, tell it to look in the top right corner of the music app window. Once the assistant confirms all updates are complete, end the conversation.\n\nYou have 6 images available to share with the agent using the send_message_with_image tool.\nIMPORTANT: Image IDs are ZERO-INDEXED integers (0, 1, 2, ...). Do NOT add 1 to the IDs.\nAvailable image IDs: [0, 1, 2, 3, 4, 5]\nImage mapping:\n  image_1.jpg -> image ID 0\n  image_2.jpg -> image ID 1\n  image_3.jpg -> image ID 2\n  image_4.jpg -> image ID 3\n  image_5.jpg -> image ID 4\n  image_6.jpg -> image ID 5\n\n## IMAGE DELIVERY\n\n⚠️ IMPORTANT: You MUST use the `send_message_with_image` tool to share images with User B. Do NOT just describe images in text — you MUST call the tool.\n\nImage delivery schedule:\n\n  Round 2: YOU MUST call the send_message_with_image tool with image_ids='3,4' — do NOT write the tool name as text; use the actual function call. Include a natural, conversational message to the assistant.\n  Round 3: YOU MUST call the send_message_with_image tool with image_ids='1,2' — do NOT write the tool name as text; use the actual function call. Include a natural, conversational message to the assistant."
+    },
+    {
+      "sender": "USER",
+      "recipient": "AGENT",
+      "content": "Create a Spotify playlist called 'Screenshot Mix'. Then find the songs currently playing in the music players of these two screenshots and add them to it.",
+      "image_ids": [
+        0,
+        5
+      ]
+    }
+  ],
+  "milestones": [],
+  "entity_diff_specs": [
+    {
+      "operation": "create",
+      "source": "appworld",
+      "table": "spotify.playlists",
+      "entity_data": {
+        "title": "Screenshot Mix",
+        "user_id": 42,
+        "created_at": "2026-04-17T00:14:18",
+        "is_public": false,
+        "rating": 0.0,
+        "like_count": 0,
+        "review_count": 0
+      },
+      "column_similarity_measure": {
+        "title": "column_rouge_l_similarity",
+        "user_id": "column_exact_match_similarity",
+        "created_at": "column_ignore_similarity",
+        "is_public": "column_exact_match_similarity",
+        "rating": "column_exact_match_similarity",
+        "like_count": "column_exact_match_similarity",
+        "review_count": "column_exact_match_similarity"
+      }
+    },
+    {
+      "operation": "create",
+      "source": "appworld",
+      "table": "spotify.playlist_songs",
+      "entity_data": {
+        "playlist_id": 802,
+        "song_id": 200,
+        "added_at": "2026-04-17T00:14:18"
+      },
+      "column_similarity_measure": {
+        "playlist_id": "column_ignore_similarity",
+        "song_id": "column_exact_match_similarity",
+        "added_at": "column_ignore_similarity"
+      }
+    },
+    {
+      "operation": "create",
+      "source": "appworld",
+      "table": "spotify.playlist_songs",
+      "entity_data": {
+        "playlist_id": 802,
+        "song_id": 202,
+        "added_at": "2026-04-17T00:14:18"
+      },
+      "column_similarity_measure": {
+        "playlist_id": "column_ignore_similarity",
+        "song_id": "column_exact_match_similarity",
+        "added_at": "column_ignore_similarity"
+      }
+    },
+    {
+      "operation": "create",
+      "source": "appworld",
+      "table": "spotify.playlist_songs",
+      "entity_data": {
+        "playlist_id": 802,
+        "song_id": 203,
+        "added_at": "2026-04-17T00:14:18"
+      },
+      "column_similarity_measure": {
+        "playlist_id": "column_ignore_similarity",
+        "song_id": "column_exact_match_similarity",
+        "added_at": "column_ignore_similarity"
+      }
+    },
+    {
+      "operation": "create",
+      "source": "appworld",
+      "table": "spotify.playlist_likes",
+      "entity_data": {
+        "user_id": 42,
+        "playlist_id": 800,
+        "liked_at": "2026-04-17T00:14:18"
+      },
+      "column_similarity_measure": {
+        "user_id": "column_exact_match_similarity",
+        "playlist_id": "column_ignore_similarity",
+        "liked_at": "column_ignore_similarity"
+      }
+    },
+    {
+      "operation": "create",
+      "source": "appworld",
+      "table": "spotify.user_library_albums",
+      "entity_data": {
+        "user_id": 42,
+        "album_id": 201,
+        "created_at": "2026-04-17T00:14:18"
+      },
+      "column_similarity_measure": {
+        "user_id": "column_exact_match_similarity",
+        "album_id": "column_exact_match_similarity",
+        "created_at": "column_ignore_similarity"
+      }
+    },
+    {
+      "operation": "delete",
+      "source": "appworld",
+      "table": "spotify.user_library_albums",
+      "entity_id_column": "id",
+      "entity_id_value": 800,
+      "column_similarity_measure": {
+        "id": "column_exact_match_similarity"
+      }
+    }
+  ],
+  "task_completion_criteria": "Create a Spotify playlist named 'Screenshot Mix' containing the songs 'Shoulda Woulda Coulda' by Beverley Knight, 'Mad (Live Session, Los Angeles, CA 2021 | Explicit)' by Jacob Luttrell, and 'We Just Call It Love'. Like the Spotify playlist 'City Pop: 霓虹东京80年代的浪漫'. Remove the album 'Mozart: Symphonies No. 40 & 41' from the user's library, and add the album 'Mozart: Piano Concertos No. 20 & 23' to the library. Ensure the song 'Satisfied' by Dua Lipa is removed from the 'Screenshot Mix' playlist.\n\nUI Requirements:\n- Round 2: The agent must present the matching City Pop playlists in a structured interactive UI that lets the user select which playlist to like.",
+  "categories": [
+    "APPWORLD",
+    "MULTIPLE_USER_TURN",
+    "UI_MODE"
+  ],
+  "max_messages": 100,
+  "metadata": {
+    "original_scenario_id": "scenario_0791",
+    "expected_tools": [
+      "spotify_create_playlist",
+      "spotify_show_song",
+      "spotify_add_song_to_playlist",
+      "spotify_show_playlist",
+      "spotify_like_playlist",
+      "spotify_remove_song_from_playlist",
+      "spotify_show_album",
+      "spotify_add_album_to_library",
+      "render_ui_screen",
+      "show_ui_to_user",
+      "ui_user_interact",
+      "ui_get_quick_start",
+      "ui_get_item_details"
+    ],
+    "image_arrival": {
+      "1": [
+        "image_1",
+        "image_6"
+      ],
+      "2": [
+        "image_4",
+        "image_5"
+      ],
+      "3": [
+        "image_2",
+        "image_3"
+      ]
+    },
+    "image_delivery_map": [
+      {
+        "query": "Find the 'City Pop' playlist shown in the music app of the first new screenshot and like it on Spotify — I'll confirm which one if there are multiple matches. Then, find the live session song playing in the second screenshot and add it to my 'Screenshot Mix' playlist.",
+        "image_ids": [
+          3,
+          4
+        ]
+      },
+      {
+        "query": "I've decided I don't want the Dua Lipa song in the 'Screenshot Mix' playlist anymore, so please remove it. Also, remove the old Mozart symphonies album from my library, and instead add the Mozart album shown in the top right of the first new screenshot. Finally, look at the top menu bar of the second screenshot to find the playing song, and add it to the 'Screenshot Mix' playlist.",
+        "image_ids": [
+          1,
+          2
+        ]
+      }
+    ],
+    "scenario_metadata": {
+      "num_images": 6,
+      "num_user_rounds": 3,
+      "selected_flow_type": "aggregate",
+      "image_arrival": "progressive",
+      "challenge_type": "state_mutation",
+      "require_disambiguation": true,
+      "dataset_type": "screenspotpro"
+    }
+  }
+}

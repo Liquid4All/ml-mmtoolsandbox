@@ -1,0 +1,225 @@
+{
+  "name": "scenario_0937",
+  "base_scenario": "base",
+  "description": "Ashlee is taking an art history class and is organizing her research topics using Todoist based on images of artworks she has collected.",
+  "difficulty": "easy",
+  "appworld_base_task": "_base_",
+  "device_state_id": "ashlee_martinez@gmail.com",
+  "reference_time": "2026-04-17T00:18:54.586492+00:00",
+  "agentsandbox_entities": {},
+  "appworld_entities": {
+    "gmail.users": []
+  },
+  "image_paths": [
+    "worldvqa/images/854.jpg",
+    "worldvqa/images/860.jpg",
+    "worldvqa/images/868.jpg"
+  ],
+  "messages": [
+    {
+      "sender": "SYSTEM",
+      "recipient": "USER",
+      "content": "{{USER_INSTRUCTION}}ROUND 1 [provide: image_1, image_2, image_3]\nQuery: I need to study these three artworks for my class. Can you identify them, create a new Todoist project called 'Art History', and add the title of each one as a separate task?\nInstructions: Ask the assistant to identify the three artworks shown in the provided images, create a new Todoist project called 'Art History', and add each artwork's name as a separate task in that project. If the assistant provides the names and asks for confirmation before creating the tasks, approve them. Do not provide the names of the artworks yourself. Once the assistant confirms all three tasks have been created in the project, move to the next round.\n\nROUND 2\nQuery: Actually, I changed my mind. I want to focus exclusively on murals for this project. Please delete the task for the sculpture, and for the remaining ones that are murals, add a sub-task to 'research historical context'.\nInstructions: Tell the assistant that you have changed your mind and want to focus your topic entirely on murals. Ask the assistant to remove the task for the artwork that is a sculpture, and then add a sub-task to 'research historical context' for each of the remaining mural tasks. If the assistant is unsure which task corresponds to the sculpture, instruct it to review the visual details from the images provided in the first round. Once the assistant confirms the sculpture task has been deleted and the sub-tasks are successfully added to the murals, conclude the conversation.\n\nYou have 3 images available to share with the agent using the send_message_with_image tool.\nIMPORTANT: Image IDs are ZERO-INDEXED integers (0, 1, 2, ...). Do NOT add 1 to the IDs.\nAvailable image IDs: [0, 1, 2]\nImage mapping:\n  image_1.jpg -> image ID 0\n  image_2.jpg -> image ID 1\n  image_3.jpg -> image ID 2"
+    },
+    {
+      "sender": "USER",
+      "recipient": "AGENT",
+      "content": "I need to study these three artworks for my class. Can you identify them, create a new Todoist project called 'Art History', and add the title of each one as a separate task?",
+      "image_ids": [
+        0,
+        1,
+        2
+      ]
+    }
+  ],
+  "milestones": [],
+  "entity_diff_specs": [
+    {
+      "operation": "create",
+      "source": "appworld",
+      "table": "todoist.projects",
+      "entity_data": {
+        "user_id": 75,
+        "name": "Art History",
+        "color": "charcoal",
+        "is_inbox": false,
+        "description": "",
+        "created_at": "2026-04-17T00:18:54"
+      },
+      "column_similarity_measure": {
+        "user_id": "column_exact_match_similarity",
+        "name": "column_rouge_l_similarity",
+        "color": "column_exact_match_similarity",
+        "is_inbox": "column_exact_match_similarity",
+        "description": "column_ignore_similarity",
+        "created_at": "column_ignore_similarity"
+      }
+    },
+    {
+      "operation": "create",
+      "source": "appworld",
+      "table": "todoist.tasks",
+      "entity_data": {
+        "project_id": 400,
+        "section_id": null,
+        "user_id": 75,
+        "title": "The murals in the Boston Public Library",
+        "description": null,
+        "due_date": null,
+        "priority": "medium",
+        "is_completed": false,
+        "duration": null,
+        "duration_unit": null,
+        "order_index": 0,
+        "assignee_id": null,
+        "assigner_id": null,
+        "created_at": "2026-04-17T00:18:54"
+      },
+      "column_similarity_measure": {
+        "project_id": "column_ignore_similarity",
+        "section_id": "column_ignore_similarity",
+        "user_id": "column_exact_match_similarity",
+        "title": "column_rouge_l_similarity",
+        "description": "column_ignore_similarity",
+        "due_date": "column_ignore_similarity",
+        "priority": "column_exact_match_similarity",
+        "is_completed": "column_exact_match_similarity",
+        "duration": "column_ignore_similarity",
+        "duration_unit": "column_ignore_similarity",
+        "order_index": "column_ignore_similarity",
+        "assignee_id": "column_ignore_similarity",
+        "assigner_id": "column_ignore_similarity",
+        "created_at": "column_ignore_similarity"
+      }
+    },
+    {
+      "operation": "create",
+      "source": "appworld",
+      "table": "todoist.tasks",
+      "entity_data": {
+        "project_id": 400,
+        "section_id": null,
+        "user_id": 75,
+        "title": "Bamiyan murals",
+        "description": null,
+        "due_date": null,
+        "priority": "medium",
+        "is_completed": false,
+        "duration": null,
+        "duration_unit": null,
+        "order_index": 1,
+        "assignee_id": null,
+        "assigner_id": null,
+        "created_at": "2026-04-17T00:18:54"
+      },
+      "column_similarity_measure": {
+        "project_id": "column_ignore_similarity",
+        "section_id": "column_ignore_similarity",
+        "user_id": "column_exact_match_similarity",
+        "title": "column_rouge_l_similarity",
+        "description": "column_ignore_similarity",
+        "due_date": "column_ignore_similarity",
+        "priority": "column_exact_match_similarity",
+        "is_completed": "column_exact_match_similarity",
+        "duration": "column_ignore_similarity",
+        "duration_unit": "column_ignore_similarity",
+        "order_index": "column_ignore_similarity",
+        "assignee_id": "column_ignore_similarity",
+        "assigner_id": "column_ignore_similarity",
+        "created_at": "column_ignore_similarity"
+      }
+    },
+    {
+      "operation": "create",
+      "source": "appworld",
+      "table": "todoist.sub_tasks",
+      "entity_data": {
+        "task_id": 6500,
+        "title": "research historical context",
+        "description": null,
+        "due_date": null,
+        "priority": "medium",
+        "is_completed": false,
+        "duration": null,
+        "duration_unit": null,
+        "order_index": 0,
+        "created_at": "2026-04-17T00:18:54"
+      },
+      "column_similarity_measure": {
+        "task_id": "column_ignore_similarity",
+        "title": "column_rouge_l_similarity",
+        "description": "column_ignore_similarity",
+        "due_date": "column_ignore_similarity",
+        "priority": "column_exact_match_similarity",
+        "is_completed": "column_exact_match_similarity",
+        "duration": "column_ignore_similarity",
+        "duration_unit": "column_ignore_similarity",
+        "order_index": "column_ignore_similarity",
+        "created_at": "column_ignore_similarity"
+      }
+    },
+    {
+      "operation": "create",
+      "source": "appworld",
+      "table": "todoist.sub_tasks",
+      "entity_data": {
+        "task_id": 6501,
+        "title": "research historical context",
+        "description": null,
+        "due_date": null,
+        "priority": "medium",
+        "is_completed": false,
+        "duration": null,
+        "duration_unit": null,
+        "order_index": 0,
+        "created_at": "2026-04-17T00:18:54"
+      },
+      "column_similarity_measure": {
+        "task_id": "column_ignore_similarity",
+        "title": "column_rouge_l_similarity",
+        "description": "column_ignore_similarity",
+        "due_date": "column_ignore_similarity",
+        "priority": "column_exact_match_similarity",
+        "is_completed": "column_exact_match_similarity",
+        "duration": "column_ignore_similarity",
+        "duration_unit": "column_ignore_similarity",
+        "order_index": "column_ignore_similarity",
+        "created_at": "column_ignore_similarity"
+      }
+    }
+  ],
+  "task_completion_criteria": "A Todoist project named 'Art History' exists containing exactly two tasks: one for 'The murals in the Boston Public Library' and one for 'Bamiyan murals' (or similar phrasing). Each of these two tasks must have a sub-task with the title 'research historical context'. The project must not contain a task for the 'Joan of Arc Listening to the Voice of the Virgin' sculpture.",
+  "categories": [
+    "APPWORLD",
+    "MULTIPLE_USER_TURN"
+  ],
+  "max_messages": 100,
+  "metadata": {
+    "original_scenario_id": "scenario_0937",
+    "expected_tools": [
+      "web_search_serper",
+      "todoist_create_project",
+      "todoist_create_task",
+      "todoist_show_tasks",
+      "todoist_delete_task",
+      "todoist_create_sub_task"
+    ],
+    "image_arrival": {
+      "1": [
+        "image_1",
+        "image_2",
+        "image_3"
+      ]
+    },
+    "image_delivery_map": [],
+    "scenario_metadata": {
+      "num_images": 3,
+      "num_user_rounds": 2,
+      "selected_flow_type": "filter",
+      "image_arrival": "upfront",
+      "challenge_type": "goal_change",
+      "require_disambiguation": false,
+      "dataset_type": "worldvqa"
+    }
+  }
+}

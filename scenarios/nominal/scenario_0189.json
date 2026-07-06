@@ -1,0 +1,441 @@
+{
+  "name": "scenario_0189",
+  "base_scenario": "base",
+  "description": "Morgan is putting together a gift list for various friends and family members. They are using pictures of specific items they want to buy to progressively build an Amazon wish list before finally purchasing them.",
+  "difficulty": "easy",
+  "appworld_base_task": "_base_",
+  "device_state_id": "morgan-harrison@gmail.com",
+  "reference_time": "2026-04-16T23:56:08.244615+00:00",
+  "agentsandbox_entities": {},
+  "appworld_entities": {
+    "amazon.addresses": [
+      {
+        "id": 400,
+        "user_id": 17,
+        "name": "Home",
+        "street_address": "5754 Kaylee Trace Suite 282",
+        "city": "Seattle",
+        "state": "Washington",
+        "country": "USA",
+        "zip_code": 18299
+      },
+      {
+        "id": 401,
+        "user_id": 17,
+        "name": "Work",
+        "street_address": "406 Lindsay Courts Suite 522",
+        "city": "Seattle",
+        "state": "Washington",
+        "country": "USA",
+        "zip_code": 26281
+      }
+    ],
+    "amazon.sellers": [
+      {
+        "id": 200,
+        "name": "Amazon Official Store",
+        "rating": 4.8
+      }
+    ],
+    "amazon.products": [
+      {
+        "id": 200,
+        "product_type": "bags",
+        "name": "Canvas Tote Bag",
+        "description": "A durable and spacious canvas tote bag for everyday use.",
+        "seller_id": 200,
+        "price": 19.99,
+        "delivery_days": 3,
+        "inventory_quantity": 40,
+        "weight": 0.4,
+        "length": 14.0,
+        "width": 12.0,
+        "height": 4.0,
+        "color": "beige",
+        "relative_size": "medium",
+        "rating": 4.2,
+        "seller_rating": 4.8,
+        "has_variations": false
+      },
+      {
+        "id": 201,
+        "product_type": "bags",
+        "name": "Mummy bag",
+        "description": "A versatile and practical mummy bag perfect for new moms.",
+        "seller_id": 200,
+        "price": 45.99,
+        "delivery_days": 3,
+        "inventory_quantity": 25,
+        "weight": 0.8,
+        "length": 16.0,
+        "width": 10.0,
+        "height": 8.0,
+        "color": "pink",
+        "relative_size": "large",
+        "rating": 4.6,
+        "seller_rating": 4.8,
+        "has_variations": true
+      },
+      {
+        "id": 202,
+        "product_type": "toys",
+        "name": "Pogo stick",
+        "description": "A high-bounce pogo stick for kids and teens.",
+        "seller_id": 200,
+        "price": 35.5,
+        "delivery_days": 3,
+        "inventory_quantity": 15,
+        "weight": 2.5,
+        "length": 40.0,
+        "width": 10.0,
+        "height": 2.5,
+        "color": "blue",
+        "relative_size": "large",
+        "rating": 4.4,
+        "seller_rating": 4.8,
+        "has_variations": true
+      },
+      {
+        "id": 203,
+        "product_type": "clothing",
+        "name": "Irish Aran sweater",
+        "description": "A traditional woven Irish Aran sweater.",
+        "seller_id": 200,
+        "price": 85.0,
+        "delivery_days": 3,
+        "inventory_quantity": 30,
+        "weight": 1.2,
+        "length": 22.0,
+        "width": 18.0,
+        "height": 2.0,
+        "color": "cream",
+        "relative_size": "medium",
+        "rating": 4.9,
+        "seller_rating": 4.8,
+        "has_variations": true
+      },
+      {
+        "id": 204,
+        "product_type": "clothing",
+        "name": "Samue",
+        "description": "Authentic traditional Japanese Samue clothing.",
+        "seller_id": 200,
+        "price": 60.0,
+        "delivery_days": 3,
+        "inventory_quantity": 20,
+        "weight": 0.9,
+        "length": 20.0,
+        "width": 16.0,
+        "height": 1.5,
+        "color": "navy",
+        "relative_size": "medium",
+        "rating": 4.7,
+        "seller_rating": 4.8,
+        "has_variations": true
+      },
+      {
+        "id": 205,
+        "product_type": "bags",
+        "name": "Shell bag",
+        "description": "An elegant black shell-style handbag.",
+        "seller_id": 200,
+        "price": 55.0,
+        "delivery_days": 3,
+        "inventory_quantity": 50,
+        "weight": 0.6,
+        "length": 10.0,
+        "width": 8.0,
+        "height": 4.0,
+        "color": "black",
+        "relative_size": "small",
+        "rating": 4.5,
+        "seller_rating": 4.8,
+        "has_variations": false
+      },
+      {
+        "id": 206,
+        "product_type": "clothing",
+        "name": "Kangga",
+        "description": "Traditional vibrant Kangga garment.",
+        "seller_id": 200,
+        "price": 40.0,
+        "delivery_days": 3,
+        "inventory_quantity": 35,
+        "weight": 0.5,
+        "length": 15.0,
+        "width": 12.0,
+        "height": 1.0,
+        "color": "multicolor",
+        "relative_size": "medium",
+        "rating": 4.6,
+        "seller_rating": 4.8,
+        "has_variations": true
+      }
+    ],
+    "amazon.wish_list_entries": [
+      {
+        "id": 600,
+        "user_id": 17,
+        "product_id": 200,
+        "quantity": 1
+      }
+    ],
+    "gmail.users": []
+  },
+  "image_paths": [
+    "worldvqa/images/1379.jpg",
+    "worldvqa/images/1753.jpg",
+    "worldvqa/images/1192.jpg",
+    "worldvqa/images/1225.jpg",
+    "worldvqa/images/1378.jpg",
+    "worldvqa/images/1325.jpg"
+  ],
+  "messages": [
+    {
+      "sender": "SYSTEM",
+      "recipient": "USER",
+      "content": "{{USER_INSTRUCTION}}ROUND 1 [provide: image_1]\nQuery: I'm putting together a shopping list for some gifts. Please identify what style of bag is shown in this picture and add it to my Amazon wish list. Since this one looks much better for a new mom, please remove the 'Canvas Tote Bag' that's currently on my list.\nInstructions: Ask the assistant to identify the style of the pink bag in the image and add it to your Amazon wish list. Also, instruct it to remove the 'Canvas Tote Bag' that is already on your wish list, as the new bag is a better choice. If the assistant needs confirmation, provide it. Proceed to the next round once the wish list is updated.\n\nROUND 2 [provide: image_2, image_3]\nQuery: Next, I need you to identify the exact name of the toy the little girl is holding and what the woven fabric in the other picture is called. Please add an item for each to the same wish list.\nInstructions: Instruct the assistant to identify the specific toy the girl is holding in the first new image and the type of woven fabric shown in the second new image. Ask it to search for both of these items and add them to your wish list. If the agent gives generic names, point it back to the images to find the exact terms. Proceed once both are added.\n\nROUND 3 [provide: image_4, image_5]\nQuery: Also, identify what traditional clothing is shown in the first new image here and what style of bag is shown in the second one, and add them to my wish list as well.\nInstructions: Tell the agent to figure out the name of the traditional clothing worn in the first image and the specific style of the black handbag in the second image. Ask it to add both items to your wish list. Make sure it uses the specific style names rather than generic descriptions. Move on to the next round when finished.\n\nROUND 4 [provide: image_6]\nQuery: Add the traditional clothing shown in this last picture to the wish list. Also, I changed my mind about the very first pink bag I added\u2014please remove that bag from the wish list, and update the quantity of the black handbag from the previous pictures to 2.\nInstructions: Ask the assistant to identify the traditional garment in the new image and add it to the wish list. Then, tell it you changed your mind about the pink bag from the very first picture\u2014ask it to remove that bag from the wish list and increase the quantity of the black handbag you added earlier to 2. Proceed to the final round once the list is updated.\n\nROUND 5\nQuery: I'm ready to buy these items. Please move everything currently on my wish list into my shopping cart and place the order to my address.\nInstructions: Tell the agent you are ready to check out and ask it to move all items from your wish list into your shopping cart and place the order to your address. Since you have both a home and work address, the agent should ask which one to use. When it asks, clarify that the order should be shipped to your home address. If the agent picks the correct home address without asking, acknowledge its choice. End the conversation once the order is placed.\n\nYou have 6 images available to share with the agent using the send_message_with_image tool.\nIMPORTANT: Image IDs are ZERO-INDEXED integers (0, 1, 2, ...). Do NOT add 1 to the IDs.\nAvailable image IDs: [0, 1, 2, 3, 4, 5]\nImage mapping:\n  image_1.jpg -> image ID 0\n  image_2.jpg -> image ID 1\n  image_3.jpg -> image ID 2\n  image_4.jpg -> image ID 3\n  image_5.jpg -> image ID 4\n  image_6.jpg -> image ID 5\n\n## IMAGE DELIVERY\n\n\u26a0\ufe0f IMPORTANT: You MUST use the `send_message_with_image` tool to share images with User B. Do NOT just describe images in text \u2014 you MUST call the tool.\n\nImage delivery schedule:\n\n  Round 2: YOU MUST call the send_message_with_image tool with image_ids='1,2' \u2014 do NOT write the tool name as text; use the actual function call. Include a natural, conversational message to the assistant.\n  Round 3: YOU MUST call the send_message_with_image tool with image_ids='3,4' \u2014 do NOT write the tool name as text; use the actual function call. Include a natural, conversational message to the assistant.\n  Round 4: YOU MUST call the send_message_with_image tool with image_ids='5' \u2014 do NOT write the tool name as text; use the actual function call. Include a natural, conversational message to the assistant."
+    },
+    {
+      "sender": "USER",
+      "recipient": "AGENT",
+      "content": "I'm putting together a shopping list for some gifts. Please identify what style of bag is shown in this picture and add it to my Amazon wish list. Since this one looks much better for a new mom, please remove the 'Canvas Tote Bag' that's currently on my list.",
+      "image_ids": [
+        0
+      ]
+    }
+  ],
+  "milestones": [],
+  "entity_diff_specs": [
+    {
+      "operation": "create",
+      "source": "appworld",
+      "table": "amazon.orders",
+      "entity_data": {
+        "user_id": 17,
+        "address_id": 400,
+        "tax": 0.0,
+        "delivery_fee": 0.0,
+        "gift_wrap_fee": 0.0,
+        "discount": 0.0,
+        "payment_card_id": null,
+        "created_at": "2026-04-16T23:56:08",
+        "address_text": "5754 Kaylee Trace Suite 282, Seattle, Washington 18299",
+        "payment_card_digits": "1234",
+        "receipt_download_count": 0
+      },
+      "column_similarity_measure": {
+        "user_id": "column_exact_match_similarity",
+        "address_id": "column_exact_match_similarity",
+        "tax": "column_ignore_similarity",
+        "delivery_fee": "column_ignore_similarity",
+        "gift_wrap_fee": "column_exact_match_similarity",
+        "discount": "column_exact_match_similarity",
+        "payment_card_id": "column_ignore_similarity",
+        "created_at": "column_ignore_similarity",
+        "address_text": "column_ignore_similarity",
+        "payment_card_digits": "column_ignore_similarity",
+        "receipt_download_count": "column_exact_match_similarity"
+      }
+    },
+    {
+      "operation": "create",
+      "source": "appworld",
+      "table": "amazon.order_items",
+      "entity_data": {
+        "order_id": 3300,
+        "product_id": 202,
+        "ordered_quantity": 1,
+        "returned_quantity": 0,
+        "gift_wrap_quantity": 0,
+        "price": 35.5,
+        "expected_delivery_at": "2026-04-19T23:56:08",
+        "delivered_at": null
+      },
+      "column_similarity_measure": {
+        "order_id": "column_ignore_similarity",
+        "product_id": "column_exact_match_similarity",
+        "ordered_quantity": "column_exact_match_similarity",
+        "returned_quantity": "column_exact_match_similarity",
+        "gift_wrap_quantity": "column_exact_match_similarity",
+        "price": "column_exact_match_similarity",
+        "expected_delivery_at": "column_ignore_similarity",
+        "delivered_at": "column_ignore_similarity"
+      }
+    },
+    {
+      "operation": "create",
+      "source": "appworld",
+      "table": "amazon.order_items",
+      "entity_data": {
+        "order_id": 3300,
+        "product_id": 203,
+        "ordered_quantity": 1,
+        "returned_quantity": 0,
+        "gift_wrap_quantity": 0,
+        "price": 85.0,
+        "expected_delivery_at": "2026-04-19T23:56:08",
+        "delivered_at": null
+      },
+      "column_similarity_measure": {
+        "order_id": "column_ignore_similarity",
+        "product_id": "column_exact_match_similarity",
+        "ordered_quantity": "column_exact_match_similarity",
+        "returned_quantity": "column_exact_match_similarity",
+        "gift_wrap_quantity": "column_exact_match_similarity",
+        "price": "column_exact_match_similarity",
+        "expected_delivery_at": "column_ignore_similarity",
+        "delivered_at": "column_ignore_similarity"
+      }
+    },
+    {
+      "operation": "create",
+      "source": "appworld",
+      "table": "amazon.order_items",
+      "entity_data": {
+        "order_id": 3300,
+        "product_id": 204,
+        "ordered_quantity": 1,
+        "returned_quantity": 0,
+        "gift_wrap_quantity": 0,
+        "price": 60.0,
+        "expected_delivery_at": "2026-04-19T23:56:08",
+        "delivered_at": null
+      },
+      "column_similarity_measure": {
+        "order_id": "column_ignore_similarity",
+        "product_id": "column_exact_match_similarity",
+        "ordered_quantity": "column_exact_match_similarity",
+        "returned_quantity": "column_exact_match_similarity",
+        "gift_wrap_quantity": "column_exact_match_similarity",
+        "price": "column_exact_match_similarity",
+        "expected_delivery_at": "column_ignore_similarity",
+        "delivered_at": "column_ignore_similarity"
+      }
+    },
+    {
+      "operation": "create",
+      "source": "appworld",
+      "table": "amazon.order_items",
+      "entity_data": {
+        "order_id": 3300,
+        "product_id": 205,
+        "ordered_quantity": 2,
+        "returned_quantity": 0,
+        "gift_wrap_quantity": 0,
+        "price": 55.0,
+        "expected_delivery_at": "2026-04-19T23:56:08",
+        "delivered_at": null
+      },
+      "column_similarity_measure": {
+        "order_id": "column_ignore_similarity",
+        "product_id": "column_exact_match_similarity",
+        "ordered_quantity": "column_exact_match_similarity",
+        "returned_quantity": "column_exact_match_similarity",
+        "gift_wrap_quantity": "column_exact_match_similarity",
+        "price": "column_exact_match_similarity",
+        "expected_delivery_at": "column_ignore_similarity",
+        "delivered_at": "column_ignore_similarity"
+      }
+    },
+    {
+      "operation": "create",
+      "source": "appworld",
+      "table": "amazon.order_items",
+      "entity_data": {
+        "order_id": 3300,
+        "product_id": 206,
+        "ordered_quantity": 1,
+        "returned_quantity": 0,
+        "gift_wrap_quantity": 0,
+        "price": 40.0,
+        "expected_delivery_at": "2026-04-19T23:56:08",
+        "delivered_at": null
+      },
+      "column_similarity_measure": {
+        "order_id": "column_ignore_similarity",
+        "product_id": "column_exact_match_similarity",
+        "ordered_quantity": "column_exact_match_similarity",
+        "returned_quantity": "column_exact_match_similarity",
+        "gift_wrap_quantity": "column_exact_match_similarity",
+        "price": "column_exact_match_similarity",
+        "expected_delivery_at": "column_ignore_similarity",
+        "delivered_at": "column_ignore_similarity"
+      }
+    },
+    {
+      "operation": "delete",
+      "source": "appworld",
+      "table": "amazon.wish_list_entries",
+      "entity_id_column": "id",
+      "entity_id_value": 600,
+      "column_similarity_measure": {
+        "id": "column_exact_match_similarity"
+      }
+    }
+  ],
+  "task_completion_criteria": "Move a Pogo stick, an Irish Aran sweater, a Samue, two Shell bags, and a Kangga from the user's Amazon wish list to the shopping cart, and place the order to Morgan Burton's home address (5754 Kaylee Trace Suite 282, Seattle, Washington 18299). Ensure that the preexisting 'Canvas Tote Bag' and the temporarily added 'Mummy bag' are removed from the wish list.",
+  "categories": [
+    "APPWORLD",
+    "MULTIPLE_USER_TURN"
+  ],
+  "max_messages": 100,
+  "metadata": {
+    "original_scenario_id": "scenario_0189",
+    "expected_tools": [
+      "web_search_serper",
+      "amazon_add_product_to_wish_list",
+      "amazon_delete_product_from_wish_list",
+      "amazon_update_product_quantity_in_wish_list",
+      "amazon_move_product_from_wish_list_to_cart",
+      "amazon_place_order"
+    ],
+    "image_arrival": {
+      "1": [
+        "image_1"
+      ],
+      "2": [
+        "image_2",
+        "image_3"
+      ],
+      "3": [
+        "image_4",
+        "image_5"
+      ],
+      "4": [
+        "image_6"
+      ]
+    },
+    "image_delivery_map": [
+      {
+        "query": "Next, I need you to identify the exact name of the toy the little girl is holding and what the woven fabric in the other picture is called. Please add an item for each to the same wish list.",
+        "image_ids": [
+          1,
+          2
+        ]
+      },
+      {
+        "query": "Also, identify what traditional clothing is shown in the first new image here and what style of bag is shown in the second one, and add them to my wish list as well.",
+        "image_ids": [
+          3,
+          4
+        ]
+      },
+      {
+        "query": "Add the traditional clothing shown in this last picture to the wish list. Also, I changed my mind about the very first pink bag I added\u2014please remove that bag from the wish list, and update the quantity of the black handbag from the previous pictures to 2.",
+        "image_ids": [
+          5
+        ]
+      }
+    ],
+    "scenario_metadata": {
+      "num_images": 6,
+      "num_user_rounds": 5,
+      "selected_flow_type": "aggregate",
+      "image_arrival": "progressive",
+      "challenge_type": "state_mutation",
+      "require_disambiguation": true,
+      "dataset_type": "worldvqa"
+    }
+  }
+}

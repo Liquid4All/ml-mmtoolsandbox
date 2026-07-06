@@ -1,0 +1,238 @@
+{
+  "name": "scenario_0289",
+  "base_scenario": "base",
+  "description": "The user is organizing a list of potential items to purchase from a batch of random photos, specifically focusing on gifts or supplies for their children, and coordinating with the grandparents.",
+  "difficulty": "easy",
+  "appworld_base_task": "_base_",
+  "device_state_id": "spencer.powell@gmail.com",
+  "reference_time": "2026-04-16T23:59:03.785708+00:00",
+  "agentsandbox_entities": {},
+  "appworld_entities": {
+    "phone.contacts": [
+      {
+        "id": 200,
+        "user_id": 26,
+        "first_name": "Grandparents",
+        "last_name": "Powell",
+        "email": "grandparents@example.com",
+        "phone_number": null,
+        "relationships": [
+          "family"
+        ],
+        "birthday": null,
+        "home_address": null,
+        "work_address": null,
+        "created_at": "2025-10-01T10:00:00"
+      }
+    ],
+    "amazon.sellers": [
+      {
+        "id": 200,
+        "name": "Baby Store",
+        "rating": 4.8
+      }
+    ],
+    "amazon.products": [
+      {
+        "id": 200,
+        "product_type": "baby",
+        "name": "Dri-Bottoms diapers",
+        "description": "High absorbency diapers for babies.",
+        "seller_id": 200,
+        "price": 24.99,
+        "delivery_days": 2,
+        "inventory_quantity": 50,
+        "weight": 2.5,
+        "length": 10.0,
+        "width": 8.0,
+        "height": 12.0,
+        "color": null,
+        "relative_size": null,
+        "rating": 4.5,
+        "seller_rating": 4.8,
+        "has_variations": true
+      },
+      {
+        "id": 201,
+        "product_type": "toys",
+        "name": "Fisher-Price Star Stacker",
+        "description": "Classic stacking toy with star rings.",
+        "seller_id": 200,
+        "price": 14.99,
+        "delivery_days": 2,
+        "inventory_quantity": 30,
+        "weight": 1.0,
+        "length": 5.0,
+        "width": 5.0,
+        "height": 8.0,
+        "color": null,
+        "relative_size": null,
+        "rating": 4.7,
+        "seller_rating": 4.8,
+        "has_variations": false
+      },
+      {
+        "id": 202,
+        "product_type": "toys",
+        "name": "Wiffle bat set",
+        "description": "Plastic bat and ball set for kids.",
+        "seller_id": 200,
+        "price": 9.99,
+        "delivery_days": 3,
+        "inventory_quantity": 100,
+        "weight": 0.5,
+        "length": 32.0,
+        "width": 2.0,
+        "height": 2.0,
+        "color": null,
+        "relative_size": null,
+        "rating": 4.6,
+        "seller_rating": 4.8,
+        "has_variations": false
+      }
+    ],
+    "gmail.users": [
+      {
+        "id": 200,
+        "first_name": "Grandparents",
+        "last_name": "Powell",
+        "email": "grandparents@example.com",
+        "password": "default_password",
+        "status": "active",
+        "created_at": "2025-01-01T00:00:00",
+        "last_logged_in": "2025-01-01T00:00:00"
+      }
+    ]
+  },
+  "image_paths": [
+    "hiertext/images/test/6228b7a16f5804c6.jpg",
+    "hiertext/images/test/843be3d9e3cf0d64.jpg",
+    "hiertext/images/test/e82b8f468848d297.jpg",
+    "hiertext/images/test/d99e212000998498.jpg",
+    "hiertext/images/test/53416406626342ed.jpg"
+  ],
+  "messages": [
+    {
+      "sender": "SYSTEM",
+      "recipient": "USER",
+      "content": "{{USER_INSTRUCTION}}ROUND 1 [provide: image_1, image_2, image_3, image_4, image_5]\nQuery: I've got a bunch of photos of different products here. Can you filter through them, find the ones that are clearly meant for babies or children, and add those specific items to my Amazon shopping cart?\nInstructions: Ask the assistant to review the provided images, identify which products are intended for babies or children, search for them on Amazon, and add them to your shopping cart. If the assistant suggests adding adult items or household goods like the espresso cup, pencils, pasta cooker, or pills, politely remind it to only include the kids' items. Once the correct items are in your cart, move on to the next round.\n\nROUND 2\nQuery: Actually, I changed my mind. The grandparents were just asking for gift ideas, so I shouldn't buy these myself right now. Please move those kids' items out of my cart and put them in my wish list instead.\nInstructions: Tell the assistant that you've changed your mind about buying the items yourself because the grandparents need gift ideas. Ask the assistant to move the children's items it just added to your cart over to your wish list instead. Ensure the assistant confirms the items have been successfully moved before proceeding.\n\nROUND 3\nQuery: Perfect. Now send an email to grandparents@example.com letting them know I've saved the diapers, stacking toy, and wiffle bat to my wish list for them to check out.\nInstructions: Ask the assistant to draft and send an email to the grandparents' email address. The email should let them know that the specific children's items from the images have been saved to your wish list for them to consider. Ensure the message explicitly names the items you mentioned. Once the email is sent, you can end the conversation.\n\nYou have 5 images available to share with the agent using the send_message_with_image tool.\nIMPORTANT: Image IDs are ZERO-INDEXED integers (0, 1, 2, ...). Do NOT add 1 to the IDs.\nAvailable image IDs: [0, 1, 2, 3, 4]\nImage mapping:\n  image_1.jpg -> image ID 0\n  image_2.jpg -> image ID 1\n  image_3.jpg -> image ID 2\n  image_4.jpg -> image ID 3\n  image_5.jpg -> image ID 4"
+    },
+    {
+      "sender": "USER",
+      "recipient": "AGENT",
+      "content": "I've got a bunch of photos of different products here. Can you filter through them, find the ones that are clearly meant for babies or children, and add those specific items to my Amazon shopping cart?",
+      "image_ids": [
+        0,
+        1,
+        2,
+        3,
+        4
+      ]
+    }
+  ],
+  "milestones": [],
+  "entity_diff_specs": [
+    {
+      "operation": "create",
+      "source": "appworld",
+      "table": "gmail.emails",
+      "entity_data": {
+        "sender_id": 26,
+        "recipient_ids": [
+          200
+        ],
+        "subject": "Gift ideas saved to wish list",
+        "body": "Hi, I just wanted to let you know that I've saved the Dri-Bottoms diapers, Fisher-Price Star Stacker, and Wiffle bat set to my Amazon wish list for you to check out as gift ideas for the kids.",
+        "response_to_email_id": null,
+        "created_at": "2026-04-16T23:59:03"
+      },
+      "column_similarity_measure": {
+        "sender_id": "column_exact_match_similarity",
+        "recipient_ids": "column_exact_match_similarity",
+        "subject": "column_rouge_l_similarity",
+        "body": "column_rouge_l_similarity",
+        "response_to_email_id": "column_ignore_similarity",
+        "created_at": "column_ignore_similarity"
+      }
+    },
+    {
+      "operation": "create",
+      "source": "appworld",
+      "table": "amazon.wish_list_entries",
+      "entity_data": {
+        "user_id": 26,
+        "product_id": 200,
+        "quantity": 1
+      },
+      "column_similarity_measure": {
+        "user_id": "column_exact_match_similarity",
+        "product_id": "column_exact_match_similarity",
+        "quantity": "column_exact_match_similarity"
+      }
+    },
+    {
+      "operation": "create",
+      "source": "appworld",
+      "table": "amazon.wish_list_entries",
+      "entity_data": {
+        "user_id": 26,
+        "product_id": 201,
+        "quantity": 1
+      },
+      "column_similarity_measure": {
+        "user_id": "column_exact_match_similarity",
+        "product_id": "column_exact_match_similarity",
+        "quantity": "column_exact_match_similarity"
+      }
+    },
+    {
+      "operation": "create",
+      "source": "appworld",
+      "table": "amazon.wish_list_entries",
+      "entity_data": {
+        "user_id": 26,
+        "product_id": 202,
+        "quantity": 1
+      },
+      "column_similarity_measure": {
+        "user_id": "column_exact_match_similarity",
+        "product_id": "column_exact_match_similarity",
+        "quantity": "column_exact_match_similarity"
+      }
+    }
+  ],
+  "task_completion_criteria": "Add the Dri-Bottoms diapers, Fisher-Price Star Stacker, and Wiffle bat set to the user's Amazon wish list, and send an email to grandparents@example.com mentioning that the diapers, stacking toy, and Wiffle bat have been saved to the wish list.",
+  "categories": [
+    "APPWORLD",
+    "MULTIPLE_USER_TURN"
+  ],
+  "max_messages": 100,
+  "metadata": {
+    "original_scenario_id": "scenario_0289",
+    "expected_tools": [
+      "amazon_show_product",
+      "amazon_add_product_to_cart",
+      "amazon_move_product_from_cart_to_wish_list",
+      "gmail_send_email"
+    ],
+    "image_arrival": {
+      "1": [
+        "image_1",
+        "image_2",
+        "image_3",
+        "image_4",
+        "image_5"
+      ]
+    },
+    "image_delivery_map": [],
+    "scenario_metadata": {
+      "num_images": 5,
+      "num_user_rounds": 3,
+      "selected_flow_type": "filter",
+      "image_arrival": "upfront",
+      "challenge_type": "goal_change",
+      "require_disambiguation": false,
+      "dataset_type": "hiertext"
+    }
+  }
+}

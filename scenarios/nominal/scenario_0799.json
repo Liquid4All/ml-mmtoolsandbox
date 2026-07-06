@@ -1,0 +1,221 @@
+{
+  "name": "scenario_0799",
+  "base_scenario": "base",
+  "description": "Kayla is conducting market research on ITC Limited's product history and distribution, comparing historical reports to current product availability.",
+  "difficulty": "easy",
+  "appworld_base_task": "_base_",
+  "device_state_id": "ka_burt@gmail.com",
+  "reference_time": "2026-04-17T00:14:32.372453+00:00",
+  "agentsandbox_entities": {},
+  "appworld_entities": {
+    "phone.contacts": [
+      {
+        "id": 200,
+        "user_id": 100,
+        "first_name": "Jamie",
+        "last_name": "Taylor",
+        "email": "jamie.taylor@gmail.com",
+        "phone_number": "555-0199",
+        "relationships": [],
+        "birthday": null,
+        "home_address": null,
+        "work_address": null,
+        "created_at": "2025-01-01T10:00:00"
+      }
+    ],
+    "amazon.sellers": [
+      {
+        "id": 200,
+        "name": "ITC Limited",
+        "rating": 0.0
+      }
+    ],
+    "amazon.products": [
+      {
+        "id": 200,
+        "product_type": "snacks",
+        "name": "Bingo! Tangles Masala",
+        "description": "Spicy masala flavored snack by Bingo!",
+        "seller_id": 200,
+        "price": 2.99,
+        "delivery_days": 2,
+        "inventory_quantity": 50,
+        "weight": 0.1,
+        "length": 6.0,
+        "width": 4.0,
+        "height": 1.5,
+        "color": null,
+        "relative_size": null,
+        "rating": 0.0,
+        "seller_rating": 0.0,
+        "has_variations": false
+      },
+      {
+        "id": 201,
+        "product_type": "snacks",
+        "name": "Bingo! Tangles Tomato",
+        "description": "Tangy tomato flavored snack by Bingo!",
+        "seller_id": 200,
+        "price": 2.99,
+        "delivery_days": 2,
+        "inventory_quantity": 50,
+        "weight": 0.1,
+        "length": 6.0,
+        "width": 4.0,
+        "height": 1.5,
+        "color": null,
+        "relative_size": null,
+        "rating": 0.0,
+        "seller_rating": 0.0,
+        "has_variations": false
+      }
+    ],
+    "gmail.users": [
+      {
+        "id": 200,
+        "first_name": "Jamie",
+        "last_name": "Taylor",
+        "email": "jamie.taylor@gmail.com",
+        "password": "default_password",
+        "status": "active",
+        "created_at": "2025-01-01T00:00:00",
+        "last_logged_in": "2025-01-01T00:00:00"
+      }
+    ],
+    "phone.users": [
+      {
+        "id": 200,
+        "first_name": "Jamie",
+        "last_name": "Taylor",
+        "phone_number": "555-0199",
+        "password": "default_password",
+        "created_at": "2025-01-01T00:00:00",
+        "last_logged_in": "2025-01-01T00:00:00"
+      }
+    ]
+  },
+  "image_paths": [
+    "docvqa/images/57422.jpg",
+    "docvqa/images/57570.jpg",
+    "docvqa/images/57754.jpg"
+  ],
+  "messages": [
+    {
+      "sender": "SYSTEM",
+      "recipient": "USER",
+      "content": "{{USER_INSTRUCTION}}ROUND 1 [provide: image_1, image_2]\nQuery: I'm reviewing these two pages from the ITC report. Please create a note listing the snack brand featured in the 'Marketing Communication' section of the first page, and the biscuit brand prominently displayed on the supermarket shelves in the second page.\nInstructions: Ask the assistant to create a note listing the two specific brands shown in the requested sections of the provided images. If the assistant asks for confirmation or lists the names before saving, confirm that it should go ahead and create the note. Once the note is successfully created, proceed to the next round.\n\nROUND 2 [provide: image_3]\nQuery: Now look at this third page of new launches. Check which of the products from our note is also listed here. Find what flavors it comes in according to this document, look those specific flavors up on Amazon, and add them to my cart. Also, shoot a text to Jamie letting them know I'm ordering samples.\nInstructions: Instruct the assistant to cross-reference the products in your newly created note with the new document provided, find the overlapping product, and extract its available flavors from the text. Ask it to search Amazon for those specific flavors and add them to your cart, and also text 'Jamie' about ordering the samples. Because you have multiple contacts named Jamie on your device, the assistant will ask you to clarify which one you mean. When it does, reply that you mean your manager. If it struggles to read the flavors, point it back to the text description under the matching product. Conclude the conversation once the items are in the cart and the text message is sent.\n\nYou have 3 images available to share with the agent using the send_message_with_image tool.\nIMPORTANT: Image IDs are ZERO-INDEXED integers (0, 1, 2, ...). Do NOT add 1 to the IDs.\nAvailable image IDs: [0, 1, 2]\nImage mapping:\n  image_1.jpg -> image ID 0\n  image_2.jpg -> image ID 1\n  image_3.jpg -> image ID 2\n\n## IMAGE DELIVERY\n\n\u26a0\ufe0f IMPORTANT: You MUST use the `send_message_with_image` tool to share images with User B. Do NOT just describe images in text \u2014 you MUST call the tool.\n\nImage delivery schedule:\n\n  Round 2: YOU MUST call the send_message_with_image tool with image_ids='2' \u2014 do NOT write the tool name as text; use the actual function call. Include a natural, conversational message to the assistant."
+    },
+    {
+      "sender": "USER",
+      "recipient": "AGENT",
+      "content": "I'm reviewing these two pages from the ITC report. Please create a note listing the snack brand featured in the 'Marketing Communication' section of the first page, and the biscuit brand prominently displayed on the supermarket shelves in the second page.",
+      "image_ids": [
+        0,
+        1
+      ]
+    }
+  ],
+  "milestones": [],
+  "entity_diff_specs": [
+    {
+      "operation": "create",
+      "source": "appworld",
+      "table": "amazon.cart_entries",
+      "entity_data": {
+        "user_id": 100,
+        "product_id": 200,
+        "quantity": 1,
+        "gift_wrap_quantity": 0
+      },
+      "column_similarity_measure": {
+        "user_id": "column_exact_match_similarity",
+        "product_id": "column_exact_match_similarity",
+        "quantity": "column_exact_match_similarity",
+        "gift_wrap_quantity": "column_exact_match_similarity"
+      }
+    },
+    {
+      "operation": "create",
+      "source": "appworld",
+      "table": "amazon.cart_entries",
+      "entity_data": {
+        "user_id": 100,
+        "product_id": 201,
+        "quantity": 1,
+        "gift_wrap_quantity": 0
+      },
+      "column_similarity_measure": {
+        "user_id": "column_exact_match_similarity",
+        "product_id": "column_exact_match_similarity",
+        "quantity": "column_exact_match_similarity",
+        "gift_wrap_quantity": "column_exact_match_similarity"
+      }
+    },
+    {
+      "operation": "create",
+      "source": "appworld",
+      "table": "simple_note.notes",
+      "entity_data": {
+        "user_id": 100,
+        "title": "ITC Brands",
+        "content": "Bingo! Tangles\nDark Fantasy",
+        "tags": [],
+        "created_at": "2026-04-17T00:14:32",
+        "updated_at": "2026-04-17T00:14:32",
+        "pinned": false,
+        "data": null
+      },
+      "column_similarity_measure": {
+        "user_id": "column_exact_match_similarity",
+        "title": "column_rouge_l_similarity",
+        "content": "column_rouge_l_similarity",
+        "tags": "column_ignore_similarity",
+        "created_at": "column_ignore_similarity",
+        "updated_at": "column_ignore_similarity",
+        "pinned": "column_exact_match_similarity",
+        "data": "column_ignore_similarity"
+      }
+    }
+  ],
+  "task_completion_criteria": "A note is created containing the brands 'Bingo! Tangles' and 'Dark Fantasy'. The user's Amazon shopping cart contains 'Bingo! Tangles Masala' and 'Bingo! Tangles Tomato' (or similar matching products). A text message is sent to Jamie Solomon (manager) mentioning the order of the snack samples.",
+  "categories": [
+    "APPWORLD",
+    "MULTIPLE_USER_TURN"
+  ],
+  "max_messages": 100,
+  "metadata": {
+    "original_scenario_id": "scenario_0799",
+    "expected_tools": [
+      "simple_note_create_note",
+      "simple_note_show_note",
+      "amazon_show_product",
+      "amazon_add_product_to_cart"
+    ],
+    "image_arrival": {
+      "1": [
+        "image_1",
+        "image_2"
+      ],
+      "2": [
+        "image_3"
+      ]
+    },
+    "image_delivery_map": [
+      {
+        "query": "Now look at this third page of new launches. Check which of the products from our note is also listed here. Find what flavors it comes in according to this document, look those specific flavors up on Amazon, and add them to my cart. Also, shoot a text to Jamie letting them know I'm ordering samples.",
+        "image_ids": [
+          2
+        ]
+      }
+    ],
+    "scenario_metadata": {
+      "num_images": 3,
+      "num_user_rounds": 2,
+      "selected_flow_type": "cross_reference",
+      "image_arrival": "progressive",
+      "challenge_type": "none",
+      "require_disambiguation": true,
+      "dataset_type": "docvqa"
+    }
+  }
+}

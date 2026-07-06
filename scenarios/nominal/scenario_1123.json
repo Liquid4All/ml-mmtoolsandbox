@@ -1,0 +1,398 @@
+{
+  "name": "scenario_1123",
+  "base_scenario": "base",
+  "description": "The user is preparing for an upcoming trip, managing their packing lists and doing some shopping, while also handling a few household and leisure purchases.",
+  "difficulty": "easy",
+  "appworld_base_task": "_base_",
+  "device_state_id": "gina-ritter@gmail.com",
+  "reference_time": "2026-04-17T00:24:14.801767+00:00",
+  "agentsandbox_entities": {},
+  "appworld_entities": {
+    "amazon.sellers": [
+      {
+        "id": 200,
+        "name": "Shoe Store",
+        "rating": 4.5
+      },
+      {
+        "id": 201,
+        "name": "Beach Wear Co",
+        "rating": 4.2
+      },
+      {
+        "id": 202,
+        "name": "Winter Footwear",
+        "rating": 4.7
+      },
+      {
+        "id": 203,
+        "name": "Samsung Official",
+        "rating": 4.9
+      },
+      {
+        "id": 204,
+        "name": "Cleaning Supplies Direct",
+        "rating": 4.6
+      },
+      {
+        "id": 205,
+        "name": "Book World",
+        "rating": 4.8
+      }
+    ],
+    "amazon.products": [
+      {
+        "id": 200,
+        "product_type": "shoes",
+        "name": "Classic Oxford Shoes",
+        "description": "Genuine leather classic oxford shoes.",
+        "seller_id": 200,
+        "price": 89.99,
+        "delivery_days": 2,
+        "inventory_quantity": 50,
+        "weight": 1.2,
+        "length": 12.0,
+        "width": 8.0,
+        "height": 4.0,
+        "color": "Brown",
+        "relative_size": "medium",
+        "rating": 4.6,
+        "seller_rating": 4.5,
+        "has_variations": true
+      },
+      {
+        "id": 201,
+        "product_type": "clothing",
+        "name": "Men's Swim Trunks",
+        "description": "Quick dry summer swim trunks.",
+        "seller_id": 201,
+        "price": 24.99,
+        "delivery_days": 2,
+        "inventory_quantity": 100,
+        "weight": 0.3,
+        "length": 10.0,
+        "width": 8.0,
+        "height": 1.0,
+        "color": "Blue",
+        "relative_size": "medium",
+        "rating": 4.3,
+        "seller_rating": 4.2,
+        "has_variations": true
+      },
+      {
+        "id": 202,
+        "product_type": "shoes",
+        "name": "Women's Sock Boots",
+        "description": "Warm and stylish winter sock boots.",
+        "seller_id": 202,
+        "price": 65.0,
+        "delivery_days": 3,
+        "inventory_quantity": 30,
+        "weight": 1.5,
+        "length": 14.0,
+        "width": 10.0,
+        "height": 5.0,
+        "color": "Black",
+        "relative_size": "medium",
+        "rating": 4.8,
+        "seller_rating": 4.7,
+        "has_variations": true
+      },
+      {
+        "id": 203,
+        "product_type": "electronics",
+        "name": "Samsung Galaxy Tab A8",
+        "description": "10.5 inch Android tablet.",
+        "seller_id": 203,
+        "price": 199.99,
+        "delivery_days": 1,
+        "inventory_quantity": 20,
+        "weight": 1.1,
+        "length": 9.7,
+        "width": 6.3,
+        "height": 0.27,
+        "color": "Gray",
+        "relative_size": "small",
+        "rating": 4.7,
+        "seller_rating": 4.9,
+        "has_variations": false
+      },
+      {
+        "id": 204,
+        "product_type": "cleaning",
+        "name": "O-Cedar ProMist MAX Microfiber Spray Mop",
+        "description": "Double-sided microfiber spray mop.",
+        "seller_id": 204,
+        "price": 11.99,
+        "delivery_days": 2,
+        "inventory_quantity": 85,
+        "weight": 2.0,
+        "length": 55.0,
+        "width": 6.0,
+        "height": 4.0,
+        "color": "Red",
+        "relative_size": "large",
+        "rating": 4.5,
+        "seller_rating": 4.6,
+        "has_variations": false
+      },
+      {
+        "id": 205,
+        "product_type": "books",
+        "name": "TikTok Boom",
+        "description": "The inside story of the world's most popular app.",
+        "seller_id": 205,
+        "price": 18.5,
+        "delivery_days": 4,
+        "inventory_quantity": 15,
+        "weight": 0.8,
+        "length": 9.0,
+        "width": 6.0,
+        "height": 1.2,
+        "color": null,
+        "relative_size": "small",
+        "rating": 4.4,
+        "seller_rating": 4.8,
+        "has_variations": false
+      }
+    ],
+    "simple_note.notes": [
+      {
+        "id": 3200,
+        "user_id": 96,
+        "title": "Summer Vacation",
+        "content": "Packing List:\n- [ ] swim trunks\n- [ ] oxford shoes",
+        "tags": [
+          "travel",
+          "vacation"
+        ],
+        "created_at": "2026-04-10T09:30:00",
+        "updated_at": "2026-04-12T14:15:00",
+        "pinned": false,
+        "data": null
+      },
+      {
+        "id": 3201,
+        "user_id": 96,
+        "title": "Winter Work Trip",
+        "content": "Packing List:\n- [ ] sock boots\n- [ ] Samsung device",
+        "tags": [
+          "travel",
+          "work"
+        ],
+        "created_at": "2026-04-15T11:00:00",
+        "updated_at": "2026-04-15T11:05:00",
+        "pinned": false,
+        "data": null
+      }
+    ],
+    "gmail.users": []
+  },
+  "image_paths": [
+    "worldvqa/images/1368.jpg",
+    "hiertext/images/test/4ff22dc6ae4f5365.jpg",
+    "worldvqa/images/1546.jpg",
+    "omnidocbench/images/000392.jpg",
+    "hiertext/images/test/d9ce3cc3080a374b.jpg",
+    "worldvqa/images/1371.jpg"
+  ],
+  "messages": [
+    {
+      "sender": "SYSTEM",
+      "recipient": "USER",
+      "content": "{{USER_INSTRUCTION}}ROUND 1 [provide: image_1, image_6]\nQuery: I'm preparing for my vacation. Check my 'Summer Vacation' note. If the clothing item in this first picture and the type of shoes in the second picture are on the list, search Amazon and add them to my cart. Then update the note to mark them as purchased.\nInstructions: Tell the assistant to check your 'Summer Vacation' note and cross-reference it with the clothing item shown in the first image and the shoes shown in the second image. Instruct it to search Amazon for these items, add them to your cart if they are on the note, and update the note to mark them as purchased. If the assistant asks for clarification on what the items are, point it back to the images to identify them visually. Proceed to the next step once the items are added and the note is updated.\n\nROUND 2 [provide: image_3, image_5]\nQuery: Wait, change of plans! My trip got changed to a colder place and I'll be working remotely. Remove the clothing item from the first picture from my cart and unmark it in the 'Summer Vacation' note. Instead, check my 'Winter Work Trip' note. If the type of shoes in this first new image and the brand of the device in the second new image are on that list, add them to my Amazon cart and mark them as bought in the winter note.\nInstructions: Tell the assistant that your plans have changed to a cold-weather remote work trip. Ask it to undo part of the previous action by removing the clothing item from the very first image from the cart and unmarking it in the summer note. Then, have it check your 'Winter Work Trip' note, cross-reference it with the shoes in the first new image and the device brand in the second new image, add those to the cart, and mark them as bought in the winter note. If it gets confused about which items to remove or add, guide it to look at the specific images again.\n\nROUND 3 [provide: image_2]\nQuery: I also need to clean my house before I leave. I saw this mop outside the tax office in the new picture. Can you check Amazon for this exact brand and model of mop? If the price on Amazon is cheaper than the price tag shown in the picture, add it to my cart.\nInstructions: Ask the assistant to identify the brand and model of the mop shown on display outside the building in the new image. Instruct it to check the price of that exact mop on Amazon, and if it's cheaper than the price tag visible in the image, add it to your cart. If the assistant cannot read the price tag, tell it to look closely at the red and yellow tag below the mop boxes on the left side of the image. Move on once the comparison and potential addition are complete.\n\nROUND 4 [provide: image_4]\nQuery: Lastly, I need something to read on the flight. Look at the author's bio at the bottom right of this opinion piece. Search Amazon for the book he authored and add it to my wish list.\nInstructions: Direct the assistant to read the author's bio at the bottom right corner of the newspaper page provided. Ask it to find the title of the book the author wrote, search for it on Amazon, and add it to your wish list. If it tries to search for the article title instead, correct it and emphasize looking at the short italicized bio for the book title. This is the final task, so conclude the conversation once the book is added to the wish list.\n\nYou have 6 images available to share with the agent using the send_message_with_image tool.\nIMPORTANT: Image IDs are ZERO-INDEXED integers (0, 1, 2, ...). Do NOT add 1 to the IDs.\nAvailable image IDs: [0, 1, 2, 3, 4, 5]\nImage mapping:\n  image_1.jpg -> image ID 0\n  image_2.jpg -> image ID 1\n  image_3.jpg -> image ID 2\n  image_4.jpg -> image ID 3\n  image_5.jpg -> image ID 4\n  image_6.jpg -> image ID 5\n\n## IMAGE DELIVERY\n\n\u26a0\ufe0f IMPORTANT: You MUST use the `send_message_with_image` tool to share images with User B. Do NOT just describe images in text \u2014 you MUST call the tool.\n\nImage delivery schedule:\n\n  Round 2: YOU MUST call the send_message_with_image tool with image_ids='2,4' \u2014 do NOT write the tool name as text; use the actual function call. Include a natural, conversational message to the assistant.\n  Round 3: YOU MUST call the send_message_with_image tool with image_ids='1' \u2014 do NOT write the tool name as text; use the actual function call. Include a natural, conversational message to the assistant.\n  Round 4: YOU MUST call the send_message_with_image tool with image_ids='3' \u2014 do NOT write the tool name as text; use the actual function call. Include a natural, conversational message to the assistant."
+    },
+    {
+      "sender": "USER",
+      "recipient": "AGENT",
+      "content": "I'm preparing for my vacation. Check my 'Summer Vacation' note. If the clothing item in this first picture and the type of shoes in the second picture are on the list, search Amazon and add them to my cart. Then update the note to mark them as purchased.",
+      "image_ids": [
+        0,
+        5
+      ]
+    }
+  ],
+  "milestones": [],
+  "entity_diff_specs": [
+    {
+      "operation": "create",
+      "source": "appworld",
+      "table": "amazon.cart_entries",
+      "entity_data": {
+        "user_id": 96,
+        "product_id": 200,
+        "quantity": 1,
+        "gift_wrap_quantity": 0
+      },
+      "column_similarity_measure": {
+        "user_id": "column_exact_match_similarity",
+        "product_id": "column_exact_match_similarity",
+        "quantity": "column_exact_match_similarity",
+        "gift_wrap_quantity": "column_exact_match_similarity"
+      }
+    },
+    {
+      "operation": "create",
+      "source": "appworld",
+      "table": "amazon.cart_entries",
+      "entity_data": {
+        "user_id": 96,
+        "product_id": 202,
+        "quantity": 1,
+        "gift_wrap_quantity": 0
+      },
+      "column_similarity_measure": {
+        "user_id": "column_exact_match_similarity",
+        "product_id": "column_exact_match_similarity",
+        "quantity": "column_exact_match_similarity",
+        "gift_wrap_quantity": "column_exact_match_similarity"
+      }
+    },
+    {
+      "operation": "create",
+      "source": "appworld",
+      "table": "amazon.cart_entries",
+      "entity_data": {
+        "user_id": 96,
+        "product_id": 203,
+        "quantity": 1,
+        "gift_wrap_quantity": 0
+      },
+      "column_similarity_measure": {
+        "user_id": "column_exact_match_similarity",
+        "product_id": "column_exact_match_similarity",
+        "quantity": "column_exact_match_similarity",
+        "gift_wrap_quantity": "column_exact_match_similarity"
+      }
+    },
+    {
+      "operation": "create",
+      "source": "appworld",
+      "table": "amazon.cart_entries",
+      "entity_data": {
+        "user_id": 96,
+        "product_id": 204,
+        "quantity": 1,
+        "gift_wrap_quantity": 0
+      },
+      "column_similarity_measure": {
+        "user_id": "column_exact_match_similarity",
+        "product_id": "column_exact_match_similarity",
+        "quantity": "column_exact_match_similarity",
+        "gift_wrap_quantity": "column_exact_match_similarity"
+      }
+    },
+    {
+      "operation": "create",
+      "source": "appworld",
+      "table": "amazon.wish_list_entries",
+      "entity_data": {
+        "user_id": 96,
+        "product_id": 205,
+        "quantity": 1
+      },
+      "column_similarity_measure": {
+        "user_id": "column_exact_match_similarity",
+        "product_id": "column_exact_match_similarity",
+        "quantity": "column_exact_match_similarity"
+      }
+    },
+    {
+      "operation": "update",
+      "source": "appworld",
+      "table": "simple_note.notes",
+      "entity_id_column": "id",
+      "entity_id_value": 3200,
+      "expected_fields": {
+        "updated_at": "2026-04-12T14:15:00",
+        "content": "Packing List:\n- [ ] swim trunks\n- [x] oxford shoes",
+        "tags": []
+      },
+      "column_similarity_measure": {
+        "updated_at": "column_ignore_similarity",
+        "content": "column_rouge_l_similarity",
+        "id": "column_exact_match_similarity"
+      }
+    },
+    {
+      "operation": "update",
+      "source": "appworld",
+      "table": "simple_note.notes",
+      "entity_id_column": "id",
+      "entity_id_value": 3201,
+      "expected_fields": {
+        "updated_at": "2026-04-15T11:05:00",
+        "content": "Packing List:\n- [x] sock boots\n- [x] Samsung device",
+        "tags": []
+      },
+      "column_similarity_measure": {
+        "updated_at": "column_ignore_similarity",
+        "content": "column_rouge_l_similarity",
+        "id": "column_exact_match_similarity"
+      }
+    }
+  ],
+  "task_completion_criteria": "The user's Amazon cart contains Oxford shoes, sock boots, a Samsung device, and an O-Cedar ProMist mop (if the Amazon price is under $12.99). The 'Winter Work Trip' note is updated to mark sock boots and the Samsung device as purchased. The 'Summer Vacation' note is updated to mark Oxford shoes as purchased, and swim trunks are unmarked. The book 'TikTok Boom' is added to the user's Amazon wish list.",
+  "categories": [
+    "APPWORLD",
+    "MULTIPLE_USER_TURN"
+  ],
+  "max_messages": 100,
+  "metadata": {
+    "original_scenario_id": "scenario_1123",
+    "expected_tools": [
+      "simple_note_show_note",
+      "amazon_add_product_to_cart",
+      "simple_note_update_note",
+      "amazon_delete_product_from_cart",
+      "amazon_show_product",
+      "amazon_add_product_to_wish_list"
+    ],
+    "image_arrival": {
+      "1": [
+        "image_1",
+        "image_6"
+      ],
+      "2": [
+        "image_3",
+        "image_5"
+      ],
+      "3": [
+        "image_2"
+      ],
+      "4": [
+        "image_4"
+      ]
+    },
+    "image_delivery_map": [
+      {
+        "query": "Wait, change of plans! My trip got changed to a colder place and I'll be working remotely. Remove the clothing item from the first picture from my cart and unmark it in the 'Summer Vacation' note. Instead, check my 'Winter Work Trip' note. If the type of shoes in this first new image and the brand of the device in the second new image are on that list, add them to my Amazon cart and mark them as bought in the winter note.",
+        "image_ids": [
+          2,
+          4
+        ]
+      },
+      {
+        "query": "I also need to clean my house before I leave. I saw this mop outside the tax office in the new picture. Can you check Amazon for this exact brand and model of mop? If the price on Amazon is cheaper than the price tag shown in the picture, add it to my cart.",
+        "image_ids": [
+          1
+        ]
+      },
+      {
+        "query": "Lastly, I need something to read on the flight. Look at the author's bio at the bottom right of this opinion piece. Search Amazon for the book he authored and add it to my wish list.",
+        "image_ids": [
+          3
+        ]
+      }
+    ],
+    "scenario_metadata": {
+      "num_images": 6,
+      "num_user_rounds": 4,
+      "selected_flow_type": "cross_reference",
+      "image_arrival": "mixed",
+      "challenge_type": "goal_change",
+      "require_disambiguation": false,
+      "dataset_type": "worldvqa"
+    }
+  }
+}

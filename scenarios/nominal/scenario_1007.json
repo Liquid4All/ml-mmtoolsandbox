@@ -1,0 +1,897 @@
+{
+  "name": "scenario_1007",
+  "base_scenario": "base",
+  "description": "The user is doing outreach for a STEM education initiative and wants to draft emails to state representatives using statistics from various infographics.",
+  "difficulty": "easy",
+  "appworld_base_task": "_base_",
+  "device_state_id": "an-harrison@gmail.com",
+  "reference_time": "2026-04-17T00:21:01.697967+00:00",
+  "agentsandbox_entities": {},
+  "appworld_entities": {
+    "phone.contacts": [
+      {
+        "id": 200,
+        "user_id": 16,
+        "first_name": "Alice",
+        "last_name": "Adams",
+        "email": "alice.adams@dc.gov",
+        "phone_number": "+1-202-555-0101",
+        "relationships": [
+          "professional"
+        ],
+        "birthday": null,
+        "home_address": null,
+        "work_address": "Washington, DC",
+        "created_at": "2026-03-01T10:00:00"
+      },
+      {
+        "id": 201,
+        "user_id": 16,
+        "first_name": "Bob",
+        "last_name": "Baker",
+        "email": "bob.baker@ms.gov",
+        "phone_number": "+1-601-555-0102",
+        "relationships": [
+          "professional"
+        ],
+        "birthday": null,
+        "home_address": null,
+        "work_address": "Jackson, MS",
+        "created_at": "2026-03-01T10:00:00"
+      },
+      {
+        "id": 202,
+        "user_id": 16,
+        "first_name": "Carol",
+        "last_name": "Clark",
+        "email": "carol.clark@mn.gov",
+        "phone_number": "+1-651-555-0103",
+        "relationships": [
+          "professional"
+        ],
+        "birthday": null,
+        "home_address": null,
+        "work_address": "St. Paul, MN",
+        "created_at": "2026-03-01T10:00:00"
+      },
+      {
+        "id": 203,
+        "user_id": 16,
+        "first_name": "David",
+        "last_name": "Davis",
+        "email": "david.davis@co.gov",
+        "phone_number": "+1-303-555-0104",
+        "relationships": [
+          "professional"
+        ],
+        "birthday": null,
+        "home_address": null,
+        "work_address": "Denver, CO",
+        "created_at": "2026-03-01T10:00:00"
+      },
+      {
+        "id": 204,
+        "user_id": 16,
+        "first_name": "Eve",
+        "last_name": "Evans",
+        "email": "eve.evans@hi.gov",
+        "phone_number": "+1-808-555-0105",
+        "relationships": [
+          "professional"
+        ],
+        "birthday": null,
+        "home_address": null,
+        "work_address": "Honolulu, HI",
+        "created_at": "2026-03-01T10:00:00"
+      },
+      {
+        "id": 205,
+        "user_id": 16,
+        "first_name": "Frank",
+        "last_name": "Foster",
+        "email": "frank.foster@ca.gov",
+        "phone_number": "+1-916-555-0106",
+        "relationships": [
+          "professional"
+        ],
+        "birthday": null,
+        "home_address": null,
+        "work_address": "Sacramento, CA",
+        "created_at": "2026-03-01T10:00:00"
+      },
+      {
+        "id": 206,
+        "user_id": 16,
+        "first_name": "Grace",
+        "last_name": "Green",
+        "email": "grace.green@fl.gov",
+        "phone_number": "+1-850-555-0107",
+        "relationships": [
+          "professional"
+        ],
+        "birthday": null,
+        "home_address": null,
+        "work_address": "Tallahassee, FL",
+        "created_at": "2026-03-01T10:00:00"
+      },
+      {
+        "id": 207,
+        "user_id": 16,
+        "first_name": "Henry",
+        "last_name": "Harris",
+        "email": "henry.harris@la.gov",
+        "phone_number": "+1-225-555-0108",
+        "relationships": [
+          "professional"
+        ],
+        "birthday": null,
+        "home_address": null,
+        "work_address": "Baton Rouge, LA",
+        "created_at": "2026-03-01T10:00:00"
+      },
+      {
+        "id": 208,
+        "user_id": 16,
+        "first_name": "Ivy",
+        "last_name": "Irwin",
+        "email": "ivy.irwin@ma.gov",
+        "phone_number": "+1-617-555-0109",
+        "relationships": [
+          "professional"
+        ],
+        "birthday": null,
+        "home_address": null,
+        "work_address": "Boston, MA",
+        "created_at": "2026-03-01T10:00:00"
+      },
+      {
+        "id": 209,
+        "user_id": 16,
+        "first_name": "Jack",
+        "last_name": "Jones",
+        "email": "jack.jones@id.gov",
+        "phone_number": "+1-208-555-0110",
+        "relationships": [
+          "professional"
+        ],
+        "birthday": null,
+        "home_address": null,
+        "work_address": "Boise, ID",
+        "created_at": "2026-03-01T10:00:00"
+      },
+      {
+        "id": 210,
+        "user_id": 16,
+        "first_name": "Karen",
+        "last_name": "King",
+        "email": "karen.king@va.gov",
+        "phone_number": "+1-804-555-0111",
+        "relationships": [
+          "professional"
+        ],
+        "birthday": null,
+        "home_address": null,
+        "work_address": "Richmond, VA",
+        "created_at": "2026-03-01T10:00:00"
+      }
+    ],
+    "todoist.projects": [
+      {
+        "id": 400,
+        "user_id": 16,
+        "name": "Education Outreach",
+        "color": "charcoal",
+        "is_inbox": false,
+        "description": "",
+        "created_at": "2026-04-10T10:00:00"
+      }
+    ],
+    "todoist.tasks": [
+      {
+        "id": 6500,
+        "project_id": 400,
+        "section_id": null,
+        "user_id": 16,
+        "title": "DC",
+        "description": "alice.adams@dc.gov",
+        "due_date": null,
+        "priority": "medium",
+        "is_completed": false,
+        "duration": null,
+        "duration_unit": null,
+        "order_index": 0,
+        "assignee_id": null,
+        "assigner_id": null,
+        "created_at": "2026-04-10T10:05:00"
+      },
+      {
+        "id": 6501,
+        "project_id": 400,
+        "section_id": null,
+        "user_id": 16,
+        "title": "MS",
+        "description": "bob.baker@ms.gov",
+        "due_date": null,
+        "priority": "medium",
+        "is_completed": false,
+        "duration": null,
+        "duration_unit": null,
+        "order_index": 1,
+        "assignee_id": null,
+        "assigner_id": null,
+        "created_at": "2026-04-10T10:06:00"
+      },
+      {
+        "id": 6502,
+        "project_id": 400,
+        "section_id": null,
+        "user_id": 16,
+        "title": "MN",
+        "description": "carol.clark@mn.gov",
+        "due_date": null,
+        "priority": "medium",
+        "is_completed": false,
+        "duration": null,
+        "duration_unit": null,
+        "order_index": 2,
+        "assignee_id": null,
+        "assigner_id": null,
+        "created_at": "2026-04-10T10:07:00"
+      },
+      {
+        "id": 6503,
+        "project_id": 400,
+        "section_id": null,
+        "user_id": 16,
+        "title": "CO",
+        "description": "david.davis@co.gov",
+        "due_date": null,
+        "priority": "medium",
+        "is_completed": false,
+        "duration": null,
+        "duration_unit": null,
+        "order_index": 3,
+        "assignee_id": null,
+        "assigner_id": null,
+        "created_at": "2026-04-10T10:08:00"
+      },
+      {
+        "id": 6504,
+        "project_id": 400,
+        "section_id": null,
+        "user_id": 16,
+        "title": "HI",
+        "description": "eve.evans@hi.gov",
+        "due_date": null,
+        "priority": "medium",
+        "is_completed": false,
+        "duration": null,
+        "duration_unit": null,
+        "order_index": 4,
+        "assignee_id": null,
+        "assigner_id": null,
+        "created_at": "2026-04-10T10:09:00"
+      },
+      {
+        "id": 6505,
+        "project_id": 400,
+        "section_id": null,
+        "user_id": 16,
+        "title": "FL",
+        "description": "grace.green@fl.gov",
+        "due_date": null,
+        "priority": "medium",
+        "is_completed": false,
+        "duration": null,
+        "duration_unit": null,
+        "order_index": 5,
+        "assignee_id": null,
+        "assigner_id": null,
+        "created_at": "2026-04-10T10:10:00"
+      },
+      {
+        "id": 6506,
+        "project_id": 400,
+        "section_id": null,
+        "user_id": 16,
+        "title": "LA",
+        "description": "henry.harris@la.gov",
+        "due_date": null,
+        "priority": "medium",
+        "is_completed": false,
+        "duration": null,
+        "duration_unit": null,
+        "order_index": 6,
+        "assignee_id": null,
+        "assigner_id": null,
+        "created_at": "2026-04-10T10:11:00"
+      },
+      {
+        "id": 6507,
+        "project_id": 400,
+        "section_id": null,
+        "user_id": 16,
+        "title": "MA",
+        "description": "ivy.irwin@ma.gov",
+        "due_date": null,
+        "priority": "medium",
+        "is_completed": false,
+        "duration": null,
+        "duration_unit": null,
+        "order_index": 7,
+        "assignee_id": null,
+        "assigner_id": null,
+        "created_at": "2026-04-10T10:12:00"
+      },
+      {
+        "id": 6508,
+        "project_id": 400,
+        "section_id": null,
+        "user_id": 16,
+        "title": "ID",
+        "description": "jack.jones@id.gov",
+        "due_date": null,
+        "priority": "medium",
+        "is_completed": false,
+        "duration": null,
+        "duration_unit": null,
+        "order_index": 8,
+        "assignee_id": null,
+        "assigner_id": null,
+        "created_at": "2026-04-10T10:13:00"
+      },
+      {
+        "id": 6509,
+        "project_id": 400,
+        "section_id": null,
+        "user_id": 16,
+        "title": "VA",
+        "description": "karen.king@va.gov",
+        "due_date": null,
+        "priority": "medium",
+        "is_completed": false,
+        "duration": null,
+        "duration_unit": null,
+        "order_index": 9,
+        "assignee_id": null,
+        "assigner_id": null,
+        "created_at": "2026-04-10T10:14:00"
+      },
+      {
+        "id": 6510,
+        "project_id": 400,
+        "section_id": null,
+        "user_id": 16,
+        "title": "CA",
+        "description": "frank.foster@ca.gov",
+        "due_date": null,
+        "priority": "medium",
+        "is_completed": false,
+        "duration": null,
+        "duration_unit": null,
+        "order_index": 10,
+        "assignee_id": null,
+        "assigner_id": null,
+        "created_at": "2026-04-10T10:15:00"
+      }
+    ],
+    "gmail.users": [
+      {
+        "id": 200,
+        "first_name": "Alice",
+        "last_name": "Adams",
+        "email": "alice.adams@dc.gov",
+        "password": "default_password",
+        "status": "active",
+        "created_at": "2025-01-01T00:00:00",
+        "last_logged_in": "2025-01-01T00:00:00"
+      },
+      {
+        "id": 201,
+        "first_name": "Bob",
+        "last_name": "Baker",
+        "email": "bob.baker@ms.gov",
+        "password": "default_password",
+        "status": "active",
+        "created_at": "2025-01-01T00:00:00",
+        "last_logged_in": "2025-01-01T00:00:00"
+      },
+      {
+        "id": 202,
+        "first_name": "Carol",
+        "last_name": "Clark",
+        "email": "carol.clark@mn.gov",
+        "password": "default_password",
+        "status": "active",
+        "created_at": "2025-01-01T00:00:00",
+        "last_logged_in": "2025-01-01T00:00:00"
+      },
+      {
+        "id": 203,
+        "first_name": "David",
+        "last_name": "Davis",
+        "email": "david.davis@co.gov",
+        "password": "default_password",
+        "status": "active",
+        "created_at": "2025-01-01T00:00:00",
+        "last_logged_in": "2025-01-01T00:00:00"
+      },
+      {
+        "id": 204,
+        "first_name": "Eve",
+        "last_name": "Evans",
+        "email": "eve.evans@hi.gov",
+        "password": "default_password",
+        "status": "active",
+        "created_at": "2025-01-01T00:00:00",
+        "last_logged_in": "2025-01-01T00:00:00"
+      },
+      {
+        "id": 205,
+        "first_name": "Frank",
+        "last_name": "Foster",
+        "email": "frank.foster@ca.gov",
+        "password": "default_password",
+        "status": "active",
+        "created_at": "2025-01-01T00:00:00",
+        "last_logged_in": "2025-01-01T00:00:00"
+      },
+      {
+        "id": 206,
+        "first_name": "Grace",
+        "last_name": "Green",
+        "email": "grace.green@fl.gov",
+        "password": "default_password",
+        "status": "active",
+        "created_at": "2025-01-01T00:00:00",
+        "last_logged_in": "2025-01-01T00:00:00"
+      },
+      {
+        "id": 207,
+        "first_name": "Henry",
+        "last_name": "Harris",
+        "email": "henry.harris@la.gov",
+        "password": "default_password",
+        "status": "active",
+        "created_at": "2025-01-01T00:00:00",
+        "last_logged_in": "2025-01-01T00:00:00"
+      },
+      {
+        "id": 208,
+        "first_name": "Ivy",
+        "last_name": "Irwin",
+        "email": "ivy.irwin@ma.gov",
+        "password": "default_password",
+        "status": "active",
+        "created_at": "2025-01-01T00:00:00",
+        "last_logged_in": "2025-01-01T00:00:00"
+      },
+      {
+        "id": 209,
+        "first_name": "Jack",
+        "last_name": "Jones",
+        "email": "jack.jones@id.gov",
+        "password": "default_password",
+        "status": "active",
+        "created_at": "2025-01-01T00:00:00",
+        "last_logged_in": "2025-01-01T00:00:00"
+      },
+      {
+        "id": 210,
+        "first_name": "Karen",
+        "last_name": "King",
+        "email": "karen.king@va.gov",
+        "password": "default_password",
+        "status": "active",
+        "created_at": "2025-01-01T00:00:00",
+        "last_logged_in": "2025-01-01T00:00:00"
+      }
+    ],
+    "phone.users": [
+      {
+        "id": 200,
+        "first_name": "Alice",
+        "last_name": "Adams",
+        "phone_number": "+1-202-555-0101",
+        "password": "default_password",
+        "created_at": "2025-01-01T00:00:00",
+        "last_logged_in": "2025-01-01T00:00:00"
+      },
+      {
+        "id": 201,
+        "first_name": "Bob",
+        "last_name": "Baker",
+        "phone_number": "+1-601-555-0102",
+        "password": "default_password",
+        "created_at": "2025-01-01T00:00:00",
+        "last_logged_in": "2025-01-01T00:00:00"
+      },
+      {
+        "id": 202,
+        "first_name": "Carol",
+        "last_name": "Clark",
+        "phone_number": "+1-651-555-0103",
+        "password": "default_password",
+        "created_at": "2025-01-01T00:00:00",
+        "last_logged_in": "2025-01-01T00:00:00"
+      },
+      {
+        "id": 203,
+        "first_name": "David",
+        "last_name": "Davis",
+        "phone_number": "+1-303-555-0104",
+        "password": "default_password",
+        "created_at": "2025-01-01T00:00:00",
+        "last_logged_in": "2025-01-01T00:00:00"
+      },
+      {
+        "id": 204,
+        "first_name": "Eve",
+        "last_name": "Evans",
+        "phone_number": "+1-808-555-0105",
+        "password": "default_password",
+        "created_at": "2025-01-01T00:00:00",
+        "last_logged_in": "2025-01-01T00:00:00"
+      },
+      {
+        "id": 205,
+        "first_name": "Frank",
+        "last_name": "Foster",
+        "phone_number": "+1-916-555-0106",
+        "password": "default_password",
+        "created_at": "2025-01-01T00:00:00",
+        "last_logged_in": "2025-01-01T00:00:00"
+      },
+      {
+        "id": 206,
+        "first_name": "Grace",
+        "last_name": "Green",
+        "phone_number": "+1-850-555-0107",
+        "password": "default_password",
+        "created_at": "2025-01-01T00:00:00",
+        "last_logged_in": "2025-01-01T00:00:00"
+      },
+      {
+        "id": 207,
+        "first_name": "Henry",
+        "last_name": "Harris",
+        "phone_number": "+1-225-555-0108",
+        "password": "default_password",
+        "created_at": "2025-01-01T00:00:00",
+        "last_logged_in": "2025-01-01T00:00:00"
+      },
+      {
+        "id": 208,
+        "first_name": "Ivy",
+        "last_name": "Irwin",
+        "phone_number": "+1-617-555-0109",
+        "password": "default_password",
+        "created_at": "2025-01-01T00:00:00",
+        "last_logged_in": "2025-01-01T00:00:00"
+      },
+      {
+        "id": 209,
+        "first_name": "Jack",
+        "last_name": "Jones",
+        "phone_number": "+1-208-555-0110",
+        "password": "default_password",
+        "created_at": "2025-01-01T00:00:00",
+        "last_logged_in": "2025-01-01T00:00:00"
+      },
+      {
+        "id": 210,
+        "first_name": "Karen",
+        "last_name": "King",
+        "phone_number": "+1-804-555-0111",
+        "password": "default_password",
+        "created_at": "2025-01-01T00:00:00",
+        "last_logged_in": "2025-01-01T00:00:00"
+      }
+    ],
+    "todoist.project_collaborator_links": [
+      {
+        "id": 50400,
+        "project_id": 400,
+        "user_id": 16,
+        "is_favorite": false,
+        "is_archived": false,
+        "created_at": "2026-04-10T10:00:00"
+      }
+    ]
+  },
+  "image_paths": [
+    "infographicvqa/images/94264.jpg",
+    "infographicvqa/images/95967.jpg",
+    "chartqapro/images/chart_0708.jpg"
+  ],
+  "messages": [
+    {
+      "sender": "SYSTEM",
+      "recipient": "USER",
+      "content": "{{USER_INSTRUCTION}}ROUND 1 [provide: image_1, image_2, image_3]\nQuery: I need to set up some emails. First, create a new section called 'Outreach Drafts' in my 'Education Outreach' project. Then, look at the tasks in that project and find the ones for the bottom 5 states in K-8 adoption from the first image - I think those are FL, LA, MA, ID, and VA. For those contacts, draft emails saying that college tuition has increased by the percentage shown in the third image since 1980.\nInstructions: Tell the assistant to create a new section called 'Outreach Drafts' in your 'Education Outreach' project. Then, ask it to look at the tasks in that project and find the contacts for the bottom 5 states in K-8 adoption shown in the first image. Crucially, explicitly (and incorrectly) tell the assistant that you believe these bottom states are FL, LA, MA, ID, and VA. Ask it to draft emails to those contacts mentioning the percentage increase in college tuition since 1980 shown in the third image. A good assistant should pause and alert you that the states you listed are actually the top states, not the bottom ones. If it catches this, agree and proceed to the next round. If it blindly drafts the emails without noticing the error, point out the mistake yourself.\n\nROUND 2\nQuery: Ah, my mistake! You're right, those are the top states. Please create the email drafts for the actual bottom states using that tuition increase stat. Also, find the task for the state where the school in the second image is located, and draft an email to that contact mentioning the school's average SAT score.\nInstructions: Acknowledge the mix-up and confirm that the assistant should use the actual bottom states from the first image for the tuition increase emails. Then, ask it to look at the second image, figure out which state that school is located in, find the corresponding task in your project, and draft an email to that contact mentioning the school's average SAT score. End the conversation once the assistant confirms all six drafts are ready.\n\nYou have 3 images available to share with the agent using the send_message_with_image tool.\nIMPORTANT: Image IDs are ZERO-INDEXED integers (0, 1, 2, ...). Do NOT add 1 to the IDs.\nAvailable image IDs: [0, 1, 2]\nImage mapping:\n  image_1.jpg -> image ID 0\n  image_2.jpg -> image ID 1\n  image_3.jpg -> image ID 2"
+    },
+    {
+      "sender": "USER",
+      "recipient": "AGENT",
+      "content": "I need to set up some emails. First, create a new section called 'Outreach Drafts' in my 'Education Outreach' project. Then, look at the tasks in that project and find the ones for the bottom 5 states in K-8 adoption from the first image - I think those are FL, LA, MA, ID, and VA. For those contacts, draft emails saying that college tuition has increased by the percentage shown in the third image since 1980.",
+      "image_ids": [
+        0,
+        1,
+        2
+      ]
+    }
+  ],
+  "milestones": [],
+  "entity_diff_specs": [
+    {
+      "operation": "create",
+      "source": "appworld",
+      "table": "gmail.drafts",
+      "entity_data": {
+        "user_id": 16,
+        "recipient_ids": [
+          200
+        ],
+        "recipient_email_addresses": [
+          "alice.adams@dc.gov"
+        ],
+        "recipient_names": [
+          "Alice Adams"
+        ],
+        "subject": "STEM Education Outreach",
+        "body": "Hello Alice,\n\nAs part of our STEM education initiative, we wanted to reach out and highlight a concerning statistic: college tuition has increased by 1200% since 1980. We would love to discuss how we can work together to improve K-8 adoption in your state.\n\nBest regards,\nAnthony Harrison",
+        "belongs_to_email_thread_id": null,
+        "response_to_email_id": null,
+        "scheduled_send_at": null,
+        "created_at": "2026-04-17T00:21:01",
+        "updated_at": "2026-04-17T00:21:01"
+      },
+      "column_similarity_measure": {
+        "user_id": "column_exact_match_similarity",
+        "recipient_ids": "column_exact_match_similarity",
+        "recipient_email_addresses": "column_exact_match_similarity",
+        "recipient_names": "column_exact_match_similarity",
+        "subject": "column_rouge_l_similarity",
+        "body": "column_rouge_l_similarity",
+        "belongs_to_email_thread_id": "column_ignore_similarity",
+        "response_to_email_id": "column_ignore_similarity",
+        "scheduled_send_at": "column_ignore_similarity",
+        "created_at": "column_ignore_similarity",
+        "updated_at": "column_ignore_similarity"
+      }
+    },
+    {
+      "operation": "create",
+      "source": "appworld",
+      "table": "gmail.drafts",
+      "entity_data": {
+        "user_id": 16,
+        "recipient_ids": [
+          201
+        ],
+        "recipient_email_addresses": [
+          "bob.baker@ms.gov"
+        ],
+        "recipient_names": [
+          "Bob Baker"
+        ],
+        "subject": "STEM Education Outreach",
+        "body": "Hello Bob,\n\nAs part of our STEM education initiative, we wanted to reach out and highlight a concerning statistic: college tuition has increased by 1200% since 1980. We would love to discuss how we can work together to improve K-8 adoption in your state.\n\nBest regards,\nAnthony Harrison",
+        "belongs_to_email_thread_id": null,
+        "response_to_email_id": null,
+        "scheduled_send_at": null,
+        "created_at": "2026-04-17T00:21:01",
+        "updated_at": "2026-04-17T00:21:01"
+      },
+      "column_similarity_measure": {
+        "user_id": "column_exact_match_similarity",
+        "recipient_ids": "column_exact_match_similarity",
+        "recipient_email_addresses": "column_exact_match_similarity",
+        "recipient_names": "column_exact_match_similarity",
+        "subject": "column_rouge_l_similarity",
+        "body": "column_rouge_l_similarity",
+        "belongs_to_email_thread_id": "column_ignore_similarity",
+        "response_to_email_id": "column_ignore_similarity",
+        "scheduled_send_at": "column_ignore_similarity",
+        "created_at": "column_ignore_similarity",
+        "updated_at": "column_ignore_similarity"
+      }
+    },
+    {
+      "operation": "create",
+      "source": "appworld",
+      "table": "gmail.drafts",
+      "entity_data": {
+        "user_id": 16,
+        "recipient_ids": [
+          202
+        ],
+        "recipient_email_addresses": [
+          "carol.clark@mn.gov"
+        ],
+        "recipient_names": [
+          "Carol Clark"
+        ],
+        "subject": "STEM Education Outreach",
+        "body": "Hello Carol,\n\nAs part of our STEM education initiative, we wanted to reach out and highlight a concerning statistic: college tuition has increased by 1200% since 1980. We would love to discuss how we can work together to improve K-8 adoption in your state.\n\nBest regards,\nAnthony Harrison",
+        "belongs_to_email_thread_id": null,
+        "response_to_email_id": null,
+        "scheduled_send_at": null,
+        "created_at": "2026-04-17T00:21:01",
+        "updated_at": "2026-04-17T00:21:01"
+      },
+      "column_similarity_measure": {
+        "user_id": "column_exact_match_similarity",
+        "recipient_ids": "column_exact_match_similarity",
+        "recipient_email_addresses": "column_exact_match_similarity",
+        "recipient_names": "column_exact_match_similarity",
+        "subject": "column_rouge_l_similarity",
+        "body": "column_rouge_l_similarity",
+        "belongs_to_email_thread_id": "column_ignore_similarity",
+        "response_to_email_id": "column_ignore_similarity",
+        "scheduled_send_at": "column_ignore_similarity",
+        "created_at": "column_ignore_similarity",
+        "updated_at": "column_ignore_similarity"
+      }
+    },
+    {
+      "operation": "create",
+      "source": "appworld",
+      "table": "gmail.drafts",
+      "entity_data": {
+        "user_id": 16,
+        "recipient_ids": [
+          203
+        ],
+        "recipient_email_addresses": [
+          "david.davis@co.gov"
+        ],
+        "recipient_names": [
+          "David Davis"
+        ],
+        "subject": "STEM Education Outreach",
+        "body": "Hello David,\n\nAs part of our STEM education initiative, we wanted to reach out and highlight a concerning statistic: college tuition has increased by 1200% since 1980. We would love to discuss how we can work together to improve K-8 adoption in your state.\n\nBest regards,\nAnthony Harrison",
+        "belongs_to_email_thread_id": null,
+        "response_to_email_id": null,
+        "scheduled_send_at": null,
+        "created_at": "2026-04-17T00:21:01",
+        "updated_at": "2026-04-17T00:21:01"
+      },
+      "column_similarity_measure": {
+        "user_id": "column_exact_match_similarity",
+        "recipient_ids": "column_exact_match_similarity",
+        "recipient_email_addresses": "column_exact_match_similarity",
+        "recipient_names": "column_exact_match_similarity",
+        "subject": "column_rouge_l_similarity",
+        "body": "column_rouge_l_similarity",
+        "belongs_to_email_thread_id": "column_ignore_similarity",
+        "response_to_email_id": "column_ignore_similarity",
+        "scheduled_send_at": "column_ignore_similarity",
+        "created_at": "column_ignore_similarity",
+        "updated_at": "column_ignore_similarity"
+      }
+    },
+    {
+      "operation": "create",
+      "source": "appworld",
+      "table": "gmail.drafts",
+      "entity_data": {
+        "user_id": 16,
+        "recipient_ids": [
+          204
+        ],
+        "recipient_email_addresses": [
+          "eve.evans@hi.gov"
+        ],
+        "recipient_names": [
+          "Eve Evans"
+        ],
+        "subject": "STEM Education Outreach",
+        "body": "Hello Eve,\n\nAs part of our STEM education initiative, we wanted to reach out and highlight a concerning statistic: college tuition has increased by 1200% since 1980. We would love to discuss how we can work together to improve K-8 adoption in your state.\n\nBest regards,\nAnthony Harrison",
+        "belongs_to_email_thread_id": null,
+        "response_to_email_id": null,
+        "scheduled_send_at": null,
+        "created_at": "2026-04-17T00:21:01",
+        "updated_at": "2026-04-17T00:21:01"
+      },
+      "column_similarity_measure": {
+        "user_id": "column_exact_match_similarity",
+        "recipient_ids": "column_exact_match_similarity",
+        "recipient_email_addresses": "column_exact_match_similarity",
+        "recipient_names": "column_exact_match_similarity",
+        "subject": "column_rouge_l_similarity",
+        "body": "column_rouge_l_similarity",
+        "belongs_to_email_thread_id": "column_ignore_similarity",
+        "response_to_email_id": "column_ignore_similarity",
+        "scheduled_send_at": "column_ignore_similarity",
+        "created_at": "column_ignore_similarity",
+        "updated_at": "column_ignore_similarity"
+      }
+    },
+    {
+      "operation": "create",
+      "source": "appworld",
+      "table": "gmail.drafts",
+      "entity_data": {
+        "user_id": 16,
+        "recipient_ids": [
+          205
+        ],
+        "recipient_email_addresses": [
+          "frank.foster@ca.gov"
+        ],
+        "recipient_names": [
+          "Frank Foster"
+        ],
+        "subject": "STEM Education Outreach",
+        "body": "Hello Frank,\n\nWe are reaching out regarding our STEM education initiative. We noticed that the featured school in your state has an impressive average SAT score of 1920. We would love to connect and discuss your educational strategies.\n\nBest regards,\nAnthony Harrison",
+        "belongs_to_email_thread_id": null,
+        "response_to_email_id": null,
+        "scheduled_send_at": null,
+        "created_at": "2026-04-17T00:21:01",
+        "updated_at": "2026-04-17T00:21:01"
+      },
+      "column_similarity_measure": {
+        "user_id": "column_exact_match_similarity",
+        "recipient_ids": "column_exact_match_similarity",
+        "recipient_email_addresses": "column_exact_match_similarity",
+        "recipient_names": "column_exact_match_similarity",
+        "subject": "column_rouge_l_similarity",
+        "body": "column_rouge_l_similarity",
+        "belongs_to_email_thread_id": "column_ignore_similarity",
+        "response_to_email_id": "column_ignore_similarity",
+        "scheduled_send_at": "column_ignore_similarity",
+        "created_at": "column_ignore_similarity",
+        "updated_at": "column_ignore_similarity"
+      }
+    },
+    {
+      "operation": "create",
+      "source": "appworld",
+      "table": "todoist.sections",
+      "entity_data": {
+        "project_id": 400,
+        "name": "Outreach Drafts",
+        "order_index": 0,
+        "created_at": "2026-04-17T00:21:01"
+      },
+      "column_similarity_measure": {
+        "project_id": "column_exact_match_similarity",
+        "name": "column_rouge_l_similarity",
+        "order_index": "column_ignore_similarity",
+        "created_at": "column_ignore_similarity"
+      }
+    }
+  ],
+  "task_completion_criteria": "Create a new section called 'Outreach Drafts' in the 'Education Outreach' Todoist project. Create email drafts for the contacts associated with the DC, MS, MN, CO, and HI tasks mentioning a 1200% college tuition increase. Create an email draft for the contact associated with the CA task mentioning an average SAT score of 1920.",
+  "categories": [
+    "APPWORLD",
+    "MULTIPLE_USER_TURN"
+  ],
+  "max_messages": 100,
+  "metadata": {
+    "original_scenario_id": "scenario_1007",
+    "expected_tools": [
+      "todoist_create_section",
+      "todoist_show_tasks",
+      "gmail_create_draft"
+    ],
+    "image_arrival": {
+      "1": [
+        "image_1",
+        "image_2",
+        "image_3"
+      ]
+    },
+    "image_delivery_map": [],
+    "scenario_metadata": {
+      "num_images": 3,
+      "num_user_rounds": 2,
+      "selected_flow_type": "filter",
+      "image_arrival": "upfront",
+      "challenge_type": "error_correction",
+      "require_disambiguation": false,
+      "dataset_type": "chartqapro"
+    }
+  }
+}

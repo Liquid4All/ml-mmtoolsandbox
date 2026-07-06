@@ -1,0 +1,235 @@
+{
+  "name": "scenario_0124",
+  "base_scenario": "base",
+  "description": "The user is building a contact list and a team roster for their research group by extracting contact information from various screenshots of settings, academic papers, and software licenses.",
+  "difficulty": "easy",
+  "appworld_base_task": "_base_",
+  "device_state_id": "dav.mart@gmail.com",
+  "reference_time": "2026-04-16T23:54:25.427801+00:00",
+  "agentsandbox_entities": {},
+  "appworld_entities": {
+    "gmail.users": [
+      {
+        "id": 10100,
+        "first_name": "Charles",
+        "last_name": "Wang",
+        "email": "92191833@qq.com",
+        "password": "placeholder_password",
+        "status": "active"
+      },
+      {
+        "id": 10101,
+        "first_name": "VISRAG",
+        "last_name": "Author",
+        "email": "yus21@mails.tsinghua.edu.cn",
+        "password": "placeholder_password",
+        "status": "active"
+      }
+    ]
+  },
+  "image_paths": [
+    "screenspotpro/images/common_windows/screenshot_2024-12-10_12-43-16.png",
+    "screenspotpro/images/common_windows/screenshot_2024-12-10_12-33-51.png",
+    "screenspotpro/images/common_mac/screenshot_2024-10-24_14-17-20.png",
+    "screenspotpro/images/common_windows/screenshot_2024-12-10_12-33-30.png",
+    "screenspotpro/images/stata_windows/screenshot_2024-12-05_20-53-58.png",
+    "screenspotpro/images/stata_windows/screenshot_2024-12-05_20-54-11.png"
+  ],
+  "messages": [
+    {
+      "sender": "SYSTEM",
+      "recipient": "USER",
+      "content": "{{USER_INSTRUCTION}}ROUND 1 [provide: image_1]\nQuery: I need to build a contact list for my research group. Start by creating a new contact for the user shown in this settings window, using his name and email address.\nInstructions: Ask the agent to create a new contact using the name and email address visible in the settings window of the provided screenshot. If the agent asks for confirmation, approve it. Move to the next round once the contact is created.\n\nROUND 2 [provide: image_2, image_4]\nQuery: Here are two more screenshots from Charles's computer. I found out he has a newer email address. Please update his contact with the email from the second new screenshot. I think it's 92191830@qq.com.\nInstructions: Ask the agent to update Charles Wang's contact with the email from the second new screenshot (image_4). You have intentionally provided the wrong email — 92191830@qq.com is from image_2, not image_4. If the agent points out the discrepancy between your text and the image, confirm they should use the correct one from image_4. If they blindly update with the wrong one, wait for the next round to correct them.\n\nROUND 3\nQuery: Ah, you're right, I gave you the email from the first screenshot. Please update his contact with the correct email from the last screenshot, which actually ends in 33.\nInstructions: Acknowledge the mistake and ask the agent to update the contact with the correct email address from the second screenshot provided in the previous round (92191833@qq.com). If the agent already corrected this in the previous round, just confirm everything looks good. Once the contact is correctly updated, proceed to the next round.\n\nROUND 4 [provide: image_3]\nQuery: Now, look at this browser window. Create a new contact for the author of the VISRAG paper shown here, using their email address. Just name the contact 'VISRAG Author'.\nInstructions: Ask the agent to create a new contact named 'VISRAG Author' using the email address visible on the paper in the provided screenshot. If the agent asks for clarification on which author, tell them to use the single email address shown. Move to the next round once the contact is created.\n\nROUND 5 [provide: image_5, image_6]\nQuery: Lastly, create a contact for the software licensee shown in these two images using their name and fax number. Finally, create a single note titled 'Team Roster' and compile the names and contact details of all three people (Charles Wang, VISRAG Author, and the software licensee) into it.\nInstructions: Ask the agent to create a final contact using the name and fax number of the software licensee shown in the new screenshots. Then, instruct the agent to create a note titled 'Team Roster' that includes the names and contact details of all three people you've discussed. Once the note is created with all the gathered information, you can end the conversation.\n\nYou have 6 images available to share with the agent using the send_message_with_image tool.\nIMPORTANT: Image IDs are ZERO-INDEXED integers (0, 1, 2, ...). Do NOT add 1 to the IDs.\nAvailable image IDs: [0, 1, 2, 3, 4, 5]\nImage mapping:\n  image_1.jpg -> image ID 0\n  image_2.jpg -> image ID 1\n  image_3.jpg -> image ID 2\n  image_4.jpg -> image ID 3\n  image_5.jpg -> image ID 4\n  image_6.jpg -> image ID 5\n\n## IMAGE DELIVERY\n\n\u26a0\ufe0f IMPORTANT: You MUST use the `send_message_with_image` tool to share images with User B. Do NOT just describe images in text \u2014 you MUST call the tool.\n\nImage delivery schedule:\n\n  Round 2: YOU MUST call the send_message_with_image tool with image_ids='1,3' \u2014 do NOT write the tool name as text; use the actual function call. Include a natural, conversational message to the assistant.\n  Round 4: YOU MUST call the send_message_with_image tool with image_ids='2' \u2014 do NOT write the tool name as text; use the actual function call. Include a natural, conversational message to the assistant.\n  Round 5: YOU MUST call the send_message_with_image tool with image_ids='4,5' \u2014 do NOT write the tool name as text; use the actual function call. Include a natural, conversational message to the assistant."
+    },
+    {
+      "sender": "USER",
+      "recipient": "AGENT",
+      "content": "I need to build a contact list for my research group. Start by creating a new contact for the user shown in this settings window, using his name and email address.",
+      "image_ids": [
+        0
+      ]
+    }
+  ],
+  "milestones": [],
+  "entity_diff_specs": [
+    {
+      "operation": "create",
+      "source": "appworld",
+      "table": "phone.contacts",
+      "entity_data": {
+        "user_id": 74,
+        "first_name": "Charles",
+        "last_name": "Wang",
+        "email": "92191833@qq.com",
+        "phone_number": null,
+        "relationships": [
+          "research group"
+        ],
+        "birthday": null,
+        "home_address": null,
+        "work_address": null,
+        "created_at": "2026-04-16T23:54:25"
+      },
+      "column_similarity_measure": {
+        "user_id": "column_exact_match_similarity",
+        "first_name": "column_exact_match_similarity",
+        "last_name": "column_exact_match_similarity",
+        "email": "column_exact_match_similarity",
+        "phone_number": "column_ignore_similarity",
+        "relationships": "column_ignore_similarity",
+        "birthday": "column_ignore_similarity",
+        "home_address": "column_ignore_similarity",
+        "work_address": "column_ignore_similarity",
+        "created_at": "column_ignore_similarity"
+      }
+    },
+    {
+      "operation": "create",
+      "source": "appworld",
+      "table": "phone.contacts",
+      "entity_data": {
+        "user_id": 74,
+        "first_name": "VISRAG",
+        "last_name": "Author",
+        "email": "yus21@mails.tsinghua.edu.cn",
+        "phone_number": null,
+        "relationships": [
+          "research group"
+        ],
+        "birthday": null,
+        "home_address": null,
+        "work_address": null,
+        "created_at": "2026-04-16T23:54:25"
+      },
+      "column_similarity_measure": {
+        "user_id": "column_exact_match_similarity",
+        "first_name": "column_exact_match_similarity",
+        "last_name": "column_exact_match_similarity",
+        "email": "column_exact_match_similarity",
+        "phone_number": "column_ignore_similarity",
+        "relationships": "column_ignore_similarity",
+        "birthday": "column_ignore_similarity",
+        "home_address": "column_ignore_similarity",
+        "work_address": "column_ignore_similarity",
+        "created_at": "column_ignore_similarity"
+      }
+    },
+    {
+      "operation": "create",
+      "source": "appworld",
+      "table": "phone.contacts",
+      "entity_data": {
+        "user_id": 74,
+        "first_name": "lijie",
+        "last_name": "licensee",
+        "email": "",
+        "phone_number": "979-696-4601",
+        "relationships": [
+          "research group"
+        ],
+        "birthday": null,
+        "home_address": null,
+        "work_address": null,
+        "created_at": "2026-04-16T23:54:25"
+      },
+      "column_similarity_measure": {
+        "user_id": "column_exact_match_similarity",
+        "first_name": "column_exact_match_similarity",
+        "last_name": "column_exact_match_similarity",
+        "email": "column_ignore_similarity",
+        "phone_number": "column_exact_match_similarity",
+        "relationships": "column_ignore_similarity",
+        "birthday": "column_ignore_similarity",
+        "home_address": "column_ignore_similarity",
+        "work_address": "column_ignore_similarity",
+        "created_at": "column_ignore_similarity"
+      }
+    },
+    {
+      "operation": "create",
+      "source": "appworld",
+      "table": "simple_note.notes",
+      "entity_data": {
+        "user_id": 74,
+        "title": "Team Roster",
+        "content": "Charles Wang\nEmail: 92191833@qq.com\n\nVISRAG Author\nEmail: yus21@mails.tsinghua.edu.cn\n\nlijie\nFax: 979-696-4601",
+        "tags": [],
+        "created_at": "2026-04-16T23:54:25",
+        "updated_at": "2026-04-16T23:54:25",
+        "pinned": false,
+        "data": null
+      },
+      "column_similarity_measure": {
+        "user_id": "column_exact_match_similarity",
+        "title": "column_rouge_l_similarity",
+        "content": "column_rouge_l_similarity",
+        "tags": "column_ignore_similarity",
+        "created_at": "column_ignore_similarity",
+        "updated_at": "column_ignore_similarity",
+        "pinned": "column_exact_match_similarity",
+        "data": "column_ignore_similarity"
+      }
+    }
+  ],
+  "task_completion_criteria": "Create a contact for 'Charles Wang' and update it with the email '92191833@qq.com' (the correct email from the last screenshot, after the user's error correction). Create a contact named 'VISRAG Author' with the email 'yus21@mails.tsinghua.edu.cn'. Create a contact for 'lijie' with the fax number '979-696-4601' stored in a suitable contact field (e.g., phone_number, since there is no dedicated fax field). Finally, create a note titled 'Team Roster' that includes the names and contact details of Charles Wang, VISRAG Author, and lijie.",
+  "categories": [
+    "APPWORLD",
+    "MULTIPLE_USER_TURN"
+  ],
+  "max_messages": 100,
+  "metadata": {
+    "original_scenario_id": "scenario_0124",
+    "expected_tools": [
+      "contacts_add_contact",
+      "contacts_update_contact",
+      "simple_note_create_note"
+    ],
+    "image_arrival": {
+      "1": [
+        "image_1"
+      ],
+      "2": [
+        "image_2",
+        "image_4"
+      ],
+      "4": [
+        "image_3"
+      ],
+      "5": [
+        "image_5",
+        "image_6"
+      ]
+    },
+    "image_delivery_map": [
+      {
+        "query": "I found out Charles has a newer email address. Please update his contact with the email from the second new screenshot. I think it's 92191830@qq.com.",
+        "image_ids": [
+          1,
+          3
+        ]
+      },
+      {
+        "query": "Now, look at this browser window. Create a new contact for the author of the VISRAG paper shown here, using their email address. Just name the contact 'VISRAG Author'.",
+        "image_ids": [
+          2
+        ]
+      },
+      {
+        "query": "Lastly, create a contact for the software licensee shown in these two images using their name and fax number. Finally, create a single note titled 'Team Roster' and compile the names and contact details of all three people (Charles Wang, VISRAG Author, and the software licensee) into it.",
+        "image_ids": [
+          4,
+          5
+        ]
+      }
+    ],
+    "scenario_metadata": {
+      "num_images": 6,
+      "num_user_rounds": 5,
+      "selected_flow_type": "aggregate",
+      "image_arrival": "progressive",
+      "challenge_type": "error_correction",
+      "require_disambiguation": false,
+      "dataset_type": "screenspotpro"
+    }
+  }
+}

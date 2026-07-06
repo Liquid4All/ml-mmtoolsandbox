@@ -1,0 +1,126 @@
+{
+  "name": "scenario_0908",
+  "base_scenario": "base",
+  "description": "The user is compiling historical economic data from multiple charts for a university assignment and needs to summarize specific indicators for a target year.",
+  "difficulty": "easy",
+  "appworld_base_task": "_base_",
+  "device_state_id": "kat_simp@gmail.com",
+  "reference_time": "2026-04-17T00:17:38.332239+00:00",
+  "agentsandbox_entities": {},
+  "appworld_entities": {
+    "gmail.users": [
+      {
+        "id": 10100,
+        "first_name": "Prof",
+        "last_name": "",
+        "email": "prof@university.edu",
+        "password": "placeholder_password",
+        "status": "active"
+      }
+    ]
+  },
+  "image_paths": [
+    "chartmuseum/images/shiller.png",
+    "chartqapro/images/chart_0784.jpg",
+    "chartqapro/images/chart_1369.jpg"
+  ],
+  "messages": [
+    {
+      "sender": "SYSTEM",
+      "recipient": "USER",
+      "content": "{{USER_INSTRUCTION}}ROUND 1 [provide: image_1, image_2, image_3]\nQuery: Create a new note titled '2010 Economic Summary'. I need you to look at these three charts and extract the Home-Price Index from the first one, the Federal Budget Receipts percentage from the second one, and the Gini Index from the third one, all specifically for the year 2010, and put them in the note.\nInstructions: Instruct the assistant to create a note titled '2010 Economic Summary' and extract the requested data points for the year 2010 from the three provided charts. If the assistant correctly points out that the first chart does not contain data for 2010 (as it ends earlier), acknowledge their attention to detail but ask them to just create the note with whatever 2010 data they can find from the other two charts for now. Do not provide the correct year yet. Once the partial note is created or the limitation is discussed, move to the next round.\n\nROUND 2\nQuery: You're right, that first chart stops at 2005. Let's just use 2005 for all of them instead. Please update the note title to '2005 Economic Summary', extract the 2005 values from all three charts, and email the updated summary to prof@university.edu.\nInstructions: Acknowledge the missing data issue from the first round. Ask the assistant to change the target year to the latest year all three charts share, which is 2005. Have them update the note title to '2005 Economic Summary', extract the 2005 values for all three metrics from the images, and then email the completed summary to prof@university.edu. If the assistant asks for confirmation on the estimated values for the line graphs (since some points lack exact numerical labels), approve their reasonable estimates. End the conversation once the email is successfully sent.\n\nYou have 3 images available to share with the agent using the send_message_with_image tool.\nIMPORTANT: Image IDs are ZERO-INDEXED integers (0, 1, 2, ...). Do NOT add 1 to the IDs.\nAvailable image IDs: [0, 1, 2]\nImage mapping:\n  image_1.jpg -> image ID 0\n  image_2.jpg -> image ID 1\n  image_3.jpg -> image ID 2"
+    },
+    {
+      "sender": "USER",
+      "recipient": "AGENT",
+      "content": "Create a new note titled '2010 Economic Summary'. I need you to look at these three charts and extract the Home-Price Index from the first one, the Federal Budget Receipts percentage from the second one, and the Gini Index from the third one, all specifically for the year 2010, and put them in the note.",
+      "image_ids": [
+        0,
+        1,
+        2
+      ]
+    }
+  ],
+  "milestones": [],
+  "entity_diff_specs": [
+    {
+      "operation": "create",
+      "source": "appworld",
+      "table": "gmail.emails",
+      "entity_data": {
+        "sender_id": 60,
+        "recipient_ids": [
+          10100
+        ],
+        "subject": "2005 Economic Summary",
+        "body": "Hello Professor,\n\nHere is the 2005 Economic Summary extracted from the charts:\n- Home-Price Index: 185\n- Federal Budget Receipts: ~17.5%\n- Gini Index: ~0.44\n\nBest regards,\nKatie Simpson",
+        "response_to_email_id": null,
+        "created_at": "2026-04-17T00:17:38"
+      },
+      "column_similarity_measure": {
+        "sender_id": "column_exact_match_similarity",
+        "recipient_ids": "column_exact_match_similarity",
+        "subject": "column_rouge_l_similarity",
+        "body": "column_rouge_l_similarity",
+        "response_to_email_id": "column_ignore_similarity",
+        "created_at": "column_ignore_similarity"
+      }
+    },
+    {
+      "operation": "create",
+      "source": "appworld",
+      "table": "simple_note.notes",
+      "entity_data": {
+        "user_id": 60,
+        "title": "2005 Economic Summary",
+        "content": "Home-Price Index: 185\nFederal Budget Receipts: 17.5%\nGini Index: 0.44",
+        "tags": [],
+        "created_at": "2026-04-17T00:17:38",
+        "updated_at": "2026-04-17T00:17:38",
+        "pinned": false,
+        "data": null
+      },
+      "column_similarity_measure": {
+        "user_id": "column_exact_match_similarity",
+        "title": "column_rouge_l_similarity",
+        "content": "column_rouge_l_similarity",
+        "tags": "column_ignore_similarity",
+        "created_at": "column_ignore_similarity",
+        "updated_at": "column_ignore_similarity",
+        "pinned": "column_exact_match_similarity",
+        "data": "column_ignore_similarity"
+      }
+    }
+  ],
+  "task_completion_criteria": "Update the note to be titled '2005 Economic Summary' containing the 2005 values extracted from the images: Home-Price Index at 185, Federal Budget Receipts at approximately 17.5% (or the value corresponding to the '05-'09 period), and Gini Index at approximately 0.44. Send an email containing this summary to prof@university.edu.",
+  "categories": [
+    "APPWORLD",
+    "MULTIPLE_USER_TURN"
+  ],
+  "max_messages": 100,
+  "metadata": {
+    "original_scenario_id": "scenario_0908",
+    "expected_tools": [
+      "create_note",
+      "simple_note_update_note",
+      "gmail_send_email"
+    ],
+    "image_arrival": {
+      "1": [
+        "image_1",
+        "image_2",
+        "image_3"
+      ]
+    },
+    "image_delivery_map": [],
+    "scenario_metadata": {
+      "num_images": 3,
+      "num_user_rounds": 2,
+      "selected_flow_type": "cross_reference",
+      "image_arrival": "upfront",
+      "challenge_type": "error_correction",
+      "require_disambiguation": false,
+      "dataset_type": "chartqapro"
+    }
+  }
+}

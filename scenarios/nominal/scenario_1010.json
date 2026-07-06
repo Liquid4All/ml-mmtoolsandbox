@@ -1,0 +1,351 @@
+{
+  "name": "scenario_1010",
+  "base_scenario": "base",
+  "description": "The user is shopping on Amazon, initially looking at some larger or more expensive items they need, but then reconsiders their budget and decides to buy some essential stationery instead.",
+  "difficulty": "easy",
+  "appworld_base_task": "_base_",
+  "device_state_id": "jac-blackburn@gmail.com",
+  "reference_time": "2026-04-17T00:21:02.789831+00:00",
+  "agentsandbox_entities": {},
+  "appworld_entities": {
+    "amazon.sellers": [
+      {
+        "id": 200,
+        "name": "DroneTech",
+        "rating": 4.5
+      },
+      {
+        "id": 201,
+        "name": "HomeEssentials",
+        "rating": 4.6
+      },
+      {
+        "id": 202,
+        "name": "ShoeMart",
+        "rating": 4.7
+      },
+      {
+        "id": 203,
+        "name": "uni-ball Official",
+        "rating": 4.9
+      },
+      {
+        "id": 204,
+        "name": "Tombow Official",
+        "rating": 4.8
+      },
+      {
+        "id": 205,
+        "name": "Pentel Official",
+        "rating": 4.9
+      }
+    ],
+    "amazon.products": [
+      {
+        "id": 200,
+        "product_type": "electronics",
+        "name": "Pro Camera Drone",
+        "description": "4K HD Camera Drone with extra batteries",
+        "seller_id": 200,
+        "price": 299.99,
+        "delivery_days": 2,
+        "inventory_quantity": 10,
+        "weight": 1.5,
+        "length": 10.0,
+        "width": 10.0,
+        "height": 5.0,
+        "color": "White",
+        "relative_size": "medium",
+        "rating": 5.0,
+        "seller_rating": 4.5,
+        "has_variations": false
+      },
+      {
+        "id": 201,
+        "product_type": "home",
+        "name": "Foldable Drying Rack",
+        "description": "Stainless steel clothes drying rack",
+        "seller_id": 201,
+        "price": 45.99,
+        "delivery_days": 3,
+        "inventory_quantity": 20,
+        "weight": 3.0,
+        "length": 40.0,
+        "width": 20.0,
+        "height": 30.0,
+        "color": "Silver",
+        "relative_size": "large",
+        "rating": 5.0,
+        "seller_rating": 4.6,
+        "has_variations": false
+      },
+      {
+        "id": 202,
+        "product_type": "shoes",
+        "name": "Women's Running Shoes",
+        "description": "Comfortable athletic shoes, size L7",
+        "seller_id": 202,
+        "price": 89.99,
+        "delivery_days": 2,
+        "inventory_quantity": 15,
+        "weight": 0.8,
+        "length": 12.0,
+        "width": 8.0,
+        "height": 5.0,
+        "color": "Black",
+        "relative_size": "medium",
+        "rating": 5.0,
+        "seller_rating": 4.7,
+        "has_variations": true
+      },
+      {
+        "id": 203,
+        "product_type": "stationery",
+        "name": "uni-ball Signo RT1 0.5 rollerball pen",
+        "description": "Black ink rollerball pen",
+        "seller_id": 203,
+        "price": 2.99,
+        "delivery_days": 1,
+        "inventory_quantity": 50,
+        "weight": 0.05,
+        "length": 5.5,
+        "width": 0.5,
+        "height": 0.5,
+        "color": "Black",
+        "relative_size": "small",
+        "rating": 4.9,
+        "seller_rating": 4.9,
+        "has_variations": false
+      },
+      {
+        "id": 204,
+        "product_type": "stationery",
+        "name": "Tombow MONO graph mechanical pencil",
+        "description": "Red mechanical pencil 0.5mm",
+        "seller_id": 204,
+        "price": 4.99,
+        "delivery_days": 1,
+        "inventory_quantity": 60,
+        "weight": 0.06,
+        "length": 5.8,
+        "width": 0.4,
+        "height": 0.4,
+        "color": "Red",
+        "relative_size": "small",
+        "rating": 4.8,
+        "seller_rating": 4.8,
+        "has_variations": false
+      },
+      {
+        "id": 205,
+        "product_type": "stationery",
+        "name": "Pentel BLN105 blue pen",
+        "description": "EnerGel blue ink pen",
+        "seller_id": 205,
+        "price": 1.99,
+        "delivery_days": 1,
+        "inventory_quantity": 70,
+        "weight": 0.04,
+        "length": 5.7,
+        "width": 0.4,
+        "height": 0.4,
+        "color": "Blue",
+        "relative_size": "small",
+        "rating": 4.9,
+        "seller_rating": 4.9,
+        "has_variations": false
+      }
+    ],
+    "amazon.product_reviews": [
+      {
+        "id": 16100,
+        "product_id": 200,
+        "user_id": 200,
+        "is_verified": true,
+        "rating": 5,
+        "title": "Amazing drone",
+        "text": "Takes great pictures and is easy to fly.",
+        "created_at": "2026-04-10T14:30:00"
+      },
+      {
+        "id": 16101,
+        "product_id": 201,
+        "user_id": 201,
+        "is_verified": true,
+        "rating": 5,
+        "title": "Very sturdy",
+        "text": "Holds a lot of laundry without tipping over.",
+        "created_at": "2026-04-11T09:15:00"
+      },
+      {
+        "id": 16102,
+        "product_id": 202,
+        "user_id": 202,
+        "is_verified": true,
+        "rating": 5,
+        "title": "Perfect fit",
+        "text": "Size L7 fits exactly as expected. Very comfortable.",
+        "created_at": "2026-04-12T16:45:00"
+      }
+    ],
+    "amazon.users": [
+      {
+        "id": 200,
+        "first_name": "User",
+        "email": "stub_user_200@example.com",
+        "password": "stub_password",
+        "created_at": "2025-01-01T00:00:00",
+        "last_logged_in": "2025-01-01T00:00:00",
+        "verified": true,
+        "last_name": "200"
+      },
+      {
+        "id": 201,
+        "first_name": "User",
+        "email": "stub_user_201@example.com",
+        "password": "stub_password",
+        "created_at": "2025-01-01T00:00:00",
+        "last_logged_in": "2025-01-01T00:00:00",
+        "verified": true,
+        "last_name": "201"
+      },
+      {
+        "id": 202,
+        "first_name": "User",
+        "email": "stub_user_202@example.com",
+        "password": "stub_password",
+        "created_at": "2025-01-01T00:00:00",
+        "last_logged_in": "2025-01-01T00:00:00",
+        "verified": true,
+        "last_name": "202"
+      }
+    ],
+    "gmail.users": []
+  },
+  "image_paths": [
+    "worldvqa/images/1866.jpg",
+    "worldvqa/images/1349.jpg",
+    "hiertext/images/test/a3190143ce35a181.jpg",
+    "worldvqa/images/1357.jpg",
+    "worldvqa/images/1654.jpg",
+    "worldvqa/images/1668.jpg"
+  ],
+  "messages": [
+    {
+      "sender": "SYSTEM",
+      "recipient": "USER",
+      "content": "{{USER_INSTRUCTION}}ROUND 1 [provide: image_1, image_2, image_3]\nQuery: Search Amazon for the drone in the first picture, the item being set up in the second one, and those specific women's shoes in the third box, in size L7. Check their rating distributions first, and only add them to my cart if the majority of their reviews are 5 stars.\nInstructions: Ask the assistant to search Amazon for the three items shown in the images (the drone, the drying rack, and the specific shoes in size L7). Instruct the assistant to check the rating distribution for each item and only add an item to the cart if the majority of its reviews are 5 stars. If the assistant needs help identifying any item, refer it back to the visible details in the images without giving away the exact brand or model yourself. Once the assistant confirms which items were added based on the ratings, acknowledge and move to the next round.\n\nROUND 2 [provide: image_4, image_5, image_6]\nQuery: Actually, scratch that plan, I shouldn't be spending so much money on big items right now. Remove those three things from my cart. I'll just restock my stationery instead. Search for the black pen in the first new image, the red pencil in the second, and the blue pen in the last image. Check who the seller is for each, and if they are sold by their official brand stores, add them to my cart.\nInstructions: Tell the assistant that you've changed your mind about spending money on big items and ask it to remove the three items from the previous round from your cart. Then, ask the assistant to search for the three stationery items shown in the new images (the black pen, the red pencil, and the blue pen). Instruct the assistant to check the seller for each of these new items and only add them to the cart if they are sold by their official brand stores. If the assistant asks for clarification on the items, point it to the visible text and features in the images. Conclude the conversation once the assistant confirms the final cart updates.\n\nYou have 6 images available to share with the agent using the send_message_with_image tool.\nIMPORTANT: Image IDs are ZERO-INDEXED integers (0, 1, 2, ...). Do NOT add 1 to the IDs.\nAvailable image IDs: [0, 1, 2, 3, 4, 5]\nImage mapping:\n  image_1.jpg -> image ID 0\n  image_2.jpg -> image ID 1\n  image_3.jpg -> image ID 2\n  image_4.jpg -> image ID 3\n  image_5.jpg -> image ID 4\n  image_6.jpg -> image ID 5\n\n## IMAGE DELIVERY\n\n\u26a0\ufe0f IMPORTANT: You MUST use the `send_message_with_image` tool to share images with User B. Do NOT just describe images in text \u2014 you MUST call the tool.\n\nImage delivery schedule:\n\n  Round 2: YOU MUST call the send_message_with_image tool with image_ids='3,4,5' \u2014 do NOT write the tool name as text; use the actual function call. Include a natural, conversational message to the assistant."
+    },
+    {
+      "sender": "USER",
+      "recipient": "AGENT",
+      "content": "Search Amazon for the drone in the first picture, the item being set up in the second one, and those specific women's shoes in the third box, in size L7. Check their rating distributions first, and only add them to my cart if the majority of their reviews are 5 stars.",
+      "image_ids": [
+        0,
+        1,
+        2
+      ]
+    }
+  ],
+  "milestones": [],
+  "entity_diff_specs": [
+    {
+      "operation": "create",
+      "source": "appworld",
+      "table": "amazon.cart_entries",
+      "entity_data": {
+        "user_id": 38,
+        "product_id": 203,
+        "quantity": 1,
+        "gift_wrap_quantity": 0
+      },
+      "column_similarity_measure": {
+        "user_id": "column_exact_match_similarity",
+        "product_id": "column_exact_match_similarity",
+        "quantity": "column_exact_match_similarity",
+        "gift_wrap_quantity": "column_exact_match_similarity"
+      }
+    },
+    {
+      "operation": "create",
+      "source": "appworld",
+      "table": "amazon.cart_entries",
+      "entity_data": {
+        "user_id": 38,
+        "product_id": 204,
+        "quantity": 1,
+        "gift_wrap_quantity": 0
+      },
+      "column_similarity_measure": {
+        "user_id": "column_exact_match_similarity",
+        "product_id": "column_exact_match_similarity",
+        "quantity": "column_exact_match_similarity",
+        "gift_wrap_quantity": "column_exact_match_similarity"
+      }
+    },
+    {
+      "operation": "create",
+      "source": "appworld",
+      "table": "amazon.cart_entries",
+      "entity_data": {
+        "user_id": 38,
+        "product_id": 205,
+        "quantity": 1,
+        "gift_wrap_quantity": 0
+      },
+      "column_similarity_measure": {
+        "user_id": "column_exact_match_similarity",
+        "product_id": "column_exact_match_similarity",
+        "quantity": "column_exact_match_similarity",
+        "gift_wrap_quantity": "column_exact_match_similarity"
+      }
+    }
+  ],
+  "task_completion_criteria": "Ensure the user's Amazon cart contains a uni-ball Signo RT1 0.5 rollerball pen, a Tombow MONO graph mechanical pencil, and a Pentel BLN105 blue pen (conditional on each being sold by their official brand stores), and ensure that no large or expensive items from earlier searches are left in the cart.",
+  "categories": [
+    "APPWORLD",
+    "MULTIPLE_USER_TURN"
+  ],
+  "max_messages": 100,
+  "metadata": {
+    "original_scenario_id": "scenario_1010",
+    "expected_tools": [
+      "amazon_show_product",
+      "amazon_show_product_rating_distribution",
+      "amazon_add_product_to_cart",
+      "amazon_delete_product_from_cart",
+      "amazon_show_seller"
+    ],
+    "image_arrival": {
+      "1": [
+        "image_1",
+        "image_2",
+        "image_3"
+      ],
+      "2": [
+        "image_4",
+        "image_5",
+        "image_6"
+      ]
+    },
+    "image_delivery_map": [
+      {
+        "query": "Ok, I'll just restock my stationery instead. Search for the black pen in the first new image, the red pencil in the second, and the blue pen in the last image. Check who the seller is for each, and if they are sold by their official brand stores, add them to my cart.",
+        "image_ids": [
+          3,
+          4,
+          5
+        ]
+      }
+    ],
+    "scenario_metadata": {
+      "num_images": 6,
+      "num_user_rounds": 2,
+      "selected_flow_type": "validate",
+      "image_arrival": "progressive",
+      "challenge_type": "goal_change",
+      "require_disambiguation": false,
+      "dataset_type": "worldvqa"
+    }
+  }
+}

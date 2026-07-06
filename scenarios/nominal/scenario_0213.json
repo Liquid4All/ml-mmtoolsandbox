@@ -1,0 +1,224 @@
+{
+  "name": "scenario_0213",
+  "base_scenario": "base",
+  "description": "The user is researching trending AI models shown on Hugging Face in their Android emulator and wants to save a summary of the top models to their local file system, specifically organizing it into an existing annotations folder.",
+  "difficulty": "easy",
+  "appworld_base_task": "_base_",
+  "device_state_id": "je.simpson@gmail.com",
+  "reference_time": "2026-04-16T23:56:44.921872+00:00",
+  "agentsandbox_entities": {},
+  "appworld_entities": {
+    "file_system.directories": [
+      {
+        "id": 3600,
+        "path": "/home/jeffery/desktop/annotations/",
+        "tilde_path": "~/desktop/annotations/",
+        "user_id": 59,
+        "created_at": "2026-04-01T09:00:00",
+        "updated_at": "2026-04-01T09:00:00"
+      },
+      {
+        "path": "/home/jeffery/desktop/",
+        "tilde_path": "~/desktop/",
+        "user_id": 59,
+        "created_at": "2025-01-01T00:00:00",
+        "updated_at": "2025-01-01T00:00:00",
+        "id": 3601
+      },
+      {
+        "path": "/home/user/",
+        "tilde_path": "/home/user/",
+        "user_id": 59,
+        "created_at": "2025-01-01T00:00:00",
+        "updated_at": "2025-01-01T00:00:00",
+        "id": 3602
+      },
+      {
+        "path": "/home/user/Desktop/",
+        "tilde_path": "~/Desktop/",
+        "user_id": 59,
+        "created_at": "2025-01-01T00:00:00",
+        "updated_at": "2025-01-01T00:00:00",
+        "id": 3603
+      },
+      {
+        "path": "/home/user/Desktop/annotations/",
+        "tilde_path": "~/Desktop/annotations/",
+        "user_id": 59,
+        "created_at": "2025-01-01T00:00:00",
+        "updated_at": "2025-01-01T00:00:00",
+        "id": 3604
+      },
+      {
+        "path": "~/Desktop/",
+        "tilde_path": "~/Desktop/",
+        "user_id": 59,
+        "created_at": "2025-01-01T00:00:00",
+        "updated_at": "2025-01-01T00:00:00",
+        "id": 3605
+      },
+      {
+        "path": "~/Desktop/annotations/",
+        "tilde_path": "~/Desktop/annotations/",
+        "user_id": 59,
+        "created_at": "2025-01-01T00:00:00",
+        "updated_at": "2025-01-01T00:00:00",
+        "id": 3606
+      },
+      {
+        "path": "~/desktop/",
+        "tilde_path": "~/desktop/",
+        "user_id": 59,
+        "created_at": "2025-01-01T00:00:00",
+        "updated_at": "2025-01-01T00:00:00",
+        "id": 3607
+      }
+    ],
+    "gmail.users": []
+  },
+  "image_paths": [
+    "screenspotpro/images/android_studio_mac/screenshot_2024-11-28_15-48-39.png",
+    "screenspotpro/images/android_studio_mac/screenshot_2024-11-28_15-51-23.png",
+    "screenspotpro/images/android_studio_mac/screenshot_2024-11-28_16-03-53.png",
+    "screenspotpro/images/android_studio_mac/screenshot_2024-11-28_16-09-39.png",
+    "screenspotpro/images/android_studio_mac/screenshot_2024-11-28_16-11-18.png"
+  ],
+  "messages": [
+    {
+      "sender": "SYSTEM",
+      "recipient": "USER",
+      "content": "{{USER_INSTRUCTION}}ROUND 1 [provide: image_1, image_2, image_3, image_4, image_5]\nQuery: I want to gather information about the AI models shown in the emulator in the third screenshot. First, search the web for the first trending model listed there.\nInstructions: Ask the assistant to look at the third screenshot, identify the first trending AI model listed in the emulator's screen, and perform a web search to gather information about it. If the assistant asks for clarification, point it to the Hugging Face trending list visible in the emulator. Once the assistant provides the search results, move to the next round.\n\nROUND 2\nQuery: Great, now search the web for the second trending model shown in that same list.\nInstructions: Ask the assistant to perform a web search for the second trending model listed in the emulator's Hugging Face page from the previously discussed screenshot. Wait for the assistant to provide information from the search results before proceeding to the next round.\n\nROUND 3\nQuery: Draft an email to my team, David and Sierra, summarizing the capabilities of these two AI models.\nInstructions: Instruct the assistant to draft an email to your team members, David and Sierra, summarizing the capabilities of the two AI models it just researched. Once the assistant confirms the draft is created, move to the next round.\n\nROUND 4\nQuery: Actually, change of plan. I don't want to send an email yet. Delete the draft. Instead, create a new directory called 'AI_Models' and create a text file inside it containing the summary.\nInstructions: Tell the assistant that you've changed your mind and want to pivot. Ask it to delete the email draft it just created. Then, instruct it to create a new local directory named 'AI_Models' and create a text file within that directory containing the summary of the two AI models. Wait for confirmation that the file has been created before moving on.\n\nROUND 5\nQuery: Finally, check if the 'annotations' folder visible on the desktop in the screenshots exists in my local file system. If it does, copy the summary file we just created into that folder.\nInstructions: Ask the assistant to check if the 'annotations' folder, which is visible on the desktop in the provided screenshots, exists in the local file system. If it does, ask the assistant to copy the summary text file you just created into that 'annotations' folder. Once the assistant confirms the file has been copied, end the conversation.\n\nYou have 5 images available to share with the agent using the send_message_with_image tool.\nIMPORTANT: Image IDs are ZERO-INDEXED integers (0, 1, 2, ...). Do NOT add 1 to the IDs.\nAvailable image IDs: [0, 1, 2, 3, 4]\nImage mapping:\n  image_1.jpg -> image ID 0\n  image_2.jpg -> image ID 1\n  image_3.jpg -> image ID 2\n  image_4.jpg -> image ID 3\n  image_5.jpg -> image ID 4"
+    },
+    {
+      "sender": "USER",
+      "recipient": "AGENT",
+      "content": "I want to gather information about the AI models shown in the emulator in the third screenshot. First, search the web for the first trending model listed there.",
+      "image_ids": [
+        0,
+        1,
+        2,
+        3,
+        4
+      ]
+    }
+  ],
+  "milestones": [],
+  "entity_diff_specs": [
+    {
+      "operation": "create",
+      "source": "appworld",
+      "table": "file_system.directories",
+      "entity_data": {
+        "path": "AI_Models",
+        "tilde_path": "AI_Models",
+        "user_id": 59,
+        "created_at": "2026-04-16T23:56:44",
+        "updated_at": "2026-04-16T23:56:44"
+      },
+      "column_similarity_measure": {
+        "path": "column_contains_similarity",
+        "tilde_path": "column_contains_similarity",
+        "user_id": "column_exact_match_similarity",
+        "created_at": "column_ignore_similarity",
+        "updated_at": "column_ignore_similarity"
+      }
+    },
+    {
+      "operation": "create",
+      "source": "appworld",
+      "table": "file_system.files",
+      "entity_data": {
+        "path": "AI_Models/ai_models_summary.txt",
+        "tilde_path": "AI_Models/ai_models_summary.txt",
+        "user_id": 59,
+        "content": "Summary of trending AI models:\n\n1. AIDC-AI/Marco-o1: A powerful AI model with advanced reasoning capabilities.\n2. Lightricks/LTX-Video: A state-of-the-art model for high-quality video generation.",
+        "compressed_data": [],
+        "created_at": "2026-04-16T23:56:44",
+        "updated_at": "2026-04-16T23:56:44"
+      },
+      "column_similarity_measure": {
+        "path": "column_contains_similarity",
+        "tilde_path": "column_contains_similarity",
+        "user_id": "column_exact_match_similarity",
+        "content": "column_rouge_l_similarity",
+        "compressed_data": "column_ignore_similarity",
+        "created_at": "column_ignore_similarity",
+        "updated_at": "column_ignore_similarity"
+      }
+    },
+    {
+      "operation": "create",
+      "source": "appworld",
+      "table": "file_system.files",
+      "entity_data": {
+        "path": "Desktop/annotations/ai_models_summary.txt",
+        "tilde_path": "Desktop/annotations/ai_models_summary.txt",
+        "user_id": 59,
+        "content": "Summary of trending AI models:\n\n1. AIDC-AI/Marco-o1: A powerful AI model with advanced reasoning capabilities.\n2. Lightricks/LTX-Video: A state-of-the-art model for high-quality video generation.",
+        "compressed_data": [],
+        "created_at": "2026-04-16T23:56:44",
+        "updated_at": "2026-04-16T23:56:44"
+      },
+      "column_similarity_measure": {
+        "path": "column_contains_similarity",
+        "tilde_path": "column_contains_similarity",
+        "user_id": "column_exact_match_similarity",
+        "content": "column_rouge_l_similarity",
+        "compressed_data": "column_ignore_similarity",
+        "created_at": "column_ignore_similarity",
+        "updated_at": "column_ignore_similarity"
+      }
+    },
+    {
+      "operation": "update",
+      "source": "appworld",
+      "table": "file_system.directories",
+      "entity_id_column": "id",
+      "entity_id_value": 3600,
+      "expected_fields": {
+        "updated_at": "2026-04-01T09:00:00"
+      },
+      "column_similarity_measure": {
+        "updated_at": "column_ignore_similarity",
+        "id": "column_exact_match_similarity"
+      }
+    }
+  ],
+  "task_completion_criteria": "Create a directory named 'AI_Models', create a text file inside it containing a summary of the 'AIDC-AI/Marco-o1' and 'Lightricks/LTX-Video' AI models (the top two models from the Hugging Face list shown in the emulator), and copy this text file into the existing 'annotations' directory.",
+  "categories": [
+    "APPWORLD",
+    "MULTIPLE_USER_TURN"
+  ],
+  "max_messages": 100,
+  "metadata": {
+    "original_scenario_id": "scenario_0213",
+    "expected_tools": [
+      "web_search_serper",
+      "gmail_create_draft",
+      "gmail_delete_draft",
+      "file_system_create_directory",
+      "file_system_create_file",
+      "file_system_directory_exists",
+      "file_system_copy_file"
+    ],
+    "image_arrival": {
+      "1": [
+        "image_1",
+        "image_2",
+        "image_3",
+        "image_4",
+        "image_5"
+      ]
+    },
+    "image_delivery_map": [],
+    "scenario_metadata": {
+      "num_images": 5,
+      "num_user_rounds": 5,
+      "selected_flow_type": "lookup_chain",
+      "image_arrival": "upfront",
+      "challenge_type": "goal_change",
+      "require_disambiguation": false,
+      "dataset_type": "screenspotpro"
+    }
+  }
+}

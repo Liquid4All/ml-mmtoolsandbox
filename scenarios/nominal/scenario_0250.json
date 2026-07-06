@@ -1,0 +1,195 @@
+{
+  "name": "scenario_0250",
+  "base_scenario": "base",
+  "description": "The user is organizing their schedule and preparing for a grocery run by extracting information from various screenshots and photos on their devices.",
+  "difficulty": "easy",
+  "appworld_base_task": "_base_",
+  "device_state_id": "jo.ball@gmail.com",
+  "reference_time": "2026-04-16T23:57:55.844649+00:00",
+  "agentsandbox_entities": {},
+  "appworld_entities": {
+    "simple_note.notes": [
+      {
+        "id": 3200,
+        "user_id": 4,
+        "title": "Grocery List - Home",
+        "content": "fuji apples, milk, eggs, sea salt, black pepper",
+        "tags": [],
+        "created_at": "2026-04-15T10:00:00",
+        "updated_at": "2026-04-15T10:00:00",
+        "pinned": false,
+        "data": null
+      },
+      {
+        "id": 3201,
+        "user_id": 4,
+        "title": "Grocery List - Cabin",
+        "content": "hot dogs, buns, marshmallows, beer",
+        "tags": [],
+        "created_at": "2026-04-15T10:05:00",
+        "updated_at": "2026-04-15T10:05:00",
+        "pinned": false,
+        "data": null
+      }
+    ],
+    "gmail.users": []
+  },
+  "image_paths": [
+    "screenspotpro/images/vmware_mac/screenshot_2024-11-28_19-31-55.png",
+    "screenspotpro/images/quartus_windows/screenshot_2024-12-06_17-15-17.png",
+    "screenspotpro/images/common_mac/screenshot_2024-11-28_18-39-22.png",
+    "screenspotpro/images/vmware_mac/screenshot_2024-11-28_18-40-42.png",
+    "worldvqa/images/1972.jpg",
+    "hiertext/images/test/fad76b4472ea99c7.jpg"
+  ],
+  "messages": [
+    {
+      "sender": "SYSTEM",
+      "recipient": "USER",
+      "content": "{{USER_INSTRUCTION}}ROUND 1 [provide: image_1, image_2, image_3, image_4, image_5, image_6]\nQuery: Look at the To-Do list in the third and fourth images. I want you to filter those tasks to only include the ones scheduled for 3:30 PM or later, and set an alarm for tomorrow at those exact times for each matching task. Also, look at the fifth image and search the web for the latest firmware updates for that traffic component.\nInstructions: Ask the assistant to look at the to-do list in the third and fourth images, filter for tasks scheduled at 3:30 PM or later, and set alarms for tomorrow at those respective times. Also, instruct it to look at the device in the fifth image and search the web for its latest firmware updates. If the assistant asks for clarification about the tasks or the device, point it back to the specific images without naming the items yourself. Once the alarms are set and the search results are provided, proceed to the next round.\n\nROUND 2\nQuery: Next, check out the recipe displayed on the iPad in the last image. Read my 'Grocery List' note, figure out which ingredients from the recipe I don't already have on there, and add only the missing ones to the list.\nInstructions: Now, ask the assistant to look at the recipe on the iPad in the last image, cross-reference its ingredients with your 'Grocery List' note, and add only the missing items to the note. When the assistant asks which grocery list to use (since you have multiple notes with that phrase in the title), clarify that you mean the 'Home' one. If the assistant tries to add all the ingredients from the image, remind it to filter out the ones you already have. Conclude the conversation once the correct note is successfully updated with only the missing items.\n\nYou have 6 images available to share with the agent using the send_message_with_image tool.\nIMPORTANT: Image IDs are ZERO-INDEXED integers (0, 1, 2, ...). Do NOT add 1 to the IDs.\nAvailable image IDs: [0, 1, 2, 3, 4, 5]\nImage mapping:\n  image_1.jpg -> image ID 0\n  image_2.jpg -> image ID 1\n  image_3.jpg -> image ID 2\n  image_4.jpg -> image ID 3\n  image_5.jpg -> image ID 4\n  image_6.jpg -> image ID 5"
+    },
+    {
+      "sender": "USER",
+      "recipient": "AGENT",
+      "content": "Look at the To-Do list in the third and fourth images. I want you to filter those tasks to only include the ones scheduled for 3:30 PM or later, and set an alarm for tomorrow at those exact times for each matching task. Also, look at the fifth image and search the web for the latest firmware updates for that traffic component.",
+      "image_ids": [
+        0,
+        1,
+        2,
+        3,
+        4,
+        5
+      ]
+    }
+  ],
+  "milestones": [],
+  "entity_diff_specs": [
+    {
+      "operation": "create",
+      "source": "appworld",
+      "table": "phone.alarms",
+      "entity_data": {
+        "user_id": 4,
+        "time": "15:30",
+        "repeat_days": null,
+        "label": "Email client updates",
+        "enabled": true,
+        "snooze_minutes": 5,
+        "vibration": true,
+        "created_at": "2026-04-16T23:57:55"
+      },
+      "column_similarity_measure": {
+        "user_id": "column_exact_match_similarity",
+        "time": "column_exact_match_similarity",
+        "repeat_days": "column_ignore_similarity",
+        "label": "column_ignore_similarity",
+        "enabled": "column_exact_match_similarity",
+        "snooze_minutes": "column_exact_match_similarity",
+        "vibration": "column_exact_match_similarity",
+        "created_at": "column_ignore_similarity"
+      }
+    },
+    {
+      "operation": "create",
+      "source": "appworld",
+      "table": "phone.alarms",
+      "entity_data": {
+        "user_id": 4,
+        "time": "16:00",
+        "repeat_days": null,
+        "label": "Schedule meeting with Sarah",
+        "enabled": true,
+        "snooze_minutes": 5,
+        "vibration": true,
+        "created_at": "2026-04-16T23:57:55"
+      },
+      "column_similarity_measure": {
+        "user_id": "column_exact_match_similarity",
+        "time": "column_exact_match_similarity",
+        "repeat_days": "column_ignore_similarity",
+        "label": "column_ignore_similarity",
+        "enabled": "column_exact_match_similarity",
+        "snooze_minutes": "column_exact_match_similarity",
+        "vibration": "column_exact_match_similarity",
+        "created_at": "column_ignore_similarity"
+      }
+    },
+    {
+      "operation": "create",
+      "source": "appworld",
+      "table": "phone.alarms",
+      "entity_data": {
+        "user_id": 4,
+        "time": "17:00",
+        "repeat_days": null,
+        "label": "Review team feedback",
+        "enabled": true,
+        "snooze_minutes": 5,
+        "vibration": true,
+        "created_at": "2026-04-16T23:57:55"
+      },
+      "column_similarity_measure": {
+        "user_id": "column_exact_match_similarity",
+        "time": "column_exact_match_similarity",
+        "repeat_days": "column_ignore_similarity",
+        "label": "column_ignore_similarity",
+        "enabled": "column_exact_match_similarity",
+        "snooze_minutes": "column_exact_match_similarity",
+        "vibration": "column_exact_match_similarity",
+        "created_at": "column_ignore_similarity"
+      }
+    },
+    {
+      "operation": "update",
+      "source": "appworld",
+      "table": "simple_note.notes",
+      "entity_id_column": "id",
+      "entity_id_value": 3200,
+      "expected_fields": {
+        "updated_at": "2026-04-15T10:00:00",
+        "content": "fuji apples, milk, eggs, sea salt, black pepper, sweet potato, onion, minced garlic, apple juice (or white grape juice/water), ground cinnamon, dried basil, dried rosemary, dried marjoram, crushed red pepper flakes",
+        "tags": []
+      },
+      "column_similarity_measure": {
+        "updated_at": "column_ignore_similarity",
+        "content": "column_rouge_l_similarity",
+        "id": "column_exact_match_similarity"
+      }
+    }
+  ],
+  "task_completion_criteria": "Set alarms for tomorrow at 3:30 PM for 'Email client updates', 4:00 PM for 'Schedule meeting with Sarah', and 5:00 PM for 'Review team feedback'. Perform a web search for the latest firmware updates for a GPS navigation system. Finally, update the note titled 'Grocery List - Home' by adding the missing recipe ingredients: sweet potato, onion, minced garlic, apple juice (or white grape juice/water), ground cinnamon, dried basil, dried rosemary, dried marjoram, and crushed red pepper flakes.",
+  "categories": [
+    "APPWORLD",
+    "MULTIPLE_USER_TURN"
+  ],
+  "max_messages": 100,
+  "metadata": {
+    "original_scenario_id": "scenario_0250",
+    "expected_tools": [
+      "alarms_create_alarm",
+      "web_search_serper",
+      "simple_note_show_note",
+      "simple_note_update_note"
+    ],
+    "image_arrival": {
+      "1": [
+        "image_1",
+        "image_2",
+        "image_3",
+        "image_4",
+        "image_5",
+        "image_6"
+      ]
+    },
+    "image_delivery_map": [],
+    "scenario_metadata": {
+      "num_images": 6,
+      "num_user_rounds": 2,
+      "selected_flow_type": "filter",
+      "image_arrival": "upfront",
+      "challenge_type": "none",
+      "require_disambiguation": true,
+      "dataset_type": "hiertext"
+    }
+  }
+}

@@ -1,0 +1,576 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Trajectory Index</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            background: #f5f5f5;
+            padding: 10px;
+            line-height: 1.5;
+            font-size: 12px;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            background: white;
+            border-radius: 8px;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+            padding: 20px;
+        }
+
+        h1 {
+            color: #333;
+            margin-bottom: 20px;
+            padding-bottom: 8px;
+            font-size: 20px;
+        }
+
+        h2 {
+            color: #333;
+            margin-top: 30px;
+            margin-bottom: 15px;
+            font-size: 16px;
+        }
+
+        .info {
+            background: #f0f0f0;
+            padding: 15px;
+            border-radius: 4px;
+            margin-bottom: 15px;
+            border: 1px solid #9E9E9E;
+            font-size: 11px;
+        }
+
+        .info-label {
+            font-weight: bold;
+            color: #424242;
+        }
+
+        .info-value {
+            font-family: 'Monaco', 'Menlo', 'Courier New', monospace;
+            color: #333;
+        }
+
+        .refresh {
+            background: #4CAF50;
+            color: white;
+            padding: 6px 12px;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            font-size: 11px;
+        }
+
+        .refresh:hover {
+            background: #45a049;
+        }
+
+        .scenario {
+            margin-bottom: 20px;
+            padding: 10px;
+            background: #f1f8e9;
+            border-radius: 4px;
+            border: 1px solid #4CAF50;
+        }
+
+        .scenario-name {
+            font-family: 'Monaco', 'Menlo', 'Courier New', monospace;
+            font-size: 13px;
+            font-weight: bold;
+            color: #2E7D32;
+            margin-bottom: 8px;
+        }
+
+        .conversation-list {
+            list-style: none;
+            padding-left: 15px;
+        }
+
+        .conversation-list li {
+            margin-bottom: 6px;
+        }
+
+        .conversation-list a {
+            font-family: 'Monaco', 'Menlo', 'Courier New', monospace;
+            color: #1976D2;
+            text-decoration: none;
+            padding: 4px 8px;
+            border-radius: 4px;
+            display: inline-block;
+            font-size: 11px;
+            transition: background 0.2s;
+        }
+
+        .conversation-list a:hover {
+            background: #e3f2fd;
+        }
+
+        .empty-state {
+            color: #666;
+            font-style: italic;
+            padding: 10px;
+            font-size: 12px;
+        }
+
+        .eval-summary {
+            background: #e3f2fd;
+            padding: 15px;
+            border-radius: 4px;
+            margin-bottom: 15px;
+            border: 1px solid #2196F3;
+        }
+
+        .eval-summary h2 {
+            font-size: 14px;
+            margin-bottom: 10px;
+            color: #1565C0;
+        }
+
+        .metric-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+            gap: 10px;
+            margin-bottom: 10px;
+        }
+
+        .metric-box {
+            background: white;
+            padding: 8px;
+            border-radius: 4px;
+            border: 1px solid #ddd;
+        }
+
+        .metric-label {
+            font-size: 10px;
+            color: #666;
+            text-transform: uppercase;
+            margin-bottom: 3px;
+        }
+
+        .metric-value {
+            font-family: 'Monaco', 'Menlo', 'Courier New', monospace;
+            font-size: 14px;
+            font-weight: bold;
+        }
+
+        .metric-value.good {
+            color: #2E7D32;
+        }
+
+        .metric-value.warning {
+            color: #F57F17;
+        }
+
+        .metric-value.bad {
+            color: #C62828;
+        }
+
+        .category-table {
+            width: 100%;
+            border-collapse: collapse;
+            font-size: 11px;
+            background: white;
+            margin-top: 10px;
+        }
+
+        .category-table th {
+            background: #f5f5f5;
+            padding: 8px;
+            text-align: left;
+            border-bottom: 2px solid #ddd;
+            font-weight: bold;
+            font-size: 10px;
+        }
+
+        .category-table td {
+            padding: 6px 8px;
+            border-bottom: 1px solid #eee;
+        }
+
+        .category-table tr:hover {
+            background: #f9f9f9;
+        }
+
+        .category-name {
+            font-family: 'Monaco', 'Menlo', 'Courier New', monospace;
+            font-size: 10px;
+        }
+
+        .similarity-badge {
+            display: inline-block;
+            padding: 2px 6px;
+            border-radius: 3px;
+            font-family: 'Monaco', 'Menlo', 'Courier New', monospace;
+            font-size: 10px;
+            font-weight: bold;
+        }
+
+        .similarity-badge.excellent {
+            background: #C8E6C9;
+            color: #2E7D32;
+            border: 1px solid #4CAF50;
+        }
+
+        .similarity-badge.good {
+            background: #FFF9C4;
+            color: #F57F17;
+            border: 1px solid #FFC107;
+        }
+
+        .similarity-badge.poor {
+            background: #FFCDD2;
+            color: #C62828;
+            border: 1px solid #F44336;
+        }
+
+        .git-info {
+            font-size: 9px;
+            color: #666;
+            font-family: 'Monaco', 'Menlo', 'Courier New', monospace;
+            margin-top: 8px;
+        }
+
+        .run-link {
+            display: inline-block;
+            padding: 3px 8px;
+            margin: 2px;
+            background: #2196F3;
+            color: white;
+            text-decoration: none;
+            border-radius: 3px;
+            border: none;
+            font-family: 'Monaco', 'Menlo', 'Courier New', monospace;
+            font-size: 10px;
+            font-weight: bold;
+            transition: background 0.2s;
+        }
+
+        .run-link:hover {
+            background: #1976D2;
+        }
+
+        .run-link.failed {
+            background: #F44336;
+        }
+
+        .run-link.failed:hover {
+            background: #D32F2F;
+        }
+
+        .refresh-toggle {
+            background: #2196F3;
+            color: white;
+            padding: 6px 12px;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            font-size: 11px;
+            margin-left: 8px;
+        }
+
+        .refresh-toggle:hover {
+            background: #1976D2;
+        }
+
+        .refresh-toggle.paused {
+            background: #FF9800;
+        }
+
+        .refresh-toggle.paused:hover {
+            background: #F57C00;
+        }
+    </style>
+    <script>
+        var refreshInterval;
+        var refreshEnabled = {{ 'true' if auto_refresh else 'false' }};
+
+        function refreshPage() {
+            if (refreshEnabled) {
+                location.reload();
+            }
+        }
+
+        function toggleRefresh() {
+            refreshEnabled = !refreshEnabled;
+            var button = document.getElementById('toggleRefresh');
+            if (refreshEnabled) {
+                button.textContent = 'Pause Refresh';
+                button.classList.remove('paused');
+            } else {
+                button.textContent = 'Resume Refresh';
+                button.classList.add('paused');
+            }
+        }
+
+        function refreshNow() {
+            location.reload();
+        }
+
+        // Set initial button state
+        window.onload = function() {
+            var button = document.getElementById('toggleRefresh');
+            if (!refreshEnabled) {
+                button.textContent = 'Resume Refresh';
+                button.classList.add('paused');
+            }
+        };
+
+        // Start auto-refresh
+        refreshInterval = setInterval(refreshPage, 5000);
+    </script>
+</head>
+<body>
+    <div class="container">
+        <h1>Index</h1>
+
+        {% if experiments and experiments|length > 1 %}
+        <div style="margin-bottom: 12px; font-size: 12px;">
+            <label for="experiment-select" style="font-weight: bold; color: #555;">Experiment:</label>
+            <select id="experiment-select" onchange="window.location.href = '/?experiment=' + encodeURIComponent(this.value)" style="margin-left: 6px; padding: 4px 8px; font-size: 12px;">
+                {% for exp in experiments %}
+                <option value="{{ exp }}"{% if exp == current_experiment %} selected{% endif %}>{{ exp }}</option>
+                {% endfor %}
+            </select>
+        </div>
+        {% endif %}
+
+        <div style="margin-bottom: 15px; font-size: 11px; color: #666; display: flex; justify-content: space-between; align-items: center;">
+            <span>This page auto-refreshes every 5 seconds.</span>
+            <div style="display: flex; gap: 10px;">
+                <button class="refresh-toggle" id="toggleRefresh" onclick="toggleRefresh()">Pause Refresh</button>
+                <button class="refresh" onclick="refreshNow()">Refresh Now</button>
+            </div>
+        </div>
+
+        <div class="info">
+            <div><span class="info-label">Output Directory:</span> <span class="info-value">{{ output_directory }}</span></div>
+            <div><span class="info-label">Total Trajectories:</span> <span class="info-value">{{ total_trajectories }}</span></div>
+            {% if result_summary %}
+            <div><span class="info-label">Successful:</span> <span class="info-value">{{ success_count }}</span> | <span class="info-label">Failed:</span> <span class="info-value">{{ failure_count }}</span></div>
+            {% endif %}
+        </div>
+
+        <div class="eval-summary">
+            <h2>Evaluation Summary</h2>
+            {% if result_summary and result_summary.category_aggregated_results %}
+            {% set all_cats = result_summary.category_aggregated_results.ALL_CATEGORIES %}
+            <div class="metric-grid">
+                <div class="metric-box">
+                    <div class="metric-label">Avg Turn Count</div>
+                    <div class="metric-value">{{ "%.1f"|format(all_cats.turn_count) }}</div>
+                </div>
+                <div class="metric-box">
+                    <div class="metric-label">Total Scenarios</div>
+                    <div class="metric-value">{{ success_count + failure_count }}</div>
+                </div>
+                {% if judge_total_count > 0 %}
+                <div class="metric-box">
+                    <div class="metric-label">LLM Judge Success</div>
+                    <div class="metric-value {% if judge_success_count / judge_total_count >= 0.8 %}good{% elif judge_success_count / judge_total_count >= 0.5 %}warning{% else %}bad{% endif %}">
+                        {{ "%.1f"|format(judge_success_count / judge_total_count * 100) }}%
+                    </div>
+                </div>
+                {% endif %}
+            </div>
+
+            <h2 style="margin-top: 15px;">Category Breakdown</h2>
+            <table class="category-table">
+                <thead>
+                    <tr>
+                        <th>Category</th>
+                        <th>Turn Count</th>
+                        <th>LLM Judge</th>
+                        {% if result_summary.category_aggregated_results.get('ALL_CATEGORIES', {}).get('ui_judge_success') is not none %}
+                        <th>UI Judge</th>
+                        {% endif %}
+                        {% if result_summary.category_aggregated_results.get('ALL_CATEGORIES', {}).get('user_judge_success') is not none %}
+                        <th>User Judge</th>
+                        {% endif %}
+                        {% if result_summary.category_aggregated_results.get('ALL_CATEGORIES', {}).get('entity_diff_f1') is not none %}
+                        <th>Entity Diff F1</th>
+                        {% endif %}
+                    </tr>
+                </thead>
+                <tbody>
+                    {% set has_categories = namespace(value=False) %}
+                    {% set has_ui = result_summary.category_aggregated_results.get('ALL_CATEGORIES', {}).get('ui_judge_success') is not none %}
+                    {% set has_user = result_summary.category_aggregated_results.get('ALL_CATEGORIES', {}).get('user_judge_success') is not none %}
+                    {% set has_entity_diff = result_summary.category_aggregated_results.get('ALL_CATEGORIES', {}).get('entity_diff_f1') is not none %}
+                    {% for category, metrics in result_summary.category_aggregated_results.items() %}
+                    {% if category != 'ALL_CATEGORIES' %}
+                    {% set has_categories.value = True %}
+                    <tr>
+                        <td class="category-name">{{ category }}</td>
+                        <td>{{ "%.1f"|format(metrics.turn_count) }}</td>
+                        <td>
+                            {% if metrics.judge_success is defined %}
+                            <span class="similarity-badge {% if metrics.judge_success >= 0.8 %}excellent{% elif metrics.judge_success >= 0.5 %}good{% else %}poor{% endif %}">
+                                {{ "%.1f"|format(metrics.judge_success * 100) }}%
+                            </span>
+                            {% else %}
+                            <span style="color: #999;">-</span>
+                            {% endif %}
+                        </td>
+                        {% if has_ui %}
+                        <td>
+                            {% if metrics.ui_judge_success is defined %}
+                            <span class="similarity-badge {% if metrics.ui_judge_success >= 0.8 %}excellent{% elif metrics.ui_judge_success >= 0.5 %}good{% else %}poor{% endif %}">
+                                {{ "%.1f"|format(metrics.ui_judge_success * 100) }}%
+                            </span>
+                            {% else %}<span style="color: #999;">-</span>{% endif %}
+                        </td>
+                        {% endif %}
+                        {% if has_user %}
+                        <td>
+                            {% if metrics.user_judge_success is defined %}
+                            <span class="similarity-badge {% if metrics.user_judge_success >= 0.8 %}excellent{% elif metrics.user_judge_success >= 0.5 %}good{% else %}poor{% endif %}">
+                                {{ "%.1f"|format(metrics.user_judge_success * 100) }}%
+                            </span>
+                            {% else %}<span style="color: #999;">-</span>{% endif %}
+                        </td>
+                        {% endif %}
+                        {% if has_entity_diff %}
+                        <td>
+                            {% if metrics.entity_diff_f1 is defined %}
+                            <span class="similarity-badge {% if metrics.entity_diff_f1 >= 0.8 %}excellent{% elif metrics.entity_diff_f1 >= 0.5 %}good{% else %}poor{% endif %}">
+                                {{ "%.1f"|format(metrics.entity_diff_f1 * 100) }}%
+                            </span>
+                            {% else %}<span style="color: #999;">-</span>{% endif %}
+                        </td>
+                        {% endif %}
+                    </tr>
+                    {% endif %}
+                    {% endfor %}
+                    {% if not has_categories.value %}
+                    <tr>
+                        <td colspan="{% if has_ui and has_user %}5{% elif has_ui or has_user %}4{% else %}3{% endif %}" style="text-align: center; color: #666; font-style: italic; padding: 10px;">No data.</td>
+                    </tr>
+                    {% endif %}
+                </tbody>
+            </table>
+
+            {% if result_summary.git_sha %}
+            <div class="git-info">Git SHA: {{ result_summary.git_sha }}</div>
+            {% endif %}
+            {% else %}
+            <p style="color: #666; font-style: italic; padding: 10px;">Evaluation results not available while scenarios are being generated.</p>
+            {% endif %}
+        </div>
+
+        <div class="eval-summary">
+            <h2>Per-Scenario Results</h2>
+            {% if scenarios %}
+            <table class="category-table">
+                <thead>
+                    <tr>
+                        <th>Scenario</th>
+                        <th>Runs</th>
+                        {% if scenario_aggregation %}
+                        <th>Avg Turns</th>
+                        <th>Success/Total</th>
+                        <th>LLM Judge</th>
+                        {% set any_user_judge = namespace(value=False) %}
+                        {% set any_ui_judge = namespace(value=False) %}
+                        {% set any_entity_diff = namespace(value=False) %}
+                        {% for _, d in scenario_aggregation.items() %}
+                            {% if d.user_judge_success_rate is not none %}{% set any_user_judge.value = True %}{% endif %}
+                            {% if d.ui_judge_success_rate is not none %}{% set any_ui_judge.value = True %}{% endif %}
+                            {% if d.entity_diff_avg_f1 is not none %}{% set any_entity_diff.value = True %}{% endif %}
+                        {% endfor %}
+                        {% if any_entity_diff.value %}
+                        <th>Entity Diff F1</th>
+                        {% endif %}
+                        {% if any_user_judge.value %}
+                        <th>User Judge</th>
+                        {% endif %}
+                        {% if any_ui_judge.value %}
+                        <th>UI Judge</th>
+                        {% endif %}
+                        {% endif %}
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for scenario_name, conversations in scenarios.items() %}
+                    <tr>
+                        <td class="category-name">{{ scenario_name }}</td>
+                        <td>
+                            {% for conv in conversations %}
+                                {% if conv.rel_path %}
+                                <a href="/view?path={{ conv.rel_path | urlquote }}{% if current_experiment %}&experiment={{ current_experiment | urlquote }}{% endif %}" class="run-link{% if conv.success == False %} failed{% endif %}">{{ loop.index0 }}</a>
+                                {% else %}
+                                <a href="/view?scenario={{ scenario_name | urlquote }}&run={{ conv.run_name | urlquote }}{% if current_experiment %}&experiment={{ current_experiment | urlquote }}{% endif %}" class="run-link{% if conv.success == False %} failed{% endif %}">{{ loop.index0 }}</a>
+                                {% endif %}
+                            {% endfor %}
+                        </td>
+                        {% if scenario_aggregation and scenario_aggregation.get(scenario_name) %}
+                        {% set data = scenario_aggregation[scenario_name] %}
+                        <td>{{ "%.1f"|format(data.avg_turn_count) }}</td>
+                        <td>
+                            <span style="color: {% if data.successes == data.total_runs %}#2E7D32{% elif data.successes > 0 %}#F57F17{% else %}#C62828{% endif %}">
+                                {{ data.successes }}/{{ data.total_runs }}
+                            </span>
+                        </td>
+                        <td>
+                            {% if data.judge_success_rate is not none %}
+                            <span class="similarity-badge {% if data.judge_success_rate >= 0.8 %}excellent{% elif data.judge_success_rate >= 0.5 %}good{% else %}poor{% endif %}">
+                                {{ "%.1f"|format(data.judge_success_rate * 100) }}%
+                            </span>
+                            {% else %}
+                            <span style="color: #999;">-</span>
+                            {% endif %}
+                        </td>
+                        {% if any_entity_diff.value %}
+                        <td>
+                            {% if data.entity_diff_avg_f1 is not none %}
+                            <span class="similarity-badge {% if data.entity_diff_avg_f1 >= 0.8 %}excellent{% elif data.entity_diff_avg_f1 >= 0.5 %}good{% else %}poor{% endif %}">
+                                {{ "%.1f"|format(data.entity_diff_avg_f1 * 100) }}%
+                            </span>
+                            {% else %}
+                            <span style="color: #999;">-</span>
+                            {% endif %}
+                        </td>
+                        {% endif %}
+                        {% if any_user_judge.value %}
+                        <td>
+                            {% if data.user_judge_success_rate is not none %}
+                            <span class="similarity-badge {% if data.user_judge_success_rate >= 0.8 %}excellent{% elif data.user_judge_success_rate >= 0.5 %}good{% else %}poor{% endif %}">
+                                {{ "%.1f"|format(data.user_judge_success_rate * 100) }}%
+                            </span>
+                            {% else %}
+                            <span style="color: #999;">-</span>
+                            {% endif %}
+                        </td>
+                        {% endif %}
+                        {% if any_ui_judge.value %}
+                        <td>
+                            {% if data.ui_judge_success_rate is not none %}
+                            <span class="similarity-badge {% if data.ui_judge_success_rate >= 0.8 %}excellent{% elif data.ui_judge_success_rate >= 0.5 %}good{% else %}poor{% endif %}">
+                                {{ "%.1f"|format(data.ui_judge_success_rate * 100) }}%
+                            </span>
+                            {% else %}
+                            <span style="color: #999;">-</span>
+                            {% endif %}
+                        </td>
+                        {% endif %}
+                        {% endif %}
+                    </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+            {% else %}
+            <p class="empty-state">No trajectories found yet. They will appear here as they are generated.</p>
+            {% endif %}
+        </div>
+    </div>
+</body>
+</html>

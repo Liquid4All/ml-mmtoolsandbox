@@ -1,0 +1,70 @@
+[
+  {
+    "beginRendering": {
+      "surfaceId": "success-feedback",
+      "root": "success-card"
+    }
+  },
+  {
+    "surfaceUpdate": {
+      "surfaceId": "success-feedback",
+      "components": [
+        {
+          "id": "success-card",
+          "component": {
+            "Card": {
+              "child": "success-column"
+            }
+          }
+        },
+        {
+          "id": "success-column",
+          "component": {
+            "Column": {
+              "alignment": "center",
+              "children": {
+                "explicitList": [
+                  "success-icon",
+                  "success-text"
+                ]
+              }
+            }
+          }
+        },
+        {
+          "id": "success-icon",
+          "component": {
+            "Icon": {
+              "name": {
+                "literalString": "check_circle"
+              }
+            }
+          }
+        },
+        {
+          "id": "success-text",
+          "component": {
+            "Text": {
+              "usageHint": "h2",
+              "text": {
+                "path": "/message"
+              }
+            }
+          }
+        }
+      ]
+    }
+  },
+  {
+    "dataModelUpdate": {
+      "surfaceId": "success-feedback",
+      "path": "/",
+      "contents": [
+        {
+          "key": "message",
+          "valueString": "Success!"
+        }
+      ]
+    }
+  }
+]

@@ -1,0 +1,253 @@
+{
+  "name": "scenario_0624",
+  "base_scenario": "base",
+  "description": "The user is shopping on Amazon for gifts for their 4 nieces and nephews and has collected pictures of potential gift items.",
+  "difficulty": "easy",
+  "appworld_base_task": "_base_",
+  "device_state_id": "ch-burch@gmail.com",
+  "reference_time": "2026-04-17T00:09:14.269957+00:00",
+  "agentsandbox_entities": {},
+  "appworld_entities": {
+    "amazon.sellers": [
+      {
+        "id": 200,
+        "name": "Amazon Store",
+        "rating": 4.5
+      }
+    ],
+    "amazon.products": [
+      {
+        "id": 200,
+        "product_type": "stationery",
+        "name": "Pilot KIRE-NA highlighters",
+        "description": "High quality vibrant highlighters",
+        "seller_id": 200,
+        "price": 12.99,
+        "delivery_days": 2,
+        "inventory_quantity": 50,
+        "weight": 0.2,
+        "length": 6.0,
+        "width": 3.0,
+        "height": 0.5,
+        "color": null,
+        "relative_size": null,
+        "rating": 4.8,
+        "seller_rating": 4.5,
+        "has_variations": false
+      },
+      {
+        "id": 201,
+        "product_type": "toys",
+        "name": "Cartoon suction-cup spinner toys",
+        "description": "Fun spinner toys with suction cups for kids",
+        "seller_id": 200,
+        "price": 14.5,
+        "delivery_days": 2,
+        "inventory_quantity": 100,
+        "weight": 0.5,
+        "length": 5.0,
+        "width": 5.0,
+        "height": 2.0,
+        "color": null,
+        "relative_size": null,
+        "rating": 4.6,
+        "seller_rating": 4.5,
+        "has_variations": false
+      },
+      {
+        "id": 202,
+        "product_type": "crafts",
+        "name": "Shrink-plastic craft kits",
+        "description": "Creative shrink-plastic crafts for children",
+        "seller_id": 200,
+        "price": 18.0,
+        "delivery_days": 3,
+        "inventory_quantity": 80,
+        "weight": 0.8,
+        "length": 10.0,
+        "width": 8.0,
+        "height": 1.0,
+        "color": null,
+        "relative_size": null,
+        "rating": 4.7,
+        "seller_rating": 4.5,
+        "has_variations": false
+      },
+      {
+        "id": 203,
+        "product_type": "crafts",
+        "name": "PAAS Classic Easter Egg Decorating Kits",
+        "description": "Classic egg decorating kit for Easter",
+        "seller_id": 200,
+        "price": 8.99,
+        "delivery_days": 2,
+        "inventory_quantity": 20,
+        "weight": 0.3,
+        "length": 6.0,
+        "width": 4.0,
+        "height": 1.5,
+        "color": null,
+        "relative_size": null,
+        "rating": 4.5,
+        "seller_rating": 4.5,
+        "has_variations": false
+      },
+      {
+        "id": 204,
+        "product_type": "toys",
+        "name": "Snowflake building blocks",
+        "description": "Interlocking snowflake building blocks",
+        "seller_id": 200,
+        "price": 24.99,
+        "delivery_days": 4,
+        "inventory_quantity": 60,
+        "weight": 1.5,
+        "length": 12.0,
+        "width": 8.0,
+        "height": 4.0,
+        "color": null,
+        "relative_size": null,
+        "rating": 4.9,
+        "seller_rating": 4.5,
+        "has_variations": false
+      },
+      {
+        "id": 205,
+        "product_type": "toys",
+        "name": "Magnetic maps",
+        "description": "Educational magnetic maps for kids",
+        "seller_id": 200,
+        "price": 29.99,
+        "delivery_days": 2,
+        "inventory_quantity": 40,
+        "weight": 2.0,
+        "length": 15.0,
+        "width": 10.0,
+        "height": 0.5,
+        "color": null,
+        "relative_size": null,
+        "rating": 4.8,
+        "seller_rating": 4.5,
+        "has_variations": false
+      }
+    ],
+    "gmail.users": []
+  },
+  "image_paths": [
+    "worldvqa/images/1660.jpg",
+    "worldvqa/images/1480.jpg",
+    "worldvqa/images/1513.jpg",
+    "hiertext/images/test/e935c99672e6de85.jpg",
+    "worldvqa/images/1490.jpg",
+    "worldvqa/images/1499.jpg"
+  ],
+  "messages": [
+    {
+      "sender": "SYSTEM",
+      "recipient": "USER",
+      "content": "{{USER_INSTRUCTION}}ROUND 1 [provide: image_1, image_2, image_3, image_4, image_5, image_6]\nQuery: I have 4 nieces and nephews to buy gifts for. I've got these 6 pictures of items I'm considering. Let's go with the ones in the first, second, and fifth pictures. Please add them to my Amazon cart. I want each of the 4 kids to receive 2 of the items from the first pic, 1 from the second, and 3 from the fifth.\nInstructions: Tell the assistant you are buying gifts for your 4 nieces and nephews and want to purchase the items in the first, second, and fifth images. Instruct the assistant to add enough of these to your Amazon cart so that each of the 4 kids gets 2 of the item in the first image, 1 of the item in the second image, and 3 of the item in the fifth image. If the assistant asks you to calculate the totals, tell it to do the math itself. Once the assistant confirms the items have been successfully added to your cart, proceed to the next round.\n\nROUND 2\nQuery: Actually, I changed my mind. The older kids might not like those. Please take all of those out of my cart. Instead, let's get the items in the third, fourth, and sixth pictures. Add enough to my cart so that each of the 4 kids gets 1 of the item in the third picture, 2 of the item in the fourth picture, and 1 of the item in the sixth picture.\nInstructions: Tell the assistant you changed your mind and want to remove the items you just added to the cart. Instruct it to instead add the items from the third, fourth, and sixth images. Specify that for each of the 4 kids, you want 1 of the item in the third image, 2 of the item in the fourth image, and 1 of the item in the sixth image. If the assistant asks for confirmation on the new totals, remind it to multiply your requested amounts by the 4 children. End the conversation once the assistant confirms the cart has been updated.\n\nYou have 6 images available to share with the agent using the send_message_with_image tool.\nIMPORTANT: Image IDs are ZERO-INDEXED integers (0, 1, 2, ...). Do NOT add 1 to the IDs.\nAvailable image IDs: [0, 1, 2, 3, 4, 5]\nImage mapping:\n  image_1.jpg -> image ID 0\n  image_2.jpg -> image ID 1\n  image_3.jpg -> image ID 2\n  image_4.jpg -> image ID 3\n  image_5.jpg -> image ID 4\n  image_6.jpg -> image ID 5"
+    },
+    {
+      "sender": "USER",
+      "recipient": "AGENT",
+      "content": "I have 4 nieces and nephews to buy gifts for. I've got these 6 pictures of items I'm considering. Let's go with the ones in the first, second, and fifth pictures. Please add them to my Amazon cart. I want each of the 4 kids to receive 2 of the items from the first pic, 1 from the second, and 3 from the fifth.",
+      "image_ids": [
+        0,
+        1,
+        2,
+        3,
+        4,
+        5
+      ]
+    }
+  ],
+  "milestones": [],
+  "entity_diff_specs": [
+    {
+      "operation": "create",
+      "source": "appworld",
+      "table": "amazon.cart_entries",
+      "entity_data": {
+        "user_id": 32,
+        "product_id": 202,
+        "quantity": 4,
+        "gift_wrap_quantity": 0
+      },
+      "column_similarity_measure": {
+        "user_id": "column_exact_match_similarity",
+        "product_id": "column_exact_match_similarity",
+        "quantity": "column_exact_match_similarity",
+        "gift_wrap_quantity": "column_exact_match_similarity"
+      }
+    },
+    {
+      "operation": "create",
+      "source": "appworld",
+      "table": "amazon.cart_entries",
+      "entity_data": {
+        "user_id": 32,
+        "product_id": 203,
+        "quantity": 8,
+        "gift_wrap_quantity": 0
+      },
+      "column_similarity_measure": {
+        "user_id": "column_exact_match_similarity",
+        "product_id": "column_exact_match_similarity",
+        "quantity": "column_exact_match_similarity",
+        "gift_wrap_quantity": "column_exact_match_similarity"
+      }
+    },
+    {
+      "operation": "create",
+      "source": "appworld",
+      "table": "amazon.cart_entries",
+      "entity_data": {
+        "user_id": 32,
+        "product_id": 205,
+        "quantity": 4,
+        "gift_wrap_quantity": 0
+      },
+      "column_similarity_measure": {
+        "user_id": "column_exact_match_similarity",
+        "product_id": "column_exact_match_similarity",
+        "quantity": "column_exact_match_similarity",
+        "gift_wrap_quantity": "column_exact_match_similarity"
+      }
+    }
+  ],
+  "task_completion_criteria": "The user's Amazon cart must contain exactly 4 Shrink-plastic craft kits, 8 PAAS Classic Easter Egg Decorating Kits, and 4 Magnetic maps. The Pilot KIRE-NA highlighters, Cartoon suction-cup spinner toys, and Snowflake building blocks must not be in the cart.",
+  "categories": [
+    "APPWORLD",
+    "MULTIPLE_USER_TURN"
+  ],
+  "max_messages": 100,
+  "metadata": {
+    "original_scenario_id": "scenario_0624",
+    "expected_tools": [
+      "web_search_serper",
+      "amazon_show_product",
+      "amazon_add_product_to_cart",
+      "amazon_delete_product_from_cart"
+    ],
+    "image_arrival": {
+      "1": [
+        "image_1",
+        "image_2",
+        "image_3",
+        "image_4",
+        "image_5",
+        "image_6"
+      ]
+    },
+    "image_delivery_map": [],
+    "scenario_metadata": {
+      "num_images": 6,
+      "num_user_rounds": 2,
+      "selected_flow_type": "compute",
+      "image_arrival": "upfront",
+      "challenge_type": "goal_change",
+      "require_disambiguation": false,
+      "dataset_type": "worldvqa"
+    }
+  }
+}

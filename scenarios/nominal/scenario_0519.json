@@ -1,0 +1,286 @@
+{
+  "name": "scenario_0519",
+  "base_scenario": "base",
+  "description": "The user is working on a 3D donut model in Blender and is reviewing different Geometry Nodes setups across multiple screenshots to decide how to best distribute sprinkles on the icing.",
+  "difficulty": "easy",
+  "appworld_base_task": "_base_",
+  "device_state_id": "siwhit@gmail.com",
+  "reference_time": "2026-04-17T00:06:09.534190+00:00",
+  "agentsandbox_entities": {},
+  "appworld_entities": {
+    "phone.contacts": [
+      {
+        "id": 200,
+        "user_id": 105,
+        "first_name": "Blender",
+        "last_name": "Tutor",
+        "email": "tutor@example.com",
+        "phone_number": null,
+        "relationships": [
+          "tutor"
+        ],
+        "birthday": null,
+        "home_address": null,
+        "work_address": null,
+        "created_at": "2025-10-01T10:00:00"
+      }
+    ],
+    "todoist.projects": [
+      {
+        "id": 400,
+        "user_id": 105,
+        "name": "Inbox",
+        "color": "charcoal",
+        "is_inbox": true,
+        "description": "Default inbox project",
+        "created_at": "2026-01-01T12:00:00"
+      }
+    ],
+    "file_system.directories": [
+      {
+        "id": 3600,
+        "path": "/D/Data/Blender/",
+        "tilde_path": "/D/Data/Blender/",
+        "user_id": 105,
+        "created_at": "2026-04-01T10:00:00",
+        "updated_at": "2026-04-16T15:30:00"
+      },
+      {
+        "path": "/D/",
+        "tilde_path": "/D/",
+        "user_id": 105,
+        "created_at": "2025-01-01T00:00:00",
+        "updated_at": "2025-01-01T00:00:00",
+        "id": 3601
+      },
+      {
+        "path": "/D/Data/",
+        "tilde_path": "/D/Data/",
+        "user_id": 105,
+        "created_at": "2025-01-01T00:00:00",
+        "updated_at": "2025-01-01T00:00:00",
+        "id": 3602
+      },
+      {
+        "path": "~/D/",
+        "tilde_path": "~/D/",
+        "user_id": 105,
+        "created_at": "2025-01-01T00:00:00",
+        "updated_at": "2025-01-01T00:00:00",
+        "id": 3603
+      },
+      {
+        "path": "~/D/Data/",
+        "tilde_path": "~/D/Data/",
+        "user_id": 105,
+        "created_at": "2025-01-01T00:00:00",
+        "updated_at": "2025-01-01T00:00:00",
+        "id": 3604
+      },
+      {
+        "path": "~/D/Data/Blender/",
+        "tilde_path": "~/D/Data/Blender/",
+        "user_id": 105,
+        "created_at": "2025-01-01T00:00:00",
+        "updated_at": "2025-01-01T00:00:00",
+        "id": 3605
+      }
+    ],
+    "file_system.files": [
+      {
+        "id": 26000,
+        "path": "/D/Data/Blender/donut_test.blend",
+        "tilde_path": "/D/Data/Blender/donut_test.blend",
+        "user_id": 105,
+        "content": "Blender 3D model data (binary)",
+        "compressed_data": [],
+        "created_at": "2026-04-10T12:00:00",
+        "updated_at": "2026-04-16T15:30:00"
+      }
+    ],
+    "gmail.users": [
+      {
+        "id": 200,
+        "first_name": "Blender",
+        "last_name": "Tutor",
+        "email": "tutor@example.com",
+        "password": "default_password",
+        "status": "active",
+        "created_at": "2025-01-01T00:00:00",
+        "last_logged_in": "2025-01-01T00:00:00"
+      }
+    ],
+    "todoist.project_collaborator_links": [
+      {
+        "id": 50400,
+        "project_id": 400,
+        "user_id": 105,
+        "is_favorite": false,
+        "is_archived": false,
+        "created_at": "2026-01-01T12:00:00"
+      }
+    ]
+  },
+  "image_paths": [
+    "screenspotpro/images/blender_windows/screenshot_2024-12-02_16-06-47.png",
+    "screenspotpro/images/blender_windows/screenshot_2024-12-02_13-23-09.png",
+    "screenspotpro/images/blender_windows/screenshot_2024-12-02_16-19-13.png",
+    "screenspotpro/images/blender_windows/screenshot_2024-12-02_16-06-19.png",
+    "screenspotpro/images/blender_windows/screenshot_2024-12-02_15-53-53.png",
+    "screenspotpro/images/blender_windows/screenshot_2024-12-02_13-32-22.png"
+  ],
+  "messages": [
+    {
+      "sender": "SYSTEM",
+      "recipient": "USER",
+      "content": "{{USER_INSTRUCTION}}ROUND 1 [provide: image_3, image_4, image_5]\nQuery: Look at the 'Distribute Points on Faces' nodes in these three screenshots. Which one uses the 'Random' method instead of 'Poisson Disk'? Once you figure that out, draft an email to my tutor saying I want to switch to the Random method for the Blender file shown in the title bar because it handles the density better.\nInstructions: Tell the assistant to compare the node setups in the three provided screenshots and identify which one uses the 'Random' distribution method. Then, ask it to draft an email to your tutor (tutor@example.com) explaining that you want to switch to the Random method for the specific Blender file path shown at the very top left of the application window. If the assistant asks for the file path, tell it to read it directly from the window's title bar in the images. Wait for the assistant to confirm the draft is created before moving on.\n\nROUND 2 [provide: image_1, image_2]\nQuery: Actually, I changed my mind. I'm just going to test both methods myself instead of emailing my tutor. Delete that draft. Also, look at these two new screenshots and compare their file paths with the previous ones. If they all match, check if that file exists on my system. Assuming it does, create a new directory called 'Blender_Tests' and copy the file into it so I have a safe backup to experiment on.\nInstructions: Tell the assistant that you have changed your mind and want to delete the email draft it just created. Then, ask it to look at the two new screenshots and verify that the file path in their title bars matches the file path from the previous screenshots. Since they are identical, instruct the assistant to check if that file exists on your computer. If it does, ask it to create a new folder named 'Blender_Tests' and copy the Blender file into it. Wait for confirmation that the file has been copied successfully.\n\nROUND 3 [provide: image_6]\nQuery: Compare this final screenshot to the node setups we just looked at. What is the new node being added from the menu? Create a Todoist task to 'Add [that node name] node' so I remember to include it in my tests.\nInstructions: Ask the assistant to examine the final screenshot and identify the new node being added via the open context menu. Once it identifies the node name, instruct it to create a Todoist task titled 'Add [Node Name] node' so you don't forget to test it. If the assistant is unsure which node you mean, direct its attention to the highlighted option under 'Geometry' -> 'Write' in the menu. End the conversation once the task is successfully created.\n\nYou have 6 images available to share with the agent using the send_message_with_image tool.\nIMPORTANT: Image IDs are ZERO-INDEXED integers (0, 1, 2, ...). Do NOT add 1 to the IDs.\nAvailable image IDs: [0, 1, 2, 3, 4, 5]\nImage mapping:\n  image_1.jpg -> image ID 0\n  image_2.jpg -> image ID 1\n  image_3.jpg -> image ID 2\n  image_4.jpg -> image ID 3\n  image_5.jpg -> image ID 4\n  image_6.jpg -> image ID 5\n\n## IMAGE DELIVERY\n\n⚠️ IMPORTANT: You MUST use the `send_message_with_image` tool to share images with User B. Do NOT just describe images in text — you MUST call the tool.\n\nImage delivery schedule:\n\n  Round 2: YOU MUST call the send_message_with_image tool with image_ids='0,1' — do NOT write the tool name as text; use the actual function call. Include a natural, conversational message to the assistant.\n  Round 3: YOU MUST call the send_message_with_image tool with image_ids='5' — do NOT write the tool name as text; use the actual function call. Include a natural, conversational message to the assistant."
+    },
+    {
+      "sender": "USER",
+      "recipient": "AGENT",
+      "content": "Look at the 'Distribute Points on Faces' nodes in these three screenshots. Which one uses the 'Random' method instead of 'Poisson Disk'? Once you figure that out, draft an email to my tutor saying I want to switch to the Random method for the Blender file shown in the title bar because it handles the density better.",
+      "image_ids": [
+        2,
+        3,
+        4
+      ]
+    }
+  ],
+  "milestones": [],
+  "entity_diff_specs": [
+    {
+      "operation": "create",
+      "source": "appworld",
+      "table": "todoist.tasks",
+      "entity_data": {
+        "project_id": 400,
+        "section_id": null,
+        "user_id": 105,
+        "title": "Add Set Position node",
+        "description": null,
+        "due_date": null,
+        "priority": "medium",
+        "is_completed": false,
+        "duration": null,
+        "duration_unit": null,
+        "order_index": 1,
+        "assignee_id": null,
+        "assigner_id": null,
+        "created_at": "2026-04-17T00:06:09"
+      },
+      "column_similarity_measure": {
+        "project_id": "column_exact_match_similarity",
+        "section_id": "column_ignore_similarity",
+        "user_id": "column_exact_match_similarity",
+        "title": "column_rouge_l_similarity",
+        "description": "column_ignore_similarity",
+        "due_date": "column_ignore_similarity",
+        "priority": "column_exact_match_similarity",
+        "is_completed": "column_exact_match_similarity",
+        "duration": "column_ignore_similarity",
+        "duration_unit": "column_ignore_similarity",
+        "order_index": "column_ignore_similarity",
+        "assignee_id": "column_ignore_similarity",
+        "assigner_id": "column_ignore_similarity",
+        "created_at": "column_ignore_similarity"
+      }
+    },
+    {
+      "operation": "create",
+      "source": "appworld",
+      "table": "file_system.directories",
+      "entity_data": {
+        "path": "Data/Blender/Blender_Tests",
+        "tilde_path": "Data/Blender/Blender_Tests",
+        "user_id": 105,
+        "created_at": "2026-04-17T00:06:09",
+        "updated_at": "2026-04-17T00:06:09"
+      },
+      "column_similarity_measure": {
+        "path": "column_contains_similarity",
+        "tilde_path": "column_contains_similarity",
+        "user_id": "column_exact_match_similarity",
+        "created_at": "column_ignore_similarity",
+        "updated_at": "column_ignore_similarity"
+      }
+    },
+    {
+      "operation": "create",
+      "source": "appworld",
+      "table": "file_system.files",
+      "entity_data": {
+        "path": "Data/Blender/Blender_Tests/donut_test.blend",
+        "tilde_path": "Data/Blender/Blender_Tests/donut_test.blend",
+        "user_id": 105,
+        "content": "Blender 3D model data (binary)",
+        "compressed_data": [],
+        "created_at": "2026-04-17T00:06:09",
+        "updated_at": "2026-04-17T00:06:09"
+      },
+      "column_similarity_measure": {
+        "path": "column_contains_similarity",
+        "tilde_path": "column_contains_similarity",
+        "user_id": "column_exact_match_similarity",
+        "content": "column_rouge_l_similarity",
+        "compressed_data": "column_ignore_similarity",
+        "created_at": "column_ignore_similarity",
+        "updated_at": "column_ignore_similarity"
+      }
+    }
+  ],
+  "task_completion_criteria": "Copy the file 'D:\\Data\\Blender\\donut_test.blend' to a newly created directory named 'Blender_Tests' and create a Todoist task named 'Add Set Position node'.",
+  "categories": [
+    "APPWORLD",
+    "MULTIPLE_USER_TURN"
+  ],
+  "max_messages": 100,
+  "metadata": {
+    "original_scenario_id": "scenario_0519",
+    "expected_tools": [
+      "gmail_create_draft",
+      "gmail_delete_draft",
+      "file_system_file_exists",
+      "file_system_create_directory",
+      "file_system_copy_file",
+      "todoist_create_task"
+    ],
+    "image_arrival": {
+      "1": [
+        "image_3",
+        "image_4",
+        "image_5"
+      ],
+      "2": [
+        "image_1",
+        "image_2"
+      ],
+      "3": [
+        "image_6"
+      ]
+    },
+    "image_delivery_map": [
+      {
+        "query": "Actually, I changed my mind. I'm just going to test both methods myself instead of emailing my tutor. Delete that draft. Also, look at these two new screenshots and compare their file paths with the previous ones. If they all match, check if that file exists on my system. Assuming it does, create a new directory called 'Blender_Tests' and copy the file into it so I have a safe backup to experiment on.",
+        "image_ids": [
+          0,
+          1
+        ]
+      },
+      {
+        "query": "Compare this final screenshot to the node setups we just looked at. What is the new node being added from the menu? Create a Todoist task to 'Add [that node name] node' so I remember to include it in my tests.",
+        "image_ids": [
+          5
+        ]
+      }
+    ],
+    "scenario_metadata": {
+      "num_images": 6,
+      "num_user_rounds": 3,
+      "selected_flow_type": "compare",
+      "image_arrival": "progressive",
+      "challenge_type": "goal_change",
+      "require_disambiguation": false,
+      "dataset_type": "screenspotpro"
+    }
+  }
+}

@@ -1,0 +1,287 @@
+{
+  "name": "scenario_0106",
+  "base_scenario": "base",
+  "description": "Kristin is managing her online shopping and wants to consolidate her wishlist and purchase some new items she found.",
+  "difficulty": "easy",
+  "appworld_base_task": "_base_",
+  "device_state_id": "kri-powe@gmail.com",
+  "reference_time": "2026-04-16T23:53:51.376529+00:00",
+  "agentsandbox_entities": {},
+  "appworld_entities": {
+    "amazon.sellers": [
+      {
+        "id": 200,
+        "name": "Amazon Selection",
+        "rating": 4.8
+      }
+    ],
+    "amazon.products": [
+      {
+        "id": 200,
+        "product_type": "toys",
+        "name": "Kids\u2019 Explorer Microscope",
+        "description": "Educational microscope kit for kids with multiple magnification levels.",
+        "seller_id": 200,
+        "price": 29.99,
+        "delivery_days": 2,
+        "inventory_quantity": 50,
+        "weight": 1.2,
+        "length": 8.0,
+        "width": 5.0,
+        "height": 10.0,
+        "color": "Blue",
+        "relative_size": "medium",
+        "rating": 4.5,
+        "seller_rating": 4.8,
+        "has_variations": false
+      },
+      {
+        "id": 201,
+        "product_type": "furniture",
+        "name": "Steelcase Gesture office chair",
+        "description": "Ergonomic office chair designed for all-day support.",
+        "seller_id": 200,
+        "price": 999.99,
+        "delivery_days": 5,
+        "inventory_quantity": 10,
+        "weight": 25.0,
+        "length": 25.0,
+        "width": 25.0,
+        "height": 40.0,
+        "color": "Black",
+        "relative_size": "extra-large",
+        "rating": 4.8,
+        "seller_rating": 4.8,
+        "has_variations": true
+      },
+      {
+        "id": 202,
+        "product_type": "stationery",
+        "name": "Zebra gel pen",
+        "description": "Smooth writing gel pen with a comfortable grip.",
+        "seller_id": 200,
+        "price": 2.99,
+        "delivery_days": 2,
+        "inventory_quantity": 100,
+        "weight": 0.05,
+        "length": 5.5,
+        "width": 0.4,
+        "height": 0.4,
+        "color": "Black",
+        "relative_size": "extra-small",
+        "rating": 4.7,
+        "seller_rating": 4.8,
+        "has_variations": true
+      },
+      {
+        "id": 203,
+        "product_type": "stationery",
+        "name": "STAEDTLER Concrete Ballpoint Pen",
+        "description": "Unique ballpoint pen with a concrete body.",
+        "seller_id": 200,
+        "price": 35.0,
+        "delivery_days": 2,
+        "inventory_quantity": 20,
+        "weight": 0.1,
+        "length": 5.5,
+        "width": 0.5,
+        "height": 0.5,
+        "color": "Gray",
+        "relative_size": "small",
+        "rating": 4.6,
+        "seller_rating": 4.8,
+        "has_variations": false
+      },
+      {
+        "id": 204,
+        "product_type": "toys",
+        "name": "Night-vision detective gear",
+        "description": "Toy night vision goggles for kids' detective play.",
+        "seller_id": 200,
+        "price": 45.99,
+        "delivery_days": 3,
+        "inventory_quantity": 30,
+        "weight": 0.5,
+        "length": 7.0,
+        "width": 6.0,
+        "height": 3.0,
+        "color": "Green",
+        "relative_size": "medium",
+        "rating": 4.3,
+        "seller_rating": 4.8,
+        "has_variations": false
+      },
+      {
+        "id": 205,
+        "product_type": "toys",
+        "name": "Tamiya F-35A",
+        "description": "Highly detailed 1/48 scale model kit of the F-35A.",
+        "seller_id": 200,
+        "price": 85.0,
+        "delivery_days": 4,
+        "inventory_quantity": 15,
+        "weight": 1.0,
+        "length": 12.0,
+        "width": 8.0,
+        "height": 3.0,
+        "color": "Gray",
+        "relative_size": "medium",
+        "rating": 4.9,
+        "seller_rating": 4.8,
+        "has_variations": false
+      }
+    ],
+    "simple_note.notes": [
+      {
+        "id": 3200,
+        "user_id": 28,
+        "title": "My Wishlist",
+        "content": "Kids\u2019 Explorer Microscope\nSteelcase Gesture office chair\nZebra gel pen",
+        "tags": [],
+        "created_at": "2026-04-10T10:00:00",
+        "updated_at": "2026-04-10T10:00:00",
+        "pinned": false,
+        "data": {}
+      }
+    ],
+    "gmail.users": []
+  },
+  "image_paths": [
+    "worldvqa/images/1502.jpg",
+    "worldvqa/images/1647.jpg",
+    "worldvqa/images/1507.jpg",
+    "worldvqa/images/1681.jpg",
+    "worldvqa/images/1656.jpg",
+    "worldvqa/images/1489.jpg"
+  ],
+  "messages": [
+    {
+      "sender": "SYSTEM",
+      "recipient": "USER",
+      "content": "{{USER_INSTRUCTION}}ROUND 1\nQuery: Please read my note called 'Shopping Cart' and add all the items listed there to my Amazon cart.\nInstructions: Instruct the assistant to open a note called 'Shopping Cart' and add the items listed inside to your Amazon cart. Because you made a mistake and this note doesn't actually exist on your device, the assistant should flag the error and tell you it can't find it. If the assistant hallucinates finding the note or tries to proceed without it, point out that it shouldn't exist and ask it to check again. Once the assistant correctly reports that the note is missing, move on to the next round.\n\nROUND 2 [provide: image_1, image_2, image_3, image_4, image_5, image_6]\nQuery: My mistake, the note is actually called 'My Wishlist'. I also have these 6 photos of products I'm interested in buying. Please cross-reference the items in these photos with the 'My Wishlist' note. For any item shown in the photos that is NOT already on that list, please search for it and add it to my Amazon cart. Finally, update the 'My Wishlist' note so it includes all 6 items.\nInstructions: Acknowledge your mistake regarding the note's name and provide the correct name along with the images. Ask the assistant to read the correct note and cross-reference its contents with the items shown in the provided photos. Instruct it to figure out which items from the images are missing from the note, add only those missing items to your Amazon cart, and then update the note so it lists all the items shown in the photos. If the assistant struggles to identify any items, tell it to carefully examine the labels, brand names, and visual details in the images. Once the assistant confirms the cart additions and note update are complete, end the conversation.\n\nYou have 6 images available to share with the agent using the send_message_with_image tool.\nIMPORTANT: Image IDs are ZERO-INDEXED integers (0, 1, 2, ...). Do NOT add 1 to the IDs.\nAvailable image IDs: [0, 1, 2, 3, 4, 5]\nImage mapping:\n  image_1.jpg -> image ID 0\n  image_2.jpg -> image ID 1\n  image_3.jpg -> image ID 2\n  image_4.jpg -> image ID 3\n  image_5.jpg -> image ID 4\n  image_6.jpg -> image ID 5\n\n## IMAGE DELIVERY\n\n\u26a0\ufe0f IMPORTANT: You MUST use the `send_message_with_image` tool to share images with User B. Do NOT just describe images in text \u2014 you MUST call the tool.\n\nImage delivery schedule:\n\n  Round 2: YOU MUST call the send_message_with_image tool with image_ids='0,1,2,3,4,5' \u2014 do NOT write the tool name as text; use the actual function call. Include a natural, conversational message to the assistant."
+    },
+    {
+      "sender": "USER",
+      "recipient": "AGENT",
+      "content": "Please read my note called 'Shopping Cart' and add all the items listed there to my Amazon cart."
+    }
+  ],
+  "milestones": [],
+  "entity_diff_specs": [
+    {
+      "operation": "create",
+      "source": "appworld",
+      "table": "amazon.cart_entries",
+      "entity_data": {
+        "user_id": 28,
+        "product_id": 203,
+        "quantity": 1,
+        "gift_wrap_quantity": 0
+      },
+      "column_similarity_measure": {
+        "user_id": "column_exact_match_similarity",
+        "product_id": "column_exact_match_similarity",
+        "quantity": "column_exact_match_similarity",
+        "gift_wrap_quantity": "column_exact_match_similarity"
+      }
+    },
+    {
+      "operation": "create",
+      "source": "appworld",
+      "table": "amazon.cart_entries",
+      "entity_data": {
+        "user_id": 28,
+        "product_id": 204,
+        "quantity": 1,
+        "gift_wrap_quantity": 0
+      },
+      "column_similarity_measure": {
+        "user_id": "column_exact_match_similarity",
+        "product_id": "column_exact_match_similarity",
+        "quantity": "column_exact_match_similarity",
+        "gift_wrap_quantity": "column_exact_match_similarity"
+      }
+    },
+    {
+      "operation": "create",
+      "source": "appworld",
+      "table": "amazon.cart_entries",
+      "entity_data": {
+        "user_id": 28,
+        "product_id": 205,
+        "quantity": 1,
+        "gift_wrap_quantity": 0
+      },
+      "column_similarity_measure": {
+        "user_id": "column_exact_match_similarity",
+        "product_id": "column_exact_match_similarity",
+        "quantity": "column_exact_match_similarity",
+        "gift_wrap_quantity": "column_exact_match_similarity"
+      }
+    },
+    {
+      "operation": "update",
+      "source": "appworld",
+      "table": "simple_note.notes",
+      "entity_id_column": "id",
+      "entity_id_value": 3200,
+      "expected_fields": {
+        "updated_at": "2026-04-10T10:00:00",
+        "content": "Kids\u2019 Explorer Microscope\nSteelcase Gesture office chair\nZebra gel pen\nSTAEDTLER Concrete Ballpoint Pen\nNight-vision detective gear\nTamiya F-35A",
+        "tags": []
+      },
+      "column_similarity_measure": {
+        "updated_at": "column_ignore_similarity",
+        "content": "column_rouge_l_similarity",
+        "id": "column_exact_match_similarity"
+      }
+    }
+  ],
+  "task_completion_criteria": "Add the STAEDTLER Concrete Ballpoint Pen, Night-vision detective gear, and Tamiya F-35A to the user's Amazon cart, and update the 'My Wishlist' note to include all six items (Kids\u2019 Explorer Microscope, Steelcase Gesture office chair, Zebra gel pen, STAEDTLER Concrete Ballpoint Pen, Night-vision detective gear, and Tamiya F-35A).",
+  "categories": [
+    "APPWORLD",
+    "MULTIPLE_USER_TURN"
+  ],
+  "max_messages": 100,
+  "metadata": {
+    "original_scenario_id": "scenario_0106",
+    "expected_tools": [
+      "simple_note_show_note",
+      "web_search_serper",
+      "amazon_add_product_to_cart",
+      "simple_note_update_note"
+    ],
+    "image_arrival": {
+      "2": [
+        "image_1",
+        "image_2",
+        "image_3",
+        "image_4",
+        "image_5",
+        "image_6"
+      ]
+    },
+    "image_delivery_map": [
+      {
+        "query": "My mistake, the note is actually called 'My Wishlist'. I also have these 6 photos of products I'm interested in buying. Please cross-reference the items in these photos with the 'My Wishlist' note. For any item shown in the photos that is NOT already on that list, please search for it and add it to my Amazon cart. Finally, update the 'My Wishlist' note so it includes all 6 items.",
+        "image_ids": [
+          0,
+          1,
+          2,
+          3,
+          4,
+          5
+        ]
+      }
+    ],
+    "scenario_metadata": {
+      "num_images": 6,
+      "num_user_rounds": 2,
+      "selected_flow_type": "cross_reference",
+      "image_arrival": "late",
+      "challenge_type": "error_correction",
+      "require_disambiguation": false,
+      "dataset_type": "worldvqa"
+    }
+  }
+}

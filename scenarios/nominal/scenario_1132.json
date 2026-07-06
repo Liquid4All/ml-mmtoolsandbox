@@ -1,0 +1,266 @@
+{
+  "name": "scenario_1132",
+  "base_scenario": "base",
+  "description": "The user is organizing a nature and history scavenger hunt with a coworker. They are taking pictures of specific items they want participants to find, adding them to a task list, and sharing the final list with their co-organizer.",
+  "difficulty": "easy",
+  "appworld_base_task": "_base_",
+  "device_state_id": "ad.blackburn@gmail.com",
+  "reference_time": "2026-04-17T00:24:24.302454+00:00",
+  "agentsandbox_entities": {},
+  "appworld_entities": {
+    "phone.contacts": [
+      {
+        "id": 200,
+        "user_id": 40,
+        "first_name": "Ashlee",
+        "last_name": "Johnson",
+        "email": "ashlee.johnson@gmail.com",
+        "phone_number": null,
+        "relationships": [],
+        "birthday": null,
+        "home_address": null,
+        "work_address": null,
+        "created_at": "2024-01-15T09:30:00"
+      }
+    ],
+    "todoist.projects": [
+      {
+        "id": 400,
+        "user_id": 40,
+        "name": "Scavenger Hunt",
+        "color": "charcoal",
+        "is_inbox": false,
+        "description": "",
+        "created_at": "2026-04-16T10:00:00"
+      }
+    ],
+    "gmail.users": [
+      {
+        "id": 200,
+        "first_name": "Ashlee",
+        "last_name": "Johnson",
+        "email": "ashlee.johnson@gmail.com",
+        "password": "default_password",
+        "status": "active",
+        "created_at": "2025-01-01T00:00:00",
+        "last_logged_in": "2025-01-01T00:00:00"
+      },
+      {
+        "id": 10101,
+        "first_name": "Ashlee_Martinez",
+        "last_name": "",
+        "email": "ashlee_martinez@gmail.com",
+        "password": "placeholder_password",
+        "status": "active"
+      }
+    ],
+    "todoist.project_collaborator_links": [
+      {
+        "id": 50400,
+        "project_id": 400,
+        "user_id": 40,
+        "is_favorite": false,
+        "is_archived": false,
+        "created_at": "2026-04-16T10:00:00"
+      }
+    ]
+  },
+  "image_paths": [
+    "worldvqa/images/42.jpg",
+    "worldvqa/images/1217.jpg",
+    "worldvqa/images/191.jpg"
+  ],
+  "messages": [
+    {
+      "sender": "SYSTEM",
+      "recipient": "USER",
+      "content": "{{USER_INSTRUCTION}}ROUND 1 [provide: image_1, image_2]\nQuery: I'm setting up a nature and history scavenger hunt. Can you identify the specific species of this mushroom and the name of this traditional hat? Once you have them, create a 'Find a [Item Name]' task for each in my Scavenger Hunt project.\nInstructions: Instruct the supervisor to ask the assistant to identify the mushroom in the first image to the species level and the hat in the second image. Then, tell the assistant to create a task for finding each of these items in the 'Scavenger Hunt' Todoist project. If the assistant misidentifies the items, point it back to the visual details in the images. If it asks for confirmation or successfully creates the tasks, acknowledge it and move to the next round.\n\nROUND 2 [provide: image_3]\nQuery: Here's the final item. What's the name of this orange flower? Add a task to find it to that same project. After that, pull the full list of tasks from the project and email Ashlee the complete list of items to find.\nInstructions: Instruct the supervisor to ask the assistant to identify the flower in the new image and add a 'Find a [Item Name]' task for it to the Scavenger Hunt project. Then, ask the assistant to retrieve all the tasks from that project and email the full list of items to 'Ashlee'. Because there are multiple people named Ashlee in the contacts, the assistant will ask for clarification on which one to email. When it asks, clarify that you mean your coworker. Once the assistant confirms the email has been sent, end the conversation.\n\nYou have 3 images available to share with the agent using the send_message_with_image tool.\nIMPORTANT: Image IDs are ZERO-INDEXED integers (0, 1, 2, ...). Do NOT add 1 to the IDs.\nAvailable image IDs: [0, 1, 2]\nImage mapping:\n  image_1.jpg -> image ID 0\n  image_2.jpg -> image ID 1\n  image_3.jpg -> image ID 2\n\n## IMAGE DELIVERY\n\n\u26a0\ufe0f IMPORTANT: You MUST use the `send_message_with_image` tool to share images with User B. Do NOT just describe images in text \u2014 you MUST call the tool.\n\nImage delivery schedule:\n\n  Round 2: YOU MUST call the send_message_with_image tool with image_ids='2' \u2014 do NOT write the tool name as text; use the actual function call. Include a natural, conversational message to the assistant."
+    },
+    {
+      "sender": "USER",
+      "recipient": "AGENT",
+      "content": "I'm setting up a nature and history scavenger hunt. Can you identify the specific species of this mushroom and the name of this traditional hat? Once you have them, create a 'Find a [Item Name]' task for each in my Scavenger Hunt project.",
+      "image_ids": [
+        0,
+        1
+      ]
+    }
+  ],
+  "milestones": [],
+  "entity_diff_specs": [
+    {
+      "operation": "create",
+      "source": "appworld",
+      "table": "gmail.emails",
+      "entity_data": {
+        "sender_id": 40,
+        "recipient_ids": [
+          10101
+        ],
+        "subject": "Scavenger Hunt Items List",
+        "body": "Hi Ashlee,\n\nHere is the complete list of items to find for our nature and history scavenger hunt:\n- Gyromitra esculenta\n- Tricorne\n- California poppy\n\nLet me know if you need anything else!\n\nBest,\nAdam",
+        "response_to_email_id": null,
+        "created_at": "2026-04-17T00:24:24"
+      },
+      "column_similarity_measure": {
+        "sender_id": "column_exact_match_similarity",
+        "recipient_ids": "column_exact_match_similarity",
+        "subject": "column_rouge_l_similarity",
+        "body": "column_rouge_l_similarity",
+        "response_to_email_id": "column_ignore_similarity",
+        "created_at": "column_ignore_similarity"
+      }
+    },
+    {
+      "operation": "create",
+      "source": "appworld",
+      "table": "todoist.tasks",
+      "entity_data": {
+        "project_id": 400,
+        "section_id": null,
+        "user_id": 40,
+        "title": "Find a Gyromitra esculenta",
+        "description": null,
+        "due_date": null,
+        "priority": "medium",
+        "is_completed": false,
+        "duration": null,
+        "duration_unit": null,
+        "order_index": 1,
+        "assignee_id": null,
+        "assigner_id": null,
+        "created_at": "2026-04-17T00:24:24"
+      },
+      "column_similarity_measure": {
+        "project_id": "column_exact_match_similarity",
+        "section_id": "column_ignore_similarity",
+        "user_id": "column_exact_match_similarity",
+        "title": "column_rouge_l_similarity",
+        "description": "column_ignore_similarity",
+        "due_date": "column_ignore_similarity",
+        "priority": "column_exact_match_similarity",
+        "is_completed": "column_exact_match_similarity",
+        "duration": "column_ignore_similarity",
+        "duration_unit": "column_ignore_similarity",
+        "order_index": "column_ignore_similarity",
+        "assignee_id": "column_ignore_similarity",
+        "assigner_id": "column_ignore_similarity",
+        "created_at": "column_ignore_similarity"
+      }
+    },
+    {
+      "operation": "create",
+      "source": "appworld",
+      "table": "todoist.tasks",
+      "entity_data": {
+        "project_id": 400,
+        "section_id": null,
+        "user_id": 40,
+        "title": "Find a Tricorne",
+        "description": null,
+        "due_date": null,
+        "priority": "medium",
+        "is_completed": false,
+        "duration": null,
+        "duration_unit": null,
+        "order_index": 2,
+        "assignee_id": null,
+        "assigner_id": null,
+        "created_at": "2026-04-17T00:24:24"
+      },
+      "column_similarity_measure": {
+        "project_id": "column_exact_match_similarity",
+        "section_id": "column_ignore_similarity",
+        "user_id": "column_exact_match_similarity",
+        "title": "column_rouge_l_similarity",
+        "description": "column_ignore_similarity",
+        "due_date": "column_ignore_similarity",
+        "priority": "column_exact_match_similarity",
+        "is_completed": "column_exact_match_similarity",
+        "duration": "column_ignore_similarity",
+        "duration_unit": "column_ignore_similarity",
+        "order_index": "column_ignore_similarity",
+        "assignee_id": "column_ignore_similarity",
+        "assigner_id": "column_ignore_similarity",
+        "created_at": "column_ignore_similarity"
+      }
+    },
+    {
+      "operation": "create",
+      "source": "appworld",
+      "table": "todoist.tasks",
+      "entity_data": {
+        "project_id": 400,
+        "section_id": null,
+        "user_id": 40,
+        "title": "Find a California poppy",
+        "description": null,
+        "due_date": null,
+        "priority": "medium",
+        "is_completed": false,
+        "duration": null,
+        "duration_unit": null,
+        "order_index": 3,
+        "assignee_id": null,
+        "assigner_id": null,
+        "created_at": "2026-04-17T00:24:24"
+      },
+      "column_similarity_measure": {
+        "project_id": "column_exact_match_similarity",
+        "section_id": "column_ignore_similarity",
+        "user_id": "column_exact_match_similarity",
+        "title": "column_rouge_l_similarity",
+        "description": "column_ignore_similarity",
+        "due_date": "column_ignore_similarity",
+        "priority": "column_exact_match_similarity",
+        "is_completed": "column_exact_match_similarity",
+        "duration": "column_ignore_similarity",
+        "duration_unit": "column_ignore_similarity",
+        "order_index": "column_ignore_similarity",
+        "assignee_id": "column_ignore_similarity",
+        "assigner_id": "column_ignore_similarity",
+        "created_at": "column_ignore_similarity"
+      }
+    }
+  ],
+  "task_completion_criteria": "Identify the mushroom as Gyromitra esculenta, the hat as a Tricorne, and the flower as a California poppy. Create tasks named 'Find a Gyromitra esculenta', 'Find a Tricorne', and 'Find a California poppy' in the 'Scavenger Hunt' Todoist project. Finally, send an email to Ashlee Martinez (ashlee_martinez@gmail.com) summarizing the complete list of these three items.",
+  "categories": [
+    "APPWORLD",
+    "MULTIPLE_USER_TURN"
+  ],
+  "max_messages": 100,
+  "metadata": {
+    "original_scenario_id": "scenario_1132",
+    "expected_tools": [
+      "todoist_create_task",
+      "todoist_show_tasks",
+      "gmail_send_email"
+    ],
+    "image_arrival": {
+      "1": [
+        "image_1",
+        "image_2"
+      ],
+      "2": [
+        "image_3"
+      ]
+    },
+    "image_delivery_map": [
+      {
+        "query": "Here's the final item. What's the name of this orange flower? Add a task to find it to that same project. After that, pull the full list of tasks from the project and email Ashlee the complete list of items to find.",
+        "image_ids": [
+          2
+        ]
+      }
+    ],
+    "scenario_metadata": {
+      "num_images": 3,
+      "num_user_rounds": 2,
+      "selected_flow_type": "aggregate",
+      "image_arrival": "mixed",
+      "challenge_type": "none",
+      "require_disambiguation": true,
+      "dataset_type": "worldvqa"
+    }
+  }
+}

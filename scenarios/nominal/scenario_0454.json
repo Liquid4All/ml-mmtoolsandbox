@@ -1,0 +1,213 @@
+{
+  "name": "scenario_0454",
+  "base_scenario": "base",
+  "description": "The user is working on an FPGA project in Vivado and wants to back up a constraint file and save details about a specific video IP core.",
+  "difficulty": "easy",
+  "appworld_base_task": "_base_",
+  "device_state_id": "mar_blac@gmail.com",
+  "reference_time": "2026-04-17T00:03:58.961957+00:00",
+  "agentsandbox_entities": {},
+  "appworld_entities": {
+    "file_system.directories": [
+      {
+        "id": 3600,
+        "path": "/D:/vivado/project_1/project_1.srcs/constrs_1/new/",
+        "tilde_path": "/D:/vivado/project_1/project_1.srcs/constrs_1/new/",
+        "user_id": 42,
+        "created_at": "2026-04-10T10:00:00",
+        "updated_at": "2026-04-10T10:00:00"
+      },
+      {
+        "path": "/D:/",
+        "tilde_path": "/D:/",
+        "user_id": 42,
+        "created_at": "2025-01-01T00:00:00",
+        "updated_at": "2025-01-01T00:00:00",
+        "id": 3601
+      },
+      {
+        "path": "/D:/vivado/",
+        "tilde_path": "/D:/vivado/",
+        "user_id": 42,
+        "created_at": "2025-01-01T00:00:00",
+        "updated_at": "2025-01-01T00:00:00",
+        "id": 3602
+      },
+      {
+        "path": "/D:/vivado/project_1/",
+        "tilde_path": "/D:/vivado/project_1/",
+        "user_id": 42,
+        "created_at": "2025-01-01T00:00:00",
+        "updated_at": "2025-01-01T00:00:00",
+        "id": 3603
+      },
+      {
+        "path": "/D:/vivado/project_1/project_1.srcs/",
+        "tilde_path": "/D:/vivado/project_1/project_1.srcs/",
+        "user_id": 42,
+        "created_at": "2025-01-01T00:00:00",
+        "updated_at": "2025-01-01T00:00:00",
+        "id": 3604
+      },
+      {
+        "path": "/D:/vivado/project_1/project_1.srcs/constrs_1/",
+        "tilde_path": "/D:/vivado/project_1/project_1.srcs/constrs_1/",
+        "user_id": 42,
+        "created_at": "2025-01-01T00:00:00",
+        "updated_at": "2025-01-01T00:00:00",
+        "id": 3605
+      }
+    ],
+    "file_system.files": [
+      {
+        "id": 26000,
+        "path": "/D:/vivado/project_1/project_1.srcs/constrs_1/new/1.xdc",
+        "tilde_path": "/D:/vivado/project_1/project_1.srcs/constrs_1/new/1.xdc",
+        "user_id": 42,
+        "content": "set_property PACKAGE_PIN W5 [get_ports clk]\nset_property IOSTANDARD LVCMOS33 [get_ports clk]",
+        "compressed_data": [],
+        "created_at": "2026-04-10T10:05:00",
+        "updated_at": "2026-04-15T14:30:00"
+      }
+    ],
+    "gmail.users": []
+  },
+  "image_paths": [
+    "screenspotpro/images/vivado_windows/screenshot_2024-12-10_00-10-54.png",
+    "screenspotpro/images/vivado_windows/screenshot_2024-12-10_00-04-37.png",
+    "screenspotpro/images/vivado_windows/screenshot_2024-12-09_23-59-04.png",
+    "screenspotpro/images/vivado_windows/screenshot_2024-12-10_00-05-03.png",
+    "screenspotpro/images/vivado_windows/screenshot_2024-12-10_00-02-57.png",
+    "screenspotpro/images/vivado_windows/screenshot_2024-12-09_22-37-29.png"
+  ],
+  "messages": [
+    {
+      "sender": "SYSTEM",
+      "recipient": "USER",
+      "content": "{{USER_INSTRUCTION}}ROUND 1\nQuery: Can you check if my constraint file at 'D:/vivado/project_2/project_2.srcs/constrs_1/new/1.xdc' exists? If it's there, make a directory called 'D:/fpga_backup/' and copy the file over.\nInstructions: Ask the assistant to verify if the specified constraint file exists, and if so, to create a backup directory and copy the file there. Since you provided an incorrect path, the assistant should fail to find the file and report the error. If the assistant points out that the file does not exist, acknowledge it and state you will check your workspace. If the assistant tries to blindly proceed without checking, correct it by saying the file might not actually be there. Proceed to the next round once the assistant confirms the file is missing.\n\nROUND 2 [provide: image_1, image_2, image_3, image_4, image_5, image_6]\nQuery: My bad, I had the wrong project name. Here are screenshots of my current workspace. Could you grab the correct file path for '1.xdc' from the properties window shown here, make sure it exists, and then copy it to that 'D:/fpga_backup/' folder? If the folder isn't there, please create it. Also, make a note called 'Video_IP' and paste the full description of the video decoder IP that's open in the catalog.\nInstructions: Provide the screenshots and tell the assistant you had the wrong project name earlier. Ask it to extract the correct file path for the constraint file from the visible properties window in the images, verify that this correct file exists, and then back it up to the backup folder (creating the folder if needed). Additionally, ask the assistant to create a note titled 'Video_IP' containing the full description of the video decoder IP shown in the catalog in the images. If the assistant asks for clarification on the text, point it to the details section of the IP catalog in the last image. Conclude the conversation once the file is copied and the note is created.\n\nYou have 6 images available to share with the agent using the send_message_with_image tool.\nIMPORTANT: Image IDs are ZERO-INDEXED integers (0, 1, 2, ...). Do NOT add 1 to the IDs.\nAvailable image IDs: [0, 1, 2, 3, 4, 5]\nImage mapping:\n  image_1.jpg -> image ID 0\n  image_2.jpg -> image ID 1\n  image_3.jpg -> image ID 2\n  image_4.jpg -> image ID 3\n  image_5.jpg -> image ID 4\n  image_6.jpg -> image ID 5\n\n## IMAGE DELIVERY\n\n⚠️ IMPORTANT: You MUST use the `send_message_with_image` tool to share images with User B. Do NOT just describe images in text — you MUST call the tool.\n\nImage delivery schedule:\n\n  Round 2: YOU MUST call the send_message_with_image tool with image_ids='0,1,2,3,4,5' — do NOT write the tool name as text; use the actual function call. Include a natural, conversational message to the assistant."
+    },
+    {
+      "sender": "USER",
+      "recipient": "AGENT",
+      "content": "Can you check if my constraint file at 'D:/vivado/project_2/project_2.srcs/constrs_1/new/1.xdc' exists? If it's there, make a directory called 'D:/fpga_backup/' and copy the file over."
+    }
+  ],
+  "milestones": [],
+  "entity_diff_specs": [
+    {
+      "operation": "create",
+      "source": "appworld",
+      "table": "simple_note.notes",
+      "entity_data": {
+        "user_id": 42,
+        "title": "Video_IP",
+        "content": "The H.264 (AVC) 4K Video Decoder IP Core by System-On-Chip Technologies is a high-performance H.264 video decompression engine that supports resolutions up to 4096x2160. It decodes all industry-standard MPEG levels and profiles. The core is highly optimized, and decodes video in half-millisecond (0.5 ms) input-to-output latency.",
+        "tags": [],
+        "created_at": "2026-04-17T00:03:58",
+        "updated_at": "2026-04-17T00:03:58",
+        "pinned": false,
+        "data": null
+      },
+      "column_similarity_measure": {
+        "user_id": "column_exact_match_similarity",
+        "title": "column_rouge_l_similarity",
+        "content": "column_rouge_l_similarity",
+        "tags": "column_ignore_similarity",
+        "created_at": "column_ignore_similarity",
+        "updated_at": "column_ignore_similarity",
+        "pinned": "column_exact_match_similarity",
+        "data": "column_ignore_similarity"
+      }
+    },
+    {
+      "operation": "create",
+      "source": "appworld",
+      "table": "file_system.directories",
+      "entity_data": {
+        "path": "fpga_backup",
+        "tilde_path": "fpga_backup",
+        "user_id": 42,
+        "created_at": "2026-04-17T00:03:58",
+        "updated_at": "2026-04-17T00:03:58"
+      },
+      "column_similarity_measure": {
+        "path": "column_contains_similarity",
+        "tilde_path": "column_contains_similarity",
+        "user_id": "column_exact_match_similarity",
+        "created_at": "column_ignore_similarity",
+        "updated_at": "column_ignore_similarity"
+      }
+    },
+    {
+      "operation": "create",
+      "source": "appworld",
+      "table": "file_system.files",
+      "entity_data": {
+        "path": "fpga_backup/1.xdc",
+        "tilde_path": "fpga_backup/1.xdc",
+        "user_id": 42,
+        "content": "set_property PACKAGE_PIN W5 [get_ports clk]\nset_property IOSTANDARD LVCMOS33 [get_ports clk]",
+        "compressed_data": [],
+        "created_at": "2026-04-17T00:03:58",
+        "updated_at": "2026-04-17T00:03:58"
+      },
+      "column_similarity_measure": {
+        "path": "column_contains_similarity",
+        "tilde_path": "column_contains_similarity",
+        "user_id": "column_exact_match_similarity",
+        "content": "column_rouge_l_similarity",
+        "compressed_data": "column_ignore_similarity",
+        "created_at": "column_ignore_similarity",
+        "updated_at": "column_ignore_similarity"
+      }
+    }
+  ],
+  "task_completion_criteria": "The agent should copy the file 'D:/vivado/project_1/project_1.srcs/constrs_1/new/1.xdc' to the directory 'D:/fpga_backup/' (creating the directory if it does not exist). The agent must also create a note titled 'Video_IP' containing the text: 'The H.264 (AVC) 4K Video Decoder IP Core by System-On-Chip Technologies is a high-performance H.264 video decompression engine that supports resolutions up to 4096x2160. It decodes all industry-standard MPEG levels and profiles. The core is highly optimized, and decodes video in half-millisecond (0.5 ms) input-to-output latency.' or something similar expressing the same idea.",
+  "categories": [
+    "APPWORLD",
+    "MULTIPLE_USER_TURN"
+  ],
+  "max_messages": 100,
+  "metadata": {
+    "original_scenario_id": "scenario_0454",
+    "expected_tools": [
+      "file_system_file_exists",
+      "file_system_directory_exists",
+      "file_system_create_directory",
+      "file_system_copy_file",
+      "simple_note_create_note"
+    ],
+    "image_arrival": {
+      "2": [
+        "image_1",
+        "image_2",
+        "image_3",
+        "image_4",
+        "image_5",
+        "image_6"
+      ]
+    },
+    "image_delivery_map": [
+      {
+        "query": "My bad, I had the wrong project name. Here are screenshots of my current workspace. Could you grab the correct file path for '1.xdc' from the properties window shown here, make sure it exists, and then copy it to that 'D:/fpga_backup/' folder? If the folder isn't there, please create it. Also, make a note called 'Video_IP' and paste the full description of the video decoder IP that's open in the catalog.",
+        "image_ids": [
+          0,
+          1,
+          2,
+          3,
+          4,
+          5
+        ]
+      }
+    ],
+    "scenario_metadata": {
+      "num_images": 6,
+      "num_user_rounds": 2,
+      "selected_flow_type": "validate",
+      "image_arrival": "late",
+      "challenge_type": "error_correction",
+      "require_disambiguation": false,
+      "dataset_type": "screenspotpro"
+    }
+  }
+}

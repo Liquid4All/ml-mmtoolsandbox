@@ -1,0 +1,90 @@
+{
+  "name": "scenario_0032",
+  "base_scenario": "base",
+  "description": "The user is planning a sponsorship pitch and needs to find the contact information for a paint manufacturer to propose a project involving specific camera and audio gear.",
+  "difficulty": "easy",
+  "appworld_base_task": "_base_",
+  "device_state_id": "nicholas.weber@gmail.com",
+  "reference_time": "2026-04-16T23:51:48.111089+00:00",
+  "agentsandbox_entities": {},
+  "appworld_entities": {
+    "gmail.users": []
+  },
+  "image_paths": [
+    "hiertext/images/test/2ea16c68eac1c87f.jpg",
+    "hiertext/images/test/def8c9bad412d36e.jpg",
+    "hiertext/images/test/e6f396ffd1fb4fe2.jpg"
+  ],
+  "messages": [
+    {
+      "sender": "SYSTEM",
+      "recipient": "USER",
+      "content": "{{USER_INSTRUCTION}}ROUND 1 [provide: image_1, image_2, image_3]\nQuery: Hey, can you search the web to find the parent company of the paint brand shown in the third image? Once you find it, do another search to get their official contact email. Then, set a reminder for tomorrow at 10 AM to contact that email about a sponsorship for a project featuring the camera in the first image—I think it's a Canon XH A2s—and the audio equipment in the second image.\nInstructions: Tell the assistant to find the parent company of the paint in the third image, then search for that company's contact email. Ask it to set a reminder for tomorrow at 10 AM to email them about a sponsorship involving the camera in the first image and the audio gear in the second image. Explicitly mention that you believe the camera is a 'Canon XH A2s'. If the assistant points out that the camera in the image is actually a different model, confirm their observation, tell it to use the correct model visible in the image for the reminder, and then end the conversation. If the assistant creates the reminder with your incorrect model without noticing the mistake, proceed to the next round.\n\nROUND 2\nQuery: Wait, I just took a closer look at the first image and realized I misread the model number. It's actually a Canon XH A1s, not an A2s. Could you update that reminder?\nInstructions: Acknowledge that you made a mistake about the camera model in your previous message. Ask the assistant to update the reminder it just created to reflect the correct camera model from the first image. Once the assistant confirms the reminder has been successfully updated, end the conversation.\n\nYou have 3 images available to share with the agent using the send_message_with_image tool.\nIMPORTANT: Image IDs are ZERO-INDEXED integers (0, 1, 2, ...). Do NOT add 1 to the IDs.\nAvailable image IDs: [0, 1, 2]\nImage mapping:\n  image_1.jpg -> image ID 0\n  image_2.jpg -> image ID 1\n  image_3.jpg -> image ID 2"
+    },
+    {
+      "sender": "USER",
+      "recipient": "AGENT",
+      "content": "Hey, can you search the web to find the parent company of the paint brand shown in the third image? Once you find it, do another search to get their official contact email. Then, set a reminder for tomorrow at 10 AM to contact that email about a sponsorship for a project featuring the camera in the first image—I think it's a Canon XH A2s—and the audio equipment in the second image.",
+      "image_ids": [
+        0,
+        1,
+        2
+      ]
+    }
+  ],
+  "milestones": [],
+  "entity_diff_specs": [
+    {
+      "operation": "create",
+      "source": "agentsandbox",
+      "namespace": "REMINDER",
+      "entity_data": {
+        "reminder_id": "reminder_100",
+        "content": "Contact Plaid Enterprises via official email regarding a sponsorship for a project featuring the Canon XH A1s camera and the Roland Space Echo RE-201 audio equipment",
+        "latitude": null,
+        "longitude": null,
+        "creation_datetime": "2026-04-16T23:51:48Z",
+        "reminder_datetime": "2026-04-17T10:00:00Z"
+      },
+      "column_similarity_measure": {
+        "reminder_id": "column_ignore_similarity",
+        "content": "column_rouge_l_similarity",
+        "latitude": "column_ignore_similarity",
+        "longitude": "column_ignore_similarity",
+        "creation_datetime": "column_ignore_similarity",
+        "reminder_datetime": "column_datetime_naive_equal_similarity"
+      }
+    }
+  ],
+  "task_completion_criteria": "Set a reminder for 2026-04-17 at 10:00 AM to contact the parent company of FolkArt paint (Plaid Enterprises) via their official email regarding a sponsorship for a project featuring the Canon XH A1s camera and the Roland Space Echo RE-201 audio equipment, or something similar expressing this exact intent.",
+  "categories": [
+    "APPWORLD",
+    "MULTIPLE_USER_TURN"
+  ],
+  "max_messages": 100,
+  "metadata": {
+    "original_scenario_id": "scenario_0032",
+    "expected_tools": [
+      "web_search_serper",
+      "add_reminder",
+      "modify_reminder"
+    ],
+    "image_arrival": {
+      "1": [
+        "image_1",
+        "image_2",
+        "image_3"
+      ]
+    },
+    "image_delivery_map": [],
+    "scenario_metadata": {
+      "num_images": 3,
+      "num_user_rounds": 2,
+      "selected_flow_type": "lookup_chain",
+      "image_arrival": "upfront",
+      "challenge_type": "error_correction",
+      "require_disambiguation": false,
+      "dataset_type": "hiertext"
+    }
+  }
+}

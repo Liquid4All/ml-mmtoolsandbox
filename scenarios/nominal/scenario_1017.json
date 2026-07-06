@@ -1,0 +1,202 @@
+{
+  "name": "scenario_1017",
+  "base_scenario": "base",
+  "description": "The user is organizing their dataset and wants to back up specific annotation files from a directory visible on their desktop.",
+  "difficulty": "easy",
+  "appworld_base_task": "_base_",
+  "device_state_id": "angriddle@gmail.com",
+  "reference_time": "2026-04-17T00:21:12.874100+00:00",
+  "agentsandbox_entities": {},
+  "appworld_entities": {
+    "file_system.directories": [
+      {
+        "id": 3600,
+        "path": "/home/angela/annotator/",
+        "tilde_path": "~/annotator/",
+        "user_id": 19,
+        "created_at": "2026-04-10T09:00:00",
+        "updated_at": "2026-04-10T09:00:00"
+      },
+      {
+        "id": 3601,
+        "path": "/home/angela/annotator/annotations/",
+        "tilde_path": "~/annotator/annotations/",
+        "user_id": 19,
+        "created_at": "2026-04-10T09:05:00",
+        "updated_at": "2026-04-15T14:30:00"
+      },
+      {
+        "path": "/home/user/",
+        "tilde_path": "/home/user/",
+        "user_id": 19,
+        "created_at": "2025-01-01T00:00:00",
+        "updated_at": "2025-01-01T00:00:00",
+        "id": 3602
+      }
+    ],
+    "file_system.files": [
+      {
+        "id": 26000,
+        "path": "/home/angela/annotator/annotations/image_001.png",
+        "tilde_path": "~/annotator/annotations/image_001.png",
+        "user_id": 19,
+        "content": "[PNG binary data for image_001]",
+        "compressed_data": [],
+        "created_at": "2026-04-15T14:20:00",
+        "updated_at": "2026-04-15T14:20:00"
+      },
+      {
+        "id": 26001,
+        "path": "/home/angela/annotator/annotations/image_001.json",
+        "tilde_path": "~/annotator/annotations/image_001.json",
+        "user_id": 19,
+        "content": "{\"image\": \"image_001.png\", \"annotations\": [{\"label\": \"pedestrian\", \"bbox\": [10, 20, 50, 100]}]}",
+        "compressed_data": [],
+        "created_at": "2026-04-15T14:25:00",
+        "updated_at": "2026-04-15T14:25:00"
+      },
+      {
+        "id": 26002,
+        "path": "/home/angela/annotator/annotations/image_002.png",
+        "tilde_path": "~/annotator/annotations/image_002.png",
+        "user_id": 19,
+        "content": "[PNG binary data for image_002]",
+        "compressed_data": [],
+        "created_at": "2026-04-15T14:28:00",
+        "updated_at": "2026-04-15T14:28:00"
+      },
+      {
+        "id": 26003,
+        "path": "/home/angela/annotator/annotations/image_002.json",
+        "tilde_path": "~/annotator/annotations/image_002.json",
+        "user_id": 19,
+        "content": "{\"image\": \"image_002.png\", \"annotations\": [{\"label\": \"vehicle\", \"bbox\": [200, 150, 350, 250]}]}",
+        "compressed_data": [],
+        "created_at": "2026-04-15T14:30:00",
+        "updated_at": "2026-04-15T14:30:00"
+      }
+    ],
+    "gmail.users": []
+  },
+  "image_paths": [
+    "screenspotpro/images/common_windows/screenshot_2024-11-06_19-41-22.png",
+    "screenspotpro/images/common_windows/screenshot_2024-11-06_19-45-51.png",
+    "screenspotpro/images/common_windows/screenshot_2024-11-06_19-47-24.png"
+  ],
+  "messages": [
+    {
+      "sender": "SYSTEM",
+      "recipient": "USER",
+      "content": "{{USER_INSTRUCTION}}ROUND 1 [provide: image_1, image_2, image_3]\nQuery: Take a look at the folder open on the right screen in the third image. Create a 'csv_backup' folder and copy all the .csv files from there into it.\nInstructions: Ask the assistant to create a backup folder for CSV files and copy all the .csv files from the directory shown on the right side of the third image. If the assistant correctly notices and points out that there are no .csv files in that directory (only other file types), agree with it and hold for the next round. If the assistant tries to blindly execute the task or gets confused, point out that you might have misread the file extensions.\n\nROUND 2\nQuery: Ah, my mistake. I meant the JSON files. Please create a 'json_backup' folder instead and copy only the .json files from that folder into it.\nInstructions: Acknowledge the error. Instruct the assistant to create a new folder for JSON backups instead, and filter the files in that same directory to copy only the .json files into the new backup folder. Once the assistant confirms the new folder is created and the filtered files are copied successfully, end the conversation.\n\nYou have 3 images available to share with the agent using the send_message_with_image tool.\nIMPORTANT: Image IDs are ZERO-INDEXED integers (0, 1, 2, ...). Do NOT add 1 to the IDs.\nAvailable image IDs: [0, 1, 2]\nImage mapping:\n  image_1.jpg -> image ID 0\n  image_2.jpg -> image ID 1\n  image_3.jpg -> image ID 2"
+    },
+    {
+      "sender": "USER",
+      "recipient": "AGENT",
+      "content": "Take a look at the folder open on the right screen in the third image. Create a 'csv_backup' folder and copy all the .csv files from there into it.",
+      "image_ids": [
+        0,
+        1,
+        2
+      ]
+    }
+  ],
+  "milestones": [],
+  "entity_diff_specs": [
+    {
+      "operation": "create",
+      "source": "appworld",
+      "table": "file_system.directories",
+      "entity_data": {
+        "path": "json_backup",
+        "tilde_path": "json_backup",
+        "user_id": 19,
+        "created_at": "2026-04-17T00:21:12",
+        "updated_at": "2026-04-17T00:21:12"
+      },
+      "column_similarity_measure": {
+        "path": "column_contains_similarity",
+        "tilde_path": "column_contains_similarity",
+        "user_id": "column_exact_match_similarity",
+        "created_at": "column_ignore_similarity",
+        "updated_at": "column_ignore_similarity"
+      }
+    },
+    {
+      "operation": "create",
+      "source": "appworld",
+      "table": "file_system.files",
+      "entity_data": {
+        "path": "json_backup/image_001.json",
+        "tilde_path": "json_backup/image_001.json",
+        "user_id": 19,
+        "content": "{\"image\": \"image_001.png\", \"annotations\": [{\"label\": \"pedestrian\", \"bbox\": [10, 20, 50, 100]}]}",
+        "compressed_data": [],
+        "created_at": "2026-04-17T00:21:12",
+        "updated_at": "2026-04-17T00:21:12"
+      },
+      "column_similarity_measure": {
+        "path": "column_contains_similarity",
+        "tilde_path": "column_contains_similarity",
+        "user_id": "column_exact_match_similarity",
+        "content": "column_rouge_l_similarity",
+        "compressed_data": "column_ignore_similarity",
+        "created_at": "column_ignore_similarity",
+        "updated_at": "column_ignore_similarity"
+      }
+    },
+    {
+      "operation": "create",
+      "source": "appworld",
+      "table": "file_system.files",
+      "entity_data": {
+        "path": "json_backup/image_002.json",
+        "tilde_path": "json_backup/image_002.json",
+        "user_id": 19,
+        "content": "{\"image\": \"image_002.png\", \"annotations\": [{\"label\": \"vehicle\", \"bbox\": [200, 150, 350, 250]}]}",
+        "compressed_data": [],
+        "created_at": "2026-04-17T00:21:12",
+        "updated_at": "2026-04-17T00:21:12"
+      },
+      "column_similarity_measure": {
+        "path": "column_contains_similarity",
+        "tilde_path": "column_contains_similarity",
+        "user_id": "column_exact_match_similarity",
+        "content": "column_rouge_l_similarity",
+        "compressed_data": "column_ignore_similarity",
+        "created_at": "column_ignore_similarity",
+        "updated_at": "column_ignore_similarity"
+      }
+    }
+  ],
+  "task_completion_criteria": "Create a directory named 'json_backup' and copy all '.json' files from the 'annotator/annotations' directory into the new 'json_backup' directory.",
+  "categories": [
+    "APPWORLD",
+    "MULTIPLE_USER_TURN"
+  ],
+  "max_messages": 100,
+  "metadata": {
+    "original_scenario_id": "scenario_1017",
+    "expected_tools": [
+      "file_system_show_directory",
+      "file_system_create_directory",
+      "file_system_copy_file"
+    ],
+    "image_arrival": {
+      "1": [
+        "image_1",
+        "image_2",
+        "image_3"
+      ]
+    },
+    "image_delivery_map": [],
+    "scenario_metadata": {
+      "num_images": 3,
+      "num_user_rounds": 2,
+      "selected_flow_type": "filter",
+      "image_arrival": "upfront",
+      "challenge_type": "error_correction",
+      "require_disambiguation": false,
+      "dataset_type": "screenspotpro"
+    }
+  }
+}

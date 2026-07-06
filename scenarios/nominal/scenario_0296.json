@@ -1,0 +1,199 @@
+{
+  "name": "scenario_0296",
+  "base_scenario": "base",
+  "description": "Melissa is compiling various business, market, and demographic statistics from several reports into a single consolidated note to share with her analytics team.",
+  "difficulty": "easy",
+  "appworld_base_task": "_base_",
+  "device_state_id": "mel.bailey@gmail.com",
+  "reference_time": "2026-04-16T23:59:15.850227+00:00",
+  "agentsandbox_entities": {},
+  "appworld_entities": {
+    "phone.contacts": [
+      {
+        "id": 200,
+        "user_id": 81,
+        "first_name": "Stats Team",
+        "last_name": "Marketing",
+        "email": "marketing-stats@example.com",
+        "phone_number": null,
+        "relationships": [
+          "coworker"
+        ],
+        "birthday": null,
+        "home_address": null,
+        "work_address": null,
+        "created_at": "2025-10-15T09:30:00"
+      },
+      {
+        "id": 201,
+        "user_id": 81,
+        "first_name": "Stats Team",
+        "last_name": "Business",
+        "email": "stats@example.com",
+        "phone_number": null,
+        "relationships": [
+          "coworker"
+        ],
+        "birthday": null,
+        "home_address": null,
+        "work_address": null,
+        "created_at": "2025-10-15T09:35:00"
+      }
+    ],
+    "gmail.users": [
+      {
+        "id": 200,
+        "first_name": "Stats Team",
+        "last_name": "Marketing",
+        "email": "marketing-stats@example.com",
+        "password": "default_password",
+        "status": "active",
+        "created_at": "2025-01-01T00:00:00",
+        "last_logged_in": "2025-01-01T00:00:00"
+      },
+      {
+        "id": 201,
+        "first_name": "Stats Team",
+        "last_name": "Business",
+        "email": "stats@example.com",
+        "password": "default_password",
+        "status": "active",
+        "created_at": "2025-01-01T00:00:00",
+        "last_logged_in": "2025-01-01T00:00:00"
+      }
+    ]
+  },
+  "image_paths": [
+    "chartqapro/images/chart_1675.jpg",
+    "chartqapro/images/chart_0979.jpg",
+    "chartmuseum/images/largest_companies.png",
+    "chartqapro/images/chart_0302.jpg",
+    "chartmuseum/images/music-industry-streaming-revenue-vs-physical-sales.png"
+  ],
+  "messages": [
+    {
+      "sender": "SYSTEM",
+      "recipient": "USER",
+      "content": "{{USER_INSTRUCTION}}ROUND 1 [provide: image_1, image_2]\nQuery: Create a new note called 'Business Metrics'. Add the approximate subscriber count at the end of 2022 from the first chart, and the name and net worth of the top person from the second chart.\nInstructions: Ask the assistant to create a new note titled 'Business Metrics' and extract two things: the approximate 2022 subscriber count from the first chart, and the top person's name and net worth from the second chart, adding them to the note. If the assistant asks for a specific format, tell it a simple bulleted list is fine. Do not reveal the actual numbers or names from the images. Once the assistant confirms the note is created and updated, proceed to the next round.\n\nROUND 2 [provide: image_3]\nQuery: Now look at this infographic. Grab the total market cap for the U.S., and the name and value of the top company in China. Append those to the Business Metrics note.\nInstructions: Instruct the assistant to look at the new infographic, extract the total market cap for the U.S. and the name and value of the top company in China, and append these details to the 'Business Metrics' note. If the assistant struggles to find the totals or the top company, direct its attention to the bottom of the U.S. column and the top of the China column respectively. Proceed once the note is updated.\n\nROUND 3 [provide: image_4]\nQuery: From this dashboard, find the exact number of female workers in Vietnam and add it to our note.\nInstructions: Ask the assistant to find the exact number of female workers in Vietnam from the provided dashboard and add that figure to the note. If the assistant accidentally extracts the total workers or migrant workers for Vietnam, correct it to focus specifically on the middle 'Female Workers' column. Do not state the number yourself. Once confirmed, move to the next round.\n\nROUND 4 [provide: image_5]\nQuery: Finally, add the 2023 streaming revenue figure from this graph to the note. Once that's done, grab the whole note's content and email it to the Stats Team with the subject 'Final Business Metrics'.\nInstructions: Tell the assistant to extract the 2023 streaming revenue from the line graph and add it to the note. Then, ask it to retrieve the full content of the note and send it in an email to the 'Stats Team' with the subject 'Final Business Metrics'. The assistant will find multiple contacts for the Stats Team (Marketing and Business) and ask for clarification. When it does, specify that you want the 'Business' stats team. Do not provide the email address directly. Once the email is sent, conclude the conversation.\n\nYou have 5 images available to share with the agent using the send_message_with_image tool.\nIMPORTANT: Image IDs are ZERO-INDEXED integers (0, 1, 2, ...). Do NOT add 1 to the IDs.\nAvailable image IDs: [0, 1, 2, 3, 4]\nImage mapping:\n  image_1.jpg -> image ID 0\n  image_2.jpg -> image ID 1\n  image_3.jpg -> image ID 2\n  image_4.jpg -> image ID 3\n  image_5.jpg -> image ID 4\n\n## IMAGE DELIVERY\n\n\u26a0\ufe0f IMPORTANT: You MUST use the `send_message_with_image` tool to share images with User B. Do NOT just describe images in text \u2014 you MUST call the tool.\n\nImage delivery schedule:\n\n  Round 2: YOU MUST call the send_message_with_image tool with image_ids='2' \u2014 do NOT write the tool name as text; use the actual function call. Include a natural, conversational message to the assistant.\n  Round 3: YOU MUST call the send_message_with_image tool with image_ids='3' \u2014 do NOT write the tool name as text; use the actual function call. Include a natural, conversational message to the assistant.\n  Round 4: YOU MUST call the send_message_with_image tool with image_ids='4' \u2014 do NOT write the tool name as text; use the actual function call. Include a natural, conversational message to the assistant."
+    },
+    {
+      "sender": "USER",
+      "recipient": "AGENT",
+      "content": "Create a new note called 'Business Metrics'. Add the approximate subscriber count at the end of 2022 from the first chart, and the name and net worth of the top person from the second chart.",
+      "image_ids": [
+        0,
+        1
+      ]
+    }
+  ],
+  "milestones": [],
+  "entity_diff_specs": [
+    {
+      "operation": "create",
+      "source": "appworld",
+      "table": "gmail.emails",
+      "entity_data": {
+        "sender_id": 81,
+        "recipient_ids": [
+          201
+        ],
+        "subject": "Final Business Metrics",
+        "body": "Business Metrics\n- GoPro subscribers (end of 2022): ~2.00 million\n- Jeff Bezos net worth: $142B\n- U.S. total market cap: $20.4T\n- Tencent market cap: $514B\n- Nike female workers in Vietnam: 330,177\n- 2023 music streaming revenue: $19.3B",
+        "response_to_email_id": null,
+        "created_at": "2026-04-16T23:59:15"
+      },
+      "column_similarity_measure": {
+        "sender_id": "column_exact_match_similarity",
+        "recipient_ids": "column_exact_match_similarity",
+        "subject": "column_rouge_l_similarity",
+        "body": "column_rouge_l_similarity",
+        "response_to_email_id": "column_ignore_similarity",
+        "created_at": "column_ignore_similarity"
+      }
+    },
+    {
+      "operation": "create",
+      "source": "appworld",
+      "table": "simple_note.notes",
+      "entity_data": {
+        "user_id": 81,
+        "title": "Business Metrics",
+        "content": "- GoPro subscribers: ~2.00 million\n- Jeff Bezos net worth: $142B\n- U.S. total market cap: $20.4T\n- Tencent market cap: $514B\n- Nike female workers in Vietnam: 330,177\n- 2023 music streaming revenue: $19.3B",
+        "tags": [],
+        "created_at": "2026-04-16T23:59:15",
+        "updated_at": "2026-04-16T23:59:15",
+        "pinned": false,
+        "data": null
+      },
+      "column_similarity_measure": {
+        "user_id": "column_exact_match_similarity",
+        "title": "column_rouge_l_similarity",
+        "content": "column_rouge_l_similarity",
+        "tags": "column_ignore_similarity",
+        "created_at": "column_ignore_similarity",
+        "updated_at": "column_ignore_similarity",
+        "pinned": "column_exact_match_similarity",
+        "data": "column_ignore_similarity"
+      }
+    }
+  ],
+  "task_completion_criteria": "Create a note titled 'Business Metrics' containing GoPro's ~2.00 million subscribers, Jeff Bezos's $142B net worth, the U.S. total market cap of $20.4T, Tencent's market cap of $514B, Nike's 330,177 female workers in Vietnam, and the 2023 music streaming revenue of $19.3B. Then, email the compiled text of this note to stats@example.com with the subject 'Final Business Metrics'.",
+  "categories": [
+    "APPWORLD",
+    "MULTIPLE_USER_TURN"
+  ],
+  "max_messages": 100,
+  "metadata": {
+    "original_scenario_id": "scenario_0296",
+    "expected_tools": [
+      "create_note",
+      "simple_note_add_content_to_note",
+      "simple_note_show_note",
+      "gmail_send_email"
+    ],
+    "image_arrival": {
+      "1": [
+        "image_1",
+        "image_2"
+      ],
+      "2": [
+        "image_3"
+      ],
+      "3": [
+        "image_4"
+      ],
+      "4": [
+        "image_5"
+      ]
+    },
+    "image_delivery_map": [
+      {
+        "query": "Now look at this infographic. Grab the total market cap for the U.S., and the name and value of the top company in China. Append those to the Business Metrics note.",
+        "image_ids": [
+          2
+        ]
+      },
+      {
+        "query": "From this dashboard, find the exact number of female workers in Vietnam and add it to our note.",
+        "image_ids": [
+          3
+        ]
+      },
+      {
+        "query": "Finally, add the 2023 streaming revenue figure from this graph to the note. Once that's done, grab the whole note's content and email it to the Stats Team with the subject 'Final Business Metrics'.",
+        "image_ids": [
+          4
+        ]
+      }
+    ],
+    "scenario_metadata": {
+      "num_images": 5,
+      "num_user_rounds": 4,
+      "selected_flow_type": "aggregate",
+      "image_arrival": "progressive",
+      "challenge_type": "none",
+      "require_disambiguation": true,
+      "dataset_type": "chartmuseum"
+    }
+  }
+}

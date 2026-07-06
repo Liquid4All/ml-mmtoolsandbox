@@ -1,0 +1,527 @@
+{
+  "name": "scenario_0437",
+  "base_scenario": "base",
+  "description": "Sandra is exploring music mashup ideas based on her physical music collection. She wants to identify songs, look up artists, create a Spotify playlist of potential mashup tracks, and share it with her friend Alice who previously sent her a mashup.",
+  "difficulty": "easy",
+  "appworld_base_task": "_base_",
+  "device_state_id": "saritt@gmail.com",
+  "reference_time": "2026-04-17T00:03:33.387835+00:00",
+  "agentsandbox_entities": {},
+  "appworld_entities": {
+    "phone.contacts": [
+      {
+        "id": 200,
+        "user_id": 98,
+        "first_name": "Alice",
+        "last_name": "Carter",
+        "email": "alice.carter@gmail.com",
+        "phone_number": "+1-555-123-4567",
+        "relationships": [
+          "friend"
+        ],
+        "birthday": null,
+        "home_address": null,
+        "work_address": null,
+        "created_at": "2024-05-20T08:30:00"
+      },
+      {
+        "id": 201,
+        "user_id": 98,
+        "first_name": "Alice",
+        "last_name": "Smith",
+        "email": "alice.smith@gmail.com",
+        "phone_number": "+1-555-987-6543",
+        "relationships": [
+          "friend"
+        ],
+        "birthday": null,
+        "home_address": null,
+        "work_address": null,
+        "created_at": "2024-06-15T09:45:00"
+      }
+    ],
+    "gmail.emails": [
+      {
+        "id": 5100,
+        "sender_id": 200,
+        "recipient_ids": [
+          98
+        ],
+        "subject": "Puff Daddy and The Beach Boys mashup",
+        "body": "Hey Sandra, I found this awesome mashup of Puff Daddy and The Beach Boys. Check out the YouTube link: https://youtube.com/watch?v=dQw4w9WgXcQ",
+        "response_to_email_id": null,
+        "created_at": "2026-04-10T12:00:00"
+      },
+      {
+        "id": 5101,
+        "sender_id": 201,
+        "recipient_ids": [
+          98
+        ],
+        "subject": "Mashup ideas: Puff Daddy & The Beach Boys",
+        "body": "Hi Sandra, remember we talked about mashups? Here is a cool one of Puff Daddy and The Beach Boys I found on SoundCloud.",
+        "response_to_email_id": null,
+        "created_at": "2026-04-11T14:30:00"
+      }
+    ],
+    "gmail.global_email_threads": [
+      {
+        "id": 200,
+        "email_ids": [
+          5100
+        ],
+        "created_at": "2026-04-10T12:00:00",
+        "updated_at": "2026-04-10T12:00:00"
+      },
+      {
+        "id": 201,
+        "email_ids": [
+          5101
+        ],
+        "created_at": "2026-04-11T14:30:00",
+        "updated_at": "2026-04-11T14:30:00"
+      }
+    ],
+    "gmail.user_email_threads": [
+      {
+        "id": 48000,
+        "global_email_thread_id": 200,
+        "user_id": 98,
+        "email_ids": [
+          5100
+        ],
+        "incoming": true,
+        "outgoing": false,
+        "read": true,
+        "label": "INBOX",
+        "starred": false,
+        "archived": false,
+        "spam": false,
+        "sender_email_addresses": [
+          "alice.carter@gmail.com"
+        ],
+        "sender_names": [
+          "Alice Carter"
+        ],
+        "recipient_email_addresses": [
+          "saritt@gmail.com"
+        ],
+        "recipient_names": [
+          "Sandra Martinez"
+        ],
+        "created_at": "2026-04-10T12:00:00",
+        "updated_at": "2026-04-10T12:00:00",
+        "has_attachments": false,
+        "snoozed_until": null
+      },
+      {
+        "id": 48001,
+        "global_email_thread_id": 201,
+        "user_id": 98,
+        "email_ids": [
+          5101
+        ],
+        "incoming": true,
+        "outgoing": false,
+        "read": true,
+        "label": "INBOX",
+        "starred": false,
+        "archived": false,
+        "spam": false,
+        "sender_email_addresses": [
+          "alice.smith@gmail.com"
+        ],
+        "sender_names": [
+          "Alice Smith"
+        ],
+        "recipient_email_addresses": [
+          "saritt@gmail.com"
+        ],
+        "recipient_names": [
+          "Sandra Martinez"
+        ],
+        "created_at": "2026-04-11T14:30:00",
+        "updated_at": "2026-04-11T14:30:00",
+        "has_attachments": false,
+        "snoozed_until": null
+      }
+    ],
+    "spotify.artists": [
+      {
+        "id": 200,
+        "name": "Steve Harley",
+        "genre": "Rock",
+        "created_at": "2015-05-12T10:00:00"
+      },
+      {
+        "id": 201,
+        "name": "Bruno Walter",
+        "genre": "Classical",
+        "created_at": "2015-05-12T10:00:00"
+      }
+    ],
+    "spotify.songs": [
+      {
+        "id": 200,
+        "title": "Make Me Smile (Come Up and See Me)",
+        "artist_ids": [
+          200
+        ],
+        "album_id": null,
+        "duration": 239,
+        "release_date": "1975-01-31T00:00:00",
+        "genre": "Rock",
+        "play_count": 1500000,
+        "rating": 4.5,
+        "like_count": 50000,
+        "review_count": 100
+      },
+      {
+        "id": 201,
+        "title": "Symphony No. 1 in D Major",
+        "artist_ids": [
+          201
+        ],
+        "album_id": null,
+        "duration": 900,
+        "release_date": "1961-01-01T00:00:00",
+        "genre": "Classical",
+        "play_count": 50000,
+        "rating": 4.8,
+        "like_count": 2000,
+        "review_count": 50
+      },
+      {
+        "id": 202,
+        "title": "Une nuit sur le Mont Chauve",
+        "artist_ids": [
+          201
+        ],
+        "album_id": null,
+        "duration": 670,
+        "release_date": "1961-01-01T00:00:00",
+        "genre": "Classical",
+        "play_count": 80000,
+        "rating": 4.7,
+        "like_count": 3000,
+        "review_count": 60
+      },
+      {
+        "id": 203,
+        "title": "A Midsummer Night's Dream",
+        "artist_ids": [
+          201
+        ],
+        "album_id": null,
+        "duration": 750,
+        "release_date": "1961-01-01T00:00:00",
+        "genre": "Classical",
+        "play_count": 60000,
+        "rating": 4.6,
+        "like_count": 2500,
+        "review_count": 40
+      }
+    ],
+    "gmail.users": [
+      {
+        "id": 200,
+        "first_name": "Alice",
+        "last_name": "Carter",
+        "email": "alice.carter@gmail.com",
+        "password": "default_password",
+        "status": "active",
+        "created_at": "2025-01-01T00:00:00",
+        "last_logged_in": "2025-01-01T00:00:00"
+      },
+      {
+        "id": 201,
+        "first_name": "Alice",
+        "last_name": "Smith",
+        "email": "alice.smith@gmail.com",
+        "password": "default_password",
+        "status": "active",
+        "created_at": "2025-01-01T00:00:00",
+        "last_logged_in": "2025-01-01T00:00:00"
+      }
+    ],
+    "phone.users": [
+      {
+        "id": 200,
+        "first_name": "Alice",
+        "last_name": "Carter",
+        "phone_number": "+1-555-123-4567",
+        "password": "default_password",
+        "created_at": "2025-01-01T00:00:00",
+        "last_logged_in": "2025-01-01T00:00:00"
+      },
+      {
+        "id": 201,
+        "first_name": "Alice",
+        "last_name": "Smith",
+        "phone_number": "+1-555-987-6543",
+        "password": "default_password",
+        "created_at": "2025-01-01T00:00:00",
+        "last_logged_in": "2025-01-01T00:00:00"
+      }
+    ]
+  },
+  "image_paths": [
+    "hiertext/images/test/35dce74a153a13e2.jpg",
+    "hiertext/images/test/0c2a7fe309c5c760.jpg",
+    "hiertext/images/test/2dad7574c6f4a2bc.jpg",
+    "hiertext/images/test/0d8b302d514c22aa.jpg",
+    "hiertext/images/test/b30c7bccddb45f79.jpg",
+    "hiertext/images/test/29fe0b8790f1fe7b.jpg"
+  ],
+  "messages": [
+    {
+      "sender": "SYSTEM",
+      "recipient": "USER",
+      "content": "{{USER_INSTRUCTION}}ROUND 1 [provide: image_2]\nQuery: Identify the song playing on the right device here, and search the web to find out which hip-hop artist famously sampled it for a 1998 movie soundtrack.\nInstructions: Ask the assistant to figure out the song playing on the right device in the image, and then do a web search to find the hip-hop artist who sampled it for a 1998 movie soundtrack. If the assistant provides the artist's name, confirm it and proceed to the next round.\n\nROUND 2 [provide: image_4]\nQuery: Take the name of that hip-hop artist and the band on this cassette tape. Check my recent email threads to find the specific conversation where my friend Alice sent me a mashup of them.\nInstructions: Tell the assistant to take the hip-hop artist found in the previous round and combine it with the band name shown on the cassette tape, then search your emails for a thread from your friend Alice about a mashup of those two artists. If the assistant asks for clarification because there are multiple emails from different friends named Alice about this exact mashup, clarify that you want the thread from Alice Carter who sent the YouTube link. Once the assistant confirms it has found the correct thread, proceed to the next round.\n\nROUND 3 [provide: image_1, image_5]\nQuery: Now look at these two covers. Find the lead singer credited for vocals on the back cover, and the conductor on the CD cover. Search Spotify for their artist profiles, pick a top track for each, and create a new playlist called 'Mashup Ideas' with those tracks.\nInstructions: Instruct the assistant to look at the new images, identify the person credited for vocals on the vinyl back cover and the conductor named on the CD cover. Ask it to search Spotify for both artists, find one of their top tracks, and create a new playlist named 'Mashup Ideas' containing those songs. When the assistant confirms the playlist has been created, move on.\n\nROUND 4 [provide: image_3, image_6]\nQuery: Find the first piece listed on Face 2 of this classical record, and the track visible on this open CD case. Add both to the 'Mashup Ideas' playlist. Then, reply to that email thread from Alice we found earlier with the link to the playlist.\nInstructions: Ask the assistant to locate the first piece listed under Face 2 on the classical record back cover, as well as the track title visible on the left side of the open CD case. Tell it to search for these pieces on Spotify and add them to the 'Mashup Ideas' playlist. Finally, instruct the assistant to reply to the email thread from Alice Carter (the one you located in the second round) with the link to this newly created playlist. Once the assistant confirms the email has been sent, end the conversation.\n\nYou have 6 images available to share with the agent using the send_message_with_image tool.\nIMPORTANT: Image IDs are ZERO-INDEXED integers (0, 1, 2, ...). Do NOT add 1 to the IDs.\nAvailable image IDs: [0, 1, 2, 3, 4, 5]\nImage mapping:\n  image_1.jpg -> image ID 0\n  image_2.jpg -> image ID 1\n  image_3.jpg -> image ID 2\n  image_4.jpg -> image ID 3\n  image_5.jpg -> image ID 4\n  image_6.jpg -> image ID 5\n\n## IMAGE DELIVERY\n\n⚠️ IMPORTANT: You MUST use the `send_message_with_image` tool to share images with User B. Do NOT just describe images in text — you MUST call the tool.\n\nImage delivery schedule:\n\n  Round 2: YOU MUST call the send_message_with_image tool with image_ids='3' — do NOT write the tool name as text; use the actual function call. Include a natural, conversational message to the assistant.\n  Round 3: YOU MUST call the send_message_with_image tool with image_ids='0,4' — do NOT write the tool name as text; use the actual function call. Include a natural, conversational message to the assistant.\n  Round 4: YOU MUST call the send_message_with_image tool with image_ids='2,5' — do NOT write the tool name as text; use the actual function call. Include a natural, conversational message to the assistant."
+    },
+    {
+      "sender": "USER",
+      "recipient": "AGENT",
+      "content": "Identify the song playing on the right device here, and search the web to find out which hip-hop artist famously sampled it for a 1998 movie soundtrack.",
+      "image_ids": [
+        1
+      ]
+    }
+  ],
+  "milestones": [],
+  "entity_diff_specs": [
+    {
+      "operation": "create",
+      "source": "appworld",
+      "table": "gmail.emails",
+      "entity_data": {
+        "sender_id": 98,
+        "recipient_ids": [
+          200
+        ],
+        "subject": "Re: Puff Daddy and The Beach Boys mashup",
+        "body": "Thanks Alice! I actually just made a Spotify playlist with some more mashup ideas. Here is the link: https://open.spotify.com/playlist/mashupideas",
+        "response_to_email_id": 5100,
+        "created_at": "2026-04-17T00:03:33"
+      },
+      "column_similarity_measure": {
+        "sender_id": "column_exact_match_similarity",
+        "recipient_ids": "column_exact_match_similarity",
+        "subject": "column_rouge_l_similarity",
+        "body": "column_rouge_l_similarity",
+        "response_to_email_id": "column_ignore_similarity",
+        "created_at": "column_ignore_similarity"
+      }
+    },
+    {
+      "operation": "create",
+      "source": "appworld",
+      "table": "spotify.playlists",
+      "entity_data": {
+        "title": "Mashup Ideas",
+        "user_id": 98,
+        "created_at": "2026-04-17T00:03:33",
+        "is_public": false,
+        "rating": 0.0,
+        "like_count": 0,
+        "review_count": 0
+      },
+      "column_similarity_measure": {
+        "title": "column_rouge_l_similarity",
+        "user_id": "column_exact_match_similarity",
+        "created_at": "column_ignore_similarity",
+        "is_public": "column_exact_match_similarity",
+        "rating": "column_exact_match_similarity",
+        "like_count": "column_exact_match_similarity",
+        "review_count": "column_exact_match_similarity"
+      }
+    },
+    {
+      "operation": "create",
+      "source": "appworld",
+      "table": "spotify.playlist_songs",
+      "entity_data": {
+        "playlist_id": 800,
+        "song_id": 200,
+        "added_at": "2026-04-17T00:03:33"
+      },
+      "column_similarity_measure": {
+        "playlist_id": "column_ignore_similarity",
+        "song_id": "column_exact_match_similarity",
+        "added_at": "column_ignore_similarity"
+      }
+    },
+    {
+      "operation": "create",
+      "source": "appworld",
+      "table": "spotify.playlist_songs",
+      "entity_data": {
+        "playlist_id": 800,
+        "song_id": 201,
+        "added_at": "2026-04-17T00:03:33"
+      },
+      "column_similarity_measure": {
+        "playlist_id": "column_ignore_similarity",
+        "song_id": "column_exact_match_similarity",
+        "added_at": "column_ignore_similarity"
+      }
+    },
+    {
+      "operation": "create",
+      "source": "appworld",
+      "table": "spotify.playlist_songs",
+      "entity_data": {
+        "playlist_id": 800,
+        "song_id": 202,
+        "added_at": "2026-04-17T00:03:33"
+      },
+      "column_similarity_measure": {
+        "playlist_id": "column_ignore_similarity",
+        "song_id": "column_exact_match_similarity",
+        "added_at": "column_ignore_similarity"
+      }
+    },
+    {
+      "operation": "create",
+      "source": "appworld",
+      "table": "spotify.playlist_songs",
+      "entity_data": {
+        "playlist_id": 800,
+        "song_id": 203,
+        "added_at": "2026-04-17T00:03:33"
+      },
+      "column_similarity_measure": {
+        "playlist_id": "column_ignore_similarity",
+        "song_id": "column_exact_match_similarity",
+        "added_at": "column_ignore_similarity"
+      }
+    },
+    {
+      "operation": "update",
+      "source": "appworld",
+      "table": "gmail.global_email_threads",
+      "entity_id_column": "id",
+      "entity_id_value": 200,
+      "expected_fields": {
+        "updated_at": "2026-04-10T12:00:00",
+        "email_ids": [
+          5100,
+          5102
+        ]
+      },
+      "column_similarity_measure": {
+        "updated_at": "column_ignore_similarity",
+        "email_ids": "column_ignore_similarity",
+        "id": "column_exact_match_similarity"
+      }
+    },
+    {
+      "operation": "update",
+      "source": "appworld",
+      "table": "gmail.user_email_threads",
+      "entity_id_column": "id",
+      "entity_id_value": 48000,
+      "expected_fields": {
+        "recipient_names": [
+          "Sandra Martinez",
+          "Alice Carter"
+        ],
+        "outgoing": true,
+        "email_ids": [
+          5100,
+          5102
+        ],
+        "updated_at": "2026-04-10T12:00:00",
+        "sender_names": [
+          "Alice Carter",
+          "Sandra Martinez"
+        ],
+        "sender_email_addresses": [
+          "alice.carter@gmail.com",
+          "saritt@gmail.com"
+        ],
+        "recipient_email_addresses": [
+          "saritt@gmail.com",
+          "alice.carter@gmail.com"
+        ]
+      },
+      "column_similarity_measure": {
+        "recipient_names": "column_ignore_similarity",
+        "outgoing": "column_exact_match_similarity",
+        "email_ids": "column_ignore_similarity",
+        "updated_at": "column_ignore_similarity",
+        "sender_names": "column_ignore_similarity",
+        "sender_email_addresses": "column_ignore_similarity",
+        "recipient_email_addresses": "column_ignore_similarity",
+        "id": "column_exact_match_similarity"
+      }
+    }
+  ],
+  "task_completion_criteria": "Find the hip-hop artist who sampled Led Zeppelin's 'Kashmir' (Puff Daddy/P. Diddy/Sean Combs), find the specific email thread from Alice Carter about a Puff Daddy and The Beach Boys mashup, create a Spotify playlist called 'Mashup Ideas' containing top tracks by Steve Harley and Bruno Walter along with the tracks 'Une nuit sur le Mont Chauve' (or Night on Bald Mountain) and 'Midsummer Night's Dream', and reply to Alice Carter's email thread with the link to the new playlist.",
+  "categories": [
+    "APPWORLD",
+    "MULTIPLE_USER_TURN"
+  ],
+  "max_messages": 100,
+  "metadata": {
+    "original_scenario_id": "scenario_0437",
+    "expected_tools": [
+      "web_search_serper",
+      "gmail_show_thread",
+      "gmail_show_email",
+      "spotify_create_playlist",
+      "spotify_show_artist",
+      "spotify_show_song",
+      "spotify_add_song_to_playlist",
+      "spotify_show_album",
+      "gmail_reply_to_email"
+    ],
+    "image_arrival": {
+      "1": [
+        "image_2"
+      ],
+      "2": [
+        "image_4"
+      ],
+      "3": [
+        "image_1",
+        "image_5"
+      ],
+      "4": [
+        "image_3",
+        "image_6"
+      ]
+    },
+    "image_delivery_map": [
+      {
+        "query": "Take the name of that hip-hop artist and the band on this cassette tape. Check my recent email threads to find the specific conversation where my friend Alice sent me a mashup of them.",
+        "image_ids": [
+          3
+        ]
+      },
+      {
+        "query": "Now look at these two covers. Find the lead singer credited for vocals on the back cover, and the conductor on the CD cover. Search Spotify for their artist profiles, pick a top track for each, and create a new playlist called 'Mashup Ideas' with those tracks.",
+        "image_ids": [
+          0,
+          4
+        ]
+      },
+      {
+        "query": "Find the first piece listed on Face 2 of this classical record, and the track visible on this open CD case. Add both to the 'Mashup Ideas' playlist. Then, reply to that email thread from Alice we found earlier with the link to the playlist.",
+        "image_ids": [
+          2,
+          5
+        ]
+      }
+    ],
+    "scenario_metadata": {
+      "num_images": 6,
+      "num_user_rounds": 4,
+      "selected_flow_type": "lookup_chain",
+      "image_arrival": "mixed",
+      "challenge_type": "none",
+      "require_disambiguation": true,
+      "dataset_type": "hiertext"
+    }
+  }
+}

@@ -1,0 +1,180 @@
+{
+  "name": "scenario_0532",
+  "base_scenario": "base",
+  "description": "Chris is organizing a contact list of various activist groups he encountered or researched, using photos he took of their banners and signs.",
+  "difficulty": "easy",
+  "appworld_base_task": "_base_",
+  "device_state_id": "chris.mcco@gmail.com",
+  "reference_time": "2026-04-17T00:06:33.118314+00:00",
+  "agentsandbox_entities": {},
+  "appworld_entities": {
+    "simple_note.notes": [
+      {
+        "id": 3200,
+        "user_id": 3,
+        "title": "Activism Organizations 2024",
+        "content": "Greenpeace, Amnesty International, ACLU",
+        "tags": [],
+        "created_at": "2024-05-10T10:00:00",
+        "updated_at": "2024-05-10T10:00:00",
+        "pinned": false,
+        "data": {}
+      },
+      {
+        "id": 3201,
+        "user_id": 3,
+        "title": "Activism Organizations 2026",
+        "content": "- Foreclose Wall Street West\n- Plataforma Auditoria Ciutadana\n- Local Food Not Bombs",
+        "tags": [],
+        "created_at": "2026-01-15T14:30:00",
+        "updated_at": "2026-03-22T09:15:00",
+        "pinned": false,
+        "data": {}
+      }
+    ],
+    "gmail.users": [
+      {
+        "id": 10100,
+        "first_name": "Maryland Christians",
+        "last_name": "for Justice and Peace",
+        "email": "mcjpcontact@yahoo.com",
+        "password": "placeholder_password",
+        "status": "active"
+      }
+    ]
+  },
+  "image_paths": [
+    "hiertext/images/test/1f3b37664c74d842.jpg",
+    "hiertext/images/test/a332fd7de0973270.jpg",
+    "hiertext/images/test/cc9db6703c42483e.jpg",
+    "hiertext/images/test/fd010465ddd22a17.jpg"
+  ],
+  "messages": [
+    {
+      "sender": "SYSTEM",
+      "recipient": "USER",
+      "content": "{{USER_INSTRUCTION}}ROUND 1 [provide: image_1, image_2, image_3, image_4]\nQuery: Extract the organization name and contact info from the prominent sign in each of these 4 photos. Then, check my 'Activism Organizations' note. Filter the groups from the images based on whether they are already listed in the note. For the ones that are already in the note, update the note to include the contact info shown in the images.\nInstructions: Ask the assistant to extract the organization name and contact info from the prominent sign in each of the four provided photos, and then check your 'Activism Organizations' note. Tell it to update the note by adding the extracted contact info to any of the groups that are already listed there. If the assistant asks which note you mean because there are multiple with similar names, clarify that you want the 2026 one. Do not provide the names of the organizations yourself. Once the assistant confirms the note has been updated, move on to the next round.\n\nROUND 2\nQuery: Now, for the organizations from the photos that were NOT found in the note, please add them as new phone contacts with their respective contact info.\nInstructions: Ask the assistant to take the organizations from the photos that were NOT found in the note and add them as new contacts in your address book, including their respective contact info from the signs. If it asks to confirm the details, tell it to use exactly what is shown in the images. End the conversation once the assistant confirms the new contacts have been created.\n\nYou have 4 images available to share with the agent using the send_message_with_image tool.\nIMPORTANT: Image IDs are ZERO-INDEXED integers (0, 1, 2, ...). Do NOT add 1 to the IDs.\nAvailable image IDs: [0, 1, 2, 3]\nImage mapping:\n  image_1.jpg -> image ID 0\n  image_2.jpg -> image ID 1\n  image_3.jpg -> image ID 2\n  image_4.jpg -> image ID 3"
+    },
+    {
+      "sender": "USER",
+      "recipient": "AGENT",
+      "content": "Extract the organization name and contact info from the prominent sign in each of these 4 photos. Then, check my 'Activism Organizations' note. Filter the groups from the images based on whether they are already listed in the note. For the ones that are already in the note, update the note to include the contact info shown in the images.",
+      "image_ids": [
+        0,
+        1,
+        2,
+        3
+      ]
+    }
+  ],
+  "milestones": [],
+  "entity_diff_specs": [
+    {
+      "operation": "create",
+      "source": "appworld",
+      "table": "phone.contacts",
+      "entity_data": {
+        "user_id": 3,
+        "first_name": "Maryland Christians",
+        "last_name": "for Justice and Peace",
+        "email": "mcjpcontact@yahoo.com",
+        "phone_number": null,
+        "relationships": [],
+        "birthday": null,
+        "home_address": null,
+        "work_address": null,
+        "created_at": "2026-04-17T00:06:33"
+      },
+      "column_similarity_measure": {
+        "user_id": "column_exact_match_similarity",
+        "first_name": "column_exact_match_similarity",
+        "last_name": "column_exact_match_similarity",
+        "email": "column_exact_match_similarity",
+        "phone_number": "column_ignore_similarity",
+        "relationships": "column_ignore_similarity",
+        "birthday": "column_ignore_similarity",
+        "home_address": "column_ignore_similarity",
+        "work_address": "column_ignore_similarity",
+        "created_at": "column_ignore_similarity"
+      }
+    },
+    {
+      "operation": "create",
+      "source": "appworld",
+      "table": "phone.contacts",
+      "entity_data": {
+        "user_id": 3,
+        "first_name": "Stop The",
+        "last_name": "Wars!",
+        "email": "",
+        "phone_number": "415.821.6545",
+        "relationships": [],
+        "birthday": null,
+        "home_address": null,
+        "work_address": null,
+        "created_at": "2026-04-17T00:06:33"
+      },
+      "column_similarity_measure": {
+        "user_id": "column_exact_match_similarity",
+        "first_name": "column_exact_match_similarity",
+        "last_name": "column_exact_match_similarity",
+        "email": "column_ignore_similarity",
+        "phone_number": "column_exact_match_similarity",
+        "relationships": "column_ignore_similarity",
+        "birthday": "column_ignore_similarity",
+        "home_address": "column_ignore_similarity",
+        "work_address": "column_ignore_similarity",
+        "created_at": "column_ignore_similarity"
+      }
+    },
+    {
+      "operation": "update",
+      "source": "appworld",
+      "table": "simple_note.notes",
+      "entity_id_column": "id",
+      "entity_id_value": 3201,
+      "expected_fields": {
+        "updated_at": "2026-03-22T09:15:00",
+        "content": "- Foreclose Wall Street West: 415.967.0865\n- Plataforma Auditoria Ciutadana: auditoriabcn@gmail.com\n- Local Food Not Bombs",
+        "tags": []
+      },
+      "column_similarity_measure": {
+        "updated_at": "column_ignore_similarity",
+        "content": "column_rouge_l_similarity",
+        "id": "column_exact_match_similarity"
+      }
+    }
+  ],
+  "task_completion_criteria": "Update the 'Activism Organizations 2026' note to add the phone number '415.967.0865' to 'Foreclose Wall Street West' and the email 'auditoriabcn@gmail.com' to 'Plataforma Auditoria Ciutadana', and create two new contacts: one for 'Maryland Christians for Justice and Peace' with email 'mcjpcontact@yahoo.com', and one for 'Stop The Wars!' with phone '415.821.6545'.",
+  "categories": [
+    "APPWORLD",
+    "MULTIPLE_USER_TURN"
+  ],
+  "max_messages": 100,
+  "metadata": {
+    "original_scenario_id": "scenario_0532",
+    "expected_tools": [
+      "simple_note_show_note",
+      "simple_note_update_note",
+      "contacts_add_contact"
+    ],
+    "image_arrival": {
+      "1": [
+        "image_1",
+        "image_2",
+        "image_3",
+        "image_4"
+      ]
+    },
+    "image_delivery_map": [],
+    "scenario_metadata": {
+      "num_images": 4,
+      "num_user_rounds": 2,
+      "selected_flow_type": "filter",
+      "image_arrival": "upfront",
+      "challenge_type": "state_mutation",
+      "require_disambiguation": true,
+      "dataset_type": "hiertext"
+    }
+  }
+}

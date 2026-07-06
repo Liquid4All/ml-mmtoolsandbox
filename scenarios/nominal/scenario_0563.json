@@ -1,0 +1,321 @@
+{
+  "name": "scenario_0563",
+  "base_scenario": "base",
+  "description": "The user is managing their professional contacts, tasks, and correspondence. They are updating client directories and sharing newly digitized educational statistics with a colleague.",
+  "difficulty": "easy",
+  "appworld_base_task": "_base_",
+  "device_state_id": "ric.riddle@gmail.com",
+  "reference_time": "2026-04-17T00:07:20.566243+00:00",
+  "agentsandbox_entities": {},
+  "appworld_entities": {
+    "phone.contacts": [
+      {
+        "id": 200,
+        "user_id": 18,
+        "first_name": "William J.",
+        "last_name": "Darby",
+        "email": "w.darby@example.com",
+        "phone_number": null,
+        "relationships": [
+          "client"
+        ],
+        "birthday": null,
+        "home_address": null,
+        "work_address": "123 Old Univ, Nashville, TN",
+        "created_at": "2025-10-15T09:30:00"
+      }
+    ],
+    "todoist.projects": [
+      {
+        "id": 400,
+        "user_id": 18,
+        "name": "Inbox",
+        "color": "charcoal",
+        "is_inbox": true,
+        "description": "Default inbox project",
+        "created_at": "2026-01-01T12:00:00"
+      }
+    ],
+    "todoist.tasks": [
+      {
+        "id": 6500,
+        "project_id": 400,
+        "section_id": null,
+        "user_id": 18,
+        "title": "Review Education Stats",
+        "description": "Review the stats from 1975-76 to 1979-80",
+        "due_date": null,
+        "priority": "medium",
+        "is_completed": false,
+        "duration": null,
+        "duration_unit": null,
+        "order_index": 0,
+        "assignee_id": null,
+        "assigner_id": null,
+        "created_at": "2026-04-15T10:00:00"
+      }
+    ],
+    "file_system.directories": [
+      {
+        "id": 3600,
+        "path": "/home/ric.riddle/",
+        "tilde_path": "/home/ric.riddle/",
+        "user_id": 18,
+        "created_at": "2026-01-01T10:00:00",
+        "updated_at": "2026-01-01T10:00:00"
+      }
+    ],
+    "file_system.files": [
+      {
+        "id": 26000,
+        "path": "/home/richard/Client Directory - Active.txt",
+        "tilde_path": "~/Client Directory - Active.txt",
+        "user_id": 18,
+        "content": "Dr. Anita Pepper, 555 Old Road, St. Louis, MO 63110\nDr. William J. Darby, w.darby@example.com, 123 Old Univ, Nashville, TN",
+        "compressed_data": [],
+        "created_at": "2026-01-01T10:00:00",
+        "updated_at": "2026-04-10T10:00:00"
+      },
+      {
+        "id": 26001,
+        "path": "/home/richard/Client Directory - Archived.txt",
+        "tilde_path": "~/Client Directory - Archived.txt",
+        "user_id": 18,
+        "content": "John Doe, 123 Main St",
+        "compressed_data": [],
+        "created_at": "2026-01-01T10:00:00",
+        "updated_at": "2026-01-01T10:00:00"
+      }
+    ],
+    "gmail.users": [
+      {
+        "id": 200,
+        "first_name": "William J.",
+        "last_name": "Darby",
+        "email": "w.darby@example.com",
+        "password": "default_password",
+        "status": "active",
+        "created_at": "2025-01-01T00:00:00",
+        "last_logged_in": "2025-01-01T00:00:00"
+      },
+      {
+        "id": 10101,
+        "first_name": "Anita",
+        "last_name": "Pepper",
+        "email": "anita.pepper@example.com",
+        "password": "placeholder_password",
+        "status": "active"
+      }
+    ],
+    "todoist.project_collaborator_links": [
+      {
+        "id": 50400,
+        "project_id": 400,
+        "user_id": 18,
+        "is_favorite": false,
+        "is_archived": false,
+        "created_at": "2026-01-01T12:00:00"
+      }
+    ]
+  },
+  "image_paths": [
+    "docvqa/images/61090.jpg",
+    "docvqa/images/49186.jpg",
+    "docvqa/images/22729.jpg"
+  ],
+  "messages": [
+    {
+      "sender": "SYSTEM",
+      "recipient": "USER",
+      "content": "{{USER_INSTRUCTION}}ROUND 1 [provide: image_1]\nQuery: I need to add the person on this envelope to my phone contacts. First, read my 'Client Directory' file. If her address in the file differs from what's on the envelope, update the file to resolve the discrepancy. Then, add her to my phone contacts.\nInstructions: Ask the agent to read your 'Client Directory' file and check if the address for the person on the envelope matches. The agent should find multiple files with that name and ask for clarification; tell it to use the 'Active' one. When the agent confirms the address in the file is different, instruct it to update the file with the correct address from the envelope. Finally, ask the agent to add her to your phone contacts with that new address.\n\nROUND 2 [provide: image_2]\nQuery: Here is a statistics digest. Check my Todoist tasks for one named 'Review Education Stats'. Validate that the years mentioned in the task description match the years on this digest cover. If there are no conflicts, delete the task and create a note with the digest's main title and the names of the 11 tables in the contents.\nInstructions: Direct the agent to check your Todoist tasks for one named 'Review Education Stats' and verify if the years in its description match the years on the provided digest cover. When the agent confirms they match, ask it to delete the task. Then, instruct the agent to create a note titled with the digest's main title and list the exact names of the 11 tables from the contents section. If the agent misses any tables or hallucinates details, point it back to the image to correct them.\n\nROUND 3\nQuery: Now I want to share this information with Dr. Darby. Check my 'Client Directory' file to find his email address. Once you have it, read the note we just made and create a draft email to him with the note's contents.\nInstructions: Ask the agent to find Dr. Darby's email address by checking the 'Client Directory - Active.txt' file again. Once it has the email, instruct the agent to read the note created in the previous round and create a draft email to Dr. Darby containing the note's full contents. Emphasize that the agent should only draft the email and not send it yet.\n\nROUND 4 [provide: image_3]\nQuery: Wait, I just got this change of address postcard for Dr. Darby. Check if the address on it conflicts with his current entry in the 'Client Directory' file. If it does, update the file with his new Vanderbilt University address, update his phone contact as well, and modify the email draft to congratulate him on his new department before sending it.\nInstructions: Tell the agent to check the new address on the postcard against Dr. Darby's current entry in the 'Client Directory - Active.txt' file. When it notes the conflict, instruct the agent to update the file with his new Vanderbilt University address. Ask it to also update his phone contact with this new address. Finally, instruct the agent to modify the pending email draft to include a congratulatory message about his new department (as seen on the postcard) before sending the email.\n\nYou have 3 images available to share with the agent using the send_message_with_image tool.\nIMPORTANT: Image IDs are ZERO-INDEXED integers (0, 1, 2, ...). Do NOT add 1 to the IDs.\nAvailable image IDs: [0, 1, 2]\nImage mapping:\n  image_1.jpg -> image ID 0\n  image_2.jpg -> image ID 1\n  image_3.jpg -> image ID 2\n\n## IMAGE DELIVERY\n\n\u26a0\ufe0f IMPORTANT: You MUST use the `send_message_with_image` tool to share images with User B. Do NOT just describe images in text \u2014 you MUST call the tool.\n\nImage delivery schedule:\n\n  Round 2: YOU MUST call the send_message_with_image tool with image_ids='1' \u2014 do NOT write the tool name as text; use the actual function call. Include a natural, conversational message to the assistant.\n  Round 4: YOU MUST call the send_message_with_image tool with image_ids='2' \u2014 do NOT write the tool name as text; use the actual function call. Include a natural, conversational message to the assistant."
+    },
+    {
+      "sender": "USER",
+      "recipient": "AGENT",
+      "content": "I need to add the person on this envelope to my phone contacts. First, read my 'Client Directory' file. If her address in the file differs from what's on the envelope, update the file to resolve the discrepancy. Then, add her to my phone contacts.",
+      "image_ids": [
+        0
+      ]
+    }
+  ],
+  "milestones": [],
+  "entity_diff_specs": [
+    {
+      "operation": "create",
+      "source": "appworld",
+      "table": "phone.contacts",
+      "entity_data": {
+        "user_id": 18,
+        "first_name": "Anita",
+        "last_name": "Pepper",
+        "email": "anita.pepper@example.com",
+        "phone_number": null,
+        "relationships": [
+          "client"
+        ],
+        "birthday": null,
+        "home_address": null,
+        "work_address": "Visiting Nurse Association of Greater St. Louis, 1129 Macklind Avenue, St. Louis, Missouri 63110",
+        "created_at": "2026-04-17T00:07:20"
+      },
+      "column_similarity_measure": {
+        "user_id": "column_exact_match_similarity",
+        "first_name": "column_exact_match_similarity",
+        "last_name": "column_exact_match_similarity",
+        "email": "column_exact_match_similarity",
+        "phone_number": "column_ignore_similarity",
+        "relationships": "column_ignore_similarity",
+        "birthday": "column_ignore_similarity",
+        "home_address": "column_ignore_similarity",
+        "work_address": "column_exact_match_similarity",
+        "created_at": "column_ignore_similarity"
+      }
+    },
+    {
+      "operation": "create",
+      "source": "appworld",
+      "table": "gmail.emails",
+      "entity_data": {
+        "sender_id": 18,
+        "recipient_ids": [
+          200
+        ],
+        "subject": "Digest of Statistics on Higher Education in the United States 1975-76 \u2014 1979-80",
+        "body": "Congratulations on your new Dept. of Biochemistry!\n\nHere are the tables from the Digest of Statistics on Higher Education in the United States 1975-76 \u2014 1979-80:\n- Number of Institutions\n- Enrollment\n- Public/Private Ratios\n- Four-Year/Two-Year Ratios\n- Instructional Staff and Student/Faculty Ratios\n- Faculty Salary Levels\n- Faculty Salaries and The Cost of Living\n- Current Fund Expenditures\n- Purposes of Current Fund Expenditures\n- Current Fund Revenues\n- Sources of Current Fund Revenues",
+        "response_to_email_id": null,
+        "created_at": "2026-04-17T00:07:20"
+      },
+      "column_similarity_measure": {
+        "sender_id": "column_exact_match_similarity",
+        "recipient_ids": "column_exact_match_similarity",
+        "subject": "column_rouge_l_similarity",
+        "body": "column_rouge_l_similarity",
+        "response_to_email_id": "column_ignore_similarity",
+        "created_at": "column_ignore_similarity"
+      }
+    },
+    {
+      "operation": "create",
+      "source": "appworld",
+      "table": "simple_note.notes",
+      "entity_data": {
+        "user_id": 18,
+        "title": "Digest of Statistics on Higher Education in the United States 1975-76 \u2014 1979-80",
+        "content": "Number of Institutions\nEnrollment\nPublic/Private Ratios\nFour-Year/Two-Year Ratios\nInstructional Staff and Student/Faculty Ratios\nFaculty Salary Levels\nFaculty Salaries and The Cost of Living\nCurrent Fund Expenditures\nPurposes of Current Fund Expenditures\nCurrent Fund Revenues\nSources of Current Fund Revenues",
+        "tags": [],
+        "created_at": "2026-04-17T00:07:20",
+        "updated_at": "2026-04-17T00:07:20",
+        "pinned": false,
+        "data": null
+      },
+      "column_similarity_measure": {
+        "user_id": "column_exact_match_similarity",
+        "title": "column_rouge_l_similarity",
+        "content": "column_rouge_l_similarity",
+        "tags": "column_ignore_similarity",
+        "created_at": "column_ignore_similarity",
+        "updated_at": "column_ignore_similarity",
+        "pinned": "column_exact_match_similarity",
+        "data": "column_ignore_similarity"
+      }
+    },
+    {
+      "operation": "update",
+      "source": "appworld",
+      "table": "phone.contacts",
+      "entity_id_column": "id",
+      "entity_id_value": 200,
+      "expected_fields": {
+        "work_address": "Dept. of Biochemistry, School of Medicine, Vanderbilt University, Nashville 5, Tenn.",
+        "relationships": []
+      },
+      "column_similarity_measure": {
+        "work_address": "column_exact_match_similarity",
+        "id": "column_exact_match_similarity"
+      }
+    },
+    {
+      "operation": "update",
+      "source": "appworld",
+      "table": "file_system.files",
+      "entity_id_column": "id",
+      "entity_id_value": 26000,
+      "expected_fields": {
+        "updated_at": "2026-04-10T10:00:00",
+        "content": "Dr. Anita Pepper, Visiting Nurse Association of Greater St. Louis, 1129 Macklind Avenue, St. Louis, Missouri 63110\nDr. William J. Darby, w.darby@example.com, Dept. of Biochemistry, School of Medicine, Vanderbilt University, Nashville 5, Tenn."
+      },
+      "column_similarity_measure": {
+        "updated_at": "column_ignore_similarity",
+        "content": "column_rouge_l_similarity",
+        "id": "column_exact_match_similarity"
+      }
+    },
+    {
+      "operation": "delete",
+      "source": "appworld",
+      "table": "todoist.tasks",
+      "entity_id_column": "id",
+      "entity_id_value": 6500,
+      "column_similarity_measure": {
+        "id": "column_exact_match_similarity"
+      }
+    }
+  ],
+  "task_completion_criteria": "Update 'Client Directory - Active.txt' with Dr. Anita Pepper's address (Visiting Nurse Association of Greater St. Louis, 1129 Macklind Avenue, St. Louis, Missouri 63110) and Dr. William J. Darby's address (Dept. of Biochemistry, School of Medicine, Vanderbilt University, Nashville 5, Tenn.). Add Dr. Anita Pepper as a new phone contact. Delete the 'Review Education Stats' Todoist task. Create a note titled 'Digest of Statistics on Higher Education in the United States 1975-76 \u2014 1979-80' containing the 11 table names (Number of Institutions, Enrollment, Public/Private Ratios, Four-Year/Two-Year Ratios, Instructional Staff and Student/Faculty Ratios, Faculty Salary Levels, Faculty Salaries and The Cost of Living, Current Fund Expenditures, Purposes of Current Fund Expenditures, Current Fund Revenues, Sources of Current Fund Revenues). Update Dr. Darby's phone contact with his new address, and send an email to Dr. Darby containing the note's content and a message congratulating him on his new Dept. of Biochemistry.",
+  "categories": [
+    "APPWORLD",
+    "MULTIPLE_USER_TURN"
+  ],
+  "max_messages": 100,
+  "metadata": {
+    "original_scenario_id": "scenario_0563",
+    "expected_tools": [
+      "file_system_show_file",
+      "file_system_update_file",
+      "contacts_add_contact",
+      "todoist_show_tasks",
+      "todoist_delete_task",
+      "simple_note_create_note",
+      "simple_note_show_note",
+      "gmail_create_draft",
+      "contacts_update_contact",
+      "gmail_show_draft",
+      "gmail_update_draft",
+      "gmail_send_email_from_draft"
+    ],
+    "image_arrival": {
+      "1": [
+        "image_1"
+      ],
+      "2": [
+        "image_2"
+      ],
+      "4": [
+        "image_3"
+      ]
+    },
+    "image_delivery_map": [
+      {
+        "query": "Here is a statistics digest. Check my Todoist tasks for one named 'Review Education Stats'. Validate that the years mentioned in the task description match the years on this digest cover. If there are no conflicts, delete the task and create a note with the digest's main title and the names of the 11 tables in the contents.",
+        "image_ids": [
+          1
+        ]
+      },
+      {
+        "query": "Wait, I just got this change of address postcard for Dr. Darby. Check if the address on it conflicts with his current entry in the 'Client Directory' file. If it does, update the file with his new Vanderbilt University address, update his phone contact as well, and modify the email draft to congratulate him on his new department before sending it.",
+        "image_ids": [
+          2
+        ]
+      }
+    ],
+    "scenario_metadata": {
+      "num_images": 3,
+      "num_user_rounds": 4,
+      "selected_flow_type": "validate",
+      "image_arrival": "mixed",
+      "challenge_type": "none",
+      "require_disambiguation": true,
+      "dataset_type": "docvqa"
+    }
+  }
+}

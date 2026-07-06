@@ -1,0 +1,433 @@
+{
+  "name": "scenario_0372",
+  "base_scenario": "base",
+  "description": "Joyce Weaver is a video editor managing backup files and project notes across multiple DaVinci Resolve projects featuring underwater footage.",
+  "difficulty": "easy",
+  "appworld_base_task": "_base_",
+  "device_state_id": "joyce-weav@gmail.com",
+  "reference_time": "2026-04-17T00:01:26.979982+00:00",
+  "agentsandbox_entities": {},
+  "appworld_entities": {
+    "todoist.projects": [
+      {
+        "id": 400,
+        "user_id": 57,
+        "name": "Ocean Video Edits",
+        "color": "charcoal",
+        "is_inbox": false,
+        "description": "",
+        "created_at": "2026-04-10T10:00:00"
+      },
+      {
+        "id": 401,
+        "user_id": 57,
+        "name": "Wedding Video Edits",
+        "color": "charcoal",
+        "is_inbox": false,
+        "description": "",
+        "created_at": "2026-04-10T10:00:00"
+      }
+    ],
+    "simple_note.notes": [
+      {
+        "id": 3200,
+        "user_id": 57,
+        "title": "Editing Styles",
+        "content": "Underwater Color Grading: increase contrast, add teal tint.",
+        "tags": [
+          "video",
+          "editing"
+        ],
+        "created_at": "2026-04-10T10:00:00",
+        "updated_at": "2026-04-10T10:00:00",
+        "pinned": false,
+        "data": {}
+      }
+    ],
+    "file_system.directories": [
+      {
+        "id": 3600,
+        "path": "/sdcard/",
+        "tilde_path": "/sdcard/",
+        "user_id": 57,
+        "created_at": "2024-01-01T10:00:00",
+        "updated_at": "2024-01-01T10:00:00"
+      },
+      {
+        "id": 3601,
+        "path": "/backup/sharks/",
+        "tilde_path": "/backup/sharks/",
+        "user_id": 57,
+        "created_at": "2024-11-01T08:00:00",
+        "updated_at": "2024-11-02T12:35:34"
+      },
+      {
+        "id": 3602,
+        "path": "/backup/",
+        "tilde_path": "/backup/",
+        "user_id": 57,
+        "created_at": "2024-11-01T08:00:00",
+        "updated_at": "2024-11-01T08:00:00"
+      },
+      {
+        "path": "~/backup/",
+        "tilde_path": "~/backup/",
+        "user_id": 57,
+        "created_at": "2025-01-01T00:00:00",
+        "updated_at": "2025-01-01T00:00:00",
+        "id": 3603
+      },
+      {
+        "path": "~/backup/sharks/",
+        "tilde_path": "~/backup/sharks/",
+        "user_id": 57,
+        "created_at": "2025-01-01T00:00:00",
+        "updated_at": "2025-01-01T00:00:00",
+        "id": 3604
+      }
+    ],
+    "file_system.files": [
+      {
+        "id": 26000,
+        "path": "/sdcard/dji_mimo_20241104_084423_1730685533428_video.MP4",
+        "tilde_path": "/sdcard/dji_mimo_20241104_084423_1730685533428_video.MP4",
+        "user_id": 57,
+        "content": "video data",
+        "compressed_data": [],
+        "created_at": "2024-11-04T08:44:23",
+        "updated_at": "2024-11-04T08:44:23"
+      },
+      {
+        "id": 26001,
+        "path": "/backup/sharks/dji_export_20241102_123534_1730511334844_compose_0.MOV",
+        "tilde_path": "/backup/sharks/dji_export_20241102_123534_1730511334844_compose_0.MOV",
+        "user_id": 57,
+        "content": "corrupted video data",
+        "compressed_data": [],
+        "created_at": "2024-11-02T12:35:34",
+        "updated_at": "2024-11-02T12:35:34"
+      },
+      {
+        "id": 26002,
+        "path": "/sdcard/dji_export_20241102_123534_1730511334844_compose_0.MOV",
+        "tilde_path": "/sdcard/dji_export_20241102_123534_1730511334844_compose_0.MOV",
+        "user_id": 57,
+        "content": "fresh video data",
+        "compressed_data": [],
+        "created_at": "2024-11-02T12:35:34",
+        "updated_at": "2024-11-02T12:35:34"
+      },
+      {
+        "id": 26003,
+        "path": "/sdcard/dji_export_20241102_123716_1730511436798_compose_0.MOV",
+        "tilde_path": "/sdcard/dji_export_20241102_123716_1730511436798_compose_0.MOV",
+        "user_id": 57,
+        "content": "third video data",
+        "compressed_data": [],
+        "created_at": "2024-11-02T12:37:16",
+        "updated_at": "2024-11-02T12:37:16"
+      }
+    ],
+    "todoist.project_collaborator_links": [
+      {
+        "id": 50400,
+        "project_id": 400,
+        "user_id": 57,
+        "is_favorite": false,
+        "is_archived": false,
+        "created_at": "2026-04-10T10:00:00"
+      },
+      {
+        "id": 50401,
+        "project_id": 401,
+        "user_id": 57,
+        "is_favorite": false,
+        "is_archived": false,
+        "created_at": "2026-04-10T10:00:00"
+      }
+    ],
+    "gmail.users": []
+  },
+  "image_paths": [
+    "screenspotpro/images/davinci_mac/screenshot_2024-12-01_19-58-24.png",
+    "screenspotpro/images/davinci_mac/screenshot_2024-12-07_23-22-31.png",
+    "screenspotpro/images/davinci_mac/screenshot_2024-12-07_23-23-56.png"
+  ],
+  "messages": [
+    {
+      "sender": "SYSTEM",
+      "recipient": "USER",
+      "content": "{{USER_INSTRUCTION}}ROUND 1 [provide: image_1]\nQuery: I need to back up the video clip shown in this timeline. Please check if the directory '/backup/underwater/' exists. If it doesn't, create it. Then validate if the file is already in that backup folder. If it's not, copy it from '/sdcard/' to the backup folder.\nInstructions: Ask the assistant to back up the video clip visible in the provided timeline screenshot to the '/backup/underwater/' directory. Instruct it to check if the directory exists first (creating it if necessary), then check if the file is already there, and if not, copy it from the '/sdcard/' directory. If the assistant asks for the filename, tell it to read it directly from the video track in the timeline of the image. Proceed to the next step once the assistant confirms the file has been successfully copied.\n\nROUND 2 [provide: image_2]\nQuery: Here's my other project. I need to back up the first clip in this timeline to '/backup/sharks/'. Validate that the destination directory exists and create it if not. Then check if the file is already there. If it is, delete the existing one to avoid corruption, and copy the fresh one from '/sdcard/'.\nInstructions: Provide the second screenshot and ask the assistant to back up the first clip shown in the timeline to '/backup/sharks/'. Tell it to validate if the destination directory exists, and check if the file is already present. Crucially, instruct the assistant that if the file exists, it must delete the existing version to avoid corruption before copying the fresh version from '/sdcard/'. If the assistant cannot identify the filename, direct its attention to the first clip in the video track at the bottom of the interface. Move on once the backup and replacement are confirmed.\n\nROUND 3\nQuery: I want to keep track of the transition I used in that first underwater project. Check if I have a simple note called 'Editing Styles'. If I do, update it by adding the specific video transition that was selected in the toolbox in the first screenshot. If the note doesn't exist, create it with that transition name.\nInstructions: Ask the assistant to check for a note called 'Editing Styles' and update it by adding the specific video transition that was selected in the toolbox from the very first screenshot. If the note does not exist, ask the assistant to create it. If the assistant asks which transition to add, refer it back to the first image and tell it to look at the selected item under the 'Video Transitions' section in the left panel. Wait for confirmation that the note has been updated before proceeding.\n\nROUND 4 [provide: image_3]\nQuery: In this new screenshot, I've selected a specific Fusion Title in the bottom left panel (it has a star next to it). Check my 'Video Edits' Todoist project to see if I already have a task to apply that specific effect. If I don't, create it.\nInstructions: Share the third screenshot and ask the assistant to look up your 'Video Edits' Todoist project to check for a task about applying the specific Fusion Title that is starred in the bottom left panel. If the task doesn't exist, ask the assistant to create it. The assistant should notice there are multiple projects matching 'Video Edits' (Ocean Video Edits and Wedding Video Edits) and ask for clarification. When it asks which project to use, tell it to use the 'Ocean Video Edits' project. If it asks which effect, direct it to look for the starred item under 'Fusion Titles' in the image. Proceed once the task is created.\n\nROUND 5\nQuery: Finally, check if the third clip shown in the timeline from that last screenshot is already backed up in '/backup/sharks/'. If it's not, copy it from '/sdcard/'. Once you've validated it's there, compress the '/backup/sharks/' directory.\nInstructions: Ask the assistant to check if the third clip shown in the timeline from the last screenshot is backed up in '/backup/sharks/'. If it is not, instruct it to copy the file from '/sdcard/'. Once the assistant validates the file is present in the backup folder, ask it to compress the entire '/backup/sharks/' directory. If the assistant needs help identifying the file, remind it to look at the third clip in the timeline of the previous image. This is the final step, so conclude the conversation once the compression is complete.\n\nYou have 3 images available to share with the agent using the send_message_with_image tool.\nIMPORTANT: Image IDs are ZERO-INDEXED integers (0, 1, 2, ...). Do NOT add 1 to the IDs.\nAvailable image IDs: [0, 1, 2]\nImage mapping:\n  image_1.jpg -> image ID 0\n  image_2.jpg -> image ID 1\n  image_3.jpg -> image ID 2\n\n## IMAGE DELIVERY\n\n⚠️ IMPORTANT: You MUST use the `send_message_with_image` tool to share images with User B. Do NOT just describe images in text — you MUST call the tool.\n\nImage delivery schedule:\n\n  Round 2: YOU MUST call the send_message_with_image tool with image_ids='1' — do NOT write the tool name as text; use the actual function call. Include a natural, conversational message to the assistant.\n  Round 4: YOU MUST call the send_message_with_image tool with image_ids='2' — do NOT write the tool name as text; use the actual function call. Include a natural, conversational message to the assistant."
+    },
+    {
+      "sender": "USER",
+      "recipient": "AGENT",
+      "content": "I need to back up the video clip shown in this timeline. Please check if the directory '/backup/underwater/' exists. If it doesn't, create it. Then validate if the file is already in that backup folder. If it's not, copy it from '/sdcard/' to the backup folder.",
+      "image_ids": [
+        0
+      ]
+    }
+  ],
+  "milestones": [],
+  "entity_diff_specs": [
+    {
+      "operation": "create",
+      "source": "appworld",
+      "table": "todoist.tasks",
+      "entity_data": {
+        "project_id": 400,
+        "section_id": null,
+        "user_id": 57,
+        "title": "Apply Headline effect",
+        "description": null,
+        "due_date": null,
+        "priority": "medium",
+        "is_completed": false,
+        "duration": null,
+        "duration_unit": null,
+        "order_index": 0,
+        "assignee_id": null,
+        "assigner_id": null,
+        "created_at": "2026-04-17T00:01:26"
+      },
+      "column_similarity_measure": {
+        "project_id": "column_exact_match_similarity",
+        "section_id": "column_ignore_similarity",
+        "user_id": "column_exact_match_similarity",
+        "title": "column_rouge_l_similarity",
+        "description": "column_ignore_similarity",
+        "due_date": "column_ignore_similarity",
+        "priority": "column_exact_match_similarity",
+        "is_completed": "column_exact_match_similarity",
+        "duration": "column_ignore_similarity",
+        "duration_unit": "column_ignore_similarity",
+        "order_index": "column_ignore_similarity",
+        "assignee_id": "column_ignore_similarity",
+        "assigner_id": "column_ignore_similarity",
+        "created_at": "column_ignore_similarity"
+      }
+    },
+    {
+      "operation": "create",
+      "source": "appworld",
+      "table": "file_system.directories",
+      "entity_data": {
+        "path": "backup/underwater",
+        "tilde_path": "backup/underwater",
+        "user_id": 57,
+        "created_at": "2026-04-17T00:01:26",
+        "updated_at": "2026-04-17T00:01:26"
+      },
+      "column_similarity_measure": {
+        "path": "column_contains_similarity",
+        "tilde_path": "column_contains_similarity",
+        "user_id": "column_exact_match_similarity",
+        "created_at": "column_ignore_similarity",
+        "updated_at": "column_ignore_similarity"
+      }
+    },
+    {
+      "operation": "create",
+      "source": "appworld",
+      "table": "file_system.files",
+      "entity_data": {
+        "path": "backup/underwater/dji_mimo_20241104_084423_1730685533428_video.MP4",
+        "tilde_path": "backup/underwater/dji_mimo_20241104_084423_1730685533428_video.MP4",
+        "user_id": 57,
+        "content": "video data",
+        "compressed_data": [],
+        "created_at": "2026-04-17T00:01:26",
+        "updated_at": "2026-04-17T00:01:26"
+      },
+      "column_similarity_measure": {
+        "path": "column_contains_similarity",
+        "tilde_path": "column_contains_similarity",
+        "user_id": "column_exact_match_similarity",
+        "content": "column_rouge_l_similarity",
+        "compressed_data": "column_ignore_similarity",
+        "created_at": "column_ignore_similarity",
+        "updated_at": "column_ignore_similarity"
+      }
+    },
+    {
+      "operation": "create",
+      "source": "appworld",
+      "table": "file_system.files",
+      "entity_data": {
+        "path": "backup/sharks/dji_export_20241102_123534_1730511334844_compose_0.MOV",
+        "tilde_path": "backup/sharks/dji_export_20241102_123534_1730511334844_compose_0.MOV",
+        "user_id": 57,
+        "content": "fresh video data",
+        "compressed_data": [],
+        "created_at": "2026-04-17T00:01:26",
+        "updated_at": "2026-04-17T00:01:26"
+      },
+      "column_similarity_measure": {
+        "path": "column_contains_similarity",
+        "tilde_path": "column_contains_similarity",
+        "user_id": "column_exact_match_similarity",
+        "content": "column_rouge_l_similarity",
+        "compressed_data": "column_ignore_similarity",
+        "created_at": "column_ignore_similarity",
+        "updated_at": "column_ignore_similarity"
+      }
+    },
+    {
+      "operation": "create",
+      "source": "appworld",
+      "table": "file_system.files",
+      "entity_data": {
+        "path": "backup/sharks/dji_export_20241102_123716_1730511436798_compose_0.MOV",
+        "tilde_path": "backup/sharks/dji_export_20241102_123716_1730511436798_compose_0.MOV",
+        "user_id": 57,
+        "content": "third video data",
+        "compressed_data": [],
+        "created_at": "2026-04-17T00:01:26",
+        "updated_at": "2026-04-17T00:01:26"
+      },
+      "column_similarity_measure": {
+        "path": "column_contains_similarity",
+        "tilde_path": "column_contains_similarity",
+        "user_id": "column_exact_match_similarity",
+        "content": "column_rouge_l_similarity",
+        "compressed_data": "column_ignore_similarity",
+        "created_at": "column_ignore_similarity",
+        "updated_at": "column_ignore_similarity"
+      }
+    },
+    {
+      "operation": "create",
+      "source": "appworld",
+      "table": "file_system.files",
+      "entity_data": {
+        "path": "backup/sharks.zip",
+        "tilde_path": "backup/sharks.zip",
+        "user_id": 57,
+        "content": "compressed binary data",
+        "compressed_data": [
+          {
+            "path": "dji_export_20241102_123534_1730511334844_compose_0.MOV",
+            "content": "fresh video data",
+            "created_at": "2026-04-17T00:01:26Z",
+            "updated_at": "2026-04-17T00:01:26Z"
+          },
+          {
+            "path": "dji_export_20241102_123716_1730511436798_compose_0.MOV",
+            "content": "third video data",
+            "created_at": "2026-04-17T00:01:26Z",
+            "updated_at": "2026-04-17T00:01:26Z"
+          }
+        ],
+        "created_at": "2026-04-17T00:01:26",
+        "updated_at": "2026-04-17T00:01:26"
+      },
+      "column_similarity_measure": {
+        "path": "column_contains_similarity",
+        "tilde_path": "column_contains_similarity",
+        "user_id": "column_exact_match_similarity",
+        "content": "column_ignore_similarity",
+        "compressed_data": "column_ignore_similarity",
+        "created_at": "column_ignore_similarity",
+        "updated_at": "column_ignore_similarity"
+      }
+    },
+    {
+      "operation": "update",
+      "source": "appworld",
+      "table": "simple_note.notes",
+      "entity_id_column": "id",
+      "entity_id_value": 3200,
+      "expected_fields": {
+        "updated_at": "2026-04-10T10:00:00",
+        "content": "Underwater Color Grading: increase contrast, add teal tint.\nVideo Transition: Cross Dissolve",
+        "tags": []
+      },
+      "column_similarity_measure": {
+        "updated_at": "column_ignore_similarity",
+        "content": "column_rouge_l_similarity",
+        "id": "column_exact_match_similarity"
+      }
+    },
+    {
+      "operation": "update",
+      "source": "appworld",
+      "table": "file_system.directories",
+      "entity_id_column": "id",
+      "entity_id_value": 3601,
+      "expected_fields": {
+        "updated_at": "2024-11-02T12:35:34"
+      },
+      "column_similarity_measure": {
+        "updated_at": "column_ignore_similarity",
+        "id": "column_exact_match_similarity"
+      }
+    },
+    {
+      "operation": "delete",
+      "source": "appworld",
+      "table": "file_system.files",
+      "entity_id_column": "id",
+      "entity_id_value": 26001,
+      "column_similarity_measure": {
+        "id": "column_exact_match_similarity"
+      }
+    }
+  ],
+  "task_completion_criteria": "Copy 'dji_mimo_20241104_084423_1730685533428_video.MP4' to '/backup/underwater/', delete the existing 'dji_export_20241102_123534_1730511334844_compose_0.MOV' in '/backup/sharks/' and replace it with a fresh copy from '/sdcard/', update the 'Editing Styles' note to include the 'Cross Dissolve' transition, add a task to apply the 'Headline' effect in the Ocean Video Edits project, copy 'dji_export_20241102_123716_1730511436798_compose_0.MOV' to '/backup/sharks/', and compress the '/backup/sharks/' directory.",
+  "categories": [
+    "APPWORLD",
+    "MULTIPLE_USER_TURN"
+  ],
+  "max_messages": 100,
+  "metadata": {
+    "original_scenario_id": "scenario_0372",
+    "expected_tools": [
+      "file_system_directory_exists",
+      "file_system_create_directory",
+      "file_system_file_exists",
+      "file_system_copy_file",
+      "file_system_delete_file",
+      "simple_note_show_note",
+      "simple_note_update_note",
+      "simple_note_create_note",
+      "todoist_show_project",
+      "todoist_show_tasks",
+      "todoist_create_task",
+      "file_system_compress_directory"
+    ],
+    "image_arrival": {
+      "1": [
+        "image_1"
+      ],
+      "2": [
+        "image_2"
+      ],
+      "4": [
+        "image_3"
+      ]
+    },
+    "image_delivery_map": [
+      {
+        "query": "Here's my other project. I need to back up the first clip in this timeline to '/backup/sharks/'. Validate that the destination directory exists and create it if not. Then check if the file is already there. If it is, delete the existing one to avoid corruption, and copy the fresh one from '/sdcard/'.",
+        "image_ids": [
+          1
+        ]
+      },
+      {
+        "query": "In this new screenshot, I've selected a specific Fusion Title in the bottom left panel (it has a star next to it). Check my 'Video Edits' Todoist project to see if I already have a task to apply that specific effect. If I don't, create it.",
+        "image_ids": [
+          2
+        ]
+      }
+    ],
+    "scenario_metadata": {
+      "num_images": 3,
+      "num_user_rounds": 5,
+      "selected_flow_type": "validate",
+      "image_arrival": "mixed",
+      "challenge_type": "state_mutation",
+      "require_disambiguation": true,
+      "dataset_type": "screenspotpro"
+    }
+  }
+}

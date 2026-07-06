@@ -1,0 +1,287 @@
+{
+  "name": "scenario_0069",
+  "base_scenario": "base",
+  "description": "The user is following a CMake tutorial to build OpenCV from source on a Linux virtual machine, and needs help organizing the downloaded files and tracking system errors encountered during the process.",
+  "difficulty": "easy",
+  "appworld_base_task": "_base_",
+  "device_state_id": "corwils@gmail.com",
+  "reference_time": "2026-04-16T23:52:46.372734+00:00",
+  "agentsandbox_entities": {},
+  "appworld_entities": {
+    "file_system.directories": [
+      {
+        "id": 3600,
+        "path": "/home/cory/desktop/",
+        "tilde_path": "~/desktop/",
+        "user_id": 72,
+        "created_at": "2026-04-16T20:00:00",
+        "updated_at": "2026-04-16T20:00:00"
+      },
+      {
+        "id": 3601,
+        "path": "/home/cory/desktop/opencv-build/",
+        "tilde_path": "~/desktop/opencv-build/",
+        "user_id": 72,
+        "created_at": "2026-04-16T22:00:00",
+        "updated_at": "2026-04-16T22:00:00"
+      },
+      {
+        "path": "~/Desktop/",
+        "tilde_path": "~/Desktop/",
+        "user_id": 72,
+        "created_at": "2025-01-01T00:00:00",
+        "updated_at": "2025-01-01T00:00:00",
+        "id": 3602
+      },
+      {
+        "path": "~/Desktop/opencv-build/",
+        "tilde_path": "~/Desktop/opencv-build/",
+        "user_id": 72,
+        "created_at": "2025-01-01T00:00:00",
+        "updated_at": "2025-01-01T00:00:00",
+        "id": 3603
+      }
+    ],
+    "file_system.files": [
+      {
+        "id": 26000,
+        "path": "/home/cory/desktop/opencv-build/CMakeCache.txt",
+        "tilde_path": "~/desktop/opencv-build/CMakeCache.txt",
+        "user_id": 72,
+        "content": "# This is the CMakeCache file.\nCMAKE_BUILD_TYPE:STRING=Release\n",
+        "compressed_data": [],
+        "created_at": "2026-04-16T22:05:00",
+        "updated_at": "2026-04-16T22:05:00"
+      },
+      {
+        "id": 26001,
+        "path": "/home/cory/desktop/opencv.zip",
+        "tilde_path": "~/desktop/opencv.zip",
+        "user_id": 72,
+        "content": "PK\u0003\u0004...",
+        "compressed_data": [
+          {
+            "path": "opencv/README.md",
+            "content": "OpenCV source code",
+            "created_at": "2026-04-16T22:10:00Z",
+            "updated_at": "2026-04-16T22:10:00Z",
+            "compressed_data": []
+          }
+        ],
+        "created_at": "2026-04-16T23:50:00",
+        "updated_at": "2026-04-16T23:50:00"
+      }
+    ],
+    "gmail.users": []
+  },
+  "image_paths": [
+    "screenspotpro/images/common_linux/Screenshot from 2024-12-07 15-56-46.png",
+    "screenspotpro/images/common_linux/Screenshot from 2024-12-07 11-59-57.png",
+    "screenspotpro/images/common_linux/Screenshot from 2024-12-07 16-25-42.png",
+    "screenspotpro/images/common_linux/Screenshot from 2024-12-07 15-30-21.png",
+    "screenspotpro/images/common_linux/Screenshot from 2024-12-07 15-58-39.png",
+    "screenspotpro/images/common_linux/Screenshot from 2024-12-07 11-59-36.png"
+  ],
+  "messages": [
+    {
+      "sender": "SYSTEM",
+      "recipient": "USER",
+      "content": "{{USER_INSTRUCTION}}ROUND 1 [provide: image_1, image_2]\nQuery: Look at the file manager in the first screenshot. Can you find the exact path of my OpenCV build directory and check if 'CMakeCache.txt' is already in there?\nInstructions: Ask the assistant to look at the first image to determine the exact path of the OpenCV build directory shown in the file manager, and then verify if the 'CMakeCache.txt' file is present there. If the assistant needs help determining the absolute path, instruct it to look at the username in the terminal prompt. Once the assistant provides the result of the file check, move on to the next round.\n\nROUND 2 [provide: image_3, image_4]\nQuery: Next, look at the terminal in the fourth image where I'm downloading the opencv zip file. Please move that file from my Downloads folder into the build directory we just checked.\nInstructions: Instruct the assistant to look at the fourth image showing a file download in the terminal, and ask it to move that downloaded zip file from the Downloads folder into the build directory identified in the previous round. The assistant should notice from the terminal prompt in the image that the file is actually being downloaded to the Desktop, not the Downloads folder, and flag this error. If the assistant points out the discrepancy, or if it attempts the move and fails, acknowledge the situation and wait for the next round to provide the correction.\n\nROUND 3\nQuery: Oh, wait, my mistake! The terminal prompt shows I'm actually in the Desktop directory. Please move it from the Desktop into the build directory instead.\nInstructions: Acknowledge your previous mistake about the file's location. Correct your instruction by telling the assistant that the terminal prompt shows the file is actually on the Desktop, and ask it to move the zip file from the Desktop into the build directory instead. Once the assistant confirms the file has been successfully moved, proceed to the next round.\n\nROUND 4 [provide: image_5, image_6]\nQuery: Great. Now extract that zip file inside the build directory. Also, take a look at the Logs window in the fifth image. Create a new note called 'Build Errors' and jot down that repeated 'context mismatch' error message so I don't forget it.\nInstructions: Ask the assistant to decompress the zip file that was just moved into the build directory. Additionally, direct the assistant to the Logs window in the fifth image, and ask it to create a new note titled 'Build Errors' containing the repeated error message shown there. If the assistant extracts the wrong text from the logs, point it back to the specific error message in the image. End the conversation once the assistant confirms both the extraction and the note creation are complete.\n\nYou have 6 images available to share with the agent using the send_message_with_image tool.\nIMPORTANT: Image IDs are ZERO-INDEXED integers (0, 1, 2, ...). Do NOT add 1 to the IDs.\nAvailable image IDs: [0, 1, 2, 3, 4, 5]\nImage mapping:\n  image_1.jpg -> image ID 0\n  image_2.jpg -> image ID 1\n  image_3.jpg -> image ID 2\n  image_4.jpg -> image ID 3\n  image_5.jpg -> image ID 4\n  image_6.jpg -> image ID 5\n\n## IMAGE DELIVERY\n\n⚠️ IMPORTANT: You MUST use the `send_message_with_image` tool to share images with User B. Do NOT just describe images in text — you MUST call the tool.\n\nImage delivery schedule:\n\n  Round 2: YOU MUST call the send_message_with_image tool with image_ids='2,3' — do NOT write the tool name as text; use the actual function call. Include a natural, conversational message to the assistant.\n  Round 4: YOU MUST call the send_message_with_image tool with image_ids='4,5' — do NOT write the tool name as text; use the actual function call. Include a natural, conversational message to the assistant."
+    },
+    {
+      "sender": "USER",
+      "recipient": "AGENT",
+      "content": "Look at the file manager in the first screenshot. Can you find the exact path of my OpenCV build directory and check if 'CMakeCache.txt' is already in there?",
+      "image_ids": [
+        0,
+        1
+      ]
+    }
+  ],
+  "milestones": [],
+  "entity_diff_specs": [
+    {
+      "operation": "create",
+      "source": "appworld",
+      "table": "simple_note.notes",
+      "entity_data": {
+        "user_id": 72,
+        "title": "Build Errors",
+        "content": "context mismatch in svga_surface_destroy",
+        "tags": [],
+        "created_at": "2026-04-16T23:52:46",
+        "updated_at": "2026-04-16T23:52:46",
+        "pinned": false,
+        "data": {}
+      },
+      "column_similarity_measure": {
+        "user_id": "column_exact_match_similarity",
+        "title": "column_rouge_l_similarity",
+        "content": "column_rouge_l_similarity",
+        "tags": "column_ignore_similarity",
+        "created_at": "column_ignore_similarity",
+        "updated_at": "column_ignore_similarity",
+        "pinned": "column_exact_match_similarity",
+        "data": "column_ignore_similarity"
+      }
+    },
+    {
+      "operation": "create",
+      "source": "appworld",
+      "table": "file_system.directories",
+      "entity_data": {
+        "path": "Desktop/opencv-build/opencv",
+        "tilde_path": "Desktop/opencv-build/opencv",
+        "user_id": 72,
+        "created_at": "2026-04-16T23:52:46",
+        "updated_at": "2026-04-16T23:52:46"
+      },
+      "column_similarity_measure": {
+        "path": "column_contains_similarity",
+        "tilde_path": "column_contains_similarity",
+        "user_id": "column_exact_match_similarity",
+        "created_at": "column_ignore_similarity",
+        "updated_at": "column_ignore_similarity"
+      }
+    },
+    {
+      "operation": "create",
+      "source": "appworld",
+      "table": "file_system.files",
+      "entity_data": {
+        "path": "Desktop/opencv-build/opencv/README.md",
+        "tilde_path": "Desktop/opencv-build/opencv/README.md",
+        "user_id": 72,
+        "content": "OpenCV source code",
+        "compressed_data": [],
+        "created_at": "2026-04-16T23:52:46",
+        "updated_at": "2026-04-16T23:52:46"
+      },
+      "column_similarity_measure": {
+        "path": "column_contains_similarity",
+        "tilde_path": "column_contains_similarity",
+        "user_id": "column_exact_match_similarity",
+        "content": "column_rouge_l_similarity",
+        "compressed_data": "column_ignore_similarity",
+        "created_at": "column_ignore_similarity",
+        "updated_at": "column_ignore_similarity"
+      }
+    },
+    {
+      "operation": "update",
+      "source": "appworld",
+      "table": "file_system.directories",
+      "entity_id_column": "id",
+      "entity_id_value": 3600,
+      "expected_fields": {
+        "updated_at": "2026-04-16T20:00:00"
+      },
+      "column_similarity_measure": {
+        "updated_at": "column_ignore_similarity",
+        "id": "column_exact_match_similarity"
+      }
+    },
+    {
+      "operation": "update",
+      "source": "appworld",
+      "table": "file_system.directories",
+      "entity_id_column": "id",
+      "entity_id_value": 3601,
+      "expected_fields": {
+        "updated_at": "2026-04-16T22:00:00"
+      },
+      "column_similarity_measure": {
+        "updated_at": "column_ignore_similarity",
+        "id": "column_exact_match_similarity"
+      }
+    },
+    {
+      "operation": "delete",
+      "source": "appworld",
+      "table": "file_system.files",
+      "entity_id_column": "id",
+      "entity_id_value": 26001,
+      "column_similarity_measure": {
+        "id": "column_exact_match_similarity"
+      }
+    },
+    {
+      "operation": "create",
+      "source": "appworld",
+      "table": "file_system.files",
+      "entity_data": {
+        "path": "Desktop/opencv-build/opencv.zip",
+        "tilde_path": "Desktop/opencv-build/opencv.zip",
+        "user_id": 72,
+        "content": "PK\u0003\u0004...",
+        "compressed_data": [],
+        "created_at": "2026-04-16T23:52:46",
+        "updated_at": "2026-04-16T23:52:46"
+      },
+      "column_similarity_measure": {
+        "path": "column_contains_similarity",
+        "tilde_path": "column_contains_similarity",
+        "user_id": "column_exact_match_similarity",
+        "content": "column_ignore_similarity",
+        "compressed_data": "column_ignore_similarity",
+        "created_at": "column_ignore_similarity",
+        "updated_at": "column_ignore_similarity"
+      }
+    }
+  ],
+  "task_completion_criteria": "Verify the existence of '/home/cory/desktop/opencv-build/CMakeCache.txt', move the downloaded file '/home/cory/desktop/opencv.zip' to '/home/cory/desktop/opencv-build/opencv.zip', decompress the moved zip file, and create a new note titled 'Build Errors' containing the text 'context mismatch in svga_surface_destroy'.",
+  "categories": [
+    "APPWORLD",
+    "MULTIPLE_USER_TURN"
+  ],
+  "max_messages": 100,
+  "metadata": {
+    "original_scenario_id": "scenario_0069",
+    "expected_tools": [
+      "file_system_file_exists",
+      "file_system_move_file",
+      "file_system_decompress_file",
+      "simple_note_create_note",
+      "simple_note_add_content_to_note"
+    ],
+    "image_arrival": {
+      "1": [
+        "image_1",
+        "image_2"
+      ],
+      "2": [
+        "image_3",
+        "image_4"
+      ],
+      "4": [
+        "image_5",
+        "image_6"
+      ]
+    },
+    "image_delivery_map": [
+      {
+        "query": "Next, look at the terminal in the fourth image where I'm downloading the opencv zip file. Please move that file from my Downloads folder into the build directory we just checked.",
+        "image_ids": [
+          2,
+          3
+        ]
+      },
+      {
+        "query": "Great. Now extract that zip file inside the build directory. Also, take a look at the Logs window in the fifth image. Create a new note called 'Build Errors' and jot down that repeated 'context mismatch' error message so I don't forget it.",
+        "image_ids": [
+          4,
+          5
+        ]
+      }
+    ],
+    "scenario_metadata": {
+      "num_images": 6,
+      "num_user_rounds": 4,
+      "selected_flow_type": "lookup_chain",
+      "image_arrival": "mixed",
+      "challenge_type": "error_correction",
+      "require_disambiguation": false,
+      "dataset_type": "screenspotpro"
+    }
+  }
+}

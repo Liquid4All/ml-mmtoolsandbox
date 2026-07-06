@@ -1,0 +1,246 @@
+{
+  "name": "scenario_0042",
+  "base_scenario": "base",
+  "description": "The user is participating in a city-wide scavenger hunt and trivia game. They are gathering clues from various locations and objects, compiling the answers in a note, and keeping their teammate Dave updated.",
+  "difficulty": "easy",
+  "appworld_base_task": "_base_",
+  "device_state_id": "mel.bailey@gmail.com",
+  "reference_time": "2026-04-16T23:52:06.852326+00:00",
+  "agentsandbox_entities": {},
+  "appworld_entities": {
+    "phone.contacts": [
+      {
+        "id": 200,
+        "user_id": 81,
+        "first_name": "Dave",
+        "last_name": "Teammate",
+        "email": "dave.teammate@gmail.com",
+        "phone_number": "555-0199",
+        "relationships": [
+          "teammate"
+        ],
+        "birthday": null,
+        "home_address": null,
+        "work_address": null,
+        "created_at": "2026-04-10T12:00:00"
+      }
+    ],
+    "gmail.users": [
+      {
+        "id": 200,
+        "first_name": "Dave",
+        "last_name": "Teammate",
+        "email": "dave.teammate@gmail.com",
+        "password": "default_password",
+        "status": "active",
+        "created_at": "2025-01-01T00:00:00",
+        "last_logged_in": "2025-01-01T00:00:00"
+      }
+    ],
+    "phone.users": [
+      {
+        "id": 200,
+        "first_name": "Dave",
+        "last_name": "Teammate",
+        "phone_number": "555-0199",
+        "password": "default_password",
+        "created_at": "2025-01-01T00:00:00",
+        "last_logged_in": "2025-01-01T00:00:00"
+      }
+    ]
+  },
+  "image_paths": [
+    "hiertext/images/test/a780ff228ef0e119.jpg",
+    "worldvqa/images/640.jpg",
+    "hiertext/images/test/c42c657bb8d2c78e.jpg",
+    "hiertext/images/test/3f70a64dee286d0a.jpg"
+  ],
+  "messages": [
+    {
+      "sender": "SYSTEM",
+      "recipient": "USER",
+      "content": "{{USER_INSTRUCTION}}ROUND 1 [provide: image_1, image_3]\nQuery: Create a new note called 'Trivia Answers' and add two facts to it: the name of the player who caught the game-tying touchdown in this article, and the website URL shown at the bottom right of this map.\nInstructions: Instruct the assistant to create a new note called 'Trivia Answers' and extract two specific facts to add to it: the name of the player who caught the game-tying touchdown from the provided article image, and the website URL from the bottom right of the map image. If the assistant asks for confirmation of the extracted text, approve it. Once the assistant confirms the note is created, proceed to the next round.\n\nROUND 2 [provide: image_4]\nQuery: Update the note with the purchasing power decline for the teachers (Leraar en lerares) from this slide, which is -2.3%. Also, send a text message to Dave saying 'I have 3 answers so far'.\nInstructions: Ask the assistant to update the note with the purchasing power decline for the teachers from the provided presentation slide, and explicitly state in your request that the value is -2.3%. Also, tell it to text Dave saying 'I have 3 answers so far'. The assistant should detect that you misread the slide (the -2.3% figure is for a different group, while the teachers' decline is a different number). If the assistant flags this error and asks for clarification before updating the note, confirm you made a mistake and wait for the next round. If the assistant blindly proceeds to update the note with the wrong number without asking, point out that it should have caught the mistake.\n\nROUND 3 [provide: image_2]\nQuery: Oops, you're right, the teachers' decline is -7.2%. Update the note with the correct percentage. Also, add the street name from this new picture to the note. Finally, send the full compiled note to Dave via text message.\nInstructions: Acknowledge the mistake from the previous round and tell the assistant the correct percentage for the teachers is indeed -7.2%. Instruct it to update the note with this correct number. Then, ask it to look at the new street scene image and add the name of the street to the note as well. Finally, ask the assistant to send the fully compiled note content to Dave via text message. Once the assistant confirms both the note update and the text message delivery, end the conversation.\n\nYou have 4 images available to share with the agent using the send_message_with_image tool.\nIMPORTANT: Image IDs are ZERO-INDEXED integers (0, 1, 2, ...). Do NOT add 1 to the IDs.\nAvailable image IDs: [0, 1, 2, 3]\nImage mapping:\n  image_1.jpg -> image ID 0\n  image_2.jpg -> image ID 1\n  image_3.jpg -> image ID 2\n  image_4.jpg -> image ID 3\n\n## IMAGE DELIVERY\n\n\u26a0\ufe0f IMPORTANT: You MUST use the `send_message_with_image` tool to share images with User B. Do NOT just describe images in text \u2014 you MUST call the tool.\n\nImage delivery schedule:\n\n  Round 2: YOU MUST call the send_message_with_image tool with image_ids='3' \u2014 do NOT write the tool name as text; use the actual function call. Include a natural, conversational message to the assistant.\n  Round 3: YOU MUST call the send_message_with_image tool with image_ids='1' \u2014 do NOT write the tool name as text; use the actual function call. Include a natural, conversational message to the assistant."
+    },
+    {
+      "sender": "USER",
+      "recipient": "AGENT",
+      "content": "Create a new note called 'Trivia Answers' and add two facts to it: the name of the player who caught the game-tying touchdown in this article, and the website URL shown at the bottom right of this map.",
+      "image_ids": [
+        0,
+        2
+      ]
+    }
+  ],
+  "milestones": [],
+  "entity_diff_specs": [
+    {
+      "operation": "create",
+      "source": "appworld",
+      "table": "phone.global_text_messages",
+      "entity_data": {
+        "sender_id": 81,
+        "receiver_id": 200,
+        "message": "I have 3 answers so far",
+        "created_at": "2026-04-16T23:52:06"
+      },
+      "column_similarity_measure": {
+        "sender_id": "column_exact_match_similarity",
+        "receiver_id": "column_exact_match_similarity",
+        "message": "column_rouge_l_similarity",
+        "created_at": "column_ignore_similarity"
+      }
+    },
+    {
+      "operation": "create",
+      "source": "appworld",
+      "table": "phone.user_text_messages",
+      "entity_data": {
+        "global_text_message_id": 200,
+        "user_id": 81,
+        "created_at": "2026-04-16T23:52:06"
+      },
+      "column_similarity_measure": {
+        "global_text_message_id": "column_ignore_similarity",
+        "user_id": "column_exact_match_similarity",
+        "created_at": "column_ignore_similarity"
+      }
+    },
+    {
+      "operation": "create",
+      "source": "appworld",
+      "table": "phone.global_text_messages",
+      "entity_data": {
+        "sender_id": 81,
+        "receiver_id": 200,
+        "message": "Trivia Answers\nBernard Berrian\nwww.calhope.ca/map/\n-7.2%\nMadison Street",
+        "created_at": "2026-04-16T23:52:06"
+      },
+      "column_similarity_measure": {
+        "sender_id": "column_exact_match_similarity",
+        "receiver_id": "column_exact_match_similarity",
+        "message": "column_rouge_l_similarity",
+        "created_at": "column_ignore_similarity"
+      }
+    },
+    {
+      "operation": "create",
+      "source": "appworld",
+      "table": "phone.user_text_messages",
+      "entity_data": {
+        "global_text_message_id": 201,
+        "user_id": 81,
+        "created_at": "2026-04-16T23:52:06"
+      },
+      "column_similarity_measure": {
+        "global_text_message_id": "column_ignore_similarity",
+        "user_id": "column_exact_match_similarity",
+        "created_at": "column_ignore_similarity"
+      }
+    },
+    {
+      "operation": "create",
+      "source": "appworld",
+      "table": "simple_note.notes",
+      "entity_data": {
+        "user_id": 81,
+        "title": "Trivia Answers",
+        "content": "Bernard Berrian\nwww.calhope.ca/map/\n-7.2%\nMadison Street",
+        "tags": [],
+        "created_at": "2026-04-16T23:52:06",
+        "updated_at": "2026-04-16T23:52:06",
+        "pinned": false,
+        "data": {}
+      },
+      "column_similarity_measure": {
+        "user_id": "column_exact_match_similarity",
+        "title": "column_rouge_l_similarity",
+        "content": "column_rouge_l_similarity",
+        "tags": "column_ignore_similarity",
+        "created_at": "column_ignore_similarity",
+        "updated_at": "column_ignore_similarity",
+        "pinned": "column_exact_match_similarity",
+        "data": "column_ignore_similarity"
+      }
+    },
+    {
+      "operation": "create",
+      "source": "appworld",
+      "table": "phone.user_text_messages",
+      "entity_data": {
+        "global_text_message_id": 200,
+        "user_id": 200,
+        "created_at": "2026-04-16T23:52:06"
+      },
+      "column_similarity_measure": {
+        "global_text_message_id": "column_ignore_similarity",
+        "user_id": "column_exact_match_similarity",
+        "created_at": "column_ignore_similarity"
+      }
+    },
+    {
+      "operation": "create",
+      "source": "appworld",
+      "table": "phone.user_text_messages",
+      "entity_data": {
+        "global_text_message_id": 201,
+        "user_id": 200,
+        "created_at": "2026-04-16T23:52:06"
+      },
+      "column_similarity_measure": {
+        "global_text_message_id": "column_ignore_similarity",
+        "user_id": "column_exact_match_similarity",
+        "created_at": "column_ignore_similarity"
+      }
+    }
+  ],
+  "task_completion_criteria": "Create a note titled 'Trivia Answers' containing the extracted facts 'Bernard Berrian', 'www.calhope.ca/map/', '-7.2%', and 'Madison Street'. Send a text message to Dave saying 'I have 3 answers so far', and send a second text message to Dave containing the full compiled note with those four extracted answers.",
+  "categories": [
+    "APPWORLD",
+    "MULTIPLE_USER_TURN"
+  ],
+  "max_messages": 100,
+  "metadata": {
+    "original_scenario_id": "scenario_0042",
+    "expected_tools": [
+      "simple_note_create_note",
+      "messages_send_text_message",
+      "simple_note_update_note",
+      "simple_note_show_note"
+    ],
+    "image_arrival": {
+      "1": [
+        "image_1",
+        "image_3"
+      ],
+      "2": [
+        "image_4"
+      ],
+      "3": [
+        "image_2"
+      ]
+    },
+    "image_delivery_map": [
+      {
+        "query": "Update the note with the purchasing power decline for the teachers (Leraar en lerares) from this slide, which is -2.3%. Also, send a text message to Dave saying 'I have 3 answers so far'.",
+        "image_ids": [
+          3
+        ]
+      },
+      {
+        "query": "Oops, you're right, the teachers' decline is -7.2%. Update the note with the correct percentage. Also, add the street name from this new picture to the note. Finally, send the full compiled note to Dave via text message.",
+        "image_ids": [
+          1
+        ]
+      }
+    ],
+    "scenario_metadata": {
+      "num_images": 4,
+      "num_user_rounds": 3,
+      "selected_flow_type": "aggregate",
+      "image_arrival": "mixed",
+      "challenge_type": "error_correction",
+      "require_disambiguation": false,
+      "dataset_type": "hiertext"
+    }
+  }
+}

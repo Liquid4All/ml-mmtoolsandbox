@@ -1,0 +1,348 @@
+{
+  "name": "scenario_0702",
+  "base_scenario": "base",
+  "description": "Jacob is processing a batch of historical expense documents from Dr. William Darby's archives, separating them by the institution responsible for reimbursement and sending out payment requests.",
+  "difficulty": "easy",
+  "appworld_base_task": "_base_",
+  "device_state_id": "jac-blackburn@gmail.com",
+  "reference_time": "2026-04-17T00:11:55.344301+00:00",
+  "agentsandbox_entities": {},
+  "appworld_entities": {
+    "phone.contacts": [
+      {
+        "id": 200,
+        "user_id": 38,
+        "first_name": "Vanderbilt Archives",
+        "last_name": "(Main Campus)",
+        "email": "vandy_archives_main@example.com",
+        "phone_number": null,
+        "relationships": [],
+        "birthday": null,
+        "home_address": null,
+        "work_address": null,
+        "created_at": "2025-01-15T09:30:00"
+      },
+      {
+        "id": 201,
+        "user_id": 38,
+        "first_name": "Vanderbilt Archives",
+        "last_name": "(Medical Center)",
+        "email": "vandy_archives_med@example.com",
+        "phone_number": null,
+        "relationships": [],
+        "birthday": null,
+        "home_address": null,
+        "work_address": null,
+        "created_at": "2025-01-15T09:35:00"
+      },
+      {
+        "id": 202,
+        "user_id": 38,
+        "first_name": "Nutrition",
+        "last_name": "Foundation",
+        "email": "nutrition_fndt@example.com",
+        "phone_number": null,
+        "relationships": [],
+        "birthday": null,
+        "home_address": null,
+        "work_address": null,
+        "created_at": "2025-02-20T14:15:00"
+      }
+    ],
+    "venmo.users": [
+      {
+        "id": 200,
+        "first_name": "Vanderbilt Archives",
+        "last_name": "(Medical Center)",
+        "email": "vandy_archives_med@example.com",
+        "password": "default_password",
+        "created_at": "2025-01-01T00:00:00",
+        "last_logged_in": "2025-01-01T00:00:00",
+        "venmo_balance": 0.0,
+        "verified": true
+      },
+      {
+        "id": 201,
+        "first_name": "Nutrition",
+        "last_name": "Foundation",
+        "email": "nutrition_fndt@example.com",
+        "password": "default_password",
+        "created_at": "2025-01-01T00:00:00",
+        "last_logged_in": "2025-01-01T00:00:00",
+        "venmo_balance": 0.0,
+        "verified": true
+      }
+    ],
+    "gmail.users": [
+      {
+        "id": 200,
+        "first_name": "Vanderbilt Archives",
+        "last_name": "(Main Campus)",
+        "email": "vandy_archives_main@example.com",
+        "password": "default_password",
+        "status": "active",
+        "created_at": "2025-01-01T00:00:00",
+        "last_logged_in": "2025-01-01T00:00:00"
+      },
+      {
+        "id": 201,
+        "first_name": "Vanderbilt Archives",
+        "last_name": "(Medical Center)",
+        "email": "vandy_archives_med@example.com",
+        "password": "default_password",
+        "status": "active",
+        "created_at": "2025-01-01T00:00:00",
+        "last_logged_in": "2025-01-01T00:00:00"
+      },
+      {
+        "id": 202,
+        "first_name": "Nutrition",
+        "last_name": "Foundation",
+        "email": "nutrition_fndt@example.com",
+        "password": "default_password",
+        "status": "active",
+        "created_at": "2025-01-01T00:00:00",
+        "last_logged_in": "2025-01-01T00:00:00"
+      }
+    ]
+  },
+  "image_paths": [
+    "docvqa/images/63074.jpg",
+    "docvqa/images/63082.jpg",
+    "docvqa/images/56645.jpg",
+    "docvqa/images/62748.jpg",
+    "docvqa/images/59052.jpg",
+    "docvqa/images/56834.jpg"
+  ],
+  "messages": [
+    {
+      "sender": "SYSTEM",
+      "recipient": "USER",
+      "content": "{{USER_INSTRUCTION}}ROUND 1\nQuery: I'm processing Dr. Darby's archival expenses. Please add Vanderbilt Archives and the Nutrition Foundation as friends on Venmo so I can bill them.\nInstructions: Ask the assistant to add Vanderbilt Archives and Nutrition Foundation as friends on Venmo. If the assistant notices multiple contacts for Vanderbilt Archives and asks which one to use, clarify that you need the Medical Center one. Once both friends are successfully added, move on to the next round.\n\nROUND 2 [provide: image_1, image_2, image_3]\nQuery: Here are the first three invoices. Filter these to find the ones billed to Vanderbilt University. For each matching document, send a Venmo payment request to Vanderbilt Archives for the total amount due, or the explicitly requested reimbursement amount if there's a handwritten note.\nInstructions: Present the first three invoices to the assistant. Instruct it to identify which ones are billed to Vanderbilt University, and for each of those, send a Venmo payment request to the Vanderbilt Archives account we just added. The request amount should be the total due, unless there is a handwritten note requesting a specific reimbursement amount, in which case use that. If the assistant asks for clarification or tries to bill the wrong invoice, point it back to the images to check the 'billed to' fields. Once it confirms the two requests are sent, move on.\n\nROUND 3 [provide: image_4, image_5, image_6]\nQuery: Here are three more. Filter these new invoices for those billed to the Nutrition Foundation or NUTRION FNDT. Send a Venmo request to the Nutrition Foundation for the final balance due on each.\nInstructions: Provide the next three invoices. Tell the assistant to find the ones billed to the Nutrition Foundation (or NUTRION FNDT) and send a Venmo payment request to the Nutrition Foundation for the final balance due on each matching document. If the assistant includes the hotel bill that is charged to the Citizens Committee, correct it since that one is billed to a completely different organization. Once the two requests are sent, proceed to the next step.\n\nROUND 4\nQuery: Finally, create a simple note titled 'Archival Reimbursements' that summarizes the four amounts we just requested on Venmo, organized by the organization billed.\nInstructions: Ask the assistant to create a simple note titled 'Archival Reimbursements'. The note should list the four Venmo request amounts we just made, grouped by whether they were billed to Vanderbilt Archives or the Nutrition Foundation. If the assistant asks for the specific amounts, tell it to check the Venmo requests it just created. End the conversation once the note is created.\n\nYou have 6 images available to share with the agent using the send_message_with_image tool.\nIMPORTANT: Image IDs are ZERO-INDEXED integers (0, 1, 2, ...). Do NOT add 1 to the IDs.\nAvailable image IDs: [0, 1, 2, 3, 4, 5]\nImage mapping:\n  image_1.jpg -> image ID 0\n  image_2.jpg -> image ID 1\n  image_3.jpg -> image ID 2\n  image_4.jpg -> image ID 3\n  image_5.jpg -> image ID 4\n  image_6.jpg -> image ID 5\n\n## IMAGE DELIVERY\n\n⚠️ IMPORTANT: You MUST use the `send_message_with_image` tool to share images with User B. Do NOT just describe images in text — you MUST call the tool.\n\nImage delivery schedule:\n\n  Round 2: YOU MUST call the send_message_with_image tool with image_ids='0,1,2' — do NOT write the tool name as text; use the actual function call. Include a natural, conversational message to the assistant.\n  Round 3: YOU MUST call the send_message_with_image tool with image_ids='3,4,5' — do NOT write the tool name as text; use the actual function call. Include a natural, conversational message to the assistant."
+    },
+    {
+      "sender": "USER",
+      "recipient": "AGENT",
+      "content": "I'm processing Dr. Darby's archival expenses. Please add Vanderbilt Archives and the Nutrition Foundation as friends on Venmo so I can bill them."
+    }
+  ],
+  "milestones": [],
+  "entity_diff_specs": [
+    {
+      "operation": "create",
+      "source": "appworld",
+      "table": "simple_note.notes",
+      "entity_data": {
+        "user_id": 38,
+        "title": "Archival Reimbursements",
+        "content": "Vanderbilt Archives:\n- $522.09\n- $424.85\n\nNutrition Foundation:\n- $204.63\n- $130.00",
+        "tags": [],
+        "created_at": "2026-04-17T00:11:55",
+        "updated_at": "2026-04-17T00:11:55",
+        "pinned": false,
+        "data": null
+      },
+      "column_similarity_measure": {
+        "user_id": "column_exact_match_similarity",
+        "title": "column_rouge_l_similarity",
+        "content": "column_rouge_l_similarity",
+        "tags": "column_ignore_similarity",
+        "created_at": "column_ignore_similarity",
+        "updated_at": "column_ignore_similarity",
+        "pinned": "column_exact_match_similarity",
+        "data": "column_ignore_similarity"
+      }
+    },
+    {
+      "operation": "create",
+      "source": "appworld",
+      "table": "venmo.friendships",
+      "entity_data": {
+        "user_id": 38,
+        "friend_id": 200,
+        "created_at": "2026-04-17T00:11:55"
+      },
+      "column_similarity_measure": {
+        "user_id": "column_exact_match_similarity",
+        "friend_id": "column_exact_match_similarity",
+        "created_at": "column_ignore_similarity"
+      }
+    },
+    {
+      "operation": "create",
+      "source": "appworld",
+      "table": "venmo.friendships",
+      "entity_data": {
+        "user_id": 38,
+        "friend_id": 201,
+        "created_at": "2026-04-17T00:11:55"
+      },
+      "column_similarity_measure": {
+        "user_id": "column_exact_match_similarity",
+        "friend_id": "column_exact_match_similarity",
+        "created_at": "column_ignore_similarity"
+      }
+    },
+    {
+      "operation": "create",
+      "source": "appworld",
+      "table": "venmo.payment_requests",
+      "entity_data": {
+        "sender_id": 38,
+        "receiver_id": 200,
+        "amount": 522.09,
+        "description": "Archival expenses reimbursement",
+        "created_at": "2026-04-17T00:11:55",
+        "updated_at": "2026-04-17T00:11:55",
+        "approved_at": null,
+        "denied_at": null,
+        "private": false
+      },
+      "column_similarity_measure": {
+        "sender_id": "column_exact_match_similarity",
+        "receiver_id": "column_exact_match_similarity",
+        "amount": "column_exact_match_similarity",
+        "description": "column_rouge_l_similarity",
+        "created_at": "column_ignore_similarity",
+        "updated_at": "column_ignore_similarity",
+        "approved_at": "column_ignore_similarity",
+        "denied_at": "column_ignore_similarity",
+        "private": "column_exact_match_similarity"
+      }
+    },
+    {
+      "operation": "create",
+      "source": "appworld",
+      "table": "venmo.payment_requests",
+      "entity_data": {
+        "sender_id": 38,
+        "receiver_id": 200,
+        "amount": 424.85,
+        "description": "Archival expenses reimbursement",
+        "created_at": "2026-04-17T00:11:55",
+        "updated_at": "2026-04-17T00:11:55",
+        "approved_at": null,
+        "denied_at": null,
+        "private": false
+      },
+      "column_similarity_measure": {
+        "sender_id": "column_exact_match_similarity",
+        "receiver_id": "column_exact_match_similarity",
+        "amount": "column_exact_match_similarity",
+        "description": "column_rouge_l_similarity",
+        "created_at": "column_ignore_similarity",
+        "updated_at": "column_ignore_similarity",
+        "approved_at": "column_ignore_similarity",
+        "denied_at": "column_ignore_similarity",
+        "private": "column_exact_match_similarity"
+      }
+    },
+    {
+      "operation": "create",
+      "source": "appworld",
+      "table": "venmo.payment_requests",
+      "entity_data": {
+        "sender_id": 38,
+        "receiver_id": 201,
+        "amount": 204.63,
+        "description": "Archival expenses reimbursement",
+        "created_at": "2026-04-17T00:11:55",
+        "updated_at": "2026-04-17T00:11:55",
+        "approved_at": null,
+        "denied_at": null,
+        "private": false
+      },
+      "column_similarity_measure": {
+        "sender_id": "column_exact_match_similarity",
+        "receiver_id": "column_exact_match_similarity",
+        "amount": "column_exact_match_similarity",
+        "description": "column_rouge_l_similarity",
+        "created_at": "column_ignore_similarity",
+        "updated_at": "column_ignore_similarity",
+        "approved_at": "column_ignore_similarity",
+        "denied_at": "column_ignore_similarity",
+        "private": "column_exact_match_similarity"
+      }
+    },
+    {
+      "operation": "create",
+      "source": "appworld",
+      "table": "venmo.payment_requests",
+      "entity_data": {
+        "sender_id": 38,
+        "receiver_id": 201,
+        "amount": 130.0,
+        "description": "Archival expenses reimbursement",
+        "created_at": "2026-04-17T00:11:55",
+        "updated_at": "2026-04-17T00:11:55",
+        "approved_at": null,
+        "denied_at": null,
+        "private": false
+      },
+      "column_similarity_measure": {
+        "sender_id": "column_exact_match_similarity",
+        "receiver_id": "column_exact_match_similarity",
+        "amount": "column_exact_match_similarity",
+        "description": "column_rouge_l_similarity",
+        "created_at": "column_ignore_similarity",
+        "updated_at": "column_ignore_similarity",
+        "approved_at": "column_ignore_similarity",
+        "denied_at": "column_ignore_similarity",
+        "private": "column_exact_match_similarity"
+      }
+    }
+  ],
+  "task_completion_criteria": "Add Venmo friends with usernames '@vandy_archives_med' and '@nutrition_fndt'. Send Venmo payment requests to '@vandy_archives_med' for $522.09 and $424.85. Send Venmo payment requests to '@nutrition_fndt' for $204.63 and $130.00. Create a simple note titled 'Archival Reimbursements' that lists the four requested amounts ($522.09, $424.85, $204.63, $130.00) grouped by the organization billed (Vanderbilt Archives and Nutrition Foundation), or something similar expressing the same idea.",
+  "categories": [
+    "APPWORLD",
+    "MULTIPLE_USER_TURN"
+  ],
+  "max_messages": 100,
+  "metadata": {
+    "original_scenario_id": "scenario_0702",
+    "expected_tools": [
+      "venmo_add_friend",
+      "venmo_create_payment_request",
+      "simple_note_create_note"
+    ],
+    "image_arrival": {
+      "2": [
+        "image_1",
+        "image_2",
+        "image_3"
+      ],
+      "3": [
+        "image_4",
+        "image_5",
+        "image_6"
+      ]
+    },
+    "image_delivery_map": [
+      {
+        "query": "Here are the first three invoices. Filter these to find the ones billed to Vanderbilt University. For each matching document, send a Venmo payment request to Vanderbilt Archives for the total amount due, or the explicitly requested reimbursement amount if there's a handwritten note.",
+        "image_ids": [
+          0,
+          1,
+          2
+        ]
+      },
+      {
+        "query": "Here are three more. Filter these new invoices for those billed to the Nutrition Foundation or NUTRION FNDT. Send a Venmo request to the Nutrition Foundation for the final balance due on each.",
+        "image_ids": [
+          3,
+          4,
+          5
+        ]
+      }
+    ],
+    "scenario_metadata": {
+      "num_images": 6,
+      "num_user_rounds": 4,
+      "selected_flow_type": "filter",
+      "image_arrival": "late",
+      "challenge_type": "none",
+      "require_disambiguation": true,
+      "dataset_type": "docvqa"
+    }
+  }
+}

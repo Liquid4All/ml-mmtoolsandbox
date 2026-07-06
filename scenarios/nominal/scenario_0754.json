@@ -1,0 +1,281 @@
+{
+  "name": "scenario_0754",
+  "base_scenario": "base",
+  "description": "Hunter is reading through several historical infographics and wants to purchase the books and products mentioned in them online.",
+  "difficulty": "easy",
+  "appworld_base_task": "_base_",
+  "device_state_id": "hun.weaver@gmail.com",
+  "reference_time": "2026-04-17T00:13:20.372917+00:00",
+  "agentsandbox_entities": {},
+  "appworld_entities": {
+    "amazon.addresses": [
+      {
+        "id": 400,
+        "user_id": 56,
+        "name": "Home",
+        "street_address": "025 Sanders Park Suite 249",
+        "city": "Seattle",
+        "state": "Washington",
+        "country": "USA",
+        "zip_code": 78926
+      },
+      {
+        "id": 401,
+        "user_id": 56,
+        "name": "Work",
+        "street_address": "96967 Fox Loop Suite 397",
+        "city": "Seattle",
+        "state": "Washington",
+        "country": "USA",
+        "zip_code": 86832
+      }
+    ],
+    "amazon.sellers": [
+      {
+        "id": 200,
+        "name": "Historical Books Outlet",
+        "rating": 4.8
+      },
+      {
+        "id": 201,
+        "name": "Tech History Press",
+        "rating": 4.7
+      },
+      {
+        "id": 202,
+        "name": "Bushmills Official",
+        "rating": 4.9
+      }
+    ],
+    "amazon.products": [
+      {
+        "id": 200,
+        "product_type": "books",
+        "name": "The Great New Orleans Kidnapping Case",
+        "description": "A historical book about New Orleans.",
+        "seller_id": 200,
+        "price": 15.99,
+        "delivery_days": 3,
+        "inventory_quantity": 20,
+        "weight": 1.5,
+        "length": 9.0,
+        "width": 6.0,
+        "height": 1.2,
+        "color": null,
+        "relative_size": null,
+        "rating": 4.5,
+        "seller_rating": 4.8,
+        "has_variations": false
+      },
+      {
+        "id": 201,
+        "product_type": "books",
+        "name": "CASH BOX: THE INVENTION AND GLOBALIZATION OF THE ATM",
+        "description": "The story of the ATM invention.",
+        "seller_id": 201,
+        "price": 19.99,
+        "delivery_days": 3,
+        "inventory_quantity": 15,
+        "weight": 1.6,
+        "length": 9.2,
+        "width": 6.1,
+        "height": 1.3,
+        "color": null,
+        "relative_size": null,
+        "rating": 4.6,
+        "seller_rating": 4.7,
+        "has_variations": false
+      },
+      {
+        "id": 202,
+        "product_type": "whiskey",
+        "name": "Old Bushmills",
+        "description": "Whiskey from the oldest licensed distillery in the world.",
+        "seller_id": 202,
+        "price": 45.0,
+        "delivery_days": 4,
+        "inventory_quantity": 50,
+        "weight": 2.5,
+        "length": 4.0,
+        "width": 4.0,
+        "height": 12.0,
+        "color": null,
+        "relative_size": null,
+        "rating": 4.9,
+        "seller_rating": 4.9,
+        "has_variations": false
+      }
+    ],
+    "gmail.users": []
+  },
+  "image_paths": [
+    "infographicvqa/images/93618.jpg",
+    "infographicvqa/images/93974.jpg",
+    "infographicvqa/images/96767.jpg"
+  ],
+  "messages": [
+    {
+      "sender": "SYSTEM",
+      "recipient": "USER",
+      "content": "{{USER_INSTRUCTION}}ROUND 1 [provide: image_1, image_3]\nQuery: Search for the two books promoted at the bottom of these infographics and add them to my Amazon cart.\nInstructions: Ask the assistant to read the book promotions at the bottom of both infographics, search for those two specific books on Amazon, and add them to your cart. If the assistant asks you to verify the extracted titles, confirm them as long as they match the books shown in the images. Do not provide the titles yourself. Once the assistant successfully adds both items to the cart, move on to the next round.\n\nROUND 2 [provide: image_2]\nQuery: Now look at this new infographic. Find a bottle of whiskey from the distillery that claims to be the oldest licensed one in the world, add it to my cart, and place the order for delivery to my Seattle address.\nInstructions: Tell the assistant to examine the new infographic to find the distillery claiming to be the oldest licensed one in the world. Ask it to search for a bottle of whiskey from that specific distillery, add it to your Amazon cart, and then place the order for all the items using your Seattle address. Because you have two Seattle addresses on file in your profile (Home and Work), the assistant should ask you to clarify which one to use. When it asks, tell it to use your home address. If it misidentifies the distillery, point it back to the map section of the image. End the conversation once the order is confirmed.\n\nYou have 3 images available to share with the agent using the send_message_with_image tool.\nIMPORTANT: Image IDs are ZERO-INDEXED integers (0, 1, 2, ...). Do NOT add 1 to the IDs.\nAvailable image IDs: [0, 1, 2]\nImage mapping:\n  image_1.jpg -> image ID 0\n  image_2.jpg -> image ID 1\n  image_3.jpg -> image ID 2\n\n## IMAGE DELIVERY\n\n\u26a0\ufe0f IMPORTANT: You MUST use the `send_message_with_image` tool to share images with User B. Do NOT just describe images in text \u2014 you MUST call the tool.\n\nImage delivery schedule:\n\n  Round 2: YOU MUST call the send_message_with_image tool with image_ids='1' \u2014 do NOT write the tool name as text; use the actual function call. Include a natural, conversational message to the assistant."
+    },
+    {
+      "sender": "USER",
+      "recipient": "AGENT",
+      "content": "Search for the two books promoted at the bottom of these infographics and add them to my Amazon cart.",
+      "image_ids": [
+        0,
+        2
+      ]
+    }
+  ],
+  "milestones": [],
+  "entity_diff_specs": [
+    {
+      "operation": "create",
+      "source": "appworld",
+      "table": "amazon.orders",
+      "entity_data": {
+        "user_id": 56,
+        "address_id": 400,
+        "tax": 5.0,
+        "delivery_fee": 0.0,
+        "gift_wrap_fee": 0.0,
+        "discount": 0.0,
+        "payment_card_id": null,
+        "created_at": "2026-04-17T00:13:20",
+        "address_text": "025 Sanders Park Suite 249, Seattle, Washington 78926",
+        "payment_card_digits": "1234",
+        "receipt_download_count": 0
+      },
+      "column_similarity_measure": {
+        "user_id": "column_exact_match_similarity",
+        "address_id": "column_exact_match_similarity",
+        "tax": "column_ignore_similarity",
+        "delivery_fee": "column_ignore_similarity",
+        "gift_wrap_fee": "column_ignore_similarity",
+        "discount": "column_ignore_similarity",
+        "payment_card_id": "column_ignore_similarity",
+        "created_at": "column_ignore_similarity",
+        "address_text": "column_ignore_similarity",
+        "payment_card_digits": "column_ignore_similarity",
+        "receipt_download_count": "column_ignore_similarity"
+      }
+    },
+    {
+      "operation": "create",
+      "source": "appworld",
+      "table": "amazon.order_items",
+      "entity_data": {
+        "order_id": 3300,
+        "product_id": 200,
+        "ordered_quantity": 1,
+        "returned_quantity": 0,
+        "gift_wrap_quantity": 0,
+        "price": 15.99,
+        "expected_delivery_at": "2026-04-20T00:13:20",
+        "delivered_at": null
+      },
+      "column_similarity_measure": {
+        "order_id": "column_ignore_similarity",
+        "product_id": "column_exact_match_similarity",
+        "ordered_quantity": "column_exact_match_similarity",
+        "returned_quantity": "column_exact_match_similarity",
+        "gift_wrap_quantity": "column_exact_match_similarity",
+        "price": "column_exact_match_similarity",
+        "expected_delivery_at": "column_ignore_similarity",
+        "delivered_at": "column_ignore_similarity"
+      }
+    },
+    {
+      "operation": "create",
+      "source": "appworld",
+      "table": "amazon.order_items",
+      "entity_data": {
+        "order_id": 3300,
+        "product_id": 201,
+        "ordered_quantity": 1,
+        "returned_quantity": 0,
+        "gift_wrap_quantity": 0,
+        "price": 19.99,
+        "expected_delivery_at": "2026-04-20T00:13:20",
+        "delivered_at": null
+      },
+      "column_similarity_measure": {
+        "order_id": "column_ignore_similarity",
+        "product_id": "column_exact_match_similarity",
+        "ordered_quantity": "column_exact_match_similarity",
+        "returned_quantity": "column_exact_match_similarity",
+        "gift_wrap_quantity": "column_exact_match_similarity",
+        "price": "column_exact_match_similarity",
+        "expected_delivery_at": "column_ignore_similarity",
+        "delivered_at": "column_ignore_similarity"
+      }
+    },
+    {
+      "operation": "create",
+      "source": "appworld",
+      "table": "amazon.order_items",
+      "entity_data": {
+        "order_id": 3300,
+        "product_id": 202,
+        "ordered_quantity": 1,
+        "returned_quantity": 0,
+        "gift_wrap_quantity": 0,
+        "price": 45.0,
+        "expected_delivery_at": "2026-04-21T00:13:20",
+        "delivered_at": null
+      },
+      "column_similarity_measure": {
+        "order_id": "column_ignore_similarity",
+        "product_id": "column_exact_match_similarity",
+        "ordered_quantity": "column_exact_match_similarity",
+        "returned_quantity": "column_exact_match_similarity",
+        "gift_wrap_quantity": "column_exact_match_similarity",
+        "price": "column_exact_match_similarity",
+        "expected_delivery_at": "column_ignore_similarity",
+        "delivered_at": "column_ignore_similarity"
+      }
+    }
+  ],
+  "task_completion_criteria": "Add the books 'The Great New Orleans Kidnapping Case' and 'CASH BOX: THE INVENTION AND GLOBALIZATION OF THE ATM', along with a bottle of 'Old Bushmills' whiskey, to the Amazon cart, and place the order for delivery to Hunter Weaver's Home address in Seattle.",
+  "categories": [
+    "APPWORLD",
+    "MULTIPLE_USER_TURN"
+  ],
+  "max_messages": 100,
+  "metadata": {
+    "original_scenario_id": "scenario_0754",
+    "expected_tools": [
+      "amazon_show_product",
+      "amazon_add_product_to_cart",
+      "amazon_place_order"
+    ],
+    "image_arrival": {
+      "1": [
+        "image_1",
+        "image_3"
+      ],
+      "2": [
+        "image_2"
+      ]
+    },
+    "image_delivery_map": [
+      {
+        "query": "Now look at this new infographic. Find a bottle of whiskey from the distillery that claims to be the oldest licensed one in the world, add it to my cart, and place the order for delivery to my Seattle address.",
+        "image_ids": [
+          1
+        ]
+      }
+    ],
+    "scenario_metadata": {
+      "num_images": 3,
+      "num_user_rounds": 2,
+      "selected_flow_type": "aggregate",
+      "image_arrival": "mixed",
+      "challenge_type": "none",
+      "require_disambiguation": true,
+      "dataset_type": "infographicvqa"
+    }
+  }
+}

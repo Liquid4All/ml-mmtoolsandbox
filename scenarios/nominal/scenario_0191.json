@@ -1,0 +1,432 @@
+{
+  "name": "scenario_0191",
+  "base_scenario": "base",
+  "description": "The user is browsing various books and magazines and wants to purchase some of them on Amazon, but needs to validate their purchase history and ratings first.",
+  "difficulty": "easy",
+  "appworld_base_task": "_base_",
+  "device_state_id": "kyl_moor@gmail.com",
+  "reference_time": "2026-04-16T23:56:11.666798+00:00",
+  "agentsandbox_entities": {},
+  "appworld_entities": {
+    "todoist.projects": [
+      {
+        "id": 400,
+        "user_id": 53,
+        "name": "To Read Later (Books)",
+        "color": "charcoal",
+        "is_inbox": false,
+        "description": "",
+        "created_at": "2025-01-01T10:00:00"
+      },
+      {
+        "id": 401,
+        "user_id": 53,
+        "name": "To Read Later (Articles)",
+        "color": "charcoal",
+        "is_inbox": false,
+        "description": "",
+        "created_at": "2025-01-01T10:00:00"
+      }
+    ],
+    "amazon.addresses": [
+      {
+        "id": 400,
+        "user_id": 53,
+        "name": "Home",
+        "street_address": "2027 Pacheco Shoals Suite 696",
+        "city": "Seattle",
+        "state": "Washington",
+        "country": "USA",
+        "zip_code": 16258
+      }
+    ],
+    "amazon.sellers": [
+      {
+        "id": 200,
+        "name": "Amazon Books",
+        "rating": 4.8
+      }
+    ],
+    "amazon.products": [
+      {
+        "id": 201,
+        "product_type": "books",
+        "name": "Endangered Species by Gene Wolfe",
+        "description": "A collection of stories",
+        "seller_id": 200,
+        "price": 15.99,
+        "delivery_days": 2,
+        "inventory_quantity": 10,
+        "weight": 1.0,
+        "length": 8.0,
+        "width": 5.0,
+        "height": 1.0,
+        "color": null,
+        "relative_size": null,
+        "rating": 4.5,
+        "seller_rating": 4.8,
+        "has_variations": false
+      },
+      {
+        "id": 202,
+        "product_type": "magazines",
+        "name": "Women's Health",
+        "description": "Health and fitness magazine",
+        "seller_id": 200,
+        "price": 5.99,
+        "delivery_days": 2,
+        "inventory_quantity": 20,
+        "weight": 0.5,
+        "length": 11.0,
+        "width": 8.0,
+        "height": 0.2,
+        "color": null,
+        "relative_size": null,
+        "rating": 4.2,
+        "seller_rating": 4.8,
+        "has_variations": false
+      },
+      {
+        "id": 203,
+        "product_type": "books",
+        "name": "The Roberts by Michael Blumlein",
+        "description": "Science fiction novel",
+        "seller_id": 200,
+        "price": 12.99,
+        "delivery_days": 2,
+        "inventory_quantity": 15,
+        "weight": 0.8,
+        "length": 8.5,
+        "width": 5.5,
+        "height": 0.8,
+        "color": null,
+        "relative_size": null,
+        "rating": 4.1,
+        "seller_rating": 4.8,
+        "has_variations": false
+      },
+      {
+        "id": 204,
+        "product_type": "books",
+        "name": "The Uncertain Places by Lisa Goldstein",
+        "description": "Fantasy novel",
+        "seller_id": 200,
+        "price": 14.99,
+        "delivery_days": 2,
+        "inventory_quantity": 12,
+        "weight": 0.9,
+        "length": 8.5,
+        "width": 5.5,
+        "height": 0.9,
+        "color": null,
+        "relative_size": null,
+        "rating": 4.3,
+        "seller_rating": 4.8,
+        "has_variations": false
+      },
+      {
+        "id": 205,
+        "product_type": "books",
+        "name": "In Cold Blood",
+        "description": "True crime book by Truman Capote",
+        "seller_id": 200,
+        "price": 10.99,
+        "delivery_days": 2,
+        "inventory_quantity": 30,
+        "weight": 0.7,
+        "length": 8.0,
+        "width": 5.0,
+        "height": 0.7,
+        "color": null,
+        "relative_size": null,
+        "rating": 4.8,
+        "seller_rating": 4.8,
+        "has_variations": false
+      },
+      {
+        "id": 206,
+        "product_type": "books",
+        "name": "90 Miles to Havana",
+        "description": "Historical fiction",
+        "seller_id": 200,
+        "price": 11.99,
+        "delivery_days": 2,
+        "inventory_quantity": 25,
+        "weight": 0.8,
+        "length": 8.2,
+        "width": 5.2,
+        "height": 0.8,
+        "color": null,
+        "relative_size": null,
+        "rating": 4.6,
+        "seller_rating": 4.8,
+        "has_variations": false
+      },
+      {
+        "id": 207,
+        "product_type": "books",
+        "name": "New Larousse Gastronomique",
+        "description": "Thick blue cookbook",
+        "seller_id": 200,
+        "price": 45.99,
+        "delivery_days": 2,
+        "inventory_quantity": 5,
+        "weight": 4.0,
+        "length": 11.0,
+        "width": 8.5,
+        "height": 2.5,
+        "color": "blue",
+        "relative_size": null,
+        "rating": 3.2,
+        "seller_rating": 4.8,
+        "has_variations": false
+      }
+    ],
+    "amazon.orders": [
+      {
+        "id": 3300,
+        "user_id": 53,
+        "address_id": 400,
+        "tax": 1.5,
+        "delivery_fee": 0.0,
+        "gift_wrap_fee": 0.0,
+        "discount": 0.0,
+        "payment_card_id": 600,
+        "created_at": "2025-01-10T10:00:00",
+        "address_text": "2027 Pacheco Shoals Suite 696, Seattle, Washington 16258",
+        "payment_card_digits": "1234",
+        "receipt_download_count": 0
+      }
+    ],
+    "amazon.order_items": [
+      {
+        "id": 200,
+        "order_id": 3300,
+        "product_id": 201,
+        "ordered_quantity": 1,
+        "returned_quantity": 0,
+        "gift_wrap_quantity": 0,
+        "price": 15.99,
+        "expected_delivery_at": "2025-01-12T23:59:59",
+        "delivered_at": "2025-01-12T15:30:00"
+      }
+    ],
+    "todoist.project_collaborator_links": [
+      {
+        "id": 50400,
+        "project_id": 400,
+        "user_id": 53,
+        "is_favorite": false,
+        "is_archived": false,
+        "created_at": "2025-01-01T10:00:00"
+      },
+      {
+        "id": 50401,
+        "project_id": 401,
+        "user_id": 53,
+        "is_favorite": false,
+        "is_archived": false,
+        "created_at": "2025-01-01T10:00:00"
+      }
+    ],
+    "gmail.users": []
+  },
+  "image_paths": [
+    "hiertext/images/test/593a2ab1b0b28fb9.jpg",
+    "hiertext/images/test/0ec39cae3f8165dc.jpg",
+    "hiertext/images/test/ab4ac414792b5230.jpg",
+    "chartmuseum/images/non_fiction_books.png",
+    "hiertext/images/test/6841e5ba64adc62c.jpg",
+    "hiertext/images/test/a54cc1ddf13f7f63.jpg"
+  ],
+  "messages": [
+    {
+      "sender": "SYSTEM",
+      "recipient": "USER",
+      "content": "{{USER_INSTRUCTION}}ROUND 1 [provide: image_1, image_2, image_3]\nQuery: I'm thinking about buying the book in the first picture, the magazine in the second, and the two books in the third. But before I do, can you check my Amazon purchase history to validate I haven't already bought them? If I haven't, please find them and add them to my cart.\nInstructions: Ask the assistant to validate your Amazon purchase history for the book in the first image, the magazine in the second image, and the two books in the third image to ensure you haven't already bought them. Instruct the assistant to search for and add any of these items to your Amazon cart if they do not appear in your purchase history. If the assistant asks for clarification on any of the titles or authors, tell it to look closely at the covers in the images. Once the assistant confirms it has checked your history and added the unpurchased items to your cart, proceed to the next round.\n\nROUND 2 [provide: image_4, image_5, image_6]\nQuery: Here are a few more I'm considering from these new images: the largest title in the center of the word cloud, the book with 'Havana' in its title from the 'New Books' shelf, and the thick blue cookbook from the wooden shelf. Check their Amazon ratings to validate their quality. If an item has an overall rating of at least 4 stars, add it to my cart. If it doesn't, just add it as a task to my 'To Read Later' project instead.\nInstructions: Share the new images and ask the assistant to evaluate three more items: the largest title in the center of the word cloud, the book with 'Havana' in its title on the 'New Books' shelf, and the thick blue cookbook on the wooden shelf. Tell the assistant to check their ratings on Amazon; if an item has an overall rating of at least 4 stars, it should go in your cart, but if it falls below 4 stars, it should be added as a task to your 'To Read Later' project. The assistant will notice multiple projects with similar names and ask which 'To Read Later' project you mean; clarify that you want the 'Books' one. If the assistant struggles to identify the books from the images, direct its attention to the specific visual cues provided. End the conversation once the assistant confirms the items have been appropriately routed to your cart or your project.\n\nYou have 6 images available to share with the agent using the send_message_with_image tool.\nIMPORTANT: Image IDs are ZERO-INDEXED integers (0, 1, 2, ...). Do NOT add 1 to the IDs.\nAvailable image IDs: [0, 1, 2, 3, 4, 5]\nImage mapping:\n  image_1.jpg -> image ID 0\n  image_2.jpg -> image ID 1\n  image_3.jpg -> image ID 2\n  image_4.jpg -> image ID 3\n  image_5.jpg -> image ID 4\n  image_6.jpg -> image ID 5\n\n## IMAGE DELIVERY\n\n\u26a0\ufe0f IMPORTANT: You MUST use the `send_message_with_image` tool to share images with User B. Do NOT just describe images in text \u2014 you MUST call the tool.\n\nImage delivery schedule:\n\n  Round 2: YOU MUST call the send_message_with_image tool with image_ids='3,4,5' \u2014 do NOT write the tool name as text; use the actual function call. Include a natural, conversational message to the assistant."
+    },
+    {
+      "sender": "USER",
+      "recipient": "AGENT",
+      "content": "I'm thinking about buying the book in the first picture, the magazine in the second, and the two books in the third. But before I do, can you check my Amazon purchase history to validate I haven't already bought them? If I haven't, please find them and add them to my cart.",
+      "image_ids": [
+        0,
+        1,
+        2
+      ]
+    }
+  ],
+  "milestones": [],
+  "entity_diff_specs": [
+    {
+      "operation": "create",
+      "source": "appworld",
+      "table": "amazon.cart_entries",
+      "entity_data": {
+        "user_id": 53,
+        "product_id": 202,
+        "quantity": 1,
+        "gift_wrap_quantity": 0
+      },
+      "column_similarity_measure": {
+        "user_id": "column_exact_match_similarity",
+        "product_id": "column_exact_match_similarity",
+        "quantity": "column_exact_match_similarity",
+        "gift_wrap_quantity": "column_exact_match_similarity"
+      }
+    },
+    {
+      "operation": "create",
+      "source": "appworld",
+      "table": "amazon.cart_entries",
+      "entity_data": {
+        "user_id": 53,
+        "product_id": 203,
+        "quantity": 1,
+        "gift_wrap_quantity": 0
+      },
+      "column_similarity_measure": {
+        "user_id": "column_exact_match_similarity",
+        "product_id": "column_exact_match_similarity",
+        "quantity": "column_exact_match_similarity",
+        "gift_wrap_quantity": "column_exact_match_similarity"
+      }
+    },
+    {
+      "operation": "create",
+      "source": "appworld",
+      "table": "amazon.cart_entries",
+      "entity_data": {
+        "user_id": 53,
+        "product_id": 204,
+        "quantity": 1,
+        "gift_wrap_quantity": 0
+      },
+      "column_similarity_measure": {
+        "user_id": "column_exact_match_similarity",
+        "product_id": "column_exact_match_similarity",
+        "quantity": "column_exact_match_similarity",
+        "gift_wrap_quantity": "column_exact_match_similarity"
+      }
+    },
+    {
+      "operation": "create",
+      "source": "appworld",
+      "table": "amazon.cart_entries",
+      "entity_data": {
+        "user_id": 53,
+        "product_id": 205,
+        "quantity": 1,
+        "gift_wrap_quantity": 0
+      },
+      "column_similarity_measure": {
+        "user_id": "column_exact_match_similarity",
+        "product_id": "column_exact_match_similarity",
+        "quantity": "column_exact_match_similarity",
+        "gift_wrap_quantity": "column_exact_match_similarity"
+      }
+    },
+    {
+      "operation": "create",
+      "source": "appworld",
+      "table": "amazon.cart_entries",
+      "entity_data": {
+        "user_id": 53,
+        "product_id": 206,
+        "quantity": 1,
+        "gift_wrap_quantity": 0
+      },
+      "column_similarity_measure": {
+        "user_id": "column_exact_match_similarity",
+        "product_id": "column_exact_match_similarity",
+        "quantity": "column_exact_match_similarity",
+        "gift_wrap_quantity": "column_exact_match_similarity"
+      }
+    },
+    {
+      "operation": "create",
+      "source": "appworld",
+      "table": "todoist.tasks",
+      "entity_data": {
+        "project_id": 400,
+        "section_id": null,
+        "user_id": 53,
+        "title": "New Larousse Gastronomique",
+        "description": null,
+        "due_date": null,
+        "priority": "medium",
+        "is_completed": false,
+        "duration": null,
+        "duration_unit": null,
+        "order_index": 1,
+        "assignee_id": null,
+        "assigner_id": null,
+        "created_at": "2026-04-16T23:56:11"
+      },
+      "column_similarity_measure": {
+        "project_id": "column_ignore_similarity",
+        "section_id": "column_ignore_similarity",
+        "user_id": "column_exact_match_similarity",
+        "title": "column_rouge_l_similarity",
+        "description": "column_ignore_similarity",
+        "due_date": "column_ignore_similarity",
+        "priority": "column_exact_match_similarity",
+        "is_completed": "column_exact_match_similarity",
+        "duration": "column_ignore_similarity",
+        "duration_unit": "column_ignore_similarity",
+        "order_index": "column_ignore_similarity",
+        "assignee_id": "column_ignore_similarity",
+        "assigner_id": "column_ignore_similarity",
+        "created_at": "column_ignore_similarity"
+      }
+    }
+  ],
+  "task_completion_criteria": "Check Amazon purchase history for 'endangered species' by Gene Wolfe, 'Women's Health' magazine, 'the roberts' by Michael Blumlein, and 'The Uncertain Places' by Lisa Goldstein, adding any unpurchased items to the Amazon cart. Then, check the Amazon ratings for 'In Cold Blood', '90 Miles to Havana', and 'New Larousse Gastronomique', adding them to the cart if they have an overall rating of at least 4 stars, or adding them as tasks to the 'To Read Later (Books)' Todoist project if they do not.",
+  "categories": [
+    "APPWORLD",
+    "MULTIPLE_USER_TURN"
+  ],
+  "max_messages": 100,
+  "metadata": {
+    "original_scenario_id": "scenario_0191",
+    "expected_tools": [
+      "amazon_show_product_purchases",
+      "amazon_show_product",
+      "amazon_add_product_to_cart",
+      "amazon_show_product_rating_distribution",
+      "todoist_show_project",
+      "todoist_create_task"
+    ],
+    "image_arrival": {
+      "1": [
+        "image_1",
+        "image_2",
+        "image_3"
+      ],
+      "2": [
+        "image_4",
+        "image_5",
+        "image_6"
+      ]
+    },
+    "image_delivery_map": [
+      {
+        "query": "Here are a few more I'm considering from these new images: the largest title in the center of the word cloud, the book with 'Havana' in its title from the 'New Books' shelf, and the thick blue cookbook from the wooden shelf. Check their Amazon ratings to validate their quality. If an item has an overall rating of at least 4 stars, add it to my cart. If it doesn't, just add it as a task to my 'To Read Later' project instead.",
+        "image_ids": [
+          3,
+          4,
+          5
+        ]
+      }
+    ],
+    "scenario_metadata": {
+      "num_images": 6,
+      "num_user_rounds": 2,
+      "selected_flow_type": "validate",
+      "image_arrival": "progressive",
+      "challenge_type": "none",
+      "require_disambiguation": true,
+      "dataset_type": "hiertext"
+    }
+  }
+}

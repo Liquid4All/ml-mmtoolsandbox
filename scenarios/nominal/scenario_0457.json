@@ -1,0 +1,227 @@
+{
+  "name": "scenario_0457",
+  "base_scenario": "base",
+  "description": "The user is auditing their local development workspace. They are cross-referencing project directories and specific script files shown in various code editor screenshots with the actual contents of their '/workspace/' and '/workspace/scripts/' directories to document dependencies and file locations.",
+  "difficulty": "easy",
+  "appworld_base_task": "_base_",
+  "device_state_id": "ashlee_martinez@gmail.com",
+  "reference_time": "2026-04-17T00:04:11.751475+00:00",
+  "agentsandbox_entities": {},
+  "appworld_entities": {
+    "file_system.directories": [
+      {
+        "id": 3600,
+        "path": "/workspace/",
+        "tilde_path": "/workspace/",
+        "user_id": 75,
+        "created_at": "2026-04-01T10:00:00",
+        "updated_at": "2026-04-01T10:00:00"
+      },
+      {
+        "id": 3601,
+        "path": "/workspace/AGENT-E-MASTER/",
+        "tilde_path": "/workspace/AGENT-E-MASTER/",
+        "user_id": 75,
+        "created_at": "2026-04-10T10:00:00",
+        "updated_at": "2026-04-10T10:00:00"
+      },
+      {
+        "id": 3602,
+        "path": "/workspace/LINGUA-MAIN/",
+        "tilde_path": "/workspace/LINGUA-MAIN/",
+        "user_id": 75,
+        "created_at": "2026-04-11T10:00:00",
+        "updated_at": "2026-04-11T10:00:00"
+      },
+      {
+        "id": 3603,
+        "path": "/workspace/VIDEOAUTOBENCH/",
+        "tilde_path": "/workspace/VIDEOAUTOBENCH/",
+        "user_id": 75,
+        "created_at": "2026-04-12T10:00:00",
+        "updated_at": "2026-04-12T10:00:00"
+      },
+      {
+        "id": 3604,
+        "path": "/workspace/scripts/",
+        "tilde_path": "/workspace/scripts/",
+        "user_id": 75,
+        "created_at": "2026-04-13T10:00:00",
+        "updated_at": "2026-04-13T10:00:00"
+      },
+      {
+        "path": "~/workspace/",
+        "tilde_path": "~/workspace/",
+        "user_id": 75,
+        "created_at": "2025-01-01T00:00:00",
+        "updated_at": "2025-01-01T00:00:00",
+        "id": 3605
+      }
+    ],
+    "file_system.files": [
+      {
+        "id": 26000,
+        "path": "/workspace/AGENT-E-MASTER/requirements.txt",
+        "tilde_path": "/workspace/AGENT-E-MASTER/requirements.txt",
+        "user_id": 75,
+        "content": "beautifulsoup4==4.12.2\nrequests==2.31.0",
+        "compressed_data": [],
+        "created_at": "2026-04-10T10:00:00",
+        "updated_at": "2026-04-10T10:00:00"
+      },
+      {
+        "id": 26001,
+        "path": "/workspace/LINGUA-MAIN/requirements.txt",
+        "tilde_path": "/workspace/LINGUA-MAIN/requirements.txt",
+        "user_id": 75,
+        "content": "numpy==1.26.0\npandas==2.1.1",
+        "compressed_data": [],
+        "created_at": "2026-04-11T10:00:00",
+        "updated_at": "2026-04-11T10:00:00"
+      },
+      {
+        "id": 26002,
+        "path": "/workspace/VIDEOAUTOBENCH/requirements.txt",
+        "tilde_path": "/workspace/VIDEOAUTOBENCH/requirements.txt",
+        "user_id": 75,
+        "content": "opencv-python==4.8.1.78\nffmpeg-python==0.2.0",
+        "compressed_data": [],
+        "created_at": "2026-04-12T10:00:00",
+        "updated_at": "2026-04-12T10:00:00"
+      },
+      {
+        "id": 26003,
+        "path": "/workspace/scripts/popup.js",
+        "tilde_path": "/workspace/scripts/popup.js",
+        "user_id": 75,
+        "content": "console.log('popup loaded');",
+        "compressed_data": [],
+        "created_at": "2026-04-13T10:00:00",
+        "updated_at": "2026-04-13T10:00:00"
+      },
+      {
+        "id": 26004,
+        "path": "/workspace/scripts/call_gpt4o.py",
+        "tilde_path": "/workspace/scripts/call_gpt4o.py",
+        "user_id": 75,
+        "content": "import openai\nprint('Calling GPT-4o')",
+        "compressed_data": [],
+        "created_at": "2026-04-14T10:00:00",
+        "updated_at": "2026-04-14T10:00:00"
+      },
+      {
+        "id": 26005,
+        "path": "/workspace/scripts/eval.py",
+        "tilde_path": "/workspace/scripts/eval.py",
+        "user_id": 75,
+        "content": "def evaluate():\n    pass",
+        "compressed_data": [],
+        "created_at": "2026-04-15T10:00:00",
+        "updated_at": "2026-04-15T10:00:00"
+      }
+    ],
+    "gmail.users": []
+  },
+  "image_paths": [
+    "screenspotpro/images/vscode_mac/screenshot_2024-10-23_19-14-18.png",
+    "screenspotpro/images/vscode_mac/screenshot_2024-10-23_19-01-41.png",
+    "screenspotpro/images/vscode_mac/screenshot_2024-12-03_15-13-18.png",
+    "screenspotpro/images/vscode_mac/screenshot_2024-12-03_17-22-18.png",
+    "screenspotpro/images/vscode_mac/screenshot_2024-12-03_14-58-59.png",
+    "screenspotpro/images/vscode_mac/screenshot_2024-12-03_16-50-00.png"
+  ],
+  "messages": [
+    {
+      "sender": "SYSTEM",
+      "recipient": "USER",
+      "content": "{{USER_INSTRUCTION}}ROUND 1 [provide: image_1, image_2, image_3]\nQuery: Look at the root project folders in the file explorers of these three screenshots. Check if directories with these exact names exist in my `/workspace/` folder. I believe they are AGENT-E-MASTER, LINGUA-MAIN, and AudioAutoBench. For the ones that exist, check if they have a `requirements.txt` file as shown in the images, and if so, read the contents of those files so we can review the dependencies.\nInstructions: Ask the assistant to look at the root project folders in the provided screenshots, check if directories with those exact names exist in your `/workspace/` folder, and read their `requirements.txt` files. State that you believe the folders are AGENT-E-MASTER, LINGUA-MAIN, and AudioAutoBench. If the assistant points out that the third folder is actually named differently in the image or fails to find 'AudioAutoBench', acknowledge the issue but tell it you will provide the correction in the next step. If it proceeds without noticing the mismatch, just wait for the next turn.\n\nROUND 2 [provide: image_4, image_5, image_6]\nQuery: Oops, the third project from before is actually the one shown in the third screenshot, not AudioAutoBench. Please check that corrected directory and read its `requirements.txt` file instead. Also, look at these three new screenshots. Find the JavaScript file open in the center of the first new image, the Python file open on the left in the second new image, and the Python script in the top right pane of the third new image. Check if these three files exist in my `/workspace/scripts/` folder. Finally, create a note called 'Workspace Audit' summarizing the dependencies found in the text files and noting which of the script files were present.\nInstructions: Acknowledge the mistake from the previous turn and clarify that the third project is actually the one shown in the third image, not AudioAutoBench. Ask the assistant to check that corrected directory and read its `requirements.txt` file. Then, direct the assistant to the three new screenshots. Ask it to identify the JavaScript file open in the center of the first new image, the Python file open on the left in the second new image, and the Python file in the top right pane of the third new image. Have the assistant check if these three specific files exist in your `/workspace/scripts/` folder. Finally, instruct the assistant to create a note titled 'Workspace Audit' that summarizes the dependencies found in all the text files and documents which of the script files were present. Once the note is confirmed created, end the conversation.\n\nYou have 6 images available to share with the agent using the send_message_with_image tool.\nIMPORTANT: Image IDs are ZERO-INDEXED integers (0, 1, 2, ...). Do NOT add 1 to the IDs.\nAvailable image IDs: [0, 1, 2, 3, 4, 5]\nImage mapping:\n  image_1.jpg -> image ID 0\n  image_2.jpg -> image ID 1\n  image_3.jpg -> image ID 2\n  image_4.jpg -> image ID 3\n  image_5.jpg -> image ID 4\n  image_6.jpg -> image ID 5\n\n## IMAGE DELIVERY\n\n⚠️ IMPORTANT: You MUST use the `send_message_with_image` tool to share images with User B. Do NOT just describe images in text — you MUST call the tool.\n\nImage delivery schedule:\n\n  Round 2: YOU MUST call the send_message_with_image tool with image_ids='3,4,5' — do NOT write the tool name as text; use the actual function call. Include a natural, conversational message to the assistant."
+    },
+    {
+      "sender": "USER",
+      "recipient": "AGENT",
+      "content": "Look at the root project folders in the file explorers of these three screenshots. Check if directories with these exact names exist in my `/workspace/` folder. I believe they are AGENT-E-MASTER, LINGUA-MAIN, and AudioAutoBench. For the ones that exist, check if they have a `requirements.txt` file as shown in the images, and if so, read the contents of those files so we can review the dependencies.",
+      "image_ids": [
+        0,
+        1,
+        2
+      ]
+    }
+  ],
+  "milestones": [],
+  "entity_diff_specs": [
+    {
+      "operation": "create",
+      "source": "appworld",
+      "table": "simple_note.notes",
+      "entity_data": {
+        "user_id": 75,
+        "title": "Workspace Audit",
+        "content": "Dependencies Summary:\n- /workspace/AGENT-E-MASTER/requirements.txt: requests, pytest, etc.\n- /workspace/LINGUA-MAIN/requirements.txt: torch, transformers, etc.\n- /workspace/VIDEOAUTOBENCH/requirements.txt: opencv-python, numpy, etc.\n\nScript Files Presence in /workspace/scripts/:\n- popup.js: Present\n- call_gpt4o.py: Present\n- eval.py: Present",
+        "tags": [
+          "audit",
+          "workspace"
+        ],
+        "created_at": "2026-04-17T00:04:11",
+        "updated_at": "2026-04-17T00:04:11",
+        "pinned": false,
+        "data": null
+      },
+      "column_similarity_measure": {
+        "user_id": "column_exact_match_similarity",
+        "title": "column_rouge_l_similarity",
+        "content": "column_rouge_l_similarity",
+        "tags": "column_ignore_similarity",
+        "created_at": "column_ignore_similarity",
+        "updated_at": "column_ignore_similarity",
+        "pinned": "column_exact_match_similarity",
+        "data": "column_ignore_similarity"
+      }
+    }
+  ],
+  "task_completion_criteria": "Create a note named 'Workspace Audit' that summarizes the dependencies found in the '/workspace/AGENT-E-MASTER/requirements.txt', '/workspace/LINGUA-MAIN/requirements.txt', and '/workspace/VIDEOAUTOBENCH/requirements.txt' files, and documents the presence or absence of 'popup.js', 'call_gpt4o.py', and 'eval.py' in the '/workspace/scripts/' directory.",
+  "categories": [
+    "APPWORLD",
+    "MULTIPLE_USER_TURN"
+  ],
+  "max_messages": 100,
+  "metadata": {
+    "original_scenario_id": "scenario_0457",
+    "expected_tools": [
+      "file_system_directory_exists",
+      "file_system_file_exists",
+      "file_system_show_file",
+      "simple_note_create_note"
+    ],
+    "image_arrival": {
+      "1": [
+        "image_1",
+        "image_2",
+        "image_3"
+      ],
+      "2": [
+        "image_4",
+        "image_5",
+        "image_6"
+      ]
+    },
+    "image_delivery_map": [
+      {
+        "query": "Oops, the third project from before is actually the one shown in the third screenshot, not AudioAutoBench. Please check that corrected directory and read its `requirements.txt` file instead. Also, look at these three new screenshots. Find the JavaScript file open in the center of the first new image, the Python file open on the left in the second new image, and the Python script in the top right pane of the third new image. Check if these three files exist in my `/workspace/scripts/` folder. Finally, create a note called 'Workspace Audit' summarizing the dependencies found in the text files and noting which of the script files were present.",
+        "image_ids": [
+          3,
+          4,
+          5
+        ]
+      }
+    ],
+    "scenario_metadata": {
+      "num_images": 6,
+      "num_user_rounds": 2,
+      "selected_flow_type": "lookup_chain",
+      "image_arrival": "progressive",
+      "challenge_type": "error_correction",
+      "require_disambiguation": false,
+      "dataset_type": "screenspotpro"
+    }
+  }
+}

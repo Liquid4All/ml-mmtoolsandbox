@@ -1,0 +1,323 @@
+{
+  "name": "scenario_0357",
+  "base_scenario": "base",
+  "description": "Aaron is managing components and tasks for an upcoming mechanical and electronics integration project. He has photos of his current electronics inventory, a component kit, and technical specification documents.",
+  "difficulty": "easy",
+  "appworld_base_task": "_base_",
+  "device_state_id": "aa_burt@gmail.com",
+  "reference_time": "2026-04-17T00:00:53.247137+00:00",
+  "agentsandbox_entities": {
+    "contact": [
+      {
+        "person_id": "self",
+        "name": "Aaron Burton",
+        "phone_number": "9595488531",
+        "relationship": "self",
+        "is_self": true
+      }
+    ],
+    "calendars": [
+      {
+        "calendar_id": "calendar_100",
+        "title": "Work"
+      }
+    ]
+  },
+  "appworld_entities": {
+    "phone.contacts": [
+      {
+        "id": 200,
+        "user_id": 99,
+        "first_name": "John",
+        "last_name": "Doe",
+        "email": "john.doe@gmail.com",
+        "phone_number": "555-0199",
+        "relationships": [
+          "coworker"
+        ],
+        "birthday": null,
+        "home_address": null,
+        "work_address": null,
+        "created_at": "2025-11-15T09:30:00"
+      }
+    ],
+    "amazon.sellers": [
+      {
+        "id": 200,
+        "name": "Hardware Supplies Inc.",
+        "rating": 4.8
+      },
+      {
+        "id": 201,
+        "name": "ElectroComponents",
+        "rating": 4.5
+      }
+    ],
+    "amazon.products": [
+      {
+        "id": 200,
+        "product_type": "hardware",
+        "name": "M8 x 30mm Stainless Steel Hex Bolts",
+        "description": "Pack of 20 M8 x 30mm hex head bolts, stainless steel.",
+        "seller_id": 200,
+        "price": 12.99,
+        "delivery_days": 2,
+        "inventory_quantity": 50,
+        "weight": 0.5,
+        "length": 5.0,
+        "width": 3.0,
+        "height": 1.0,
+        "color": "silver",
+        "relative_size": "small",
+        "rating": 4.7,
+        "seller_rating": 4.8,
+        "has_variations": true
+      },
+      {
+        "id": 201,
+        "product_type": "electronics",
+        "name": "22 AWG Solid Core Hookup Wire",
+        "description": "Spool of 22 AWG solid core wire for circuit boards and serial interfaces.",
+        "seller_id": 201,
+        "price": 8.5,
+        "delivery_days": 2,
+        "inventory_quantity": 100,
+        "weight": 0.2,
+        "length": 2.0,
+        "width": 2.0,
+        "height": 2.0,
+        "color": "black",
+        "relative_size": "small",
+        "rating": 4.6,
+        "seller_rating": 4.5,
+        "has_variations": true
+      }
+    ],
+    "gmail.users": [
+      {
+        "id": 200,
+        "first_name": "John",
+        "last_name": "Doe",
+        "email": "john.doe@gmail.com",
+        "password": "default_password",
+        "status": "active",
+        "created_at": "2025-01-01T00:00:00",
+        "last_logged_in": "2025-01-01T00:00:00"
+      },
+      {
+        "id": 201,
+        "first_name": "Project",
+        "last_name": "Team",
+        "email": "team@project.com",
+        "password": "default_password",
+        "status": "active",
+        "created_at": "2025-01-01T00:00:00",
+        "last_logged_in": "2025-01-01T00:00:00"
+      }
+    ],
+    "phone.users": [
+      {
+        "id": 200,
+        "first_name": "John",
+        "last_name": "Doe",
+        "phone_number": "555-0199",
+        "password": "default_password",
+        "created_at": "2025-01-01T00:00:00",
+        "last_logged_in": "2025-01-01T00:00:00"
+      }
+    ]
+  },
+  "image_paths": [
+    "hiertext/images/test/80bb06f0ef46d06a.jpg",
+    "screenspotpro/images/autocad_windows/screenshot_2024-11-29_21-02-53.png",
+    "hiertext/images/test/8e587a43e0bf393f.jpg",
+    "screenspotpro/images/inventor_windows/screenshot_2024-11-24_12-38-56.png",
+    "hiertext/images/test/1ba3ae48fcc56592.jpg",
+    "hiertext/images/test/ef325f5383bbab05.jpg"
+  ],
+  "messages": [
+    {
+      "sender": "SYSTEM",
+      "recipient": "USER",
+      "content": "{{USER_INSTRUCTION}}ROUND 1 [provide: image_1, image_2, image_3, image_4, image_5, image_6]\nQuery: Look at the technical spec table in these images. Find the required bolt size for the AFAG 13-6 flange and add those to my Amazon cart.\nInstructions: Ask the assistant to check the technical specification table in the provided images, locate the required bolt size for the AFAG 13-6 flange, and add those specific bolts to the Amazon cart. If the assistant asks for clarification on which image, direct it to the one with the 3D cylindrical model and the Chinese spec table. Wait for confirmation that the items were added.\n\nROUND 2\nQuery: Now check the label on that small bag with the serial interface circuit. It says I need to supply something myself to make it work. Add whatever that missing material is to my cart too.\nInstructions: Instruct the assistant to read the label on the serial interface kit bag to find out what specific material the user must supply themselves. Ask the assistant to add that missing material to the Amazon cart. If the assistant adds the wrong item, remind it to read the exact sentence on the label about what 'You must supply'. Proceed once it confirms the addition.\n\nROUND 3\nQuery: Draft an email to team@project.com. Let them know we already have two different WiFi shields in our inventory based on these images, so they don't buy new ones. Make sure to name both of the shields.\nInstructions: Ask the assistant to scan the images to identify the two different WiFi shields currently in the inventory. Have it draft an email to team@project.com listing the specific names of both shields so the team knows not to purchase them. If the assistant misses one or names the EggBot board instead, correct it by pointing out that one shield is stacked on an Arduino board and the other is red with black headers. Wait for the draft confirmation.\n\nROUND 4\nQuery: Actually, cancel that email draft to the team. Let's just text John instead. Tell him we're going to use the Sparkfun shield, and give him the specific pin labels for the HW_UART so he can prep the code.\nInstructions: Tell the assistant you changed your mind. Instruct it to delete the draft email it just created. Then, ask it to send a text message to John confirming that the Sparkfun shield will be used, and ensure it extracts and includes the specific hardware UART pin labels visible on that board's image. If the assistant asks for the pin names, tell it to look closely at the text right next to the HW_UART label on the red Sparkfun board.\n\nROUND 5\nQuery: One last thing. Look at item 9 in that Chinese maintenance document. Schedule a calendar event for next Friday at 10 AM and title it with the English translation of those two tasks.\nInstructions: Ask the assistant to find item 9 in the Chinese maintenance document, translate the two tasks listed there into English, and create a calendar event for next Friday at 10 AM using that translation as the event title. If the assistant struggles with the translation, encourage it to use its best judgment based on the visible characters for item 9. Acknowledge and end the conversation once the event is scheduled.\n\nYou have 6 images available to share with the agent using the send_message_with_image tool.\nIMPORTANT: Image IDs are ZERO-INDEXED integers (0, 1, 2, ...). Do NOT add 1 to the IDs.\nAvailable image IDs: [0, 1, 2, 3, 4, 5]\nImage mapping:\n  image_1.jpg -> image ID 0\n  image_2.jpg -> image ID 1\n  image_3.jpg -> image ID 2\n  image_4.jpg -> image ID 3\n  image_5.jpg -> image ID 4\n  image_6.jpg -> image ID 5"
+    },
+    {
+      "sender": "USER",
+      "recipient": "AGENT",
+      "content": "Look at the technical spec table in these images. Find the required bolt size for the AFAG 13-6 flange and add those to my Amazon cart.",
+      "image_ids": [
+        0,
+        1,
+        2,
+        3,
+        4,
+        5
+      ]
+    }
+  ],
+  "milestones": [],
+  "entity_diff_specs": [
+    {
+      "operation": "create",
+      "source": "appworld",
+      "table": "phone.global_text_messages",
+      "entity_data": {
+        "sender_id": 99,
+        "receiver_id": 200,
+        "message": "We're going to use the Sparkfun shield. The HW_UART pins are 1-HW_RX and 0-HW_TX so you can prep the code.",
+        "created_at": "2026-04-17T00:00:53"
+      },
+      "column_similarity_measure": {
+        "sender_id": "column_exact_match_similarity",
+        "receiver_id": "column_exact_match_similarity",
+        "message": "column_rouge_l_similarity",
+        "created_at": "column_ignore_similarity"
+      }
+    },
+    {
+      "operation": "create",
+      "source": "appworld",
+      "table": "phone.user_text_messages",
+      "entity_data": {
+        "global_text_message_id": 200,
+        "user_id": 99,
+        "created_at": "2026-04-17T00:00:53"
+      },
+      "column_similarity_measure": {
+        "global_text_message_id": "column_ignore_similarity",
+        "user_id": "column_exact_match_similarity",
+        "created_at": "column_ignore_similarity"
+      }
+    },
+    {
+      "operation": "create",
+      "source": "appworld",
+      "table": "amazon.cart_entries",
+      "entity_data": {
+        "user_id": 99,
+        "product_id": 200,
+        "quantity": 1,
+        "gift_wrap_quantity": 0
+      },
+      "column_similarity_measure": {
+        "user_id": "column_exact_match_similarity",
+        "product_id": "column_exact_match_similarity",
+        "quantity": "column_exact_match_similarity",
+        "gift_wrap_quantity": "column_exact_match_similarity"
+      }
+    },
+    {
+      "operation": "create",
+      "source": "appworld",
+      "table": "amazon.cart_entries",
+      "entity_data": {
+        "user_id": 99,
+        "product_id": 201,
+        "quantity": 1,
+        "gift_wrap_quantity": 0
+      },
+      "column_similarity_measure": {
+        "user_id": "column_exact_match_similarity",
+        "product_id": "column_exact_match_similarity",
+        "quantity": "column_exact_match_similarity",
+        "gift_wrap_quantity": "column_exact_match_similarity"
+      }
+    },
+    {
+      "operation": "create",
+      "source": "agentsandbox",
+      "namespace": "CALENDAR_EVENTS",
+      "entity_data": {
+        "calendar_event_id": "event_100",
+        "calendar_id": "calendar_100",
+        "title": "Rust removal and painting",
+        "description": null,
+        "start_datetime": "2026-04-24T10:00:00Z",
+        "end_datetime": "2026-04-24T11:00:00Z",
+        "is_all_day": false,
+        "recurrence_frequency": null,
+        "recurrence_interval": null,
+        "recurrence_until_datetime": null,
+        "recurrence_parent_id": null,
+        "recurrence_exclude_datetime": [],
+        "latitude": null,
+        "longitude": null,
+        "place_id": null,
+        "formatted_address": null,
+        "attendee_names": [],
+        "attendee_emails": []
+      },
+      "column_similarity_measure": {
+        "calendar_event_id": "column_ignore_similarity",
+        "calendar_id": "column_ignore_similarity",
+        "title": "column_rouge_l_similarity",
+        "description": "column_ignore_similarity",
+        "start_datetime": "column_datetime_naive_equal_similarity",
+        "end_datetime": "column_datetime_naive_equal_similarity",
+        "is_all_day": "column_exact_match_similarity",
+        "recurrence_frequency": "column_ignore_similarity",
+        "recurrence_interval": "column_ignore_similarity",
+        "recurrence_until_datetime": "column_ignore_similarity",
+        "recurrence_parent_id": "column_ignore_similarity",
+        "recurrence_exclude_datetime": "column_ignore_similarity",
+        "latitude": "column_ignore_similarity",
+        "longitude": "column_ignore_similarity",
+        "place_id": "column_ignore_similarity",
+        "formatted_address": "column_ignore_similarity",
+        "attendee_names": "column_ignore_similarity",
+        "attendee_emails": "column_ignore_similarity"
+      }
+    },
+    {
+      "operation": "create",
+      "source": "appworld",
+      "table": "phone.user_text_messages",
+      "entity_data": {
+        "global_text_message_id": 200,
+        "user_id": 200,
+        "created_at": "2026-04-17T00:00:53"
+      },
+      "column_similarity_measure": {
+        "global_text_message_id": "column_ignore_similarity",
+        "user_id": "column_exact_match_similarity",
+        "created_at": "column_ignore_similarity"
+      }
+    }
+  ],
+  "task_completion_criteria": "Add 'M8 x 30' bolts and wire to the Amazon cart, send a text message to John mentioning the Sparkfun shield and its '1-HW_RX' and '0-HW_TX' pins, and create a calendar event for next Friday at 10 AM titled 'Rust removal and painting' or something similar.",
+  "categories": [
+    "APPWORLD",
+    "MULTIPLE_USER_TURN"
+  ],
+  "max_messages": 100,
+  "metadata": {
+    "original_scenario_id": "scenario_0357",
+    "expected_tools": [
+      "amazon_add_product_to_cart",
+      "gmail_create_draft",
+      "gmail_delete_draft",
+      "messages_send_text_message",
+      "create_calendar_event"
+    ],
+    "image_arrival": {
+      "1": [
+        "image_1",
+        "image_2",
+        "image_3",
+        "image_4",
+        "image_5",
+        "image_6"
+      ]
+    },
+    "image_delivery_map": [],
+    "scenario_metadata": {
+      "num_images": 6,
+      "num_user_rounds": 5,
+      "selected_flow_type": "cross_reference",
+      "image_arrival": "upfront",
+      "challenge_type": "goal_change",
+      "require_disambiguation": false,
+      "dataset_type": "hiertext"
+    }
+  }
+}

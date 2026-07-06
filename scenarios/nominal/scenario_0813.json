@@ -1,0 +1,342 @@
+{
+  "name": "scenario_0813",
+  "base_scenario": "base",
+  "description": "The user is planning to buy several items, including office supplies, toys, and a camera. They want to aggregate these items into a single note and manage them in their Amazon account.",
+  "difficulty": "easy",
+  "appworld_base_task": "_base_",
+  "device_state_id": "de_ritt@gmail.com",
+  "reference_time": "2026-04-17T00:15:04.016999+00:00",
+  "agentsandbox_entities": {},
+  "appworld_entities": {
+    "amazon.sellers": [
+      {
+        "id": 200,
+        "name": "Office Supplies Co.",
+        "rating": 4.5
+      },
+      {
+        "id": 201,
+        "name": "Camera Store",
+        "rating": 4.8
+      },
+      {
+        "id": 202,
+        "name": "Toy World",
+        "rating": 4.7
+      },
+      {
+        "id": 203,
+        "name": "Pen Makers",
+        "rating": 4.6
+      }
+    ],
+    "amazon.products": [
+      {
+        "id": 200,
+        "product_type": "office supplies",
+        "name": "Printer ribbon cartridge",
+        "description": "High quality printer ribbon cartridge.",
+        "seller_id": 200,
+        "price": 15.99,
+        "delivery_days": 2,
+        "inventory_quantity": 50,
+        "weight": 0.2,
+        "length": 5.0,
+        "width": 3.0,
+        "height": 1.0,
+        "color": null,
+        "relative_size": null,
+        "rating": 4.5,
+        "seller_rating": 4.5,
+        "has_variations": false
+      },
+      {
+        "id": 201,
+        "product_type": "office supplies",
+        "name": "Mitsubishi mechanical pencil",
+        "description": "0.5mm mechanical pencil.",
+        "seller_id": 200,
+        "price": 5.99,
+        "delivery_days": 2,
+        "inventory_quantity": 100,
+        "weight": 0.05,
+        "length": 6.0,
+        "width": 0.5,
+        "height": 0.5,
+        "color": null,
+        "relative_size": null,
+        "rating": 4.8,
+        "seller_rating": 4.5,
+        "has_variations": false
+      },
+      {
+        "id": 202,
+        "product_type": "cameras",
+        "name": "Nikon D850",
+        "description": "FX-Format Digital SLR Camera Body.",
+        "seller_id": 201,
+        "price": 2996.95,
+        "delivery_days": 3,
+        "inventory_quantity": 10,
+        "weight": 2.0,
+        "length": 5.7,
+        "width": 3.1,
+        "height": 4.9,
+        "color": null,
+        "relative_size": null,
+        "rating": 4.9,
+        "seller_rating": 4.8,
+        "has_variations": false
+      },
+      {
+        "id": 203,
+        "product_type": "toys",
+        "name": "Harry Potter wand",
+        "description": "Authentic replica of Harry Potter's wand.",
+        "seller_id": 202,
+        "price": 39.99,
+        "delivery_days": 2,
+        "inventory_quantity": 30,
+        "weight": 0.5,
+        "length": 15.0,
+        "width": 1.5,
+        "height": 1.5,
+        "color": null,
+        "relative_size": null,
+        "rating": 4.7,
+        "seller_rating": 4.7,
+        "has_variations": false
+      },
+      {
+        "id": 204,
+        "product_type": "toys",
+        "name": "GOODSMILE Limited Edition MODEROID Gridknight & Goldburn",
+        "description": "Collectible action figure.",
+        "seller_id": 202,
+        "price": 89.99,
+        "delivery_days": 4,
+        "inventory_quantity": 5,
+        "weight": 1.2,
+        "length": 10.0,
+        "width": 5.0,
+        "height": 8.0,
+        "color": null,
+        "relative_size": null,
+        "rating": 4.9,
+        "seller_rating": 4.7,
+        "has_variations": false
+      },
+      {
+        "id": 205,
+        "product_type": "office supplies",
+        "name": "Caran d'Ache ballpoint pen",
+        "description": "Premium colorful ballpoint pen.",
+        "seller_id": 203,
+        "price": 25.0,
+        "delivery_days": 2,
+        "inventory_quantity": 20,
+        "weight": 0.1,
+        "length": 5.5,
+        "width": 0.4,
+        "height": 0.4,
+        "color": null,
+        "relative_size": null,
+        "rating": 4.6,
+        "seller_rating": 4.6,
+        "has_variations": false
+      }
+    ],
+    "simple_note.notes": [
+      {
+        "id": 3200,
+        "user_id": 97,
+        "title": "Shopping Ideas",
+        "content": "Current list: ",
+        "tags": [],
+        "created_at": "2026-04-10T12:00:00",
+        "updated_at": "2026-04-10T12:00:00",
+        "pinned": false,
+        "data": null
+      },
+      {
+        "id": 3201,
+        "user_id": 97,
+        "title": "Shopping Ideas for Work",
+        "content": "Office chairs",
+        "tags": [],
+        "created_at": "2026-04-11T09:30:00",
+        "updated_at": "2026-04-11T09:30:00",
+        "pinned": false,
+        "data": null
+      }
+    ],
+    "gmail.users": []
+  },
+  "image_paths": [
+    "worldvqa/images/1536.jpg",
+    "worldvqa/images/1520.jpg",
+    "worldvqa/images/1651.jpg",
+    "worldvqa/images/1776.jpg",
+    "worldvqa/images/1424.jpg",
+    "worldvqa/images/1658.jpg"
+  ],
+  "messages": [
+    {
+      "sender": "SYSTEM",
+      "recipient": "USER",
+      "content": "{{USER_INSTRUCTION}}ROUND 1 [provide: image_1, image_2, image_3, image_4, image_5, image_6]\nQuery: For the office supplies and the camera in these pictures, figure out their specific names, add them to my 'Shopping Ideas' note, and also find them on Amazon to put in my cart.\nInstructions: Ask the assistant to identify the office supplies and the camera shown in the provided images, add their specific names to your 'Shopping Ideas' note, and then search for those items on Amazon to add them to your cart. Since you have multiple notes with similar names, if the assistant asks which note you mean, clarify that you want the general personal one, not the work one. Once the assistant confirms the items have been added to the correct note and the cart, proceed to the next round.\n\nROUND 2\nQuery: Now for the two toys in the pictures, add their names to the same note and put them on my Amazon Wish List. Also, I changed my mind about the colorful pen. Remove it from my Amazon cart and update the note to take it off the list.\nInstructions: Ask the assistant to identify the two toys from the earlier images, add their names to the same note, and add them to your Amazon Wish List. Additionally, tell the assistant that you've changed your mind about the colorful pen from the images, so it needs to be removed from your Amazon cart and deleted from the note. End the conversation once the assistant confirms these updates are complete.\n\nYou have 6 images available to share with the agent using the send_message_with_image tool.\nIMPORTANT: Image IDs are ZERO-INDEXED integers (0, 1, 2, ...). Do NOT add 1 to the IDs.\nAvailable image IDs: [0, 1, 2, 3, 4, 5]\nImage mapping:\n  image_1.jpg -> image ID 0\n  image_2.jpg -> image ID 1\n  image_3.jpg -> image ID 2\n  image_4.jpg -> image ID 3\n  image_5.jpg -> image ID 4\n  image_6.jpg -> image ID 5"
+    },
+    {
+      "sender": "USER",
+      "recipient": "AGENT",
+      "content": "For the office supplies and the camera in these pictures, figure out their specific names, add them to my 'Shopping Ideas' note, and also find them on Amazon to put in my cart.",
+      "image_ids": [
+        0,
+        1,
+        2,
+        3,
+        4,
+        5
+      ]
+    }
+  ],
+  "milestones": [],
+  "entity_diff_specs": [
+    {
+      "operation": "create",
+      "source": "appworld",
+      "table": "amazon.cart_entries",
+      "entity_data": {
+        "user_id": 97,
+        "product_id": 200,
+        "quantity": 1,
+        "gift_wrap_quantity": 0
+      },
+      "column_similarity_measure": {
+        "user_id": "column_exact_match_similarity",
+        "product_id": "column_exact_match_similarity",
+        "quantity": "column_exact_match_similarity",
+        "gift_wrap_quantity": "column_exact_match_similarity"
+      }
+    },
+    {
+      "operation": "create",
+      "source": "appworld",
+      "table": "amazon.cart_entries",
+      "entity_data": {
+        "user_id": 97,
+        "product_id": 201,
+        "quantity": 1,
+        "gift_wrap_quantity": 0
+      },
+      "column_similarity_measure": {
+        "user_id": "column_exact_match_similarity",
+        "product_id": "column_exact_match_similarity",
+        "quantity": "column_exact_match_similarity",
+        "gift_wrap_quantity": "column_exact_match_similarity"
+      }
+    },
+    {
+      "operation": "create",
+      "source": "appworld",
+      "table": "amazon.cart_entries",
+      "entity_data": {
+        "user_id": 97,
+        "product_id": 202,
+        "quantity": 1,
+        "gift_wrap_quantity": 0
+      },
+      "column_similarity_measure": {
+        "user_id": "column_exact_match_similarity",
+        "product_id": "column_exact_match_similarity",
+        "quantity": "column_exact_match_similarity",
+        "gift_wrap_quantity": "column_exact_match_similarity"
+      }
+    },
+    {
+      "operation": "create",
+      "source": "appworld",
+      "table": "amazon.wish_list_entries",
+      "entity_data": {
+        "user_id": 97,
+        "product_id": 203,
+        "quantity": 1
+      },
+      "column_similarity_measure": {
+        "user_id": "column_exact_match_similarity",
+        "product_id": "column_exact_match_similarity",
+        "quantity": "column_exact_match_similarity"
+      }
+    },
+    {
+      "operation": "create",
+      "source": "appworld",
+      "table": "amazon.wish_list_entries",
+      "entity_data": {
+        "user_id": 97,
+        "product_id": 204,
+        "quantity": 1
+      },
+      "column_similarity_measure": {
+        "user_id": "column_exact_match_similarity",
+        "product_id": "column_exact_match_similarity",
+        "quantity": "column_exact_match_similarity"
+      }
+    },
+    {
+      "operation": "update",
+      "source": "appworld",
+      "table": "simple_note.notes",
+      "entity_id_column": "id",
+      "entity_id_value": 3200,
+      "expected_fields": {
+        "updated_at": "2026-04-10T12:00:00",
+        "content": "Current list: \n- Printer ribbon cartridge\n- Mitsubishi mechanical pencil\n- Nikon D850\n- Harry Potter wand\n- GOODSMILE Limited Edition MODEROID Gridknight & Goldburn",
+        "tags": []
+      },
+      "column_similarity_measure": {
+        "updated_at": "column_ignore_similarity",
+        "content": "column_rouge_l_similarity",
+        "id": "column_exact_match_similarity"
+      }
+    }
+  ],
+  "task_completion_criteria": "The agent must add the 'Printer ribbon cartridge', 'Mitsubishi mechanical pencil', and 'Nikon D850' (or similar names) to the 'Shopping Ideas' note and the user's Amazon shopping cart. The agent must also add the 'Harry Potter wand' and 'GOODSMILE Limited Edition MODEROID Gridknight & Goldburn' (or similar names) to the 'Shopping Ideas' note and the user's Amazon Wish List. Finally, the agent must ensure the 'Caran d'Ache ballpoint pen' is removed from the Amazon shopping cart and its entry is deleted from the 'Shopping Ideas' note.",
+  "categories": [
+    "APPWORLD",
+    "MULTIPLE_USER_TURN"
+  ],
+  "max_messages": 100,
+  "metadata": {
+    "original_scenario_id": "scenario_0813",
+    "expected_tools": [
+      "simple_note_show_note",
+      "simple_note_add_content_to_note",
+      "amazon_show_product",
+      "amazon_add_product_to_cart",
+      "simple_note_update_note",
+      "amazon_add_product_to_wish_list",
+      "amazon_delete_product_from_cart"
+    ],
+    "image_arrival": {
+      "1": [
+        "image_1",
+        "image_2",
+        "image_3",
+        "image_4",
+        "image_5",
+        "image_6"
+      ]
+    },
+    "image_delivery_map": [],
+    "scenario_metadata": {
+      "num_images": 6,
+      "num_user_rounds": 2,
+      "selected_flow_type": "aggregate",
+      "image_arrival": "upfront",
+      "challenge_type": "state_mutation",
+      "require_disambiguation": true,
+      "dataset_type": "worldvqa"
+    }
+  }
+}

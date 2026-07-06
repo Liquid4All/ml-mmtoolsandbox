@@ -1,0 +1,567 @@
+{
+  "name": "scenario_0723",
+  "base_scenario": "base",
+  "description": "Melissa is analyzing recent tech trends, Microsoft's financial growth, and internal IT costs to update her task list, notes, and propose a new AI strategy to her team.",
+  "difficulty": "easy",
+  "appworld_base_task": "_base_",
+  "device_state_id": "mel.bailey@gmail.com",
+  "reference_time": "2026-04-17T00:12:32.548000+00:00",
+  "agentsandbox_entities": {},
+  "appworld_entities": {
+    "gmail.emails": [
+      {
+        "id": 5100,
+        "sender_id": 200,
+        "recipient_ids": [
+          81
+        ],
+        "subject": "AI Strategy Deployment",
+        "body": "Hi team, let's discuss our future tech investments regarding AI strategy deployment.",
+        "response_to_email_id": null,
+        "created_at": "2026-04-16T10:00:00"
+      }
+    ],
+    "gmail.global_email_threads": [
+      {
+        "id": 200,
+        "email_ids": [
+          5100
+        ],
+        "created_at": "2026-04-16T10:00:00",
+        "updated_at": "2026-04-16T10:00:00"
+      }
+    ],
+    "gmail.user_email_threads": [
+      {
+        "id": 48000,
+        "global_email_thread_id": 200,
+        "user_id": 81,
+        "email_ids": [
+          5100
+        ],
+        "incoming": true,
+        "outgoing": false,
+        "read": true,
+        "label": "INBOX",
+        "starred": false,
+        "archived": false,
+        "spam": false,
+        "sender_email_addresses": [
+          "ai-strategy@terratronic.com"
+        ],
+        "sender_names": [
+          "AI Strategy Team"
+        ],
+        "recipient_email_addresses": [
+          "mel.bailey@gmail.com"
+        ],
+        "recipient_names": [
+          "Melissa Bailey"
+        ],
+        "created_at": "2026-04-16T10:00:00",
+        "updated_at": "2026-04-16T10:00:00",
+        "has_attachments": false,
+        "snoozed_until": null
+      }
+    ],
+    "todoist.projects": [
+      {
+        "id": 400,
+        "user_id": 81,
+        "name": "Inbox",
+        "color": "charcoal",
+        "is_inbox": true,
+        "description": "Default inbox project",
+        "created_at": "2026-01-01T10:00:00"
+      }
+    ],
+    "todoist.tasks": [
+      {
+        "id": 6500,
+        "project_id": 400,
+        "section_id": null,
+        "user_id": 81,
+        "title": "Review Azure growth",
+        "description": null,
+        "due_date": null,
+        "priority": "medium",
+        "is_completed": false,
+        "duration": null,
+        "duration_unit": null,
+        "order_index": 1,
+        "assignee_id": null,
+        "assigner_id": null,
+        "created_at": "2026-04-16T09:00:00"
+      },
+      {
+        "id": 6501,
+        "project_id": 400,
+        "section_id": null,
+        "user_id": 81,
+        "title": "Hardware upgrades",
+        "description": null,
+        "due_date": null,
+        "priority": "medium",
+        "is_completed": false,
+        "duration": null,
+        "duration_unit": null,
+        "order_index": 2,
+        "assignee_id": null,
+        "assigner_id": null,
+        "created_at": "2026-04-16T09:05:00"
+      },
+      {
+        "id": 6502,
+        "project_id": 400,
+        "section_id": null,
+        "user_id": 81,
+        "title": "SP vendor contracts",
+        "description": null,
+        "due_date": null,
+        "priority": "medium",
+        "is_completed": false,
+        "duration": null,
+        "duration_unit": null,
+        "order_index": 3,
+        "assignee_id": null,
+        "assigner_id": null,
+        "created_at": "2026-04-16T09:10:00"
+      },
+      {
+        "id": 6503,
+        "project_id": 400,
+        "section_id": null,
+        "user_id": 81,
+        "title": "Software licenses",
+        "description": null,
+        "due_date": null,
+        "priority": "medium",
+        "is_completed": false,
+        "duration": null,
+        "duration_unit": null,
+        "order_index": 4,
+        "assignee_id": null,
+        "assigner_id": null,
+        "created_at": "2026-04-16T09:15:00"
+      },
+      {
+        "id": 6504,
+        "project_id": 400,
+        "section_id": null,
+        "user_id": 81,
+        "title": "Personell training",
+        "description": null,
+        "due_date": null,
+        "priority": "medium",
+        "is_completed": false,
+        "duration": null,
+        "duration_unit": null,
+        "order_index": 5,
+        "assignee_id": null,
+        "assigner_id": null,
+        "created_at": "2026-04-16T09:20:00"
+      }
+    ],
+    "simple_note.notes": [
+      {
+        "id": 3200,
+        "user_id": 81,
+        "title": "Q2 Adjustments - Finance",
+        "content": "Q2 budget planning.\n\nMetrics to track:\n- Profit/loss",
+        "tags": [
+          "finance",
+          "Q2",
+          "budget"
+        ],
+        "created_at": "2026-04-10T09:30:00",
+        "updated_at": "2026-04-15T14:20:00",
+        "pinned": false,
+        "data": {}
+      },
+      {
+        "id": 3201,
+        "user_id": 81,
+        "title": "Q2 Adjustments - Operations",
+        "content": "Q2 resource allocation.\n\nKey areas:\n- Logistics\n- Supply Chain",
+        "tags": [
+          "operations",
+          "Q2"
+        ],
+        "created_at": "2026-04-10T09:35:00",
+        "updated_at": "2026-04-10T09:35:00",
+        "pinned": false,
+        "data": {}
+      }
+    ],
+    "todoist.project_collaborator_links": [
+      {
+        "id": 50400,
+        "project_id": 400,
+        "user_id": 81,
+        "is_favorite": false,
+        "is_archived": false,
+        "created_at": "2026-01-01T10:00:00"
+      }
+    ],
+    "gmail.users": [
+      {
+        "id": 200,
+        "first_name": "User",
+        "email": "stub_user_200@example.com",
+        "password": "stub_password",
+        "created_at": "2025-01-01T00:00:00",
+        "last_logged_in": "2025-01-01T00:00:00",
+        "last_name": "200",
+        "status": "active"
+      },
+      {
+        "id": 10101,
+        "first_name": "Strategy",
+        "last_name": "",
+        "email": "strategy@terratronic.com",
+        "password": "placeholder_password",
+        "status": "active"
+      }
+    ]
+  },
+  "image_paths": [
+    "chartmuseum/images/interest-behind-genai-chatgpt-ai.png",
+    "chartmuseum/images/microsoft-product-and-service-growth-2019-2021.png",
+    "chartqapro/images/chart_1618.jpg",
+    "chartqapro/images/chart_0701.jpg",
+    "chartmuseum/images/llm_mobile.png",
+    "chartqapro/images/chart_0212.jpg"
+  ],
+  "messages": [
+    {
+      "sender": "SYSTEM",
+      "recipient": "USER",
+      "content": "{{USER_INSTRUCTION}}ROUND 1 [provide: image_1, image_2]\nQuery: Look at this heatmap and identify the products that had over 25% growth in the most recent quarter shown. Check my Todoist to see which of those high-growth products I already have tasks for, and create new tasks for the ones I'm missing. Also, create a new Gmail draft to strategy@terratronic.com with the subject 'High Growth Products', list those products in the body, and attach the other chart showing the AI search trends.\nInstructions: Ask the assistant to check the provided heatmap for products that achieved over 25% growth in the latest quarter shown. Tell it to cross-reference these products with your existing Todoist tasks, create new tasks for any that are missing, and draft an email to strategy@terratronic.com listing all the high-growth products, attaching the line chart about AI trends. If the assistant asks for clarification on which quarter is the most recent, specify Q2 2021. Once the tasks are created and the draft is ready, move to the next round.\n\nROUND 2 [provide: image_3, image_4]\nQuery: Now look at this IT cost breakdown and find the main categories in the outer ring that account for more than 26%. Also check these performance charts to find the metric that had negative growth. I have a note called 'Q2 Adjustments'. Update it to list only those high-cost IT categories, and add a note about that negative growth metric. Finally, check my Todoist tasks again and delete any tasks related to the IT categories that fell below that 26% threshold.\nInstructions: Instruct the assistant to filter the donut chart for outer ring categories over 26% and find the metric with negative growth in the performance charts. Ask it to update your 'Q2 Adjustments' note with these findings, and then delete any Todoist tasks related to the IT categories that were under 26%. Since there are multiple notes containing 'Q2 Adjustments', the assistant should ask for clarification; when it does, specify that you mean the 'Q2 Adjustments - Finance' note. If it asks for confirmation before deleting tasks, approve the deletion. Proceed when the note is updated and tasks are removed.\n\nROUND 3 [provide: image_5, image_6]\nQuery: Lastly, look at this memory requirement chart and note which specific model sizes and bit levels fit within 8GB. Then check the sales tech infographic and find the tools with an adoption rate of 45% or higher. Find my recent email thread about AI strategy and reply to it, suggesting we deploy those specific models to build features for those highly adopted sales tools.\nInstructions: Ask the assistant to identify which LLM models and quantization levels fit under the 8GB limit in the bar chart, and which sales tools have at least 45% adoption in the infographic. Then, tell it to find your recent email thread about AI strategy and send a reply proposing that the team deploy those specific models for those top sales tools. If the assistant asks to confirm the exact text of the reply or whether to send it, approve it. End the conversation once the email is sent.\n\nYou have 6 images available to share with the agent using the send_message_with_image tool.\nIMPORTANT: Image IDs are ZERO-INDEXED integers (0, 1, 2, ...). Do NOT add 1 to the IDs.\nAvailable image IDs: [0, 1, 2, 3, 4, 5]\nImage mapping:\n  image_1.jpg -> image ID 0\n  image_2.jpg -> image ID 1\n  image_3.jpg -> image ID 2\n  image_4.jpg -> image ID 3\n  image_5.jpg -> image ID 4\n  image_6.jpg -> image ID 5\n\n## IMAGE DELIVERY\n\n⚠️ IMPORTANT: You MUST use the `send_message_with_image` tool to share images with User B. Do NOT just describe images in text — you MUST call the tool.\n\nImage delivery schedule:\n\n  Round 2: YOU MUST call the send_message_with_image tool with image_ids='2,3' — do NOT write the tool name as text; use the actual function call. Include a natural, conversational message to the assistant.\n  Round 3: YOU MUST call the send_message_with_image tool with image_ids='4,5' — do NOT write the tool name as text; use the actual function call. Include a natural, conversational message to the assistant."
+    },
+    {
+      "sender": "USER",
+      "recipient": "AGENT",
+      "content": "Look at this heatmap and identify the products that had over 25% growth in the most recent quarter shown. Check my Todoist to see which of those high-growth products I already have tasks for, and create new tasks for the ones I'm missing. Also, create a new Gmail draft to strategy@terratronic.com with the subject 'High Growth Products', list those products in the body, and attach the other chart showing the AI search trends.",
+      "image_ids": [
+        0,
+        1
+      ]
+    }
+  ],
+  "milestones": [],
+  "entity_diff_specs": [
+    {
+      "operation": "create",
+      "source": "appworld",
+      "table": "gmail.emails",
+      "entity_data": {
+        "sender_id": 81,
+        "recipient_ids": [
+          200
+        ],
+        "subject": "Re: AI Strategy Deployment",
+        "body": "I suggest we deploy the 3B (16-bit, 8-bit, 4-bit) and 7B (4-bit) models to build features for Online meeting technology, Web sales/eCommerce, and CRMs.",
+        "response_to_email_id": 5100,
+        "created_at": "2026-04-17T00:12:32"
+      },
+      "column_similarity_measure": {
+        "sender_id": "column_exact_match_similarity",
+        "recipient_ids": "column_exact_match_similarity",
+        "subject": "column_rouge_l_similarity",
+        "body": "column_rouge_l_similarity",
+        "response_to_email_id": "column_ignore_similarity",
+        "created_at": "column_ignore_similarity"
+      }
+    },
+    {
+      "operation": "create",
+      "source": "appworld",
+      "table": "gmail.drafts",
+      "entity_data": {
+        "user_id": 81,
+        "recipient_ids": [
+          10101
+        ],
+        "recipient_email_addresses": [
+          "strategy@terratronic.com"
+        ],
+        "recipient_names": [
+          "Strategy Team"
+        ],
+        "subject": "High Growth Products",
+        "body": "The products with over 25% growth in Q2 2021 are Azure, Server products, and Xbox content.",
+        "belongs_to_email_thread_id": null,
+        "response_to_email_id": null,
+        "scheduled_send_at": null,
+        "created_at": "2026-04-17T00:12:32",
+        "updated_at": "2026-04-17T00:12:32"
+      },
+      "column_similarity_measure": {
+        "user_id": "column_exact_match_similarity",
+        "recipient_ids": "column_exact_match_similarity",
+        "recipient_email_addresses": "column_ignore_similarity",
+        "recipient_names": "column_ignore_similarity",
+        "subject": "column_rouge_l_similarity",
+        "body": "column_rouge_l_similarity",
+        "belongs_to_email_thread_id": "column_ignore_similarity",
+        "response_to_email_id": "column_ignore_similarity",
+        "scheduled_send_at": "column_ignore_similarity",
+        "created_at": "column_ignore_similarity",
+        "updated_at": "column_ignore_similarity"
+      }
+    },
+    {
+      "operation": "create",
+      "source": "appworld",
+      "table": "gmail.attachments",
+      "entity_data": {
+        "email_id": null,
+        "draft_id": 700,
+        "file_name": "ChatGPT_trends_chart.png",
+        "file_content": "image_data",
+        "file_compressed_data": [],
+        "created_at": "2026-04-17T00:12:32",
+        "download_count": 0
+      },
+      "column_similarity_measure": {
+        "email_id": "column_ignore_similarity",
+        "draft_id": "column_ignore_similarity",
+        "file_name": "column_exact_match_similarity",
+        "file_content": "column_exact_match_similarity",
+        "file_compressed_data": "column_ignore_similarity",
+        "created_at": "column_ignore_similarity",
+        "download_count": "column_exact_match_similarity"
+      }
+    },
+    {
+      "operation": "create",
+      "source": "appworld",
+      "table": "todoist.tasks",
+      "entity_data": {
+        "project_id": 400,
+        "section_id": null,
+        "user_id": 81,
+        "title": "Server products and cloud svcs",
+        "description": null,
+        "due_date": null,
+        "priority": "medium",
+        "is_completed": false,
+        "duration": null,
+        "duration_unit": null,
+        "order_index": 6,
+        "assignee_id": null,
+        "assigner_id": null,
+        "created_at": "2026-04-17T00:12:32"
+      },
+      "column_similarity_measure": {
+        "project_id": "column_exact_match_similarity",
+        "section_id": "column_ignore_similarity",
+        "user_id": "column_exact_match_similarity",
+        "title": "column_rouge_l_similarity",
+        "description": "column_ignore_similarity",
+        "due_date": "column_ignore_similarity",
+        "priority": "column_exact_match_similarity",
+        "is_completed": "column_exact_match_similarity",
+        "duration": "column_ignore_similarity",
+        "duration_unit": "column_ignore_similarity",
+        "order_index": "column_ignore_similarity",
+        "assignee_id": "column_ignore_similarity",
+        "assigner_id": "column_ignore_similarity",
+        "created_at": "column_ignore_similarity"
+      }
+    },
+    {
+      "operation": "create",
+      "source": "appworld",
+      "table": "todoist.tasks",
+      "entity_data": {
+        "project_id": 400,
+        "section_id": null,
+        "user_id": 81,
+        "title": "Xbox content and services",
+        "description": null,
+        "due_date": null,
+        "priority": "medium",
+        "is_completed": false,
+        "duration": null,
+        "duration_unit": null,
+        "order_index": 7,
+        "assignee_id": null,
+        "assigner_id": null,
+        "created_at": "2026-04-17T00:12:32"
+      },
+      "column_similarity_measure": {
+        "project_id": "column_exact_match_similarity",
+        "section_id": "column_ignore_similarity",
+        "user_id": "column_exact_match_similarity",
+        "title": "column_rouge_l_similarity",
+        "description": "column_ignore_similarity",
+        "due_date": "column_ignore_similarity",
+        "priority": "column_exact_match_similarity",
+        "is_completed": "column_exact_match_similarity",
+        "duration": "column_ignore_similarity",
+        "duration_unit": "column_ignore_similarity",
+        "order_index": "column_ignore_similarity",
+        "assignee_id": "column_ignore_similarity",
+        "assigner_id": "column_ignore_similarity",
+        "created_at": "column_ignore_similarity"
+      }
+    },
+    {
+      "operation": "update",
+      "source": "appworld",
+      "table": "gmail.global_email_threads",
+      "entity_id_column": "id",
+      "entity_id_value": 200,
+      "expected_fields": {
+        "updated_at": "2026-04-16T10:00:00",
+        "email_ids": [
+          5100,
+          5101
+        ]
+      },
+      "column_similarity_measure": {
+        "updated_at": "column_ignore_similarity",
+        "email_ids": "column_ignore_similarity",
+        "id": "column_exact_match_similarity"
+      }
+    },
+    {
+      "operation": "update",
+      "source": "appworld",
+      "table": "gmail.user_email_threads",
+      "entity_id_column": "id",
+      "entity_id_value": 48000,
+      "expected_fields": {
+        "recipient_names": [
+          "Melissa Bailey",
+          "AI Strategy Team"
+        ],
+        "outgoing": true,
+        "email_ids": [
+          5100,
+          5101
+        ],
+        "updated_at": "2026-04-16T10:00:00",
+        "sender_names": [
+          "AI Strategy Team",
+          "Melissa Bailey"
+        ],
+        "sender_email_addresses": [
+          "ai-strategy@terratronic.com",
+          "mel.bailey@gmail.com"
+        ],
+        "recipient_email_addresses": [
+          "mel.bailey@gmail.com",
+          "ai-strategy@terratronic.com"
+        ]
+      },
+      "column_similarity_measure": {
+        "recipient_names": "column_ignore_similarity",
+        "outgoing": "column_exact_match_similarity",
+        "email_ids": "column_ignore_similarity",
+        "updated_at": "column_ignore_similarity",
+        "sender_names": "column_ignore_similarity",
+        "sender_email_addresses": "column_ignore_similarity",
+        "recipient_email_addresses": "column_ignore_similarity",
+        "id": "column_exact_match_similarity"
+      }
+    },
+    {
+      "operation": "update",
+      "source": "appworld",
+      "table": "simple_note.notes",
+      "entity_id_column": "id",
+      "entity_id_value": 3200,
+      "expected_fields": {
+        "updated_at": "2026-04-15T14:20:00",
+        "content": "Q2 budget planning.\n\nMetrics to track:\n- Profit/loss\n- Software\n- Personell",
+        "tags": []
+      },
+      "column_similarity_measure": {
+        "updated_at": "column_ignore_similarity",
+        "content": "column_rouge_l_similarity",
+        "id": "column_exact_match_similarity"
+      }
+    },
+    {
+      "operation": "delete",
+      "source": "appworld",
+      "table": "todoist.tasks",
+      "entity_id_column": "id",
+      "entity_id_value": 6501,
+      "column_similarity_measure": {
+        "id": "column_exact_match_similarity"
+      }
+    },
+    {
+      "operation": "delete",
+      "source": "appworld",
+      "table": "todoist.tasks",
+      "entity_id_column": "id",
+      "entity_id_value": 6502,
+      "column_similarity_measure": {
+        "id": "column_exact_match_similarity"
+      }
+    }
+  ],
+  "task_completion_criteria": "Create Todoist tasks for 'Server products and cloud svcs' and 'Xbox content and services'; draft an email to strategy@terratronic.com listing Azure, Server products, and Xbox content, with the ChatGPT trends chart attached; update the 'Q2 Adjustments - Finance' note to list 'Software' and 'Personell' along with 'Profit/loss'; delete the Todoist tasks related to 'Hardware' and 'SP'; and reply to the 'AI Strategy Deployment' email thread suggesting the use of 3B (16-bit, 8-bit, 4-bit) and 7B (4-bit) models for Online meeting technology, Web sales/eCommerce, and CRMs.",
+  "categories": [
+    "APPWORLD",
+    "MULTIPLE_USER_TURN"
+  ],
+  "max_messages": 100,
+  "metadata": {
+    "original_scenario_id": "scenario_0723",
+    "expected_tools": [
+      "todoist_show_tasks",
+      "todoist_create_task",
+      "gmail_create_draft",
+      "gmail_upload_attachments_to_draft",
+      "simple_note_show_note",
+      "simple_note_update_note",
+      "todoist_delete_task",
+      "gmail_show_thread",
+      "gmail_reply_to_email"
+    ],
+    "image_arrival": {
+      "1": [
+        "image_1",
+        "image_2"
+      ],
+      "2": [
+        "image_3",
+        "image_4"
+      ],
+      "3": [
+        "image_5",
+        "image_6"
+      ]
+    },
+    "image_delivery_map": [
+      {
+        "query": "Now look at this IT cost breakdown and find the main categories in the outer ring that account for more than 26%. Also check these performance charts to find the metric that had negative growth. I have a note called 'Q2 Adjustments'. Update it to list only those high-cost IT categories, and add a note about that negative growth metric. Finally, check my Todoist tasks again and delete any tasks related to the IT categories that fell below that 26% threshold.",
+        "image_ids": [
+          2,
+          3
+        ]
+      },
+      {
+        "query": "Lastly, look at this memory requirement chart and note which specific model sizes and bit levels fit within 8GB. Then check the sales tech infographic and find the tools with an adoption rate of 45% or higher. Find my recent email thread about AI strategy and reply to it, suggesting we deploy those specific models to build features for those highly adopted sales tools.",
+        "image_ids": [
+          4,
+          5
+        ]
+      }
+    ],
+    "scenario_metadata": {
+      "num_images": 6,
+      "num_user_rounds": 3,
+      "selected_flow_type": "filter",
+      "image_arrival": "progressive",
+      "challenge_type": "state_mutation",
+      "require_disambiguation": true,
+      "dataset_type": "chartqapro"
+    }
+  }
+}

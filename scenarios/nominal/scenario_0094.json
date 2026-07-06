@@ -1,0 +1,315 @@
+{
+  "name": "scenario_0094",
+  "base_scenario": "base",
+  "description": "The user is considering purchasing several items shown in a batch of photos and wants the agent to compare their prices to make purchasing decisions for a toddler gift and a premium client gift.",
+  "difficulty": "easy",
+  "appworld_base_task": "_base_",
+  "device_state_id": "kyl_moor@gmail.com",
+  "reference_time": "2026-04-16T23:53:34.117057+00:00",
+  "agentsandbox_entities": {},
+  "appworld_entities": {
+    "phone.contacts": [
+      {
+        "id": 200,
+        "user_id": 53,
+        "first_name": "Marcus",
+        "last_name": "Johnson",
+        "email": "marcus.johnson@gmail.com",
+        "phone_number": "555-0101",
+        "relationships": [
+          "Business Partner"
+        ],
+        "birthday": null,
+        "home_address": null,
+        "work_address": null,
+        "created_at": "2025-10-01T12:00:00"
+      },
+      {
+        "id": 201,
+        "user_id": 53,
+        "first_name": "Marcus",
+        "last_name": "Cole",
+        "email": "marcus.cole@gmail.com",
+        "phone_number": "555-0102",
+        "relationships": [
+          "Business Partner"
+        ],
+        "birthday": null,
+        "home_address": null,
+        "work_address": null,
+        "created_at": "2025-10-01T12:00:00"
+      }
+    ],
+    "amazon.sellers": [
+      {
+        "id": 200,
+        "name": "Manhattan Toys Official",
+        "rating": 4.8
+      },
+      {
+        "id": 201,
+        "name": "Toddler Play Store",
+        "rating": 4.5
+      },
+      {
+        "id": 202,
+        "name": "Japan Stationery",
+        "rating": 4.7
+      },
+      {
+        "id": 203,
+        "name": "Luxury Pens Direct",
+        "rating": 4.9
+      }
+    ],
+    "amazon.products": [
+      {
+        "id": 200,
+        "product_type": "toys",
+        "name": "Manhattan Ball Toy",
+        "description": "Sensory teether and rattle toy for infants and toddlers",
+        "seller_id": 200,
+        "price": 14.99,
+        "delivery_days": 2,
+        "inventory_quantity": 50,
+        "weight": 0.2,
+        "length": 5.0,
+        "width": 4.0,
+        "height": 4.0,
+        "color": null,
+        "relative_size": null,
+        "rating": 4.8,
+        "seller_rating": 4.8,
+        "has_variations": false
+      },
+      {
+        "id": 201,
+        "product_type": "toys",
+        "name": "Busy Ball Toddler Toy",
+        "description": "Interactive learning and activity ball for toddlers",
+        "seller_id": 201,
+        "price": 19.99,
+        "delivery_days": 3,
+        "inventory_quantity": 30,
+        "weight": 0.5,
+        "length": 6.0,
+        "width": 6.0,
+        "height": 6.0,
+        "color": null,
+        "relative_size": null,
+        "rating": 4.6,
+        "seller_rating": 4.5,
+        "has_variations": false
+      },
+      {
+        "id": 202,
+        "product_type": "office products",
+        "name": "Nakabayashi Notebook",
+        "description": "High quality Japanese logical prime notebook",
+        "seller_id": 202,
+        "price": 12.99,
+        "delivery_days": 4,
+        "inventory_quantity": 100,
+        "weight": 0.3,
+        "length": 8.3,
+        "width": 5.8,
+        "height": 0.2,
+        "color": null,
+        "relative_size": null,
+        "rating": 4.8,
+        "seller_rating": 4.7,
+        "has_variations": false
+      },
+      {
+        "id": 203,
+        "product_type": "office products",
+        "name": "Yard-O-Led Silver Pencil",
+        "description": "Handcrafted sterling silver mechanical pencil",
+        "seller_id": 203,
+        "price": 350.0,
+        "delivery_days": 5,
+        "inventory_quantity": 5,
+        "weight": 0.1,
+        "length": 5.5,
+        "width": 0.4,
+        "height": 0.4,
+        "color": null,
+        "relative_size": null,
+        "rating": 5.0,
+        "seller_rating": 4.9,
+        "has_variations": false
+      }
+    ],
+    "gmail.users": [
+      {
+        "id": 200,
+        "first_name": "Marcus",
+        "last_name": "Johnson",
+        "email": "marcus.johnson@gmail.com",
+        "password": "default_password",
+        "status": "active",
+        "created_at": "2025-01-01T00:00:00",
+        "last_logged_in": "2025-01-01T00:00:00"
+      },
+      {
+        "id": 201,
+        "first_name": "Marcus",
+        "last_name": "Cole",
+        "email": "marcus.cole@gmail.com",
+        "password": "default_password",
+        "status": "active",
+        "created_at": "2025-01-01T00:00:00",
+        "last_logged_in": "2025-01-01T00:00:00"
+      }
+    ],
+    "phone.users": [
+      {
+        "id": 200,
+        "first_name": "Marcus",
+        "last_name": "Johnson",
+        "phone_number": "555-0101",
+        "password": "default_password",
+        "created_at": "2025-01-01T00:00:00",
+        "last_logged_in": "2025-01-01T00:00:00"
+      },
+      {
+        "id": 201,
+        "first_name": "Marcus",
+        "last_name": "Cole",
+        "phone_number": "555-0102",
+        "password": "default_password",
+        "created_at": "2025-01-01T00:00:00",
+        "last_logged_in": "2025-01-01T00:00:00"
+      }
+    ]
+  },
+  "image_paths": [
+    "worldvqa/images/1478.jpg",
+    "worldvqa/images/1631.jpg",
+    "worldvqa/images/1500.jpg",
+    "worldvqa/images/1550.jpg",
+    "worldvqa/images/1657.jpg",
+    "worldvqa/images/1670.jpg"
+  ],
+  "messages": [
+    {
+      "sender": "SYSTEM",
+      "recipient": "USER",
+      "content": "{{USER_INSTRUCTION}}ROUND 1 [provide: image_1, image_2, image_3, image_4, image_5, image_6]\nQuery: I've uploaded photos of several items I'm considering buying. First, I need a gift for my toddler. Please compare the two toys in the first and third images by searching the web for their average retail prices, and then add the cheaper toy to my Amazon shopping cart.\nInstructions: Tell the assistant you want to buy a gift for your toddler and ask it to compare the toys in the first and third images by searching the web for their average retail prices, then add the cheaper one to your Amazon cart. If the assistant asks for the names of the toys, tell it to identify them from the images. Once the assistant confirms the cheaper toy has been added to the cart, move on to the next round.\n\nROUND 2\nQuery: Now, let's look at the notebook in the fifth image and the silver pencil in the sixth image. Search the web to compare their prices, and send a text message to my business partner Marcus recommending we purchase the more expensive item as a premium client gift.\nInstructions: Instruct the assistant to look at the notebook in the fifth image and the silver pencil in the sixth image, search the web to compare their prices, and send a text message to your business partner Marcus recommending the more expensive item as a premium client gift. The assistant will likely find multiple contacts named Marcus and ask for clarification; when it does, specify that you mean Marcus Cole. If the assistant asks to confirm the message content, ensure it names the correct, more expensive item before approving. End the conversation once the message is sent.\n\nYou have 6 images available to share with the agent using the send_message_with_image tool.\nIMPORTANT: Image IDs are ZERO-INDEXED integers (0, 1, 2, ...). Do NOT add 1 to the IDs.\nAvailable image IDs: [0, 1, 2, 3, 4, 5]\nImage mapping:\n  image_1.jpg -> image ID 0\n  image_2.jpg -> image ID 1\n  image_3.jpg -> image ID 2\n  image_4.jpg -> image ID 3\n  image_5.jpg -> image ID 4\n  image_6.jpg -> image ID 5"
+    },
+    {
+      "sender": "USER",
+      "recipient": "AGENT",
+      "content": "I've uploaded photos of several items I'm considering buying. First, I need a gift for my toddler. Please compare the two toys in the first and third images by searching the web for their average retail prices, and then add the cheaper toy to my Amazon shopping cart.",
+      "image_ids": [
+        0,
+        1,
+        2,
+        3,
+        4,
+        5
+      ]
+    }
+  ],
+  "milestones": [],
+  "entity_diff_specs": [
+    {
+      "operation": "create",
+      "source": "appworld",
+      "table": "phone.global_text_messages",
+      "entity_data": {
+        "sender_id": 53,
+        "receiver_id": 201,
+        "message": "Hey Marcus, I recommend we purchase the Yard-O-Led silver pencil as a premium client gift.",
+        "created_at": "2026-04-16T23:53:34"
+      },
+      "column_similarity_measure": {
+        "sender_id": "column_exact_match_similarity",
+        "receiver_id": "column_exact_match_similarity",
+        "message": "column_rouge_l_similarity",
+        "created_at": "column_ignore_similarity"
+      }
+    },
+    {
+      "operation": "create",
+      "source": "appworld",
+      "table": "phone.user_text_messages",
+      "entity_data": {
+        "global_text_message_id": 200,
+        "user_id": 53,
+        "created_at": "2026-04-16T23:53:34"
+      },
+      "column_similarity_measure": {
+        "global_text_message_id": "column_ignore_similarity",
+        "user_id": "column_exact_match_similarity",
+        "created_at": "column_ignore_similarity"
+      }
+    },
+    {
+      "operation": "create",
+      "source": "appworld",
+      "table": "amazon.cart_entries",
+      "entity_data": {
+        "user_id": 53,
+        "product_id": 200,
+        "quantity": 1,
+        "gift_wrap_quantity": 0
+      },
+      "column_similarity_measure": {
+        "user_id": "column_exact_match_similarity",
+        "product_id": "column_exact_match_similarity",
+        "quantity": "column_exact_match_similarity",
+        "gift_wrap_quantity": "column_exact_match_similarity"
+      }
+    },
+    {
+      "operation": "create",
+      "source": "appworld",
+      "table": "phone.user_text_messages",
+      "entity_data": {
+        "global_text_message_id": 200,
+        "user_id": 201,
+        "created_at": "2026-04-16T23:53:34"
+      },
+      "column_similarity_measure": {
+        "global_text_message_id": "column_ignore_similarity",
+        "user_id": "column_exact_match_similarity",
+        "created_at": "column_ignore_similarity"
+      }
+    }
+  ],
+  "task_completion_criteria": "Add the cheaper toy between the Manhattan Ball (image 1) and the Busy Ball (image 3) to the Amazon cart after comparing their prices via web search. Send a text message to Marcus Cole recommending the Yard-O-Led pencil (or explicitly mentioning the silver pencil from the image) as a premium client gift, after determining it is the more expensive item compared to the Nakabayashi notebook in image 5.",
+  "categories": [
+    "APPWORLD",
+    "MULTIPLE_USER_TURN"
+  ],
+  "max_messages": 100,
+  "metadata": {
+    "original_scenario_id": "scenario_0094",
+    "expected_tools": [
+      "web_search_serper",
+      "amazon_add_product_to_cart",
+      "messages_send_text_message"
+    ],
+    "image_arrival": {
+      "1": [
+        "image_1",
+        "image_2",
+        "image_3",
+        "image_4",
+        "image_5",
+        "image_6"
+      ]
+    },
+    "image_delivery_map": [],
+    "scenario_metadata": {
+      "num_images": 6,
+      "num_user_rounds": 2,
+      "selected_flow_type": "compare",
+      "image_arrival": "upfront",
+      "challenge_type": "none",
+      "require_disambiguation": true,
+      "dataset_type": "worldvqa"
+    }
+  }
+}

@@ -1,0 +1,141 @@
+{
+  "name": "scenario_0714",
+  "base_scenario": "base",
+  "description": "The user is planning a historical exhibition and has a preliminary list of candidate subjects. They initially plan to propose the entire list to the curator, but then receive visual confirmation of which specific items are actually cleared for use.",
+  "difficulty": "easy",
+  "appworld_base_task": "_base_",
+  "device_state_id": "roburton@gmail.com",
+  "reference_time": "2026-04-17T00:12:16.083868+00:00",
+  "agentsandbox_entities": {},
+  "appworld_entities": {
+    "phone.contacts": [
+      {
+        "id": 200,
+        "user_id": 103,
+        "first_name": "Dr.",
+        "last_name": "Smith",
+        "email": "dr.smith.curator@gmail.com",
+        "phone_number": null,
+        "relationships": [
+          "curator"
+        ],
+        "birthday": null,
+        "home_address": null,
+        "work_address": null,
+        "created_at": "2026-04-16T10:00:00"
+      }
+    ],
+    "simple_note.notes": [
+      {
+        "id": 3200,
+        "user_id": 103,
+        "title": "History Exhibit Candidates",
+        "content": "Potential subjects for the exhibit: Iranian anthropomorphic pottery, The ancient city of Taxila, The Colosseum, Pozzolanic concrete, Marble head of Demosthenes, The Library of Alexandria, The Tomb of Tutankhamun, 40TH BN. AUSTRA, The Rosetta Stone.",
+        "tags": [],
+        "created_at": "2026-04-15T14:30:00",
+        "updated_at": "2026-04-15T14:30:00",
+        "pinned": false,
+        "data": null
+      }
+    ],
+    "gmail.users": [
+      {
+        "id": 200,
+        "first_name": "Dr.",
+        "last_name": "Smith",
+        "email": "dr.smith.curator@gmail.com",
+        "password": "default_password",
+        "status": "active",
+        "created_at": "2025-01-01T00:00:00",
+        "last_logged_in": "2025-01-01T00:00:00"
+      }
+    ]
+  },
+  "image_paths": [
+    "worldvqa/images/1210.jpg",
+    "worldvqa/images/664.jpg",
+    "worldvqa/images/723.jpg",
+    "hiertext/images/test/8a56624c9e28f14b.jpg",
+    "worldvqa/images/1091.jpg",
+    "hiertext/images/test/ea8e94ed79acc841.jpg"
+  ],
+  "messages": [
+    {
+      "sender": "SYSTEM",
+      "recipient": "USER",
+      "content": "{{USER_INSTRUCTION}}ROUND 1\nQuery: Find my note titled 'History Exhibit Candidates' and draft an email to the curator, Dr. Smith, proposing that we feature every topic listed in that note in the upcoming exhibition. Save it as a draft for now.\nInstructions: Ask the assistant to find your 'History Exhibit Candidates' note and create a draft email to Dr. Smith proposing all the topics listed in it. If the assistant asks for confirmation or successfully completes the draft, acknowledge it and wait to proceed to the next round.\n\nROUND 2 [provide: image_1, image_2, image_3, image_4, image_5, image_6]\nQuery: Actually, change of plan. I just got these 6 photos showing the only subjects we actually have clearance to use. Let's not email Dr. Smith after all\u2014please delete that draft. Instead, cross-reference the historical subjects shown in these photos with the 'History Exhibit Candidates' note, and update the note so it only includes the topics that match these photos.\nInstructions: Tell the assistant you changed your mind. Ask it to delete the email draft you just created. Then, instruct it to look at the newly provided photos, identify the historical subjects shown in them, cross-reference them with the list in the 'History Exhibit Candidates' note, and update the note to keep only the subjects that match the photos, removing the rest. If the assistant needs help identifying any of the subjects, point it to the visual details, text, or plaques in the images, but do not name the subjects directly. Once the note is updated and the draft is deleted, end the conversation.\n\nYou have 6 images available to share with the agent using the send_message_with_image tool.\nIMPORTANT: Image IDs are ZERO-INDEXED integers (0, 1, 2, ...). Do NOT add 1 to the IDs.\nAvailable image IDs: [0, 1, 2, 3, 4, 5]\nImage mapping:\n  image_1.jpg -> image ID 0\n  image_2.jpg -> image ID 1\n  image_3.jpg -> image ID 2\n  image_4.jpg -> image ID 3\n  image_5.jpg -> image ID 4\n  image_6.jpg -> image ID 5\n\n## IMAGE DELIVERY\n\n\u26a0\ufe0f IMPORTANT: You MUST use the `send_message_with_image` tool to share images with User B. Do NOT just describe images in text \u2014 you MUST call the tool.\n\nImage delivery schedule:\n\n  Round 2: YOU MUST call the send_message_with_image tool with image_ids='0,1,2,3,4,5' \u2014 do NOT write the tool name as text; use the actual function call. Include a natural, conversational message to the assistant."
+    },
+    {
+      "sender": "USER",
+      "recipient": "AGENT",
+      "content": "Find my note titled 'History Exhibit Candidates' and draft an email to the curator, Dr. Smith, proposing that we feature every topic listed in that note in the upcoming exhibition. Save it as a draft for now."
+    }
+  ],
+  "milestones": [],
+  "entity_diff_specs": [
+    {
+      "operation": "update",
+      "source": "appworld",
+      "table": "simple_note.notes",
+      "entity_id_column": "id",
+      "entity_id_value": 3200,
+      "expected_fields": {
+        "updated_at": "2026-04-15T14:30:00",
+        "content": "Potential subjects for the exhibit: Iranian anthropomorphic pottery, The ancient city of Taxila, Pozzolanic concrete, Marble head of Demosthenes, The Tomb of Tutankhamun, 40TH BN. AUSTRA.",
+        "tags": []
+      },
+      "column_similarity_measure": {
+        "updated_at": "column_ignore_similarity",
+        "content": "column_rouge_l_similarity",
+        "id": "column_exact_match_similarity"
+      }
+    }
+  ],
+  "task_completion_criteria": "Update the note titled 'History Exhibit Candidates' so that it only contains the subjects matching the images: 'Iranian anthropomorphic pottery', 'The ancient city of Taxila', 'Pozzolanic concrete', 'Marble head of Demosthenes', 'The Tomb of Tutankhamun', and '40TH BN. AUSTRA'. Ensure the draft email to Dr. Smith is deleted.",
+  "categories": [
+    "APPWORLD",
+    "MULTIPLE_USER_TURN"
+  ],
+  "max_messages": 100,
+  "metadata": {
+    "original_scenario_id": "scenario_0714",
+    "expected_tools": [
+      "simple_note_show_note",
+      "gmail_create_draft",
+      "gmail_delete_draft",
+      "simple_note_update_note"
+    ],
+    "image_arrival": {
+      "2": [
+        "image_1",
+        "image_2",
+        "image_3",
+        "image_4",
+        "image_5",
+        "image_6"
+      ]
+    },
+    "image_delivery_map": [
+      {
+        "query": "Actually, change of plan. I just got these 6 photos showing the only subjects we actually have clearance to use. Let's not email Dr. Smith after all\u2014please delete that draft. Instead, cross-reference the historical subjects shown in these photos with the 'History Exhibit Candidates' note, and update the note so it only includes the topics that match these photos.",
+        "image_ids": [
+          0,
+          1,
+          2,
+          3,
+          4,
+          5
+        ]
+      }
+    ],
+    "scenario_metadata": {
+      "num_images": 6,
+      "num_user_rounds": 2,
+      "selected_flow_type": "cross_reference",
+      "image_arrival": "late",
+      "challenge_type": "goal_change",
+      "require_disambiguation": false,
+      "dataset_type": "hiertext"
+    }
+  }
+}

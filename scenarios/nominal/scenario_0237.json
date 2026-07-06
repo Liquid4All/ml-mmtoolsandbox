@@ -1,0 +1,264 @@
+{
+  "name": "scenario_0237",
+  "base_scenario": "base",
+  "description": "The user is setting up a music playlist for their routine but decides to change the theme based on some K-pop dance performance videos they are currently watching.",
+  "difficulty": "easy",
+  "appworld_base_task": "_base_",
+  "device_state_id": "kri-powe@gmail.com",
+  "reference_time": "2026-04-16T23:57:24.943324+00:00",
+  "agentsandbox_entities": {},
+  "appworld_entities": {
+    "spotify.artists": [
+      {
+        "id": 200,
+        "name": "BTS",
+        "genre": "K-pop",
+        "created_at": "2013-06-13T00:00:00"
+      },
+      {
+        "id": 201,
+        "name": "Girls' Generation",
+        "genre": "K-pop",
+        "created_at": "2007-08-05T00:00:00"
+      },
+      {
+        "id": 202,
+        "name": "BLACKPINK",
+        "genre": "K-pop",
+        "created_at": "2016-08-08T00:00:00"
+      },
+      {
+        "id": 203,
+        "name": "EXO",
+        "genre": "K-pop",
+        "created_at": "2012-04-08T00:00:00"
+      }
+    ],
+    "spotify.songs": [
+      {
+        "id": 200,
+        "title": "Dynamite",
+        "artist_ids": [
+          200
+        ],
+        "album_id": null,
+        "duration": 199,
+        "release_date": "2020-08-21T00:00:00",
+        "genre": "K-pop",
+        "play_count": 1000000,
+        "rating": 4.8,
+        "like_count": 500000,
+        "review_count": 10000
+      },
+      {
+        "id": 201,
+        "title": "Gee",
+        "artist_ids": [
+          201
+        ],
+        "album_id": null,
+        "duration": 200,
+        "release_date": "2009-01-05T00:00:00",
+        "genre": "K-pop",
+        "play_count": 800000,
+        "rating": 4.9,
+        "like_count": 400000,
+        "review_count": 8000
+      },
+      {
+        "id": 202,
+        "title": "Run Devil Run",
+        "artist_ids": [
+          201
+        ],
+        "album_id": null,
+        "duration": 201,
+        "release_date": "2010-03-17T00:00:00",
+        "genre": "K-pop",
+        "play_count": 700000,
+        "rating": 4.7,
+        "like_count": 350000,
+        "review_count": 7000
+      },
+      {
+        "id": 203,
+        "title": "Don't Know What to Do",
+        "artist_ids": [
+          202
+        ],
+        "album_id": null,
+        "duration": 195,
+        "release_date": "2019-04-05T00:00:00",
+        "genre": "K-pop",
+        "play_count": 900000,
+        "rating": 4.8,
+        "like_count": 450000,
+        "review_count": 9000
+      },
+      {
+        "id": 204,
+        "title": "History",
+        "artist_ids": [
+          203
+        ],
+        "album_id": null,
+        "duration": 212,
+        "release_date": "2012-03-09T00:00:00",
+        "genre": "K-pop",
+        "play_count": 600000,
+        "rating": 4.6,
+        "like_count": 300000,
+        "review_count": 6000
+      }
+    ],
+    "gmail.users": []
+  },
+  "image_paths": [
+    "worldvqa/images/1257.jpg",
+    "worldvqa/images/1258.jpg",
+    "worldvqa/images/1259.jpg",
+    "worldvqa/images/1260.jpg"
+  ],
+  "messages": [
+    {
+      "sender": "SYSTEM",
+      "recipient": "USER",
+      "content": "{{USER_INSTRUCTION}}ROUND 1\nQuery: Create a new Spotify playlist called 'Workout Mix' and add the song 'Dynamite' by BTS to it.\nInstructions: Ask the assistant to create a new Spotify playlist called 'Workout Mix' and add the song 'Dynamite' by BTS. If the assistant asks for any clarification or confirmation, provide it. Once the assistant confirms the playlist has been created and the song is added, proceed to the next round.\n\nROUND 2 [provide: image_1, image_2, image_3, image_4]\nQuery: Actually, let's pivot. Change the playlist name to 'K-pop Dance Routines', remove 'Dynamite', and instead add the songs being performed in these four images to the playlist.\nInstructions: Tell the assistant you changed your mind. Instruct them to rename the recently created playlist to 'K-pop Dance Routines', remove the previously added song, and add the songs shown in the four provided images. If the assistant asks for the names of the songs, direct them to identify the dance performances directly from the images. Do not provide the song titles yourself. Once the assistant confirms the playlist is renamed, the old song is removed, and the four new songs are added, end the conversation.\n\nYou have 4 images available to share with the agent using the send_message_with_image tool.\nIMPORTANT: Image IDs are ZERO-INDEXED integers (0, 1, 2, ...). Do NOT add 1 to the IDs.\nAvailable image IDs: [0, 1, 2, 3]\nImage mapping:\n  image_1.jpg -> image ID 0\n  image_2.jpg -> image ID 1\n  image_3.jpg -> image ID 2\n  image_4.jpg -> image ID 3\n\n## IMAGE DELIVERY\n\n\u26a0\ufe0f IMPORTANT: You MUST use the `send_message_with_image` tool to share images with User B. Do NOT just describe images in text \u2014 you MUST call the tool.\n\nImage delivery schedule:\n\n  Round 2: YOU MUST call the send_message_with_image tool with image_ids='0,1,2,3' \u2014 do NOT write the tool name as text; use the actual function call. Include a natural, conversational message to the assistant."
+    },
+    {
+      "sender": "USER",
+      "recipient": "AGENT",
+      "content": "Create a new Spotify playlist called 'Workout Mix' and add the song 'Dynamite' by BTS to it."
+    }
+  ],
+  "milestones": [],
+  "entity_diff_specs": [
+    {
+      "operation": "create",
+      "source": "appworld",
+      "table": "spotify.playlists",
+      "entity_data": {
+        "title": "K-pop Dance Routines",
+        "user_id": 28,
+        "created_at": "2026-04-16T23:57:24",
+        "is_public": false,
+        "rating": 0.0,
+        "like_count": 0,
+        "review_count": 0
+      },
+      "column_similarity_measure": {
+        "title": "column_rouge_l_similarity",
+        "user_id": "column_exact_match_similarity",
+        "created_at": "column_ignore_similarity",
+        "is_public": "column_exact_match_similarity",
+        "rating": "column_exact_match_similarity",
+        "like_count": "column_exact_match_similarity",
+        "review_count": "column_exact_match_similarity"
+      }
+    },
+    {
+      "operation": "create",
+      "source": "appworld",
+      "table": "spotify.playlist_songs",
+      "entity_data": {
+        "playlist_id": 800,
+        "song_id": 201,
+        "added_at": "2026-04-16T23:57:24"
+      },
+      "column_similarity_measure": {
+        "playlist_id": "column_ignore_similarity",
+        "song_id": "column_exact_match_similarity",
+        "added_at": "column_ignore_similarity"
+      }
+    },
+    {
+      "operation": "create",
+      "source": "appworld",
+      "table": "spotify.playlist_songs",
+      "entity_data": {
+        "playlist_id": 800,
+        "song_id": 202,
+        "added_at": "2026-04-16T23:57:24"
+      },
+      "column_similarity_measure": {
+        "playlist_id": "column_ignore_similarity",
+        "song_id": "column_exact_match_similarity",
+        "added_at": "column_ignore_similarity"
+      }
+    },
+    {
+      "operation": "create",
+      "source": "appworld",
+      "table": "spotify.playlist_songs",
+      "entity_data": {
+        "playlist_id": 800,
+        "song_id": 203,
+        "added_at": "2026-04-16T23:57:24"
+      },
+      "column_similarity_measure": {
+        "playlist_id": "column_ignore_similarity",
+        "song_id": "column_exact_match_similarity",
+        "added_at": "column_ignore_similarity"
+      }
+    },
+    {
+      "operation": "create",
+      "source": "appworld",
+      "table": "spotify.playlist_songs",
+      "entity_data": {
+        "playlist_id": 800,
+        "song_id": 204,
+        "added_at": "2026-04-16T23:57:24"
+      },
+      "column_similarity_measure": {
+        "playlist_id": "column_ignore_similarity",
+        "song_id": "column_exact_match_similarity",
+        "added_at": "column_ignore_similarity"
+      }
+    }
+  ],
+  "task_completion_criteria": "Update the Spotify playlist to be named 'K-pop Dance Routines', ensuring it does not contain 'Dynamite' by BTS, and instead contains the songs 'Gee', 'Run Devil Run', 'Don't Know What to Do', and 'History'.",
+  "categories": [
+    "APPWORLD",
+    "MULTIPLE_USER_TURN"
+  ],
+  "max_messages": 100,
+  "metadata": {
+    "original_scenario_id": "scenario_0237",
+    "expected_tools": [
+      "spotify_create_playlist",
+      "spotify_add_song_to_playlist",
+      "spotify_update_playlist",
+      "spotify_remove_song_from_playlist",
+      "spotify_show_song"
+    ],
+    "image_arrival": {
+      "2": [
+        "image_1",
+        "image_2",
+        "image_3",
+        "image_4"
+      ]
+    },
+    "image_delivery_map": [
+      {
+        "query": "Actually, let's pivot. Change the playlist name to 'K-pop Dance Routines', remove 'Dynamite', and instead add the songs being performed in these four images to the playlist.",
+        "image_ids": [
+          0,
+          1,
+          2,
+          3
+        ]
+      }
+    ],
+    "scenario_metadata": {
+      "num_images": 4,
+      "num_user_rounds": 2,
+      "selected_flow_type": "aggregate",
+      "image_arrival": "late",
+      "challenge_type": "goal_change",
+      "require_disambiguation": false,
+      "dataset_type": "worldvqa"
+    }
+  }
+}

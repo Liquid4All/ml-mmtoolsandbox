@@ -1,0 +1,187 @@
+{
+  "name": "scenario_1053",
+  "base_scenario": "base",
+  "description": "Lindsey is reviewing a mix of saved images containing various texts, graphics, and journal entries.",
+  "difficulty": "easy",
+  "appworld_base_task": "_base_",
+  "device_state_id": "lindseysimpson@gmail.com",
+  "reference_time": "2026-04-17T00:22:08.206466+00:00",
+  "agentsandbox_entities": {},
+  "appworld_entities": {
+    "phone.contacts": [
+      {
+        "id": 200,
+        "user_id": 62,
+        "first_name": "Alice",
+        "last_name": "Unknown",
+        "email": "alice@gmail.com",
+        "phone_number": "555-0200",
+        "relationships": [
+          "friend"
+        ],
+        "birthday": null,
+        "home_address": null,
+        "work_address": null,
+        "created_at": "2025-01-01T12:00:00"
+      }
+    ],
+    "gmail.users": [
+      {
+        "id": 200,
+        "first_name": "Alice",
+        "last_name": "Unknown",
+        "email": "alice@gmail.com",
+        "password": "default_password",
+        "status": "active",
+        "created_at": "2025-01-01T00:00:00",
+        "last_logged_in": "2025-01-01T00:00:00"
+      }
+    ],
+    "phone.users": [
+      {
+        "id": 200,
+        "first_name": "Alice",
+        "last_name": "Unknown",
+        "phone_number": "555-0200",
+        "password": "default_password",
+        "created_at": "2025-01-01T00:00:00",
+        "last_logged_in": "2025-01-01T00:00:00"
+      }
+    ]
+  },
+  "image_paths": [
+    "hiertext/images/test/d38b6afae573dc1d.jpg",
+    "hiertext/images/test/265740b929d7df38.jpg",
+    "hiertext/images/test/d5c5df807cc6acc3.jpg",
+    "hiertext/images/test/af099837324cf5d0.jpg",
+    "infographicvqa/images/93572.jpg"
+  ],
+  "messages": [
+    {
+      "sender": "SYSTEM",
+      "recipient": "USER",
+      "content": "{{USER_INSTRUCTION}}ROUND 1 [provide: image_1, image_2, image_3, image_4, image_5]\nQuery: Can you go through these images and find the ones that feature poems? Make a simple note listing the title and author for each one. Also, send a text message to the author of the Portuguese poem thanking him for his beautiful words.\nInstructions: Ask the assistant to filter the provided images to find the ones containing poems, and to create a note listing their titles and authors. Additionally, ask it to send a text message to the author of the Portuguese poem thanking him. The assistant should notice from the text in the image that this author is deceased. If the assistant correctly points this out, acknowledge it and wait for the next turn. If the assistant blindly tries to send the message or merely complains about a missing contact without noticing the historical dates, point out the lifespan dates clearly visible in the image.\n\nROUND 2\nQuery: Haha, good catch, I completely missed the 1926 part! My bad. Let's just send a text to my friend Alice instead with the titles and authors of those poems we found.\nInstructions: Confirm the assistant's observation about the author's dates. Then, instruct the assistant to send a text message to Alice containing the titles and authors of the poems it just extracted for the note. Once the assistant confirms the message has been sent, conclude the conversation.\n\nYou have 5 images available to share with the agent using the send_message_with_image tool.\nIMPORTANT: Image IDs are ZERO-INDEXED integers (0, 1, 2, ...). Do NOT add 1 to the IDs.\nAvailable image IDs: [0, 1, 2, 3, 4]\nImage mapping:\n  image_1.jpg -> image ID 0\n  image_2.jpg -> image ID 1\n  image_3.jpg -> image ID 2\n  image_4.jpg -> image ID 3\n  image_5.jpg -> image ID 4"
+    },
+    {
+      "sender": "USER",
+      "recipient": "AGENT",
+      "content": "Can you go through these images and find the ones that feature poems? Make a simple note listing the title and author for each one. Also, send a text message to the author of the Portuguese poem thanking him for his beautiful words.",
+      "image_ids": [
+        0,
+        1,
+        2,
+        3,
+        4
+      ]
+    }
+  ],
+  "milestones": [],
+  "entity_diff_specs": [
+    {
+      "operation": "create",
+      "source": "appworld",
+      "table": "phone.global_text_messages",
+      "entity_data": {
+        "sender_id": 62,
+        "receiver_id": 200,
+        "message": "Here are the poems I found: 'Ao longe os barcos de flores' by Camilo Pessanha and 'A Poem to My Dear Wife' by Tito C. Balangue.",
+        "created_at": "2026-04-17T00:22:08"
+      },
+      "column_similarity_measure": {
+        "sender_id": "column_exact_match_similarity",
+        "receiver_id": "column_exact_match_similarity",
+        "message": "column_rouge_l_similarity",
+        "created_at": "column_ignore_similarity"
+      }
+    },
+    {
+      "operation": "create",
+      "source": "appworld",
+      "table": "phone.user_text_messages",
+      "entity_data": {
+        "global_text_message_id": 200,
+        "user_id": 62,
+        "created_at": "2026-04-17T00:22:08"
+      },
+      "column_similarity_measure": {
+        "global_text_message_id": "column_ignore_similarity",
+        "user_id": "column_exact_match_similarity",
+        "created_at": "column_ignore_similarity"
+      }
+    },
+    {
+      "operation": "create",
+      "source": "appworld",
+      "table": "phone.user_text_messages",
+      "entity_data": {
+        "global_text_message_id": 200,
+        "user_id": 200,
+        "created_at": "2026-04-17T00:22:08"
+      },
+      "column_similarity_measure": {
+        "global_text_message_id": "column_ignore_similarity",
+        "user_id": "column_exact_match_similarity",
+        "created_at": "column_ignore_similarity"
+      }
+    },
+    {
+      "operation": "create",
+      "source": "appworld",
+      "table": "simple_note.notes",
+      "entity_data": {
+        "user_id": 62,
+        "title": "Poems from Images",
+        "content": "- 'Ao longe os barcos de flores' by Camilo Pessanha\n- 'A Poem to My Dear Wife' by Tito C. Balangue",
+        "tags": [
+          "poems"
+        ],
+        "created_at": "2026-04-17T00:22:08",
+        "updated_at": "2026-04-17T00:22:08",
+        "pinned": false,
+        "data": null
+      },
+      "column_similarity_measure": {
+        "user_id": "column_exact_match_similarity",
+        "title": "column_rouge_l_similarity",
+        "content": "column_rouge_l_similarity",
+        "tags": "column_ignore_similarity",
+        "created_at": "column_ignore_similarity",
+        "updated_at": "column_ignore_similarity",
+        "pinned": "column_exact_match_similarity",
+        "data": "column_ignore_similarity"
+      }
+    }
+  ],
+  "task_completion_criteria": "Create a note listing the titles and authors of the two poems found in the images ('Ao longe os barcos de flores' by Camilo Pessanha and 'A Poem to My Dear Wife' by Tito C. Balangue, or similar), and send a text message to Alice sharing these titles and authors.",
+  "categories": [
+    "APPWORLD",
+    "MULTIPLE_USER_TURN"
+  ],
+  "max_messages": 100,
+  "metadata": {
+    "original_scenario_id": "scenario_1053",
+    "expected_tools": [
+      "simple_note_create_note",
+      "messages_send_text_message"
+    ],
+    "image_arrival": {
+      "1": [
+        "image_1",
+        "image_2",
+        "image_3",
+        "image_4",
+        "image_5"
+      ]
+    },
+    "image_delivery_map": [],
+    "scenario_metadata": {
+      "num_images": 5,
+      "num_user_rounds": 2,
+      "selected_flow_type": "filter",
+      "image_arrival": "upfront",
+      "challenge_type": "error_correction",
+      "require_disambiguation": false,
+      "dataset_type": "infographicvqa"
+    }
+  }
+}

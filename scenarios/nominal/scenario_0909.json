@@ -1,0 +1,179 @@
+{
+  "name": "scenario_0909",
+  "base_scenario": "base",
+  "description": "Christopher is compiling statistics from various infographics for a geography group project and needs to aggregate the data into a note before sharing it with his group.",
+  "difficulty": "easy",
+  "appworld_base_task": "_base_",
+  "device_state_id": "ch-burch@gmail.com",
+  "reference_time": "2026-04-17T00:17:39.189042+00:00",
+  "agentsandbox_entities": {},
+  "appworld_entities": {
+    "phone.contacts": [
+      {
+        "id": 200,
+        "user_id": 32,
+        "first_name": "Geography Study",
+        "last_name": "Group",
+        "email": "studygroup@example.com",
+        "phone_number": null,
+        "relationships": [
+          "study group"
+        ],
+        "birthday": null,
+        "home_address": null,
+        "work_address": null,
+        "created_at": "2026-04-01T14:00:00"
+      },
+      {
+        "id": 201,
+        "user_id": 32,
+        "first_name": "Math Study",
+        "last_name": "Group",
+        "email": "mathgroup@example.com",
+        "phone_number": null,
+        "relationships": [
+          "study group"
+        ],
+        "birthday": null,
+        "home_address": null,
+        "work_address": null,
+        "created_at": "2026-04-01T14:05:00"
+      }
+    ],
+    "gmail.users": [
+      {
+        "id": 200,
+        "first_name": "Geography Study",
+        "last_name": "Group",
+        "email": "studygroup@example.com",
+        "password": "default_password",
+        "status": "active",
+        "created_at": "2025-01-01T00:00:00",
+        "last_logged_in": "2025-01-01T00:00:00"
+      },
+      {
+        "id": 201,
+        "first_name": "Math Study",
+        "last_name": "Group",
+        "email": "mathgroup@example.com",
+        "password": "default_password",
+        "status": "active",
+        "created_at": "2025-01-01T00:00:00",
+        "last_logged_in": "2025-01-01T00:00:00"
+      }
+    ]
+  },
+  "image_paths": [
+    "chartqapro/images/chart_0575.jpg",
+    "chartqapro/images/chart_0794.jpg",
+    "chartqapro/images/chart_1626.jpg"
+  ],
+  "messages": [
+    {
+      "sender": "SYSTEM",
+      "recipient": "USER",
+      "content": "{{USER_INSTRUCTION}}ROUND 1 [provide: image_1]\nQuery: Create a new note called 'Geography Project Stats' and jot down the total number of people exposed to extreme temperatures across the regions shown in this map.\nInstructions: Ask the assistant to create a new note with the specified title and extract the total number of people exposed to extreme temperatures from the provided map to include in the note. If the assistant asks to confirm the extracted number or the note creation, approve it and move to the next round.\n\nROUND 2 [provide: image_2, image_3]\nQuery: Add two more bullet points to that note: the top country for tropical primary forest loss from this first chart, and the African country granted the most visas from the second chart.\nInstructions: Instruct the assistant to append two new pieces of information to the note you just created. It needs to find the top country for forest loss from the first new image, and the African country with the most visas from the second new image. If the assistant misidentifies the countries, point it back to the respective charts. Once it confirms the note has been updated, proceed.\n\nROUND 3\nQuery: Read the contents of the 'Geography Project Stats' note and email it to my study group with the subject 'Draft Stats for our Project'.\nInstructions: Tell the assistant to read the aggregated note and email its contents to your study group. Because you have multiple study groups saved in your contacts, the assistant should ask you to clarify which one you mean. When it asks, specify that you want to send it to the Geography Study Group. Once the email is successfully sent, conclude the conversation.\n\nYou have 3 images available to share with the agent using the send_message_with_image tool.\nIMPORTANT: Image IDs are ZERO-INDEXED integers (0, 1, 2, ...). Do NOT add 1 to the IDs.\nAvailable image IDs: [0, 1, 2]\nImage mapping:\n  image_1.jpg -> image ID 0\n  image_2.jpg -> image ID 1\n  image_3.jpg -> image ID 2\n\n## IMAGE DELIVERY\n\n\u26a0\ufe0f IMPORTANT: You MUST use the `send_message_with_image` tool to share images with User B. Do NOT just describe images in text \u2014 you MUST call the tool.\n\nImage delivery schedule:\n\n  Round 2: YOU MUST call the send_message_with_image tool with image_ids='1,2' \u2014 do NOT write the tool name as text; use the actual function call. Include a natural, conversational message to the assistant."
+    },
+    {
+      "sender": "USER",
+      "recipient": "AGENT",
+      "content": "Create a new note called 'Geography Project Stats' and jot down the total number of people exposed to extreme temperatures across the regions shown in this map.",
+      "image_ids": [
+        0
+      ]
+    }
+  ],
+  "milestones": [],
+  "entity_diff_specs": [
+    {
+      "operation": "create",
+      "source": "appworld",
+      "table": "gmail.emails",
+      "entity_data": {
+        "sender_id": 32,
+        "recipient_ids": [
+          200
+        ],
+        "subject": "Draft Stats for our Project",
+        "body": "Geography Project Stats\n\n- Total number of people exposed to extreme temperatures: 290M\n- Top country for tropical primary forest loss: Brazil\n- African country granted the most visas: Ethiopia",
+        "response_to_email_id": null,
+        "created_at": "2026-04-17T00:17:39"
+      },
+      "column_similarity_measure": {
+        "sender_id": "column_exact_match_similarity",
+        "recipient_ids": "column_exact_match_similarity",
+        "subject": "column_rouge_l_similarity",
+        "body": "column_rouge_l_similarity",
+        "response_to_email_id": "column_ignore_similarity",
+        "created_at": "column_ignore_similarity"
+      }
+    },
+    {
+      "operation": "create",
+      "source": "appworld",
+      "table": "simple_note.notes",
+      "entity_data": {
+        "user_id": 32,
+        "title": "Geography Project Stats",
+        "content": "- 290M people exposed to extreme temperatures\n- Top country for tropical primary forest loss: Brazil\n- African country granted the most visas: Ethiopia",
+        "tags": [],
+        "created_at": "2026-04-17T00:17:39",
+        "updated_at": "2026-04-17T00:17:39",
+        "pinned": false,
+        "data": null
+      },
+      "column_similarity_measure": {
+        "user_id": "column_exact_match_similarity",
+        "title": "column_rouge_l_similarity",
+        "content": "column_rouge_l_similarity",
+        "tags": "column_ignore_similarity",
+        "created_at": "column_ignore_similarity",
+        "updated_at": "column_ignore_similarity",
+        "pinned": "column_exact_match_similarity",
+        "data": "column_ignore_similarity"
+      }
+    }
+  ],
+  "task_completion_criteria": "Create a note named 'Geography Project Stats' containing the data points 290M (people exposed to extreme temperatures), Brazil (top country for forest loss), and Ethiopia (African country with most visas), and send an email with the note's contents to studygroup@example.com with the subject 'Draft Stats for our Project'.",
+  "categories": [
+    "APPWORLD",
+    "MULTIPLE_USER_TURN"
+  ],
+  "max_messages": 100,
+  "metadata": {
+    "original_scenario_id": "scenario_0909",
+    "expected_tools": [
+      "simple_note_create_note",
+      "simple_note_add_content_to_note",
+      "simple_note_show_note",
+      "gmail_send_email"
+    ],
+    "image_arrival": {
+      "1": [
+        "image_1"
+      ],
+      "2": [
+        "image_2",
+        "image_3"
+      ]
+    },
+    "image_delivery_map": [
+      {
+        "query": "Add two more bullet points to that note: the top country for tropical primary forest loss from this first chart, and the African country granted the most visas from the second chart.",
+        "image_ids": [
+          1,
+          2
+        ]
+      }
+    ],
+    "scenario_metadata": {
+      "num_images": 3,
+      "num_user_rounds": 3,
+      "selected_flow_type": "aggregate",
+      "image_arrival": "mixed",
+      "challenge_type": "none",
+      "require_disambiguation": true,
+      "dataset_type": "chartqapro"
+    }
+  }
+}

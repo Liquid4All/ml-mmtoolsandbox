@@ -1,0 +1,219 @@
+{
+  "name": "scenario_0504",
+  "base_scenario": "base",
+  "description": "The user is searching for engaging data visualization examples for a final project portfolio, comparing different chart types and subjects to find the best fit.",
+  "difficulty": "easy",
+  "appworld_base_task": "_base_",
+  "device_state_id": "caiburc@gmail.com",
+  "reference_time": "2026-04-17T00:05:41.823341+00:00",
+  "agentsandbox_entities": {
+    "reminder": [
+      {
+        "reminder_id": "reminder_100",
+        "content": "Search for chart examples",
+        "latitude": null,
+        "longitude": null,
+        "creation_datetime": "2026-04-16T10:00:00Z",
+        "reminder_datetime": "2026-04-18T10:00:00Z"
+      }
+    ]
+  },
+  "appworld_entities": {
+    "phone.contacts": [
+      {
+        "id": 200,
+        "user_id": 33,
+        "first_name": "Sarah",
+        "last_name": "Jenkins",
+        "email": "sarah.jenkins@gmail.com",
+        "phone_number": "555-0101",
+        "relationships": [],
+        "birthday": null,
+        "home_address": null,
+        "work_address": null,
+        "created_at": "2026-01-10T09:00:00"
+      },
+      {
+        "id": 201,
+        "user_id": 33,
+        "first_name": "Sarah",
+        "last_name": "Lewis",
+        "email": "sarah.lewis@gmail.com",
+        "phone_number": "555-0102",
+        "relationships": [],
+        "birthday": null,
+        "home_address": null,
+        "work_address": null,
+        "created_at": "2026-01-15T14:30:00"
+      }
+    ],
+    "gmail.users": [
+      {
+        "id": 200,
+        "first_name": "Sarah",
+        "last_name": "Jenkins",
+        "email": "sarah.jenkins@gmail.com",
+        "password": "default_password",
+        "status": "active",
+        "created_at": "2025-01-01T00:00:00",
+        "last_logged_in": "2025-01-01T00:00:00"
+      },
+      {
+        "id": 201,
+        "first_name": "Sarah",
+        "last_name": "Lewis",
+        "email": "sarah.lewis@gmail.com",
+        "password": "default_password",
+        "status": "active",
+        "created_at": "2025-01-01T00:00:00",
+        "last_logged_in": "2025-01-01T00:00:00"
+      }
+    ],
+    "phone.users": [
+      {
+        "id": 200,
+        "first_name": "Sarah",
+        "last_name": "Jenkins",
+        "phone_number": "555-0101",
+        "password": "default_password",
+        "created_at": "2025-01-01T00:00:00",
+        "last_logged_in": "2025-01-01T00:00:00"
+      },
+      {
+        "id": 201,
+        "first_name": "Sarah",
+        "last_name": "Lewis",
+        "phone_number": "555-0102",
+        "password": "default_password",
+        "created_at": "2025-01-01T00:00:00",
+        "last_logged_in": "2025-01-01T00:00:00"
+      }
+    ]
+  },
+  "image_paths": [
+    "chartqapro/images/chart_1431.jpg",
+    "chartmuseum/images/housework-childcare-equality.png",
+    "chartqapro/images/chart_1055.jpg",
+    "chartqapro/images/chart_1509.jpg"
+  ],
+  "messages": [
+    {
+      "sender": "SYSTEM",
+      "recipient": "USER",
+      "content": "{{USER_INSTRUCTION}}ROUND 1 [provide: image_1, image_3]\nQuery: Take a look at these two dashboards. I'm trying to find one that includes either a 'Spider' or 'Manhattan' chart. Once you spot which one has it, create a note titled 'Portfolio Candidates' and write down the name of the player featured in that specific dashboard.\nInstructions: Ask the assistant to compare the two dashboards, identify which one contains a Spider or Manhattan chart, and create a note titled 'Portfolio Candidates' containing the name of the player featured on that specific dashboard. If the assistant asks for clarification on which name to use, tell it to use the main player name shown at the very top. Once the assistant confirms the note has been created, proceed to the next round.\n\nROUND 2 [provide: image_2, image_4]\nQuery: Now compare these two new infographics. I need an example that demonstrates a network diagram showing connections between people. Figure out which one has it, and update my 'Portfolio Candidates' note to include the main title of that infographic.\nInstructions: Instruct the assistant to compare the two new images, find the one featuring a network diagram of people's connections, and update the existing 'Portfolio Candidates' note with the main title of that specific infographic. If the assistant includes the wrong title or summarizes the wrong chart, point it back to the image with the network diagram. Once the note is updated, move on to the next round.\n\nROUND 3\nQuery: I think the TV show infographic is the most engaging option for our final project. Go ahead and delete the 'Portfolio Candidates' note since we no longer need to track alternatives. You can also delete my reminder to 'Search for chart examples'. Finally, send a text to Sarah letting her know we'll use the 'One Tree Hill' infographic.\nInstructions: Ask the assistant to delete the 'Portfolio Candidates' note, delete the 'Search for chart examples' reminder, and send a text message to Sarah about using the 'One Tree Hill' infographic. The assistant should notice there are multiple contacts named Sarah on the device and ask you to clarify which one you mean. When it asks, tell it you mean Sarah Lewis. If the assistant tries to send the message without disambiguating, correct it and ensure it selects Sarah Lewis. Once the deletions and the message are confirmed, end the conversation.\n\nYou have 4 images available to share with the agent using the send_message_with_image tool.\nIMPORTANT: Image IDs are ZERO-INDEXED integers (0, 1, 2, ...). Do NOT add 1 to the IDs.\nAvailable image IDs: [0, 1, 2, 3]\nImage mapping:\n  image_1.jpg -> image ID 0\n  image_2.jpg -> image ID 1\n  image_3.jpg -> image ID 2\n  image_4.jpg -> image ID 3\n\n## IMAGE DELIVERY\n\n⚠️ IMPORTANT: You MUST use the `send_message_with_image` tool to share images with User B. Do NOT just describe images in text — you MUST call the tool.\n\nImage delivery schedule:\n\n  Round 2: YOU MUST call the send_message_with_image tool with image_ids='1,3' — do NOT write the tool name as text; use the actual function call. Include a natural, conversational message to the assistant."
+    },
+    {
+      "sender": "USER",
+      "recipient": "AGENT",
+      "content": "Take a look at these two dashboards. I'm trying to find one that includes either a 'Spider' or 'Manhattan' chart. Once you spot which one has it, create a note titled 'Portfolio Candidates' and write down the name of the player featured in that specific dashboard.",
+      "image_ids": [
+        0,
+        2
+      ]
+    }
+  ],
+  "milestones": [],
+  "entity_diff_specs": [
+    {
+      "operation": "create",
+      "source": "appworld",
+      "table": "phone.global_text_messages",
+      "entity_data": {
+        "sender_id": 33,
+        "receiver_id": 201,
+        "message": "Hey Sarah, we'll use the 'One Tree Hill' infographic for our final project.",
+        "created_at": "2026-04-17T00:05:41"
+      },
+      "column_similarity_measure": {
+        "sender_id": "column_exact_match_similarity",
+        "receiver_id": "column_exact_match_similarity",
+        "message": "column_rouge_l_similarity",
+        "created_at": "column_ignore_similarity"
+      }
+    },
+    {
+      "operation": "create",
+      "source": "appworld",
+      "table": "phone.user_text_messages",
+      "entity_data": {
+        "global_text_message_id": 200,
+        "user_id": 33,
+        "created_at": "2026-04-17T00:05:41"
+      },
+      "column_similarity_measure": {
+        "global_text_message_id": "column_ignore_similarity",
+        "user_id": "column_exact_match_similarity",
+        "created_at": "column_ignore_similarity"
+      }
+    },
+    {
+      "operation": "delete",
+      "source": "agentsandbox",
+      "namespace": "REMINDER",
+      "entity_id_column": "reminder_id",
+      "entity_id_value": "reminder_100",
+      "column_similarity_measure": {
+        "reminder_id": "column_exact_match_similarity"
+      }
+    },
+    {
+      "operation": "create",
+      "source": "appworld",
+      "table": "phone.user_text_messages",
+      "entity_data": {
+        "global_text_message_id": 200,
+        "user_id": 201,
+        "created_at": "2026-04-17T00:05:41"
+      },
+      "column_similarity_measure": {
+        "global_text_message_id": "column_ignore_similarity",
+        "user_id": "column_exact_match_similarity",
+        "created_at": "column_ignore_similarity"
+      }
+    }
+  ],
+  "task_completion_criteria": "Compare the provided dashboards to identify the one with a Spider/Manhattan chart (Angelo Mathews) and the one with a network diagram (Kissing and Fisticuffs on One Tree Hill), track them in a note, then delete the note and a preexisting reminder to search for examples, and send a text message to Sarah Lewis confirming the selection of the One Tree Hill infographic.",
+  "categories": [
+    "APPWORLD",
+    "MULTIPLE_USER_TURN"
+  ],
+  "max_messages": 100,
+  "metadata": {
+    "original_scenario_id": "scenario_0504",
+    "expected_tools": [
+      "simple_note_create_note",
+      "simple_note_show_note",
+      "simple_note_update_note",
+      "simple_note_delete_note",
+      "messages_send_text_message"
+    ],
+    "image_arrival": {
+      "1": [
+        "image_1",
+        "image_3"
+      ],
+      "2": [
+        "image_2",
+        "image_4"
+      ]
+    },
+    "image_delivery_map": [
+      {
+        "query": "Now compare these two new infographics. I need an example that demonstrates a network diagram showing connections between people. Figure out which one has it, and update my 'Portfolio Candidates' note to include the main title of that infographic.",
+        "image_ids": [
+          1,
+          3
+        ]
+      }
+    ],
+    "scenario_metadata": {
+      "num_images": 4,
+      "num_user_rounds": 3,
+      "selected_flow_type": "compare",
+      "image_arrival": "mixed",
+      "challenge_type": "state_mutation",
+      "require_disambiguation": true,
+      "dataset_type": "chartqapro"
+    }
+  }
+}

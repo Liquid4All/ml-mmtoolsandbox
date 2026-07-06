@@ -1,0 +1,391 @@
+{
+  "name": "scenario_0448",
+  "base_scenario": "base",
+  "description": "The user is exploring their music preferences by comparing their recently played and currently playing tracks against global Spotify trends from a data dashboard.",
+  "difficulty": "easy",
+  "appworld_base_task": "_base_",
+  "device_state_id": "ch.brow@gmail.com",
+  "reference_time": "2026-04-17T00:03:46.037962+00:00",
+  "agentsandbox_entities": {},
+  "appworld_entities": {
+    "phone.contacts": [
+      {
+        "id": 200,
+        "user_id": 88,
+        "first_name": "Bob",
+        "last_name": "Miller",
+        "email": "bob.miller@gmail.com",
+        "phone_number": "555-0101",
+        "relationships": [
+          "friend"
+        ],
+        "birthday": null,
+        "home_address": null,
+        "work_address": null,
+        "created_at": "2025-06-15T10:00:00"
+      },
+      {
+        "id": 201,
+        "user_id": 88,
+        "first_name": "Bob",
+        "last_name": "Chen",
+        "email": "bob.chen@gmail.com",
+        "phone_number": "555-0102",
+        "relationships": [
+          "friend"
+        ],
+        "birthday": null,
+        "home_address": null,
+        "work_address": null,
+        "created_at": "2025-08-20T14:30:00"
+      }
+    ],
+    "spotify.albums": [
+      {
+        "id": 200,
+        "title": "Yummy",
+        "artist_ids": [
+          200
+        ],
+        "release_date": "2020-01-01T00:00:00",
+        "genre": "Pop",
+        "rating": 4.5,
+        "like_count": 10000,
+        "review_count": 500
+      },
+      {
+        "id": 201,
+        "title": "Born To Die",
+        "artist_ids": [
+          201
+        ],
+        "release_date": "2012-01-27T00:00:00",
+        "genre": "Pop",
+        "rating": 4.8,
+        "like_count": 50000,
+        "review_count": 2000
+      },
+      {
+        "id": 202,
+        "title": "Impossible Princess",
+        "artist_ids": [
+          202
+        ],
+        "release_date": "1997-10-22T00:00:00",
+        "genre": "Pop",
+        "rating": 4.0,
+        "like_count": 20000,
+        "review_count": 800
+      },
+      {
+        "id": 203,
+        "title": "Gimmie Dat",
+        "artist_ids": [
+          203
+        ],
+        "release_date": "2010-10-11T00:00:00",
+        "genre": "R&B",
+        "rating": 4.2,
+        "like_count": 15000,
+        "review_count": 600
+      },
+      {
+        "id": 204,
+        "title": "Obsessions",
+        "artist_ids": [
+          204
+        ],
+        "release_date": "2009-02-16T00:00:00",
+        "genre": "Pop",
+        "rating": 4.3,
+        "like_count": 18000,
+        "review_count": 700
+      }
+    ],
+    "spotify.songs": [
+      {
+        "id": 200,
+        "title": "\u5bf9\u9762\u7684\u5973\u5b69\u770b\u8fc7\u6765",
+        "artist_ids": [
+          205
+        ],
+        "album_id": null,
+        "duration": 200,
+        "release_date": "1998-08-01T00:00:00",
+        "genre": "Pop",
+        "play_count": 1500000,
+        "rating": 4.7,
+        "like_count": 80000,
+        "review_count": 3000
+      },
+      {
+        "id": 201,
+        "title": "We Just Call It Love - \u859b\u4e4b\u8c26",
+        "artist_ids": [
+          206
+        ],
+        "album_id": null,
+        "duration": 250,
+        "release_date": "2020-05-20T00:00:00",
+        "genre": "Pop",
+        "play_count": 800000,
+        "rating": 4.6,
+        "like_count": 45000,
+        "review_count": 1500
+      }
+    ],
+    "spotify.music_players": [
+      {
+        "id": 300,
+        "user_id": 88,
+        "queue_song_ids": [],
+        "is_playing": false,
+        "is_looping": false,
+        "cursor_position": null,
+        "played_seconds": 0,
+        "volume": 5
+      }
+    ],
+    "gmail.users": [
+      {
+        "id": 200,
+        "first_name": "Bob",
+        "last_name": "Miller",
+        "email": "bob.miller@gmail.com",
+        "password": "default_password",
+        "status": "active",
+        "created_at": "2025-01-01T00:00:00",
+        "last_logged_in": "2025-01-01T00:00:00"
+      },
+      {
+        "id": 201,
+        "first_name": "Bob",
+        "last_name": "Chen",
+        "email": "bob.chen@gmail.com",
+        "password": "default_password",
+        "status": "active",
+        "created_at": "2025-01-01T00:00:00",
+        "last_logged_in": "2025-01-01T00:00:00"
+      }
+    ],
+    "phone.users": [
+      {
+        "id": 200,
+        "first_name": "Bob",
+        "last_name": "Miller",
+        "phone_number": "555-0101",
+        "password": "default_password",
+        "created_at": "2025-01-01T00:00:00",
+        "last_logged_in": "2025-01-01T00:00:00"
+      },
+      {
+        "id": 201,
+        "first_name": "Bob",
+        "last_name": "Chen",
+        "phone_number": "555-0102",
+        "password": "default_password",
+        "created_at": "2025-01-01T00:00:00",
+        "last_logged_in": "2025-01-01T00:00:00"
+      }
+    ]
+  },
+  "image_paths": [
+    "screenspotpro/images/vivado_windows/screenshot_2024-12-09_22-14-34.png",
+    "screenspotpro/images/pycharm_mac/screenshot_2024-10-24_11-51-40.png",
+    "hiertext/images/test/7ee150babe7ba9dc.jpg",
+    "screenspotpro/images/pycharm_mac/screenshot_2024-10-23_15-20-34.png",
+    "chartqapro/images/chart_1789.jpg",
+    "screenspotpro/images/vivado_windows/screenshot_2024-12-09_22-22-12.png"
+  ],
+  "messages": [
+    {
+      "sender": "SYSTEM",
+      "recipient": "USER",
+      "content": "{{USER_INSTRUCTION}}ROUND 1 [provide: image_3, image_5]\nQuery: Look up the number one album on this dashboard's popularity list to see its details. Then, compare my recently played albums on this phone screen with that top 10 list. If any of my recent albums aren't on the dashboard's list, add them to my Spotify library.\nInstructions: Ask the assistant to check the details of the top album from the dashboard image. Then, instruct it to cross-reference the recently played albums from the phone screenshot with the top 10 albums on the dashboard. It should add any of the recently played albums that are missing from the top 10 list to your Spotify library. If the assistant asks for clarification on which albums or which list, direct it back to the specific sections in the provided images. Proceed to the next round once the assistant confirms the albums have been added.\n\nROUND 2 [provide: image_1, image_2, image_4, image_6]\nQuery: Now look at these four new computer screenshots and find the unique songs currently playing in them. Look those songs up on Spotify. Check if their artists are in the top 10 artists list from that dashboard I showed you earlier. If they aren't, add the songs to my queue and send a text message to Bob recommending them.\nInstructions: Ask the assistant to identify the distinct songs playing in the four new screenshots, look them up, and cross-reference their artists with the top 10 artists list from the previously shared dashboard. If the artists are missing from the list, the assistant should add the songs to your queue and text Bob to recommend them. The assistant should notice there are multiple contacts named Bob and ask you which one you mean. When it does, clarify that you mean Bob Miller. If the assistant fails to find the playing songs, remind it to check the menu bars and music app windows in the screenshots. End the conversation once the text is sent and the queue is updated.\n\nYou have 6 images available to share with the agent using the send_message_with_image tool.\nIMPORTANT: Image IDs are ZERO-INDEXED integers (0, 1, 2, ...). Do NOT add 1 to the IDs.\nAvailable image IDs: [0, 1, 2, 3, 4, 5]\nImage mapping:\n  image_1.jpg -> image ID 0\n  image_2.jpg -> image ID 1\n  image_3.jpg -> image ID 2\n  image_4.jpg -> image ID 3\n  image_5.jpg -> image ID 4\n  image_6.jpg -> image ID 5\n\n## IMAGE DELIVERY\n\n\u26a0\ufe0f IMPORTANT: You MUST use the `send_message_with_image` tool to share images with User B. Do NOT just describe images in text \u2014 you MUST call the tool.\n\nImage delivery schedule:\n\n  Round 2: YOU MUST call the send_message_with_image tool with image_ids='0,1,3,5' \u2014 do NOT write the tool name as text; use the actual function call. Include a natural, conversational message to the assistant."
+    },
+    {
+      "sender": "USER",
+      "recipient": "AGENT",
+      "content": "Look up the number one album on this dashboard's popularity list to see its details. Then, compare my recently played albums on this phone screen with that top 10 list. If any of my recent albums aren't on the dashboard's list, add them to my Spotify library.",
+      "image_ids": [
+        2,
+        4
+      ]
+    }
+  ],
+  "milestones": [],
+  "entity_diff_specs": [
+    {
+      "operation": "create",
+      "source": "appworld",
+      "table": "phone.global_text_messages",
+      "entity_data": {
+        "sender_id": 88,
+        "receiver_id": 200,
+        "message": "Hey Bob, I highly recommend you check out these songs: \u5bf9\u9762\u7684\u5973\u5b69\u770b\u8fc7\u6765 and We Just Call It Love - \u859b\u4e4b\u8c26.",
+        "created_at": "2026-04-17T00:03:46"
+      },
+      "column_similarity_measure": {
+        "sender_id": "column_exact_match_similarity",
+        "receiver_id": "column_exact_match_similarity",
+        "message": "column_rouge_l_similarity",
+        "created_at": "column_ignore_similarity"
+      }
+    },
+    {
+      "operation": "create",
+      "source": "appworld",
+      "table": "phone.user_text_messages",
+      "entity_data": {
+        "global_text_message_id": 200,
+        "user_id": 88,
+        "created_at": "2026-04-17T00:03:46"
+      },
+      "column_similarity_measure": {
+        "global_text_message_id": "column_ignore_similarity",
+        "user_id": "column_exact_match_similarity",
+        "created_at": "column_ignore_similarity"
+      }
+    },
+    {
+      "operation": "create",
+      "source": "appworld",
+      "table": "phone.user_text_messages",
+      "entity_data": {
+        "global_text_message_id": 200,
+        "user_id": 200,
+        "created_at": "2026-04-17T00:03:46"
+      },
+      "column_similarity_measure": {
+        "global_text_message_id": "column_ignore_similarity",
+        "user_id": "column_exact_match_similarity",
+        "created_at": "column_ignore_similarity"
+      }
+    },
+    {
+      "operation": "create",
+      "source": "appworld",
+      "table": "spotify.user_library_albums",
+      "entity_data": {
+        "user_id": 88,
+        "album_id": 201,
+        "created_at": "2026-04-17T00:03:46"
+      },
+      "column_similarity_measure": {
+        "user_id": "column_exact_match_similarity",
+        "album_id": "column_exact_match_similarity",
+        "created_at": "column_ignore_similarity"
+      }
+    },
+    {
+      "operation": "create",
+      "source": "appworld",
+      "table": "spotify.user_library_albums",
+      "entity_data": {
+        "user_id": 88,
+        "album_id": 202,
+        "created_at": "2026-04-17T00:03:46"
+      },
+      "column_similarity_measure": {
+        "user_id": "column_exact_match_similarity",
+        "album_id": "column_exact_match_similarity",
+        "created_at": "column_ignore_similarity"
+      }
+    },
+    {
+      "operation": "create",
+      "source": "appworld",
+      "table": "spotify.user_library_albums",
+      "entity_data": {
+        "user_id": 88,
+        "album_id": 203,
+        "created_at": "2026-04-17T00:03:46"
+      },
+      "column_similarity_measure": {
+        "user_id": "column_exact_match_similarity",
+        "album_id": "column_exact_match_similarity",
+        "created_at": "column_ignore_similarity"
+      }
+    },
+    {
+      "operation": "create",
+      "source": "appworld",
+      "table": "spotify.user_library_albums",
+      "entity_data": {
+        "user_id": 88,
+        "album_id": 204,
+        "created_at": "2026-04-17T00:03:46"
+      },
+      "column_similarity_measure": {
+        "user_id": "column_exact_match_similarity",
+        "album_id": "column_exact_match_similarity",
+        "created_at": "column_ignore_similarity"
+      }
+    },
+    {
+      "operation": "update",
+      "source": "appworld",
+      "table": "spotify.music_players",
+      "entity_id_column": "id",
+      "entity_id_value": 300,
+      "expected_fields": {
+        "queue_song_ids": [
+          200,
+          201
+        ]
+      },
+      "column_similarity_measure": {
+        "queue_song_ids": "column_ignore_similarity",
+        "id": "column_exact_match_similarity"
+      }
+    }
+  ],
+  "task_completion_criteria": "Show details for the album 'Yummy' on Spotify. Add the albums 'Born To Die', 'Impossible Princess', 'Gimmie Dat', and 'Obsessions' to the user's Spotify library. Add the songs '\u5bf9\u9762\u7684\u5973\u5b69\u770b\u8fc7\u6765' and 'We Just Call It Love - \u859b\u4e4b\u8c26' to the user's Spotify queue. Send a text message to Bob Miller recommending the songs '\u5bf9\u9762\u7684\u5973\u5b69\u770b\u8fc7\u6765' and 'We Just Call It Love - \u859b\u4e4b\u8c26' (or similar phrasing expressing the recommendation).",
+  "categories": [
+    "APPWORLD",
+    "MULTIPLE_USER_TURN"
+  ],
+  "max_messages": 100,
+  "metadata": {
+    "original_scenario_id": "scenario_0448",
+    "expected_tools": [
+      "spotify_show_album",
+      "spotify_add_album_to_library",
+      "spotify_show_song",
+      "spotify_add_to_queue",
+      "messages_send_text_message"
+    ],
+    "image_arrival": {
+      "1": [
+        "image_3",
+        "image_5"
+      ],
+      "2": [
+        "image_1",
+        "image_2",
+        "image_4",
+        "image_6"
+      ]
+    },
+    "image_delivery_map": [
+      {
+        "query": "Now look at these four new computer screenshots and find the unique songs currently playing in them. Look those songs up on Spotify. Check if their artists are in the top 10 artists list from that dashboard I showed you earlier. If they aren't, add the songs to my queue and send a text message to Bob recommending them.",
+        "image_ids": [
+          0,
+          1,
+          3,
+          5
+        ]
+      }
+    ],
+    "scenario_metadata": {
+      "num_images": 6,
+      "num_user_rounds": 2,
+      "selected_flow_type": "cross_reference",
+      "image_arrival": "mixed",
+      "challenge_type": "none",
+      "require_disambiguation": true,
+      "dataset_type": "screenspotpro"
+    }
+  }
+}

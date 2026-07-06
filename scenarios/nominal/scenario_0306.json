@@ -1,0 +1,224 @@
+{
+  "name": "scenario_0306",
+  "base_scenario": "base",
+  "description": "Catherine is looking to restock some specific herbal ingredients and seeds she uses. She has photos of the items she needs and wants her agent to handle the Amazon shopping, validating past purchases, quality, and prices along the way.",
+  "difficulty": "easy",
+  "appworld_base_task": "_base_",
+  "device_state_id": "ca-smit@gmail.com",
+  "reference_time": "2026-04-16T23:59:27.901250+00:00",
+  "agentsandbox_entities": {},
+  "appworld_entities": {
+    "phone.contacts": [
+      {
+        "id": 200,
+        "user_id": 64,
+        "first_name": "Erica",
+        "last_name": "Davis",
+        "email": "erica.davis@gmail.com",
+        "phone_number": "555-0199",
+        "relationships": [],
+        "birthday": null,
+        "home_address": null,
+        "work_address": null,
+        "created_at": "2025-10-15T09:30:00"
+      }
+    ],
+    "amazon.sellers": [
+      {
+        "id": 200,
+        "name": "Nature's Herbs",
+        "rating": 4.8
+      }
+    ],
+    "amazon.products": [
+      {
+        "id": 200,
+        "product_type": "groceries",
+        "name": "Organic Black Soybeans",
+        "description": "Premium quality dried black soybeans for cooking and sprouting.",
+        "seller_id": 200,
+        "price": 9.99,
+        "delivery_days": 2,
+        "inventory_quantity": 50,
+        "weight": 1.0,
+        "length": 6.0,
+        "width": 4.0,
+        "height": 2.0,
+        "color": "Black",
+        "relative_size": "small",
+        "rating": 4.5,
+        "seller_rating": 4.8,
+        "has_variations": false
+      },
+      {
+        "id": 201,
+        "product_type": "groceries",
+        "name": "Dried Euryale Ferox Seeds",
+        "description": "Also known as Fox Nuts or Makhana, perfect for herbal soups.",
+        "seller_id": 200,
+        "price": 14.99,
+        "delivery_days": 3,
+        "inventory_quantity": 30,
+        "weight": 0.5,
+        "length": 5.0,
+        "width": 5.0,
+        "height": 1.5,
+        "color": "Brown",
+        "relative_size": "small",
+        "rating": 4.7,
+        "seller_rating": 4.8,
+        "has_variations": false
+      },
+      {
+        "id": 202,
+        "product_type": "groceries",
+        "name": "Dried Kaempferia Galanga Sliced Roots",
+        "description": "Aromatic sand ginger slices for culinary and herbal use.",
+        "seller_id": 200,
+        "price": 17.5,
+        "delivery_days": 4,
+        "inventory_quantity": 20,
+        "weight": 0.3,
+        "length": 4.0,
+        "width": 3.0,
+        "height": 1.0,
+        "color": "Tan",
+        "relative_size": "small",
+        "rating": 4.2,
+        "seller_rating": 4.8,
+        "has_variations": false
+      }
+    ],
+    "gmail.users": [
+      {
+        "id": 200,
+        "first_name": "Erica",
+        "last_name": "Davis",
+        "email": "erica.davis@gmail.com",
+        "password": "default_password",
+        "status": "active",
+        "created_at": "2025-01-01T00:00:00",
+        "last_logged_in": "2025-01-01T00:00:00"
+      }
+    ],
+    "phone.users": [
+      {
+        "id": 200,
+        "first_name": "Erica",
+        "last_name": "Davis",
+        "phone_number": "555-0199",
+        "password": "default_password",
+        "created_at": "2025-01-01T00:00:00",
+        "last_logged_in": "2025-01-01T00:00:00"
+      }
+    ]
+  },
+  "image_paths": [
+    "worldvqa/images/1405.jpg",
+    "worldvqa/images/1572.jpg",
+    "worldvqa/images/1575.jpg"
+  ],
+  "messages": [
+    {
+      "sender": "SYSTEM",
+      "recipient": "USER",
+      "content": "{{USER_INSTRUCTION}}ROUND 1 [provide: image_1, image_2, image_3]\nQuery: Check my Amazon purchase history to see if I recently bought the ingredient in the first picture. If I haven't, search for it, add it to my cart, and text Erica to let her know I'm restocking it.\nInstructions: Ask the agent to check your Amazon purchase history for the ingredient shown in the first image. Tell it to search and add the item to your cart if it hasn't been bought recently, and to send a text to Erica mentioning that you are restocking it. Since you have multiple Ericas in your contacts (your coworker Erica Wilson and Erica Davis), the agent should ask for clarification. When it does, clarify that you mean your coworker. Once the agent confirms the cart addition and the sent message, move to the next round.\n\nROUND 2\nQuery: Now search Amazon for the seeds in the second picture. Check the reviews first\u2014only add it to my cart if it has an average rating of 4 stars or higher.\nInstructions: Instruct the agent to search Amazon for the ingredient from the second image. Ask it to validate the product's quality by checking the reviews, and to only add it to your cart if the average rating is 4 stars or better. If the agent asks for confirmation or reports the rating back to you, tell it to proceed with the addition as long as it meets your criteria. Once the agent confirms the validation and subsequent action, move on.\n\nROUND 3\nQuery: Finally, look up the sliced roots from the third picture. I have a strict $15 budget for this one. If it's under $15, add it to the cart and go ahead and place the order for everything. If it costs more than $15, just save it to my wish list instead and don't place the order\u2014I'll wait until I find a better deal.\nInstructions: Ask the agent to find the ingredient from the third image on Amazon and check its price against your $15 budget. Tell the agent that if it is under budget, it should add the item to your cart and place the order. If it exceeds the budget, it should add the item to your wish list instead and NOT place the order. If the agent reports the price and asks how to proceed, confirm the appropriate action based on your rule. Conclude the conversation once the final order or wish list addition is confirmed.\n\nYou have 3 images available to share with the agent using the send_message_with_image tool.\nIMPORTANT: Image IDs are ZERO-INDEXED integers (0, 1, 2, ...). Do NOT add 1 to the IDs.\nAvailable image IDs: [0, 1, 2]\nImage mapping:\n  image_1.jpg -> image ID 0\n  image_2.jpg -> image ID 1\n  image_3.jpg -> image ID 2"
+    },
+    {
+      "sender": "USER",
+      "recipient": "AGENT",
+      "content": "Check my Amazon purchase history to see if I recently bought the ingredient in the first picture. If I haven't, search for it, add it to my cart, and text Erica to let her know I'm restocking it.",
+      "image_ids": [
+        0,
+        1,
+        2
+      ]
+    }
+  ],
+  "milestones": [],
+  "entity_diff_specs": [
+    {
+      "operation": "create",
+      "source": "appworld",
+      "table": "amazon.cart_entries",
+      "entity_data": {
+        "user_id": 64,
+        "product_id": 200,
+        "quantity": 1,
+        "gift_wrap_quantity": 0
+      },
+      "column_similarity_measure": {
+        "user_id": "column_exact_match_similarity",
+        "product_id": "column_exact_match_similarity",
+        "quantity": "column_exact_match_similarity",
+        "gift_wrap_quantity": "column_exact_match_similarity"
+      }
+    },
+    {
+      "operation": "create",
+      "source": "appworld",
+      "table": "amazon.cart_entries",
+      "entity_data": {
+        "user_id": 64,
+        "product_id": 201,
+        "quantity": 1,
+        "gift_wrap_quantity": 0
+      },
+      "column_similarity_measure": {
+        "user_id": "column_exact_match_similarity",
+        "product_id": "column_exact_match_similarity",
+        "quantity": "column_exact_match_similarity",
+        "gift_wrap_quantity": "column_exact_match_similarity"
+      }
+    },
+    {
+      "operation": "create",
+      "source": "appworld",
+      "table": "amazon.wish_list_entries",
+      "entity_data": {
+        "user_id": 64,
+        "product_id": 202,
+        "quantity": 1
+      },
+      "column_similarity_measure": {
+        "user_id": "column_exact_match_similarity",
+        "product_id": "column_exact_match_similarity",
+        "quantity": "column_exact_match_similarity"
+      }
+    }
+  ],
+  "task_completion_criteria": "Check Amazon purchase history for Black soybeans (from image 1). If not recently bought, add Black soybeans to the cart and send a text message to Erica Wilson mentioning that Catherine is restocking 'Black soybeans' or something similar. Search Amazon for Euryale ferox (from image 2), validate that its average rating is 4 stars or higher, and add it to the cart if it meets the quality criteria. Search Amazon for Kaempferia galanga (from image 3), validate if its price is under $15; if it is under budget, add it to the cart and place the Amazon order for all cart items. If it exceeds the budget, add it to the wish list and do not place the order.",
+  "categories": [
+    "APPWORLD",
+    "MULTIPLE_USER_TURN"
+  ],
+  "max_messages": 100,
+  "metadata": {
+    "original_scenario_id": "scenario_0306",
+    "expected_tools": [
+      "amazon_show_last_product_purchase",
+      "amazon_show_product",
+      "amazon_add_product_to_cart",
+      "amazon_show_product_reviews",
+      "amazon_add_product_to_wish_list",
+      "amazon_place_order"
+    ],
+    "image_arrival": {
+      "1": [
+        "image_1",
+        "image_2",
+        "image_3"
+      ]
+    },
+    "image_delivery_map": [],
+    "scenario_metadata": {
+      "num_images": 3,
+      "num_user_rounds": 3,
+      "selected_flow_type": "validate",
+      "image_arrival": "upfront",
+      "challenge_type": "none",
+      "require_disambiguation": true,
+      "dataset_type": "worldvqa"
+    }
+  }
+}

@@ -1,0 +1,224 @@
+{
+  "name": "scenario_0206",
+  "base_scenario": "base",
+  "description": "The user is reviewing a series of presentation slides from an education seminar and wants to aggregate the key points into a single summary note, which will then be shared with a supervisor.",
+  "difficulty": "easy",
+  "appworld_base_task": "_base_",
+  "device_state_id": "tra_wils@gmail.com",
+  "reference_time": "2026-04-16T23:56:34.023478+00:00",
+  "agentsandbox_entities": {},
+  "appworld_entities": {
+    "phone.contacts": [
+      {
+        "id": 200,
+        "user_id": 71,
+        "first_name": "University",
+        "last_name": "Supervisor",
+        "email": "supervisor@university.edu",
+        "phone_number": null,
+        "relationships": [
+          "supervisor"
+        ],
+        "birthday": null,
+        "home_address": null,
+        "work_address": null,
+        "created_at": "2025-08-20T10:00:00"
+      }
+    ],
+    "todoist.projects": [
+      {
+        "id": 400,
+        "user_id": 71,
+        "name": "Inbox",
+        "color": "charcoal",
+        "is_inbox": true,
+        "description": "Default inbox project",
+        "created_at": "2025-01-01T10:00:00"
+      }
+    ],
+    "gmail.users": [
+      {
+        "id": 200,
+        "first_name": "University",
+        "last_name": "Supervisor",
+        "email": "supervisor@university.edu",
+        "password": "default_password",
+        "status": "active",
+        "created_at": "2025-01-01T00:00:00",
+        "last_logged_in": "2025-01-01T00:00:00"
+      }
+    ],
+    "todoist.project_collaborator_links": [
+      {
+        "id": 50400,
+        "project_id": 400,
+        "user_id": 71,
+        "is_favorite": false,
+        "is_archived": false,
+        "created_at": "2025-01-01T10:00:00"
+      }
+    ]
+  },
+  "image_paths": [
+    "omnidocbench/images/000310.jpg",
+    "omnidocbench/images/000606.jpg",
+    "omnidocbench/images/000615.jpg",
+    "omnidocbench/images/000608.jpg"
+  ],
+  "messages": [
+    {
+      "sender": "SYSTEM",
+      "recipient": "USER",
+      "content": "{{USER_INSTRUCTION}}ROUND 1 [provide: image_1, image_2]\nQuery: Create a new note called 'English Teaching Summary'. Grab the four needs from this first slide and the six competences from the second one, and add them to the note.\nInstructions: Instruct the assistant to create a new note with the specified title and extract the bulleted lists from both provided presentation slides into it. If the assistant asks for confirmation of the extracted text, verify that it captured the items from both slides accurately without hallucinating details. Once the note is successfully created and populated, move to the next round.\n\nROUND 2 [provide: image_3]\nQuery: Based on this new slide, add a section to the note stating that Academic English takes 2 to 3 years to acquire. Also, create a Todoist task named 'Review Academic English timeline'.\nInstructions: Ask the assistant to add the timeline information to the note based on the new slide, but intentionally state the wrong timeframe (2 to 3 years). Also request the creation of a task to review the timeline. A good assistant should flag that the slide actually says something different. If the assistant corrects you or asks for clarification, acknowledge the discrepancy but say you will confirm it in a moment. If it blindly adds the wrong info, just proceed to the next round.\n\nROUND 3\nQuery: Actually, I misread that last slide. The timeframe is 5 to 7 years. Please update the note to reflect the correct numbers.\nInstructions: Acknowledge the mistake regarding the timeframe and instruct the assistant to update the note to reflect the correct years shown on the slide. Ensure the assistant modifies the existing note rather than creating a new one. Once the correction is confirmed, proceed to the final round.\n\nROUND 4 [provide: image_4]\nQuery: Finally, add the research findings about teachers' perceived efficacy from this final slide to our note. Then, send an email to supervisor@university.edu containing the complete summary we've put together.\nInstructions: Ask the assistant to extract the research findings regarding perceived efficacy from the final slide and append it to the note. Then, instruct it to email the fully aggregated summary to the specified email address. If the assistant asks to confirm the email content, ensure it includes all the points gathered from all four slides. End the conversation once the email is sent.\n\nYou have 4 images available to share with the agent using the send_message_with_image tool.\nIMPORTANT: Image IDs are ZERO-INDEXED integers (0, 1, 2, ...). Do NOT add 1 to the IDs.\nAvailable image IDs: [0, 1, 2, 3]\nImage mapping:\n  image_1.jpg -> image ID 0\n  image_2.jpg -> image ID 1\n  image_3.jpg -> image ID 2\n  image_4.jpg -> image ID 3\n\n## IMAGE DELIVERY\n\n\u26a0\ufe0f IMPORTANT: You MUST use the `send_message_with_image` tool to share images with User B. Do NOT just describe images in text \u2014 you MUST call the tool.\n\nImage delivery schedule:\n\n  Round 2: YOU MUST call the send_message_with_image tool with image_ids='2' \u2014 do NOT write the tool name as text; use the actual function call. Include a natural, conversational message to the assistant.\n  Round 4: YOU MUST call the send_message_with_image tool with image_ids='3' \u2014 do NOT write the tool name as text; use the actual function call. Include a natural, conversational message to the assistant."
+    },
+    {
+      "sender": "USER",
+      "recipient": "AGENT",
+      "content": "Create a new note called 'English Teaching Summary'. Grab the four needs from this first slide and the six competences from the second one, and add them to the note.",
+      "image_ids": [
+        0,
+        1
+      ]
+    }
+  ],
+  "milestones": [],
+  "entity_diff_specs": [
+    {
+      "operation": "create",
+      "source": "appworld",
+      "table": "gmail.emails",
+      "entity_data": {
+        "sender_id": 71,
+        "recipient_ids": [
+          200
+        ],
+        "subject": "English Teaching Summary",
+        "body": "Here is the English Teaching Summary from the seminar:\n\nNeeds of the English language:\n- Living survival\n- Higher education\n- Diplomatic relationship\n- Seeking residency abroad\n\nTeaching objectives (Competences):\n- Linguistic competence\n- Socio-linguistic competence\n- Pragmatical competence\n- Cultural competence\n- Literary competence\n- Practical competence\n\nTimeline:\n- Academic English takes 5-7 years to acquire.\n\nResearch Findings:\n- Teachers' perceived efficacy is correlated with their self-reported English proficiency.",
+        "response_to_email_id": null,
+        "created_at": "2026-04-16T23:56:34"
+      },
+      "column_similarity_measure": {
+        "sender_id": "column_exact_match_similarity",
+        "recipient_ids": "column_exact_match_similarity",
+        "subject": "column_rouge_l_similarity",
+        "body": "column_rouge_l_similarity",
+        "response_to_email_id": "column_ignore_similarity",
+        "created_at": "column_ignore_similarity"
+      }
+    },
+    {
+      "operation": "create",
+      "source": "appworld",
+      "table": "todoist.tasks",
+      "entity_data": {
+        "project_id": 400,
+        "section_id": null,
+        "user_id": 71,
+        "title": "Review Academic English timeline",
+        "description": null,
+        "due_date": null,
+        "priority": "medium",
+        "is_completed": false,
+        "duration": null,
+        "duration_unit": null,
+        "order_index": 0,
+        "assignee_id": null,
+        "assigner_id": null,
+        "created_at": "2026-04-16T23:56:34"
+      },
+      "column_similarity_measure": {
+        "project_id": "column_exact_match_similarity",
+        "section_id": "column_ignore_similarity",
+        "user_id": "column_exact_match_similarity",
+        "title": "column_rouge_l_similarity",
+        "description": "column_ignore_similarity",
+        "due_date": "column_ignore_similarity",
+        "priority": "column_exact_match_similarity",
+        "is_completed": "column_exact_match_similarity",
+        "duration": "column_ignore_similarity",
+        "duration_unit": "column_ignore_similarity",
+        "order_index": "column_ignore_similarity",
+        "assignee_id": "column_ignore_similarity",
+        "assigner_id": "column_ignore_similarity",
+        "created_at": "column_ignore_similarity"
+      }
+    },
+    {
+      "operation": "create",
+      "source": "appworld",
+      "table": "simple_note.notes",
+      "entity_data": {
+        "user_id": 71,
+        "title": "English Teaching Summary",
+        "content": "Four needs of the English language:\n- Living survival\n- Higher education\n- Diplomatic relationship\n- Seeking residency abroad\n\nSix teaching objectives:\n- Linguistic competence\n- Socio-linguistic competence\n- Pragmatical competence\n- Cultural competence\n- Literary competence\n- Practical competence\n\nAcademic English takes 5 to 7 years to acquire.\n\nResearch finding: Teachers' perceived efficacy is correlated with their self-reported English proficiency.",
+        "tags": [],
+        "created_at": "2026-04-16T23:56:34",
+        "updated_at": "2026-04-16T23:56:34",
+        "pinned": false,
+        "data": {}
+      },
+      "column_similarity_measure": {
+        "user_id": "column_exact_match_similarity",
+        "title": "column_rouge_l_similarity",
+        "content": "column_rouge_l_similarity",
+        "tags": "column_ignore_similarity",
+        "created_at": "column_ignore_similarity",
+        "updated_at": "column_ignore_similarity",
+        "pinned": "column_exact_match_similarity",
+        "data": "column_ignore_similarity"
+      }
+    }
+  ],
+  "task_completion_criteria": "Create a note titled 'English Teaching Summary' containing the four needs of the English language (living survival, higher education, diplomatic relationship, seeking residency abroad), the six teaching objectives (Linguistic competence, Socio-linguistic competence, Pragmatical competence, Cultural competence, Literary competence, Practical competence), the fact that Academic English takes 5-7 years to acquire, and the research finding that teachers' perceived efficacy is correlated with their self-reported English proficiency, or something similar expressing these ideas. Create a Todoist task named 'Review Academic English timeline'. Send an email to supervisor@university.edu containing the complete aggregated summary from the note.",
+  "categories": [
+    "APPWORLD",
+    "MULTIPLE_USER_TURN"
+  ],
+  "max_messages": 100,
+  "metadata": {
+    "original_scenario_id": "scenario_0206",
+    "expected_tools": [
+      "simple_note_create_note",
+      "simple_note_add_content_to_note",
+      "todoist_create_task",
+      "simple_note_show_note",
+      "simple_note_update_note",
+      "gmail_send_email"
+    ],
+    "image_arrival": {
+      "1": [
+        "image_1",
+        "image_2"
+      ],
+      "2": [
+        "image_3"
+      ],
+      "4": [
+        "image_4"
+      ]
+    },
+    "image_delivery_map": [
+      {
+        "query": "Based on this new slide, add a section to the note stating that Academic English takes 2 to 3 years to acquire. Also, create a Todoist task named 'Review Academic English timeline'.",
+        "image_ids": [
+          2
+        ]
+      },
+      {
+        "query": "Finally, add the research findings about teachers' perceived efficacy from this final slide to our note. Then, send an email to supervisor@university.edu containing the complete summary we've put together.",
+        "image_ids": [
+          3
+        ]
+      }
+    ],
+    "scenario_metadata": {
+      "num_images": 4,
+      "num_user_rounds": 4,
+      "selected_flow_type": "aggregate",
+      "image_arrival": "mixed",
+      "challenge_type": "error_correction",
+      "require_disambiguation": false,
+      "dataset_type": "omnidocbench"
+    }
+  }
+}

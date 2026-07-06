@@ -1,0 +1,150 @@
+{
+  "name": "scenario_0707",
+  "base_scenario": "base",
+  "description": "The user is gathering data visualizations for a presentation and is evaluating a set of infographics to share with their team.",
+  "difficulty": "easy",
+  "appworld_base_task": "_base_",
+  "device_state_id": "siwhit@gmail.com",
+  "reference_time": "2026-04-17T00:12:04.714288+00:00",
+  "agentsandbox_entities": {},
+  "appworld_entities": {
+    "simple_note.notes": [
+      {
+        "id": 3200,
+        "user_id": 105,
+        "title": "Team Info",
+        "content": "Boss (David Martinez) phone number: 7228796993",
+        "tags": [
+          "work",
+          "team"
+        ],
+        "created_at": "2026-04-10T09:30:00",
+        "updated_at": "2026-04-10T09:30:00",
+        "pinned": false,
+        "data": null
+      }
+    ],
+    "gmail.users": []
+  },
+  "image_paths": [
+    "chartqapro/images/chart_1625.jpg",
+    "chartqapro/images/chart_0664.jpg",
+    "chartmuseum/images/fastest-apps-to-100-million-users.png",
+    "chartqapro/images/chart_1003.jpg",
+    "chartqapro/images/chart_1611.jpg",
+    "chartqapro/images/chart_0263.jpg"
+  ],
+  "messages": [
+    {
+      "sender": "SYSTEM",
+      "recipient": "USER",
+      "content": "{{USER_INSTRUCTION}}ROUND 1 [provide: image_1, image_2, image_3, image_4]\nQuery: I'm gathering visuals for a presentation. Please check these 4 infographics and identify the ones that feature a geographic map. For each matching chart, create a separate email draft to design@company.com with the chart's title as the subject.\nInstructions: Ask the assistant to look at the four provided infographics and identify which ones feature a geographic map. Instruct it to create a separate email draft for each matching chart, addressed to 'design@company.com', using the chart's title as the subject line. If the assistant includes the chart without a map or misses one of the maps, point it back to the images to check again carefully. Once the assistant confirms the drafts have been created, proceed to the next round.\n\nROUND 2 [provide: image_5, image_6]\nQuery: Actually, let's pivot. I want to focus on U.S. related data instead. Look at these two new infographics along with the previous four, and find the ones that explicitly mention the U.S., United States, or Americans. Delete the email drafts you just created. Then, check my 'Team Info' note for my boss's phone number, and send them a single text message listing the titles of these U.S.-focused charts.\nInstructions: Tell the assistant that you've changed your mind and want to pivot to U.S.-related data instead. Ask it to delete the email drafts it just created. Then, instruct it to review the two new infographics along with the previous four, and identify the ones that explicitly mention the U.S., United States, or Americans. Ask it to check your 'Team Info' note to find your boss's phone number, and send a single text message to that number listing the exact titles of the matching U.S.-focused charts. If the assistant forgets to delete the drafts, remind it to do so. If it selects the wrong charts, remind it to look for explicit mentions of the U.S. or Americans in the text of all six images. End the conversation once the text message is successfully sent.\n\nYou have 6 images available to share with the agent using the send_message_with_image tool.\nIMPORTANT: Image IDs are ZERO-INDEXED integers (0, 1, 2, ...). Do NOT add 1 to the IDs.\nAvailable image IDs: [0, 1, 2, 3, 4, 5]\nImage mapping:\n  image_1.jpg -> image ID 0\n  image_2.jpg -> image ID 1\n  image_3.jpg -> image ID 2\n  image_4.jpg -> image ID 3\n  image_5.jpg -> image ID 4\n  image_6.jpg -> image ID 5\n\n## IMAGE DELIVERY\n\n\u26a0\ufe0f IMPORTANT: You MUST use the `send_message_with_image` tool to share images with User B. Do NOT just describe images in text \u2014 you MUST call the tool.\n\nImage delivery schedule:\n\n  Round 2: YOU MUST call the send_message_with_image tool with image_ids='4,5' \u2014 do NOT write the tool name as text; use the actual function call. Include a natural, conversational message to the assistant."
+    },
+    {
+      "sender": "USER",
+      "recipient": "AGENT",
+      "content": "I'm gathering visuals for a presentation. Please check these 4 infographics and identify the ones that feature a geographic map. For each matching chart, create a separate email draft to design@company.com with the chart's title as the subject.",
+      "image_ids": [
+        0,
+        1,
+        2,
+        3
+      ]
+    }
+  ],
+  "milestones": [],
+  "entity_diff_specs": [
+    {
+      "operation": "create",
+      "source": "appworld",
+      "table": "phone.global_text_messages",
+      "entity_data": {
+        "sender_id": 105,
+        "receiver_id": 74,
+        "message": "Here are the U.S.-focused charts:\n- On Your Mark, Get Set, Grow: The Rush to 100 Million Users!\n- THE RISE IN NEVER MARRIED ADULTS\n- Looking ahead to 2050, large shares of Americans see a country in decline",
+        "created_at": "2026-04-17T00:12:04"
+      },
+      "column_similarity_measure": {
+        "sender_id": "column_exact_match_similarity",
+        "receiver_id": "column_exact_match_similarity",
+        "message": "column_rouge_l_similarity",
+        "created_at": "column_ignore_similarity"
+      }
+    },
+    {
+      "operation": "create",
+      "source": "appworld",
+      "table": "phone.user_text_messages",
+      "entity_data": {
+        "global_text_message_id": 200,
+        "user_id": 105,
+        "created_at": "2026-04-17T00:12:04"
+      },
+      "column_similarity_measure": {
+        "global_text_message_id": "column_ignore_similarity",
+        "user_id": "column_exact_match_similarity",
+        "created_at": "column_ignore_similarity"
+      }
+    },
+    {
+      "operation": "create",
+      "source": "appworld",
+      "table": "phone.user_text_messages",
+      "entity_data": {
+        "global_text_message_id": 200,
+        "user_id": 74,
+        "created_at": "2026-04-17T00:12:04"
+      },
+      "column_similarity_measure": {
+        "global_text_message_id": "column_ignore_similarity",
+        "user_id": "column_exact_match_similarity",
+        "created_at": "column_ignore_similarity"
+      }
+    }
+  ],
+  "task_completion_criteria": "Send a text message to the phone number listed in the 'Team Info' note containing the titles of the three charts that mention the U.S. or Americans: 'On Your Mark, Get Set, Grow: The Rush to 100 Million Users!', 'THE RISE IN NEVER MARRIED ADULTS', and 'Looking ahead to 2050, large shares of Americans see a country in decline'.",
+  "categories": [
+    "APPWORLD",
+    "MULTIPLE_USER_TURN"
+  ],
+  "max_messages": 100,
+  "metadata": {
+    "original_scenario_id": "scenario_0707",
+    "expected_tools": [
+      "gmail_create_draft",
+      "gmail_delete_draft",
+      "simple_note_show_note",
+      "messages_send_text_message"
+    ],
+    "image_arrival": {
+      "1": [
+        "image_1",
+        "image_2",
+        "image_3",
+        "image_4"
+      ],
+      "2": [
+        "image_5",
+        "image_6"
+      ]
+    },
+    "image_delivery_map": [
+      {
+        "query": "Actually, let's pivot. I want to focus on U.S. related data instead. Look at these two new infographics along with the previous four, and find the ones that explicitly mention the U.S., United States, or Americans. Delete the email drafts you just created. Then, check my 'Team Info' note for my boss's phone number, and send them a single text message listing the titles of these U.S.-focused charts.",
+        "image_ids": [
+          4,
+          5
+        ]
+      }
+    ],
+    "scenario_metadata": {
+      "num_images": 6,
+      "num_user_rounds": 2,
+      "selected_flow_type": "filter",
+      "image_arrival": "progressive",
+      "challenge_type": "goal_change",
+      "require_disambiguation": false,
+      "dataset_type": "chartqapro"
+    }
+  }
+}

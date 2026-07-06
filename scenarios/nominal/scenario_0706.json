@@ -1,0 +1,130 @@
+{
+  "name": "scenario_0706",
+  "base_scenario": "base",
+  "description": "The user is compiling a weekly summary email for their data insights team based on several charts and infographics they have collected.",
+  "difficulty": "easy",
+  "appworld_base_task": "_base_",
+  "device_state_id": "joseph.webe@gmail.com",
+  "reference_time": "2026-04-17T00:12:02.596656+00:00",
+  "agentsandbox_entities": {},
+  "appworld_entities": {
+    "phone.contacts": [
+      {
+        "id": 200,
+        "user_id": 52,
+        "first_name": "Data Insights",
+        "last_name": "Team",
+        "email": "team@data-insights.com",
+        "phone_number": null,
+        "relationships": [
+          "coworker"
+        ],
+        "birthday": null,
+        "home_address": null,
+        "work_address": null,
+        "created_at": "2025-01-10T09:00:00"
+      }
+    ],
+    "gmail.users": [
+      {
+        "id": 200,
+        "first_name": "Data Insights",
+        "last_name": "Team",
+        "email": "team@data-insights.com",
+        "password": "default_password",
+        "status": "active",
+        "created_at": "2025-01-01T00:00:00",
+        "last_logged_in": "2025-01-01T00:00:00"
+      }
+    ]
+  },
+  "image_paths": [
+    "chartqapro/images/chart_0516.jpg",
+    "chartmuseum/images/FhgIi16UoAA_-PS.png",
+    "chartqapro/images/chart_0526.jpg",
+    "chartmuseum/images/job_search2.png",
+    "chartqapro/images/chart_0335.jpg",
+    "infographicvqa/images/96085.jpg"
+  ],
+  "messages": [
+    {
+      "sender": "SYSTEM",
+      "recipient": "USER",
+      "content": "{{USER_INSTRUCTION}}ROUND 1 [provide: image_1, image_2, image_3, image_4, image_5, image_6]\nQuery: I have a few charts here. Can you start a new draft email to team@data-insights.com with the subject 'Weekly Chart Summaries'? For the body, let's start with two bullet points: one for the peak score from this BOI chart, and another for the percentage of businesses that applied for the SBA PPP Loan from this COVID recovery infographic.\nInstructions: Ask the assistant to start a draft email to team@data-insights.com titled 'Weekly Chart Summaries' and include two specific bullet points: the peak score from the BOI chart image and the percentage of businesses that applied for the SBA PPP Loan from the COVID infographic image. If the assistant asks for clarification on the values, direct it to look at the highest bars in the BOI chart and the bottom section of the COVID infographic. Proceed when the draft is created.\n\nROUND 2\nQuery: Great. Now update the draft to include two more bullet points: the highest diabetes prevalence percentage for women from this India districts chart, and the number of job applications sourced from LinkedIn from this Sankey diagram.\nInstructions: Tell the assistant to update the draft with two more bullet points: the highest prevalence percentage for women from the India districts chart image and the number of applications from LinkedIn from the Sankey diagram image. If it struggles to find the numbers, point out that the women's data is in the bottom chart of the India districts image and the LinkedIn number is on the top left of the Sankey diagram. Proceed once updated.\n\nROUND 3\nQuery: Next, add a bullet point about this NYT chart, mentioning the impressive 95.7% increase in profit from Q3 2015 to Q3 2016.\nInstructions: Instruct the assistant to add another bullet point about the NYT infographic image, explicitly telling it to note a 95.7% increase in profit between Q3 2015 and Q3 2016. Wait for the assistant's response. A good assistant should notice that the image actually shows a 95.7% decrease (indicated by a down arrow and a negative sign) and point this out to you.\n\nROUND 4\nQuery: Oops, you're completely right, the chart shows a 95.7% decrease, not an increase. Please correct that bullet point in the draft.\nInstructions: Acknowledge the assistant's correction. Confirm that they are right and ask them to fix the bullet point in the draft to state it was a 95.7% decrease instead. If the assistant didn't catch the error in the previous turn, point out the mistake yourself and ask them to fix it to say 'decrease'. Proceed when the draft is corrected.\n\nROUND 5\nQuery: Finally, add a note about this Carrots monthly index graph, mentioning that it spiked above 2500 around 2016. Once that's added, go ahead and send the email draft.\nInstructions: Ask the assistant to add one final note about the Carrots graph image, mentioning that the index spiked above 2500 around 2016. Tell it to send the email once this final point is added. Ensure the assistant confirms the email has been sent. This is the final round, so conclude the conversation once done.\n\nYou have 6 images available to share with the agent using the send_message_with_image tool.\nIMPORTANT: Image IDs are ZERO-INDEXED integers (0, 1, 2, ...). Do NOT add 1 to the IDs.\nAvailable image IDs: [0, 1, 2, 3, 4, 5]\nImage mapping:\n  image_1.jpg -> image ID 0\n  image_2.jpg -> image ID 1\n  image_3.jpg -> image ID 2\n  image_4.jpg -> image ID 3\n  image_5.jpg -> image ID 4\n  image_6.jpg -> image ID 5"
+    },
+    {
+      "sender": "USER",
+      "recipient": "AGENT",
+      "content": "I have a few charts here. Can you start a new draft email to team@data-insights.com with the subject 'Weekly Chart Summaries'? For the body, let's start with two bullet points: one for the peak score from this BOI chart, and another for the percentage of businesses that applied for the SBA PPP Loan from this COVID recovery infographic.",
+      "image_ids": [
+        0,
+        1,
+        2,
+        3,
+        4,
+        5
+      ]
+    }
+  ],
+  "milestones": [],
+  "entity_diff_specs": [
+    {
+      "operation": "create",
+      "source": "appworld",
+      "table": "gmail.emails",
+      "entity_data": {
+        "sender_id": 52,
+        "recipient_ids": [
+          200
+        ],
+        "subject": "Weekly Chart Summaries",
+        "body": "Here are the weekly chart summaries:\n- Peak Business Optimism Score of approximately 14.5\n- 95% of businesses applied for the SBA PPP Loan\n- Highest diabetes prevalence for women is 32.1%\n- 6 job applications sourced from LinkedIn\n- Profit decreased by 95.7% between Q3 2015 and Q3 2016\n- Carrots monthly index spiked above 2500 around 2016",
+        "response_to_email_id": null,
+        "created_at": "2026-04-17T00:12:02"
+      },
+      "column_similarity_measure": {
+        "sender_id": "column_exact_match_similarity",
+        "recipient_ids": "column_exact_match_similarity",
+        "subject": "column_rouge_l_similarity",
+        "body": "column_rouge_l_similarity",
+        "response_to_email_id": "column_ignore_similarity",
+        "created_at": "column_ignore_similarity"
+      }
+    }
+  ],
+  "task_completion_criteria": "Send an email to team@data-insights.com with the subject 'Weekly Chart Summaries' containing bullet points that extract the following data from the provided images: peak Business Optimism Score of approximately 14.5, 95% of businesses applied for the SBA PPP Loan, highest diabetes prevalence for women is 32.1%, 6 job applications sourced from LinkedIn, profit decreased by 95.7% between Q3 2015 and Q3 2016, and the Carrots monthly index spiked above 2500 around 2016 (or similar wording expressing these exact data points).",
+  "categories": [
+    "APPWORLD",
+    "MULTIPLE_USER_TURN"
+  ],
+  "max_messages": 100,
+  "metadata": {
+    "original_scenario_id": "scenario_0706",
+    "expected_tools": [
+      "gmail_create_draft",
+      "gmail_show_draft",
+      "gmail_update_draft",
+      "gmail_send_email_from_draft"
+    ],
+    "image_arrival": {
+      "1": [
+        "image_1",
+        "image_2",
+        "image_3",
+        "image_4",
+        "image_5",
+        "image_6"
+      ]
+    },
+    "image_delivery_map": [],
+    "scenario_metadata": {
+      "num_images": 6,
+      "num_user_rounds": 5,
+      "selected_flow_type": "aggregate",
+      "image_arrival": "upfront",
+      "challenge_type": "error_correction",
+      "require_disambiguation": false,
+      "dataset_type": "infographicvqa"
+    }
+  }
+}

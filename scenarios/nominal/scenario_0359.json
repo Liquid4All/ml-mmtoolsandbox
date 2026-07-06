@@ -1,0 +1,214 @@
+{
+  "name": "scenario_0359",
+  "base_scenario": "base",
+  "description": "David is updating his records by cross-referencing several historical documents against his existing 'Corporate Docs' and 'Medical Research' notes.",
+  "difficulty": "easy",
+  "appworld_base_task": "_base_",
+  "device_state_id": "dav.mart@gmail.com",
+  "reference_time": "2026-04-17T00:00:56.127169+00:00",
+  "agentsandbox_entities": {},
+  "appworld_entities": {
+    "phone.contacts": [
+      {
+        "id": 200,
+        "user_id": 74,
+        "first_name": "Archive",
+        "last_name": "Admin",
+        "email": "archive-admin@museum.org",
+        "phone_number": null,
+        "relationships": [],
+        "birthday": null,
+        "home_address": null,
+        "work_address": null,
+        "created_at": "2025-01-10T12:00:00"
+      }
+    ],
+    "simple_note.notes": [
+      {
+        "id": 3200,
+        "user_id": 74,
+        "title": "Corporate Docs",
+        "content": "Contract with Smith & Co. - 1984 expense $10M",
+        "tags": [],
+        "created_at": "2026-04-15T10:00:00",
+        "updated_at": "2026-04-15T10:00:00",
+        "pinned": false,
+        "data": null
+      },
+      {
+        "id": 3201,
+        "user_id": 74,
+        "title": "Medical Research",
+        "content": "Study on Vitamin C by Dr. Jones",
+        "tags": [],
+        "created_at": "2026-04-16T14:30:00",
+        "updated_at": "2026-04-16T14:30:00",
+        "pinned": false,
+        "data": null
+      }
+    ],
+    "gmail.users": [
+      {
+        "id": 200,
+        "first_name": "Archive",
+        "last_name": "Admin",
+        "email": "archive-admin@museum.org",
+        "password": "default_password",
+        "status": "active",
+        "created_at": "2025-01-01T00:00:00",
+        "last_logged_in": "2025-01-01T00:00:00"
+      }
+    ]
+  },
+  "image_paths": [
+    "docvqa/images/18637.jpg",
+    "docvqa/images/65012.jpg",
+    "docvqa/images/25687.jpg",
+    "docvqa/images/61569.jpg",
+    "docvqa/images/59697.jpg",
+    "docvqa/images/63601.jpg"
+  ],
+  "messages": [
+    {
+      "sender": "SYSTEM",
+      "recipient": "USER",
+      "content": "{{USER_INSTRUCTION}}ROUND 1 [provide: image_1]\nQuery: Check my 'Corporate Docs' note. If the RJ Reynolds contract shown in this document isn't listed, add it along with its 1986 expense amount from the image.\nInstructions: Ask the assistant to read your 'Corporate Docs' note and check if the RJ Reynolds contract from the provided image is in there. If it's not, instruct the assistant to add the contract along with its 1986 expense amount. If the assistant asks for clarification or confirms the addition, acknowledge and move to the next round.\n\nROUND 2 [provide: image_2, image_3]\nQuery: I have two more documents here. Cross-reference them with my 'Medical Research' note. If they aren't already there, add the authors of the alkaline hydrolysis paper, and the number of county or multi-county chapters the Heart Association has.\nInstructions: Instruct the assistant to look at the two new images and check your 'Medical Research' note. Ask it to add the authors of the alkaline hydrolysis paper and the number of county or multi-county chapters for the Heart Association, assuming they aren't already listed. Once the assistant confirms the note has been updated, proceed to the next round.\n\nROUND 3 [provide: image_4]\nQuery: Look at this table of plasma potassium values. Check the 'Medical Research' note and add the diagnosis for the 25-year-old female, along with her % maximal change, which I can see is -25%.\nInstructions: Ask the assistant to check the 'Medical Research' note and add the diagnosis for the 25-year-old female from the new image, along with her percentage maximal change, which you believe is negative 25 percent. Wait for the assistant's response. A good assistant should point out that this percentage is actually the mean value at the bottom of the table, not the value for that specific patient. If the assistant points this out, acknowledge it and wait for the next round. If the assistant blindly proceeds to add it, point out its mistake and wait for the next round.\n\nROUND 4 [provide: image_5]\nQuery: You're right, my mistake. Just add her actual diagnosis and the mean % maximal change of -25% to the note instead. Also, cross-reference this new survey image and add the statement number that claims vegetable-oil margarines are superior to butter.\nInstructions: Acknowledge the correction regarding the percentage value. Instruct the assistant to add the 25-year-old female's actual diagnosis and the mean percentage maximal change to the 'Medical Research' note. Additionally, ask it to look at the new survey image and add the statement number corresponding to the claim about vegetable-oil margarines being superior to butter. When the assistant confirms the updates, move on.\n\nROUND 5 [provide: image_6]\nQuery: Finally, check if the 1953 calorie allowance for a 65-year-old woman is in the 'Medical Research' note. If not, add it based on this image. Then, send an email to Archive Admin with the full contents of both the 'Corporate Docs' and 'Medical Research' notes.\nInstructions: Ask the assistant to check if the 1953 calorie allowance for a 65-year-old woman from the final image is in the 'Medical Research' note, and to add it if it's missing. Then, instruct the assistant to email the Archive Admin with the complete contents of both the 'Corporate Docs' and 'Medical Research' notes. Once the assistant confirms the email has been sent, end the conversation.\n\nYou have 6 images available to share with the agent using the send_message_with_image tool.\nIMPORTANT: Image IDs are ZERO-INDEXED integers (0, 1, 2, ...). Do NOT add 1 to the IDs.\nAvailable image IDs: [0, 1, 2, 3, 4, 5]\nImage mapping:\n  image_1.jpg -> image ID 0\n  image_2.jpg -> image ID 1\n  image_3.jpg -> image ID 2\n  image_4.jpg -> image ID 3\n  image_5.jpg -> image ID 4\n  image_6.jpg -> image ID 5\n\n## IMAGE DELIVERY\n\n\u26a0\ufe0f IMPORTANT: You MUST use the `send_message_with_image` tool to share images with User B. Do NOT just describe images in text \u2014 you MUST call the tool.\n\nImage delivery schedule:\n\n  Round 2: YOU MUST call the send_message_with_image tool with image_ids='1,2' \u2014 do NOT write the tool name as text; use the actual function call. Include a natural, conversational message to the assistant.\n  Round 3: YOU MUST call the send_message_with_image tool with image_ids='3' \u2014 do NOT write the tool name as text; use the actual function call. Include a natural, conversational message to the assistant.\n  Round 4: YOU MUST call the send_message_with_image tool with image_ids='4' \u2014 do NOT write the tool name as text; use the actual function call. Include a natural, conversational message to the assistant.\n  Round 5: YOU MUST call the send_message_with_image tool with image_ids='5' \u2014 do NOT write the tool name as text; use the actual function call. Include a natural, conversational message to the assistant."
+    },
+    {
+      "sender": "USER",
+      "recipient": "AGENT",
+      "content": "Check my 'Corporate Docs' note. If the RJ Reynolds contract shown in this document isn't listed, add it along with its 1986 expense amount from the image.",
+      "image_ids": [
+        0
+      ]
+    }
+  ],
+  "milestones": [],
+  "entity_diff_specs": [
+    {
+      "operation": "create",
+      "source": "appworld",
+      "table": "gmail.emails",
+      "entity_data": {
+        "sender_id": 74,
+        "recipient_ids": [
+          200
+        ],
+        "subject": "Corporate Docs and Medical Research Notes",
+        "body": "Here are the full contents of the updated notes.\n\nCorporate Docs:\n- Contract with Smith & Co. - 1984 expense $10M\n- Crotts and Saunders Engineering contract, 1986 expense: $325M\n\nMedical Research:\n- Study on Vitamin C by Dr. Jones\n- Alkaline hydrolysis paper authors: L. A. Heppel, P. J. Ortiz, and S. Ochoa\n- Heart Association: 225 county or multi-county chapters\n- 25-year-old female diagnosis: Acute Renal Insufficiency\n- Mean % maximal change: -25%\n- Vegetable-oil margarines superior to butter: Statement number 42\n- 1953 calorie allowance for a 65-year-old woman: 1800",
+        "response_to_email_id": null,
+        "created_at": "2026-04-17T00:00:56"
+      },
+      "column_similarity_measure": {
+        "sender_id": "column_exact_match_similarity",
+        "recipient_ids": "column_exact_match_similarity",
+        "subject": "column_rouge_l_similarity",
+        "body": "column_rouge_l_similarity",
+        "response_to_email_id": "column_ignore_similarity",
+        "created_at": "column_ignore_similarity"
+      }
+    },
+    {
+      "operation": "update",
+      "source": "appworld",
+      "table": "simple_note.notes",
+      "entity_id_column": "id",
+      "entity_id_value": 3200,
+      "expected_fields": {
+        "updated_at": "2026-04-15T10:00:00",
+        "content": "Contract with Smith & Co. - 1984 expense $10M\nCrotts and Saunders Engineering contract - 1986 expense $325M",
+        "tags": []
+      },
+      "column_similarity_measure": {
+        "updated_at": "column_ignore_similarity",
+        "content": "column_rouge_l_similarity",
+        "id": "column_exact_match_similarity"
+      }
+    },
+    {
+      "operation": "update",
+      "source": "appworld",
+      "table": "simple_note.notes",
+      "entity_id_column": "id",
+      "entity_id_value": 3201,
+      "expected_fields": {
+        "updated_at": "2026-04-16T14:30:00",
+        "content": "Study on Vitamin C by Dr. Jones\nAuthors: L. A. Heppel, P. J. Ortiz, and S. Ochoa\nHeart Association chapters: 225 county or multi-county\n25-year-old female diagnosis: Acute Renal Insufficiency\nMean % maximal change: -25%\nStatement number 42 regarding vegetable-oil margarines\n1953 calorie allowance for a 65-year-old woman: 1800",
+        "tags": []
+      },
+      "column_similarity_measure": {
+        "updated_at": "column_ignore_similarity",
+        "content": "column_rouge_l_similarity",
+        "id": "column_exact_match_similarity"
+      }
+    }
+  ],
+  "task_completion_criteria": "Update the 'Corporate Docs' note with the Crotts and Saunders Engineering contract and its 1986 expense of $325M. Update the 'Medical Research' note with the authors L. A. Heppel, P. J. Ortiz, and S. Ochoa, the 225 county or multi-county chapters of the Heart Association, the Acute Renal Insufficiency diagnosis for the 25-year-old female, the mean % maximal change of -25%, statement number 42 regarding vegetable-oil margarines, and the 1953 calorie allowance of 1800 for a 65-year-old woman. Email the full contents of both updated notes to archive-admin@museum.org.",
+  "categories": [
+    "APPWORLD",
+    "MULTIPLE_USER_TURN"
+  ],
+  "max_messages": 100,
+  "metadata": {
+    "original_scenario_id": "scenario_0359",
+    "expected_tools": [
+      "simple_note_show_note",
+      "simple_note_update_note",
+      "gmail_send_email"
+    ],
+    "image_arrival": {
+      "1": [
+        "image_1"
+      ],
+      "2": [
+        "image_2",
+        "image_3"
+      ],
+      "3": [
+        "image_4"
+      ],
+      "4": [
+        "image_5"
+      ],
+      "5": [
+        "image_6"
+      ]
+    },
+    "image_delivery_map": [
+      {
+        "query": "I have two more documents here. Cross-reference them with my 'Medical Research' note. If they aren't already there, add the authors of the alkaline hydrolysis paper, and the number of county or multi-county chapters the Heart Association has.",
+        "image_ids": [
+          1,
+          2
+        ]
+      },
+      {
+        "query": "Look at this table of plasma potassium values. Check the 'Medical Research' note and add the diagnosis for the 25-year-old female, along with her % maximal change, which I can see is -25%.",
+        "image_ids": [
+          3
+        ]
+      },
+      {
+        "query": "You're right, my mistake. Just add her actual diagnosis and the mean % maximal change of -25% to the note instead. Also, cross-reference this new survey image and add the statement number that claims vegetable-oil margarines are superior to butter.",
+        "image_ids": [
+          4
+        ]
+      },
+      {
+        "query": "Finally, check if the 1953 calorie allowance for a 65-year-old woman is in the 'Medical Research' note. If not, add it based on this image. Then, send an email to Archive Admin with the full contents of both the 'Corporate Docs' and 'Medical Research' notes.",
+        "image_ids": [
+          5
+        ]
+      }
+    ],
+    "scenario_metadata": {
+      "num_images": 6,
+      "num_user_rounds": 5,
+      "selected_flow_type": "cross_reference",
+      "image_arrival": "progressive",
+      "challenge_type": "error_correction",
+      "require_disambiguation": false,
+      "dataset_type": "docvqa"
+    }
+  }
+}

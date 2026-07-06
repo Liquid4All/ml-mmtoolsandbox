@@ -1,0 +1,361 @@
+{
+  "name": "scenario_0285",
+  "base_scenario": "base",
+  "description": "Debra is managing her gift lists and shopping for new home decor items. She uses images of various accessories and household goods to update her notes and manage her Amazon shopping lists based on specific conditions.",
+  "difficulty": "easy",
+  "appworld_base_task": "_base_",
+  "device_state_id": "de_ritt@gmail.com",
+  "reference_time": "2026-04-16T23:58:58.062101+00:00",
+  "agentsandbox_entities": {},
+  "appworld_entities": {
+    "amazon.sellers": [
+      {
+        "id": 200,
+        "name": "Ceramics Plus",
+        "rating": 4.8
+      },
+      {
+        "id": 201,
+        "name": "Vintage Home Design",
+        "rating": 4.2
+      },
+      {
+        "id": 202,
+        "name": "Luxury Antiques",
+        "rating": 4.9
+      }
+    ],
+    "amazon.products": [
+      {
+        "id": 200,
+        "product_type": "cups",
+        "name": "Fine Bone China Teacup",
+        "description": "Elegant white bone china teacup with saucer.",
+        "seller_id": 200,
+        "price": 25.99,
+        "delivery_days": 2,
+        "inventory_quantity": 50,
+        "weight": 0.5,
+        "length": 4.0,
+        "width": 4.0,
+        "height": 3.5,
+        "color": "white",
+        "relative_size": "small",
+        "rating": 4.75,
+        "seller_rating": 4.8,
+        "has_variations": false
+      },
+      {
+        "id": 201,
+        "product_type": "tables",
+        "name": "Mid-Century Teak Round Table",
+        "description": "Authentic mid-century modern teak dining table.",
+        "seller_id": 201,
+        "price": 450.0,
+        "delivery_days": 7,
+        "inventory_quantity": 5,
+        "weight": 45.0,
+        "length": 48.0,
+        "width": 48.0,
+        "height": 30.0,
+        "color": "brown",
+        "relative_size": "large",
+        "rating": 3.66,
+        "seller_rating": 4.2,
+        "has_variations": false
+      },
+      {
+        "id": 202,
+        "product_type": "porcelain",
+        "name": "Meissen Blue Onion Porcelain Plate",
+        "description": "Classic Meissen Blue Onion pattern porcelain decorative plate.",
+        "seller_id": 202,
+        "price": 120.0,
+        "delivery_days": 3,
+        "inventory_quantity": 12,
+        "weight": 1.2,
+        "length": 10.0,
+        "width": 10.0,
+        "height": 1.0,
+        "color": "blue",
+        "relative_size": "medium",
+        "rating": 5.0,
+        "seller_rating": 4.9,
+        "has_variations": false
+      }
+    ],
+    "amazon.product_reviews": [
+      {
+        "id": 16100,
+        "product_id": 200,
+        "user_id": 93,
+        "is_verified": true,
+        "rating": 5,
+        "title": "Beautiful cup",
+        "text": "Very delicate and beautiful bone china.",
+        "created_at": "2026-01-15T10:30:00"
+      },
+      {
+        "id": 16101,
+        "product_id": 200,
+        "user_id": 95,
+        "is_verified": true,
+        "rating": 5,
+        "title": "Perfect for tea time",
+        "text": "I love the quality of this cup.",
+        "created_at": "2026-02-20T14:15:00"
+      },
+      {
+        "id": 16102,
+        "product_id": 200,
+        "user_id": 96,
+        "is_verified": true,
+        "rating": 5,
+        "title": "Great gift",
+        "text": "Bought this for my mother and she adores it.",
+        "created_at": "2026-03-05T09:45:00"
+      },
+      {
+        "id": 16103,
+        "product_id": 200,
+        "user_id": 98,
+        "is_verified": true,
+        "rating": 4,
+        "title": "Nice but small",
+        "text": "Good quality but a bit smaller than expected.",
+        "created_at": "2026-04-01T16:20:00"
+      },
+      {
+        "id": 16104,
+        "product_id": 201,
+        "user_id": 93,
+        "is_verified": true,
+        "rating": 5,
+        "title": "Stunning table",
+        "text": "Looks amazing in my dining room.",
+        "created_at": "2025-11-10T11:00:00"
+      },
+      {
+        "id": 16105,
+        "product_id": 201,
+        "user_id": 95,
+        "is_verified": true,
+        "rating": 3,
+        "title": "Arrived with a scratch",
+        "text": "The table is nice but it had a small scratch on the surface.",
+        "created_at": "2025-12-05T13:30:00"
+      },
+      {
+        "id": 16106,
+        "product_id": 201,
+        "user_id": 96,
+        "is_verified": false,
+        "rating": 3,
+        "title": "Wobbly legs",
+        "text": "The design is great but the legs are a bit uneven.",
+        "created_at": "2026-01-22T08:15:00"
+      },
+      {
+        "id": 16107,
+        "product_id": 202,
+        "user_id": 93,
+        "is_verified": true,
+        "rating": 5,
+        "title": "Authentic Meissen",
+        "text": "Absolutely gorgeous piece of porcelain.",
+        "created_at": "2026-02-14T10:00:00"
+      },
+      {
+        "id": 16108,
+        "product_id": 202,
+        "user_id": 95,
+        "is_verified": true,
+        "rating": 5,
+        "title": "Flawless",
+        "text": "Arrived in perfect condition. Highly recommend.",
+        "created_at": "2026-03-10T15:45:00"
+      },
+      {
+        "id": 16109,
+        "product_id": 202,
+        "user_id": 98,
+        "is_verified": true,
+        "rating": 5,
+        "title": "Beautiful addition to my collection",
+        "text": "The blue onion pattern is so classic and well done.",
+        "created_at": "2026-04-05T12:20:00"
+      }
+    ],
+    "simple_note.notes": [
+      {
+        "id": 3200,
+        "user_id": 97,
+        "title": "Gift Ideas - Mom",
+        "content": "Crystal bracelet, Silver necklace",
+        "tags": [
+          "gifts"
+        ],
+        "created_at": "2026-04-10T12:00:00",
+        "updated_at": "2026-04-15T14:30:00",
+        "pinned": false,
+        "data": null
+      },
+      {
+        "id": 3201,
+        "user_id": 97,
+        "title": "Gift Ideas - Friends",
+        "content": "Coffee mug, Silk scarf",
+        "tags": [
+          "gifts"
+        ],
+        "created_at": "2026-04-10T12:05:00",
+        "updated_at": "2026-04-15T14:35:00",
+        "pinned": false,
+        "data": null
+      }
+    ],
+    "gmail.users": []
+  },
+  "image_paths": [
+    "worldvqa/images/1521.jpg",
+    "worldvqa/images/1531.jpg",
+    "worldvqa/images/1067.jpg",
+    "worldvqa/images/900.jpg",
+    "worldvqa/images/896.jpg",
+    "worldvqa/images/1289.jpg"
+  ],
+  "messages": [
+    {
+      "sender": "SYSTEM",
+      "recipient": "USER",
+      "content": "{{USER_INSTRUCTION}}ROUND 1 [provide: image_3, image_4, image_5]\nQuery: Identify the specific names of the accessories in these three images. Check my 'Gift Ideas' note. If any of these items are already on the list, remove them so I don't buy duplicates. If they aren't on it, add them.\nInstructions: Ask the assistant to identify the accessories in the provided images and cross-reference them with your 'Gift Ideas' note. Instruct it to remove any matching items from the note to avoid duplicates, and add the new ones that aren't there yet. The device has multiple notes starting with 'Gift Ideas', so if the assistant asks which one you mean, clarify that you want the one for Mom. Once the assistant confirms the note has been updated with the correct additions and removals, move on to the next round.\n\nROUND 2 [provide: image_1, image_2, image_6]\nQuery: Now figure out the specific names of the household and ceramic items in these three new images. Search for them on Amazon and check their rating distributions. For any item where 5-star ratings make up more than 50% of the reviews, add it to my cart. For the others, put them on my wish list.\nInstructions: Tell the assistant to identify the household and ceramic items in the new images and search for them on Amazon. Ask it to check the rating distribution for each product. Instruct the assistant to add items with more than 50% 5-star reviews to your cart, and add the remaining items to your wish list. If the assistant needs confirmation to proceed with adding items to the cart or wish list, approve it. End the conversation once all items have been successfully sorted and added to the respective lists.\n\nYou have 6 images available to share with the agent using the send_message_with_image tool.\nIMPORTANT: Image IDs are ZERO-INDEXED integers (0, 1, 2, ...). Do NOT add 1 to the IDs.\nAvailable image IDs: [0, 1, 2, 3, 4, 5]\nImage mapping:\n  image_1.jpg -> image ID 0\n  image_2.jpg -> image ID 1\n  image_3.jpg -> image ID 2\n  image_4.jpg -> image ID 3\n  image_5.jpg -> image ID 4\n  image_6.jpg -> image ID 5\n\n## IMAGE DELIVERY\n\n\u26a0\ufe0f IMPORTANT: You MUST use the `send_message_with_image` tool to share images with User B. Do NOT just describe images in text \u2014 you MUST call the tool.\n\nImage delivery schedule:\n\n  Round 2: YOU MUST call the send_message_with_image tool with image_ids='0,1,5' \u2014 do NOT write the tool name as text; use the actual function call. Include a natural, conversational message to the assistant."
+    },
+    {
+      "sender": "USER",
+      "recipient": "AGENT",
+      "content": "Identify the specific names of the accessories in these three images. Check my 'Gift Ideas' note. If any of these items are already on the list, remove them so I don't buy duplicates. If they aren't on it, add them.",
+      "image_ids": [
+        2,
+        3,
+        4
+      ]
+    }
+  ],
+  "milestones": [],
+  "entity_diff_specs": [
+    {
+      "operation": "create",
+      "source": "appworld",
+      "table": "amazon.cart_entries",
+      "entity_data": {
+        "user_id": 97,
+        "product_id": 200,
+        "quantity": 1,
+        "gift_wrap_quantity": 0
+      },
+      "column_similarity_measure": {
+        "user_id": "column_exact_match_similarity",
+        "product_id": "column_exact_match_similarity",
+        "quantity": "column_exact_match_similarity",
+        "gift_wrap_quantity": "column_exact_match_similarity"
+      }
+    },
+    {
+      "operation": "create",
+      "source": "appworld",
+      "table": "amazon.cart_entries",
+      "entity_data": {
+        "user_id": 97,
+        "product_id": 202,
+        "quantity": 1,
+        "gift_wrap_quantity": 0
+      },
+      "column_similarity_measure": {
+        "user_id": "column_exact_match_similarity",
+        "product_id": "column_exact_match_similarity",
+        "quantity": "column_exact_match_similarity",
+        "gift_wrap_quantity": "column_exact_match_similarity"
+      }
+    },
+    {
+      "operation": "create",
+      "source": "appworld",
+      "table": "amazon.wish_list_entries",
+      "entity_data": {
+        "user_id": 97,
+        "product_id": 201,
+        "quantity": 1
+      },
+      "column_similarity_measure": {
+        "user_id": "column_exact_match_similarity",
+        "product_id": "column_exact_match_similarity",
+        "quantity": "column_exact_match_similarity"
+      }
+    },
+    {
+      "operation": "update",
+      "source": "appworld",
+      "table": "simple_note.notes",
+      "entity_id_column": "id",
+      "entity_id_value": 3200,
+      "expected_fields": {
+        "updated_at": "2026-04-15T14:30:00",
+        "content": "Silver necklace, Moonstone hairpin, Fabric bookmark",
+        "tags": []
+      },
+      "column_similarity_measure": {
+        "updated_at": "column_ignore_similarity",
+        "content": "column_rouge_l_similarity",
+        "id": "column_exact_match_similarity"
+      }
+    }
+  ],
+  "task_completion_criteria": "Update the 'Gift Ideas - Mom' note by removing the crystal bracelet and adding the moonstone hairpin and fabric bookmark. Then, search Amazon for a bone china cup, a mid-century teak round table, and Meissen Blue Onion porcelain, check their rating distributions, and add the ones with over 50% 5-star reviews to the cart, while adding the others to the wish list.",
+  "categories": [
+    "APPWORLD",
+    "MULTIPLE_USER_TURN"
+  ],
+  "max_messages": 100,
+  "metadata": {
+    "original_scenario_id": "scenario_0285",
+    "expected_tools": [
+      "simple_note_show_note",
+      "simple_note_update_note",
+      "web_search_serper",
+      "amazon_show_product_rating_distribution",
+      "amazon_add_product_to_cart",
+      "amazon_add_product_to_wish_list"
+    ],
+    "image_arrival": {
+      "1": [
+        "image_3",
+        "image_4",
+        "image_5"
+      ],
+      "2": [
+        "image_1",
+        "image_2",
+        "image_6"
+      ]
+    },
+    "image_delivery_map": [
+      {
+        "query": "Now figure out the specific names of the household and ceramic items in these three new images. Search for them on Amazon and check their rating distributions. For any item where 5-star ratings make up more than 50% of the reviews, add it to my cart. For the others, put them on my wish list.",
+        "image_ids": [
+          0,
+          1,
+          5
+        ]
+      }
+    ],
+    "scenario_metadata": {
+      "num_images": 6,
+      "num_user_rounds": 2,
+      "selected_flow_type": "filter",
+      "image_arrival": "progressive",
+      "challenge_type": "state_mutation",
+      "require_disambiguation": true,
+      "dataset_type": "worldvqa"
+    }
+  }
+}

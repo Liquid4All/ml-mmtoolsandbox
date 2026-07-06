@@ -1,0 +1,326 @@
+{
+  "name": "scenario_0894",
+  "base_scenario": "base",
+  "description": "The user is organizing and archiving information from a batch of community archive photos, including meeting notes, event posters, and historical clippings.",
+  "difficulty": "easy",
+  "appworld_base_task": "_base_",
+  "device_state_id": "bradley_ball@gmail.com",
+  "reference_time": "2026-04-17T00:17:10.764536+00:00",
+  "agentsandbox_entities": {
+    "calendars": [
+      {
+        "calendar_id": "calendar_100",
+        "title": "Default"
+      }
+    ]
+  },
+  "appworld_entities": {
+    "phone.contacts": [
+      {
+        "id": 200,
+        "user_id": 6,
+        "first_name": "Michael",
+        "last_name": "Coleman",
+        "email": "michael.coleman@example.com",
+        "phone_number": null,
+        "relationships": [],
+        "birthday": null,
+        "home_address": null,
+        "work_address": null,
+        "created_at": "2025-01-01T10:00:00"
+      },
+      {
+        "id": 201,
+        "user_id": 6,
+        "first_name": "Keith",
+        "last_name": "Brown",
+        "email": "keith.brown@example.com",
+        "phone_number": null,
+        "relationships": [],
+        "birthday": null,
+        "home_address": null,
+        "work_address": null,
+        "created_at": "2025-01-01T10:00:00"
+      },
+      {
+        "id": 202,
+        "user_id": 6,
+        "first_name": "Marilyn",
+        "last_name": "Hunter",
+        "email": "marilyn.hunter@example.com",
+        "phone_number": null,
+        "relationships": [],
+        "birthday": null,
+        "home_address": null,
+        "work_address": null,
+        "created_at": "2025-01-01T10:00:00"
+      },
+      {
+        "id": 203,
+        "user_id": 6,
+        "first_name": "Peter",
+        "last_name": "Sabonis",
+        "email": "peter.sabonis@example.com",
+        "phone_number": null,
+        "relationships": [],
+        "birthday": null,
+        "home_address": null,
+        "work_address": null,
+        "created_at": "2025-01-01T10:00:00"
+      },
+      {
+        "id": 204,
+        "user_id": 6,
+        "first_name": "Willie",
+        "last_name": "Baptist",
+        "email": "willie.baptist@example.com",
+        "phone_number": null,
+        "relationships": [],
+        "birthday": null,
+        "home_address": null,
+        "work_address": null,
+        "created_at": "2025-01-01T10:00:00"
+      }
+    ],
+    "gmail.users": [
+      {
+        "id": 200,
+        "first_name": "Michael",
+        "last_name": "Coleman",
+        "email": "michael.coleman@example.com",
+        "password": "default_password",
+        "status": "active",
+        "created_at": "2025-01-01T00:00:00",
+        "last_logged_in": "2025-01-01T00:00:00"
+      },
+      {
+        "id": 201,
+        "first_name": "Keith",
+        "last_name": "Brown",
+        "email": "keith.brown@example.com",
+        "password": "default_password",
+        "status": "active",
+        "created_at": "2025-01-01T00:00:00",
+        "last_logged_in": "2025-01-01T00:00:00"
+      },
+      {
+        "id": 202,
+        "first_name": "Marilyn",
+        "last_name": "Hunter",
+        "email": "marilyn.hunter@example.com",
+        "password": "default_password",
+        "status": "active",
+        "created_at": "2025-01-01T00:00:00",
+        "last_logged_in": "2025-01-01T00:00:00"
+      },
+      {
+        "id": 203,
+        "first_name": "Peter",
+        "last_name": "Sabonis",
+        "email": "peter.sabonis@example.com",
+        "password": "default_password",
+        "status": "active",
+        "created_at": "2025-01-01T00:00:00",
+        "last_logged_in": "2025-01-01T00:00:00"
+      },
+      {
+        "id": 204,
+        "first_name": "Willie",
+        "last_name": "Baptist",
+        "email": "willie.baptist@example.com",
+        "password": "default_password",
+        "status": "active",
+        "created_at": "2025-01-01T00:00:00",
+        "last_logged_in": "2025-01-01T00:00:00"
+      }
+    ]
+  },
+  "image_paths": [
+    "hiertext/images/test/0932622f8f3af61d.jpg",
+    "hiertext/images/test/2affe15ca90a2210.jpg",
+    "hiertext/images/test/fcf4ba7c8ac40fb2.jpg",
+    "hiertext/images/test/18d5533cc9792980.jpg",
+    "hiertext/images/test/3ddbbc644c2f99d2.jpg",
+    "hiertext/images/test/3f6a99cf78a15be6.jpg"
+  ],
+  "messages": [
+    {
+      "sender": "SYSTEM",
+      "recipient": "USER",
+      "content": "{{USER_INSTRUCTION}}ROUND 1 [provide: image_1, image_2, image_3, image_4, image_5, image_6]\nQuery: I've uploaded some images from a community archive. Can you create a Todoist project called 'Community Leaders' and add a separate task for each person listed under 'Current Leadership' on that whiteboard photo?\nInstructions: Tell the assistant to create the Todoist project and the tasks for the names under the 'Current Leadership' heading in the whiteboard image. If the assistant asks for clarification on the names, point them to the specific list under that red heading in the image. Once they confirm the tasks are created, proceed to the next round.\n\nROUND 2\nQuery: Actually, I changed my mind. Delete those tasks you just created. Instead, look at that same whiteboard image again. Find the people listed under 'Up For Reelection' and 'Acclamation', and draft an email to them about the upcoming council vote.\nInstructions: Tell the assistant to delete the tasks it just created, and instead draft an email to the people listed under 'Up For Reelection' and 'Acclamation' on the whiteboard. If the assistant asks for the email addresses, tell them to use the contacts saved on the device. Once the draft is created, move to the next round.\n\nROUND 3\nQuery: Now look at the photos of the green poster board and the green chalkboard. Find only the sticky notes that are pink, and create a single new note containing the text from all of them.\nInstructions: Ask the assistant to find the pink sticky notes on the green poster and the chalkboard, extract their text, and create a new note with it. If the assistant includes text from non-pink notes, correct them and tell them to only include the pink ones. Once the note is created, proceed to the next round.\n\nROUND 4\nQuery: Check the photo of the agricultural sign and the old newspaper clipping. Find the one that mentions 'Alabama', figure out the name of the novelist it's about, and search the web for their bibliography.\nInstructions: Instruct the assistant to identify which of the two documents (the sign or the newspaper) mentions Alabama, extract the name of the novelist from it, and perform a web search for their bibliography. If the assistant searches for the wrong person, direct them to look at the pink label on the newspaper clipping for the name. Once the search is complete, move on.\n\nROUND 5\nQuery: Finally, look at the blue photo collage. Find the picture captioned 'First day at St Augustines'. Extract the day and month from that caption, and create a calendar event called 'Archive Review' for that date next year.\nInstructions: Ask the assistant to find the specific photo in the collage with the 'First day at St Augustines' caption, extract the day and month, and schedule a calendar event for 'Archive Review' on that date next year. If the assistant gets the date wrong, point them to the handwritten caption under that specific photo. This is the final round, so once the event is scheduled, conclude the conversation.\n\nYou have 6 images available to share with the agent using the send_message_with_image tool.\nIMPORTANT: Image IDs are ZERO-INDEXED integers (0, 1, 2, ...). Do NOT add 1 to the IDs.\nAvailable image IDs: [0, 1, 2, 3, 4, 5]\nImage mapping:\n  image_1.jpg -> image ID 0\n  image_2.jpg -> image ID 1\n  image_3.jpg -> image ID 2\n  image_4.jpg -> image ID 3\n  image_5.jpg -> image ID 4\n  image_6.jpg -> image ID 5"
+    },
+    {
+      "sender": "USER",
+      "recipient": "AGENT",
+      "content": "I've uploaded some images from a community archive. Can you create a Todoist project called 'Community Leaders' and add a separate task for each person listed under 'Current Leadership' on that whiteboard photo?",
+      "image_ids": [
+        0,
+        1,
+        2,
+        3,
+        4,
+        5
+      ]
+    }
+  ],
+  "milestones": [],
+  "entity_diff_specs": [
+    {
+      "operation": "create",
+      "source": "appworld",
+      "table": "gmail.drafts",
+      "entity_data": {
+        "user_id": 6,
+        "recipient_ids": [
+          200,
+          201,
+          202,
+          203,
+          204
+        ],
+        "recipient_email_addresses": [
+          "michael.coleman@example.com",
+          "keith.brown@example.com",
+          "marilyn.hunter@example.com",
+          "peter.sabonis@example.com",
+          "willie.baptist@example.com"
+        ],
+        "recipient_names": [
+          "Michael Coleman",
+          "Keith Brown",
+          "Marilyn Hunter",
+          "Peter Sabonis",
+          "Willie Baptist"
+        ],
+        "subject": "Upcoming council vote",
+        "body": "Hello everyone,\n\nI am writing to share some information regarding the upcoming council vote. Please review the attached details and let me know if you have any questions or concerns before the vote takes place.\n\nBest regards,\nBradley",
+        "belongs_to_email_thread_id": null,
+        "response_to_email_id": null,
+        "scheduled_send_at": null,
+        "created_at": "2026-04-17T00:17:10",
+        "updated_at": "2026-04-17T00:17:10"
+      },
+      "column_similarity_measure": {
+        "user_id": "column_exact_match_similarity",
+        "recipient_ids": "column_exact_match_similarity",
+        "recipient_email_addresses": "column_exact_match_similarity",
+        "recipient_names": "column_exact_match_similarity",
+        "subject": "column_rouge_l_similarity",
+        "body": "column_rouge_l_similarity",
+        "belongs_to_email_thread_id": "column_ignore_similarity",
+        "response_to_email_id": "column_ignore_similarity",
+        "scheduled_send_at": "column_ignore_similarity",
+        "created_at": "column_ignore_similarity",
+        "updated_at": "column_ignore_similarity"
+      }
+    },
+    {
+      "operation": "create",
+      "source": "appworld",
+      "table": "simple_note.notes",
+      "entity_data": {
+        "user_id": 6,
+        "title": "Archive Notes",
+        "content": "The Future is in Young Minds!\n\nThe PLAY's the thing!\n\nStrategic Dialog Support Software (discussion) Andrew Hoerner Redefining Progress & Convergence Institute",
+        "tags": [],
+        "created_at": "2026-04-17T00:17:10",
+        "updated_at": "2026-04-17T00:17:10",
+        "pinned": false,
+        "data": {}
+      },
+      "column_similarity_measure": {
+        "user_id": "column_exact_match_similarity",
+        "title": "column_rouge_l_similarity",
+        "content": "column_rouge_l_similarity",
+        "tags": "column_ignore_similarity",
+        "created_at": "column_ignore_similarity",
+        "updated_at": "column_ignore_similarity",
+        "pinned": "column_exact_match_similarity",
+        "data": "column_ignore_similarity"
+      }
+    },
+    {
+      "operation": "create",
+      "source": "agentsandbox",
+      "namespace": "CALENDAR_EVENTS",
+      "entity_data": {
+        "calendar_event_id": "event_100",
+        "calendar_id": "calendar_100",
+        "title": "Archive Review",
+        "description": null,
+        "start_datetime": "2027-01-31T00:00:00Z",
+        "end_datetime": "2027-02-01T00:00:00Z",
+        "is_all_day": true,
+        "recurrence_frequency": null,
+        "recurrence_interval": null,
+        "recurrence_until_datetime": null,
+        "recurrence_parent_id": null,
+        "recurrence_exclude_datetime": [],
+        "latitude": null,
+        "longitude": null,
+        "place_id": null,
+        "formatted_address": null,
+        "attendee_names": [],
+        "attendee_emails": []
+      },
+      "column_similarity_measure": {
+        "calendar_event_id": "column_ignore_similarity",
+        "calendar_id": "column_ignore_similarity",
+        "title": "column_rouge_l_similarity",
+        "description": "column_ignore_similarity",
+        "start_datetime": "column_datetime_naive_equal_similarity",
+        "end_datetime": "column_datetime_naive_equal_similarity",
+        "is_all_day": "column_exact_match_similarity",
+        "recurrence_frequency": "column_ignore_similarity",
+        "recurrence_interval": "column_ignore_similarity",
+        "recurrence_until_datetime": "column_ignore_similarity",
+        "recurrence_parent_id": "column_ignore_similarity",
+        "recurrence_exclude_datetime": "column_ignore_similarity",
+        "latitude": "column_ignore_similarity",
+        "longitude": "column_ignore_similarity",
+        "place_id": "column_ignore_similarity",
+        "formatted_address": "column_ignore_similarity",
+        "attendee_names": "column_ignore_similarity",
+        "attendee_emails": "column_ignore_similarity"
+      }
+    }
+  ],
+  "task_completion_criteria": "Draft an email to Michael Coleman, Keith Brown, Marilyn Hunter, Peter Sabonis, and Willie Baptist about the upcoming council vote; create a note containing the text 'The Future is in Young Minds!', 'The PLAY's the thing!', and 'Strategic Dialog Support Software (discussion) Andrew Hoerner Redefining Progress & Convergence Institute'; search the web for the bibliography of the novelist Lee Smith; and create a calendar event titled 'Archive Review' on January 31, 2027.",
+  "categories": [
+    "APPWORLD",
+    "MULTIPLE_USER_TURN"
+  ],
+  "max_messages": 100,
+  "metadata": {
+    "original_scenario_id": "scenario_0894",
+    "expected_tools": [
+      "todoist_create_project",
+      "todoist_create_task",
+      "todoist_delete_task",
+      "gmail_create_draft",
+      "simple_note_create_note",
+      "web_search_serper",
+      "create_calendar_event"
+    ],
+    "image_arrival": {
+      "1": [
+        "image_1",
+        "image_2",
+        "image_3",
+        "image_4",
+        "image_5",
+        "image_6"
+      ]
+    },
+    "image_delivery_map": [],
+    "scenario_metadata": {
+      "num_images": 6,
+      "num_user_rounds": 5,
+      "selected_flow_type": "filter",
+      "image_arrival": "upfront",
+      "challenge_type": "goal_change",
+      "require_disambiguation": false,
+      "dataset_type": "hiertext"
+    }
+  }
+}

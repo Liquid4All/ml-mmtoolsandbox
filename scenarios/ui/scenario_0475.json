@@ -1,0 +1,276 @@
+{
+  "name": "scenario_0475",
+  "base_scenario": "base",
+  "description": "James is shopping for gifts for his niece and restocking some craft supplies for himself, using several reference images of toys and projects. (UI mode)",
+  "difficulty": "easy",
+  "appworld_base_task": "_base_",
+  "device_state_id": "ja-solomon@gmail.com",
+  "reference_time": "2026-04-17T00:04:49.644616+00:00",
+  "agentsandbox_entities": {},
+  "appworld_entities": {
+    "amazon.sellers": [
+      {
+        "id": 200,
+        "name": "Amazon Toys & Crafts",
+        "rating": 4.5
+      }
+    ],
+    "amazon.products": [
+      {
+        "id": 200,
+        "product_type": "toys",
+        "name": "Flip-Memory Tower",
+        "description": "A fun memory game tower for kids.",
+        "seller_id": 200,
+        "price": 25.99,
+        "delivery_days": 2,
+        "inventory_quantity": 50,
+        "weight": 1.2,
+        "length": 10.0,
+        "width": 5.0,
+        "height": 15.0,
+        "color": "multicolor",
+        "relative_size": "medium",
+        "rating": 4.2,
+        "seller_rating": 4.5,
+        "has_variations": false
+      },
+      {
+        "id": 201,
+        "product_type": "toys",
+        "name": "Polyhedral activity table",
+        "description": "Interactive multi-sided activity table.",
+        "seller_id": 200,
+        "price": 45.99,
+        "delivery_days": 3,
+        "inventory_quantity": 30,
+        "weight": 5.5,
+        "length": 20.0,
+        "width": 20.0,
+        "height": 18.0,
+        "color": "multicolor",
+        "relative_size": "large",
+        "rating": 4.6,
+        "seller_rating": 4.5,
+        "has_variations": false
+      },
+      {
+        "id": 202,
+        "product_type": "toys",
+        "name": "Motorized gear-building blocks",
+        "description": "Build motorized moving gears.",
+        "seller_id": 200,
+        "price": 35.99,
+        "delivery_days": 2,
+        "inventory_quantity": 40,
+        "weight": 2.0,
+        "length": 12.0,
+        "width": 8.0,
+        "height": 4.0,
+        "color": "multicolor",
+        "relative_size": "medium",
+        "rating": 4.4,
+        "seller_rating": 4.5,
+        "has_variations": false
+      },
+      {
+        "id": 203,
+        "product_type": "toys",
+        "name": "Light-up building blocks",
+        "description": "Building blocks that light up.",
+        "seller_id": 200,
+        "price": 29.99,
+        "delivery_days": 2,
+        "inventory_quantity": 50,
+        "weight": 1.5,
+        "length": 10.0,
+        "width": 10.0,
+        "height": 5.0,
+        "color": "clear",
+        "relative_size": "medium",
+        "rating": 4.3,
+        "seller_rating": 4.5,
+        "has_variations": false
+      },
+      {
+        "id": 204,
+        "product_type": "crafts",
+        "name": "DIY photo-frame craft kit",
+        "description": "Create your own beautiful photo frames.",
+        "seller_id": 200,
+        "price": 19.99,
+        "delivery_days": 4,
+        "inventory_quantity": 80,
+        "weight": 0.8,
+        "length": 8.0,
+        "width": 6.0,
+        "height": 2.0,
+        "color": "multicolor",
+        "relative_size": "small",
+        "rating": 4.7,
+        "seller_rating": 4.5,
+        "has_variations": false
+      },
+      {
+        "id": 205,
+        "product_type": "crafts",
+        "name": "Daiara Acrilica 32 Azul Colonial",
+        "description": "High quality acrylic paint in colonial blue.",
+        "seller_id": 200,
+        "price": 8.99,
+        "delivery_days": 2,
+        "inventory_quantity": 90,
+        "weight": 0.2,
+        "length": 2.0,
+        "width": 2.0,
+        "height": 4.0,
+        "color": "blue",
+        "relative_size": "extra-small",
+        "rating": 4.8,
+        "seller_rating": 4.5,
+        "has_variations": false
+      },
+      {
+        "id": 206,
+        "product_type": "crafts",
+        "name": "blue acrylic craft paint",
+        "description": "Generic blue acrylic craft paint.",
+        "seller_id": 200,
+        "price": 5.99,
+        "delivery_days": 2,
+        "inventory_quantity": 100,
+        "weight": 0.2,
+        "length": 2.0,
+        "width": 2.0,
+        "height": 4.0,
+        "color": "blue",
+        "relative_size": "extra-small",
+        "rating": 4.2,
+        "seller_rating": 4.5,
+        "has_variations": false
+      }
+    ],
+    "gmail.users": []
+  },
+  "image_paths": [
+    "worldvqa/images/1770.jpg",
+    "worldvqa/images/1514.jpg",
+    "hiertext/images/test/c98d726bc1b55b12.jpg",
+    "worldvqa/images/1508.jpg",
+    "worldvqa/images/1479.jpg",
+    "worldvqa/images/1498.jpg"
+  ],
+  "messages": [
+    {
+      "sender": "SYSTEM",
+      "recipient": "USER",
+      "content": "{{USER_INSTRUCTION}}ROUND 1 [provide: image_1, image_2, image_3, image_4, image_5, image_6]\nQuery: I want to buy one of these toys for my niece. Look at the toys in the fourth, fifth, and sixth images and find their prices on Amazon — I'll decide which one to get.\nInstructions: Tell the assistant to look at the fourth, fifth, and sixth images, identify the toys shown in them, and search for those specific toys on Amazon. If the assistant asks for clarification on what the toys are called, point them back to the images to figure it out from the visual context. When the assistant presents the items with prices, select the cheapest one and add it to your cart via `ui_user_interact`. If no interactive UI is shown, tell the assistant to add the cheapest one to your cart. Wait for confirmation before proceeding.\n\nROUND 2\nQuery: Actually, let's look at some other options. Compare the price of the 'Sunset SPA dollhouse' from the first image with the craft kit in the second image on Amazon. Add the cheaper one to my wish list.\nInstructions: Instruct the assistant to compare the price of the 'Sunset SPA dollhouse' from the first image with the craft kit in the second image on Amazon, and add the cheaper one to your wish list. The assistant should notice that your description of the first image as a 'dollhouse' is incorrect based on what the item actually is. If the assistant points out this mistake, acknowledge it and wait for the next turn. If the assistant blindly proceeds without noticing the error, correct them and tell them to look closer at the first image to see what type of building toy it really is.\n\nROUND 3\nQuery: Oh, you're right, the first image is 'Light-up building blocks', not a dollhouse. Compare the Light-up building blocks with the DIY photo-frame craft kit from the second image on Amazon — I'll decide which one to add to my wish list.\nInstructions: Acknowledge the mistake and confirm the correct name of the toy from the first image. Ask the assistant to compare those building blocks with the craft kit from the second image on Amazon. When the assistant presents the price comparison, select the cheaper one and add it to your wish list via `ui_user_interact`. If no interactive UI is shown, tell the assistant to add the cheaper of the two to your wish list. Wait for confirmation before proceeding to the final round.\n\nROUND 4\nQuery: Finally, I need to restock for the project in the third image. Search Amazon for that exact blue paint and also a generic 'blue acrylic craft paint'. I want to compare them before I decide which one to get.\nInstructions: Ask the assistant to look at the third image, identify the specific brand and color name of the blue paint bottle shown, and search Amazon for that exact paint as well as a generic 'blue acrylic craft paint'. If the assistant asks for the exact text on the bottle, tell them to read the label on the blue bottle in the image. When the assistant presents the comparison, select the one with the higher customer rating and add it to your cart via `ui_user_interact`. If no interactive UI is shown, tell the assistant to add the one with the higher rating to your cart. End the conversation once confirmed.\n\nYou have 6 images available to share with the agent using the send_message_with_image tool.\nIMPORTANT: Image IDs are ZERO-INDEXED integers (0, 1, 2, ...). Do NOT add 1 to the IDs.\nAvailable image IDs: [0, 1, 2, 3, 4, 5]\nImage mapping:\n  image_1.jpg -> image ID 0\n  image_2.jpg -> image ID 1\n  image_3.jpg -> image ID 2\n  image_4.jpg -> image ID 3\n  image_5.jpg -> image ID 4\n  image_6.jpg -> image ID 5"
+    },
+    {
+      "sender": "USER",
+      "recipient": "AGENT",
+      "content": "I want to buy one of these toys for my niece. Look at the toys in the fourth, fifth, and sixth images and find their prices on Amazon — I'll decide which one to get.",
+      "image_ids": [
+        0,
+        1,
+        2,
+        3,
+        4,
+        5
+      ]
+    }
+  ],
+  "milestones": [],
+  "entity_diff_specs": [
+    {
+      "operation": "create",
+      "source": "appworld",
+      "table": "amazon.cart_entries",
+      "entity_data": {
+        "user_id": 10,
+        "product_id": 200,
+        "quantity": 1,
+        "gift_wrap_quantity": 0
+      },
+      "column_similarity_measure": {
+        "user_id": "column_exact_match_similarity",
+        "product_id": "column_exact_match_similarity",
+        "quantity": "column_exact_match_similarity",
+        "gift_wrap_quantity": "column_exact_match_similarity"
+      }
+    },
+    {
+      "operation": "create",
+      "source": "appworld",
+      "table": "amazon.cart_entries",
+      "entity_data": {
+        "user_id": 10,
+        "product_id": 205,
+        "quantity": 1,
+        "gift_wrap_quantity": 0
+      },
+      "column_similarity_measure": {
+        "user_id": "column_exact_match_similarity",
+        "product_id": "column_exact_match_similarity",
+        "quantity": "column_exact_match_similarity",
+        "gift_wrap_quantity": "column_exact_match_similarity"
+      }
+    },
+    {
+      "operation": "create",
+      "source": "appworld",
+      "table": "amazon.wish_list_entries",
+      "entity_data": {
+        "user_id": 10,
+        "product_id": 204,
+        "quantity": 1
+      },
+      "column_similarity_measure": {
+        "user_id": "column_exact_match_similarity",
+        "product_id": "column_exact_match_similarity",
+        "quantity": "column_exact_match_similarity"
+      }
+    }
+  ],
+  "task_completion_criteria": "Add the cheapest of the 'Flip-Memory Tower', 'Polyhedral activity table', and 'Motorized gear-building blocks' to the Amazon cart. Add the cheaper of the 'Light-up building blocks' and the 'DIY photo-frame craft kit' to the Amazon wish list. Finally, add the highest-rated product between 'Daiara Acrilica 32 Azul Colonial' paint and generic 'blue acrylic craft paint' to the Amazon cart.\n\nUI Requirements:\n- Round 1: The agent must present the three toy items with their Amazon prices in a structured interactive UI that lets the user select which toy to add to their cart.\n- Round 3: The agent must present the Light-up building blocks and DIY photo-frame craft kit with their Amazon prices in a structured interactive UI that lets the user select which item to add to their wish list.\n- Round 4: The agent must present the two blue paint options with their customer ratings in a structured interactive UI that lets the user select which paint to add to their cart.",
+  "categories": [
+    "APPWORLD",
+    "MULTIPLE_USER_TURN",
+    "UI_MODE"
+  ],
+  "max_messages": 100,
+  "metadata": {
+    "original_scenario_id": "scenario_0475",
+    "expected_tools": [
+      "amazon_show_product",
+      "amazon_add_product_to_cart",
+      "amazon_add_product_to_wish_list",
+      "amazon_show_product_reviews",
+      "render_ui_screen",
+      "show_ui_to_user",
+      "ui_user_interact",
+      "ui_get_quick_start",
+      "ui_get_item_details"
+    ],
+    "image_arrival": {
+      "1": [
+        "image_1",
+        "image_2",
+        "image_3",
+        "image_4",
+        "image_5",
+        "image_6"
+      ]
+    },
+    "image_delivery_map": [],
+    "scenario_metadata": {
+      "num_images": 6,
+      "num_user_rounds": 4,
+      "selected_flow_type": "compare",
+      "image_arrival": "upfront",
+      "challenge_type": "error_correction",
+      "require_disambiguation": false,
+      "dataset_type": "worldvqa"
+    }
+  }
+}

@@ -1,0 +1,160 @@
+{
+  "name": "scenario_1067",
+  "base_scenario": "base",
+  "description": "The user is attending various conferences and events, collecting flyers, posters, and presentation details to build their professional network. They are using their agent to digitize and organize this information based on specific validation rules.",
+  "difficulty": "easy",
+  "appworld_base_task": "_base_",
+  "device_state_id": "siwhit@gmail.com",
+  "reference_time": "2026-04-17T00:22:27.662339+00:00",
+  "agentsandbox_entities": {},
+  "appworld_entities": {
+    "simple_note.notes": [
+      {
+        "id": 3200,
+        "user_id": 105,
+        "title": "Networking Leads",
+        "content": "Older contacts:\n- Alice Bobson (CorpInc)\n- Charlie Davis (MegaTech)",
+        "tags": [
+          "leads",
+          "networking"
+        ],
+        "created_at": "2026-04-10T10:00:00",
+        "updated_at": "2026-04-15T14:30:00",
+        "pinned": false,
+        "data": null
+      },
+      {
+        "id": 3201,
+        "user_id": 105,
+        "title": "Sales Leads",
+        "content": "Q3 targets: $500k revenue.\nOutreach goals: 50 calls per week to enterprise clients.",
+        "tags": [
+          "leads",
+          "sales"
+        ],
+        "created_at": "2026-04-01T09:00:00",
+        "updated_at": "2026-04-05T11:00:00",
+        "pinned": false,
+        "data": null
+      }
+    ],
+    "gmail.users": []
+  },
+  "image_paths": [
+    "hiertext/images/test/ae6fa6367e8f8b14.jpg",
+    "hiertext/images/test/83555a1da1e23994.jpg",
+    "hiertext/images/test/b3fac5053cf30473.jpg",
+    "hiertext/images/test/ebbd9e4b5719a16b.jpg",
+    "hiertext/images/test/3d6d6ed8e10761d2.jpg"
+  ],
+  "messages": [
+    {
+      "sender": "SYSTEM",
+      "recipient": "USER",
+      "content": "{{USER_INSTRUCTION}}ROUND 1 [provide: image_1, image_2, image_3]\nQuery: I've got some new contacts from these three pictures. If there's a phone number, save them as a new contact. If there isn't one, just add their names and any details to my leads note.\nInstructions: Ask the agent to process the three provided images according to your rule: if a phone number is present, create a new contact; if there is no phone number, extract the names and organizations and add them to your leads note. The agent will likely notice that you have multiple notes with 'leads' in the title and ask for clarification. When it asks, specify that you mean the 'Networking Leads' note. If the agent asks to confirm the extracted details before saving, approve the additions. Do not state the names, numbers, or organizations yourself; let the agent extract them from the images.\n\nROUND 2 [provide: image_4, image_5]\nQuery: Here are two more to process the exact same way. Also, I just realized my current plan charges extra for international calls. Check the contacts we just made - if any have a phone number starting with a plus sign, delete that contact and move their info into the networking note instead.\nInstructions: Instruct the agent to process the two new images using the exact same logic as the previous round (adding to contacts if there's a phone number, or the networking note if there isn't). Additionally, tell the agent to validate the contacts created so far today against a new constraint: any contact with a phone number starting with a '+' symbol must be deleted from the contacts app, and their details should be moved into the 'Networking Leads' note instead. If the agent asks for confirmation to delete the international contact and update the note, provide your approval. End the conversation once all tasks are confirmed complete.\n\nYou have 5 images available to share with the agent using the send_message_with_image tool.\nIMPORTANT: Image IDs are ZERO-INDEXED integers (0, 1, 2, ...). Do NOT add 1 to the IDs.\nAvailable image IDs: [0, 1, 2, 3, 4]\nImage mapping:\n  image_1.jpg -> image ID 0\n  image_2.jpg -> image ID 1\n  image_3.jpg -> image ID 2\n  image_4.jpg -> image ID 3\n  image_5.jpg -> image ID 4\n\n## IMAGE DELIVERY\n\n\u26a0\ufe0f IMPORTANT: You MUST use the `send_message_with_image` tool to share images with User B. Do NOT just describe images in text \u2014 you MUST call the tool.\n\nImage delivery schedule:\n\n  Round 2: YOU MUST call the send_message_with_image tool with image_ids='3,4' \u2014 do NOT write the tool name as text; use the actual function call. Include a natural, conversational message to the assistant."
+    },
+    {
+      "sender": "USER",
+      "recipient": "AGENT",
+      "content": "I've got some new contacts from these three pictures. If there's a phone number, save them as a new contact. If there isn't one, just add their names and any details to my leads note.",
+      "image_ids": [
+        0,
+        1,
+        2
+      ]
+    }
+  ],
+  "milestones": [],
+  "entity_diff_specs": [
+    {
+      "operation": "create",
+      "source": "appworld",
+      "table": "phone.contacts",
+      "entity_data": {
+        "user_id": 105,
+        "first_name": "embrace",
+        "last_name": "Child Victims Of Crime",
+        "email": "",
+        "phone_number": "0845 60 999 60",
+        "relationships": [],
+        "birthday": null,
+        "home_address": null,
+        "work_address": null,
+        "created_at": "2026-04-17T00:22:27"
+      },
+      "column_similarity_measure": {
+        "user_id": "column_exact_match_similarity",
+        "first_name": "column_exact_match_similarity",
+        "last_name": "column_exact_match_similarity",
+        "email": "column_ignore_similarity",
+        "phone_number": "column_exact_match_similarity",
+        "relationships": "column_ignore_similarity",
+        "birthday": "column_ignore_similarity",
+        "home_address": "column_ignore_similarity",
+        "work_address": "column_ignore_similarity",
+        "created_at": "column_ignore_similarity"
+      }
+    },
+    {
+      "operation": "update",
+      "source": "appworld",
+      "table": "simple_note.notes",
+      "entity_id_column": "id",
+      "entity_id_value": 3200,
+      "expected_fields": {
+        "updated_at": "2026-04-15T14:30:00",
+        "content": "Older contacts:\n- Alice Bobson (CorpInc)\n- Charlie Davis (MegaTech)\n\n- Jonas Sj\u00f6stedt (Tipser)\n- Alana Muller (Kauffman FastTrac)\n- Rachel Sklar (The Li.st)\n- Nell Merlino (Count Me In)\n- Maria Scileppi (Peoplescape and 72U)\n- Anthony Clark (NRDC)\n- I.T. For Writers (Phone: +353 (0)85 1050195, Email: info@writerit.com)",
+        "tags": []
+      },
+      "column_similarity_measure": {
+        "updated_at": "column_ignore_similarity",
+        "content": "column_rouge_l_similarity",
+        "id": "column_exact_match_similarity"
+      }
+    }
+  ],
+  "task_completion_criteria": "Create a contact for 'embrace Child Victims Of Crime' with the phone number 0845 60 999 60. Update the 'Networking Leads' note to include Jonas Sj\u00f6stedt (Tipser), Alana Muller (Kauffman FastTrac), Rachel Sklar (The Li.st), Nell Merlino (Count Me In), Maria Scileppi (Peoplescape and 72U), Anthony Clark (NRDC), and 'I.T. For Writers' (with their international phone number +353 (0)85 1050195 and email info@writerit.com). Ensure no contact exists for 'I.T. For Writers' as it was deleted due to the international number constraint.",
+  "categories": [
+    "APPWORLD",
+    "MULTIPLE_USER_TURN"
+  ],
+  "max_messages": 100,
+  "metadata": {
+    "original_scenario_id": "scenario_1067",
+    "expected_tools": [
+      "contacts_add_contact",
+      "simple_note_show_note",
+      "simple_note_update_note",
+      "contacts_delete_contact"
+    ],
+    "image_arrival": {
+      "1": [
+        "image_1",
+        "image_2",
+        "image_3"
+      ],
+      "2": [
+        "image_4",
+        "image_5"
+      ]
+    },
+    "image_delivery_map": [
+      {
+        "query": "Here are two more to process the exact same way. Also, I just realized my current plan charges extra for international calls. Check the contacts we just made - if any have a phone number starting with a plus sign, delete that contact and move their info into the networking note instead.",
+        "image_ids": [
+          3,
+          4
+        ]
+      }
+    ],
+    "scenario_metadata": {
+      "num_images": 5,
+      "num_user_rounds": 2,
+      "selected_flow_type": "validate",
+      "image_arrival": "progressive",
+      "challenge_type": "state_mutation",
+      "require_disambiguation": true,
+      "dataset_type": "hiertext"
+    }
+  }
+}

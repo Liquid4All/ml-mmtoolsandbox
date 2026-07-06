@@ -1,0 +1,210 @@
+{
+  "name": "scenario_0947",
+  "base_scenario": "base",
+  "description": "Caitlin is putting together a list of vendors and locations for an upcoming marketing campaign and wants to compile their contact info into an email for her manager. (UI mode)",
+  "difficulty": "easy",
+  "appworld_base_task": "_base_",
+  "device_state_id": "caiburc@gmail.com",
+  "reference_time": "2026-04-17T00:19:21.054205+00:00",
+  "agentsandbox_entities": {},
+  "appworld_entities": {
+    "gmail.users": []
+  },
+  "image_paths": [
+    "hiertext/images/test/e1098f11bbdd6b20.jpg",
+    "hiertext/images/test/50aac8725cd8130a.jpg",
+    "hiertext/images/test/51ccab892faea8bd.jpg"
+  ],
+  "messages": [
+    {
+      "sender": "SYSTEM",
+      "recipient": "USER",
+      "content": "{{USER_INSTRUCTION}}ROUND 1\nQuery: I'm gathering vendor contacts for our upcoming marketing campaign. Please create an email draft to Christina with the subject 'Campaign Contacts'. Leave the body empty for now, I'll add to it as I go.\nInstructions: Ask the agent to create an empty email draft to Christina with the subject 'Campaign Contacts'. The agent will likely find multiple contacts named Christina and ask for clarification or present the options. When it does, select Christina Harrison (your manager) via `ui_user_interact`. If no interactive UI is shown, tell the agent you mean your manager, Christina Harrison. Once the agent confirms the draft is created, move to the next round.\n\nROUND 2 [provide: image_1]\nQuery: Here's a photo from a recent game. Add the casino advertised on the large red billboard to my contacts as 'Black Oak Casino' with its phone number. Also, add this contact info to the email draft.\nInstructions: Provide the first image and ask the agent to add the casino advertised on the large red billboard to your contacts (as 'Black Oak Casino') along with its phone number. Then, ask the agent to add this contact info into the body of the email draft you just created. If the agent asks for the phone number, tell it to look closely at the top right of the red billboard in the image. Once confirmed, move on.\n\nROUND 3 [provide: image_2]\nQuery: I also took a picture of this ad space. The company that owns the billboard is listed at the top. Add them as 'Lamar Advertising' with their phone number to my contacts, and append it to the email draft.\nInstructions: Provide the second image and ask the agent to add the advertising company listed at the top of the billboard frame to your contacts as 'Lamar Advertising' with their phone number. Also request that this information be appended to the email draft. If the agent gets the wrong company (like Dove or BC Lions), correct it by pointing to the top frame of the billboard. Once the agent confirms the contact is added and the draft is updated, proceed to the final round.\n\nROUND 4 [provide: image_3]\nQuery: Finally, we need a place to record our radio spots. Add the recording studio shown in the graffiti above the cellar doors to my contacts as 'G-House Studio' and include its street address. Append this to the draft and then send the email.\nInstructions: Provide the third image and tell the agent to add the recording studio mentioned in the graffiti above the cellar doors to your contacts as 'G-House Studio', including its street address. Ask the agent to append this final contact to the email draft, and then send the email. If the agent struggles to read the graffiti, guide it to look at the text directly painted on the red door above the cellar entrance. Conclude the conversation once the email is sent.\n\nYou have 3 images available to share with the agent using the send_message_with_image tool.\nIMPORTANT: Image IDs are ZERO-INDEXED integers (0, 1, 2, ...). Do NOT add 1 to the IDs.\nAvailable image IDs: [0, 1, 2]\nImage mapping:\n  image_1.jpg -> image ID 0\n  image_2.jpg -> image ID 1\n  image_3.jpg -> image ID 2\n\n## IMAGE DELIVERY\n\n⚠️ IMPORTANT: You MUST use the `send_message_with_image` tool to share images with User B. Do NOT just describe images in text — you MUST call the tool.\n\nImage delivery schedule:\n\n  Round 2: YOU MUST call the send_message_with_image tool with image_ids='0' — do NOT write the tool name as text; use the actual function call. Include a natural, conversational message to the assistant.\n  Round 3: YOU MUST call the send_message_with_image tool with image_ids='1' — do NOT write the tool name as text; use the actual function call. Include a natural, conversational message to the assistant.\n  Round 4: YOU MUST call the send_message_with_image tool with image_ids='2' — do NOT write the tool name as text; use the actual function call. Include a natural, conversational message to the assistant."
+    },
+    {
+      "sender": "USER",
+      "recipient": "AGENT",
+      "content": "I'm gathering vendor contacts for our upcoming marketing campaign. Please create an email draft to Christina with the subject 'Campaign Contacts'. Leave the body empty for now, I'll add to it as I go."
+    }
+  ],
+  "milestones": [],
+  "entity_diff_specs": [
+    {
+      "operation": "create",
+      "source": "appworld",
+      "table": "phone.contacts",
+      "entity_data": {
+        "user_id": 33,
+        "first_name": "Black Oak",
+        "last_name": "Casino",
+        "email": "",
+        "phone_number": "1-877-747-8777",
+        "relationships": [
+          "vendor"
+        ],
+        "birthday": null,
+        "home_address": null,
+        "work_address": null,
+        "created_at": "2026-04-17T00:19:21"
+      },
+      "column_similarity_measure": {
+        "user_id": "column_exact_match_similarity",
+        "first_name": "column_exact_match_similarity",
+        "last_name": "column_exact_match_similarity",
+        "email": "column_ignore_similarity",
+        "phone_number": "column_exact_match_similarity",
+        "relationships": "column_ignore_similarity",
+        "birthday": "column_ignore_similarity",
+        "home_address": "column_ignore_similarity",
+        "work_address": "column_ignore_similarity",
+        "created_at": "column_ignore_similarity"
+      }
+    },
+    {
+      "operation": "create",
+      "source": "appworld",
+      "table": "phone.contacts",
+      "entity_data": {
+        "user_id": 33,
+        "first_name": "Lamar",
+        "last_name": "Advertising",
+        "email": "",
+        "phone_number": "1-800-233-9942",
+        "relationships": [
+          "vendor"
+        ],
+        "birthday": null,
+        "home_address": null,
+        "work_address": null,
+        "created_at": "2026-04-17T00:19:21"
+      },
+      "column_similarity_measure": {
+        "user_id": "column_exact_match_similarity",
+        "first_name": "column_exact_match_similarity",
+        "last_name": "column_exact_match_similarity",
+        "email": "column_ignore_similarity",
+        "phone_number": "column_exact_match_similarity",
+        "relationships": "column_ignore_similarity",
+        "birthday": "column_ignore_similarity",
+        "home_address": "column_ignore_similarity",
+        "work_address": "column_ignore_similarity",
+        "created_at": "column_ignore_similarity"
+      }
+    },
+    {
+      "operation": "create",
+      "source": "appworld",
+      "table": "phone.contacts",
+      "entity_data": {
+        "user_id": 33,
+        "first_name": "G-House",
+        "last_name": "Studio",
+        "email": "",
+        "phone_number": null,
+        "relationships": [
+          "vendor"
+        ],
+        "birthday": null,
+        "home_address": null,
+        "work_address": "172-20 JAMAICA AVE",
+        "created_at": "2026-04-17T00:19:21"
+      },
+      "column_similarity_measure": {
+        "user_id": "column_exact_match_similarity",
+        "first_name": "column_exact_match_similarity",
+        "last_name": "column_exact_match_similarity",
+        "email": "column_ignore_similarity",
+        "phone_number": "column_ignore_similarity",
+        "relationships": "column_ignore_similarity",
+        "birthday": "column_ignore_similarity",
+        "home_address": "column_ignore_similarity",
+        "work_address": "column_exact_match_similarity",
+        "created_at": "column_ignore_similarity"
+      }
+    },
+    {
+      "operation": "create",
+      "source": "appworld",
+      "table": "gmail.emails",
+      "entity_data": {
+        "sender_id": 33,
+        "recipient_ids": [
+          13
+        ],
+        "subject": "Campaign Contacts",
+        "body": "Black Oak Casino: 1-877-747-8777\nLamar Advertising: 1-800-233-9942\nG-House Studio: 172-20 JAMAICA AVE",
+        "response_to_email_id": null,
+        "created_at": "2026-04-17T00:19:21"
+      },
+      "column_similarity_measure": {
+        "sender_id": "column_exact_match_similarity",
+        "recipient_ids": "column_exact_match_similarity",
+        "subject": "column_rouge_l_similarity",
+        "body": "column_rouge_l_similarity",
+        "response_to_email_id": "column_ignore_similarity",
+        "created_at": "column_ignore_similarity"
+      }
+    }
+  ],
+  "task_completion_criteria": "Create new contacts for 'Black Oak Casino' (phone: 1-877-747-8777), 'Lamar Advertising' (phone: 1-800-233-9942), and 'G-House Studio' (address: 172-20 JAMAICA AVE). Draft and send an email to Christina Harrison with the subject 'Campaign Contacts' that includes these three businesses and their respective phone numbers or address in the body.\n\nUI Requirements:\n- Round 1: The agent must present the matching Christina contacts in a structured interactive UI that lets the user select which Christina to address the email to.",
+  "categories": [
+    "APPWORLD",
+    "MULTIPLE_USER_TURN",
+    "UI_MODE"
+  ],
+  "max_messages": 100,
+  "metadata": {
+    "original_scenario_id": "scenario_0947",
+    "expected_tools": [
+      "gmail_create_draft",
+      "add_contact",
+      "gmail_update_draft",
+      "gmail_send_email_from_draft",
+      "render_ui_screen",
+      "show_ui_to_user",
+      "ui_user_interact",
+      "ui_get_quick_start",
+      "ui_get_item_details"
+    ],
+    "image_arrival": {
+      "2": [
+        "image_1"
+      ],
+      "3": [
+        "image_2"
+      ],
+      "4": [
+        "image_3"
+      ]
+    },
+    "image_delivery_map": [
+      {
+        "query": "Here's a photo from a recent game. Add the casino advertised on the large red billboard to my contacts as 'Black Oak Casino' with its phone number. Also, add this contact info to the email draft.",
+        "image_ids": [
+          0
+        ]
+      },
+      {
+        "query": "I also took a picture of this ad space. The company that owns the billboard is listed at the top. Add them as 'Lamar Advertising' with their phone number to my contacts, and append it to the email draft.",
+        "image_ids": [
+          1
+        ]
+      },
+      {
+        "query": "Finally, we need a place to record our radio spots. Add the recording studio shown in the graffiti above the cellar doors to my contacts as 'G-House Studio' and include its street address. Append this to the draft and then send the email.",
+        "image_ids": [
+          2
+        ]
+      }
+    ],
+    "scenario_metadata": {
+      "num_images": 3,
+      "num_user_rounds": 4,
+      "selected_flow_type": "aggregate",
+      "image_arrival": "late",
+      "challenge_type": "none",
+      "require_disambiguation": true,
+      "dataset_type": "hiertext"
+    }
+  }
+}

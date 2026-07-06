@@ -1,0 +1,167 @@
+{
+  "name": "scenario_0440",
+  "base_scenario": "base",
+  "description": "The user is compiling a summary of societal data from multiple infographic sources into a single note, which they will then send to their supervisor.",
+  "difficulty": "easy",
+  "appworld_base_task": "_base_",
+  "device_state_id": "jac-blackburn@gmail.com",
+  "reference_time": "2026-04-17T00:03:35.588737+00:00",
+  "agentsandbox_entities": {},
+  "appworld_entities": {
+    "phone.contacts": [
+      {
+        "id": 200,
+        "user_id": 38,
+        "first_name": "Research",
+        "last_name": "Supervisor",
+        "email": "supervisor@research.org",
+        "phone_number": null,
+        "relationships": [],
+        "birthday": null,
+        "home_address": null,
+        "work_address": null,
+        "created_at": "2025-10-01T09:00:00"
+      },
+      {
+        "id": 201,
+        "user_id": 38,
+        "first_name": "Research",
+        "last_name": "Supervisor",
+        "email": "supervisor@data.edu",
+        "phone_number": null,
+        "relationships": [],
+        "birthday": null,
+        "home_address": null,
+        "work_address": null,
+        "created_at": "2025-10-01T09:00:00"
+      }
+    ],
+    "gmail.users": [
+      {
+        "id": 200,
+        "first_name": "Research",
+        "last_name": "Supervisor",
+        "email": "supervisor@research.org",
+        "password": "default_password",
+        "status": "active",
+        "created_at": "2025-01-01T00:00:00",
+        "last_logged_in": "2025-01-01T00:00:00"
+      },
+      {
+        "id": 201,
+        "first_name": "Research",
+        "last_name": "Supervisor",
+        "email": "supervisor@data.edu",
+        "password": "default_password",
+        "status": "active",
+        "created_at": "2025-01-01T00:00:00",
+        "last_logged_in": "2025-01-01T00:00:00"
+      }
+    ]
+  },
+  "image_paths": [
+    "chartmuseum/images/wordcloud_politics.png",
+    "chartqapro/images/chart_0160.jpg",
+    "chartqapro/images/chart_1242.jpg"
+  ],
+  "messages": [
+    {
+      "sender": "SYSTEM",
+      "recipient": "USER",
+      "content": "{{USER_INSTRUCTION}}ROUND 1 [provide: image_1, image_2, image_3]\nQuery: I'm compiling some data. Create a new note called 'Societal Metrics'. Look at the first image with the yellow bubbles and start the note with the two words Americans use most frequently to describe politics.\nInstructions: Ask the assistant to create a note titled 'Societal Metrics' and extract the two most prominent words from the first image (the largest bubbles) to start the note. If the assistant asks for clarification on how to determine frequency, tell it to use the size of the bubbles. Once the note is successfully created with the words, move on to the next round.\n\nROUND 2\nQuery: Now look at the second image, the line graph. Add the approximate 2019 values for the Rehabilitative and Employment categories to that same note.\nInstructions: Instruct the assistant to look at the line graph provided earlier and append the approximate 2019 data points for the 'Rehabilitative' and 'Employment' lines to the 'Societal Metrics' note. If the assistant gives slightly different estimates for the numbers, accept them as long as they are reasonably close to the visual data points on the graph. Proceed to the next round once the note is updated.\n\nROUND 3\nQuery: For the last image with the crime scene tape, append the top country and its rate for both the North America and Africa regions to the note.\nInstructions: Ask the assistant to extract the highest homicide rate and corresponding country for both North America and Africa from the third image, and append these details to the 'Societal Metrics' note. If the assistant misses any of the requested regions or pulls the world average instead, correct it and point it back to the specific regional sections in the image. Move on once confirmed.\n\nROUND 4\nQuery: Finally, retrieve the full contents of that note and send it in an email to my Research Supervisor with the subject 'Draft Societal Metrics Data'.\nInstructions: Tell the assistant to retrieve the full text of the 'Societal Metrics' note and email it to your Research Supervisor with the subject 'Draft Societal Metrics Data'. The assistant should notice there are multiple contacts saved as 'Research Supervisor' and ask you which one to use. When it asks for clarification, specify that you want to send it to the research.org address. Conclude the conversation once the email is successfully sent.\n\nYou have 3 images available to share with the agent using the send_message_with_image tool.\nIMPORTANT: Image IDs are ZERO-INDEXED integers (0, 1, 2, ...). Do NOT add 1 to the IDs.\nAvailable image IDs: [0, 1, 2]\nImage mapping:\n  image_1.jpg -> image ID 0\n  image_2.jpg -> image ID 1\n  image_3.jpg -> image ID 2"
+    },
+    {
+      "sender": "USER",
+      "recipient": "AGENT",
+      "content": "I'm compiling some data. Create a new note called 'Societal Metrics'. Look at the first image with the yellow bubbles and start the note with the two words Americans use most frequently to describe politics.",
+      "image_ids": [
+        0,
+        1,
+        2
+      ]
+    }
+  ],
+  "milestones": [],
+  "entity_diff_specs": [
+    {
+      "operation": "create",
+      "source": "appworld",
+      "table": "gmail.emails",
+      "entity_data": {
+        "sender_id": 38,
+        "recipient_ids": [
+          200
+        ],
+        "subject": "Draft Societal Metrics Data",
+        "body": "Societal Metrics\n\nDivisive\nCorrupt\n\n2019 Values:\nRehabilitative: 38,000\nEmployment: 31,000\n\nTop Homicide Rates:\nNorth America: Mexico 26.1\nAfrica: South Africa 34.0",
+        "response_to_email_id": null,
+        "created_at": "2026-04-17T00:03:35"
+      },
+      "column_similarity_measure": {
+        "sender_id": "column_exact_match_similarity",
+        "recipient_ids": "column_exact_match_similarity",
+        "subject": "column_rouge_l_similarity",
+        "body": "column_rouge_l_similarity",
+        "response_to_email_id": "column_ignore_similarity",
+        "created_at": "column_ignore_similarity"
+      }
+    },
+    {
+      "operation": "create",
+      "source": "appworld",
+      "table": "simple_note.notes",
+      "entity_data": {
+        "user_id": 38,
+        "title": "Societal Metrics",
+        "content": "Divisive, Corrupt\nRehabilitative: ~38,000\nEmployment: ~31,000\nNorth America: Mexico (26.1)\nAfrica: South Africa (34.0)",
+        "tags": [],
+        "created_at": "2026-04-17T00:03:35",
+        "updated_at": "2026-04-17T00:03:35",
+        "pinned": false,
+        "data": {}
+      },
+      "column_similarity_measure": {
+        "user_id": "column_exact_match_similarity",
+        "title": "column_rouge_l_similarity",
+        "content": "column_rouge_l_similarity",
+        "tags": "column_ignore_similarity",
+        "created_at": "column_ignore_similarity",
+        "updated_at": "column_ignore_similarity",
+        "pinned": "column_exact_match_similarity",
+        "data": "column_ignore_similarity"
+      }
+    }
+  ],
+  "task_completion_criteria": "Create a note titled 'Societal Metrics' containing the words 'Divisive' and 'Corrupt', the approximate 2019 values for Rehabilitative (around 38,000) and Employment (around 31,000), and the top homicide rates for North America (Mexico 26.1) and Africa (South Africa 34.0). Then, send an email with the subject 'Draft Societal Metrics Data' and the note's full contents to supervisor@research.org.",
+  "categories": [
+    "APPWORLD",
+    "MULTIPLE_USER_TURN"
+  ],
+  "max_messages": 100,
+  "metadata": {
+    "original_scenario_id": "scenario_0440",
+    "expected_tools": [
+      "create_note",
+      "simple_note_add_content_to_note",
+      "simple_note_show_note",
+      "gmail_send_email"
+    ],
+    "image_arrival": {
+      "1": [
+        "image_1",
+        "image_2",
+        "image_3"
+      ]
+    },
+    "image_delivery_map": [],
+    "scenario_metadata": {
+      "num_images": 3,
+      "num_user_rounds": 4,
+      "selected_flow_type": "aggregate",
+      "image_arrival": "upfront",
+      "challenge_type": "none",
+      "require_disambiguation": true,
+      "dataset_type": "chartqapro"
+    }
+  }
+}

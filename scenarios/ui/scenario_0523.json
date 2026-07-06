@@ -1,0 +1,337 @@
+{
+  "name": "scenario_0523",
+  "base_scenario": "base",
+  "description": "The user is discovering new music from various posters and media they've encountered, while also keeping track of bands they've already seen live. They are also practicing guitar and want to keep track of new chords to learn. (UI mode)",
+  "difficulty": "easy",
+  "appworld_base_task": "_base_",
+  "device_state_id": "morgan-harrison@gmail.com",
+  "reference_time": "2026-04-17T00:06:19.853992+00:00",
+  "agentsandbox_entities": {},
+  "appworld_entities": {
+    "spotify.artists": [
+      {
+        "id": 200,
+        "name": "Julian Drive",
+        "genre": "Rock",
+        "created_at": "2020-01-01T00:00:00"
+      },
+      {
+        "id": 201,
+        "name": "Comeback Kid",
+        "genre": "Hardcore Punk",
+        "created_at": "2020-01-01T00:00:00"
+      },
+      {
+        "id": 202,
+        "name": "Leiva",
+        "genre": "Pop Rock",
+        "created_at": "2020-01-01T00:00:00"
+      },
+      {
+        "id": 203,
+        "name": "Lady Gaga",
+        "genre": "Pop",
+        "created_at": "2020-01-01T00:00:00"
+      },
+      {
+        "id": 204,
+        "name": "Sick of It All",
+        "genre": "Hardcore Punk",
+        "created_at": "2020-01-01T00:00:00"
+      },
+      {
+        "id": 205,
+        "name": "Coldplay",
+        "genre": "Pop Rock",
+        "created_at": "2020-01-01T00:00:00"
+      }
+    ],
+    "spotify.songs": [
+      {
+        "id": 200,
+        "title": "Unstoppable",
+        "artist_ids": [
+          200
+        ],
+        "album_id": null,
+        "duration": 210,
+        "release_date": "2022-01-01T00:00:00",
+        "genre": "Rock",
+        "play_count": 1000000,
+        "rating": 4.5,
+        "like_count": 50000,
+        "review_count": 1000
+      },
+      {
+        "id": 201,
+        "title": "Wake The Dead",
+        "artist_ids": [
+          201
+        ],
+        "album_id": null,
+        "duration": 180,
+        "release_date": "2005-01-01T00:00:00",
+        "genre": "Hardcore Punk",
+        "play_count": 5000000,
+        "rating": 4.8,
+        "like_count": 200000,
+        "review_count": 5000
+      },
+      {
+        "id": 202,
+        "title": "Terriblemente Cruel",
+        "artist_ids": [
+          202
+        ],
+        "album_id": null,
+        "duration": 240,
+        "release_date": "2019-01-01T00:00:00",
+        "genre": "Pop Rock",
+        "play_count": 10000000,
+        "rating": 4.7,
+        "like_count": 300000,
+        "review_count": 6000
+      }
+    ],
+    "spotify.albums": [
+      {
+        "id": 200,
+        "title": "Chromatica",
+        "artist_ids": [
+          203
+        ],
+        "release_date": "2020-05-29T00:00:00",
+        "genre": "Pop",
+        "rating": 4.8,
+        "like_count": 1000000,
+        "review_count": 20000
+      }
+    ],
+    "simple_note.notes": [
+      {
+        "id": 3200,
+        "user_id": 17,
+        "title": "Seen Live - Music",
+        "content": "Sick of It All, Lady Gaga, Coldplay",
+        "tags": [],
+        "created_at": "2026-04-10T10:00:00",
+        "updated_at": "2026-04-10T10:00:00",
+        "pinned": false,
+        "data": null
+      },
+      {
+        "id": 3201,
+        "user_id": 17,
+        "title": "Seen Live - Comedy",
+        "content": "John Mulaney, Ali Wong, Dave Chappelle",
+        "tags": [],
+        "created_at": "2026-04-11T11:00:00",
+        "updated_at": "2026-04-11T11:00:00",
+        "pinned": false,
+        "data": null
+      },
+      {
+        "id": 3202,
+        "user_id": 17,
+        "title": "Practice Chords",
+        "content": "Am, C, D, Cm",
+        "tags": [],
+        "created_at": "2026-04-12T12:00:00",
+        "updated_at": "2026-04-12T12:00:00",
+        "pinned": false,
+        "data": null
+      }
+    ],
+    "gmail.users": []
+  },
+  "image_paths": [
+    "hiertext/images/test/0d2303f39a2bd92d.jpg",
+    "hiertext/images/test/07a1f19efde3a445.jpg",
+    "hiertext/images/test/47af8871cba6a0e2.jpg",
+    "hiertext/images/test/920f0dbab7feb2f6.jpg",
+    "hiertext/images/test/7c015227ef2d264b.jpg",
+    "hiertext/images/test/4fb2a8092a148729.jpg"
+  ],
+  "messages": [
+    {
+      "sender": "SYSTEM",
+      "recipient": "USER",
+      "content": "{{USER_INSTRUCTION}}ROUND 1 [provide: image_3, image_6]\nQuery: I'm discovering new music from these posters. Check my 'Seen Live' note and compare it with the main bands on these posters. Create a new Spotify playlist called 'To Explore' and add the top song for the bands I haven't seen yet. I'll clarify which note if you find multiple.\nInstructions: Ask the assistant to check your 'Seen Live' note and compare it against the bands on the provided posters, creating a new Spotify playlist called 'To Explore' with top songs for bands you haven't seen yet. The assistant should find two notes with 'Seen Live' in the title ('Seen Live - Music' and 'Seen Live - Comedy'). When it asks for clarification or presents both, select the music one via `ui_user_interact`. If no interactive UI is shown, tell the assistant you mean the music one. Once the playlist is created and the missing bands' songs are added, move to the next round.\n\nROUND 2 [provide: image_4, image_5]\nQuery: Now check the artist on the window poster below the Lion King billboard, and the artist on the 'Polvora' poster. Cross-reference them with the same note. If they are in the note, add their latest album to my Spotify library; if they aren't, add their top song to the 'To Explore' playlist.\nInstructions: Instruct the assistant to look at the new images, specifically identifying the artist on the window poster below the Lion King ad and the artist on the 'Polvora' poster. It needs to check if they are in the 'Seen Live - Music' note. If an artist is already in the note, ask the assistant to add their latest album to your Spotify library. If they are not, it should add their top song to the 'To Explore' playlist. Wait for confirmation of these actions before proceeding.\n\nROUND 3 [provide: image_1, image_2]\nQuery: Finally, check the band mentioned on this newspaper cover against the note, adding a song to 'To Explore' if they are missing. Then, cross-reference the first four guitar chords visible on this sheet music with my 'Practice Chords' note, and update the note to include them if they aren't already listed.\nInstructions: Ask the assistant to check the band mentioned prominently on the newspaper cover against your 'Seen Live - Music' note, and if they aren't there, add their top song to the 'To Explore' playlist. Then, ask it to look at the first four guitar chords shown on the sheet music and check your 'Practice Chords' note. The assistant should update the note to append any of those four chords that aren't already listed. Once all checks and updates are confirmed, you can end the conversation.\n\nYou have 6 images available to share with the agent using the send_message_with_image tool.\nIMPORTANT: Image IDs are ZERO-INDEXED integers (0, 1, 2, ...). Do NOT add 1 to the IDs.\nAvailable image IDs: [0, 1, 2, 3, 4, 5]\nImage mapping:\n  image_1.jpg -> image ID 0\n  image_2.jpg -> image ID 1\n  image_3.jpg -> image ID 2\n  image_4.jpg -> image ID 3\n  image_5.jpg -> image ID 4\n  image_6.jpg -> image ID 5\n\n## IMAGE DELIVERY\n\n⚠️ IMPORTANT: You MUST use the `send_message_with_image` tool to share images with User B. Do NOT just describe images in text — you MUST call the tool.\n\nImage delivery schedule:\n\n  Round 2: YOU MUST call the send_message_with_image tool with image_ids='3,4' — do NOT write the tool name as text; use the actual function call. Include a natural, conversational message to the assistant.\n  Round 3: YOU MUST call the send_message_with_image tool with image_ids='0,1' — do NOT write the tool name as text; use the actual function call. Include a natural, conversational message to the assistant."
+    },
+    {
+      "sender": "USER",
+      "recipient": "AGENT",
+      "content": "I'm discovering new music from these posters. Check my 'Seen Live' note and compare it with the main bands on these posters. Create a new Spotify playlist called 'To Explore' and add the top song for the bands I haven't seen yet. I'll clarify which note if you find multiple.",
+      "image_ids": [
+        2,
+        5
+      ]
+    }
+  ],
+  "milestones": [],
+  "entity_diff_specs": [
+    {
+      "operation": "create",
+      "source": "appworld",
+      "table": "spotify.playlists",
+      "entity_data": {
+        "title": "To Explore",
+        "user_id": 17,
+        "created_at": "2026-04-17T00:06:19",
+        "is_public": false,
+        "rating": 0.0,
+        "like_count": 0,
+        "review_count": 0
+      },
+      "column_similarity_measure": {
+        "title": "column_rouge_l_similarity",
+        "user_id": "column_exact_match_similarity",
+        "created_at": "column_ignore_similarity",
+        "is_public": "column_exact_match_similarity",
+        "rating": "column_exact_match_similarity",
+        "like_count": "column_exact_match_similarity",
+        "review_count": "column_exact_match_similarity"
+      }
+    },
+    {
+      "operation": "create",
+      "source": "appworld",
+      "table": "spotify.playlist_songs",
+      "entity_data": {
+        "playlist_id": 800,
+        "song_id": 200,
+        "added_at": "2026-04-17T00:06:19"
+      },
+      "column_similarity_measure": {
+        "playlist_id": "column_ignore_similarity",
+        "song_id": "column_exact_match_similarity",
+        "added_at": "column_ignore_similarity"
+      }
+    },
+    {
+      "operation": "create",
+      "source": "appworld",
+      "table": "spotify.playlist_songs",
+      "entity_data": {
+        "playlist_id": 800,
+        "song_id": 201,
+        "added_at": "2026-04-17T00:06:19"
+      },
+      "column_similarity_measure": {
+        "playlist_id": "column_ignore_similarity",
+        "song_id": "column_exact_match_similarity",
+        "added_at": "column_ignore_similarity"
+      }
+    },
+    {
+      "operation": "create",
+      "source": "appworld",
+      "table": "spotify.playlist_songs",
+      "entity_data": {
+        "playlist_id": 800,
+        "song_id": 202,
+        "added_at": "2026-04-17T00:06:19"
+      },
+      "column_similarity_measure": {
+        "playlist_id": "column_ignore_similarity",
+        "song_id": "column_exact_match_similarity",
+        "added_at": "column_ignore_similarity"
+      }
+    },
+    {
+      "operation": "create",
+      "source": "appworld",
+      "table": "spotify.user_library_albums",
+      "entity_data": {
+        "user_id": 17,
+        "album_id": 200,
+        "created_at": "2026-04-17T00:06:19"
+      },
+      "column_similarity_measure": {
+        "user_id": "column_exact_match_similarity",
+        "album_id": "column_exact_match_similarity",
+        "created_at": "column_ignore_similarity"
+      }
+    },
+    {
+      "operation": "update",
+      "source": "appworld",
+      "table": "simple_note.notes",
+      "entity_id_column": "id",
+      "entity_id_value": 3202,
+      "expected_fields": {
+        "updated_at": "2026-04-12T12:00:00",
+        "content": "Am, C, D, Cm, Gm/Bb, Fm/Ab, Ebmaj9",
+        "tags": []
+      },
+      "column_similarity_measure": {
+        "updated_at": "column_ignore_similarity",
+        "content": "column_rouge_l_similarity",
+        "id": "column_exact_match_similarity"
+      }
+    }
+  ],
+  "task_completion_criteria": "Create a Spotify playlist named 'To Explore' and add the top songs for Julian Drive, Comeback Kid, and Leiva. Add Lady Gaga's latest album to the user's Spotify library. Update the 'Practice Chords' note to include the chords Gm/Bb, Fm/Ab, and Ebmaj9. No action should be taken for Sick of It All and Coldplay as they are already listed in the 'Seen Live - Music' note.\n\nUI Requirements:\n- Round 1: The agent must present the matching 'Seen Live' notes in a structured interactive UI that lets the user select which one to cross-reference against the poster bands.",
+  "categories": [
+    "APPWORLD",
+    "MULTIPLE_USER_TURN",
+    "UI_MODE"
+  ],
+  "max_messages": 100,
+  "metadata": {
+    "original_scenario_id": "scenario_0523",
+    "expected_tools": [
+      "simple_note_show_note",
+      "spotify_create_playlist",
+      "spotify_show_artist",
+      "spotify_add_song_to_playlist",
+      "spotify_show_album",
+      "spotify_add_album_to_library",
+      "simple_note_update_note",
+      "render_ui_screen",
+      "show_ui_to_user",
+      "ui_user_interact",
+      "ui_get_quick_start",
+      "ui_get_item_details"
+    ],
+    "image_arrival": {
+      "1": [
+        "image_3",
+        "image_6"
+      ],
+      "2": [
+        "image_4",
+        "image_5"
+      ],
+      "3": [
+        "image_1",
+        "image_2"
+      ]
+    },
+    "image_delivery_map": [
+      {
+        "query": "Now check the artist on the window poster below the Lion King billboard, and the artist on the 'Polvora' poster. Cross-reference them with the same note. If they are in the note, add their latest album to my Spotify library; if they aren't, add their top song to the 'To Explore' playlist.",
+        "image_ids": [
+          3,
+          4
+        ]
+      },
+      {
+        "query": "Finally, check the band mentioned on this newspaper cover against the note, adding a song to 'To Explore' if they are missing. Then, cross-reference the first four guitar chords visible on this sheet music with my 'Practice Chords' note, and update the note to include them if they aren't already listed.",
+        "image_ids": [
+          0,
+          1
+        ]
+      }
+    ],
+    "scenario_metadata": {
+      "num_images": 6,
+      "num_user_rounds": 3,
+      "selected_flow_type": "cross_reference",
+      "image_arrival": "progressive",
+      "challenge_type": "none",
+      "require_disambiguation": true,
+      "dataset_type": "hiertext"
+    }
+  }
+}

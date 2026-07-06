@@ -1,0 +1,331 @@
+{
+  "name": "scenario_0492",
+  "base_scenario": "base",
+  "description": "The user is working on a MATLAB project involving plot annotations and is using screenshots of command prompt logs to track which JSON annotation files correspond to specific plot modification instructions. They are organizing these files and backing up their MATLAB scripts.",
+  "difficulty": "easy",
+  "appworld_base_task": "_base_",
+  "device_state_id": "an-harrison@gmail.com",
+  "reference_time": "2026-04-17T00:05:09.221311+00:00",
+  "agentsandbox_entities": {},
+  "appworld_entities": {
+    "file_system.directories": [
+      {
+        "id": 3600,
+        "path": "/D:/annotation/",
+        "tilde_path": "/D:/annotation/",
+        "user_id": 16,
+        "created_at": "2024-12-01T10:00:00",
+        "updated_at": "2024-12-01T10:00:00"
+      },
+      {
+        "id": 3601,
+        "path": "/D:/annotation/annotations/",
+        "tilde_path": "/D:/annotation/annotations/",
+        "user_id": 16,
+        "created_at": "2024-12-01T10:00:00",
+        "updated_at": "2024-12-01T10:00:00"
+      },
+      {
+        "path": "/D:/",
+        "tilde_path": "/D:/",
+        "user_id": 16,
+        "created_at": "2025-01-01T00:00:00",
+        "updated_at": "2025-01-01T00:00:00",
+        "id": 3602
+      },
+      {
+        "path": "~/annotation/",
+        "tilde_path": "~/annotation/",
+        "user_id": 16,
+        "created_at": "2025-01-01T00:00:00",
+        "updated_at": "2025-01-01T00:00:00",
+        "id": 3603
+      }
+    ],
+    "file_system.files": [
+      {
+        "id": 26000,
+        "path": "/D:/annotation/annotations/screenshot_2024-12-01_16-31-33.json",
+        "tilde_path": "/D:/annotation/annotations/screenshot_2024-12-01_16-31-33.json",
+        "user_id": 16,
+        "content": "{\n  \"instruction\": \"edit font in plot\"\n}",
+        "compressed_data": [],
+        "created_at": "2024-12-01T16:31:33",
+        "updated_at": "2024-12-01T16:31:33"
+      },
+      {
+        "id": 26001,
+        "path": "/D:/annotation/annotations/screenshot_2024-12-01_16-29-59.json",
+        "tilde_path": "/D:/annotation/annotations/screenshot_2024-12-01_16-29-59.json",
+        "user_id": 16,
+        "content": "{\n  \"instruction\": \"edit XTicks in plot\"\n}",
+        "compressed_data": [],
+        "created_at": "2024-12-01T16:29:59",
+        "updated_at": "2024-12-01T16:29:59"
+      },
+      {
+        "id": 26002,
+        "path": "/D:/annotation/annotations/screenshot_2024-12-01_16-21-30.json",
+        "tilde_path": "/D:/annotation/annotations/screenshot_2024-12-01_16-21-30.json",
+        "user_id": 16,
+        "content": "{\n  \"instruction\": \"change linestyle in plot\"\n}",
+        "compressed_data": [],
+        "created_at": "2024-12-01T16:21:30",
+        "updated_at": "2024-12-01T16:21:30"
+      },
+      {
+        "id": 26003,
+        "path": "/D:/annotation/annotations/screenshot_2024-12-01_16-21-55.json",
+        "tilde_path": "/D:/annotation/annotations/screenshot_2024-12-01_16-21-55.json",
+        "user_id": 16,
+        "content": "{\n  \"instruction\": \"change line color in plot\"\n}",
+        "compressed_data": [],
+        "created_at": "2024-12-01T16:21:55",
+        "updated_at": "2024-12-01T16:21:55"
+      },
+      {
+        "id": 26004,
+        "path": "/D:/annotation/test.m",
+        "tilde_path": "/D:/annotation/test.m",
+        "user_id": 16,
+        "content": "% Bar graph plot\nx = 1:5;\ny = [10 20 30 40 50];\nbar(x, y);\ntitle('Bar Graph');",
+        "compressed_data": [],
+        "created_at": "2024-12-01T16:00:00",
+        "updated_at": "2024-12-01T16:40:00"
+      }
+    ],
+    "gmail.users": []
+  },
+  "image_paths": [
+    "screenspotpro/images/matlab_mac/screenshot_2024-12-01_16-10-53.png",
+    "screenspotpro/images/matlab_mac/screenshot_2024-12-01_16-33-09.png",
+    "screenspotpro/images/matlab_mac/screenshot_2024-12-01_19-35-35.png",
+    "screenspotpro/images/matlab_mac/screenshot_2024-12-01_16-30-56.png",
+    "screenspotpro/images/matlab_mac/screenshot_2024-12-01_16-27-07.png",
+    "screenspotpro/images/matlab_mac/screenshot_2024-12-01_16-22-28.png"
+  ],
+  "messages": [
+    {
+      "sender": "SYSTEM",
+      "recipient": "USER",
+      "content": "{{USER_INSTRUCTION}}ROUND 1 [provide: image_2, image_4]\nQuery: I'm tracking the annotations for plot modifications. Please check if the JSON files for the 'edit font in plot' instruction in this first screenshot and the 'edit XTicks in plot' instruction in the second one exist in the D:\\annotation\\annotations\\ directory.\nInstructions: Ask the agent to check if the JSON files corresponding to the 'edit font in plot' and 'edit XTicks in plot' instructions shown in the provided screenshots exist in the annotations directory. If the agent asks for the specific filenames, tell it to extract them from the command prompt logs in the images. Once the agent confirms their existence, proceed to the next round.\n\nROUND 2 [provide: image_5, image_6]\nQuery: Create a new directory called 'D:\\annotation\\style_updates\\' and copy the JSON annotation file for the 'change marker style in plot' instruction from these new logs into it.\nInstructions: Instruct the agent to create a 'style_updates' directory and copy the JSON file for the 'change marker style in plot' instruction shown in the new logs. The agent should notice that this specific instruction does not exist in the provided images. If the agent points out this error, acknowledge it and move to the next round. If the agent blindly agrees or tries to copy a non-existent file, correct it by pointing out that the instruction isn't actually in the logs.\n\nROUND 3\nQuery: My mistake, I misread the logs. I actually need the JSON files for 'change linestyle in plot' and 'change line color in plot' from that last screenshot. Please make sure the 'style_updates' directory is created, and copy those two files into it.\nInstructions: Acknowledge your mistake from the previous round and ask the agent to instead copy the JSON files for 'change linestyle in plot' and 'change line color in plot' (which were visible in the last screenshot) into the 'style_updates' directory, creating the directory first if it hasn't already. Once the agent confirms the files have been copied, proceed to the next round.\n\nROUND 4 [provide: image_1]\nQuery: I see a high-frequency cosine wave being plotted in this earlier screenshot. Read the contents of the 'test.m' file in the 'D:\\annotation\\' folder to see if it currently contains that cosine code.\nInstructions: Ask the agent to read the contents of the 'test.m' file in the annotation folder to check if it contains the code for the high-frequency cosine wave shown in the provided screenshot. Wait for the agent to report the file's contents before moving to the next round.\n\nROUND 5 [provide: image_3]\nQuery: This last screenshot shows a bar graph plotted instead. Let's back up the current script. Create a folder named 'D:\\annotation\\backup\\' and move 'test.m' into it, then create a note summarizing that we backed up the bar graph script.\nInstructions: Point out that the latest screenshot shows a bar graph and ask the agent to back up the script by creating a 'backup' folder in the annotation directory, moving 'test.m' into it, and creating a note to document that the bar graph script was backed up. Once the agent confirms these actions are complete, end the conversation.\n\nYou have 6 images available to share with the agent using the send_message_with_image tool.\nIMPORTANT: Image IDs are ZERO-INDEXED integers (0, 1, 2, ...). Do NOT add 1 to the IDs.\nAvailable image IDs: [0, 1, 2, 3, 4, 5]\nImage mapping:\n  image_1.jpg -> image ID 0\n  image_2.jpg -> image ID 1\n  image_3.jpg -> image ID 2\n  image_4.jpg -> image ID 3\n  image_5.jpg -> image ID 4\n  image_6.jpg -> image ID 5\n\n## IMAGE DELIVERY\n\n⚠️ IMPORTANT: You MUST use the `send_message_with_image` tool to share images with User B. Do NOT just describe images in text — you MUST call the tool.\n\nImage delivery schedule:\n\n  Round 2: YOU MUST call the send_message_with_image tool with image_ids='4,5' — do NOT write the tool name as text; use the actual function call. Include a natural, conversational message to the assistant.\n  Round 4: YOU MUST call the send_message_with_image tool with image_ids='0' — do NOT write the tool name as text; use the actual function call. Include a natural, conversational message to the assistant.\n  Round 5: YOU MUST call the send_message_with_image tool with image_ids='2' — do NOT write the tool name as text; use the actual function call. Include a natural, conversational message to the assistant."
+    },
+    {
+      "sender": "USER",
+      "recipient": "AGENT",
+      "content": "I'm tracking the annotations for plot modifications. Please check if the JSON files for the 'edit font in plot' instruction in this first screenshot and the 'edit XTicks in plot' instruction in the second one exist in the D:\\annotation\\annotations\\ directory.",
+      "image_ids": [
+        1,
+        3
+      ]
+    }
+  ],
+  "milestones": [],
+  "entity_diff_specs": [
+    {
+      "operation": "create",
+      "source": "appworld",
+      "table": "simple_note.notes",
+      "entity_data": {
+        "user_id": 16,
+        "title": "Bar Graph Script Backup",
+        "content": "The bar graph script (test.m) was backed up to D:\\annotation\\backup\\",
+        "tags": [],
+        "created_at": "2026-04-17T00:05:09",
+        "updated_at": "2026-04-17T00:05:09",
+        "pinned": false,
+        "data": null
+      },
+      "column_similarity_measure": {
+        "user_id": "column_exact_match_similarity",
+        "title": "column_rouge_l_similarity",
+        "content": "column_rouge_l_similarity",
+        "tags": "column_ignore_similarity",
+        "created_at": "column_ignore_similarity",
+        "updated_at": "column_ignore_similarity",
+        "pinned": "column_exact_match_similarity",
+        "data": "column_ignore_similarity"
+      }
+    },
+    {
+      "operation": "create",
+      "source": "appworld",
+      "table": "file_system.directories",
+      "entity_data": {
+        "path": "annotation/style_updates",
+        "tilde_path": "annotation/style_updates",
+        "user_id": 16,
+        "created_at": "2026-04-17T00:05:09",
+        "updated_at": "2026-04-17T00:05:09"
+      },
+      "column_similarity_measure": {
+        "path": "column_contains_similarity",
+        "tilde_path": "column_contains_similarity",
+        "user_id": "column_exact_match_similarity",
+        "created_at": "column_ignore_similarity",
+        "updated_at": "column_ignore_similarity"
+      }
+    },
+    {
+      "operation": "create",
+      "source": "appworld",
+      "table": "file_system.directories",
+      "entity_data": {
+        "path": "annotation/backup",
+        "tilde_path": "annotation/backup",
+        "user_id": 16,
+        "created_at": "2026-04-17T00:05:09",
+        "updated_at": "2026-04-17T00:05:09"
+      },
+      "column_similarity_measure": {
+        "path": "column_contains_similarity",
+        "tilde_path": "column_contains_similarity",
+        "user_id": "column_exact_match_similarity",
+        "created_at": "column_ignore_similarity",
+        "updated_at": "column_ignore_similarity"
+      }
+    },
+    {
+      "operation": "create",
+      "source": "appworld",
+      "table": "file_system.files",
+      "entity_data": {
+        "path": "annotation/style_updates/screenshot_2024-12-01_16-21-30.json",
+        "tilde_path": "annotation/style_updates/screenshot_2024-12-01_16-21-30.json",
+        "user_id": 16,
+        "content": "{\n  \"instruction\": \"change linestyle in plot\"\n}",
+        "compressed_data": [],
+        "created_at": "2026-04-17T00:05:09",
+        "updated_at": "2026-04-17T00:05:09"
+      },
+      "column_similarity_measure": {
+        "path": "column_contains_similarity",
+        "tilde_path": "column_contains_similarity",
+        "user_id": "column_exact_match_similarity",
+        "content": "column_rouge_l_similarity",
+        "compressed_data": "column_ignore_similarity",
+        "created_at": "column_ignore_similarity",
+        "updated_at": "column_ignore_similarity"
+      }
+    },
+    {
+      "operation": "create",
+      "source": "appworld",
+      "table": "file_system.files",
+      "entity_data": {
+        "path": "annotation/style_updates/screenshot_2024-12-01_16-21-55.json",
+        "tilde_path": "annotation/style_updates/screenshot_2024-12-01_16-21-55.json",
+        "user_id": 16,
+        "content": "{\n  \"instruction\": \"change line color in plot\"\n}",
+        "compressed_data": [],
+        "created_at": "2026-04-17T00:05:09",
+        "updated_at": "2026-04-17T00:05:09"
+      },
+      "column_similarity_measure": {
+        "path": "column_contains_similarity",
+        "tilde_path": "column_contains_similarity",
+        "user_id": "column_exact_match_similarity",
+        "content": "column_rouge_l_similarity",
+        "compressed_data": "column_ignore_similarity",
+        "created_at": "column_ignore_similarity",
+        "updated_at": "column_ignore_similarity"
+      }
+    },
+    {
+      "operation": "create",
+      "source": "appworld",
+      "table": "file_system.files",
+      "entity_data": {
+        "path": "annotation/backup/test.m",
+        "tilde_path": "annotation/backup/test.m",
+        "user_id": 16,
+        "content": "% Bar graph plot\nx = 1:5;\ny = [10 20 30 40 50];\nbar(x, y);\ntitle('Bar Graph');",
+        "compressed_data": [],
+        "created_at": "2026-04-17T00:05:09",
+        "updated_at": "2026-04-17T00:05:09"
+      },
+      "column_similarity_measure": {
+        "path": "column_contains_similarity",
+        "tilde_path": "column_contains_similarity",
+        "user_id": "column_exact_match_similarity",
+        "content": "column_rouge_l_similarity",
+        "compressed_data": "column_ignore_similarity",
+        "created_at": "column_ignore_similarity",
+        "updated_at": "column_ignore_similarity"
+      }
+    },
+    {
+      "operation": "delete",
+      "source": "appworld",
+      "table": "file_system.files",
+      "entity_id_column": "id",
+      "entity_id_value": 26004,
+      "column_similarity_measure": {
+        "id": "column_exact_match_similarity"
+      }
+    }
+  ],
+  "task_completion_criteria": "Verify the existence of 'screenshot_2024-12-01_16-31-33.json' and 'screenshot_2024-12-01_16-29-59.json' in 'D:\\annotation\\annotations\\', create a directory 'D:\\annotation\\style_updates\\', copy 'screenshot_2024-12-01_16-21-30.json' and 'screenshot_2024-12-01_16-21-55.json' from the annotations folder into the style_updates folder, read the contents of 'D:\\annotation\\test.m', create a 'D:\\annotation\\backup\\' directory, move 'test.m' into the backup directory, and create a simple note stating that the bar graph script was backed up.",
+  "categories": [
+    "APPWORLD",
+    "MULTIPLE_USER_TURN"
+  ],
+  "max_messages": 100,
+  "metadata": {
+    "original_scenario_id": "scenario_0492",
+    "expected_tools": [
+      "file_system_file_exists",
+      "file_system_create_directory",
+      "file_system_copy_file",
+      "file_system_show_file",
+      "file_system_move_file",
+      "simple_note_create_note"
+    ],
+    "image_arrival": {
+      "1": [
+        "image_2",
+        "image_4"
+      ],
+      "2": [
+        "image_5",
+        "image_6"
+      ],
+      "4": [
+        "image_1"
+      ],
+      "5": [
+        "image_3"
+      ]
+    },
+    "image_delivery_map": [
+      {
+        "query": "Create a new directory called 'D:\\annotation\\style_updates\\' and copy the JSON annotation file for the 'change marker style in plot' instruction from these new logs into it.",
+        "image_ids": [
+          4,
+          5
+        ]
+      },
+      {
+        "query": "I see a high-frequency cosine wave being plotted in this earlier screenshot. Read the contents of the 'test.m' file in the 'D:\\annotation\\' folder to see if it currently contains that cosine code.",
+        "image_ids": [
+          0
+        ]
+      },
+      {
+        "query": "This last screenshot shows a bar graph plotted instead. Let's back up the current script. Create a folder named 'D:\\annotation\\backup\\' and move 'test.m' into it, then create a note summarizing that we backed up the bar graph script.",
+        "image_ids": [
+          2
+        ]
+      }
+    ],
+    "scenario_metadata": {
+      "num_images": 6,
+      "num_user_rounds": 5,
+      "selected_flow_type": "cross_reference",
+      "image_arrival": "mixed",
+      "challenge_type": "error_correction",
+      "require_disambiguation": false,
+      "dataset_type": "screenspotpro"
+    }
+  }
+}

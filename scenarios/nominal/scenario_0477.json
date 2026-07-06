@@ -1,0 +1,231 @@
+{
+  "name": "scenario_0477",
+  "base_scenario": "base",
+  "description": "Stephen is organizing his local historical archives and folklore project files. He is cross-referencing physical printed documents with his digital file system to synthesize research.",
+  "difficulty": "easy",
+  "appworld_base_task": "_base_",
+  "device_state_id": "stmcco@gmail.com",
+  "reference_time": "2026-04-17T00:04:51.600732+00:00",
+  "agentsandbox_entities": {},
+  "appworld_entities": {
+    "phone.contacts": [
+      {
+        "id": 200,
+        "user_id": 1,
+        "first_name": "Professor",
+        "last_name": "Higgins",
+        "email": "prof.higgins@university.edu",
+        "phone_number": null,
+        "relationships": [
+          "colleague"
+        ],
+        "birthday": null,
+        "home_address": null,
+        "work_address": null,
+        "created_at": "2025-10-10T10:00:00"
+      },
+      {
+        "id": 201,
+        "user_id": 1,
+        "first_name": "Sarah",
+        "last_name": "Partner",
+        "email": "sarah.partner@gmail.com",
+        "phone_number": "555-0199",
+        "relationships": [
+          "research partner"
+        ],
+        "birthday": null,
+        "home_address": null,
+        "work_address": null,
+        "created_at": "2025-11-15T09:30:00"
+      }
+    ],
+    "file_system.directories": [
+      {
+        "id": 3600,
+        "path": "/ATANASIA CHICA/",
+        "tilde_path": "/ATANASIA CHICA/",
+        "user_id": 1,
+        "created_at": "2025-10-10T14:30:00",
+        "updated_at": "2025-10-10T14:30:00"
+      }
+    ],
+    "file_system.files": [
+      {
+        "id": 26000,
+        "path": "/ATANASIA CHICA/GIOVANNI PIERIO VALERIANO.txt",
+        "tilde_path": "/ATANASIA CHICA/GIOVANNI PIERIO VALERIANO.txt",
+        "user_id": 1,
+        "content": "Historical notes on Giovanni Pierio Valeriano. Details regarding his extensive correspondence and strong political ties with King Frederick.",
+        "compressed_data": [],
+        "created_at": "2025-10-10T14:35:00",
+        "updated_at": "2025-10-10T14:35:00"
+      }
+    ],
+    "gmail.users": [
+      {
+        "id": 200,
+        "first_name": "Professor",
+        "last_name": "Higgins",
+        "email": "prof.higgins@university.edu",
+        "password": "default_password",
+        "status": "active",
+        "created_at": "2025-01-01T00:00:00",
+        "last_logged_in": "2025-01-01T00:00:00"
+      },
+      {
+        "id": 201,
+        "first_name": "Sarah",
+        "last_name": "Partner",
+        "email": "sarah.partner@gmail.com",
+        "password": "default_password",
+        "status": "active",
+        "created_at": "2025-01-01T00:00:00",
+        "last_logged_in": "2025-01-01T00:00:00"
+      }
+    ],
+    "phone.users": [
+      {
+        "id": 201,
+        "first_name": "Sarah",
+        "last_name": "Partner",
+        "phone_number": "555-0199",
+        "password": "default_password",
+        "created_at": "2025-01-01T00:00:00",
+        "last_logged_in": "2025-01-01T00:00:00"
+      }
+    ]
+  },
+  "image_paths": [
+    "hiertext/images/test/6b427e66b6ea4726.jpg",
+    "hiertext/images/test/9e646375ee29b0bd.jpg",
+    "hiertext/images/test/e06a03dd9f481fd5.jpg",
+    "hiertext/images/test/b7376b17cbe5ec6f.jpg"
+  ],
+  "messages": [
+    {
+      "sender": "SYSTEM",
+      "recipient": "USER",
+      "content": "{{USER_INSTRUCTION}}ROUND 1 [provide: image_1]\nQuery: I'm organizing my archives. Read the title from the very top of this page and check if I have a folder with that exact name on my drive. If so, show me what's inside it.\nInstructions: Ask the assistant to read the title at the very top of the provided vintage page and check if a directory with that exact name exists in the file system. If the assistant asks for clarification, point it to the large, capitalized text at the top. Tell it to list the contents of the directory if it exists. Once it confirms and shows the contents, move to the next round.\n\nROUND 2 [provide: image_2]\nQuery: Great. Now look at this title page. Extract the author's full name and see if there's a text file named after him in that folder we just found. If there is, read it to me so I have the background context.\nInstructions: Instruct the assistant to extract the author's full name from the newly provided title page. Ask it to check if a text file with that exact name exists in the directory found in the previous step. If it does, ask the assistant to read the file's contents so you have the background context. If the assistant struggles with the name, guide it to the large text starting with 'SIGNOR'. Once the file is read, proceed to the next round.\n\nROUND 3 [provide: image_3]\nQuery: Perfect. Now check this third document and find the name of the King mentioned in the second point. Draft an email to Professor Higgins summarizing the connection between the author we just looked up and this King, using the file contents you just read.\nInstructions: Ask the assistant to look at the third document and identify the name of the King mentioned in point number 2. Then, instruct it to draft an email to Professor Higgins summarizing the historical connection between the author from the previous round and this King, using the information from the text file it just read. If it needs an email address, tell it to use the one saved in your contacts. Once the draft is ready, proceed to the final round.\n\nROUND 4 [provide: image_4]\nQuery: Actually, let's scrap that email to Professor Higgins—go ahead and delete the draft. I've decided to pivot to my local folklore project instead. Look at this postcard, find the exact age of the 'FEMALE STRANGER', and send a text to my research partner Sarah asking her to look into historical records for a woman of that exact age who died in 1816.\nInstructions: Tell the assistant that you've changed your mind and want to scrap the email to Professor Higgins, so it should delete the draft it just created. Then, direct its attention to the postcard image. Ask it to extract the exact age of the deceased woman from the text and send a text message to your research partner Sarah. The message should ask her to look into historical records for a woman of that specific age who died in 1816. If the assistant asks for Sarah's number, tell it she is in your contacts. End the conversation once the text is sent.\n\nYou have 4 images available to share with the agent using the send_message_with_image tool.\nIMPORTANT: Image IDs are ZERO-INDEXED integers (0, 1, 2, ...). Do NOT add 1 to the IDs.\nAvailable image IDs: [0, 1, 2, 3]\nImage mapping:\n  image_1.jpg -> image ID 0\n  image_2.jpg -> image ID 1\n  image_3.jpg -> image ID 2\n  image_4.jpg -> image ID 3\n\n## IMAGE DELIVERY\n\n⚠️ IMPORTANT: You MUST use the `send_message_with_image` tool to share images with User B. Do NOT just describe images in text — you MUST call the tool.\n\nImage delivery schedule:\n\n  Round 2: YOU MUST call the send_message_with_image tool with image_ids='1' — do NOT write the tool name as text; use the actual function call. Include a natural, conversational message to the assistant.\n  Round 3: YOU MUST call the send_message_with_image tool with image_ids='2' — do NOT write the tool name as text; use the actual function call. Include a natural, conversational message to the assistant.\n  Round 4: YOU MUST call the send_message_with_image tool with image_ids='3' — do NOT write the tool name as text; use the actual function call. Include a natural, conversational message to the assistant."
+    },
+    {
+      "sender": "USER",
+      "recipient": "AGENT",
+      "content": "I'm organizing my archives. Read the title from the very top of this page and check if I have a folder with that exact name on my drive. If so, show me what's inside it.",
+      "image_ids": [
+        0
+      ]
+    }
+  ],
+  "milestones": [],
+  "entity_diff_specs": [
+    {
+      "operation": "create",
+      "source": "appworld",
+      "table": "phone.global_text_messages",
+      "entity_data": {
+        "sender_id": 1,
+        "receiver_id": 201,
+        "message": "Hi Sarah, could you please look into historical records for a woman who died in 1816 at the exact age of 23 years and 8 months?",
+        "created_at": "2026-04-17T00:04:51"
+      },
+      "column_similarity_measure": {
+        "sender_id": "column_exact_match_similarity",
+        "receiver_id": "column_exact_match_similarity",
+        "message": "column_rouge_l_similarity",
+        "created_at": "column_ignore_similarity"
+      }
+    },
+    {
+      "operation": "create",
+      "source": "appworld",
+      "table": "phone.user_text_messages",
+      "entity_data": {
+        "global_text_message_id": 200,
+        "user_id": 1,
+        "created_at": "2026-04-17T00:04:51"
+      },
+      "column_similarity_measure": {
+        "global_text_message_id": "column_ignore_similarity",
+        "user_id": "column_exact_match_similarity",
+        "created_at": "column_ignore_similarity"
+      }
+    },
+    {
+      "operation": "create",
+      "source": "appworld",
+      "table": "phone.user_text_messages",
+      "entity_data": {
+        "global_text_message_id": 200,
+        "user_id": 201,
+        "created_at": "2026-04-17T00:04:51"
+      },
+      "column_similarity_measure": {
+        "global_text_message_id": "column_ignore_similarity",
+        "user_id": "column_exact_match_similarity",
+        "created_at": "column_ignore_similarity"
+      }
+    }
+  ],
+  "task_completion_criteria": "Send a text message to Sarah asking her to research historical records for a woman who died in 1816 at the exact age of 23 years and 8 months, or something similar.",
+  "categories": [
+    "APPWORLD",
+    "MULTIPLE_USER_TURN"
+  ],
+  "max_messages": 100,
+  "metadata": {
+    "original_scenario_id": "scenario_0477",
+    "expected_tools": [
+      "file_system_directory_exists",
+      "file_system_show_directory",
+      "file_system_file_exists",
+      "file_system_show_file",
+      "gmail_create_draft",
+      "gmail_delete_draft",
+      "messages_send_text_message"
+    ],
+    "image_arrival": {
+      "1": [
+        "image_1"
+      ],
+      "2": [
+        "image_2"
+      ],
+      "3": [
+        "image_3"
+      ],
+      "4": [
+        "image_4"
+      ]
+    },
+    "image_delivery_map": [
+      {
+        "query": "Great. Now look at this title page. Extract the author's full name and see if there's a text file named after him in that folder we just found. If there is, read it to me so I have the background context.",
+        "image_ids": [
+          1
+        ]
+      },
+      {
+        "query": "Perfect. Now check this third document and find the name of the King mentioned in the second point. Draft an email to Professor Higgins summarizing the connection between the author we just looked up and this King, using the file contents you just read.",
+        "image_ids": [
+          2
+        ]
+      },
+      {
+        "query": "Actually, let's scrap that email to Professor Higgins—go ahead and delete the draft. I've decided to pivot to my local folklore project instead. Look at this postcard, find the exact age of the 'FEMALE STRANGER', and send a text to my research partner Sarah asking her to look into historical records for a woman of that exact age who died in 1816.",
+        "image_ids": [
+          3
+        ]
+      }
+    ],
+    "scenario_metadata": {
+      "num_images": 4,
+      "num_user_rounds": 4,
+      "selected_flow_type": "lookup_chain",
+      "image_arrival": "progressive",
+      "challenge_type": "goal_change",
+      "require_disambiguation": false,
+      "dataset_type": "hiertext"
+    }
+  }
+}

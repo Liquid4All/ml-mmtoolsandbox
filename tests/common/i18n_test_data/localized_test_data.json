@@ -1,0 +1,29 @@
+{
+  "a common string": {
+    "default": {
+      "de_DE": "eine gemeinsame Zeichenfolge",
+      "es_ES": "una cadena común"
+    },
+    "some_other_scope": {
+      "de_DE": "eine übliche Zeichenfolge"
+    }
+  },
+  "-122.009102": {
+    "default": {
+      "de_DE": -122.009103,
+      "es_ES": -122.009104
+    }
+  },
+  "42": {
+    "default": {
+      "de_DE": 43,
+      "es_ES": 44
+    }
+  },
+  "True": {
+    "default": {
+      "de_DE": false,
+      "es_ES": true
+    }
+  }
+}

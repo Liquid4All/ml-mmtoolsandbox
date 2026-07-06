@@ -1,0 +1,167 @@
+{
+  "name": "scenario_0162",
+  "base_scenario": "base",
+  "description": "The user is planning a travel bucket list based on various scenic photos and maps they have collected, and wants to share the ideas with their friend Mark.",
+  "difficulty": "easy",
+  "appworld_base_task": "_base_",
+  "device_state_id": "kat_simp@gmail.com",
+  "reference_time": "2026-04-16T23:55:22.683729+00:00",
+  "agentsandbox_entities": {},
+  "appworld_entities": {
+    "phone.contacts": [
+      {
+        "id": 200,
+        "user_id": 60,
+        "first_name": "Mark",
+        "last_name": "Johnson",
+        "email": "mark.johnson@gmail.com",
+        "phone_number": "555-0199",
+        "relationships": [
+          "friend"
+        ],
+        "birthday": null,
+        "home_address": null,
+        "work_address": null,
+        "created_at": "2025-10-10T10:00:00"
+      }
+    ],
+    "gmail.users": [
+      {
+        "id": 200,
+        "first_name": "Mark",
+        "last_name": "Johnson",
+        "email": "mark.johnson@gmail.com",
+        "password": "default_password",
+        "status": "active",
+        "created_at": "2025-01-01T00:00:00",
+        "last_logged_in": "2025-01-01T00:00:00"
+      }
+    ],
+    "phone.users": [
+      {
+        "id": 200,
+        "first_name": "Mark",
+        "last_name": "Johnson",
+        "phone_number": "555-0199",
+        "password": "default_password",
+        "created_at": "2025-01-01T00:00:00",
+        "last_logged_in": "2025-01-01T00:00:00"
+      }
+    ]
+  },
+  "image_paths": [
+    "worldvqa/images/494.jpg",
+    "worldvqa/images/777.jpg",
+    "hiertext/images/test/4fd2500ebd335f80.jpg",
+    "worldvqa/images/607.jpg"
+  ],
+  "messages": [
+    {
+      "sender": "SYSTEM",
+      "recipient": "USER",
+      "content": "{{USER_INSTRUCTION}}ROUND 1 [provide: image_1, image_2]\nQuery: Can you figure out the specific garden shown in this first picture, and the park with the conservatory in the second one? Once you have them, draft an email to Mark suggesting we visit these two places.\nInstructions: Ask the assistant to identify the two locations shown in the provided images and then draft an email to Mark suggesting a visit to both places. If the assistant needs to search the web to confirm the locations based on visual details, allow it to do so. Do not reveal the names of the gardens or locations yourself. Once the assistant confirms the email draft has been created, proceed to the next round.\n\nROUND 2 [provide: image_3, image_4]\nQuery: Actually, let's skip the email. Delete that draft. I also want to visit the bridge detailed in this map and the city shown in the last picture. Instead of an email, just send a text message to Mark combining all four of these locations into a final travel bucket list.\nInstructions: Tell the assistant that you changed your mind and want to cancel the email plan. Instruct it to delete the draft it just created. Then, ask it to identify the bridge shown in the new map and the city in the aerial photo, and send a text message to Mark that lists all four locations (the two gardens from before, plus the bridge and the city) as a travel bucket list. If the assistant asks for clarification or needs to search to identify the new locations, let it do so. Never state the names of the bridge or the city. Conclude the conversation once the assistant successfully sends the text message.\n\nYou have 4 images available to share with the agent using the send_message_with_image tool.\nIMPORTANT: Image IDs are ZERO-INDEXED integers (0, 1, 2, ...). Do NOT add 1 to the IDs.\nAvailable image IDs: [0, 1, 2, 3]\nImage mapping:\n  image_1.jpg -> image ID 0\n  image_2.jpg -> image ID 1\n  image_3.jpg -> image ID 2\n  image_4.jpg -> image ID 3\n\n## IMAGE DELIVERY\n\n\u26a0\ufe0f IMPORTANT: You MUST use the `send_message_with_image` tool to share images with User B. Do NOT just describe images in text \u2014 you MUST call the tool.\n\nImage delivery schedule:\n\n  Round 2: YOU MUST call the send_message_with_image tool with image_ids='2,3' \u2014 do NOT write the tool name as text; use the actual function call. Include a natural, conversational message to the assistant."
+    },
+    {
+      "sender": "USER",
+      "recipient": "AGENT",
+      "content": "Can you figure out the specific garden shown in this first picture, and the park with the conservatory in the second one? Once you have them, draft an email to Mark suggesting we visit these two places.",
+      "image_ids": [
+        0,
+        1
+      ]
+    }
+  ],
+  "milestones": [],
+  "entity_diff_specs": [
+    {
+      "operation": "create",
+      "source": "appworld",
+      "table": "phone.global_text_messages",
+      "entity_data": {
+        "sender_id": 60,
+        "receiver_id": 200,
+        "message": "Hey Mark! Here is my travel bucket list: Kirstenbosch National Botanical Garden, Fitzroy Gardens, the Golden Gate Bridge, and Yangon. We should plan a trip!",
+        "created_at": "2026-04-16T23:55:22"
+      },
+      "column_similarity_measure": {
+        "sender_id": "column_exact_match_similarity",
+        "receiver_id": "column_exact_match_similarity",
+        "message": "column_rouge_l_similarity",
+        "created_at": "column_ignore_similarity"
+      }
+    },
+    {
+      "operation": "create",
+      "source": "appworld",
+      "table": "phone.user_text_messages",
+      "entity_data": {
+        "global_text_message_id": 200,
+        "user_id": 60,
+        "created_at": "2026-04-16T23:55:22"
+      },
+      "column_similarity_measure": {
+        "global_text_message_id": "column_ignore_similarity",
+        "user_id": "column_exact_match_similarity",
+        "created_at": "column_ignore_similarity"
+      }
+    },
+    {
+      "operation": "create",
+      "source": "appworld",
+      "table": "phone.user_text_messages",
+      "entity_data": {
+        "global_text_message_id": 200,
+        "user_id": 200,
+        "created_at": "2026-04-16T23:55:22"
+      },
+      "column_similarity_measure": {
+        "global_text_message_id": "column_ignore_similarity",
+        "user_id": "column_exact_match_similarity",
+        "created_at": "column_ignore_similarity"
+      }
+    }
+  ],
+  "task_completion_criteria": "Send a text message to Mark containing a travel bucket list that mentions Kirstenbosch National Botanical Garden, Fitzroy Gardens, the Golden Gate Bridge, and Yangon, or something similar expressing the same idea.",
+  "categories": [
+    "APPWORLD",
+    "MULTIPLE_USER_TURN"
+  ],
+  "max_messages": 100,
+  "metadata": {
+    "original_scenario_id": "scenario_0162",
+    "expected_tools": [
+      "web_search_serper",
+      "gmail_create_draft",
+      "gmail_delete_draft",
+      "messages_send_text_message"
+    ],
+    "image_arrival": {
+      "1": [
+        "image_1",
+        "image_2"
+      ],
+      "2": [
+        "image_3",
+        "image_4"
+      ]
+    },
+    "image_delivery_map": [
+      {
+        "query": "Actually, let's skip the email. Delete that draft. I also want to visit the bridge detailed in this map and the city shown in the last picture. Instead of an email, just send a text message to Mark combining all four of these locations into a final travel bucket list.",
+        "image_ids": [
+          2,
+          3
+        ]
+      }
+    ],
+    "scenario_metadata": {
+      "num_images": 4,
+      "num_user_rounds": 2,
+      "selected_flow_type": "aggregate",
+      "image_arrival": "progressive",
+      "challenge_type": "goal_change",
+      "require_disambiguation": false,
+      "dataset_type": "worldvqa"
+    }
+  }
+}

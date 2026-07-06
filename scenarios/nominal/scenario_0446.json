@@ -1,0 +1,352 @@
+{
+  "name": "scenario_0446",
+  "base_scenario": "base",
+  "description": "Laura is compiling a 'Historical Directory' from a collection of vintage medical, financial, and institutional documents, extracting addresses and contact people to build a complete reference file and address book.",
+  "difficulty": "easy",
+  "appworld_base_task": "_base_",
+  "device_state_id": "la-mcco@gmail.com",
+  "reference_time": "2026-04-17T00:03:40.328175+00:00",
+  "agentsandbox_entities": {},
+  "appworld_entities": {
+    "phone.contacts": [
+      {
+        "id": 200,
+        "user_id": 2,
+        "first_name": "Archivist",
+        "last_name": "History",
+        "email": "archivist@history.org",
+        "phone_number": null,
+        "relationships": [],
+        "birthday": null,
+        "home_address": null,
+        "work_address": null,
+        "created_at": "2026-04-10T10:00:00"
+      },
+      {
+        "id": 201,
+        "user_id": 2,
+        "first_name": "Archivist",
+        "last_name": "University",
+        "email": "archivist@university.edu",
+        "phone_number": null,
+        "relationships": [],
+        "birthday": null,
+        "home_address": null,
+        "work_address": null,
+        "created_at": "2026-04-10T10:00:00"
+      }
+    ],
+    "gmail.users": [
+      {
+        "id": 200,
+        "first_name": "Archivist",
+        "last_name": "History",
+        "email": "archivist@history.org",
+        "password": "default_password",
+        "status": "active",
+        "created_at": "2025-01-01T00:00:00",
+        "last_logged_in": "2025-01-01T00:00:00"
+      },
+      {
+        "id": 201,
+        "first_name": "Archivist",
+        "last_name": "University",
+        "email": "archivist@university.edu",
+        "password": "default_password",
+        "status": "active",
+        "created_at": "2025-01-01T00:00:00",
+        "last_logged_in": "2025-01-01T00:00:00"
+      }
+    ]
+  },
+  "image_paths": [
+    "docvqa/images/60751.jpg",
+    "docvqa/images/62111.jpg",
+    "docvqa/images/64708.jpg",
+    "docvqa/images/49642.jpg",
+    "docvqa/images/59267.jpg",
+    "docvqa/images/60991.jpg"
+  ],
+  "messages": [
+    {
+      "sender": "SYSTEM",
+      "recipient": "USER",
+      "content": "{{USER_INSTRUCTION}}ROUND 1 [provide: image_1, image_2]\nQuery: I'm starting a new note called 'Historical Directory'. Write down the address for the hospital from this first image. Also, create a new contact for the bank branch in the second image using its address.\nInstructions: Tell the assistant to create a simple note named 'Historical Directory' with the address from the first document. Also, ask it to create a contact for the bank branch in the second document, including its address. If the agent asks for clarification on the names to use, tell it to use the hospital name for the note entry and the branch name for the contact. Wait for confirmation that both tasks are done.\n\nROUND 2 [provide: image_3]\nQuery: Add the medical board from this bulletin to my contacts. Also, append this organization's address to our 'Historical Directory' note.\nInstructions: Ask the assistant to create a new contact for the organization on the bulletin cover and append its address to the 'Historical Directory' note. If the assistant needs the specific name for the contact, tell it to use the main cursive text. Proceed to the next round once both the contact is added and the note is updated.\n\nROUND 3 [provide: image_4]\nQuery: Create a contact for the secretary listed on this card using the details here. Then, show me the 'Historical Directory' note so I can see how it looks, and append the foundation's name and address to it.\nInstructions: Instruct the assistant to add the secretary from the card as a new contact. Then, ask it to display the current 'Historical Directory' note. Finally, tell it to append the foundation's name and address from the card to the note. If the agent asks which foundation to use, direct it to the main heading at the top of the card.\n\nROUND 4 [provide: image_5]\nQuery: Add the person to make checks payable to from this RSVP form to my contacts with her phone number. Also, please update the bank contact we created earlier to include the full bank name in the contact name, and append the new contact's details to our 'Historical Directory' note.\nInstructions: Ask the assistant to create a contact for the person mentioned at the bottom of the RSVP form, including her phone number. Also request that it update the bank branch contact from the first round by adding the full bank name to it. Finally, have it append the new person's details to the 'Historical Directory' note.\n\nROUND 5 [provide: image_6]\nQuery: Add the person who signed this card to my contacts using her information. Append her organization and address to the 'Historical Directory' note, read the final note to me, and then send an email to the archivist containing the full text of our directory.\nInstructions: Instruct the assistant to create a contact for the person who signed the card using her printed details, append her organization and address to the note, and then read the final note back. Finally, ask it to email the complete note text to the archivist. The assistant should notice multiple 'Archivist' contacts and ask which one you mean. When it does, clarify that you want the history.org one. Conclude the conversation once the email is successfully sent.\n\nYou have 6 images available to share with the agent using the send_message_with_image tool.\nIMPORTANT: Image IDs are ZERO-INDEXED integers (0, 1, 2, ...). Do NOT add 1 to the IDs.\nAvailable image IDs: [0, 1, 2, 3, 4, 5]\nImage mapping:\n  image_1.jpg -> image ID 0\n  image_2.jpg -> image ID 1\n  image_3.jpg -> image ID 2\n  image_4.jpg -> image ID 3\n  image_5.jpg -> image ID 4\n  image_6.jpg -> image ID 5\n\n## IMAGE DELIVERY\n\n\u26a0\ufe0f IMPORTANT: You MUST use the `send_message_with_image` tool to share images with User B. Do NOT just describe images in text \u2014 you MUST call the tool.\n\nImage delivery schedule:\n\n  Round 2: YOU MUST call the send_message_with_image tool with image_ids='2' \u2014 do NOT write the tool name as text; use the actual function call. Include a natural, conversational message to the assistant.\n  Round 3: YOU MUST call the send_message_with_image tool with image_ids='3' \u2014 do NOT write the tool name as text; use the actual function call. Include a natural, conversational message to the assistant.\n  Round 4: YOU MUST call the send_message_with_image tool with image_ids='4' \u2014 do NOT write the tool name as text; use the actual function call. Include a natural, conversational message to the assistant.\n  Round 5: YOU MUST call the send_message_with_image tool with image_ids='5' \u2014 do NOT write the tool name as text; use the actual function call. Include a natural, conversational message to the assistant."
+    },
+    {
+      "sender": "USER",
+      "recipient": "AGENT",
+      "content": "I'm starting a new note called 'Historical Directory'. Write down the address for the hospital from this first image. Also, create a new contact for the bank branch in the second image using its address.",
+      "image_ids": [
+        0,
+        1
+      ]
+    }
+  ],
+  "milestones": [],
+  "entity_diff_specs": [
+    {
+      "operation": "create",
+      "source": "appworld",
+      "table": "phone.contacts",
+      "entity_data": {
+        "user_id": 2,
+        "first_name": "First American National Bank,",
+        "last_name": "Hillsboro Branch",
+        "email": "",
+        "phone_number": null,
+        "relationships": [],
+        "birthday": null,
+        "home_address": null,
+        "work_address": "1700 21st Ave. South, Nashville, Tennessee 37212",
+        "created_at": "2026-04-17T00:03:40"
+      },
+      "column_similarity_measure": {
+        "user_id": "column_exact_match_similarity",
+        "first_name": "column_exact_match_similarity",
+        "last_name": "column_exact_match_similarity",
+        "email": "column_ignore_similarity",
+        "phone_number": "column_ignore_similarity",
+        "relationships": "column_ignore_similarity",
+        "birthday": "column_ignore_similarity",
+        "home_address": "column_ignore_similarity",
+        "work_address": "column_exact_match_similarity",
+        "created_at": "column_ignore_similarity"
+      }
+    },
+    {
+      "operation": "create",
+      "source": "appworld",
+      "table": "phone.contacts",
+      "entity_data": {
+        "user_id": 2,
+        "first_name": "National Board of",
+        "last_name": "Medical Examiners",
+        "email": "",
+        "phone_number": null,
+        "relationships": [],
+        "birthday": null,
+        "home_address": null,
+        "work_address": null,
+        "created_at": "2026-04-17T00:03:40"
+      },
+      "column_similarity_measure": {
+        "user_id": "column_exact_match_similarity",
+        "first_name": "column_exact_match_similarity",
+        "last_name": "column_exact_match_similarity",
+        "email": "column_ignore_similarity",
+        "phone_number": "column_ignore_similarity",
+        "relationships": "column_ignore_similarity",
+        "birthday": "column_ignore_similarity",
+        "home_address": "column_ignore_similarity",
+        "work_address": "column_ignore_similarity",
+        "created_at": "column_ignore_similarity"
+      }
+    },
+    {
+      "operation": "create",
+      "source": "appworld",
+      "table": "phone.contacts",
+      "entity_data": {
+        "user_id": 2,
+        "first_name": "James F.",
+        "last_name": "Mathias",
+        "email": "",
+        "phone_number": null,
+        "relationships": [],
+        "birthday": null,
+        "home_address": null,
+        "work_address": null,
+        "created_at": "2026-04-17T00:03:40"
+      },
+      "column_similarity_measure": {
+        "user_id": "column_exact_match_similarity",
+        "first_name": "column_exact_match_similarity",
+        "last_name": "column_exact_match_similarity",
+        "email": "column_ignore_similarity",
+        "phone_number": "column_ignore_similarity",
+        "relationships": "column_ignore_similarity",
+        "birthday": "column_ignore_similarity",
+        "home_address": "column_ignore_similarity",
+        "work_address": "column_ignore_similarity",
+        "created_at": "column_ignore_similarity"
+      }
+    },
+    {
+      "operation": "create",
+      "source": "appworld",
+      "table": "phone.contacts",
+      "entity_data": {
+        "user_id": 2,
+        "first_name": "Marge",
+        "last_name": "Kirk",
+        "email": "",
+        "phone_number": "301-496-5741",
+        "relationships": [],
+        "birthday": null,
+        "home_address": null,
+        "work_address": null,
+        "created_at": "2026-04-17T00:03:40"
+      },
+      "column_similarity_measure": {
+        "user_id": "column_exact_match_similarity",
+        "first_name": "column_exact_match_similarity",
+        "last_name": "column_exact_match_similarity",
+        "email": "column_ignore_similarity",
+        "phone_number": "column_exact_match_similarity",
+        "relationships": "column_ignore_similarity",
+        "birthday": "column_ignore_similarity",
+        "home_address": "column_ignore_similarity",
+        "work_address": "column_ignore_similarity",
+        "created_at": "column_ignore_similarity"
+      }
+    },
+    {
+      "operation": "create",
+      "source": "appworld",
+      "table": "phone.contacts",
+      "entity_data": {
+        "user_id": 2,
+        "first_name": "Nancy",
+        "last_name": "Carlile",
+        "email": "",
+        "phone_number": null,
+        "relationships": [],
+        "birthday": null,
+        "home_address": null,
+        "work_address": null,
+        "created_at": "2026-04-17T00:03:40"
+      },
+      "column_similarity_measure": {
+        "user_id": "column_exact_match_similarity",
+        "first_name": "column_exact_match_similarity",
+        "last_name": "column_exact_match_similarity",
+        "email": "column_ignore_similarity",
+        "phone_number": "column_ignore_similarity",
+        "relationships": "column_ignore_similarity",
+        "birthday": "column_ignore_similarity",
+        "home_address": "column_ignore_similarity",
+        "work_address": "column_ignore_similarity",
+        "created_at": "column_ignore_similarity"
+      }
+    },
+    {
+      "operation": "create",
+      "source": "appworld",
+      "table": "gmail.emails",
+      "entity_data": {
+        "sender_id": 2,
+        "recipient_ids": [
+          200
+        ],
+        "subject": "Historical Directory",
+        "body": "Historical Directory\n\nHospital Infantil de Mexico\nDR. MARQUEZ No. 162 MEXICO 7, D. F.\n\nNational Board of Medical Examiners\n133 SOUTH 36th STREET PHILADELPHIA 4, PENNSYLVANIA\n\nJohn Simon Guggenheim Memorial Foundation\n90 PARK AVENUE \u2022 NEW YORK, N.Y. 10016\n\nMarge Kirk\nNIADDK Executive Office, (301) 496-5741\n\nNancy Carlile\nNational Academy of Sciences, 2101 Constitution Avenue, N.W. Washington, D.C. 20418",
+        "response_to_email_id": null,
+        "created_at": "2026-04-17T00:03:40"
+      },
+      "column_similarity_measure": {
+        "sender_id": "column_exact_match_similarity",
+        "recipient_ids": "column_exact_match_similarity",
+        "subject": "column_rouge_l_similarity",
+        "body": "column_rouge_l_similarity",
+        "response_to_email_id": "column_ignore_similarity",
+        "created_at": "column_ignore_similarity"
+      }
+    },
+    {
+      "operation": "create",
+      "source": "appworld",
+      "table": "simple_note.notes",
+      "entity_data": {
+        "user_id": 2,
+        "title": "Historical Directory",
+        "content": "Hospital Infantil de Mexico\nDR. MARQUEZ No. 162 MEXICO 7, D. F.\n\nNational Board of Medical Examiners\n133 SOUTH 36th STREET PHILADELPHIA 4, PENNSYLVANIA\n\nJohn Simon Guggenheim Memorial Foundation\n90 PARK AVENUE \u2022 NEW YORK, N.Y. 10016\n\nMarge Kirk\nNIADDK Executive Office, (301) 496-5741\n\nNancy Carlile\nNational Academy of Sciences, 2101 Constitution Avenue, N.W. Washington, D.C. 20418",
+        "tags": [],
+        "created_at": "2026-04-17T00:03:40",
+        "updated_at": "2026-04-17T00:03:40",
+        "pinned": false,
+        "data": {}
+      },
+      "column_similarity_measure": {
+        "user_id": "column_exact_match_similarity",
+        "title": "column_rouge_l_similarity",
+        "content": "column_rouge_l_similarity",
+        "tags": "column_ignore_similarity",
+        "created_at": "column_ignore_similarity",
+        "updated_at": "column_ignore_similarity",
+        "pinned": "column_exact_match_similarity",
+        "data": "column_ignore_similarity"
+      }
+    }
+  ],
+  "task_completion_criteria": "Create a note named 'Historical Directory' and aggregate the following details into it: the address for 'Hospital Infantil de Mexico' (DR. MARQUEZ No. 162 MEXICO 7, D. F.), the address for 'National Board of Medical Examiners' (133 SOUTH 36th STREET PHILADELPHIA 4, PENNSYLVANIA), the name and address for 'John Simon Guggenheim Memorial Foundation' (90 PARK AVENUE \u2022 NEW YORK, N.Y. 10016), the contact details for 'Marge Kirk' (NIADDK Executive Office, (301) 496-5741), and the organization and address for 'Nancy Carlile' (National Academy of Sciences, 2101 Constitution Avenue, N.W. Washington, D.C. 20418). Additionally, create and update contacts for 'First American National Bank, Hillsboro Branch' (1700 21st Ave. South, Nashville, Tennessee 37212), 'National Board of Medical Examiners', 'James F. Mathias', 'Marge Kirk' (301-496-5741), and 'Nancy Carlile'. Finally, send an email to archivist@history.org containing the fully aggregated text of the 'Historical Directory' note.",
+  "categories": [
+    "APPWORLD",
+    "MULTIPLE_USER_TURN"
+  ],
+  "max_messages": 100,
+  "metadata": {
+    "original_scenario_id": "scenario_0446",
+    "expected_tools": [
+      "simple_note_create_note",
+      "contacts_add_contact",
+      "simple_note_add_content_to_note",
+      "simple_note_show_note",
+      "contacts_update_contact",
+      "gmail_send_email"
+    ],
+    "image_arrival": {
+      "1": [
+        "image_1",
+        "image_2"
+      ],
+      "2": [
+        "image_3"
+      ],
+      "3": [
+        "image_4"
+      ],
+      "4": [
+        "image_5"
+      ],
+      "5": [
+        "image_6"
+      ]
+    },
+    "image_delivery_map": [
+      {
+        "query": "Add the medical board from this bulletin to my contacts. Also, append this organization's address to our 'Historical Directory' note.",
+        "image_ids": [
+          2
+        ]
+      },
+      {
+        "query": "Create a contact for the secretary listed on this card using the details here. Then, show me the 'Historical Directory' note so I can see how it looks, and append the foundation's name and address to it.",
+        "image_ids": [
+          3
+        ]
+      },
+      {
+        "query": "Add the person to make checks payable to from this RSVP form to my contacts with her phone number. Also, please update the bank contact we created earlier to include the full bank name in the contact name, and append the new contact's details to our 'Historical Directory' note.",
+        "image_ids": [
+          4
+        ]
+      },
+      {
+        "query": "Add the person who signed this card to my contacts using her information. Append her organization and address to the 'Historical Directory' note, read the final note to me, and then send an email to the archivist containing the full text of our directory.",
+        "image_ids": [
+          5
+        ]
+      }
+    ],
+    "scenario_metadata": {
+      "num_images": 6,
+      "num_user_rounds": 5,
+      "selected_flow_type": "aggregate",
+      "image_arrival": "progressive",
+      "challenge_type": "none",
+      "require_disambiguation": true,
+      "dataset_type": "docvqa"
+    }
+  }
+}

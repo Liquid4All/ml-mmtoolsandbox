@@ -1,0 +1,380 @@
+{
+  "name": "scenario_0866",
+  "base_scenario": "base",
+  "description": "Ashlee is digitizing historical archives for a research project. She is extracting key entities (organizations, people, and their contact info) into her device's contacts and compiling a running note of important figures to share with the main archives administrator.",
+  "difficulty": "easy",
+  "appworld_base_task": "_base_",
+  "device_state_id": "ashlee_martinez@gmail.com",
+  "reference_time": "2026-04-17T00:16:28.050696+00:00",
+  "agentsandbox_entities": {},
+  "appworld_entities": {
+    "phone.contacts": [
+      {
+        "id": 200,
+        "user_id": 75,
+        "first_name": "Archives",
+        "last_name": "Admin",
+        "email": "admin@archives.org",
+        "phone_number": null,
+        "relationships": [],
+        "birthday": null,
+        "home_address": null,
+        "work_address": null,
+        "created_at": "2025-10-15T09:30:00"
+      },
+      {
+        "id": 201,
+        "user_id": 75,
+        "first_name": "Archives",
+        "last_name": "Admin",
+        "email": "admin@history.org",
+        "phone_number": null,
+        "relationships": [],
+        "birthday": null,
+        "home_address": null,
+        "work_address": null,
+        "created_at": "2025-10-15T09:30:00"
+      }
+    ],
+    "gmail.users": [
+      {
+        "id": 200,
+        "first_name": "Archives",
+        "last_name": "Admin",
+        "email": "admin@archives.org",
+        "password": "default_password",
+        "status": "active",
+        "created_at": "2025-01-01T00:00:00",
+        "last_logged_in": "2025-01-01T00:00:00"
+      },
+      {
+        "id": 201,
+        "first_name": "Archives",
+        "last_name": "Admin",
+        "email": "admin@history.org",
+        "password": "default_password",
+        "status": "active",
+        "created_at": "2025-01-01T00:00:00",
+        "last_logged_in": "2025-01-01T00:00:00"
+      }
+    ]
+  },
+  "image_paths": [
+    "docvqa/images/58051.jpg",
+    "docvqa/images/37483.jpg",
+    "omnidocbench/images/000154.jpg",
+    "docvqa/images/3848.jpg",
+    "docvqa/images/7038.jpg",
+    "docvqa/images/2183.jpg"
+  ],
+  "messages": [
+    {
+      "sender": "SYSTEM",
+      "recipient": "USER",
+      "content": "{{USER_INSTRUCTION}}ROUND 1 [provide: image_1, image_2]\nQuery: I'm building a contact database from these archives. From the first document, add the university and their general telephone number as a contact. From the second one, add the doctor mentioned at the bottom who has the large file, and list his company as the hospital he's affiliated with.\nInstructions: Tell the assistant to create two new contacts based on the provided images. For the first image, ask it to extract the university name and its general phone number. For the second image, ask it to identify the doctor who has the large file (mentioned near the bottom) and set his company to the hospital he's affiliated with. If the assistant asks for clarification on which phone number or doctor, direct it back to the specific sections of the text. Once both contacts are added, proceed to the next round.\n\nROUND 2 [provide: image_3]\nQuery: Add the institute from this newsletter to my contacts with their phone number. Also, create a new note called 'Archive Key People' and put the name of the Director listed here in it.\nInstructions: Instruct the assistant to add a new contact for the institute mentioned in the newsletter, including its phone number. Then, ask it to create a new note titled 'Archive Key People' and write the name of the Director from the newsletter into this note. If the assistant cannot find the phone number or the director's name, tell it to look at the bottom right and the right-hand column respectively. Move on once the contact is saved and the note is created.\n\nROUND 3 [provide: image_4]\nQuery: Look at the last person on this list. Add him to my contacts using the handwritten updated address. Then append his name to the 'Archive Key People' note.\nInstructions: Ask the assistant to create a contact for the last person on the provided list, specifically using the handwritten address rather than the crossed-out one. After that, ask it to add this person's name to the 'Archive Key People' note. If the assistant tries to use the typed address, correct it to use the handwritten one. Proceed to the next round once both tasks are complete.\n\nROUND 4 [provide: image_5]\nQuery: Add the research company on this form to my contacts along with their phone number. Also, find the name of the person who requested this job and add it to the 'Archive Key People' note.\nInstructions: Direct the assistant to add the research company shown at the top of the form as a new contact, including their phone number. Then, ask it to extract the name of the person who requested the job and append it to the 'Archive Key People' note. If the assistant is unsure who requested it, tell it to look at the 'From:' line. Once the contact is added and the note is updated, move to the next round.\n\nROUND 5 [provide: image_6]\nQuery: Add the woman who sent the letter mentioned in this memo to my contacts with her full address. Finally, grab the contents of the 'Archive Key People' note and email it to the Archives Admin.\nInstructions: Ask the assistant to create a contact for the woman who sent the letter mentioned in the memo, including her full address. Then, instruct it to retrieve the text from the 'Archive Key People' note and email it to the Archives Admin. The assistant should notice there are multiple contacts named 'Archives Admin' and ask which one you mean. When it asks for clarification, specify that you want the one with the 'archives.org' email address. End the conversation once the email is sent.\n\nYou have 6 images available to share with the agent using the send_message_with_image tool.\nIMPORTANT: Image IDs are ZERO-INDEXED integers (0, 1, 2, ...). Do NOT add 1 to the IDs.\nAvailable image IDs: [0, 1, 2, 3, 4, 5]\nImage mapping:\n  image_1.jpg -> image ID 0\n  image_2.jpg -> image ID 1\n  image_3.jpg -> image ID 2\n  image_4.jpg -> image ID 3\n  image_5.jpg -> image ID 4\n  image_6.jpg -> image ID 5\n\n## IMAGE DELIVERY\n\n\u26a0\ufe0f IMPORTANT: You MUST use the `send_message_with_image` tool to share images with User B. Do NOT just describe images in text \u2014 you MUST call the tool.\n\nImage delivery schedule:\n\n  Round 2: YOU MUST call the send_message_with_image tool with image_ids='2' \u2014 do NOT write the tool name as text; use the actual function call. Include a natural, conversational message to the assistant.\n  Round 3: YOU MUST call the send_message_with_image tool with image_ids='3' \u2014 do NOT write the tool name as text; use the actual function call. Include a natural, conversational message to the assistant.\n  Round 4: YOU MUST call the send_message_with_image tool with image_ids='4' \u2014 do NOT write the tool name as text; use the actual function call. Include a natural, conversational message to the assistant.\n  Round 5: YOU MUST call the send_message_with_image tool with image_ids='5' \u2014 do NOT write the tool name as text; use the actual function call. Include a natural, conversational message to the assistant."
+    },
+    {
+      "sender": "USER",
+      "recipient": "AGENT",
+      "content": "I'm building a contact database from these archives. From the first document, add the university and their general telephone number as a contact. From the second one, add the doctor mentioned at the bottom who has the large file, and list his company as the hospital he's affiliated with.",
+      "image_ids": [
+        0,
+        1
+      ]
+    }
+  ],
+  "milestones": [],
+  "entity_diff_specs": [
+    {
+      "operation": "create",
+      "source": "appworld",
+      "table": "phone.contacts",
+      "entity_data": {
+        "user_id": 75,
+        "first_name": "Vanderbilt",
+        "last_name": "University",
+        "email": "",
+        "phone_number": "(615) 322-7311",
+        "relationships": [],
+        "birthday": null,
+        "home_address": null,
+        "work_address": null,
+        "created_at": "2026-04-17T00:16:28"
+      },
+      "column_similarity_measure": {
+        "user_id": "column_exact_match_similarity",
+        "first_name": "column_exact_match_similarity",
+        "last_name": "column_exact_match_similarity",
+        "email": "column_ignore_similarity",
+        "phone_number": "column_exact_match_similarity",
+        "relationships": "column_ignore_similarity",
+        "birthday": "column_ignore_similarity",
+        "home_address": "column_ignore_similarity",
+        "work_address": "column_ignore_similarity",
+        "created_at": "column_ignore_similarity"
+      }
+    },
+    {
+      "operation": "create",
+      "source": "appworld",
+      "table": "phone.contacts",
+      "entity_data": {
+        "user_id": 75,
+        "first_name": "Robert",
+        "last_name": "Shank",
+        "email": "",
+        "phone_number": null,
+        "relationships": [],
+        "birthday": null,
+        "home_address": null,
+        "work_address": "Wohl Hospital",
+        "created_at": "2026-04-17T00:16:28"
+      },
+      "column_similarity_measure": {
+        "user_id": "column_exact_match_similarity",
+        "first_name": "column_exact_match_similarity",
+        "last_name": "column_exact_match_similarity",
+        "email": "column_ignore_similarity",
+        "phone_number": "column_ignore_similarity",
+        "relationships": "column_ignore_similarity",
+        "birthday": "column_ignore_similarity",
+        "home_address": "column_ignore_similarity",
+        "work_address": "column_exact_match_similarity",
+        "created_at": "column_ignore_similarity"
+      }
+    },
+    {
+      "operation": "create",
+      "source": "appworld",
+      "table": "phone.contacts",
+      "entity_data": {
+        "user_id": 75,
+        "first_name": "Water Resources",
+        "last_name": "Institute",
+        "email": "",
+        "phone_number": "(616) 895-3749",
+        "relationships": [],
+        "birthday": null,
+        "home_address": null,
+        "work_address": null,
+        "created_at": "2026-04-17T00:16:28"
+      },
+      "column_similarity_measure": {
+        "user_id": "column_exact_match_similarity",
+        "first_name": "column_exact_match_similarity",
+        "last_name": "column_exact_match_similarity",
+        "email": "column_ignore_similarity",
+        "phone_number": "column_exact_match_similarity",
+        "relationships": "column_ignore_similarity",
+        "birthday": "column_ignore_similarity",
+        "home_address": "column_ignore_similarity",
+        "work_address": "column_ignore_similarity",
+        "created_at": "column_ignore_similarity"
+      }
+    },
+    {
+      "operation": "create",
+      "source": "appworld",
+      "table": "phone.contacts",
+      "entity_data": {
+        "user_id": 75,
+        "first_name": "Al",
+        "last_name": "Gunning",
+        "email": "",
+        "phone_number": null,
+        "relationships": [],
+        "birthday": null,
+        "home_address": "4833 Briar Ridge Ct. Boulder",
+        "work_address": null,
+        "created_at": "2026-04-17T00:16:28"
+      },
+      "column_similarity_measure": {
+        "user_id": "column_exact_match_similarity",
+        "first_name": "column_exact_match_similarity",
+        "last_name": "column_exact_match_similarity",
+        "email": "column_ignore_similarity",
+        "phone_number": "column_ignore_similarity",
+        "relationships": "column_ignore_similarity",
+        "birthday": "column_ignore_similarity",
+        "home_address": "column_exact_match_similarity",
+        "work_address": "column_ignore_similarity",
+        "created_at": "column_ignore_similarity"
+      }
+    },
+    {
+      "operation": "create",
+      "source": "appworld",
+      "table": "phone.contacts",
+      "entity_data": {
+        "user_id": 75,
+        "first_name": "Dennis and Company",
+        "last_name": "Research",
+        "email": "",
+        "phone_number": "(203) 327-2222",
+        "relationships": [],
+        "birthday": null,
+        "home_address": null,
+        "work_address": null,
+        "created_at": "2026-04-17T00:16:28"
+      },
+      "column_similarity_measure": {
+        "user_id": "column_exact_match_similarity",
+        "first_name": "column_exact_match_similarity",
+        "last_name": "column_exact_match_similarity",
+        "email": "column_ignore_similarity",
+        "phone_number": "column_exact_match_similarity",
+        "relationships": "column_ignore_similarity",
+        "birthday": "column_ignore_similarity",
+        "home_address": "column_ignore_similarity",
+        "work_address": "column_ignore_similarity",
+        "created_at": "column_ignore_similarity"
+      }
+    },
+    {
+      "operation": "create",
+      "source": "appworld",
+      "table": "phone.contacts",
+      "entity_data": {
+        "user_id": 75,
+        "first_name": "Mrs. H.L.",
+        "last_name": "Carroway",
+        "email": "",
+        "phone_number": null,
+        "relationships": [],
+        "birthday": null,
+        "home_address": "927 S. Sunset Acres Lane, Florence, South Carolina 29501",
+        "work_address": null,
+        "created_at": "2026-04-17T00:16:28"
+      },
+      "column_similarity_measure": {
+        "user_id": "column_exact_match_similarity",
+        "first_name": "column_exact_match_similarity",
+        "last_name": "column_exact_match_similarity",
+        "email": "column_ignore_similarity",
+        "phone_number": "column_ignore_similarity",
+        "relationships": "column_ignore_similarity",
+        "birthday": "column_ignore_similarity",
+        "home_address": "column_exact_match_similarity",
+        "work_address": "column_ignore_similarity",
+        "created_at": "column_ignore_similarity"
+      }
+    },
+    {
+      "operation": "create",
+      "source": "appworld",
+      "table": "gmail.emails",
+      "entity_data": {
+        "sender_id": 75,
+        "recipient_ids": [
+          200
+        ],
+        "subject": "Archive Key People",
+        "body": "Dr. Ronald Ward\nAl Gunning\nTara Bennett",
+        "response_to_email_id": null,
+        "created_at": "2026-04-17T00:16:28"
+      },
+      "column_similarity_measure": {
+        "sender_id": "column_exact_match_similarity",
+        "recipient_ids": "column_exact_match_similarity",
+        "subject": "column_rouge_l_similarity",
+        "body": "column_rouge_l_similarity",
+        "response_to_email_id": "column_ignore_similarity",
+        "created_at": "column_ignore_similarity"
+      }
+    },
+    {
+      "operation": "create",
+      "source": "appworld",
+      "table": "simple_note.notes",
+      "entity_data": {
+        "user_id": 75,
+        "title": "Archive Key People",
+        "content": "Dr. Ronald Ward\nAl Gunning\nTara Bennett",
+        "tags": [],
+        "created_at": "2026-04-17T00:16:28",
+        "updated_at": "2026-04-17T00:16:28",
+        "pinned": false,
+        "data": null
+      },
+      "column_similarity_measure": {
+        "user_id": "column_exact_match_similarity",
+        "title": "column_rouge_l_similarity",
+        "content": "column_rouge_l_similarity",
+        "tags": "column_ignore_similarity",
+        "created_at": "column_ignore_similarity",
+        "updated_at": "column_ignore_similarity",
+        "pinned": "column_exact_match_similarity",
+        "data": "column_ignore_similarity"
+      }
+    }
+  ],
+  "task_completion_criteria": "Create contacts for Vanderbilt University with phone (615) 322-7311, Dr. Robert Shank at Wohl Hospital, Water Resources Institute with phone (616) 895-3749, Al Gunning at 4833 Briar Ridge Ct. Boulder, Dennis and Company Research with phone (203) 327-2222, and Mrs. H.L. Carroway at 927 S. Sunset Acres Lane, Florence, South Carolina 29501. Create a note titled 'Archive Key People' containing the names Dr. Ronald Ward, Al Gunning, and Tara Bennett, and email the note's contents to admin@archives.org.",
+  "categories": [
+    "APPWORLD",
+    "MULTIPLE_USER_TURN"
+  ],
+  "max_messages": 100,
+  "metadata": {
+    "original_scenario_id": "scenario_0866",
+    "expected_tools": [
+      "contacts_add_contact",
+      "simple_note_create_note",
+      "simple_note_update_note",
+      "simple_note_show_note",
+      "gmail_send_email"
+    ],
+    "image_arrival": {
+      "1": [
+        "image_1",
+        "image_2"
+      ],
+      "2": [
+        "image_3"
+      ],
+      "3": [
+        "image_4"
+      ],
+      "4": [
+        "image_5"
+      ],
+      "5": [
+        "image_6"
+      ]
+    },
+    "image_delivery_map": [
+      {
+        "query": "Add the institute from this newsletter to my contacts with their phone number. Also, create a new note called 'Archive Key People' and put the name of the Director listed here in it.",
+        "image_ids": [
+          2
+        ]
+      },
+      {
+        "query": "Look at the last person on this list. Add him to my contacts using the handwritten updated address. Then append his name to the 'Archive Key People' note.",
+        "image_ids": [
+          3
+        ]
+      },
+      {
+        "query": "Add the research company on this form to my contacts along with their phone number. Also, find the name of the person who requested this job and add it to the 'Archive Key People' note.",
+        "image_ids": [
+          4
+        ]
+      },
+      {
+        "query": "Add the woman who sent the letter mentioned in this memo to my contacts with her full address. Finally, grab the contents of the 'Archive Key People' note and email it to the Archives Admin.",
+        "image_ids": [
+          5
+        ]
+      }
+    ],
+    "scenario_metadata": {
+      "num_images": 6,
+      "num_user_rounds": 5,
+      "selected_flow_type": "aggregate",
+      "image_arrival": "progressive",
+      "challenge_type": "none",
+      "require_disambiguation": true,
+      "dataset_type": "docvqa"
+    }
+  }
+}

@@ -1,0 +1,371 @@
+{
+  "name": "scenario_0597",
+  "base_scenario": "base",
+  "description": "The user is compiling a music playlist based on artists they spot in various pictures they've taken or found.",
+  "difficulty": "easy",
+  "appworld_base_task": "_base_",
+  "device_state_id": "tr_solo@gmail.com",
+  "reference_time": "2026-04-17T00:08:20.866833+00:00",
+  "agentsandbox_entities": {},
+  "appworld_entities": {
+    "spotify.artists": [
+      {
+        "id": 200,
+        "name": "Britney Spears",
+        "genre": "Pop",
+        "created_at": "2020-01-01T00:00:00"
+      },
+      {
+        "id": 201,
+        "name": "Rebecca Ferguson",
+        "genre": "Soul",
+        "created_at": "2020-01-01T00:00:00"
+      },
+      {
+        "id": 202,
+        "name": "Beyonce",
+        "genre": "R&B",
+        "created_at": "2020-01-01T00:00:00"
+      },
+      {
+        "id": 203,
+        "name": "Clipse",
+        "genre": "Hip Hop",
+        "created_at": "2020-01-01T00:00:00"
+      },
+      {
+        "id": 204,
+        "name": "Devil's Advocate",
+        "genre": "Rock",
+        "created_at": "2020-01-01T00:00:00"
+      },
+      {
+        "id": 205,
+        "name": "El Arrebato",
+        "genre": "Latin",
+        "created_at": "2020-01-01T00:00:00"
+      }
+    ],
+    "spotify.songs": [
+      {
+        "id": 200,
+        "title": "Toxic",
+        "artist_ids": [
+          200
+        ],
+        "album_id": null,
+        "duration": 198,
+        "release_date": "2004-01-12T00:00:00",
+        "genre": "Pop",
+        "play_count": 1000000,
+        "rating": 4.8,
+        "like_count": 50000,
+        "review_count": 2000
+      },
+      {
+        "id": 201,
+        "title": "Nothing's Real but Love",
+        "artist_ids": [
+          201
+        ],
+        "album_id": null,
+        "duration": 174,
+        "release_date": "2011-11-20T00:00:00",
+        "genre": "Soul",
+        "play_count": 500000,
+        "rating": 4.5,
+        "like_count": 20000,
+        "review_count": 1000
+      },
+      {
+        "id": 202,
+        "title": "Halo",
+        "artist_ids": [
+          202
+        ],
+        "album_id": null,
+        "duration": 261,
+        "release_date": "2009-01-20T00:00:00",
+        "genre": "R&B",
+        "play_count": 2000000,
+        "rating": 4.9,
+        "like_count": 100000,
+        "review_count": 5000
+      },
+      {
+        "id": 203,
+        "title": "Grindin'",
+        "artist_ids": [
+          203
+        ],
+        "album_id": null,
+        "duration": 264,
+        "release_date": "2002-05-14T00:00:00",
+        "genre": "Hip Hop",
+        "play_count": 800000,
+        "rating": 4.6,
+        "like_count": 30000,
+        "review_count": 1500
+      },
+      {
+        "id": 204,
+        "title": "Devil's Dance",
+        "artist_ids": [
+          204
+        ],
+        "album_id": null,
+        "duration": 200,
+        "release_date": "2010-05-14T00:00:00",
+        "genre": "Rock",
+        "play_count": 100000,
+        "rating": 4.2,
+        "like_count": 5000,
+        "review_count": 200
+      },
+      {
+        "id": 205,
+        "title": "Buscando la luna",
+        "artist_ids": [
+          205
+        ],
+        "album_id": null,
+        "duration": 215,
+        "release_date": "2004-05-14T00:00:00",
+        "genre": "Latin",
+        "play_count": 300000,
+        "rating": 4.4,
+        "like_count": 10000,
+        "review_count": 500
+      }
+    ],
+    "spotify.playlists": [
+      {
+        "id": 800,
+        "title": "Eclectic Mix",
+        "user_id": 11,
+        "created_at": "2025-01-01T00:00:00",
+        "is_public": false,
+        "rating": 0.0,
+        "like_count": 0,
+        "review_count": 0
+      }
+    ],
+    "spotify.music_players": [
+      {
+        "id": 300,
+        "user_id": 11,
+        "queue_song_ids": [],
+        "is_playing": false,
+        "is_looping": false,
+        "cursor_position": null,
+        "played_seconds": 0,
+        "volume": 5
+      }
+    ],
+    "gmail.users": []
+  },
+  "image_paths": [
+    "hiertext/images/test/e90d1bc667ec1af7.jpg",
+    "hiertext/images/test/50fc4cf87d57992f.jpg",
+    "hiertext/images/test/66c0017a7ceac365.jpg",
+    "hiertext/images/test/0d44ea16f816055c.jpg",
+    "hiertext/images/test/4d465048212606b4.jpg",
+    "hiertext/images/test/4e8cc9a66c469f6d.jpg"
+  ],
+  "messages": [
+    {
+      "sender": "SYSTEM",
+      "recipient": "USER",
+      "content": "{{USER_INSTRUCTION}}ROUND 1 [provide: image_2, image_3]\nQuery: I want to start collecting music from things I see. Please create a new Spotify playlist called 'Spotted Artists' and add one popular song by the artist on the billboard in the first picture, and one by the artist whose album is reviewed in the second picture.\nInstructions: Ask the assistant to create a new playlist called 'Spotted Artists' and add one song from the artist on the billboard in the first image, and one song from the artist reviewed in the second image. If the assistant asks for clarification on which artists, tell it to read the names directly from the billboard and the magazine headline. Once the playlist is created and the two songs are added, acknowledge and wait for the next turn.\n\nROUND 2 [provide: image_4]\nQuery: Actually, delete that 'Spotted Artists' playlist. It makes more sense to just add them to my existing 'Eclectic Mix' playlist instead. Please find that playlist, add those first two artists to it, and also add a song by any musical artists whose names are written in blue on this whiteboard.\nInstructions: Tell the assistant that you've changed your mind. Ask it to delete the 'Spotted Artists' playlist it just created. Then instruct it to add the two artists from the previous round to your existing 'Eclectic Mix' playlist instead. Additionally, ask it to look at the new whiteboard image and add a song by any musical artist whose name is written in blue marker. If the assistant asks which names are in blue, tell it to look closely at the board for famous musicians. Once the playlist is deleted and the new songs are added to 'Eclectic Mix', move on.\n\nROUND 3 [provide: image_5, image_6]\nQuery: Let's keep building the 'Eclectic Mix'. Add a song by the first musical act listed on the green event poster, and one by the first band listed on the pink gig poster.\nInstructions: Instruct the assistant to continue adding to the 'Eclectic Mix' playlist. Ask it to find the first musical act listed on the green event poster and the first band listed on the pink gig poster, and add one song from each to the playlist. If the assistant lists the wrong bands or asks for confirmation, remind it to look for the very first names listed in the lineups on each poster. Once the songs are added, proceed to the final round.\n\nROUND 4 [provide: image_1]\nQuery: Finally, look at the posters on the brick wall in this last image. Find the poster next to 'Fantasy Events', add a song by the musical artist featured on it to the 'Eclectic Mix', and then start playing the playlist.\nInstructions: Ask the assistant to look at the posters on the brick wall in the new image. Tell it to find the poster right next to the 'Fantasy Events' one, add a song by the musical artist on that specific poster to the 'Eclectic Mix', and then start playing the playlist. If the assistant is unsure which poster, guide it to look immediately to the left of the 'Fantasy Events' poster. Once the final song is added and the playlist starts playing, conclude the conversation.\n\nYou have 6 images available to share with the agent using the send_message_with_image tool.\nIMPORTANT: Image IDs are ZERO-INDEXED integers (0, 1, 2, ...). Do NOT add 1 to the IDs.\nAvailable image IDs: [0, 1, 2, 3, 4, 5]\nImage mapping:\n  image_1.jpg -> image ID 0\n  image_2.jpg -> image ID 1\n  image_3.jpg -> image ID 2\n  image_4.jpg -> image ID 3\n  image_5.jpg -> image ID 4\n  image_6.jpg -> image ID 5\n\n## IMAGE DELIVERY\n\n\u26a0\ufe0f IMPORTANT: You MUST use the `send_message_with_image` tool to share images with User B. Do NOT just describe images in text \u2014 you MUST call the tool.\n\nImage delivery schedule:\n\n  Round 2: YOU MUST call the send_message_with_image tool with image_ids='3' \u2014 do NOT write the tool name as text; use the actual function call. Include a natural, conversational message to the assistant.\n  Round 3: YOU MUST call the send_message_with_image tool with image_ids='4,5' \u2014 do NOT write the tool name as text; use the actual function call. Include a natural, conversational message to the assistant.\n  Round 4: YOU MUST call the send_message_with_image tool with image_ids='0' \u2014 do NOT write the tool name as text; use the actual function call. Include a natural, conversational message to the assistant."
+    },
+    {
+      "sender": "USER",
+      "recipient": "AGENT",
+      "content": "I want to start collecting music from things I see. Please create a new Spotify playlist called 'Spotted Artists' and add one popular song by the artist on the billboard in the first picture, and one by the artist whose album is reviewed in the second picture.",
+      "image_ids": [
+        1,
+        2
+      ]
+    }
+  ],
+  "milestones": [],
+  "entity_diff_specs": [
+    {
+      "operation": "create",
+      "source": "appworld",
+      "table": "spotify.playlist_songs",
+      "entity_data": {
+        "playlist_id": 800,
+        "song_id": 200,
+        "added_at": "2026-04-17T00:08:20"
+      },
+      "column_similarity_measure": {
+        "playlist_id": "column_exact_match_similarity",
+        "song_id": "column_exact_match_similarity",
+        "added_at": "column_ignore_similarity"
+      }
+    },
+    {
+      "operation": "create",
+      "source": "appworld",
+      "table": "spotify.playlist_songs",
+      "entity_data": {
+        "playlist_id": 800,
+        "song_id": 201,
+        "added_at": "2026-04-17T00:08:20"
+      },
+      "column_similarity_measure": {
+        "playlist_id": "column_exact_match_similarity",
+        "song_id": "column_exact_match_similarity",
+        "added_at": "column_ignore_similarity"
+      }
+    },
+    {
+      "operation": "create",
+      "source": "appworld",
+      "table": "spotify.playlist_songs",
+      "entity_data": {
+        "playlist_id": 800,
+        "song_id": 202,
+        "added_at": "2026-04-17T00:08:20"
+      },
+      "column_similarity_measure": {
+        "playlist_id": "column_exact_match_similarity",
+        "song_id": "column_exact_match_similarity",
+        "added_at": "column_ignore_similarity"
+      }
+    },
+    {
+      "operation": "create",
+      "source": "appworld",
+      "table": "spotify.playlist_songs",
+      "entity_data": {
+        "playlist_id": 800,
+        "song_id": 203,
+        "added_at": "2026-04-17T00:08:20"
+      },
+      "column_similarity_measure": {
+        "playlist_id": "column_exact_match_similarity",
+        "song_id": "column_exact_match_similarity",
+        "added_at": "column_ignore_similarity"
+      }
+    },
+    {
+      "operation": "create",
+      "source": "appworld",
+      "table": "spotify.playlist_songs",
+      "entity_data": {
+        "playlist_id": 800,
+        "song_id": 204,
+        "added_at": "2026-04-17T00:08:20"
+      },
+      "column_similarity_measure": {
+        "playlist_id": "column_exact_match_similarity",
+        "song_id": "column_exact_match_similarity",
+        "added_at": "column_ignore_similarity"
+      }
+    },
+    {
+      "operation": "create",
+      "source": "appworld",
+      "table": "spotify.playlist_songs",
+      "entity_data": {
+        "playlist_id": 800,
+        "song_id": 205,
+        "added_at": "2026-04-17T00:08:20"
+      },
+      "column_similarity_measure": {
+        "playlist_id": "column_exact_match_similarity",
+        "song_id": "column_exact_match_similarity",
+        "added_at": "column_ignore_similarity"
+      }
+    },
+    {
+      "operation": "update",
+      "source": "appworld",
+      "table": "spotify.music_players",
+      "entity_id_column": "id",
+      "entity_id_value": 300,
+      "expected_fields": {
+        "queue_song_ids": [
+          200,
+          201,
+          202,
+          203,
+          204,
+          205
+        ],
+        "cursor_position": 0,
+        "is_playing": true
+      },
+      "column_similarity_measure": {
+        "queue_song_ids": "column_ignore_similarity",
+        "cursor_position": "column_exact_match_similarity",
+        "is_playing": "column_exact_match_similarity",
+        "id": "column_exact_match_similarity"
+      }
+    }
+  ],
+  "task_completion_criteria": "Add one song each by Britney Spears, Rebecca Ferguson, Beyonce (or Frank Ocean), Clipse, Devil's Advocate, and El Arrebato to the existing Spotify playlist named 'Eclectic Mix', and start playing the playlist.",
+  "categories": [
+    "APPWORLD",
+    "MULTIPLE_USER_TURN"
+  ],
+  "max_messages": 100,
+  "metadata": {
+    "original_scenario_id": "scenario_0597",
+    "expected_tools": [
+      "spotify_create_playlist",
+      "spotify_add_song_to_playlist",
+      "spotify_delete_playlist",
+      "spotify_show_playlist",
+      "spotify_play_music"
+    ],
+    "image_arrival": {
+      "1": [
+        "image_2",
+        "image_3"
+      ],
+      "2": [
+        "image_4"
+      ],
+      "3": [
+        "image_5",
+        "image_6"
+      ],
+      "4": [
+        "image_1"
+      ]
+    },
+    "image_delivery_map": [
+      {
+        "query": "Actually, delete that 'Spotted Artists' playlist. It makes more sense to just add them to my existing 'Eclectic Mix' playlist instead. Please find that playlist, add those first two artists to it, and also add a song by any musical artists whose names are written in blue on this whiteboard.",
+        "image_ids": [
+          3
+        ]
+      },
+      {
+        "query": "Let's keep building the 'Eclectic Mix'. Add a song by the first musical act listed on the green event poster, and one by the first band listed on the pink gig poster.",
+        "image_ids": [
+          4,
+          5
+        ]
+      },
+      {
+        "query": "Finally, look at the posters on the brick wall in this last image. Find the poster next to 'Fantasy Events', add a song by the musical artist featured on it to the 'Eclectic Mix', and then start playing the playlist.",
+        "image_ids": [
+          0
+        ]
+      }
+    ],
+    "scenario_metadata": {
+      "num_images": 6,
+      "num_user_rounds": 4,
+      "selected_flow_type": "aggregate",
+      "image_arrival": "mixed",
+      "challenge_type": "goal_change",
+      "require_disambiguation": false,
+      "dataset_type": "hiertext"
+    }
+  }
+}

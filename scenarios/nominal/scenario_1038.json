@@ -1,0 +1,356 @@
+{
+  "name": "scenario_1038",
+  "base_scenario": "base",
+  "description": "Cesar Maldonado is organizing a list of items he needs to acquire, splitting them between online wish lists and local shopping trips based on whether they are electronic devices.",
+  "difficulty": "easy",
+  "appworld_base_task": "_base_",
+  "device_state_id": "ce-maldonado@gmail.com",
+  "reference_time": "2026-04-17T00:21:43.808406+00:00",
+  "agentsandbox_entities": {},
+  "appworld_entities": {
+    "todoist.projects": [
+      {
+        "id": 400,
+        "user_id": 87,
+        "name": "Personal Shopping",
+        "color": "charcoal",
+        "is_inbox": false,
+        "description": "Personal items to buy",
+        "created_at": "2026-01-15T10:00:00"
+      },
+      {
+        "id": 401,
+        "user_id": 87,
+        "name": "Work Shopping",
+        "color": "charcoal",
+        "is_inbox": false,
+        "description": "Work items to buy",
+        "created_at": "2026-01-15T10:00:00"
+      }
+    ],
+    "amazon.sellers": [
+      {
+        "id": 200,
+        "name": "Nikon Official Store",
+        "rating": 4.9
+      },
+      {
+        "id": 201,
+        "name": "Home Comforts",
+        "rating": 4.6
+      },
+      {
+        "id": 202,
+        "name": "Sony Official Store",
+        "rating": 4.8
+      }
+    ],
+    "amazon.products": [
+      {
+        "id": 200,
+        "product_type": "cameras",
+        "name": "Nikon Z7 II",
+        "description": "Professional full-frame mirrorless camera",
+        "seller_id": 200,
+        "price": 2996.95,
+        "delivery_days": 2,
+        "inventory_quantity": 15,
+        "weight": 1.5,
+        "length": 5.3,
+        "width": 3.9,
+        "height": 2.7,
+        "color": "black",
+        "relative_size": null,
+        "rating": 4.8,
+        "seller_rating": 4.9,
+        "has_variations": false
+      },
+      {
+        "id": 201,
+        "product_type": "home_appliances",
+        "name": "No-Mist Humidifier",
+        "description": "Evaporative no-mist humidifier for bedroom",
+        "seller_id": 201,
+        "price": 89.99,
+        "delivery_days": 3,
+        "inventory_quantity": 50,
+        "weight": 4.2,
+        "length": 10.0,
+        "width": 10.0,
+        "height": 14.5,
+        "color": "white",
+        "relative_size": null,
+        "rating": 4.5,
+        "seller_rating": 4.6,
+        "has_variations": false
+      },
+      {
+        "id": 202,
+        "product_type": "cameras",
+        "name": "Sony \u03b17 III",
+        "description": "Full-frame mirrorless interchangeable-lens camera",
+        "seller_id": 202,
+        "price": 1998.0,
+        "delivery_days": 2,
+        "inventory_quantity": 25,
+        "weight": 1.4,
+        "length": 5.0,
+        "width": 3.8,
+        "height": 2.9,
+        "color": "black",
+        "relative_size": null,
+        "rating": 4.8,
+        "seller_rating": 4.8,
+        "has_variations": false
+      }
+    ],
+    "todoist.project_collaborator_links": [
+      {
+        "id": 50400,
+        "project_id": 400,
+        "user_id": 87,
+        "is_favorite": false,
+        "is_archived": false,
+        "created_at": "2026-01-15T10:00:00"
+      },
+      {
+        "id": 50401,
+        "project_id": 401,
+        "user_id": 87,
+        "is_favorite": false,
+        "is_archived": false,
+        "created_at": "2026-01-15T10:00:00"
+      }
+    ],
+    "gmail.users": []
+  },
+  "image_paths": [
+    "worldvqa/images/1541.jpg",
+    "worldvqa/images/1752.jpg",
+    "worldvqa/images/1425.jpg",
+    "worldvqa/images/1591.jpg",
+    "worldvqa/images/1428.jpg",
+    "worldvqa/images/1665.jpg"
+  ],
+  "messages": [
+    {
+      "sender": "SYSTEM",
+      "recipient": "USER",
+      "content": "{{USER_INSTRUCTION}}ROUND 1 [provide: image_1, image_2, image_3]\nQuery: Look at these three items. If it's an electronic device, find it on Amazon and add it to my wish list. For the non-electronic ones, create tasks in my shopping project to buy them locally.\nInstructions: Ask the assistant to examine the provided images, search Amazon for any electronic devices to add to your wish list, and create tasks in your 'shopping' project to buy the non-electronic items locally. Because you have multiple projects with 'shopping' in the name, the assistant should ask you to clarify which one you mean. When it does, tell it to use your personal one. Once the assistant confirms it has added the electronic item to the wish list and created the tasks for the other two items, proceed to the next round.\n\nROUND 2 [provide: image_4, image_5, image_6]\nQuery: Here are three more items. Do the exact same thing with these.\nInstructions: Instruct the assistant to apply the exact same filtering rule to this new set of images: Amazon wish list for electronics, and local purchase tasks for non-electronics. It should remember to use the personal shopping project from the previous turn. If it asks for confirmation or forgets the project, remind it to use the personal shopping project. Once the assistant confirms it has added the two new electronics to the wish list and created the final task for the non-electronic item, end the conversation.\n\nYou have 6 images available to share with the agent using the send_message_with_image tool.\nIMPORTANT: Image IDs are ZERO-INDEXED integers (0, 1, 2, ...). Do NOT add 1 to the IDs.\nAvailable image IDs: [0, 1, 2, 3, 4, 5]\nImage mapping:\n  image_1.jpg -> image ID 0\n  image_2.jpg -> image ID 1\n  image_3.jpg -> image ID 2\n  image_4.jpg -> image ID 3\n  image_5.jpg -> image ID 4\n  image_6.jpg -> image ID 5\n\n## IMAGE DELIVERY\n\n\u26a0\ufe0f IMPORTANT: You MUST use the `send_message_with_image` tool to share images with User B. Do NOT just describe images in text \u2014 you MUST call the tool.\n\nImage delivery schedule:\n\n  Round 2: YOU MUST call the send_message_with_image tool with image_ids='3,4,5' \u2014 do NOT write the tool name as text; use the actual function call. Include a natural, conversational message to the assistant."
+    },
+    {
+      "sender": "USER",
+      "recipient": "AGENT",
+      "content": "Look at these three items. If it's an electronic device, find it on Amazon and add it to my wish list. For the non-electronic ones, create tasks in my shopping project to buy them locally.",
+      "image_ids": [
+        0,
+        1,
+        2
+      ]
+    }
+  ],
+  "milestones": [],
+  "entity_diff_specs": [
+    {
+      "operation": "create",
+      "source": "appworld",
+      "table": "todoist.tasks",
+      "entity_data": {
+        "project_id": 400,
+        "section_id": null,
+        "user_id": 87,
+        "title": "Buy typewriter ribbon locally",
+        "description": null,
+        "due_date": null,
+        "priority": "medium",
+        "is_completed": false,
+        "duration": null,
+        "duration_unit": null,
+        "order_index": 0,
+        "assignee_id": null,
+        "assigner_id": null,
+        "created_at": "2026-04-17T00:21:43"
+      },
+      "column_similarity_measure": {
+        "project_id": "column_exact_match_similarity",
+        "section_id": "column_ignore_similarity",
+        "user_id": "column_exact_match_similarity",
+        "title": "column_rouge_l_similarity",
+        "description": "column_ignore_similarity",
+        "due_date": "column_ignore_similarity",
+        "priority": "column_exact_match_similarity",
+        "is_completed": "column_exact_match_similarity",
+        "duration": "column_ignore_similarity",
+        "duration_unit": "column_ignore_similarity",
+        "order_index": "column_ignore_similarity",
+        "assignee_id": "column_ignore_similarity",
+        "assigner_id": "column_ignore_similarity",
+        "created_at": "column_ignore_similarity"
+      }
+    },
+    {
+      "operation": "create",
+      "source": "appworld",
+      "table": "todoist.tasks",
+      "entity_data": {
+        "project_id": 400,
+        "section_id": null,
+        "user_id": 87,
+        "title": "Buy Freeskates locally",
+        "description": null,
+        "due_date": null,
+        "priority": "medium",
+        "is_completed": false,
+        "duration": null,
+        "duration_unit": null,
+        "order_index": 1,
+        "assignee_id": null,
+        "assigner_id": null,
+        "created_at": "2026-04-17T00:21:43"
+      },
+      "column_similarity_measure": {
+        "project_id": "column_exact_match_similarity",
+        "section_id": "column_ignore_similarity",
+        "user_id": "column_exact_match_similarity",
+        "title": "column_rouge_l_similarity",
+        "description": "column_ignore_similarity",
+        "due_date": "column_ignore_similarity",
+        "priority": "column_exact_match_similarity",
+        "is_completed": "column_exact_match_similarity",
+        "duration": "column_ignore_similarity",
+        "duration_unit": "column_ignore_similarity",
+        "order_index": "column_ignore_similarity",
+        "assignee_id": "column_ignore_similarity",
+        "assigner_id": "column_ignore_similarity",
+        "created_at": "column_ignore_similarity"
+      }
+    },
+    {
+      "operation": "create",
+      "source": "appworld",
+      "table": "todoist.tasks",
+      "entity_data": {
+        "project_id": 400,
+        "section_id": null,
+        "user_id": 87,
+        "title": "Buy Lamy Safari fountain pen locally",
+        "description": null,
+        "due_date": null,
+        "priority": "medium",
+        "is_completed": false,
+        "duration": null,
+        "duration_unit": null,
+        "order_index": 2,
+        "assignee_id": null,
+        "assigner_id": null,
+        "created_at": "2026-04-17T00:21:43"
+      },
+      "column_similarity_measure": {
+        "project_id": "column_exact_match_similarity",
+        "section_id": "column_ignore_similarity",
+        "user_id": "column_exact_match_similarity",
+        "title": "column_rouge_l_similarity",
+        "description": "column_ignore_similarity",
+        "due_date": "column_ignore_similarity",
+        "priority": "column_exact_match_similarity",
+        "is_completed": "column_exact_match_similarity",
+        "duration": "column_ignore_similarity",
+        "duration_unit": "column_ignore_similarity",
+        "order_index": "column_ignore_similarity",
+        "assignee_id": "column_ignore_similarity",
+        "assigner_id": "column_ignore_similarity",
+        "created_at": "column_ignore_similarity"
+      }
+    },
+    {
+      "operation": "create",
+      "source": "appworld",
+      "table": "amazon.wish_list_entries",
+      "entity_data": {
+        "user_id": 87,
+        "product_id": 200,
+        "quantity": 1
+      },
+      "column_similarity_measure": {
+        "user_id": "column_exact_match_similarity",
+        "product_id": "column_exact_match_similarity",
+        "quantity": "column_exact_match_similarity"
+      }
+    },
+    {
+      "operation": "create",
+      "source": "appworld",
+      "table": "amazon.wish_list_entries",
+      "entity_data": {
+        "user_id": 87,
+        "product_id": 201,
+        "quantity": 1
+      },
+      "column_similarity_measure": {
+        "user_id": "column_exact_match_similarity",
+        "product_id": "column_exact_match_similarity",
+        "quantity": "column_exact_match_similarity"
+      }
+    },
+    {
+      "operation": "create",
+      "source": "appworld",
+      "table": "amazon.wish_list_entries",
+      "entity_data": {
+        "user_id": 87,
+        "product_id": 202,
+        "quantity": 1
+      },
+      "column_similarity_measure": {
+        "user_id": "column_exact_match_similarity",
+        "product_id": "column_exact_match_similarity",
+        "quantity": "column_exact_match_similarity"
+      }
+    }
+  ],
+  "task_completion_criteria": "Search Amazon for the Nikon Z7 II, no-mist humidifier, and Sony \u03b17 III and add them to the Amazon wish list, AND create tasks in the 'Personal Shopping' Todoist project to locally buy a typewriter ribbon, Freeskates, and a Lamy Safari fountain pen.",
+  "categories": [
+    "APPWORLD",
+    "MULTIPLE_USER_TURN"
+  ],
+  "max_messages": 100,
+  "metadata": {
+    "original_scenario_id": "scenario_1038",
+    "expected_tools": [
+      "amazon_show_product",
+      "amazon_add_product_to_wish_list",
+      "todoist_create_task"
+    ],
+    "image_arrival": {
+      "1": [
+        "image_1",
+        "image_2",
+        "image_3"
+      ],
+      "2": [
+        "image_4",
+        "image_5",
+        "image_6"
+      ]
+    },
+    "image_delivery_map": [
+      {
+        "query": "Here are three more items. Do the exact same thing with these.",
+        "image_ids": [
+          3,
+          4,
+          5
+        ]
+      }
+    ],
+    "scenario_metadata": {
+      "num_images": 6,
+      "num_user_rounds": 2,
+      "selected_flow_type": "filter",
+      "image_arrival": "progressive",
+      "challenge_type": "none",
+      "require_disambiguation": true,
+      "dataset_type": "worldvqa"
+    }
+  }
+}

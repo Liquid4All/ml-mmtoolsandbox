@@ -1,0 +1,509 @@
+{
+  "name": "scenario_0960",
+  "base_scenario": "base",
+  "description": "Jennifer is shopping for gifts for her nieces and nephews. She has several toy options in mind and wants to validate them against specific budget and rating constraints on Amazon before purchasing and splitting the cost with her sister on Splitwise. (UI mode)",
+  "difficulty": "easy",
+  "appworld_base_task": "_base_",
+  "device_state_id": "jepowell@gmail.com",
+  "reference_time": "2026-04-17T00:19:43.959582+00:00",
+  "agentsandbox_entities": {},
+  "appworld_entities": {
+    "amazon.sellers": [
+      {
+        "id": 200,
+        "name": "Bandai",
+        "rating": 4.5
+      },
+      {
+        "id": 201,
+        "name": "Liv Heart",
+        "rating": 4.8
+      },
+      {
+        "id": 202,
+        "name": "Squishmallows Official",
+        "rating": 4.7
+      },
+      {
+        "id": 203,
+        "name": "Gund",
+        "rating": 4.6
+      },
+      {
+        "id": 204,
+        "name": "Jellycat",
+        "rating": 4.9
+      }
+    ],
+    "amazon.products": [
+      {
+        "id": 200,
+        "product_type": "toys",
+        "name": "Tamagotchi Original",
+        "description": "Original virtual reality pet",
+        "seller_id": 200,
+        "price": 19.99,
+        "delivery_days": 2,
+        "inventory_quantity": 50,
+        "weight": 0.1,
+        "length": 2.0,
+        "width": 1.5,
+        "height": 0.5,
+        "color": "Blue",
+        "relative_size": "small",
+        "rating": 4.2,
+        "seller_rating": 4.5,
+        "has_variations": false
+      },
+      {
+        "id": 201,
+        "product_type": "toys",
+        "name": "Liv Heart Polar Bear Sleep Hug Plush Toy",
+        "description": "Soft and huggable polar bear plush",
+        "seller_id": 201,
+        "price": 22.99,
+        "delivery_days": 3,
+        "inventory_quantity": 30,
+        "weight": 1.2,
+        "length": 15.0,
+        "width": 8.0,
+        "height": 6.0,
+        "color": "White",
+        "relative_size": "medium",
+        "rating": 4.8,
+        "seller_rating": 4.8,
+        "has_variations": false
+      },
+      {
+        "id": 202,
+        "product_type": "toys",
+        "name": "Squishmallows Plush",
+        "description": "Super soft marshmallow-like texture plush",
+        "seller_id": 202,
+        "price": 29.99,
+        "delivery_days": 2,
+        "inventory_quantity": 100,
+        "weight": 1.5,
+        "length": 12.0,
+        "width": 12.0,
+        "height": 12.0,
+        "color": "Pink",
+        "relative_size": "medium",
+        "rating": 4.9,
+        "seller_rating": 4.7,
+        "has_variations": true
+      },
+      {
+        "id": 203,
+        "product_type": "toys",
+        "name": "Gund Sound-Activated Kiss-Flapping Plush Penguin Vicky",
+        "description": "Interactive penguin plush toy",
+        "seller_id": 203,
+        "price": 28.99,
+        "delivery_days": 4,
+        "inventory_quantity": 20,
+        "weight": 0.8,
+        "length": 10.0,
+        "width": 6.0,
+        "height": 5.0,
+        "color": "Black",
+        "relative_size": "small",
+        "rating": 4.6,
+        "seller_rating": 4.6,
+        "has_variations": false
+      },
+      {
+        "id": 204,
+        "product_type": "toys",
+        "name": "Jellycat Barcelona Bear",
+        "description": "Premium soft bear plush",
+        "seller_id": 204,
+        "price": 32.99,
+        "delivery_days": 2,
+        "inventory_quantity": 15,
+        "weight": 1.0,
+        "length": 14.0,
+        "width": 7.0,
+        "height": 5.0,
+        "color": "Brown",
+        "relative_size": "medium",
+        "rating": 4.7,
+        "seller_rating": 4.9,
+        "has_variations": false
+      }
+    ],
+    "splitwise.users": [
+      {
+        "id": 200,
+        "first_name": "Alice",
+        "last_name": "Powell",
+        "email": "alice.powell@gmail.com",
+        "password": "default_password",
+        "created_at": "2025-06-15T09:30:00",
+        "last_logged_in": "2026-04-16T14:20:00",
+        "verified": true
+      },
+      {
+        "id": 201,
+        "first_name": "Alice",
+        "last_name": "Henderson",
+        "email": "alice.henderson@gmail.com",
+        "password": "default_password",
+        "created_at": "2025-08-22T11:15:00",
+        "last_logged_in": "2026-04-10T10:05:00",
+        "verified": true
+      }
+    ],
+    "gmail.users": []
+  },
+  "image_paths": [
+    "worldvqa/images/1615.jpg",
+    "worldvqa/images/1763.jpg",
+    "worldvqa/images/1765.jpg",
+    "worldvqa/images/1761.jpg",
+    "worldvqa/images/1756.jpg"
+  ],
+  "messages": [
+    {
+      "sender": "SYSTEM",
+      "recipient": "USER",
+      "content": "{{USER_INSTRUCTION}}ROUND 1 [provide: image_1, image_2]\nQuery: I'm looking to buy the two toys shown in these images on Amazon. Please search for them and tell me about their prices. I have a budget in mind — I'll decide which ones to get.\nInstructions: Ask the assistant to identify the two toys in the provided images and search for them on Amazon. When the assistant presents the toys with their prices, add only the ones priced under $25 to your cart via `ui_user_interact`. That should be both the Tamagotchi and the Polar Bear plush. If no interactive UI is shown, tell the assistant to add the ones under $25 to your cart. Once the cart is updated, proceed to the next round.\n\nROUND 2 [provide: image_3, image_4]\nQuery: Here are two more toy candidates in these new images. Please search for them and validate their customer ratings on Amazon. Check if each toy has an average rating of at least 4.5 stars. Only add the ones that pass this rating constraint to my cart.\nInstructions: Ask the assistant to identify the two new toys shown in the latest images and look them up on Amazon. Instruct it to validate their customer ratings, specifically checking if each toy has an average rating of 4.5 stars or higher. Tell the assistant to add only the toys that meet this quality constraint to the cart. Await confirmation of the cart additions before proceeding.\n\nROUND 3 [provide: image_5]\nQuery: Lastly, check the teddy bear in this final image. Validate that it satisfies both constraints: it must be under $35 and have at least a 4.5-star rating. If it passes, add it to my cart and place the order for everything currently in the cart. After ordering, create a Splitwise group called 'Kids Gifts', add my sister Alice to it, and record the total Amazon order amount as an expense so we can split it equally.\nInstructions: Ask the assistant to evaluate the teddy bear in the final image against two constraints: it must cost less than $35 and have a rating of 4.5 stars or more. If it qualifies, tell the assistant to add it to the cart and finalize the purchase for all items currently in the cart. Afterwards, instruct it to create a Splitwise group named 'Kids Gifts' and add your sister Alice. The assistant should find multiple people named Alice and ask for clarification or present a selection. When it does, select Alice Powell via `ui_user_interact`. If no interactive UI is shown, tell the assistant you mean Alice Powell. Once the expense is successfully recorded, conclude the conversation.\n\nYou have 5 images available to share with the agent using the send_message_with_image tool.\nIMPORTANT: Image IDs are ZERO-INDEXED integers (0, 1, 2, ...). Do NOT add 1 to the IDs.\nAvailable image IDs: [0, 1, 2, 3, 4]\nImage mapping:\n  image_1.jpg -> image ID 0\n  image_2.jpg -> image ID 1\n  image_3.jpg -> image ID 2\n  image_4.jpg -> image ID 3\n  image_5.jpg -> image ID 4\n\n## IMAGE DELIVERY\n\n⚠️ IMPORTANT: You MUST use the `send_message_with_image` tool to share images with User B. Do NOT just describe images in text — you MUST call the tool.\n\nImage delivery schedule:\n\n  Round 2: YOU MUST call the send_message_with_image tool with image_ids='2,3' — do NOT write the tool name as text; use the actual function call. Include a natural, conversational message to the assistant.\n  Round 3: YOU MUST call the send_message_with_image tool with image_ids='4' — do NOT write the tool name as text; use the actual function call. Include a natural, conversational message to the assistant."
+    },
+    {
+      "sender": "USER",
+      "recipient": "AGENT",
+      "content": "I'm looking to buy the two toys shown in these images on Amazon. Please search for them and tell me about their prices. I have a budget in mind — I'll decide which ones to get.",
+      "image_ids": [
+        0,
+        1
+      ]
+    }
+  ],
+  "milestones": [],
+  "entity_diff_specs": [
+    {
+      "operation": "create",
+      "source": "appworld",
+      "table": "amazon.orders",
+      "entity_data": {
+        "user_id": 29,
+        "address_id": null,
+        "tax": 11.2,
+        "delivery_fee": 0.0,
+        "gift_wrap_fee": 0.0,
+        "discount": 0.0,
+        "payment_card_id": null,
+        "created_at": "2026-04-17T00:19:43",
+        "address_text": "34495 Michael Burg Suite 805, Seattle, Washington 38887",
+        "payment_card_digits": "1234",
+        "receipt_download_count": 0
+      },
+      "column_similarity_measure": {
+        "user_id": "column_exact_match_similarity",
+        "address_id": "column_ignore_similarity",
+        "tax": "column_ignore_similarity",
+        "delivery_fee": "column_ignore_similarity",
+        "gift_wrap_fee": "column_exact_match_similarity",
+        "discount": "column_exact_match_similarity",
+        "payment_card_id": "column_ignore_similarity",
+        "created_at": "column_ignore_similarity",
+        "address_text": "column_ignore_similarity",
+        "payment_card_digits": "column_ignore_similarity",
+        "receipt_download_count": "column_exact_match_similarity"
+      }
+    },
+    {
+      "operation": "create",
+      "source": "appworld",
+      "table": "amazon.order_items",
+      "entity_data": {
+        "order_id": 3300,
+        "product_id": 200,
+        "ordered_quantity": 1,
+        "returned_quantity": 0,
+        "gift_wrap_quantity": 0,
+        "price": 19.99,
+        "expected_delivery_at": "2026-04-19T23:59:59",
+        "delivered_at": null
+      },
+      "column_similarity_measure": {
+        "order_id": "column_ignore_similarity",
+        "product_id": "column_exact_match_similarity",
+        "ordered_quantity": "column_exact_match_similarity",
+        "returned_quantity": "column_exact_match_similarity",
+        "gift_wrap_quantity": "column_exact_match_similarity",
+        "price": "column_exact_match_similarity",
+        "expected_delivery_at": "column_ignore_similarity",
+        "delivered_at": "column_ignore_similarity"
+      }
+    },
+    {
+      "operation": "create",
+      "source": "appworld",
+      "table": "amazon.order_items",
+      "entity_data": {
+        "order_id": 3300,
+        "product_id": 201,
+        "ordered_quantity": 1,
+        "returned_quantity": 0,
+        "gift_wrap_quantity": 0,
+        "price": 22.99,
+        "expected_delivery_at": "2026-04-20T23:59:59",
+        "delivered_at": null
+      },
+      "column_similarity_measure": {
+        "order_id": "column_ignore_similarity",
+        "product_id": "column_exact_match_similarity",
+        "ordered_quantity": "column_exact_match_similarity",
+        "returned_quantity": "column_exact_match_similarity",
+        "gift_wrap_quantity": "column_exact_match_similarity",
+        "price": "column_exact_match_similarity",
+        "expected_delivery_at": "column_ignore_similarity",
+        "delivered_at": "column_ignore_similarity"
+      }
+    },
+    {
+      "operation": "create",
+      "source": "appworld",
+      "table": "amazon.order_items",
+      "entity_data": {
+        "order_id": 3300,
+        "product_id": 202,
+        "ordered_quantity": 1,
+        "returned_quantity": 0,
+        "gift_wrap_quantity": 0,
+        "price": 29.99,
+        "expected_delivery_at": "2026-04-19T23:59:59",
+        "delivered_at": null
+      },
+      "column_similarity_measure": {
+        "order_id": "column_ignore_similarity",
+        "product_id": "column_exact_match_similarity",
+        "ordered_quantity": "column_exact_match_similarity",
+        "returned_quantity": "column_exact_match_similarity",
+        "gift_wrap_quantity": "column_exact_match_similarity",
+        "price": "column_exact_match_similarity",
+        "expected_delivery_at": "column_ignore_similarity",
+        "delivered_at": "column_ignore_similarity"
+      }
+    },
+    {
+      "operation": "create",
+      "source": "appworld",
+      "table": "amazon.order_items",
+      "entity_data": {
+        "order_id": 3300,
+        "product_id": 203,
+        "ordered_quantity": 1,
+        "returned_quantity": 0,
+        "gift_wrap_quantity": 0,
+        "price": 28.99,
+        "expected_delivery_at": "2026-04-21T23:59:59",
+        "delivered_at": null
+      },
+      "column_similarity_measure": {
+        "order_id": "column_ignore_similarity",
+        "product_id": "column_exact_match_similarity",
+        "ordered_quantity": "column_exact_match_similarity",
+        "returned_quantity": "column_exact_match_similarity",
+        "gift_wrap_quantity": "column_exact_match_similarity",
+        "price": "column_exact_match_similarity",
+        "expected_delivery_at": "column_ignore_similarity",
+        "delivered_at": "column_ignore_similarity"
+      }
+    },
+    {
+      "operation": "create",
+      "source": "appworld",
+      "table": "amazon.order_items",
+      "entity_data": {
+        "order_id": 3300,
+        "product_id": 204,
+        "ordered_quantity": 1,
+        "returned_quantity": 0,
+        "gift_wrap_quantity": 0,
+        "price": 32.99,
+        "expected_delivery_at": "2026-04-19T23:59:59",
+        "delivered_at": null
+      },
+      "column_similarity_measure": {
+        "order_id": "column_ignore_similarity",
+        "product_id": "column_exact_match_similarity",
+        "ordered_quantity": "column_exact_match_similarity",
+        "returned_quantity": "column_exact_match_similarity",
+        "gift_wrap_quantity": "column_exact_match_similarity",
+        "price": "column_exact_match_similarity",
+        "expected_delivery_at": "column_ignore_similarity",
+        "delivered_at": "column_ignore_similarity"
+      }
+    },
+    {
+      "operation": "create",
+      "source": "appworld",
+      "table": "splitwise.groups",
+      "entity_data": {
+        "user_id": 29,
+        "name": "Kids Gifts",
+        "description": "Shared expenses for kids' gifts",
+        "created_at": "2026-04-17T00:19:43",
+        "invitation_code": "KIDSGIFTS123",
+        "deleted": false
+      },
+      "column_similarity_measure": {
+        "user_id": "column_exact_match_similarity",
+        "name": "column_rouge_l_similarity",
+        "description": "column_rouge_l_similarity",
+        "created_at": "column_ignore_similarity",
+        "invitation_code": "column_ignore_similarity",
+        "deleted": "column_ignore_similarity"
+      }
+    },
+    {
+      "operation": "create",
+      "source": "appworld",
+      "table": "splitwise.group_members",
+      "entity_data": {
+        "group_id": 400,
+        "user_id": 29,
+        "joined_at": "2026-04-17T00:19:43"
+      },
+      "column_similarity_measure": {
+        "group_id": "column_ignore_similarity",
+        "user_id": "column_exact_match_similarity",
+        "joined_at": "column_ignore_similarity"
+      }
+    },
+    {
+      "operation": "create",
+      "source": "appworld",
+      "table": "splitwise.group_members",
+      "entity_data": {
+        "group_id": 400,
+        "user_id": 200,
+        "joined_at": "2026-04-17T00:19:43"
+      },
+      "column_similarity_measure": {
+        "group_id": "column_ignore_similarity",
+        "user_id": "column_exact_match_similarity",
+        "joined_at": "column_ignore_similarity"
+      }
+    },
+    {
+      "operation": "create",
+      "source": "appworld",
+      "table": "splitwise.expenses",
+      "entity_data": {
+        "user_id": 29,
+        "group_id": 400,
+        "payer_id": 29,
+        "debtor_ids": [
+          200
+        ],
+        "participant_ids": [
+          29,
+          200
+        ],
+        "description": "Amazon toys order",
+        "amount": 153.44,
+        "deleted": false,
+        "receipt_file_name": null,
+        "receipt_file_content": null,
+        "receipt_download_count": 0,
+        "created_at": "2026-04-17T00:19:43"
+      },
+      "column_similarity_measure": {
+        "user_id": "column_exact_match_similarity",
+        "group_id": "column_ignore_similarity",
+        "payer_id": "column_exact_match_similarity",
+        "debtor_ids": "column_ignore_similarity",
+        "participant_ids": "column_ignore_similarity",
+        "description": "column_rouge_l_similarity",
+        "amount": "column_exact_match_similarity",
+        "deleted": "column_ignore_similarity",
+        "receipt_file_name": "column_ignore_similarity",
+        "receipt_file_content": "column_ignore_similarity",
+        "receipt_download_count": "column_exact_match_similarity",
+        "created_at": "column_ignore_similarity"
+      }
+    },
+    {
+      "operation": "create",
+      "source": "appworld",
+      "table": "splitwise.expense_shares",
+      "entity_data": {
+        "expense_id": 5200,
+        "debtor_id": 200,
+        "share_amount": 76.72,
+        "created_at": "2026-04-17T00:19:43"
+      },
+      "column_similarity_measure": {
+        "expense_id": "column_ignore_similarity",
+        "debtor_id": "column_exact_match_similarity",
+        "share_amount": "column_exact_match_similarity",
+        "created_at": "column_ignore_similarity"
+      }
+    }
+  ],
+  "task_completion_criteria": "Search Amazon for a Tamagotchi, Liv Heart Polar Bear Sleep Hug Plush Toy, Squishmallows plush, Gund Sound-Activated Kiss-Flapping Plush Penguin Vicky, and Jellycat Barcelona bear. Validate that the Tamagotchi and Polar Bear are under $25, the Squishmallow and Penguin have >= 4.5 stars, and the Jellycat bear is under $35 and has >= 4.5 stars. Add the passing toys to the Amazon cart, place the order, create a Splitwise group named 'Kids Gifts', add Alice Powell (alice.powell@gmail.com) to it, and record the total Amazon order amount as an expense.\n\nUI Requirements:\n- Round 1: The agent must present the two toy options with their Amazon prices in a structured interactive UI that lets the user select which toys to add to their cart based on their budget.\n- Round 3: The agent must present a contact selection UI when multiple Alice contacts are found, enabling the user to choose the correct person to add to the Splitwise group.",
+  "categories": [
+    "APPWORLD",
+    "MULTIPLE_USER_TURN",
+    "UI_MODE"
+  ],
+  "max_messages": 100,
+  "metadata": {
+    "original_scenario_id": "scenario_0960",
+    "expected_tools": [
+      "web_search_serper",
+      "amazon_show_product",
+      "amazon_add_product_to_cart",
+      "amazon_show_product_rating_distribution",
+      "amazon_place_order",
+      "splitwise_create_group",
+      "splitwise_add_member_to_group",
+      "splitwise_record_expense",
+      "render_ui_screen",
+      "show_ui_to_user",
+      "ui_user_interact",
+      "ui_get_quick_start",
+      "ui_get_item_details"
+    ],
+    "image_arrival": {
+      "1": [
+        "image_1",
+        "image_2"
+      ],
+      "2": [
+        "image_3",
+        "image_4"
+      ],
+      "3": [
+        "image_5"
+      ]
+    },
+    "image_delivery_map": [
+      {
+        "query": "Here are two more toy candidates in these new images. Please search for them and validate their customer ratings on Amazon. Check if each toy has an average rating of at least 4.5 stars. Only add the ones that pass this rating constraint to my cart.",
+        "image_ids": [
+          2,
+          3
+        ]
+      },
+      {
+        "query": "Lastly, check the teddy bear in this final image. Validate that it satisfies both constraints: it must be under $35 and have at least a 4.5-star rating. If it passes, add it to my cart and place the order for everything currently in the cart. After ordering, create a Splitwise group called 'Kids Gifts', add my sister Alice to it, and record the total Amazon order amount as an expense so we can split it equally.",
+        "image_ids": [
+          4
+        ]
+      }
+    ],
+    "scenario_metadata": {
+      "num_images": 5,
+      "num_user_rounds": 3,
+      "selected_flow_type": "validate",
+      "image_arrival": "progressive",
+      "challenge_type": "none",
+      "require_disambiguation": true,
+      "dataset_type": "worldvqa"
+    }
+  }
+}

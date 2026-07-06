@@ -1,0 +1,211 @@
+{
+  "name": "scenario_0600",
+  "base_scenario": "base",
+  "description": "Ronald is setting up a browser performance test. He needs to document the memory usage comparison between Chrome and Firefox, and organize contact information for his colleagues involved in the test.",
+  "difficulty": "easy",
+  "appworld_base_task": "_base_",
+  "device_state_id": "ron.harrison@gmail.com",
+  "reference_time": "2026-04-17T00:08:26.458022+00:00",
+  "agentsandbox_entities": {},
+  "appworld_entities": {
+    "gmail.users": [
+      {
+        "id": 10100,
+        "first_name": "Charles",
+        "last_name": "Wang",
+        "email": "921918398@qq.com",
+        "password": "placeholder_password",
+        "status": "active"
+      },
+      {
+        "id": 10101,
+        "first_name": "Kaixin",
+        "last_name": "Li",
+        "email": "happpppyly@gmail.com",
+        "password": "placeholder_password",
+        "status": "active"
+      }
+    ]
+  },
+  "image_paths": [
+    "screenspotpro/images/common_windows/screenshot_2024-11-06_21-38-54.png",
+    "screenspotpro/images/common_windows/screenshot_2024-12-10_13-22-26.png",
+    "hiertext/images/test/2de0d1a43b4a8539.jpg",
+    "screenspotpro/images/common_windows/screenshot_2024-12-10_13-07-52.png",
+    "screenspotpro/images/common_windows/screenshot_2024-12-10_13-09-28.png",
+    "screenspotpro/images/common_windows/screenshot_2024-12-10_13-05-25.png"
+  ],
+  "messages": [
+    {
+      "sender": "SYSTEM",
+      "recipient": "USER",
+      "content": "{{USER_INSTRUCTION}}ROUND 1\nQuery: I am starting a browser performance test. Create a note called 'Browser Memory Comparison'. Also, add my supervisor Charles Wang to my contacts with a placeholder email charles@dummy.com for now.\nInstructions: Ask the assistant to create a note titled 'Browser Memory Comparison' and add a new contact for your supervisor Charles Wang with a placeholder email. If the assistant confirms these actions, proceed to the next round.\n\nROUND 2 [provide: image_1, image_2, image_3, image_4, image_5, image_6]\nQuery: I've uploaded the screenshots. Compare the total memory usage between Chrome and Firefox in the memory report screenshot. Update the 'Browser Memory Comparison' note with the name of the browser that uses less memory. Also, add Kaixin Li to my contacts using the email happpppyly@yahoo.com, which is the email shown under her name in the first screenshot.\nInstructions: Tell the assistant to look at the uploaded screenshots, specifically the memory report, and compare the total memory usage between the two browsers. Ask it to update the newly created note with the name of the more memory-efficient browser. Also, instruct it to add Kaixin Li to contacts using the email domain '@yahoo.com', claiming this is what's shown in the first screenshot. If the assistant points out that the email domain in the screenshot is different from what you provided, acknowledge the mistake and wait for the next round. If the assistant blindly proceeds with the incorrect domain, correct it by pointing back to the first screenshot to double-check the domain.\n\nROUND 3\nQuery: My mistake, you are right, it is a gmail address. Please add Kaixin Li to my contacts with that correct email. Also, update Charles Wang's contact with his email from the screenshot that shows the 'Recent' files list including 'protocols.pdf'. Finally, send Kaixin an email telling her which browser won the memory comparison.\nInstructions: Confirm the assistant's correction regarding the email domain and ask it to add Kaixin Li with the correct email address. Then, instruct the assistant to update Charles Wang's contact using the email address found in the specific screenshot that displays a certain PDF file in the 'Recent' files list. Finally, ask the assistant to send an email to Kaixin stating which browser won the memory comparison test. Once the assistant confirms all contacts are updated and the email is sent, conclude the conversation.\n\nYou have 6 images available to share with the agent using the send_message_with_image tool.\nIMPORTANT: Image IDs are ZERO-INDEXED integers (0, 1, 2, ...). Do NOT add 1 to the IDs.\nAvailable image IDs: [0, 1, 2, 3, 4, 5]\nImage mapping:\n  image_1.jpg -> image ID 0\n  image_2.jpg -> image ID 1\n  image_3.jpg -> image ID 2\n  image_4.jpg -> image ID 3\n  image_5.jpg -> image ID 4\n  image_6.jpg -> image ID 5\n\n## IMAGE DELIVERY\n\n\u26a0\ufe0f IMPORTANT: You MUST use the `send_message_with_image` tool to share images with User B. Do NOT just describe images in text \u2014 you MUST call the tool.\n\nImage delivery schedule:\n\n  Round 2: YOU MUST call the send_message_with_image tool with image_ids='0,1,2,3,4,5' \u2014 do NOT write the tool name as text; use the actual function call. Include a natural, conversational message to the assistant."
+    },
+    {
+      "sender": "USER",
+      "recipient": "AGENT",
+      "content": "I am starting a browser performance test. Create a note called 'Browser Memory Comparison'. Also, add my supervisor Charles Wang to my contacts with a placeholder email charles@dummy.com for now."
+    }
+  ],
+  "milestones": [],
+  "entity_diff_specs": [
+    {
+      "operation": "create",
+      "source": "appworld",
+      "table": "phone.contacts",
+      "entity_data": {
+        "user_id": 12,
+        "first_name": "Charles",
+        "last_name": "Wang",
+        "email": "921918398@qq.com",
+        "phone_number": null,
+        "relationships": [
+          "supervisor"
+        ],
+        "birthday": null,
+        "home_address": null,
+        "work_address": null,
+        "created_at": "2026-04-17T00:08:26"
+      },
+      "column_similarity_measure": {
+        "user_id": "column_exact_match_similarity",
+        "first_name": "column_exact_match_similarity",
+        "last_name": "column_exact_match_similarity",
+        "email": "column_exact_match_similarity",
+        "phone_number": "column_ignore_similarity",
+        "relationships": "column_ignore_similarity",
+        "birthday": "column_ignore_similarity",
+        "home_address": "column_ignore_similarity",
+        "work_address": "column_ignore_similarity",
+        "created_at": "column_ignore_similarity"
+      }
+    },
+    {
+      "operation": "create",
+      "source": "appworld",
+      "table": "phone.contacts",
+      "entity_data": {
+        "user_id": 12,
+        "first_name": "Kaixin",
+        "last_name": "Li",
+        "email": "happpppyly@gmail.com",
+        "phone_number": null,
+        "relationships": [
+          "colleague"
+        ],
+        "birthday": null,
+        "home_address": null,
+        "work_address": null,
+        "created_at": "2026-04-17T00:08:26"
+      },
+      "column_similarity_measure": {
+        "user_id": "column_exact_match_similarity",
+        "first_name": "column_exact_match_similarity",
+        "last_name": "column_exact_match_similarity",
+        "email": "column_exact_match_similarity",
+        "phone_number": "column_ignore_similarity",
+        "relationships": "column_ignore_similarity",
+        "birthday": "column_ignore_similarity",
+        "home_address": "column_ignore_similarity",
+        "work_address": "column_ignore_similarity",
+        "created_at": "column_ignore_similarity"
+      }
+    },
+    {
+      "operation": "create",
+      "source": "appworld",
+      "table": "gmail.emails",
+      "entity_data": {
+        "sender_id": 12,
+        "recipient_ids": [
+          10101
+        ],
+        "subject": "Browser Memory Comparison Result",
+        "body": "Hi Kaixin, just wanted to let you know that Firefox won the memory comparison test. It uses less memory than Chrome.",
+        "response_to_email_id": null,
+        "created_at": "2026-04-17T00:08:26"
+      },
+      "column_similarity_measure": {
+        "sender_id": "column_exact_match_similarity",
+        "recipient_ids": "column_exact_match_similarity",
+        "subject": "column_rouge_l_similarity",
+        "body": "column_rouge_l_similarity",
+        "response_to_email_id": "column_ignore_similarity",
+        "created_at": "column_ignore_similarity"
+      }
+    },
+    {
+      "operation": "create",
+      "source": "appworld",
+      "table": "simple_note.notes",
+      "entity_data": {
+        "user_id": 12,
+        "title": "Browser Memory Comparison",
+        "content": "Firefox uses less memory than Chrome.",
+        "tags": [],
+        "created_at": "2026-04-17T00:08:26",
+        "updated_at": "2026-04-17T00:08:26",
+        "pinned": false,
+        "data": null
+      },
+      "column_similarity_measure": {
+        "user_id": "column_exact_match_similarity",
+        "title": "column_rouge_l_similarity",
+        "content": "column_rouge_l_similarity",
+        "tags": "column_ignore_similarity",
+        "created_at": "column_ignore_similarity",
+        "updated_at": "column_ignore_similarity",
+        "pinned": "column_exact_match_similarity",
+        "data": "column_ignore_similarity"
+      }
+    }
+  ],
+  "task_completion_criteria": "Create a note titled 'Browser Memory Comparison' stating that Firefox uses less memory than Chrome, add Kaixin Li with the email happpppyly@gmail.com and Charles Wang with the email 921918398@qq.com to contacts, and send an email to Kaixin Li mentioning that Firefox won the memory comparison, or something similar expressing the same ideas.",
+  "categories": [
+    "APPWORLD",
+    "MULTIPLE_USER_TURN"
+  ],
+  "max_messages": 100,
+  "metadata": {
+    "original_scenario_id": "scenario_0600",
+    "expected_tools": [
+      "create_note",
+      "contacts_add_contact",
+      "simple_note_update_note",
+      "contacts_update_contact",
+      "gmail_send_email"
+    ],
+    "image_arrival": {
+      "2": [
+        "image_1",
+        "image_2",
+        "image_3",
+        "image_4",
+        "image_5",
+        "image_6"
+      ]
+    },
+    "image_delivery_map": [
+      {
+        "query": "I've uploaded the screenshots. Compare the total memory usage between Chrome and Firefox in the memory report screenshot. Update the 'Browser Memory Comparison' note with the name of the browser that uses less memory. Also, add Kaixin Li to my contacts using the email happpppyly@yahoo.com, which is the email shown under her name in the first screenshot.",
+        "image_ids": [
+          0,
+          1,
+          2,
+          3,
+          4,
+          5
+        ]
+      }
+    ],
+    "scenario_metadata": {
+      "num_images": 6,
+      "num_user_rounds": 3,
+      "selected_flow_type": "compare",
+      "image_arrival": "late",
+      "challenge_type": "error_correction",
+      "require_disambiguation": false,
+      "dataset_type": "screenspotpro"
+    }
+  }
+}

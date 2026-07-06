@@ -1,0 +1,492 @@
+{
+  "name": "scenario_1004",
+  "base_scenario": "base",
+  "description": "The user is managing their engineering and research tasks in Todoist and taking screenshots of their progress across different software (MATLAB, Origin, SolidWorks, Word, and a VM setup).",
+  "difficulty": "easy",
+  "appworld_base_task": "_base_",
+  "device_state_id": "eric.bailey@gmail.com",
+  "reference_time": "2026-04-17T00:20:54.272052+00:00",
+  "agentsandbox_entities": {
+    "calendars": [
+      {
+        "calendar_id": "calendar_events_calendar_100",
+        "title": "Personal"
+      }
+    ]
+  },
+  "appworld_entities": {
+    "todoist.projects": [
+      {
+        "id": 400,
+        "user_id": 79,
+        "name": "Engineering and Research",
+        "color": "charcoal",
+        "is_inbox": false,
+        "description": "Project for engineering and research tasks",
+        "created_at": "2026-04-10T10:00:00"
+      }
+    ],
+    "todoist.tasks": [
+      {
+        "id": 6500,
+        "project_id": 400,
+        "section_id": null,
+        "user_id": 79,
+        "title": "Analyze Sine and Cosine waves",
+        "description": null,
+        "due_date": null,
+        "priority": "medium",
+        "is_completed": false,
+        "duration": null,
+        "duration_unit": null,
+        "order_index": 1,
+        "assignee_id": null,
+        "assigner_id": null,
+        "created_at": "2026-04-15T10:00:00"
+      },
+      {
+        "id": 6501,
+        "project_id": 400,
+        "section_id": null,
+        "user_id": 79,
+        "title": "Plot width vs length data",
+        "description": null,
+        "due_date": null,
+        "priority": "medium",
+        "is_completed": false,
+        "duration": null,
+        "duration_unit": null,
+        "order_index": 2,
+        "assignee_id": null,
+        "assigner_id": null,
+        "created_at": "2026-04-15T10:05:00"
+      },
+      {
+        "id": 6502,
+        "project_id": 400,
+        "section_id": null,
+        "user_id": 79,
+        "title": "Perform cubic curve fitting",
+        "description": null,
+        "due_date": null,
+        "priority": "medium",
+        "is_completed": false,
+        "duration": null,
+        "duration_unit": null,
+        "order_index": 3,
+        "assignee_id": null,
+        "assigner_id": null,
+        "created_at": "2026-04-15T10:10:00"
+      },
+      {
+        "id": 6503,
+        "project_id": 400,
+        "section_id": null,
+        "user_id": 79,
+        "title": "Determine CAD bracket dimensions",
+        "description": null,
+        "due_date": null,
+        "priority": "medium",
+        "is_completed": false,
+        "duration": null,
+        "duration_unit": null,
+        "order_index": 4,
+        "assignee_id": null,
+        "assigner_id": null,
+        "created_at": "2026-04-15T10:15:00"
+      },
+      {
+        "id": 6504,
+        "project_id": 400,
+        "section_id": null,
+        "user_id": 79,
+        "title": "Review TIST paper rebuttal",
+        "description": null,
+        "due_date": null,
+        "priority": "medium",
+        "is_completed": false,
+        "duration": null,
+        "duration_unit": null,
+        "order_index": 5,
+        "assignee_id": null,
+        "assigner_id": null,
+        "created_at": "2026-04-15T10:20:00"
+      },
+      {
+        "id": 6505,
+        "project_id": 400,
+        "section_id": null,
+        "user_id": 79,
+        "title": "Setup virtual machine",
+        "description": null,
+        "due_date": null,
+        "priority": "medium",
+        "is_completed": false,
+        "duration": null,
+        "duration_unit": null,
+        "order_index": 6,
+        "assignee_id": null,
+        "assigner_id": null,
+        "created_at": "2026-04-15T10:25:00"
+      }
+    ],
+    "simple_note.notes": [
+      {
+        "id": 3200,
+        "user_id": 79,
+        "title": "VM Config",
+        "content": "Virtual Machine Configuration Details:\n- RAM: 8GB\n- Storage: 50GB\n- OS ISO: [To be determined]",
+        "tags": [
+          "vm",
+          "setup"
+        ],
+        "created_at": "2026-04-15T09:30:00",
+        "updated_at": "2026-04-15T09:30:00",
+        "pinned": false,
+        "data": {}
+      }
+    ],
+    "todoist.project_collaborator_links": [
+      {
+        "id": 50400,
+        "project_id": 400,
+        "user_id": 79,
+        "is_favorite": false,
+        "is_archived": false,
+        "created_at": "2026-04-10T10:00:00"
+      }
+    ],
+    "gmail.users": []
+  },
+  "image_paths": [
+    "screenspotpro/images/matlab_mac/screenshot_2024-12-01_16-35-58.png",
+    "screenspotpro/images/origin_windows/screenshot_2024-12-05_13-43-02.png",
+    "screenspotpro/images/solidworks_windows/screenshot_2024-12-01_16-47-33.png",
+    "screenspotpro/images/word_mac/screenshot_2024-10-23_21-19-36.png",
+    "screenspotpro/images/matlab_mac/screenshot_2024-12-01_19-42-34.png",
+    "screenspotpro/images/vmware_mac/screenshot_2024-11-28_18-52-53.png"
+  ],
+  "messages": [
+    {
+      "sender": "SYSTEM",
+      "recipient": "USER",
+      "content": "{{USER_INSTRUCTION}}ROUND 1 [provide: image_1, image_2, image_5]\nQuery: Please check my active Todoist tasks. I want you to filter them and find the ones that match the work shown in these three screenshots. For each matching task, post a comment with the main equation or data trend shown in the image, and then mark the task as complete.\nInstructions: Ask the assistant to retrieve your active Todoist tasks and identify which ones correspond to the three provided screenshots. Instruct it to extract the main equation or data trend from each image, post it as a comment on the matching task, and mark those tasks as complete. If the assistant needs help matching the tasks to the images or finding the equations, guide it to look at the code, graph trends, or curve fitter results. Proceed to the next round once the three tasks are updated and completed.\n\nROUND 2 [provide: image_3, image_4]\nQuery: Here are two more screenshots. Filter the remaining tasks to find the ones for these. For the CAD one, comment with the thread size for part number 3003715*. For the paper rebuttal, comment with the exact recommendation the reviewers gave. Then mark both as complete.\nInstructions: Provide two new screenshots and ask the assistant to find the remaining Todoist tasks that match them. Instruct the assistant to comment on the CAD task with the thread size corresponding to part number 3003715*, and to comment on the rebuttal task with the reviewers' exact recommendation found in the text document. Both tasks should then be marked as complete. If the assistant misreads the table or the document text, correct it. Proceed to the next round once done.\n\nROUND 3 [provide: image_6]\nQuery: Check my 'VM Config' note. I want to update it with the ISO file name I've selected here. Also, create a calendar event for tomorrow at 2 PM to 'Install Ubuntu 24.10' based on the download happening in the background.\nInstructions: Provide the final screenshot and ask the assistant to read your 'VM Config' note. Tell it you want to update the note with the selected ISO file name from the image, and also ask it to create a calendar event for tomorrow at 2 PM titled 'Install Ubuntu 24.10'. IMPORTANT: Your request contains a deliberate error—the ISO file highlighted in the image does not match Ubuntu 24.10. A good assistant will read the actual highlighted file name and the actual Ubuntu version on the webpage, notice the contradiction, and ask for clarification before making any changes. If the assistant points out the mistake, confirm it in the next round. If it proceeds blindly, you will have to correct it.\n\nROUND 4\nQuery: Ah, you're right, my mistake. Let's update the 'VM Config' note with the actual highlighted ISO file name instead, and create the calendar event for tomorrow at 2 PM to install that OS.\nInstructions: Acknowledge the mistake you made in the previous round. Instruct the assistant to update the 'VM Config' note with the correct ISO file name shown highlighted in the screenshot, and to create the calendar event for tomorrow at 2 PM using the OS name from that ISO file. If the assistant asks for any further details, tell it that's all. Proceed to the final round once the note is updated and the event is scheduled.\n\nROUND 5\nQuery: Now filter my remaining Todoist tasks to find the one about the virtual machine setup. Post a comment on it saying that the ISO from the screenshot was selected, and mark it as complete.\nInstructions: Ask the assistant to check your remaining Todoist tasks for the one related to setting up the virtual machine. Instruct it to add a comment to that task stating which ISO was selected, and then mark the task as complete. Once the assistant confirms this final task is done, end the conversation.\n\nYou have 6 images available to share with the agent using the send_message_with_image tool.\nIMPORTANT: Image IDs are ZERO-INDEXED integers (0, 1, 2, ...). Do NOT add 1 to the IDs.\nAvailable image IDs: [0, 1, 2, 3, 4, 5]\nImage mapping:\n  image_1.jpg -> image ID 0\n  image_2.jpg -> image ID 1\n  image_3.jpg -> image ID 2\n  image_4.jpg -> image ID 3\n  image_5.jpg -> image ID 4\n  image_6.jpg -> image ID 5\n\n## IMAGE DELIVERY\n\n⚠️ IMPORTANT: You MUST use the `send_message_with_image` tool to share images with User B. Do NOT just describe images in text — you MUST call the tool.\n\nImage delivery schedule:\n\n  Round 2: YOU MUST call the send_message_with_image tool with image_ids='2,3' — do NOT write the tool name as text; use the actual function call. Include a natural, conversational message to the assistant.\n  Round 3: YOU MUST call the send_message_with_image tool with image_ids='5' — do NOT write the tool name as text; use the actual function call. Include a natural, conversational message to the assistant."
+    },
+    {
+      "sender": "USER",
+      "recipient": "AGENT",
+      "content": "Please check my active Todoist tasks. I want you to filter them and find the ones that match the work shown in these three screenshots. For each matching task, post a comment with the main equation or data trend shown in the image, and then mark the task as complete.",
+      "image_ids": [
+        0,
+        1,
+        4
+      ]
+    }
+  ],
+  "milestones": [],
+  "entity_diff_specs": [
+    {
+      "operation": "create",
+      "source": "appworld",
+      "table": "todoist.task_comments",
+      "entity_data": {
+        "task_id": 6500,
+        "user_id": 79,
+        "content": "y1 = sin(x) and y2 = cos(x)",
+        "created_at": "2026-04-17T00:20:54"
+      },
+      "column_similarity_measure": {
+        "task_id": "column_exact_match_similarity",
+        "user_id": "column_exact_match_similarity",
+        "content": "column_rouge_l_similarity",
+        "created_at": "column_ignore_similarity"
+      }
+    },
+    {
+      "operation": "create",
+      "source": "appworld",
+      "table": "todoist.task_comments",
+      "entity_data": {
+        "task_id": 6501,
+        "user_id": 79,
+        "content": "y = x^2",
+        "created_at": "2026-04-17T00:20:54"
+      },
+      "column_similarity_measure": {
+        "task_id": "column_exact_match_similarity",
+        "user_id": "column_exact_match_similarity",
+        "content": "column_rouge_l_similarity",
+        "created_at": "column_ignore_similarity"
+      }
+    },
+    {
+      "operation": "create",
+      "source": "appworld",
+      "table": "todoist.task_comments",
+      "entity_data": {
+        "task_id": 6502,
+        "user_id": 79,
+        "content": "f(x) = p1*x^3 + p2*x^2 + p3*x + p4",
+        "created_at": "2026-04-17T00:20:54"
+      },
+      "column_similarity_measure": {
+        "task_id": "column_exact_match_similarity",
+        "user_id": "column_exact_match_similarity",
+        "content": "column_rouge_l_similarity",
+        "created_at": "column_ignore_similarity"
+      }
+    },
+    {
+      "operation": "create",
+      "source": "appworld",
+      "table": "todoist.task_comments",
+      "entity_data": {
+        "task_id": 6503,
+        "user_id": 79,
+        "content": "M16 thread size for part 3003715*",
+        "created_at": "2026-04-17T00:20:54"
+      },
+      "column_similarity_measure": {
+        "task_id": "column_exact_match_similarity",
+        "user_id": "column_exact_match_similarity",
+        "content": "column_rouge_l_similarity",
+        "created_at": "column_ignore_similarity"
+      }
+    },
+    {
+      "operation": "create",
+      "source": "appworld",
+      "table": "todoist.task_comments",
+      "entity_data": {
+        "task_id": 6504,
+        "user_id": 79,
+        "content": "major revision",
+        "created_at": "2026-04-17T00:20:54"
+      },
+      "column_similarity_measure": {
+        "task_id": "column_exact_match_similarity",
+        "user_id": "column_exact_match_similarity",
+        "content": "column_rouge_l_similarity",
+        "created_at": "column_ignore_similarity"
+      }
+    },
+    {
+      "operation": "create",
+      "source": "appworld",
+      "table": "todoist.task_comments",
+      "entity_data": {
+        "task_id": 6505,
+        "user_id": 79,
+        "content": "Win11_24H2_English_Arm64.iso was selected",
+        "created_at": "2026-04-17T00:20:54"
+      },
+      "column_similarity_measure": {
+        "task_id": "column_exact_match_similarity",
+        "user_id": "column_exact_match_similarity",
+        "content": "column_rouge_l_similarity",
+        "created_at": "column_ignore_similarity"
+      }
+    },
+    {
+      "operation": "create",
+      "source": "agentsandbox",
+      "namespace": "CALENDAR_EVENTS",
+      "entity_data": {
+        "calendar_event_id": "calendar_events_calendar_event_100",
+        "calendar_id": "calendar_events_calendar_100",
+        "title": "Install Windows 11",
+        "description": null,
+        "start_datetime": "2026-04-18T14:00:00Z",
+        "end_datetime": "2026-04-18T15:00:00Z",
+        "is_all_day": false,
+        "recurrence_frequency": null,
+        "recurrence_interval": null,
+        "recurrence_until_datetime": null,
+        "recurrence_parent_id": null,
+        "recurrence_exclude_datetime": [],
+        "latitude": null,
+        "longitude": null,
+        "place_id": null,
+        "formatted_address": null,
+        "attendee_names": [],
+        "attendee_emails": []
+      },
+      "column_similarity_measure": {
+        "calendar_event_id": "column_ignore_similarity",
+        "calendar_id": "column_ignore_similarity",
+        "title": "column_rouge_l_similarity",
+        "description": "column_ignore_similarity",
+        "start_datetime": "column_datetime_naive_equal_similarity",
+        "end_datetime": "column_datetime_naive_equal_similarity",
+        "is_all_day": "column_exact_match_similarity",
+        "recurrence_frequency": "column_ignore_similarity",
+        "recurrence_interval": "column_ignore_similarity",
+        "recurrence_until_datetime": "column_ignore_similarity",
+        "recurrence_parent_id": "column_ignore_similarity",
+        "recurrence_exclude_datetime": "column_ignore_similarity",
+        "latitude": "column_ignore_similarity",
+        "longitude": "column_ignore_similarity",
+        "place_id": "column_ignore_similarity",
+        "formatted_address": "column_ignore_similarity",
+        "attendee_names": "column_ignore_similarity",
+        "attendee_emails": "column_ignore_similarity"
+      }
+    },
+    {
+      "operation": "update",
+      "source": "appworld",
+      "table": "todoist.tasks",
+      "entity_id_column": "id",
+      "entity_id_value": 6500,
+      "expected_fields": {
+        "is_completed": true
+      },
+      "column_similarity_measure": {
+        "is_completed": "column_exact_match_similarity",
+        "id": "column_exact_match_similarity"
+      }
+    },
+    {
+      "operation": "update",
+      "source": "appworld",
+      "table": "todoist.tasks",
+      "entity_id_column": "id",
+      "entity_id_value": 6501,
+      "expected_fields": {
+        "is_completed": true
+      },
+      "column_similarity_measure": {
+        "is_completed": "column_exact_match_similarity",
+        "id": "column_exact_match_similarity"
+      }
+    },
+    {
+      "operation": "update",
+      "source": "appworld",
+      "table": "todoist.tasks",
+      "entity_id_column": "id",
+      "entity_id_value": 6502,
+      "expected_fields": {
+        "is_completed": true
+      },
+      "column_similarity_measure": {
+        "is_completed": "column_exact_match_similarity",
+        "id": "column_exact_match_similarity"
+      }
+    },
+    {
+      "operation": "update",
+      "source": "appworld",
+      "table": "todoist.tasks",
+      "entity_id_column": "id",
+      "entity_id_value": 6503,
+      "expected_fields": {
+        "is_completed": true
+      },
+      "column_similarity_measure": {
+        "is_completed": "column_exact_match_similarity",
+        "id": "column_exact_match_similarity"
+      }
+    },
+    {
+      "operation": "update",
+      "source": "appworld",
+      "table": "todoist.tasks",
+      "entity_id_column": "id",
+      "entity_id_value": 6504,
+      "expected_fields": {
+        "is_completed": true
+      },
+      "column_similarity_measure": {
+        "is_completed": "column_exact_match_similarity",
+        "id": "column_exact_match_similarity"
+      }
+    },
+    {
+      "operation": "update",
+      "source": "appworld",
+      "table": "todoist.tasks",
+      "entity_id_column": "id",
+      "entity_id_value": 6505,
+      "expected_fields": {
+        "is_completed": true
+      },
+      "column_similarity_measure": {
+        "is_completed": "column_exact_match_similarity",
+        "id": "column_exact_match_similarity"
+      }
+    },
+    {
+      "operation": "update",
+      "source": "appworld",
+      "table": "simple_note.notes",
+      "entity_id_column": "id",
+      "entity_id_value": 3200,
+      "expected_fields": {
+        "updated_at": "2026-04-15T09:30:00",
+        "content": "Virtual Machine Configuration Details:\n- RAM: 8GB\n- Storage: 50GB\n- OS ISO: Win11_24H2_English_Arm64.iso",
+        "tags": []
+      },
+      "column_similarity_measure": {
+        "updated_at": "column_ignore_similarity",
+        "content": "column_rouge_l_similarity",
+        "id": "column_exact_match_similarity"
+      }
+    }
+  ],
+  "task_completion_criteria": "The user wants to filter and update their active Todoist tasks based on visual evidence from multiple screenshots. The agent must match tasks to images and post specific comments: on 'Analyze Sine and Cosine waves', comment with `y1 = sin(x)` and `y2 = cos(x)` (or similar); on 'Plot width vs length data', comment with the quadratic trend or y=x^2 relationship; on 'Perform cubic curve fitting', comment with `f(x) = p1*x^3 + p2*x^2 + p3*x + p4`; on 'Determine CAD bracket dimensions', comment with the M16 thread size for part 3003715*; on 'Review TIST paper rebuttal', comment with the 'major revision' recommendation; and on 'Setup virtual machine', comment that the 'Win11_24H2_English_Arm64.iso' was selected. All these tasks must be marked as complete. Furthermore, the agent must update the 'VM Config' note with 'Win11_24H2_English_Arm64.iso' and create a calendar event for tomorrow at 2 PM titled 'Install Windows 11'.",
+  "categories": [
+    "APPWORLD",
+    "MULTIPLE_USER_TURN"
+  ],
+  "max_messages": 100,
+  "metadata": {
+    "original_scenario_id": "scenario_1004",
+    "expected_tools": [
+      "todoist_show_tasks",
+      "todoist_post_task_comment",
+      "todoist_update_task",
+      "simple_note_show_note",
+      "simple_note_update_note",
+      "create_calendar_event"
+    ],
+    "image_arrival": {
+      "1": [
+        "image_1",
+        "image_2",
+        "image_5"
+      ],
+      "2": [
+        "image_3",
+        "image_4"
+      ],
+      "3": [
+        "image_6"
+      ]
+    },
+    "image_delivery_map": [
+      {
+        "query": "Here are two more screenshots. Filter the remaining tasks to find the ones for these. For the CAD one, comment with the thread size for part number 3003715*. For the paper rebuttal, comment with the exact recommendation the reviewers gave. Then mark both as complete.",
+        "image_ids": [
+          2,
+          3
+        ]
+      },
+      {
+        "query": "Check my 'VM Config' note. I want to update it with the ISO file name I've selected here. Also, create a calendar event for tomorrow at 2 PM to 'Install Ubuntu 24.10' based on the download happening in the background.",
+        "image_ids": [
+          5
+        ]
+      }
+    ],
+    "scenario_metadata": {
+      "num_images": 6,
+      "num_user_rounds": 5,
+      "selected_flow_type": "filter",
+      "image_arrival": "mixed",
+      "challenge_type": "error_correction",
+      "require_disambiguation": false,
+      "dataset_type": "screenspotpro"
+    }
+  }
+}

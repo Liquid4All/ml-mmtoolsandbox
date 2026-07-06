@@ -1,0 +1,400 @@
+{
+  "name": "scenario_0134",
+  "base_scenario": "base",
+  "description": "Patricia is organizing events and campaigns for her local sports and health awareness club. She is using various infographics and schedules to plan activities while cross-referencing her existing notes and budgets to ensure there are no scheduling or financial conflicts. (UI mode)",
+  "difficulty": "easy",
+  "appworld_base_task": "_base_",
+  "device_state_id": "pa_ritter@gmail.com",
+  "reference_time": "2026-04-16T23:54:41.119674+00:00",
+  "agentsandbox_entities": {
+    "calendars": [
+      {
+        "calendar_id": "calendar_events_calendar_100",
+        "title": "Personal"
+      }
+    ]
+  },
+  "appworld_entities": {
+    "todoist.projects": [
+      {
+        "id": 400,
+        "user_id": 94,
+        "name": "Campaign",
+        "color": "charcoal",
+        "is_inbox": false,
+        "description": "",
+        "created_at": "2026-04-10T10:00:00"
+      }
+    ],
+    "todoist.tasks": [
+      {
+        "id": 6500,
+        "project_id": 400,
+        "section_id": null,
+        "user_id": 94,
+        "title": "Book venue",
+        "description": null,
+        "due_date": null,
+        "priority": "medium",
+        "is_completed": false,
+        "duration": null,
+        "duration_unit": null,
+        "order_index": 1,
+        "assignee_id": null,
+        "assigner_id": null,
+        "created_at": "2026-04-12T10:00:00"
+      }
+    ],
+    "simple_note.notes": [
+      {
+        "id": 3200,
+        "user_id": 94,
+        "title": "August Schedule",
+        "content": "August 6: Doctor Appointment. August 10: Family Dinner.",
+        "tags": [
+          "schedule",
+          "august"
+        ],
+        "created_at": "2026-04-10T14:30:00",
+        "updated_at": "2026-04-12T09:15:00",
+        "pinned": false,
+        "data": {}
+      },
+      {
+        "id": 3201,
+        "user_id": 94,
+        "title": "Travel Budget",
+        "content": "Current road trip fund is $850. Sufficient for 1-2 away games.",
+        "tags": [
+          "budget",
+          "travel"
+        ],
+        "created_at": "2026-04-11T10:00:00",
+        "updated_at": "2026-04-11T10:00:00",
+        "pinned": false,
+        "data": {}
+      },
+      {
+        "id": 3202,
+        "user_id": 94,
+        "title": "Campus Events",
+        "content": "May 1-15: Finals week. May 20: Graduation. Late May is clear.",
+        "tags": [
+          "events",
+          "campus"
+        ],
+        "created_at": "2026-04-14T11:20:00",
+        "updated_at": "2026-04-15T16:45:00",
+        "pinned": false,
+        "data": {}
+      }
+    ],
+    "todoist.project_collaborator_links": [
+      {
+        "id": 50400,
+        "project_id": 400,
+        "user_id": 94,
+        "is_favorite": false,
+        "is_archived": false,
+        "created_at": "2026-04-10T10:00:00"
+      }
+    ],
+    "gmail.users": []
+  },
+  "image_paths": [
+    "infographicvqa/images/97470.jpg",
+    "hiertext/images/test/31c41a0accb139f6.jpg",
+    "infographicvqa/images/92208.jpg"
+  ],
+  "messages": [
+    {
+      "sender": "SYSTEM",
+      "recipient": "USER",
+      "content": "{{USER_INSTRUCTION}}ROUND 1 [provide: image_1]\nQuery: I'm organizing events for our sports club. I want to host gymnastics watch parties based on this timeline. Pull up my 'August Schedule' note and cross-reference it with the first three highlighted dates on the timeline — I'll decide which ones to schedule.\nInstructions: Ask the assistant to check your 'August Schedule' note and cross-reference it with the first three dates highlighted on the provided gymnastics timeline. When the assistant presents the dates alongside your schedule conflicts, select only the dates that do not conflict with existing entries (August 5 and August 8 — skip August 6 because of the doctor appointment). Create 'Gymnastics Watch Party' events for those dates via `ui_user_interact`. If no interactive UI is shown, tell the assistant to create events for August 5 and August 8, skipping August 6 due to the conflict. Once the events are scheduled, proceed to the next round.\n\nROUND 2 [provide: image_2]\nQuery: Next, check my 'Travel Budget' note to validate if we have enough funds for a road trip, and if so, create a calendar event for the first away game against LSU on August 31st.\nInstructions: Instruct the assistant to check your 'Travel Budget' note to see if you have funds for a road trip. If so, ask it to create a calendar event for the first away game, which you mistakenly identify as being against LSU on August 31st. A careful assistant should notice that the image shows the August 31st game is actually against a different team, and the team you mentioned is on a different date. If the assistant points out this discrepancy, acknowledge your mistake and tell it you will correct it in the next message. If it blindly creates the event with the wrong details, just move on to the next round where you will fix it.\n\nROUND 3\nQuery: Oops, I misread the schedule. The game on August 31st is actually against Troy, not LSU. Please modify the calendar event title to 'Troy Road Trip'.\nInstructions: Acknowledge that you misread the schedule in the previous step. Instruct the assistant to modify the calendar event it just created for August 31st, changing the title to 'Troy Road Trip' since that is the correct opponent for that date. Once the event is successfully updated, move on to the next round.\n\nROUND 4 [provide: image_3]\nQuery: Our club also supports health awareness. Look at this infographic and find the date designated to celebrate Menstrual Hygiene Day. Check my 'Campus Events' note to validate there are no conflicting major events, then create a calendar event titled 'MHM Awareness Campaign' for that day.\nInstructions: Provide the third image and ask the assistant to find the date for Menstrual Hygiene Day. It needs to check your 'Campus Events' note to ensure there are no major events on that specific date. If the date is clear, it should create a calendar event called 'MHM Awareness Campaign'. If the assistant asks to confirm the date it found or the lack of conflicts, confirm and tell it to proceed with creating the event. Once done, move on.\n\nROUND 5\nQuery: For the campaign, we want to set up a donation drive based on the statistic about how many tampons and pads an average North American woman uses in her lifetime. Check Todoist to see if I already have a task for this in the 'Campaign' project, and if not, create a task to 'Collect [number] pads' using that exact statistic from the infographic.\nInstructions: Ask the assistant to check your Todoist 'Campaign' project for any existing tasks about a donation drive. If none exists, instruct it to create a new task titled 'Collect [number] pads', replacing the bracketed text with the exact statistic shown in the infographic regarding lifetime usage by an average North American woman. If the assistant successfully creates the task with the correct number, you can end the conversation.\n\nYou have 3 images available to share with the agent using the send_message_with_image tool.\nIMPORTANT: Image IDs are ZERO-INDEXED integers (0, 1, 2, ...). Do NOT add 1 to the IDs.\nAvailable image IDs: [0, 1, 2]\nImage mapping:\n  image_1.jpg -> image ID 0\n  image_2.jpg -> image ID 1\n  image_3.jpg -> image ID 2\n\n## IMAGE DELIVERY\n\n⚠️ IMPORTANT: You MUST use the `send_message_with_image` tool to share images with User B. Do NOT just describe images in text — you MUST call the tool.\n\nImage delivery schedule:\n\n  Round 2: YOU MUST call the send_message_with_image tool with image_ids='1' — do NOT write the tool name as text; use the actual function call. Include a natural, conversational message to the assistant.\n  Round 4: YOU MUST call the send_message_with_image tool with image_ids='2' — do NOT write the tool name as text; use the actual function call. Include a natural, conversational message to the assistant."
+    },
+    {
+      "sender": "USER",
+      "recipient": "AGENT",
+      "content": "I'm organizing events for our sports club. I want to host gymnastics watch parties based on this timeline. Pull up my 'August Schedule' note and cross-reference it with the first three highlighted dates on the timeline — I'll decide which ones to schedule.",
+      "image_ids": [
+        0
+      ]
+    }
+  ],
+  "milestones": [],
+  "entity_diff_specs": [
+    {
+      "operation": "create",
+      "source": "appworld",
+      "table": "todoist.tasks",
+      "entity_data": {
+        "project_id": 400,
+        "section_id": null,
+        "user_id": 94,
+        "title": "Collect 13,000 pads",
+        "description": null,
+        "due_date": null,
+        "priority": "medium",
+        "is_completed": false,
+        "duration": null,
+        "duration_unit": null,
+        "order_index": 2,
+        "assignee_id": null,
+        "assigner_id": null,
+        "created_at": "2026-04-16T23:54:41"
+      },
+      "column_similarity_measure": {
+        "project_id": "column_exact_match_similarity",
+        "section_id": "column_ignore_similarity",
+        "user_id": "column_exact_match_similarity",
+        "title": "column_rouge_l_similarity",
+        "description": "column_ignore_similarity",
+        "due_date": "column_ignore_similarity",
+        "priority": "column_exact_match_similarity",
+        "is_completed": "column_exact_match_similarity",
+        "duration": "column_ignore_similarity",
+        "duration_unit": "column_ignore_similarity",
+        "order_index": "column_ignore_similarity",
+        "assignee_id": "column_ignore_similarity",
+        "assigner_id": "column_ignore_similarity",
+        "created_at": "column_ignore_similarity"
+      }
+    },
+    {
+      "operation": "create",
+      "source": "agentsandbox",
+      "namespace": "CALENDAR_EVENTS",
+      "entity_data": {
+        "calendar_event_id": "calendar_events_calendar_event_100",
+        "calendar_id": "calendar_events_calendar_100",
+        "title": "Gymnastics Watch Party",
+        "description": null,
+        "start_datetime": "2026-08-05T00:00:00Z",
+        "end_datetime": "2026-08-06T00:00:00Z",
+        "is_all_day": true,
+        "recurrence_frequency": null,
+        "recurrence_interval": null,
+        "recurrence_until_datetime": null,
+        "recurrence_parent_id": null,
+        "recurrence_exclude_datetime": [],
+        "latitude": null,
+        "longitude": null,
+        "place_id": null,
+        "formatted_address": null,
+        "attendee_names": [],
+        "attendee_emails": []
+      },
+      "column_similarity_measure": {
+        "calendar_event_id": "column_ignore_similarity",
+        "calendar_id": "column_ignore_similarity",
+        "title": "column_rouge_l_similarity",
+        "description": "column_ignore_similarity",
+        "start_datetime": "column_datetime_naive_equal_similarity",
+        "end_datetime": "column_datetime_naive_equal_similarity",
+        "is_all_day": "column_exact_match_similarity",
+        "recurrence_frequency": "column_ignore_similarity",
+        "recurrence_interval": "column_ignore_similarity",
+        "recurrence_until_datetime": "column_ignore_similarity",
+        "recurrence_parent_id": "column_ignore_similarity",
+        "recurrence_exclude_datetime": "column_ignore_similarity",
+        "latitude": "column_ignore_similarity",
+        "longitude": "column_ignore_similarity",
+        "place_id": "column_ignore_similarity",
+        "formatted_address": "column_ignore_similarity",
+        "attendee_names": "column_ignore_similarity",
+        "attendee_emails": "column_ignore_similarity"
+      }
+    },
+    {
+      "operation": "create",
+      "source": "agentsandbox",
+      "namespace": "CALENDAR_EVENTS",
+      "entity_data": {
+        "calendar_event_id": "calendar_events_calendar_event_101",
+        "calendar_id": "calendar_events_calendar_100",
+        "title": "Gymnastics Watch Party",
+        "description": null,
+        "start_datetime": "2026-08-08T00:00:00Z",
+        "end_datetime": "2026-08-09T00:00:00Z",
+        "is_all_day": true,
+        "recurrence_frequency": null,
+        "recurrence_interval": null,
+        "recurrence_until_datetime": null,
+        "recurrence_parent_id": null,
+        "recurrence_exclude_datetime": [],
+        "latitude": null,
+        "longitude": null,
+        "place_id": null,
+        "formatted_address": null,
+        "attendee_names": [],
+        "attendee_emails": []
+      },
+      "column_similarity_measure": {
+        "calendar_event_id": "column_ignore_similarity",
+        "calendar_id": "column_ignore_similarity",
+        "title": "column_rouge_l_similarity",
+        "description": "column_ignore_similarity",
+        "start_datetime": "column_datetime_naive_equal_similarity",
+        "end_datetime": "column_datetime_naive_equal_similarity",
+        "is_all_day": "column_exact_match_similarity",
+        "recurrence_frequency": "column_ignore_similarity",
+        "recurrence_interval": "column_ignore_similarity",
+        "recurrence_until_datetime": "column_ignore_similarity",
+        "recurrence_parent_id": "column_ignore_similarity",
+        "recurrence_exclude_datetime": "column_ignore_similarity",
+        "latitude": "column_ignore_similarity",
+        "longitude": "column_ignore_similarity",
+        "place_id": "column_ignore_similarity",
+        "formatted_address": "column_ignore_similarity",
+        "attendee_names": "column_ignore_similarity",
+        "attendee_emails": "column_ignore_similarity"
+      }
+    },
+    {
+      "operation": "create",
+      "source": "agentsandbox",
+      "namespace": "CALENDAR_EVENTS",
+      "entity_data": {
+        "calendar_event_id": "calendar_events_calendar_event_102",
+        "calendar_id": "calendar_events_calendar_100",
+        "title": "Troy Road Trip",
+        "description": null,
+        "start_datetime": "2026-08-31T00:00:00Z",
+        "end_datetime": "2026-09-01T00:00:00Z",
+        "is_all_day": true,
+        "recurrence_frequency": null,
+        "recurrence_interval": null,
+        "recurrence_until_datetime": null,
+        "recurrence_parent_id": null,
+        "recurrence_exclude_datetime": [],
+        "latitude": null,
+        "longitude": null,
+        "place_id": null,
+        "formatted_address": null,
+        "attendee_names": [],
+        "attendee_emails": []
+      },
+      "column_similarity_measure": {
+        "calendar_event_id": "column_ignore_similarity",
+        "calendar_id": "column_ignore_similarity",
+        "title": "column_rouge_l_similarity",
+        "description": "column_ignore_similarity",
+        "start_datetime": "column_datetime_naive_equal_similarity",
+        "end_datetime": "column_datetime_naive_equal_similarity",
+        "is_all_day": "column_exact_match_similarity",
+        "recurrence_frequency": "column_ignore_similarity",
+        "recurrence_interval": "column_ignore_similarity",
+        "recurrence_until_datetime": "column_ignore_similarity",
+        "recurrence_parent_id": "column_ignore_similarity",
+        "recurrence_exclude_datetime": "column_ignore_similarity",
+        "latitude": "column_ignore_similarity",
+        "longitude": "column_ignore_similarity",
+        "place_id": "column_ignore_similarity",
+        "formatted_address": "column_ignore_similarity",
+        "attendee_names": "column_ignore_similarity",
+        "attendee_emails": "column_ignore_similarity"
+      }
+    },
+    {
+      "operation": "create",
+      "source": "agentsandbox",
+      "namespace": "CALENDAR_EVENTS",
+      "entity_data": {
+        "calendar_event_id": "calendar_events_calendar_event_103",
+        "calendar_id": "calendar_events_calendar_100",
+        "title": "MHM Awareness Campaign",
+        "description": null,
+        "start_datetime": "2026-05-28T00:00:00Z",
+        "end_datetime": "2026-05-29T00:00:00Z",
+        "is_all_day": true,
+        "recurrence_frequency": null,
+        "recurrence_interval": null,
+        "recurrence_until_datetime": null,
+        "recurrence_parent_id": null,
+        "recurrence_exclude_datetime": [],
+        "latitude": null,
+        "longitude": null,
+        "place_id": null,
+        "formatted_address": null,
+        "attendee_names": [],
+        "attendee_emails": []
+      },
+      "column_similarity_measure": {
+        "calendar_event_id": "column_ignore_similarity",
+        "calendar_id": "column_ignore_similarity",
+        "title": "column_rouge_l_similarity",
+        "description": "column_ignore_similarity",
+        "start_datetime": "column_datetime_naive_equal_similarity",
+        "end_datetime": "column_datetime_naive_equal_similarity",
+        "is_all_day": "column_exact_match_similarity",
+        "recurrence_frequency": "column_ignore_similarity",
+        "recurrence_interval": "column_ignore_similarity",
+        "recurrence_until_datetime": "column_ignore_similarity",
+        "recurrence_parent_id": "column_ignore_similarity",
+        "recurrence_exclude_datetime": "column_ignore_similarity",
+        "latitude": "column_ignore_similarity",
+        "longitude": "column_ignore_similarity",
+        "place_id": "column_ignore_similarity",
+        "formatted_address": "column_ignore_similarity",
+        "attendee_names": "column_ignore_similarity",
+        "attendee_emails": "column_ignore_similarity"
+      }
+    }
+  ],
+  "task_completion_criteria": "The user wants to schedule club activities by validating dates against existing notes. Specifically, they want to create calendar events for 'Gymnastics Watch Party' on August 5, 2026, and August 8, 2026 (skipping August 6 due to a conflict), create a calendar event titled 'Troy Road Trip' on August 31, 2026 (correcting an initial mistake), create a calendar event titled 'MHM Awareness Campaign' on May 28, 2026, after verifying no campus conflicts, and create a Todoist task in the 'Campaign' project to 'Collect 13,000 pads'.\n\nUI Requirements:\n- Round 1: The agent must present the gymnastics timeline dates alongside the user's August Schedule conflicts in a structured interactive UI that lets the user select which dates to create watch party events for.",
+  "categories": [
+    "APPWORLD",
+    "MULTIPLE_USER_TURN",
+    "UI_MODE"
+  ],
+  "max_messages": 100,
+  "metadata": {
+    "original_scenario_id": "scenario_0134",
+    "expected_tools": [
+      "simple_note_show_note",
+      "create_calendar_event",
+      "modify_calendar_event",
+      "todoist_show_tasks",
+      "todoist_create_task",
+      "render_ui_screen",
+      "show_ui_to_user",
+      "ui_user_interact",
+      "ui_get_quick_start",
+      "ui_get_item_details"
+    ],
+    "image_arrival": {
+      "1": [
+        "image_1"
+      ],
+      "2": [
+        "image_2"
+      ],
+      "4": [
+        "image_3"
+      ]
+    },
+    "image_delivery_map": [
+      {
+        "query": "Next, check my 'Travel Budget' note to validate if we have enough funds for a road trip, and if so, create a calendar event for the first away game against LSU on August 31st.",
+        "image_ids": [
+          1
+        ]
+      },
+      {
+        "query": "Our club also supports health awareness. Look at this infographic and find the date designated to celebrate Menstrual Hygiene Day. Check my 'Campus Events' note to validate there are no conflicting major events, then create a calendar event titled 'MHM Awareness Campaign' for that day.",
+        "image_ids": [
+          2
+        ]
+      }
+    ],
+    "scenario_metadata": {
+      "num_images": 3,
+      "num_user_rounds": 5,
+      "selected_flow_type": "validate",
+      "image_arrival": "progressive",
+      "challenge_type": "error_correction",
+      "require_disambiguation": false,
+      "dataset_type": "infographicvqa"
+    }
+  }
+}

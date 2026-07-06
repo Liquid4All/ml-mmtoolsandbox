@@ -1,0 +1,266 @@
+{
+  "name": "scenario_0284",
+  "base_scenario": "base",
+  "description": "The user is considering purchasing various electronics and office supplies and wants to calculate costs and manage their Amazon cart and wish list based on their budget. (UI mode)",
+  "difficulty": "easy",
+  "appworld_base_task": "_base_",
+  "device_state_id": "joyce-weav@gmail.com",
+  "reference_time": "2026-04-16T23:58:57.214985+00:00",
+  "agentsandbox_entities": {},
+  "appworld_entities": {
+    "amazon.sellers": [
+      {
+        "id": 200,
+        "name": "Electronics Direct",
+        "rating": 4.5
+      },
+      {
+        "id": 201,
+        "name": "Office Essentials",
+        "rating": 4.8
+      }
+    ],
+    "amazon.products": [
+      {
+        "id": 200,
+        "product_type": "cameras",
+        "name": "Sony Alpha 6400",
+        "description": "Mirrorless camera with 16-50mm lens",
+        "seller_id": 200,
+        "price": 898.0,
+        "delivery_days": 2,
+        "inventory_quantity": 10,
+        "weight": 1.5,
+        "length": 5.0,
+        "width": 3.0,
+        "height": 4.0,
+        "color": "Black",
+        "relative_size": null,
+        "rating": 4.6,
+        "seller_rating": 4.5,
+        "has_variations": false
+      },
+      {
+        "id": 201,
+        "product_type": "cameras",
+        "name": "Leica D-Lux 8",
+        "description": "Compact digital camera",
+        "seller_id": 200,
+        "price": 1595.0,
+        "delivery_days": 3,
+        "inventory_quantity": 5,
+        "weight": 1.2,
+        "length": 4.5,
+        "width": 2.5,
+        "height": 3.0,
+        "color": "Black",
+        "relative_size": null,
+        "rating": 4.8,
+        "seller_rating": 4.5,
+        "has_variations": false
+      },
+      {
+        "id": 202,
+        "product_type": "monitors",
+        "name": "Dell U2723QE",
+        "description": "27 inch 4K USB-C Hub Monitor",
+        "seller_id": 200,
+        "price": 550.0,
+        "delivery_days": 2,
+        "inventory_quantity": 20,
+        "weight": 10.0,
+        "length": 24.0,
+        "width": 7.0,
+        "height": 15.0,
+        "color": "Silver",
+        "relative_size": null,
+        "rating": 4.7,
+        "seller_rating": 4.5,
+        "has_variations": false
+      },
+      {
+        "id": 203,
+        "product_type": "smartphones",
+        "name": "iPhone 17",
+        "description": "Latest Apple smartphone",
+        "seller_id": 200,
+        "price": 799.0,
+        "delivery_days": 1,
+        "inventory_quantity": 50,
+        "weight": 0.4,
+        "length": 6.0,
+        "width": 3.0,
+        "height": 0.3,
+        "color": "Black",
+        "relative_size": null,
+        "rating": 4.9,
+        "seller_rating": 4.5,
+        "has_variations": false
+      },
+      {
+        "id": 204,
+        "product_type": "smart_speakers",
+        "name": "Xiaomi smart speaker",
+        "description": "Smart speaker with voice control",
+        "seller_id": 200,
+        "price": 49.99,
+        "delivery_days": 2,
+        "inventory_quantity": 100,
+        "weight": 1.0,
+        "length": 4.0,
+        "width": 4.0,
+        "height": 6.0,
+        "color": "White",
+        "relative_size": null,
+        "rating": 4.3,
+        "seller_rating": 4.5,
+        "has_variations": false
+      },
+      {
+        "id": 205,
+        "product_type": "office_supplies",
+        "name": "Kokuyo Right-Angle Glue Stick",
+        "description": "Square glue stick for corners",
+        "seller_id": 201,
+        "price": 3.5,
+        "delivery_days": 2,
+        "inventory_quantity": 20,
+        "weight": 0.1,
+        "length": 1.0,
+        "width": 1.0,
+        "height": 4.0,
+        "color": "Blue",
+        "relative_size": null,
+        "rating": 4.5,
+        "seller_rating": 4.8,
+        "has_variations": false
+      }
+    ],
+    "gmail.users": []
+  },
+  "image_paths": [
+    "worldvqa/images/1624.jpg",
+    "worldvqa/images/1640.jpg",
+    "worldvqa/images/1619.jpg",
+    "worldvqa/images/1457.jpg",
+    "worldvqa/images/1653.jpg",
+    "worldvqa/images/1448.jpg"
+  ],
+  "messages": [
+    {
+      "sender": "SYSTEM",
+      "recipient": "USER",
+      "content": "{{USER_INSTRUCTION}}ROUND 1 [provide: image_1, image_2, image_3, image_4, image_5, image_6]\nQuery: I'm thinking of upgrading my setup. Can you find the exact models of the camera in the first picture, the camera in the second picture, and the monitor in the last picture on Amazon? Add up their prices — I'll decide whether to buy now or save them for later based on the total.\nInstructions: Ask the assistant to identify the cameras in the first and second images and the monitor in the sixth image, then search for their exact models on Amazon and calculate the total combined price. When the assistant presents the items with prices and the total, decide based on the total: if it exceeds $2500, put them in your wish list for now; if it's under $2500, add them straight to your cart. Use `ui_user_interact` to make your selection. If no interactive UI is shown, tell the assistant your decision in text. The total should be over $2500, so put them in the wish list. Once the items are in the appropriate list, proceed to the next round.\n\nROUND 2\nQuery: Actually, let's hold off on the cameras and monitor for now. Take them out of my cart or wish list, whichever you put them in. Instead, let's look at the other items. Find the phone in the third image, the smart speaker in the fourth image, and the glue stick in the fifth image on Amazon. Figure out the total cost if I buy one phone, two smart speakers, and five glue sticks. Then add all of those to my cart with those exact quantities.\nInstructions: Tell the assistant that you've changed your mind and want to hold off on the previous items. Ask it to remove the cameras and the monitor from wherever it just put them. Then, direct its attention to the phone in the third image, the smart speaker in the fourth image, and the glue stick in the fifth image. Instruct the assistant to find these exact items on Amazon, calculate the total cost for one phone, two smart speakers, and five glue sticks, and add this specific bundle to your cart. Once the assistant confirms the new items are in your cart and the old ones are removed, conclude the conversation.\n\nYou have 6 images available to share with the agent using the send_message_with_image tool.\nIMPORTANT: Image IDs are ZERO-INDEXED integers (0, 1, 2, ...). Do NOT add 1 to the IDs.\nAvailable image IDs: [0, 1, 2, 3, 4, 5]\nImage mapping:\n  image_1.jpg -> image ID 0\n  image_2.jpg -> image ID 1\n  image_3.jpg -> image ID 2\n  image_4.jpg -> image ID 3\n  image_5.jpg -> image ID 4\n  image_6.jpg -> image ID 5"
+    },
+    {
+      "sender": "USER",
+      "recipient": "AGENT",
+      "content": "I'm thinking of upgrading my setup. Can you find the exact models of the camera in the first picture, the camera in the second picture, and the monitor in the last picture on Amazon? Add up their prices — I'll decide whether to buy now or save them for later based on the total.",
+      "image_ids": [
+        0,
+        1,
+        2,
+        3,
+        4,
+        5
+      ]
+    }
+  ],
+  "milestones": [],
+  "entity_diff_specs": [
+    {
+      "operation": "create",
+      "source": "appworld",
+      "table": "amazon.cart_entries",
+      "entity_data": {
+        "user_id": 57,
+        "product_id": 203,
+        "quantity": 1,
+        "gift_wrap_quantity": 0
+      },
+      "column_similarity_measure": {
+        "user_id": "column_exact_match_similarity",
+        "product_id": "column_exact_match_similarity",
+        "quantity": "column_exact_match_similarity",
+        "gift_wrap_quantity": "column_exact_match_similarity"
+      }
+    },
+    {
+      "operation": "create",
+      "source": "appworld",
+      "table": "amazon.cart_entries",
+      "entity_data": {
+        "user_id": 57,
+        "product_id": 204,
+        "quantity": 2,
+        "gift_wrap_quantity": 0
+      },
+      "column_similarity_measure": {
+        "user_id": "column_exact_match_similarity",
+        "product_id": "column_exact_match_similarity",
+        "quantity": "column_exact_match_similarity",
+        "gift_wrap_quantity": "column_exact_match_similarity"
+      }
+    },
+    {
+      "operation": "create",
+      "source": "appworld",
+      "table": "amazon.cart_entries",
+      "entity_data": {
+        "user_id": 57,
+        "product_id": 205,
+        "quantity": 5,
+        "gift_wrap_quantity": 0
+      },
+      "column_similarity_measure": {
+        "user_id": "column_exact_match_similarity",
+        "product_id": "column_exact_match_similarity",
+        "quantity": "column_exact_match_similarity",
+        "gift_wrap_quantity": "column_exact_match_similarity"
+      }
+    }
+  ],
+  "task_completion_criteria": "The user's Amazon cart contains one iPhone 17, two Xiaomi smart speakers, and five Kokuyo Right-Angle Glue Sticks. The Sony Alpha 6400, Leica D-Lux 8, and Dell U2723QE monitor are not in the user's cart or wish list.\n\nUI Requirements:\n- Round 1: The agent must present the identified items with their Amazon prices and the calculated total in a structured interactive UI that lets the user decide whether to add the items to the cart or wish list.",
+  "categories": [
+    "APPWORLD",
+    "MULTIPLE_USER_TURN",
+    "UI_MODE"
+  ],
+  "max_messages": 100,
+  "metadata": {
+    "original_scenario_id": "scenario_0284",
+    "expected_tools": [
+      "web_search_serper",
+      "amazon_show_product",
+      "amazon_add_product_to_cart",
+      "amazon_add_product_to_wish_list",
+      "amazon_delete_product_from_wish_list",
+      "amazon_delete_product_from_cart",
+      "render_ui_screen",
+      "show_ui_to_user",
+      "ui_user_interact",
+      "ui_get_quick_start",
+      "ui_get_item_details"
+    ],
+    "image_arrival": {
+      "1": [
+        "image_1",
+        "image_2",
+        "image_3",
+        "image_4",
+        "image_5",
+        "image_6"
+      ]
+    },
+    "image_delivery_map": [],
+    "scenario_metadata": {
+      "num_images": 6,
+      "num_user_rounds": 2,
+      "selected_flow_type": "compute",
+      "image_arrival": "upfront",
+      "challenge_type": "goal_change",
+      "require_disambiguation": false,
+      "dataset_type": "worldvqa"
+    }
+  }
+}

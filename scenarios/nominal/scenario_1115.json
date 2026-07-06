@@ -1,0 +1,428 @@
+{
+  "name": "scenario_1115",
+  "base_scenario": "base",
+  "description": "The user is an exhibition curator who has a Todoist project tracking reference photos they need to gather. They are progressively finding the photos and updating their co-curator, Bob.",
+  "difficulty": "easy",
+  "appworld_base_task": "_base_",
+  "device_state_id": "matthew.blac@gmail.com",
+  "reference_time": "2026-04-17T00:23:54.912551+00:00",
+  "agentsandbox_entities": {},
+  "appworld_entities": {
+    "phone.contacts": [
+      {
+        "id": 200,
+        "user_id": 41,
+        "first_name": "Bob",
+        "last_name": "Smith",
+        "email": "bob.cocurator@gmail.com",
+        "phone_number": "555-0102",
+        "relationships": [
+          "co-curator"
+        ],
+        "birthday": null,
+        "home_address": null,
+        "work_address": null,
+        "created_at": "2025-10-12T09:30:00"
+      },
+      {
+        "id": 201,
+        "user_id": 41,
+        "first_name": "Bob",
+        "last_name": "Plumber",
+        "email": "bob.plumber@gmail.com",
+        "phone_number": "555-0999",
+        "relationships": [
+          "plumber"
+        ],
+        "birthday": null,
+        "home_address": null,
+        "work_address": null,
+        "created_at": "2024-05-20T14:15:00"
+      }
+    ],
+    "todoist.projects": [
+      {
+        "id": 400,
+        "user_id": 41,
+        "name": "Exhibition Assets",
+        "color": "charcoal",
+        "is_inbox": false,
+        "description": "",
+        "created_at": "2026-04-10T10:00:00"
+      }
+    ],
+    "todoist.tasks": [
+      {
+        "id": 6500,
+        "project_id": 400,
+        "section_id": null,
+        "user_id": 41,
+        "title": "Australian desert pea field",
+        "description": null,
+        "due_date": null,
+        "priority": "medium",
+        "is_completed": false,
+        "duration": null,
+        "duration_unit": null,
+        "order_index": 0,
+        "assignee_id": null,
+        "assigner_id": null,
+        "created_at": "2026-04-10T10:05:00"
+      },
+      {
+        "id": 6501,
+        "project_id": 400,
+        "section_id": null,
+        "user_id": 41,
+        "title": "Nike of Paionios",
+        "description": null,
+        "due_date": null,
+        "priority": "medium",
+        "is_completed": false,
+        "duration": null,
+        "duration_unit": null,
+        "order_index": 1,
+        "assignee_id": null,
+        "assigner_id": null,
+        "created_at": "2026-04-10T10:06:00"
+      },
+      {
+        "id": 6502,
+        "project_id": 400,
+        "section_id": null,
+        "user_id": 41,
+        "title": "Mistle thrush",
+        "description": null,
+        "due_date": null,
+        "priority": "medium",
+        "is_completed": false,
+        "duration": null,
+        "duration_unit": null,
+        "order_index": 2,
+        "assignee_id": null,
+        "assigner_id": null,
+        "created_at": "2026-04-10T10:07:00"
+      },
+      {
+        "id": 6503,
+        "project_id": 400,
+        "section_id": null,
+        "user_id": 41,
+        "title": "AE4 bronze coin of Valentinianus",
+        "description": null,
+        "due_date": null,
+        "priority": "medium",
+        "is_completed": false,
+        "duration": null,
+        "duration_unit": null,
+        "order_index": 3,
+        "assignee_id": null,
+        "assigner_id": null,
+        "created_at": "2026-04-10T10:08:00"
+      },
+      {
+        "id": 6504,
+        "project_id": 400,
+        "section_id": null,
+        "user_id": 41,
+        "title": "Zimbabwean stone sculpture",
+        "description": null,
+        "due_date": null,
+        "priority": "medium",
+        "is_completed": false,
+        "duration": null,
+        "duration_unit": null,
+        "order_index": 4,
+        "assignee_id": null,
+        "assigner_id": null,
+        "created_at": "2026-04-10T10:09:00"
+      }
+    ],
+    "gmail.users": [
+      {
+        "id": 200,
+        "first_name": "Bob",
+        "last_name": "Smith",
+        "email": "bob.cocurator@gmail.com",
+        "password": "default_password",
+        "status": "active",
+        "created_at": "2025-01-01T00:00:00",
+        "last_logged_in": "2025-01-01T00:00:00"
+      },
+      {
+        "id": 201,
+        "first_name": "Bob",
+        "last_name": "Plumber",
+        "email": "bob.plumber@gmail.com",
+        "password": "default_password",
+        "status": "active",
+        "created_at": "2025-01-01T00:00:00",
+        "last_logged_in": "2025-01-01T00:00:00"
+      }
+    ],
+    "phone.users": [
+      {
+        "id": 200,
+        "first_name": "Bob",
+        "last_name": "Smith",
+        "phone_number": "555-0102",
+        "password": "default_password",
+        "created_at": "2025-01-01T00:00:00",
+        "last_logged_in": "2025-01-01T00:00:00"
+      },
+      {
+        "id": 201,
+        "first_name": "Bob",
+        "last_name": "Plumber",
+        "phone_number": "555-0999",
+        "password": "default_password",
+        "created_at": "2025-01-01T00:00:00",
+        "last_logged_in": "2025-01-01T00:00:00"
+      }
+    ],
+    "todoist.project_collaborator_links": [
+      {
+        "id": 50400,
+        "project_id": 400,
+        "user_id": 41,
+        "is_favorite": false,
+        "is_archived": false,
+        "created_at": "2026-04-10T10:00:00"
+      }
+    ]
+  },
+  "image_paths": [
+    "worldvqa/images/801.jpg",
+    "worldvqa/images/1054.jpg",
+    "worldvqa/images/11.jpg",
+    "worldvqa/images/1176.jpg",
+    "worldvqa/images/1194.jpg"
+  ],
+  "messages": [
+    {
+      "sender": "SYSTEM",
+      "recipient": "USER",
+      "content": "{{USER_INSTRUCTION}}ROUND 1 [provide: image_1, image_2, image_3]\nQuery: I've gathered these three reference photos. Cross-reference them with my 'Exhibition Assets' tasks in Todoist and check off the ones I've found. Then send a text to Bob letting him know which specific items from that list are still missing.\nInstructions: Ask the assistant to identify the subjects of the three provided photos, cross-reference them with your 'Exhibition Assets' project on Todoist, and check off the corresponding tasks. Also, ask it to text Bob with a list of the specific items from that project that are still missing. Since there are multiple contacts named 'Bob', the assistant should ask you to clarify which one you mean. When asked, specify that you want to message Bob your co-curator. If the assistant misidentifies any of the images, point it back to the visual details. Once the assistant confirms the tasks are checked off and the text message is sent, proceed to the next round.\n\nROUND 2 [provide: image_4, image_5]\nQuery: I just got these last two photos. Mark the remaining tasks as complete and text Bob to confirm all exhibition assets are collected.\nInstructions: Tell the assistant you found the final two reference photos. Ask it to cross-reference these with the remaining Todoist tasks to mark them as complete, and send a text to Bob confirming that all exhibition assets have now been successfully collected. If it asks which Bob, remind it you mean your co-curator. Once the assistant confirms the final tasks are completed and the confirmation text is sent, end the conversation.\n\nYou have 5 images available to share with the agent using the send_message_with_image tool.\nIMPORTANT: Image IDs are ZERO-INDEXED integers (0, 1, 2, ...). Do NOT add 1 to the IDs.\nAvailable image IDs: [0, 1, 2, 3, 4]\nImage mapping:\n  image_1.jpg -> image ID 0\n  image_2.jpg -> image ID 1\n  image_3.jpg -> image ID 2\n  image_4.jpg -> image ID 3\n  image_5.jpg -> image ID 4\n\n## IMAGE DELIVERY\n\n\u26a0\ufe0f IMPORTANT: You MUST use the `send_message_with_image` tool to share images with User B. Do NOT just describe images in text \u2014 you MUST call the tool.\n\nImage delivery schedule:\n\n  Round 2: YOU MUST call the send_message_with_image tool with image_ids='3,4' \u2014 do NOT write the tool name as text; use the actual function call. Include a natural, conversational message to the assistant."
+    },
+    {
+      "sender": "USER",
+      "recipient": "AGENT",
+      "content": "I've gathered these three reference photos. Cross-reference them with my 'Exhibition Assets' tasks in Todoist and check off the ones I've found. Then send a text to Bob letting him know which specific items from that list are still missing.",
+      "image_ids": [
+        0,
+        1,
+        2
+      ]
+    }
+  ],
+  "milestones": [],
+  "entity_diff_specs": [
+    {
+      "operation": "create",
+      "source": "appworld",
+      "table": "phone.global_text_messages",
+      "entity_data": {
+        "sender_id": 41,
+        "receiver_id": 200,
+        "message": "The AE4 bronze coin of Valentinianus and Zimbabwean stone sculpture are still missing.",
+        "created_at": "2026-04-17T00:23:54"
+      },
+      "column_similarity_measure": {
+        "sender_id": "column_exact_match_similarity",
+        "receiver_id": "column_exact_match_similarity",
+        "message": "column_rouge_l_similarity",
+        "created_at": "column_ignore_similarity"
+      }
+    },
+    {
+      "operation": "create",
+      "source": "appworld",
+      "table": "phone.user_text_messages",
+      "entity_data": {
+        "global_text_message_id": 200,
+        "user_id": 41,
+        "created_at": "2026-04-17T00:23:54"
+      },
+      "column_similarity_measure": {
+        "global_text_message_id": "column_ignore_similarity",
+        "user_id": "column_exact_match_similarity",
+        "created_at": "column_ignore_similarity"
+      }
+    },
+    {
+      "operation": "create",
+      "source": "appworld",
+      "table": "phone.global_text_messages",
+      "entity_data": {
+        "sender_id": 41,
+        "receiver_id": 200,
+        "message": "All exhibition assets have been collected.",
+        "created_at": "2026-04-17T00:23:54"
+      },
+      "column_similarity_measure": {
+        "sender_id": "column_exact_match_similarity",
+        "receiver_id": "column_exact_match_similarity",
+        "message": "column_rouge_l_similarity",
+        "created_at": "column_ignore_similarity"
+      }
+    },
+    {
+      "operation": "create",
+      "source": "appworld",
+      "table": "phone.user_text_messages",
+      "entity_data": {
+        "global_text_message_id": 201,
+        "user_id": 41,
+        "created_at": "2026-04-17T00:23:54"
+      },
+      "column_similarity_measure": {
+        "global_text_message_id": "column_ignore_similarity",
+        "user_id": "column_exact_match_similarity",
+        "created_at": "column_ignore_similarity"
+      }
+    },
+    {
+      "operation": "update",
+      "source": "appworld",
+      "table": "todoist.tasks",
+      "entity_id_column": "id",
+      "entity_id_value": 6500,
+      "expected_fields": {
+        "is_completed": true
+      },
+      "column_similarity_measure": {
+        "is_completed": "column_exact_match_similarity",
+        "id": "column_exact_match_similarity"
+      }
+    },
+    {
+      "operation": "update",
+      "source": "appworld",
+      "table": "todoist.tasks",
+      "entity_id_column": "id",
+      "entity_id_value": 6501,
+      "expected_fields": {
+        "is_completed": true
+      },
+      "column_similarity_measure": {
+        "is_completed": "column_exact_match_similarity",
+        "id": "column_exact_match_similarity"
+      }
+    },
+    {
+      "operation": "update",
+      "source": "appworld",
+      "table": "todoist.tasks",
+      "entity_id_column": "id",
+      "entity_id_value": 6502,
+      "expected_fields": {
+        "is_completed": true
+      },
+      "column_similarity_measure": {
+        "is_completed": "column_exact_match_similarity",
+        "id": "column_exact_match_similarity"
+      }
+    },
+    {
+      "operation": "update",
+      "source": "appworld",
+      "table": "todoist.tasks",
+      "entity_id_column": "id",
+      "entity_id_value": 6503,
+      "expected_fields": {
+        "is_completed": true
+      },
+      "column_similarity_measure": {
+        "is_completed": "column_exact_match_similarity",
+        "id": "column_exact_match_similarity"
+      }
+    },
+    {
+      "operation": "update",
+      "source": "appworld",
+      "table": "todoist.tasks",
+      "entity_id_column": "id",
+      "entity_id_value": 6504,
+      "expected_fields": {
+        "is_completed": true
+      },
+      "column_similarity_measure": {
+        "is_completed": "column_exact_match_similarity",
+        "id": "column_exact_match_similarity"
+      }
+    },
+    {
+      "operation": "create",
+      "source": "appworld",
+      "table": "phone.user_text_messages",
+      "entity_data": {
+        "global_text_message_id": 200,
+        "user_id": 200,
+        "created_at": "2026-04-17T00:23:54"
+      },
+      "column_similarity_measure": {
+        "global_text_message_id": "column_ignore_similarity",
+        "user_id": "column_exact_match_similarity",
+        "created_at": "column_ignore_similarity"
+      }
+    },
+    {
+      "operation": "create",
+      "source": "appworld",
+      "table": "phone.user_text_messages",
+      "entity_data": {
+        "global_text_message_id": 201,
+        "user_id": 200,
+        "created_at": "2026-04-17T00:23:54"
+      },
+      "column_similarity_measure": {
+        "global_text_message_id": "column_ignore_similarity",
+        "user_id": "column_exact_match_similarity",
+        "created_at": "column_ignore_similarity"
+      }
+    }
+  ],
+  "task_completion_criteria": "Identify the subjects in the 5 provided photos across two rounds, cross-reference them with the 'Exhibition Assets' Todoist project to check off the corresponding tasks, and update Bob (phone 555-0102) via text message. In round 1, mark the tasks for the Australian desert pea field, Nike of Paionios, and Mistle thrush as complete, and send a text to Bob stating that the AE4 bronze coin of Valentinianus and Zimbabwean stone sculpture are still missing. In round 2, mark the tasks for the AE4 bronze coin of Valentinianus and Zimbabwean stone sculpture as complete, and send a text to Bob confirming that all exhibition assets have been collected.",
+  "categories": [
+    "APPWORLD",
+    "MULTIPLE_USER_TURN"
+  ],
+  "max_messages": 100,
+  "metadata": {
+    "original_scenario_id": "scenario_1115",
+    "expected_tools": [
+      "todoist_show_tasks",
+      "todoist_update_task",
+      "messages_send_text_message"
+    ],
+    "image_arrival": {
+      "1": [
+        "image_1",
+        "image_2",
+        "image_3"
+      ],
+      "2": [
+        "image_4",
+        "image_5"
+      ]
+    },
+    "image_delivery_map": [
+      {
+        "query": "I just got these last two photos. Mark the remaining tasks as complete and text Bob to confirm all exhibition assets are collected.",
+        "image_ids": [
+          3,
+          4
+        ]
+      }
+    ],
+    "scenario_metadata": {
+      "num_images": 5,
+      "num_user_rounds": 2,
+      "selected_flow_type": "cross_reference",
+      "image_arrival": "progressive",
+      "challenge_type": "none",
+      "require_disambiguation": true,
+      "dataset_type": "worldvqa"
+    }
+  }
+}

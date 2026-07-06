@@ -1,0 +1,461 @@
+{
+  "name": "scenario_0420",
+  "base_scenario": "base",
+  "description": "The user is managing a machine learning dataset and codebase, validating files and backing them up before sharing the results with a colleague.",
+  "difficulty": "easy",
+  "appworld_base_task": "_base_",
+  "device_state_id": "glenn.burton@gmail.com",
+  "reference_time": "2026-04-17T00:03:00.920004+00:00",
+  "agentsandbox_entities": {},
+  "appworld_entities": {
+    "phone.contacts": [
+      {
+        "id": 200,
+        "user_id": 102,
+        "first_name": "Damira",
+        "last_name": "Mraic",
+        "email": "lianhui.mraic@gmail.com",
+        "phone_number": null,
+        "relationships": [
+          "coworker"
+        ],
+        "birthday": null,
+        "home_address": null,
+        "work_address": null,
+        "created_at": "2025-10-15T09:30:00"
+      }
+    ],
+    "gmail.emails": [
+      {
+        "id": 5100,
+        "sender_id": 200,
+        "recipient_ids": [
+          102
+        ],
+        "subject": "Upcoming Virtual Poster Session",
+        "body": "Hi Glenn,\n\nJust a reminder about the virtual poster session. Please send me your dataset backup when it's ready.\n\nBest,\nDamira",
+        "response_to_email_id": null,
+        "created_at": "2026-04-16T14:30:00"
+      }
+    ],
+    "file_system.directories": [
+      {
+        "id": 3600,
+        "path": "/home/glenn/project/images/",
+        "tilde_path": "~/project/images/",
+        "user_id": 102,
+        "created_at": "2026-04-10T09:00:00",
+        "updated_at": "2026-04-10T09:00:00"
+      },
+      {
+        "id": 3601,
+        "path": "/home/glenn/project/annotator/",
+        "tilde_path": "~/project/annotator/",
+        "user_id": 102,
+        "created_at": "2026-04-11T10:00:00",
+        "updated_at": "2026-04-11T10:00:00"
+      },
+      {
+        "id": 3602,
+        "path": "/home/glenn/project/annotations/",
+        "tilde_path": "~/project/annotations/",
+        "user_id": 102,
+        "created_at": "2026-04-15T11:00:00",
+        "updated_at": "2026-04-16T16:00:00"
+      },
+      {
+        "path": "/home/glenn/project/",
+        "tilde_path": "~/project/",
+        "user_id": 102,
+        "created_at": "2025-01-01T00:00:00",
+        "updated_at": "2025-01-01T00:00:00",
+        "id": 3603
+      },
+      {
+        "path": "~/project/",
+        "tilde_path": "~/project/",
+        "user_id": 102,
+        "created_at": "2025-01-01T00:00:00",
+        "updated_at": "2025-01-01T00:00:00",
+        "id": 3604
+      }
+    ],
+    "file_system.files": [
+      {
+        "id": 26000,
+        "path": "/home/glenn/project/images/1.png",
+        "tilde_path": "~/project/images/1.png",
+        "user_id": 102,
+        "content": "<binary image data for 1.png>",
+        "compressed_data": [],
+        "created_at": "2026-04-10T09:05:00",
+        "updated_at": "2026-04-10T09:05:00"
+      },
+      {
+        "id": 26001,
+        "path": "/home/glenn/project/annotator/annotation.py",
+        "tilde_path": "~/project/annotator/annotation.py",
+        "user_id": 102,
+        "content": "import cv2\nimport json\n\ndef annotate():\n    pass",
+        "compressed_data": [],
+        "created_at": "2026-04-11T10:15:00",
+        "updated_at": "2026-04-16T14:30:00"
+      },
+      {
+        "id": 26002,
+        "path": "/home/glenn/project/annotations/pair1.png",
+        "tilde_path": "~/project/annotations/pair1.png",
+        "user_id": 102,
+        "content": "<binary image data for pair1.png>",
+        "compressed_data": [],
+        "created_at": "2026-04-15T11:05:00",
+        "updated_at": "2026-04-15T11:05:00"
+      },
+      {
+        "id": 26003,
+        "path": "/home/glenn/project/annotations/pair1.json",
+        "tilde_path": "~/project/annotations/pair1.json",
+        "user_id": 102,
+        "content": "{\n  \"image\": \"pair1.png\",\n  \"annotations\": [{\"x\": 10, \"y\": 20, \"label\": \"object\"}]\n}",
+        "compressed_data": [],
+        "created_at": "2026-04-15T11:10:00",
+        "updated_at": "2026-04-15T11:10:00"
+      }
+    ],
+    "gmail.users": [
+      {
+        "id": 200,
+        "first_name": "Damira",
+        "last_name": "Mraic",
+        "email": "lianhui.mraic@gmail.com",
+        "password": "default_password",
+        "status": "active",
+        "created_at": "2025-01-01T00:00:00",
+        "last_logged_in": "2025-01-01T00:00:00"
+      }
+    ],
+    "gmail.global_email_threads": [
+      {
+        "id": 200,
+        "email_ids": [
+          5100
+        ],
+        "created_at": "2026-04-16T14:30:00",
+        "updated_at": "2026-04-16T14:30:00"
+      }
+    ],
+    "gmail.user_email_threads": [
+      {
+        "id": 48000,
+        "global_email_thread_id": 200,
+        "user_id": 102,
+        "email_ids": [
+          5100
+        ],
+        "incoming": true,
+        "outgoing": false,
+        "read": true,
+        "label": "INBOX",
+        "starred": true,
+        "archived": false,
+        "spam": false,
+        "sender_email_addresses": [
+          "lianhui.mraic@gmail.com"
+        ],
+        "sender_names": [
+          "Damira Mraic"
+        ],
+        "recipient_email_addresses": [
+          "glenn.burton@gmail.com"
+        ],
+        "recipient_names": [
+          "Glenn Burton"
+        ],
+        "created_at": "2026-04-16T14:30:00",
+        "updated_at": "2026-04-16T14:30:00",
+        "has_attachments": false,
+        "snoozed_until": null
+      }
+    ]
+  },
+  "image_paths": [
+    "screenspotpro/images/common_windows/screenshot_2024-11-06_19-44-10.png",
+    "screenspotpro/images/common_windows/screenshot_2024-11-06_19-45-12.png",
+    "screenspotpro/images/common_windows/screenshot_2024-11-06_19-36-05.png",
+    "screenspotpro/images/common_windows/screenshot_2024-11-06_19-36-34.png",
+    "screenspotpro/images/common_windows/screenshot_2024-11-06_21-06-40.png",
+    "screenspotpro/images/common_windows/screenshot_2024-11-06_21-59-26.png"
+  ],
+  "messages": [
+    {
+      "sender": "SYSTEM",
+      "recipient": "USER",
+      "content": "{{USER_INSTRUCTION}}ROUND 1 [provide: image_1, image_2]\nQuery: Can you check if the file shown in this 'images' folder exists on the system? If it does, create a new directory named 'dataset_backup' and copy it there.\nInstructions: Ask the assistant to verify the existence of the specific image file shown in the 'images' folder in the screenshots. If it exists, instruct the assistant to create a backup directory called 'dataset_backup' and copy the file there. If the assistant asks for the exact path, tell it to infer it from the images. Move to the next round once the file is copied.\n\nROUND 2 [provide: image_3, image_4]\nQuery: Next, validate if a text file called 'annotation.txt' exists in the directory with the Python script shown here. If it does, copy it to our backup folder.\nInstructions: Instruct the assistant to check for a text file named 'annotation.txt' in the directory containing the Python script shown in the images, and copy it to the backup folder if found. The assistant should notice that the requested text file doesn't exist and that the visible file has a different extension. If the assistant points out the discrepancy, acknowledge it and say you will correct it in the next turn. If it proceeds blindly and fails, tell it to hold on.\n\nROUND 3 [provide: image_5]\nQuery: Ah, my mistake, I meant the Python script itself that's visible there. Verify that it exists and copy it over. After that, look at the folder with all the paired files here and validate that it contains both PNG and JSON files. If so, compress that entire folder into a zip file.\nInstructions: Correct your previous error by specifying you actually meant the Python script visible in the folder. Ask the assistant to verify its existence and copy it to the backup folder. Additionally, ask it to check the contents of the folder shown in the new screenshot, confirm it has both image and JSON files, and then compress that entire directory into a zip archive. Confirm any prompts about the compression format.\n\nROUND 4 [provide: image_6]\nQuery: Finally, check the terminal logs in this screenshot to validate if the build was successful. If it was, draft an email to the sender of that virtual poster session email, and attach the zip file we just made.\nInstructions: Direct the assistant's attention to the terminal logs in the new screenshot to verify if the executable build process finished successfully. If confirmed, ask the assistant to draft an email to the sender of the virtual poster session email shown on screen, attaching the zip archive created previously. If the assistant needs the contact details, tell it to use the saved contact information. End the conversation once the draft is prepared.\n\nYou have 6 images available to share with the agent using the send_message_with_image tool.\nIMPORTANT: Image IDs are ZERO-INDEXED integers (0, 1, 2, ...). Do NOT add 1 to the IDs.\nAvailable image IDs: [0, 1, 2, 3, 4, 5]\nImage mapping:\n  image_1.jpg -> image ID 0\n  image_2.jpg -> image ID 1\n  image_3.jpg -> image ID 2\n  image_4.jpg -> image ID 3\n  image_5.jpg -> image ID 4\n  image_6.jpg -> image ID 5\n\n## IMAGE DELIVERY\n\n⚠️ IMPORTANT: You MUST use the `send_message_with_image` tool to share images with User B. Do NOT just describe images in text — you MUST call the tool.\n\nImage delivery schedule:\n\n  Round 2: YOU MUST call the send_message_with_image tool with image_ids='2,3' — do NOT write the tool name as text; use the actual function call. Include a natural, conversational message to the assistant.\n  Round 3: YOU MUST call the send_message_with_image tool with image_ids='4' — do NOT write the tool name as text; use the actual function call. Include a natural, conversational message to the assistant.\n  Round 4: YOU MUST call the send_message_with_image tool with image_ids='5' — do NOT write the tool name as text; use the actual function call. Include a natural, conversational message to the assistant."
+    },
+    {
+      "sender": "USER",
+      "recipient": "AGENT",
+      "content": "Can you check if the file shown in this 'images' folder exists on the system? If it does, create a new directory named 'dataset_backup' and copy it there.",
+      "image_ids": [
+        0,
+        1
+      ]
+    }
+  ],
+  "milestones": [],
+  "entity_diff_specs": [
+    {
+      "operation": "create",
+      "source": "appworld",
+      "table": "gmail.drafts",
+      "entity_data": {
+        "user_id": 102,
+        "recipient_ids": [
+          200
+        ],
+        "recipient_email_addresses": [
+          "lianhui.mraic@gmail.com"
+        ],
+        "recipient_names": [
+          "Damira Mraic"
+        ],
+        "subject": "Re: Upcoming Virtual Poster Session",
+        "body": "Hi Damira,\n\nPlease find attached the dataset backup zip file for the virtual poster session.\n\nBest,\nGlenn",
+        "belongs_to_email_thread_id": null,
+        "response_to_email_id": 5100,
+        "scheduled_send_at": null,
+        "created_at": "2026-04-17T00:03:00",
+        "updated_at": "2026-04-17T00:03:00"
+      },
+      "column_similarity_measure": {
+        "user_id": "column_exact_match_similarity",
+        "recipient_ids": "column_exact_match_similarity",
+        "recipient_email_addresses": "column_ignore_similarity",
+        "recipient_names": "column_ignore_similarity",
+        "subject": "column_rouge_l_similarity",
+        "body": "column_rouge_l_similarity",
+        "belongs_to_email_thread_id": "column_ignore_similarity",
+        "response_to_email_id": "column_ignore_similarity",
+        "scheduled_send_at": "column_ignore_similarity",
+        "created_at": "column_ignore_similarity",
+        "updated_at": "column_ignore_similarity"
+      }
+    },
+    {
+      "operation": "create",
+      "source": "appworld",
+      "table": "gmail.attachments",
+      "entity_data": {
+        "email_id": null,
+        "draft_id": 700,
+        "file_name": "annotations.zip",
+        "file_content": "UEsDBAoAAAAAA...",
+        "file_compressed_data": [
+          {
+            "path": "annotations/1.png",
+            "content": "[PNG image data]"
+          },
+          {
+            "path": "annotations/annotation.py",
+            "content": "[Python script content]"
+          }
+        ],
+        "created_at": "2026-04-17T00:03:00",
+        "download_count": 0
+      },
+      "column_similarity_measure": {
+        "email_id": "column_ignore_similarity",
+        "draft_id": "column_ignore_similarity",
+        "file_name": "column_exact_match_similarity",
+        "file_content": "column_ignore_similarity",
+        "file_compressed_data": "column_ignore_similarity",
+        "created_at": "column_ignore_similarity",
+        "download_count": "column_exact_match_similarity"
+      }
+    },
+    {
+      "operation": "create",
+      "source": "appworld",
+      "table": "file_system.directories",
+      "entity_data": {
+        "path": "dataset_backup",
+        "tilde_path": "dataset_backup",
+        "user_id": 102,
+        "created_at": "2026-04-17T00:03:00",
+        "updated_at": "2026-04-17T00:03:00"
+      },
+      "column_similarity_measure": {
+        "path": "column_contains_similarity",
+        "tilde_path": "column_contains_similarity",
+        "user_id": "column_exact_match_similarity",
+        "created_at": "column_ignore_similarity",
+        "updated_at": "column_ignore_similarity"
+      }
+    },
+    {
+      "operation": "create",
+      "source": "appworld",
+      "table": "file_system.directories",
+      "entity_data": {
+        "path": "project/dataset_backup",
+        "tilde_path": "project/dataset_backup",
+        "user_id": 102,
+        "created_at": "2026-04-17T00:03:00",
+        "updated_at": "2026-04-17T00:03:00"
+      },
+      "column_similarity_measure": {
+        "path": "column_contains_similarity",
+        "tilde_path": "column_contains_similarity",
+        "user_id": "column_exact_match_similarity",
+        "created_at": "column_ignore_similarity",
+        "updated_at": "column_ignore_similarity"
+      }
+    },
+    {
+      "operation": "create",
+      "source": "appworld",
+      "table": "file_system.files",
+      "entity_data": {
+        "path": "1.png",
+        "tilde_path": "1.png",
+        "user_id": 102,
+        "content": "<binary image data for 1.png>",
+        "compressed_data": [],
+        "created_at": "2026-04-17T00:03:00",
+        "updated_at": "2026-04-17T00:03:00"
+      },
+      "column_similarity_measure": {
+        "path": "column_contains_similarity",
+        "tilde_path": "column_contains_similarity",
+        "user_id": "column_exact_match_similarity",
+        "content": "column_rouge_l_similarity",
+        "compressed_data": "column_ignore_similarity",
+        "created_at": "column_ignore_similarity",
+        "updated_at": "column_ignore_similarity"
+      }
+    },
+    {
+      "operation": "create",
+      "source": "appworld",
+      "table": "file_system.files",
+      "entity_data": {
+        "path": "annotation.py",
+        "tilde_path": "annotation.py",
+        "user_id": 102,
+        "content": "import cv2\nimport json\n\ndef annotate():\n    pass",
+        "compressed_data": [],
+        "created_at": "2026-04-17T00:03:00",
+        "updated_at": "2026-04-17T00:03:00"
+      },
+      "column_similarity_measure": {
+        "path": "column_contains_similarity",
+        "tilde_path": "column_contains_similarity",
+        "user_id": "column_exact_match_similarity",
+        "content": "column_rouge_l_similarity",
+        "compressed_data": "column_ignore_similarity",
+        "created_at": "column_ignore_similarity",
+        "updated_at": "column_ignore_similarity"
+      }
+    },
+    {
+      "operation": "create",
+      "source": "appworld",
+      "table": "file_system.files",
+      "entity_data": {
+        "path": "annotations.zip",
+        "tilde_path": "annotations.zip",
+        "user_id": 102,
+        "content": "<binary zip data>",
+        "compressed_data": [
+          {
+            "path": "annotations/pair1.png",
+            "content": "<binary image data for pair1.png>",
+            "created_at": "2026-04-15T11:05:00Z",
+            "updated_at": "2026-04-15T11:05:00Z"
+          },
+          {
+            "path": "annotations/pair1.json",
+            "content": "{\n  \"image\": \"pair1.png\",\n  \"annotations\": [{\"x\": 10, \"y\": 20, \"label\": \"object\"}]\n}",
+            "created_at": "2026-04-15T11:10:00Z",
+            "updated_at": "2026-04-15T11:10:00Z"
+          }
+        ],
+        "created_at": "2026-04-17T00:03:00",
+        "updated_at": "2026-04-17T00:03:00"
+      },
+      "column_similarity_measure": {
+        "path": "column_contains_similarity",
+        "tilde_path": "column_contains_similarity",
+        "user_id": "column_exact_match_similarity",
+        "content": "column_ignore_similarity",
+        "compressed_data": "column_ignore_similarity",
+        "created_at": "column_ignore_similarity",
+        "updated_at": "column_ignore_similarity"
+      }
+    }
+  ],
+  "task_completion_criteria": "Create a directory named 'dataset_backup', copy '1.png' from the 'images' directory and 'annotation.py' from the 'annotator' directory into it, compress the 'annotations' directory into a zip file, and draft an email to Damira Mraic attaching the compressed zip file.",
+  "categories": [
+    "APPWORLD",
+    "MULTIPLE_USER_TURN"
+  ],
+  "max_messages": 100,
+  "metadata": {
+    "original_scenario_id": "scenario_0420",
+    "expected_tools": [
+      "file_system_file_exists",
+      "file_system_create_directory",
+      "file_system_copy_file",
+      "file_system_show_directory",
+      "file_system_compress_directory",
+      "gmail_create_draft",
+      "gmail_upload_attachments_to_draft"
+    ],
+    "image_arrival": {
+      "1": [
+        "image_1",
+        "image_2"
+      ],
+      "2": [
+        "image_3",
+        "image_4"
+      ],
+      "3": [
+        "image_5"
+      ],
+      "4": [
+        "image_6"
+      ]
+    },
+    "image_delivery_map": [
+      {
+        "query": "Next, validate if a text file called 'annotation.txt' exists in the directory with the Python script shown here. If it does, copy it to our backup folder.",
+        "image_ids": [
+          2,
+          3
+        ]
+      },
+      {
+        "query": "Ah, my mistake, I meant the Python script itself that's visible there. Verify that it exists and copy it over. After that, look at the folder with all the paired files here and validate that it contains both PNG and JSON files. If so, compress that entire folder into a zip file.",
+        "image_ids": [
+          4
+        ]
+      },
+      {
+        "query": "Finally, check the terminal logs in this screenshot to validate if the build was successful. If it was, draft an email to the sender of that virtual poster session email, and attach the zip file we just made.",
+        "image_ids": [
+          5
+        ]
+      }
+    ],
+    "scenario_metadata": {
+      "num_images": 6,
+      "num_user_rounds": 4,
+      "selected_flow_type": "validate",
+      "image_arrival": "progressive",
+      "challenge_type": "error_correction",
+      "require_disambiguation": false,
+      "dataset_type": "screenspotpro"
+    }
+  }
+}

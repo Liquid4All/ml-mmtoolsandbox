@@ -1,0 +1,212 @@
+{
+  "name": "scenario_0494",
+  "base_scenario": "base",
+  "description": "Vickie is setting up a workspace for evaluating language models. She is tracking her datasets in a note and organizing her local file system, but encounters a broken dataset while writing her evaluation script.",
+  "difficulty": "easy",
+  "appworld_base_task": "_base_",
+  "device_state_id": "vicpowe@gmail.com",
+  "reference_time": "2026-04-17T00:05:12.196511+00:00",
+  "agentsandbox_entities": {},
+  "appworld_entities": {
+    "simple_note.notes": [
+      {
+        "id": 3200,
+        "user_id": 27,
+        "title": "Training Datasets",
+        "content": "wikitext, c4, oscar",
+        "tags": [],
+        "created_at": "2026-04-16T10:00:00",
+        "updated_at": "2026-04-16T10:00:00",
+        "pinned": false,
+        "data": null
+      }
+    ],
+    "file_system.directories": [
+      {
+        "id": 3600,
+        "path": "/C:/Users/tyc/Desktop/",
+        "tilde_path": "/C:/Users/tyc/Desktop/",
+        "user_id": 27,
+        "created_at": "2025-01-01T10:00:00",
+        "updated_at": "2026-04-16T10:00:00"
+      },
+      {
+        "path": "/C:/",
+        "tilde_path": "/C:/",
+        "user_id": 27,
+        "created_at": "2025-01-01T00:00:00",
+        "updated_at": "2025-01-01T00:00:00",
+        "id": 3601
+      },
+      {
+        "path": "/C:/Users/",
+        "tilde_path": "/C:/Users/",
+        "user_id": 27,
+        "created_at": "2025-01-01T00:00:00",
+        "updated_at": "2025-01-01T00:00:00",
+        "id": 3602
+      },
+      {
+        "path": "/C:/Users/tyc/",
+        "tilde_path": "/C:/Users/tyc/",
+        "user_id": 27,
+        "created_at": "2025-01-01T00:00:00",
+        "updated_at": "2025-01-01T00:00:00",
+        "id": 3603
+      },
+      {
+        "path": "~/Desktop/",
+        "tilde_path": "~/Desktop/",
+        "user_id": 27,
+        "created_at": "2025-01-01T00:00:00",
+        "updated_at": "2025-01-01T00:00:00",
+        "id": 3604
+      }
+    ],
+    "file_system.files": [
+      {
+        "id": 26000,
+        "path": "/C:/Users/tyc/Desktop/generation.py",
+        "tilde_path": "/C:/Users/tyc/Desktop/generation.py",
+        "user_id": 27,
+        "content": "import os\n\ndataset = 'codeparrot/apps'\nprint(f'Running eval on {dataset}')\n",
+        "compressed_data": [],
+        "created_at": "2026-04-16T14:00:00",
+        "updated_at": "2026-04-16T16:30:00"
+      }
+    ],
+    "gmail.users": []
+  },
+  "image_paths": [
+    "screenspotpro/images/ppt_windows/screenshot_2024-10-27_21-53-51.png",
+    "screenspotpro/images/ppt_windows/screenshot_2024-10-27_21-58-37.png",
+    "screenspotpro/images/ppt_windows/screenshot_2024-10-27_21-25-44.png",
+    "screenspotpro/images/ppt_windows/screenshot_2024-10-27_21-34-53.png",
+    "screenspotpro/images/ppt_windows/screenshot_2024-10-27_21-19-05.png",
+    "screenspotpro/images/ppt_windows/screenshot_2024-10-27_21-47-20.png"
+  ],
+  "messages": [
+    {
+      "sender": "SYSTEM",
+      "recipient": "USER",
+      "content": "{{USER_INSTRUCTION}}ROUND 1\nQuery: Create a note called 'Eval Datasets' and add 'codeparrot/apps', 'gsm8k', and 'humaneval' to it.\nInstructions: Instruct the assistant to create a note called 'Eval Datasets' with the items 'codeparrot/apps', 'gsm8k', and 'humaneval'. If the assistant confirms the note has been created, proceed to the next round.\n\nROUND 2\nQuery: Create a new directory called 'Eval_Project' in my 'C:\\Users\\tyc\\Desktop' folder to store my evaluation scripts.\nInstructions: Ask the assistant to create a new directory named 'Eval_Project' in the specified Desktop folder. Once the assistant confirms the directory is created, move on to the next round.\n\nROUND 3 [provide: image_1, image_2, image_3]\nQuery: I've attached screenshots of my workspace where I'm getting an error. Please check the GitHub issue in the browser, cross-reference the dataset causing the error with my datasets note, and remove the failing dataset from it.\nInstructions: Tell the assistant to look at the screenshots, identify the dataset causing the error in the GitHub issue, and remove that dataset from your datasets note. Since you have multiple notes about datasets (the one you just created and a preexisting one), the assistant should ask you to clarify which one to update. When it does, specify that you mean the 'Eval Datasets' note. Once it confirms the broken dataset has been removed, proceed.\n\nROUND 4 [provide: image_4, image_5, image_6]\nQuery: Here are more screenshots. Based on the code editor shown, I want to scrap the script I'm currently working on since it relies on that broken dataset. Please find its full file path from the editor's breadcrumbs and delete the file from my system.\nInstructions: Direct the assistant to find the full file path of the script currently open in the code editor, using the breadcrumbs visible in the screenshots, and delete that file from the system. If the assistant asks for confirmation before deleting, approve the deletion. End the conversation once the file is successfully deleted.\n\nYou have 6 images available to share with the agent using the send_message_with_image tool.\nIMPORTANT: Image IDs are ZERO-INDEXED integers (0, 1, 2, ...). Do NOT add 1 to the IDs.\nAvailable image IDs: [0, 1, 2, 3, 4, 5]\nImage mapping:\n  image_1.jpg -> image ID 0\n  image_2.jpg -> image ID 1\n  image_3.jpg -> image ID 2\n  image_4.jpg -> image ID 3\n  image_5.jpg -> image ID 4\n  image_6.jpg -> image ID 5\n\n## IMAGE DELIVERY\n\n⚠️ IMPORTANT: You MUST use the `send_message_with_image` tool to share images with User B. Do NOT just describe images in text — you MUST call the tool.\n\nImage delivery schedule:\n\n  Round 3: YOU MUST call the send_message_with_image tool with image_ids='0,1,2' — do NOT write the tool name as text; use the actual function call. Include a natural, conversational message to the assistant.\n  Round 4: YOU MUST call the send_message_with_image tool with image_ids='3,4,5' — do NOT write the tool name as text; use the actual function call. Include a natural, conversational message to the assistant."
+    },
+    {
+      "sender": "USER",
+      "recipient": "AGENT",
+      "content": "Create a note called 'Eval Datasets' and add 'codeparrot/apps', 'gsm8k', and 'humaneval' to it."
+    }
+  ],
+  "milestones": [],
+  "entity_diff_specs": [
+    {
+      "operation": "create",
+      "source": "appworld",
+      "table": "simple_note.notes",
+      "entity_data": {
+        "user_id": 27,
+        "title": "Eval Datasets",
+        "content": "gsm8k\nhumaneval",
+        "tags": [],
+        "created_at": "2026-04-17T00:05:12",
+        "updated_at": "2026-04-17T00:05:12",
+        "pinned": false,
+        "data": null
+      },
+      "column_similarity_measure": {
+        "user_id": "column_exact_match_similarity",
+        "title": "column_rouge_l_similarity",
+        "content": "column_rouge_l_similarity",
+        "tags": "column_ignore_similarity",
+        "created_at": "column_ignore_similarity",
+        "updated_at": "column_ignore_similarity",
+        "pinned": "column_exact_match_similarity",
+        "data": "column_ignore_similarity"
+      }
+    },
+    {
+      "operation": "create",
+      "source": "appworld",
+      "table": "file_system.directories",
+      "entity_data": {
+        "path": "Desktop/Eval_Project",
+        "tilde_path": "Desktop/Eval_Project",
+        "user_id": 27,
+        "created_at": "2026-04-17T00:05:12",
+        "updated_at": "2026-04-17T00:05:12"
+      },
+      "column_similarity_measure": {
+        "path": "column_contains_similarity",
+        "tilde_path": "column_contains_similarity",
+        "user_id": "column_exact_match_similarity",
+        "created_at": "column_ignore_similarity",
+        "updated_at": "column_ignore_similarity"
+      }
+    },
+    {
+      "operation": "delete",
+      "source": "appworld",
+      "table": "file_system.files",
+      "entity_id_column": "id",
+      "entity_id_value": 26000,
+      "column_similarity_measure": {
+        "id": "column_exact_match_similarity"
+      }
+    }
+  ],
+  "task_completion_criteria": "Create a note titled 'Eval Datasets' containing 'gsm8k' and 'humaneval' (after removing the broken 'codeparrot/apps' dataset), create a directory at 'C:\\Users\\tyc\\Desktop\\Eval_Project', and delete the file 'C:\\Users\\tyc\\Desktop\\generation.py'.",
+  "categories": [
+    "APPWORLD",
+    "MULTIPLE_USER_TURN"
+  ],
+  "max_messages": 100,
+  "metadata": {
+    "original_scenario_id": "scenario_0494",
+    "expected_tools": [
+      "create_note",
+      "file_system_create_directory",
+      "simple_note_show_note",
+      "simple_note_update_note",
+      "file_system_delete_file"
+    ],
+    "image_arrival": {
+      "3": [
+        "image_1",
+        "image_2",
+        "image_3"
+      ],
+      "4": [
+        "image_4",
+        "image_5",
+        "image_6"
+      ]
+    },
+    "image_delivery_map": [
+      {
+        "query": "I've attached screenshots of my workspace where I'm getting an error. Please check the GitHub issue in the browser, cross-reference the dataset causing the error with my datasets note, and remove the failing dataset from it.",
+        "image_ids": [
+          0,
+          1,
+          2
+        ]
+      },
+      {
+        "query": "Here are more screenshots. Based on the code editor shown, I want to scrap the script I'm currently working on since it relies on that broken dataset. Please find its full file path from the editor's breadcrumbs and delete the file from my system.",
+        "image_ids": [
+          3,
+          4,
+          5
+        ]
+      }
+    ],
+    "scenario_metadata": {
+      "num_images": 6,
+      "num_user_rounds": 4,
+      "selected_flow_type": "cross_reference",
+      "image_arrival": "late",
+      "challenge_type": "state_mutation",
+      "require_disambiguation": true,
+      "dataset_type": "screenspotpro"
+    }
+  }
+}

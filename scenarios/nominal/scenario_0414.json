@@ -1,0 +1,390 @@
+{
+  "name": "scenario_0414",
+  "base_scenario": "base",
+  "description": "Debra is gathering materials for an upcoming school unit, compiling a list of books, science samples, and craft supplies from various reference documents.",
+  "difficulty": "easy",
+  "appworld_base_task": "_base_",
+  "device_state_id": "de_ritt@gmail.com",
+  "reference_time": "2026-04-17T00:02:54.313719+00:00",
+  "agentsandbox_entities": {},
+  "appworld_entities": {
+    "amazon.sellers": [
+      {
+        "id": 200,
+        "name": "Amazon Books",
+        "rating": 4.8
+      },
+      {
+        "id": 201,
+        "name": "Amazon Groceries",
+        "rating": 4.5
+      },
+      {
+        "id": 202,
+        "name": "Amazon Crafts",
+        "rating": 4.7
+      }
+    ],
+    "amazon.products": [
+      {
+        "id": 200,
+        "product_type": "books",
+        "name": "Food for Thought",
+        "description": "Nutrition book",
+        "seller_id": 200,
+        "price": 15.99,
+        "delivery_days": 2,
+        "inventory_quantity": 50,
+        "weight": 1.2,
+        "length": 8.5,
+        "width": 5.5,
+        "height": 0.8,
+        "color": null,
+        "relative_size": null,
+        "rating": 4.5,
+        "seller_rating": 4.8,
+        "has_variations": false
+      },
+      {
+        "id": 201,
+        "product_type": "books",
+        "name": "The Nutrition Crisis: A Reader",
+        "description": "Nutrition book",
+        "seller_id": 200,
+        "price": 18.99,
+        "delivery_days": 2,
+        "inventory_quantity": 40,
+        "weight": 1.5,
+        "length": 9.0,
+        "width": 6.0,
+        "height": 1.0,
+        "color": null,
+        "relative_size": null,
+        "rating": 4.6,
+        "seller_rating": 4.8,
+        "has_variations": false
+      },
+      {
+        "id": 202,
+        "product_type": "books",
+        "name": "The Scarlet Letter",
+        "description": "Classic novel",
+        "seller_id": 200,
+        "price": 9.99,
+        "delivery_days": 2,
+        "inventory_quantity": 100,
+        "weight": 0.8,
+        "length": 8.0,
+        "width": 5.2,
+        "height": 0.6,
+        "color": null,
+        "relative_size": null,
+        "rating": 4.7,
+        "seller_rating": 4.8,
+        "has_variations": false
+      },
+      {
+        "id": 203,
+        "product_type": "books",
+        "name": "Life on Two Levels",
+        "description": "ISBN: 0-913232-56-4",
+        "seller_id": 200,
+        "price": 12.99,
+        "delivery_days": 3,
+        "inventory_quantity": 25,
+        "weight": 1.0,
+        "length": 8.5,
+        "width": 5.5,
+        "height": 0.7,
+        "color": null,
+        "relative_size": null,
+        "rating": 4.4,
+        "seller_rating": 4.8,
+        "has_variations": false
+      },
+      {
+        "id": 204,
+        "product_type": "groceries",
+        "name": "All-Bran",
+        "description": "Dry cereal",
+        "seller_id": 201,
+        "price": 4.99,
+        "delivery_days": 1,
+        "inventory_quantity": 80,
+        "weight": 1.1,
+        "length": 10.0,
+        "width": 7.0,
+        "height": 2.5,
+        "color": null,
+        "relative_size": null,
+        "rating": 4.3,
+        "seller_rating": 4.5,
+        "has_variations": false
+      },
+      {
+        "id": 205,
+        "product_type": "groceries",
+        "name": "Coconut",
+        "description": "Miscellaneous food item",
+        "seller_id": 201,
+        "price": 3.49,
+        "delivery_days": 1,
+        "inventory_quantity": 60,
+        "weight": 0.5,
+        "length": 5.0,
+        "width": 4.0,
+        "height": 4.0,
+        "color": null,
+        "relative_size": null,
+        "rating": 4.6,
+        "seller_rating": 4.5,
+        "has_variations": false
+      },
+      {
+        "id": 206,
+        "product_type": "crafts",
+        "name": "Theatrical wire",
+        "description": "Wire for craft activities",
+        "seller_id": 202,
+        "price": 6.99,
+        "delivery_days": 4,
+        "inventory_quantity": 30,
+        "weight": 0.3,
+        "length": 4.0,
+        "width": 4.0,
+        "height": 1.0,
+        "color": null,
+        "relative_size": null,
+        "rating": 4.5,
+        "seller_rating": 4.7,
+        "has_variations": false
+      },
+      {
+        "id": 207,
+        "product_type": "crafts",
+        "name": "Small box",
+        "description": "Small box for crafts",
+        "seller_id": 202,
+        "price": 2.99,
+        "delivery_days": 4,
+        "inventory_quantity": 100,
+        "weight": 0.2,
+        "length": 6.0,
+        "width": 6.0,
+        "height": 4.0,
+        "color": null,
+        "relative_size": null,
+        "rating": 4.2,
+        "seller_rating": 4.7,
+        "has_variations": false
+      }
+    ],
+    "gmail.users": []
+  },
+  "image_paths": [
+    "hiertext/images/test/7b2dd1a709762472.jpg",
+    "docvqa/images/21092.jpg",
+    "docvqa/images/38994.jpg",
+    "docvqa/images/58834.jpg",
+    "docvqa/images/65079.jpg",
+    "omnidocbench/images/000192.jpg"
+  ],
+  "messages": [
+    {
+      "sender": "SYSTEM",
+      "recipient": "USER",
+      "content": "{{USER_INSTRUCTION}}ROUND 1 [provide: image_2, image_6]\nQuery: Search Amazon for the two nutrition books authored by the person in the first document, and the novel that was a sensation for the author in the second document, and add them to my 'School Unit' wish list.\nInstructions: Tell the assistant to look at the two documents provided. Ask it to find the two nutrition books authored by the subject in the first document, and the novel described as a sensation in the second document. Instruct the assistant to search for these three books on Amazon and add them to your 'School Unit' wish list. Wait for the assistant's confirmation.\n\nROUND 2 [provide: image_4]\nQuery: Add the book shown in this new ad to the wish list using its ISBN, which I read as 0-913232-56-5.\nInstructions: Ask the assistant to search for the book in the new advertisement image using the ISBN you provided and add it to the wish list. If the assistant points out that the ISBN you provided doesn't match the one in the image, acknowledge your mistake. If the assistant searches for the wrong ISBN without noticing, point out that you made a typo and tell it to check the image again.\n\nROUND 3\nQuery: Oops, my mistake. I misread the last digit. The ISBN should end in a 4. Please search for the correct ISBN and add it to the wish list.\nInstructions: Confirm that the correct ISBN ends in a 4. Ask the assistant to search for the correct ISBN from the advertisement image and add the book to the 'School Unit' wish list. Wait for the assistant to confirm it has been added successfully.\n\nROUND 4 [provide: image_3, image_5]\nQuery: I also need some food samples for a science lesson. From the first table, find the dry cereal with the highest sodium content. From the second table, find the item under 'Miscellaneous' with the most fat. Search for both on Amazon and add them to my wish list.\nInstructions: Ask the assistant to analyze the two new tables provided. Instruct it to find the dry cereal with the highest sodium content from the first table, and the item under the 'Miscellaneous' category with the most fat from the second table. Have the assistant search for both items on Amazon and add them to the 'School Unit' wish list. Wait for confirmation.\n\nROUND 5 [provide: image_1]\nQuery: Finally, I want to do the craft activity described in this handwritten note. Please search Amazon for the specific wire mentioned at the top and a 'small box' and add them to the wish list as well.\nInstructions: Ask the assistant to read the handwritten note and identify the specific type of wire needed for the craft, as well as the 'small box' mentioned. Have the assistant search for these two items on Amazon and add them to the 'School Unit' wish list. Once the assistant confirms this is done, you can end the conversation.\n\nYou have 6 images available to share with the agent using the send_message_with_image tool.\nIMPORTANT: Image IDs are ZERO-INDEXED integers (0, 1, 2, ...). Do NOT add 1 to the IDs.\nAvailable image IDs: [0, 1, 2, 3, 4, 5]\nImage mapping:\n  image_1.jpg -> image ID 0\n  image_2.jpg -> image ID 1\n  image_3.jpg -> image ID 2\n  image_4.jpg -> image ID 3\n  image_5.jpg -> image ID 4\n  image_6.jpg -> image ID 5\n\n## IMAGE DELIVERY\n\n\u26a0\ufe0f IMPORTANT: You MUST use the `send_message_with_image` tool to share images with User B. Do NOT just describe images in text \u2014 you MUST call the tool.\n\nImage delivery schedule:\n\n  Round 2: YOU MUST call the send_message_with_image tool with image_ids='3' \u2014 do NOT write the tool name as text; use the actual function call. Include a natural, conversational message to the assistant.\n  Round 4: YOU MUST call the send_message_with_image tool with image_ids='2,4' \u2014 do NOT write the tool name as text; use the actual function call. Include a natural, conversational message to the assistant.\n  Round 5: YOU MUST call the send_message_with_image tool with image_ids='0' \u2014 do NOT write the tool name as text; use the actual function call. Include a natural, conversational message to the assistant."
+    },
+    {
+      "sender": "USER",
+      "recipient": "AGENT",
+      "content": "Search Amazon for the two nutrition books authored by the person in the first document, and the novel that was a sensation for the author in the second document, and add them to my 'School Unit' wish list.",
+      "image_ids": [
+        1,
+        5
+      ]
+    }
+  ],
+  "milestones": [],
+  "entity_diff_specs": [
+    {
+      "operation": "create",
+      "source": "appworld",
+      "table": "amazon.wish_list_entries",
+      "entity_data": {
+        "user_id": 97,
+        "product_id": 200,
+        "quantity": 1
+      },
+      "column_similarity_measure": {
+        "user_id": "column_exact_match_similarity",
+        "product_id": "column_exact_match_similarity",
+        "quantity": "column_exact_match_similarity"
+      }
+    },
+    {
+      "operation": "create",
+      "source": "appworld",
+      "table": "amazon.wish_list_entries",
+      "entity_data": {
+        "user_id": 97,
+        "product_id": 201,
+        "quantity": 1
+      },
+      "column_similarity_measure": {
+        "user_id": "column_exact_match_similarity",
+        "product_id": "column_exact_match_similarity",
+        "quantity": "column_exact_match_similarity"
+      }
+    },
+    {
+      "operation": "create",
+      "source": "appworld",
+      "table": "amazon.wish_list_entries",
+      "entity_data": {
+        "user_id": 97,
+        "product_id": 202,
+        "quantity": 1
+      },
+      "column_similarity_measure": {
+        "user_id": "column_exact_match_similarity",
+        "product_id": "column_exact_match_similarity",
+        "quantity": "column_exact_match_similarity"
+      }
+    },
+    {
+      "operation": "create",
+      "source": "appworld",
+      "table": "amazon.wish_list_entries",
+      "entity_data": {
+        "user_id": 97,
+        "product_id": 203,
+        "quantity": 1
+      },
+      "column_similarity_measure": {
+        "user_id": "column_exact_match_similarity",
+        "product_id": "column_exact_match_similarity",
+        "quantity": "column_exact_match_similarity"
+      }
+    },
+    {
+      "operation": "create",
+      "source": "appworld",
+      "table": "amazon.wish_list_entries",
+      "entity_data": {
+        "user_id": 97,
+        "product_id": 204,
+        "quantity": 1
+      },
+      "column_similarity_measure": {
+        "user_id": "column_exact_match_similarity",
+        "product_id": "column_exact_match_similarity",
+        "quantity": "column_exact_match_similarity"
+      }
+    },
+    {
+      "operation": "create",
+      "source": "appworld",
+      "table": "amazon.wish_list_entries",
+      "entity_data": {
+        "user_id": 97,
+        "product_id": 205,
+        "quantity": 1
+      },
+      "column_similarity_measure": {
+        "user_id": "column_exact_match_similarity",
+        "product_id": "column_exact_match_similarity",
+        "quantity": "column_exact_match_similarity"
+      }
+    },
+    {
+      "operation": "create",
+      "source": "appworld",
+      "table": "amazon.wish_list_entries",
+      "entity_data": {
+        "user_id": 97,
+        "product_id": 206,
+        "quantity": 1
+      },
+      "column_similarity_measure": {
+        "user_id": "column_exact_match_similarity",
+        "product_id": "column_exact_match_similarity",
+        "quantity": "column_exact_match_similarity"
+      }
+    },
+    {
+      "operation": "create",
+      "source": "appworld",
+      "table": "amazon.wish_list_entries",
+      "entity_data": {
+        "user_id": 97,
+        "product_id": 207,
+        "quantity": 1
+      },
+      "column_similarity_measure": {
+        "user_id": "column_exact_match_similarity",
+        "product_id": "column_exact_match_similarity",
+        "quantity": "column_exact_match_similarity"
+      }
+    }
+  ],
+  "task_completion_criteria": "Add the books 'Food for Thought', 'The Nutrition Crisis: A Reader', 'The Scarlet Letter', and 'Life on Two Levels' (using ISBN 0-913232-56-4), along with 'All-Bran' cereal, 'Coconut', 'Theatrical wire', and a 'small box' to the Amazon wish list.",
+  "categories": [
+    "APPWORLD",
+    "MULTIPLE_USER_TURN"
+  ],
+  "max_messages": 100,
+  "metadata": {
+    "original_scenario_id": "scenario_0414",
+    "expected_tools": [
+      "amazon_show_product",
+      "amazon_add_product_to_wish_list"
+    ],
+    "image_arrival": {
+      "1": [
+        "image_2",
+        "image_6"
+      ],
+      "2": [
+        "image_4"
+      ],
+      "4": [
+        "image_3",
+        "image_5"
+      ],
+      "5": [
+        "image_1"
+      ]
+    },
+    "image_delivery_map": [
+      {
+        "query": "Add the book shown in this new ad to the wish list using its ISBN, which I read as 0-913232-56-5.",
+        "image_ids": [
+          3
+        ]
+      },
+      {
+        "query": "I also need some food samples for a science lesson. From the first table, find the dry cereal with the highest sodium content. From the second table, find the item under 'Miscellaneous' with the most fat. Search for both on Amazon and add them to my wish list.",
+        "image_ids": [
+          2,
+          4
+        ]
+      },
+      {
+        "query": "Finally, I want to do the craft activity described in this handwritten note. Please search Amazon for the specific wire mentioned at the top and a 'small box' and add them to the wish list as well.",
+        "image_ids": [
+          0
+        ]
+      }
+    ],
+    "scenario_metadata": {
+      "num_images": 6,
+      "num_user_rounds": 5,
+      "selected_flow_type": "aggregate",
+      "image_arrival": "progressive",
+      "challenge_type": "error_correction",
+      "require_disambiguation": false,
+      "dataset_type": "omnidocbench"
+    }
+  }
+}

@@ -1,0 +1,391 @@
+{
+  "name": "scenario_0957",
+  "base_scenario": "base",
+  "description": "Troy is organizing his music collection and memorabilia, looking to expand his digital library, and managing his personal budget and apartment expenses.",
+  "difficulty": "easy",
+  "appworld_base_task": "_base_",
+  "device_state_id": "tr_solo@gmail.com",
+  "reference_time": "2026-04-17T00:19:32.840117+00:00",
+  "agentsandbox_entities": {},
+  "appworld_entities": {
+    "todoist.projects": [
+      {
+        "id": 400,
+        "user_id": 11,
+        "name": "Inbox",
+        "color": "charcoal",
+        "is_inbox": true,
+        "description": "",
+        "created_at": "2026-01-01T10:00:00"
+      }
+    ],
+    "todoist.tasks": [
+      {
+        "id": 6500,
+        "project_id": 400,
+        "section_id": null,
+        "user_id": 11,
+        "title": "Decorating",
+        "description": null,
+        "due_date": null,
+        "priority": "medium",
+        "is_completed": false,
+        "duration": null,
+        "duration_unit": null,
+        "order_index": 0,
+        "assignee_id": null,
+        "assigner_id": null,
+        "created_at": "2026-04-10T10:00:00"
+      }
+    ],
+    "spotify.artists": [
+      {
+        "id": 200,
+        "name": "Herbert von Karajan",
+        "genre": "Classical",
+        "created_at": "2000-01-01T00:00:00"
+      }
+    ],
+    "spotify.albums": [
+      {
+        "id": 200,
+        "title": "Edition 2000 Herbert von Karajan",
+        "artist_ids": [
+          200
+        ],
+        "release_date": "2000-01-01T00:00:00",
+        "genre": "Classical",
+        "rating": 4.8,
+        "like_count": 15000,
+        "review_count": 300
+      }
+    ],
+    "amazon.sellers": [
+      {
+        "id": 200,
+        "name": "AudioTech Store",
+        "rating": 4.8
+      }
+    ],
+    "amazon.products": [
+      {
+        "id": 200,
+        "product_type": "electronics",
+        "name": "Sony Portable CD Player",
+        "description": "High quality portable CD player with anti-skip technology.",
+        "seller_id": 200,
+        "price": 49.99,
+        "delivery_days": 2,
+        "inventory_quantity": 25,
+        "weight": 0.6,
+        "length": 5.5,
+        "width": 5.5,
+        "height": 1.2,
+        "color": "black",
+        "relative_size": "small",
+        "rating": 4.5,
+        "seller_rating": 4.8,
+        "has_variations": false
+      }
+    ],
+    "simple_note.notes": [
+      {
+        "id": 3200,
+        "user_id": 11,
+        "title": "Vinyl Inventory",
+        "content": "My Record Collection:\n- Abbey Road\n- The Dark Side of the Moon",
+        "tags": [
+          "music",
+          "inventory",
+          "records"
+        ],
+        "created_at": "2026-04-10T10:00:00",
+        "updated_at": "2026-04-10T10:00:00",
+        "pinned": false,
+        "data": null
+      },
+      {
+        "id": 3201,
+        "user_id": 11,
+        "title": "Tech Budget",
+        "content": "Current allocated budget: $200",
+        "tags": [
+          "finance",
+          "budget",
+          "tech"
+        ],
+        "created_at": "2026-04-15T09:00:00",
+        "updated_at": "2026-04-15T09:00:00",
+        "pinned": false,
+        "data": null
+      }
+    ],
+    "splitwise.users": [
+      {
+        "id": 200,
+        "first_name": "Roommate",
+        "last_name": "One",
+        "email": "roommate@example.com",
+        "password": "default_password",
+        "created_at": "2026-01-01T10:00:00",
+        "last_logged_in": "2026-04-01T10:00:00",
+        "verified": true
+      }
+    ],
+    "splitwise.groups": [
+      {
+        "id": 400,
+        "user_id": 11,
+        "name": "Apartment",
+        "description": "Apartment expenses",
+        "created_at": "2026-01-01T10:00:00",
+        "invitation_code": "APT123",
+        "deleted": false
+      }
+    ],
+    "splitwise.group_members": [
+      {
+        "id": 1100,
+        "group_id": 400,
+        "user_id": 11,
+        "joined_at": "2026-01-01T10:00:00"
+      },
+      {
+        "id": 1101,
+        "group_id": 400,
+        "user_id": 200,
+        "joined_at": "2026-01-01T10:00:00"
+      }
+    ],
+    "splitwise.expenses": [
+      {
+        "id": 5200,
+        "user_id": 200,
+        "group_id": 400,
+        "payer_id": 200,
+        "debtor_ids": [
+          11
+        ],
+        "participant_ids": [
+          11,
+          200
+        ],
+        "description": "Internet Bill",
+        "amount": 50.0,
+        "deleted": false,
+        "receipt_file_name": null,
+        "receipt_file_content": null,
+        "receipt_download_count": 0,
+        "created_at": "2026-04-01T10:00:00"
+      }
+    ],
+    "splitwise.expense_shares": [
+      {
+        "id": 200,
+        "expense_id": 5200,
+        "debtor_id": 11,
+        "share_amount": 25.0,
+        "created_at": "2026-04-01T10:00:00"
+      }
+    ],
+    "todoist.project_collaborator_links": [
+      {
+        "id": 50400,
+        "project_id": 400,
+        "user_id": 11,
+        "is_favorite": false,
+        "is_archived": false,
+        "created_at": "2026-01-01T10:00:00"
+      }
+    ],
+    "gmail.users": []
+  },
+  "image_paths": [
+    "hiertext/images/test/600b43417a7bd90f.jpg",
+    "hiertext/images/test/ef01956297a2fcf1.jpg",
+    "worldvqa/images/1537.jpg",
+    "hiertext/images/test/dfdb208c86515ecc.jpg",
+    "hiertext/images/test/b46470c3e98f2ed2.jpg"
+  ],
+  "messages": [
+    {
+      "sender": "SYSTEM",
+      "recipient": "USER",
+      "content": "{{USER_INSTRUCTION}}ROUND 1 [provide: image_1, image_2, image_3, image_4, image_5]\nQuery: Check my 'Vinyl Inventory' note to see if the album in the first image and the single in the fifth image are already listed. If they aren't, add them.\nInstructions: Instruct the assistant to read your 'Vinyl Inventory' note and validate whether the records shown in the first and fifth images are already listed. If the assistant asks for the titles to check or add, tell it to extract them directly from the covers of the items in those specific images. Once the assistant confirms it has checked and added any missing ones, move to the next round.\n\nROUND 2\nQuery: I want to listen to the classical tracks from the second image. Search for that album and check if it's already saved in my Spotify library. If it isn't, add it.\nInstructions: Ask the assistant to search Spotify for the classical album shown in the second image and validate if it's currently in your library. If the assistant needs the title to search, direct it to read the main heading and series name from the top of the back cover in the image. Once the assistant confirms the album is in your library, proceed to the next round.\n\nROUND 3\nQuery: Check my 'Tech Budget' note. If I have $150 or more allocated, search for the CD player shown in the third image on Amazon and add it to my cart.\nInstructions: Tell the assistant to check the balance in your 'Tech Budget' note. If the budget constraint is met (at least $150), ask it to search Amazon for the exact CD player model visible in the third image and add it to your cart. If the assistant asks for the brand or model name, point it to the text written on the blue CD case sitting on the player in the image. Wait for confirmation that the item is in the cart.\n\nROUND 4\nQuery: Wait, change of plan. I shouldn't spend money on the CD player right now. Remove it from my Amazon cart. Instead, let's focus on my memorabilia. Check Todoist for my 'Decorating' task and add a sub-task to frame the concert ticket from the fourth image.\nInstructions: Tell the assistant you've changed your mind and want to completely remove the CD player from your Amazon cart. Then, instruct it to find your existing 'Decorating' task in Todoist and add a sub-task about framing the ticket shown in the fourth image. If the assistant asks for the ticket details to include in the task, tell it to use the band name, venue, and year clearly printed on the ticket. Once both the removal and the new task creation are confirmed, move on.\n\nROUND 5\nQuery: Finally, check my Splitwise group 'Apartment' to see if my current balance is negative. If it is, record a $10 shared expense for the record from the fifth image so my roommates can chip in.\nInstructions: Ask the assistant to check the balance of your 'Apartment' Splitwise group. If it confirms your balance is negative, tell it to record a $10 shared expense for the record shown in the fifth image. If it needs a description for the expense, tell it to use the artist name from the pink center label of the record. End the conversation once the expense is successfully recorded.\n\nYou have 5 images available to share with the agent using the send_message_with_image tool.\nIMPORTANT: Image IDs are ZERO-INDEXED integers (0, 1, 2, ...). Do NOT add 1 to the IDs.\nAvailable image IDs: [0, 1, 2, 3, 4]\nImage mapping:\n  image_1.jpg -> image ID 0\n  image_2.jpg -> image ID 1\n  image_3.jpg -> image ID 2\n  image_4.jpg -> image ID 3\n  image_5.jpg -> image ID 4"
+    },
+    {
+      "sender": "USER",
+      "recipient": "AGENT",
+      "content": "Check my 'Vinyl Inventory' note to see if the album in the first image and the single in the fifth image are already listed. If they aren't, add them.",
+      "image_ids": [
+        0,
+        1,
+        2,
+        3,
+        4
+      ]
+    }
+  ],
+  "milestones": [],
+  "entity_diff_specs": [
+    {
+      "operation": "create",
+      "source": "appworld",
+      "table": "todoist.sub_tasks",
+      "entity_data": {
+        "task_id": 6500,
+        "title": "Frame Radiohead Earls Court 2003 ticket",
+        "description": null,
+        "due_date": null,
+        "priority": "medium",
+        "is_completed": false,
+        "duration": null,
+        "duration_unit": null,
+        "order_index": 0,
+        "created_at": "2026-04-17T00:19:32"
+      },
+      "column_similarity_measure": {
+        "task_id": "column_exact_match_similarity",
+        "title": "column_rouge_l_similarity",
+        "description": "column_ignore_similarity",
+        "due_date": "column_ignore_similarity",
+        "priority": "column_exact_match_similarity",
+        "is_completed": "column_exact_match_similarity",
+        "duration": "column_ignore_similarity",
+        "duration_unit": "column_ignore_similarity",
+        "order_index": "column_ignore_similarity",
+        "created_at": "column_ignore_similarity"
+      }
+    },
+    {
+      "operation": "create",
+      "source": "appworld",
+      "table": "spotify.user_library_albums",
+      "entity_data": {
+        "user_id": 11,
+        "album_id": 200,
+        "created_at": "2026-04-17T00:19:32"
+      },
+      "column_similarity_measure": {
+        "user_id": "column_exact_match_similarity",
+        "album_id": "column_exact_match_similarity",
+        "created_at": "column_ignore_similarity"
+      }
+    },
+    {
+      "operation": "create",
+      "source": "appworld",
+      "table": "splitwise.expenses",
+      "entity_data": {
+        "user_id": 11,
+        "group_id": 400,
+        "payer_id": 11,
+        "debtor_ids": [
+          200
+        ],
+        "participant_ids": [
+          11,
+          200
+        ],
+        "description": "Marie-Paule Belle",
+        "amount": 10.0,
+        "deleted": false,
+        "receipt_file_name": null,
+        "receipt_file_content": null,
+        "receipt_download_count": 0,
+        "created_at": "2026-04-17T00:19:32"
+      },
+      "column_similarity_measure": {
+        "user_id": "column_exact_match_similarity",
+        "group_id": "column_exact_match_similarity",
+        "payer_id": "column_exact_match_similarity",
+        "debtor_ids": "column_ignore_similarity",
+        "participant_ids": "column_ignore_similarity",
+        "description": "column_rouge_l_similarity",
+        "amount": "column_exact_match_similarity",
+        "deleted": "column_ignore_similarity",
+        "receipt_file_name": "column_ignore_similarity",
+        "receipt_file_content": "column_ignore_similarity",
+        "receipt_download_count": "column_exact_match_similarity",
+        "created_at": "column_ignore_similarity"
+      }
+    },
+    {
+      "operation": "create",
+      "source": "appworld",
+      "table": "splitwise.expense_shares",
+      "entity_data": {
+        "expense_id": 5201,
+        "debtor_id": 200,
+        "share_amount": 10.0,
+        "created_at": "2026-04-17T00:19:32"
+      },
+      "column_similarity_measure": {
+        "expense_id": "column_ignore_similarity",
+        "debtor_id": "column_exact_match_similarity",
+        "share_amount": "column_exact_match_similarity",
+        "created_at": "column_ignore_similarity"
+      }
+    },
+    {
+      "operation": "update",
+      "source": "appworld",
+      "table": "simple_note.notes",
+      "entity_id_column": "id",
+      "entity_id_value": 3200,
+      "expected_fields": {
+        "updated_at": "2026-04-10T10:00:00",
+        "content": "My Record Collection:\n- Abbey Road\n- The Dark Side of the Moon\n- The Panassi\u00e9 Sessions\n- Mini-Minitel",
+        "tags": []
+      },
+      "column_similarity_measure": {
+        "updated_at": "column_ignore_similarity",
+        "content": "column_rouge_l_similarity",
+        "id": "column_exact_match_similarity"
+      }
+    }
+  ],
+  "task_completion_criteria": "Update the 'Vinyl Inventory' note to include 'The Panassi\u00e9 Sessions' and 'Mini-Minitel' (if not already present), add the album 'Edition 2000 Herbert von Karajan' to the Spotify library, create a sub-task under the 'Decorating' Todoist task to frame the Radiohead Earls Court 2003 ticket, and record a $10 expense in the 'Apartment' Splitwise group for the Marie-Paule Belle record.",
+  "categories": [
+    "APPWORLD",
+    "MULTIPLE_USER_TURN"
+  ],
+  "max_messages": 100,
+  "metadata": {
+    "original_scenario_id": "scenario_0957",
+    "expected_tools": [
+      "simple_note_show_note",
+      "simple_note_add_content_to_note",
+      "web_search_serper",
+      "spotify_show_album",
+      "spotify_show_album_privates",
+      "spotify_add_album_to_library",
+      "amazon_show_product",
+      "amazon_add_product_to_cart",
+      "amazon_delete_product_from_cart",
+      "todoist_show_tasks",
+      "todoist_create_sub_task",
+      "splitwise_show_group_balance",
+      "splitwise_record_expense"
+    ],
+    "image_arrival": {
+      "1": [
+        "image_1",
+        "image_2",
+        "image_3",
+        "image_4",
+        "image_5"
+      ]
+    },
+    "image_delivery_map": [],
+    "scenario_metadata": {
+      "num_images": 5,
+      "num_user_rounds": 5,
+      "selected_flow_type": "validate",
+      "image_arrival": "upfront",
+      "challenge_type": "goal_change",
+      "require_disambiguation": false,
+      "dataset_type": "hiertext"
+    }
+  }
+}

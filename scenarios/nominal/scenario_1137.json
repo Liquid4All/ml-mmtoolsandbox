@@ -1,0 +1,214 @@
+{
+  "name": "scenario_1137",
+  "base_scenario": "base",
+  "description": "Paul Miller is analyzing various financial and macroeconomic charts for his work at QuantumHarbor Dynamics and needs his assistant to compute key metrics and prepare communications for his teams.",
+  "difficulty": "easy",
+  "appworld_base_task": "_base_",
+  "device_state_id": "paul_mill@gmail.com",
+  "reference_time": "2026-04-17T00:24:28.125080+00:00",
+  "agentsandbox_entities": {
+    "calendars": [
+      {
+        "calendar_id": "calendar_events_calendar_100",
+        "title": "Work"
+      }
+    ]
+  },
+  "appworld_entities": {
+    "phone.contacts": [
+      {
+        "id": 200,
+        "user_id": 25,
+        "first_name": "Fintech",
+        "last_name": "Team",
+        "email": "fintech@quantumharbor.com",
+        "phone_number": null,
+        "relationships": [
+          "coworker"
+        ],
+        "birthday": null,
+        "home_address": null,
+        "work_address": null,
+        "created_at": "2024-10-12T09:00:00"
+      },
+      {
+        "id": 201,
+        "user_id": 25,
+        "first_name": "Macro",
+        "last_name": "Team",
+        "email": "macro@quantumharbor.com",
+        "phone_number": null,
+        "relationships": [
+          "coworker"
+        ],
+        "birthday": null,
+        "home_address": null,
+        "work_address": null,
+        "created_at": "2024-10-12T09:00:00"
+      }
+    ],
+    "gmail.users": [
+      {
+        "id": 200,
+        "first_name": "Fintech",
+        "last_name": "Team",
+        "email": "fintech@quantumharbor.com",
+        "password": "default_password",
+        "status": "active",
+        "created_at": "2025-01-01T00:00:00",
+        "last_logged_in": "2025-01-01T00:00:00"
+      },
+      {
+        "id": 201,
+        "first_name": "Macro",
+        "last_name": "Team",
+        "email": "macro@quantumharbor.com",
+        "password": "default_password",
+        "status": "active",
+        "created_at": "2025-01-01T00:00:00",
+        "last_logged_in": "2025-01-01T00:00:00"
+      }
+    ]
+  },
+  "image_paths": [
+    "chartqapro/images/chart_0088.jpg",
+    "chartqapro/images/chart_0461.jpg",
+    "chartqapro/images/chart_1421.jpg"
+  ],
+  "messages": [
+    {
+      "sender": "SYSTEM",
+      "recipient": "USER",
+      "content": "{{USER_INSTRUCTION}}ROUND 1 [provide: image_1]\nQuery: Calculate the absolute growth in total volume processed between the two periods shown here, and draft an email to the fintech team with that figure.\nInstructions: Ask the assistant to calculate the difference in total volume processed between the two periods shown in the image and draft an email to the fintech team with the result. If the assistant asks for the specific contact, clarify it's the Fintech Team. Do not provide the actual numbers; let the assistant extract and compute them. Once the assistant confirms the draft is created with the correct math, move to the next round.\n\nROUND 2 [provide: image_2]\nQuery: Actually, let's pivot to macroeconomics instead. Delete that draft. Look at this new chart on China's GDP, compute the percentage point difference between the official 2018 target and the US group's estimate, and start a new email draft to the macro team with this gap.\nInstructions: Tell the assistant you changed your mind and want to focus on macroeconomics instead. Ask it to delete the previous draft, then look at the new image to calculate the difference between the 2018 official target and the US group's estimate. Instruct it to start a new draft to the macro team with this computed gap. If the assistant gets the math wrong, point it back to the specific dotted lines for 2018 in the chart. Once confirmed, proceed.\n\nROUND 3 [provide: image_3]\nQuery: Check this third chart. Estimate the absolute increase in non-performing loans from the start date to the end date shown, and update the draft to include this calculated increase.\nInstructions: Provide the third image and ask the assistant to estimate the absolute increase in non-performing loans from the earliest date to the latest date shown on the chart. Instruct it to update the current macro team draft with this new calculated figure. If the assistant struggles to read the right-hand axis, remind it to look at the blue bars for non-performing loans. Once the draft is updated, move on.\n\nROUND 4\nQuery: Send that email draft to the macro team now, and schedule a calendar event for tomorrow at 2 PM to discuss these China economic indicators.\nInstructions: Instruct the assistant to send the finalized email draft to the macro team. Then, ask it to schedule a calendar event for tomorrow at 2 PM to discuss the China economic indicators. If it asks for a title, say 'China economic indicators discussion' or something similar. Once both actions are confirmed, end the conversation.\n\nYou have 3 images available to share with the agent using the send_message_with_image tool.\nIMPORTANT: Image IDs are ZERO-INDEXED integers (0, 1, 2, ...). Do NOT add 1 to the IDs.\nAvailable image IDs: [0, 1, 2]\nImage mapping:\n  image_1.jpg -> image ID 0\n  image_2.jpg -> image ID 1\n  image_3.jpg -> image ID 2\n\n## IMAGE DELIVERY\n\n⚠️ IMPORTANT: You MUST use the `send_message_with_image` tool to share images with User B. Do NOT just describe images in text — you MUST call the tool.\n\nImage delivery schedule:\n\n  Round 2: YOU MUST call the send_message_with_image tool with image_ids='1' — do NOT write the tool name as text; use the actual function call. Include a natural, conversational message to the assistant.\n  Round 3: YOU MUST call the send_message_with_image tool with image_ids='2' — do NOT write the tool name as text; use the actual function call. Include a natural, conversational message to the assistant."
+    },
+    {
+      "sender": "USER",
+      "recipient": "AGENT",
+      "content": "Calculate the absolute growth in total volume processed between the two periods shown here, and draft an email to the fintech team with that figure.",
+      "image_ids": [
+        0
+      ]
+    }
+  ],
+  "milestones": [],
+  "entity_diff_specs": [
+    {
+      "operation": "create",
+      "source": "appworld",
+      "table": "gmail.emails",
+      "entity_data": {
+        "sender_id": 25,
+        "recipient_ids": [
+          201
+        ],
+        "subject": "China economic indicators",
+        "body": "The difference between China's official 2018 GDP target and the US estimate is 2.4 percentage points. Additionally, non-performing loans increased by approximately 1500 billion Yuan between mid-2016 and late 2021.",
+        "response_to_email_id": null,
+        "created_at": "2026-04-17T00:24:28"
+      },
+      "column_similarity_measure": {
+        "sender_id": "column_exact_match_similarity",
+        "recipient_ids": "column_exact_match_similarity",
+        "subject": "column_rouge_l_similarity",
+        "body": "column_rouge_l_similarity",
+        "response_to_email_id": "column_ignore_similarity",
+        "created_at": "column_ignore_similarity"
+      }
+    },
+    {
+      "operation": "create",
+      "source": "agentsandbox",
+      "namespace": "CALENDAR_EVENTS",
+      "entity_data": {
+        "calendar_event_id": "calendar_events_calendar_event_100",
+        "calendar_id": "calendar_events_calendar_100",
+        "title": "China economic indicators discussion",
+        "description": null,
+        "start_datetime": "2026-04-18T14:00:00Z",
+        "end_datetime": "2026-04-18T15:00:00Z",
+        "is_all_day": false,
+        "recurrence_frequency": null,
+        "recurrence_interval": null,
+        "recurrence_until_datetime": null,
+        "recurrence_parent_id": null,
+        "recurrence_exclude_datetime": [],
+        "latitude": null,
+        "longitude": null,
+        "place_id": null,
+        "formatted_address": null,
+        "attendee_names": [],
+        "attendee_emails": []
+      },
+      "column_similarity_measure": {
+        "calendar_event_id": "column_ignore_similarity",
+        "calendar_id": "column_ignore_similarity",
+        "title": "column_rouge_l_similarity",
+        "description": "column_ignore_similarity",
+        "start_datetime": "column_datetime_naive_equal_similarity",
+        "end_datetime": "column_datetime_naive_equal_similarity",
+        "is_all_day": "column_exact_match_similarity",
+        "recurrence_frequency": "column_ignore_similarity",
+        "recurrence_interval": "column_ignore_similarity",
+        "recurrence_until_datetime": "column_ignore_similarity",
+        "recurrence_parent_id": "column_ignore_similarity",
+        "recurrence_exclude_datetime": "column_ignore_similarity",
+        "latitude": "column_ignore_similarity",
+        "longitude": "column_ignore_similarity",
+        "place_id": "column_ignore_similarity",
+        "formatted_address": "column_ignore_similarity",
+        "attendee_names": "column_ignore_similarity",
+        "attendee_emails": "column_ignore_similarity"
+      }
+    }
+  ],
+  "task_completion_criteria": "Send an email to the Macro Team stating that the difference between China's official 2018 GDP target and the US estimate is 2.4 percentage points, and that non-performing loans increased by approximately 1500 billion Yuan between mid-2016 and late 2021. Additionally, create a calendar event titled 'China economic indicators discussion' (or similar) for April 18, 2026, at 2:00 PM.",
+  "categories": [
+    "APPWORLD",
+    "MULTIPLE_USER_TURN"
+  ],
+  "max_messages": 100,
+  "metadata": {
+    "original_scenario_id": "scenario_1137",
+    "expected_tools": [
+      "gmail_create_draft",
+      "gmail_delete_draft",
+      "gmail_update_draft",
+      "gmail_send_email_from_draft",
+      "create_calendar_event"
+    ],
+    "image_arrival": {
+      "1": [
+        "image_1"
+      ],
+      "2": [
+        "image_2"
+      ],
+      "3": [
+        "image_3"
+      ]
+    },
+    "image_delivery_map": [
+      {
+        "query": "Actually, let's pivot to macroeconomics instead. Delete that draft. Look at this new chart on China's GDP, compute the percentage point difference between the official 2018 target and the US group's estimate, and start a new email draft to the macro team with this gap.",
+        "image_ids": [
+          1
+        ]
+      },
+      {
+        "query": "Check this third chart. Estimate the absolute increase in non-performing loans from the start date to the end date shown, and update the draft to include this calculated increase.",
+        "image_ids": [
+          2
+        ]
+      }
+    ],
+    "scenario_metadata": {
+      "num_images": 3,
+      "num_user_rounds": 4,
+      "selected_flow_type": "compute",
+      "image_arrival": "mixed",
+      "challenge_type": "goal_change",
+      "require_disambiguation": false,
+      "dataset_type": "chartqapro"
+    }
+  }
+}

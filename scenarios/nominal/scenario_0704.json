@@ -1,0 +1,262 @@
+{
+  "name": "scenario_0704",
+  "base_scenario": "base",
+  "description": "The user is organizing tutoring materials for their students. They have a student's performance radar charts and several presentation slides, and need to figure out which slides are relevant to the student's current curriculum before organizing them into a task manager.",
+  "difficulty": "easy",
+  "appworld_base_task": "_base_",
+  "device_state_id": "nicholas.weber@gmail.com",
+  "reference_time": "2026-04-17T00:11:58.918795+00:00",
+  "agentsandbox_entities": {},
+  "appworld_entities": {
+    "gmail.emails": [
+      {
+        "id": 5100,
+        "sender_id": 3,
+        "recipient_ids": [
+          49
+        ],
+        "subject": "Math Slides",
+        "body": "Hi Nicholas,\n\nHere are the Math Slides. For the slide with the 3D surface plot, pay attention to the example equation at the bottom, which is C(x,y) = x^4 + y^3 + xy. Let me know if you need any extra notes before your tutoring session.\n\nBest,\nChris",
+        "response_to_email_id": null,
+        "created_at": "2026-04-16T10:00:00"
+      }
+    ],
+    "gmail.global_email_threads": [
+      {
+        "id": 200,
+        "email_ids": [
+          5100
+        ],
+        "created_at": "2026-04-16T10:00:00",
+        "updated_at": "2026-04-16T10:00:00"
+      }
+    ],
+    "gmail.user_email_threads": [
+      {
+        "id": 48000,
+        "global_email_thread_id": 200,
+        "user_id": 49,
+        "email_ids": [
+          5100
+        ],
+        "incoming": true,
+        "outgoing": false,
+        "read": true,
+        "label": "INBOX",
+        "starred": false,
+        "archived": false,
+        "spam": false,
+        "sender_email_addresses": [
+          "chris.mcco@gmail.com"
+        ],
+        "sender_names": [
+          "Chris Mccoy"
+        ],
+        "recipient_email_addresses": [
+          "nicholas.weber@gmail.com"
+        ],
+        "recipient_names": [
+          "Nicholas Weber"
+        ],
+        "created_at": "2026-04-16T10:00:00",
+        "updated_at": "2026-04-16T10:00:00",
+        "has_attachments": false,
+        "snoozed_until": null
+      }
+    ],
+    "todoist.projects": [
+      {
+        "id": 400,
+        "user_id": 49,
+        "name": "Calculus Tutoring",
+        "color": "charcoal",
+        "is_inbox": false,
+        "description": "",
+        "created_at": "2026-04-10T10:00:00"
+      }
+    ],
+    "todoist.sections": [
+      {
+        "id": 200,
+        "project_id": 400,
+        "name": "Quotient Rule",
+        "order_index": 0,
+        "created_at": "2026-04-10T10:05:00"
+      },
+      {
+        "id": 201,
+        "project_id": 400,
+        "name": "Partial Derivatives",
+        "order_index": 1,
+        "created_at": "2026-04-10T10:06:00"
+      }
+    ],
+    "simple_note.notes": [
+      {
+        "id": 3200,
+        "user_id": 49,
+        "title": "Student 1 Profile",
+        "content": "Student Name: Student 1\nAge: 16\nGrade: 10th\n\nAcademic Performance:\n- Strongest Subject: Music\n- Weakest Subject: Maths\n\nCurrent Curriculum:\n- Math Module: Calculus\n- Science: Physics\n- Humanities: History\n\nNotes: Needs extra help with 3D surface plots and partial derivatives.",
+        "tags": [
+          "tutoring",
+          "student profile"
+        ],
+        "created_at": "2026-04-10T10:00:00",
+        "updated_at": "2026-04-15T14:30:00",
+        "pinned": false,
+        "data": null
+      }
+    ],
+    "todoist.project_collaborator_links": [
+      {
+        "id": 50400,
+        "project_id": 400,
+        "user_id": 49,
+        "is_favorite": false,
+        "is_archived": false,
+        "created_at": "2026-04-10T10:00:00"
+      }
+    ],
+    "gmail.users": []
+  },
+  "image_paths": [
+    "chartmuseum/images/student-radar-plot.png",
+    "docvqa/images/19210.jpg",
+    "omnidocbench/images/000350.jpg",
+    "docvqa/images/43353.jpg",
+    "omnidocbench/images/000618.jpg"
+  ],
+  "messages": [
+    {
+      "sender": "SYSTEM",
+      "recipient": "USER",
+      "content": "{{USER_INSTRUCTION}}ROUND 1 [provide: image_1, image_2, image_3, image_4, image_5]\nQuery: I've attached some images. First, look at the radar charts and find the student who is weakest in Maths but strongest in Music. Then pull up the note titled with their name plus 'Profile' to check what math module they're currently studying.\nInstructions: Tell the assistant to look at the provided radar charts to identify the student with the lowest score in Maths and the highest in Music. Ask it to open the note titled with that student's name followed by 'Profile' to find out their current math module. If the assistant asks for confirmation of the student, confirm it's the one matching the criteria. Wait for the assistant to report the math module from the note.\n\nROUND 2\nQuery: Okay, they're taking Calculus. Look at the other four slides I sent and figure out which ones are relevant to Calculus. Then show me my 'Calculus Tutoring' project in Todoist and its sections so I can figure out where to place them.\nInstructions: Acknowledge the math module the assistant found. Ask the assistant to review the remaining images and identify which ones are relevant to that specific subject. Then, instruct it to show the Todoist project for tutoring that subject, including its sections. Wait for the assistant to list the relevant slides and the project sections.\n\nROUND 3\nQuery: Before we organize them, pull up the email thread called 'Math Slides' to see if there are extra notes on the slide with the 3D surface plot. Also, can you confirm if the example equation at the bottom of that slide is C(x,y) = x^4 + y^4 + xy?\nInstructions: Ask the assistant to fetch the email thread titled 'Math Slides' to look for any additional notes regarding the slide with the 3D surface plot. Concurrently, ask it to confirm the equation at the bottom of that slide, intentionally misstating the middle term as y to the power of 4. If the assistant points out your error and provides the correct equation, confirm you see it now. If it fails to notice, point out that you might have misread the exponent.\n\nROUND 4\nQuery: Oops, my bad, it is y cubed. Create a task in the section for that topic using the correct equation as the title, and attach that slide to the task.\nInstructions: Acknowledge your mistake about the equation. Instruct the assistant to create a new task in the Todoist section corresponding to that slide's topic, using the correct equation as the task title, and to upload that specific slide to the task. Conclude the conversation once the task is created and the slide is attached.\n\nYou have 5 images available to share with the agent using the send_message_with_image tool.\nIMPORTANT: Image IDs are ZERO-INDEXED integers (0, 1, 2, ...). Do NOT add 1 to the IDs.\nAvailable image IDs: [0, 1, 2, 3, 4]\nImage mapping:\n  image_1.jpg -> image ID 0\n  image_2.jpg -> image ID 1\n  image_3.jpg -> image ID 2\n  image_4.jpg -> image ID 3\n  image_5.jpg -> image ID 4"
+    },
+    {
+      "sender": "USER",
+      "recipient": "AGENT",
+      "content": "I've attached some images. First, look at the radar charts and find the student who is weakest in Maths but strongest in Music. Then pull up the note titled with their name plus 'Profile' to check what math module they're currently studying.",
+      "image_ids": [
+        0,
+        1,
+        2,
+        3,
+        4
+      ]
+    }
+  ],
+  "milestones": [],
+  "entity_diff_specs": [
+    {
+      "operation": "create",
+      "source": "appworld",
+      "table": "todoist.tasks",
+      "entity_data": {
+        "project_id": 400,
+        "section_id": 201,
+        "user_id": 49,
+        "title": "C(x,y) = x^4 + y^3 + xy",
+        "description": null,
+        "due_date": null,
+        "priority": "medium",
+        "is_completed": false,
+        "duration": null,
+        "duration_unit": null,
+        "order_index": 0,
+        "assignee_id": null,
+        "assigner_id": null,
+        "created_at": "2026-04-17T00:11:58"
+      },
+      "column_similarity_measure": {
+        "project_id": "column_exact_match_similarity",
+        "section_id": "column_exact_match_similarity",
+        "user_id": "column_exact_match_similarity",
+        "title": "column_rouge_l_similarity",
+        "description": "column_ignore_similarity",
+        "due_date": "column_ignore_similarity",
+        "priority": "column_exact_match_similarity",
+        "is_completed": "column_exact_match_similarity",
+        "duration": "column_ignore_similarity",
+        "duration_unit": "column_ignore_similarity",
+        "order_index": "column_ignore_similarity",
+        "assignee_id": "column_ignore_similarity",
+        "assigner_id": "column_ignore_similarity",
+        "created_at": "column_ignore_similarity"
+      }
+    },
+    {
+      "operation": "create",
+      "source": "appworld",
+      "table": "todoist.task_comments",
+      "entity_data": {
+        "task_id": 6500,
+        "user_id": 49,
+        "content": "Attached slide for reference",
+        "created_at": "2026-04-17T00:11:58"
+      },
+      "column_similarity_measure": {
+        "task_id": "column_ignore_similarity",
+        "user_id": "column_exact_match_similarity",
+        "content": "column_rouge_l_similarity",
+        "created_at": "column_ignore_similarity"
+      }
+    },
+    {
+      "operation": "create",
+      "source": "appworld",
+      "table": "todoist.attachments",
+      "entity_data": {
+        "task_comment_id": 5000,
+        "file_name": "Partial_Derivatives_slide.png",
+        "file_content": "image_data_placeholder",
+        "file_compressed_data": [],
+        "created_at": "2026-04-17T00:11:58",
+        "download_count": 0
+      },
+      "column_similarity_measure": {
+        "task_comment_id": "column_ignore_similarity",
+        "file_name": "column_exact_match_similarity",
+        "file_content": "column_ignore_similarity",
+        "file_compressed_data": "column_ignore_similarity",
+        "created_at": "column_ignore_similarity",
+        "download_count": "column_exact_match_similarity"
+      }
+    }
+  ],
+  "task_completion_criteria": "Create a Todoist task titled 'C(x,y) = x^4 + y^3 + xy' in the 'Partial Derivatives' section of the 'Calculus Tutoring' project, and upload the Partial Derivatives slide (Image 5) as an attachment to this task.",
+  "categories": [
+    "APPWORLD",
+    "MULTIPLE_USER_TURN"
+  ],
+  "max_messages": 100,
+  "metadata": {
+    "original_scenario_id": "scenario_0704",
+    "expected_tools": [
+      "simple_note_show_note",
+      "todoist_show_project",
+      "todoist_show_sections",
+      "gmail_show_thread",
+      "todoist_create_task",
+      "todoist_upload_attachment"
+    ],
+    "image_arrival": {
+      "1": [
+        "image_1",
+        "image_2",
+        "image_3",
+        "image_4",
+        "image_5"
+      ]
+    },
+    "image_delivery_map": [],
+    "scenario_metadata": {
+      "num_images": 5,
+      "num_user_rounds": 4,
+      "selected_flow_type": "lookup_chain",
+      "image_arrival": "upfront",
+      "challenge_type": "error_correction",
+      "require_disambiguation": false,
+      "dataset_type": "omnidocbench"
+    }
+  }
+}

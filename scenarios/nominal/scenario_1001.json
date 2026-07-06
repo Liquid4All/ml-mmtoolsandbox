@@ -1,0 +1,302 @@
+{
+  "name": "scenario_1001",
+  "base_scenario": "base",
+  "description": "Anita is organizing a cultural event and a charity drive. She needs to research cultural items for the event and purchase several gift toys on Amazon, managing her tasks and shopping cart along the way.",
+  "difficulty": "easy",
+  "appworld_base_task": "_base_",
+  "device_state_id": "anita.burch@gmail.com",
+  "reference_time": "2026-04-17T00:20:46.165749+00:00",
+  "agentsandbox_entities": {},
+  "appworld_entities": {
+    "todoist.projects": [
+      {
+        "id": 400,
+        "user_id": 37,
+        "name": "Cultural Event",
+        "color": "charcoal",
+        "is_inbox": false,
+        "description": "",
+        "created_at": "2026-04-10T10:00:00"
+      }
+    ],
+    "amazon.sellers": [
+      {
+        "id": 200,
+        "name": "GUND Official",
+        "rating": 4.8
+      },
+      {
+        "id": 201,
+        "name": "IKEA Store",
+        "rating": 4.7
+      },
+      {
+        "id": 202,
+        "name": "SmartKids Tech",
+        "rating": 4.5
+      }
+    ],
+    "amazon.products": [
+      {
+        "id": 200,
+        "product_type": "toys",
+        "name": "GUND plush toy dog Boo",
+        "description": "World's cutest dog plush toy",
+        "seller_id": 200,
+        "price": 24.99,
+        "delivery_days": 2,
+        "inventory_quantity": 50,
+        "weight": 0.5,
+        "length": 8.0,
+        "width": 5.0,
+        "height": 6.0,
+        "color": "brown",
+        "relative_size": "small",
+        "rating": 4.8,
+        "seller_rating": 4.8,
+        "has_variations": false
+      },
+      {
+        "id": 201,
+        "product_type": "toys",
+        "name": "IKEA BLÅHAJ shark plush toy",
+        "description": "Large soft shark plush",
+        "seller_id": 201,
+        "price": 29.99,
+        "delivery_days": 3,
+        "inventory_quantity": 30,
+        "weight": 1.2,
+        "length": 39.25,
+        "width": 20.0,
+        "height": 9.0,
+        "color": "blue",
+        "relative_size": "large",
+        "rating": 4.9,
+        "seller_rating": 4.7,
+        "has_variations": false
+      },
+      {
+        "id": 202,
+        "product_type": "toys",
+        "name": "Kids' smart companion robot",
+        "description": "Interactive smart robot for kids",
+        "seller_id": 202,
+        "price": 59.99,
+        "delivery_days": 2,
+        "inventory_quantity": 25,
+        "weight": 2.0,
+        "length": 10.0,
+        "width": 6.0,
+        "height": 12.0,
+        "color": "white",
+        "relative_size": "medium",
+        "rating": 4.5,
+        "seller_rating": 4.5,
+        "has_variations": false
+      }
+    ],
+    "todoist.project_collaborator_links": [
+      {
+        "id": 50400,
+        "project_id": 400,
+        "user_id": 37,
+        "is_favorite": false,
+        "is_archived": false,
+        "created_at": "2026-04-10T10:00:00"
+      }
+    ],
+    "gmail.users": []
+  },
+  "image_paths": [
+    "worldvqa/images/2995.jpg",
+    "worldvqa/images/1285.jpg",
+    "worldvqa/images/1762.jpg",
+    "worldvqa/images/1163.jpg",
+    "worldvqa/images/1766.jpg",
+    "worldvqa/images/1601.jpg"
+  ],
+  "messages": [
+    {
+      "sender": "SYSTEM",
+      "recipient": "USER",
+      "content": "{{USER_INSTRUCTION}}ROUND 1 [provide: image_1, image_2]\nQuery: Check my Todoist tasks in the Cultural Event project to see if I already have a task for event research. If not, create a new task to research the martial art shown in the first image and the fabric in the second image.\nInstructions: Ask the agent to check your Todoist project for an existing event research task. When it confirms there isn't one, instruct it to create a new task specifically naming the martial art and fabric shown in the provided images. If the agent asks for clarification on what the items are, point it back to the images to identify them. Once the task is created, proceed to the next round.\n\nROUND 2 [provide: image_3, image_4, image_5]\nQuery: I also need to buy some gifts. Validate if the plush dog in the first new picture, the ceramic figure in the second, and the shark in the third are available on Amazon. If they are all available, add them to my cart.\nInstructions: Tell the agent to search Amazon for the three items shown in the new images to validate their availability. The agent should flag that the second item (the ceramic figure) is actually a historical artifact and cannot be purchased as a commercial toy. If the agent blindly attempts to add it to the cart without noticing the issue, point out that it's a museum relic and wait for the agent's validation results before confirming any additions to the cart.\n\nROUND 3 [provide: image_6]\nQuery: Ah, my mistake, I didn't realize that ceramic figure was an actual museum relic! Skip it. Instead, check if the robot in this new image is available on Amazon, and add it to the cart along with the dog and shark toys.\nInstructions: Acknowledge the agent's finding about the artifact and tell it to skip that item. Ask the agent to search for the robot shown in the newly provided image instead. Instruct it to add this robot, along with the plush dog and shark toys from the previous images, to your Amazon cart. Once the agent confirms all three valid items are successfully in the cart, move on to the next round.\n\nROUND 4\nQuery: Set a reminder for tomorrow at 5 PM to review my Amazon cart and finalize the purchase for the charity drive.\nInstructions: Ask the agent to create a reminder for tomorrow at 5 PM to review your Amazon cart and finalize the charity drive purchases. If the agent asks for a specific date, remind it that tomorrow is April 18th. Once the reminder is successfully set, end the conversation.\n\nYou have 6 images available to share with the agent using the send_message_with_image tool.\nIMPORTANT: Image IDs are ZERO-INDEXED integers (0, 1, 2, ...). Do NOT add 1 to the IDs.\nAvailable image IDs: [0, 1, 2, 3, 4, 5]\nImage mapping:\n  image_1.jpg -> image ID 0\n  image_2.jpg -> image ID 1\n  image_3.jpg -> image ID 2\n  image_4.jpg -> image ID 3\n  image_5.jpg -> image ID 4\n  image_6.jpg -> image ID 5\n\n## IMAGE DELIVERY\n\n⚠️ IMPORTANT: You MUST use the `send_message_with_image` tool to share images with User B. Do NOT just describe images in text — you MUST call the tool.\n\nImage delivery schedule:\n\n  Round 2: YOU MUST call the send_message_with_image tool with image_ids='2,3,4' — do NOT write the tool name as text; use the actual function call. Include a natural, conversational message to the assistant.\n  Round 3: YOU MUST call the send_message_with_image tool with image_ids='5' — do NOT write the tool name as text; use the actual function call. Include a natural, conversational message to the assistant."
+    },
+    {
+      "sender": "USER",
+      "recipient": "AGENT",
+      "content": "Check my Todoist tasks in the Cultural Event project to see if I already have a task for event research. If not, create a new task to research the martial art shown in the first image and the fabric in the second image.",
+      "image_ids": [
+        0,
+        1
+      ]
+    }
+  ],
+  "milestones": [],
+  "entity_diff_specs": [
+    {
+      "operation": "create",
+      "source": "appworld",
+      "table": "todoist.tasks",
+      "entity_data": {
+        "project_id": 400,
+        "section_id": null,
+        "user_id": 37,
+        "title": "Research Korean Taekkyeon and Thai silk",
+        "description": null,
+        "due_date": null,
+        "priority": "medium",
+        "is_completed": false,
+        "duration": null,
+        "duration_unit": null,
+        "order_index": 1,
+        "assignee_id": null,
+        "assigner_id": null,
+        "created_at": "2026-04-17T00:20:46"
+      },
+      "column_similarity_measure": {
+        "project_id": "column_exact_match_similarity",
+        "section_id": "column_ignore_similarity",
+        "user_id": "column_exact_match_similarity",
+        "title": "column_rouge_l_similarity",
+        "description": "column_ignore_similarity",
+        "due_date": "column_ignore_similarity",
+        "priority": "column_exact_match_similarity",
+        "is_completed": "column_exact_match_similarity",
+        "duration": "column_ignore_similarity",
+        "duration_unit": "column_ignore_similarity",
+        "order_index": "column_ignore_similarity",
+        "assignee_id": "column_ignore_similarity",
+        "assigner_id": "column_ignore_similarity",
+        "created_at": "column_ignore_similarity"
+      }
+    },
+    {
+      "operation": "create",
+      "source": "appworld",
+      "table": "amazon.cart_entries",
+      "entity_data": {
+        "user_id": 37,
+        "product_id": 200,
+        "quantity": 1,
+        "gift_wrap_quantity": 0
+      },
+      "column_similarity_measure": {
+        "user_id": "column_exact_match_similarity",
+        "product_id": "column_exact_match_similarity",
+        "quantity": "column_exact_match_similarity",
+        "gift_wrap_quantity": "column_exact_match_similarity"
+      }
+    },
+    {
+      "operation": "create",
+      "source": "appworld",
+      "table": "amazon.cart_entries",
+      "entity_data": {
+        "user_id": 37,
+        "product_id": 201,
+        "quantity": 1,
+        "gift_wrap_quantity": 0
+      },
+      "column_similarity_measure": {
+        "user_id": "column_exact_match_similarity",
+        "product_id": "column_exact_match_similarity",
+        "quantity": "column_exact_match_similarity",
+        "gift_wrap_quantity": "column_exact_match_similarity"
+      }
+    },
+    {
+      "operation": "create",
+      "source": "appworld",
+      "table": "amazon.cart_entries",
+      "entity_data": {
+        "user_id": 37,
+        "product_id": 202,
+        "quantity": 1,
+        "gift_wrap_quantity": 0
+      },
+      "column_similarity_measure": {
+        "user_id": "column_exact_match_similarity",
+        "product_id": "column_exact_match_similarity",
+        "quantity": "column_exact_match_similarity",
+        "gift_wrap_quantity": "column_exact_match_similarity"
+      }
+    },
+    {
+      "operation": "create",
+      "source": "agentsandbox",
+      "namespace": "REMINDER",
+      "entity_data": {
+        "reminder_id": "reminder_100",
+        "content": "Review the Amazon cart and finalize the purchase for the charity drive",
+        "latitude": null,
+        "longitude": null,
+        "creation_datetime": "2026-04-17T00:20:46Z",
+        "reminder_datetime": "2026-04-18T17:00:00Z"
+      },
+      "column_similarity_measure": {
+        "reminder_id": "column_ignore_similarity",
+        "content": "column_rouge_l_similarity",
+        "latitude": "column_ignore_similarity",
+        "longitude": "column_ignore_similarity",
+        "creation_datetime": "column_ignore_similarity",
+        "reminder_datetime": "column_datetime_naive_equal_similarity"
+      }
+    }
+  ],
+  "task_completion_criteria": "Create a Todoist task to research Korean Taekkyeon and Thai silk, add a GUND plush toy dog Boo, an IKEA BLÅHAJ shark plush toy, and a Kids' smart companion robot to the Amazon cart, and set a reminder for 2026-04-18 at 17:00 to review the Amazon cart and finalize the purchase for the charity drive.",
+  "categories": [
+    "APPWORLD",
+    "MULTIPLE_USER_TURN"
+  ],
+  "max_messages": 100,
+  "metadata": {
+    "original_scenario_id": "scenario_1001",
+    "expected_tools": [
+      "todoist_show_tasks",
+      "todoist_create_task",
+      "web_search_serper",
+      "amazon_show_product",
+      "amazon_add_product_to_cart",
+      "add_reminder"
+    ],
+    "image_arrival": {
+      "1": [
+        "image_1",
+        "image_2"
+      ],
+      "2": [
+        "image_3",
+        "image_4",
+        "image_5"
+      ],
+      "3": [
+        "image_6"
+      ]
+    },
+    "image_delivery_map": [
+      {
+        "query": "I also need to buy some gifts. Validate if the plush dog in the first new picture, the ceramic figure in the second, and the shark in the third are available on Amazon. If they are all available, add them to my cart.",
+        "image_ids": [
+          2,
+          3,
+          4
+        ]
+      },
+      {
+        "query": "Ah, my mistake, I didn't realize that ceramic figure was an actual museum relic! Skip it. Instead, check if the robot in this new image is available on Amazon, and add it to the cart along with the dog and shark toys.",
+        "image_ids": [
+          5
+        ]
+      }
+    ],
+    "scenario_metadata": {
+      "num_images": 6,
+      "num_user_rounds": 4,
+      "selected_flow_type": "validate",
+      "image_arrival": "progressive",
+      "challenge_type": "error_correction",
+      "require_disambiguation": false,
+      "dataset_type": "worldvqa"
+    }
+  }
+}

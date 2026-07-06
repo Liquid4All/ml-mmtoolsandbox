@@ -1,0 +1,355 @@
+{
+  "name": "scenario_0286",
+  "base_scenario": "base",
+  "description": "The user is curating a traditional attire exhibit and is actively tracking down missing garments. They are coordinating with a co-curator and various vendors while keeping a master list of needed items on their device.",
+  "difficulty": "easy",
+  "appworld_base_task": "_base_",
+  "device_state_id": "gra-martinez@gmail.com",
+  "reference_time": "2026-04-16T23:58:58.078914+00:00",
+  "agentsandbox_entities": {},
+  "appworld_entities": {
+    "phone.contacts": [
+      {
+        "id": 200,
+        "user_id": 76,
+        "first_name": "Alice",
+        "last_name": "Chen",
+        "email": "alice.chen@example.com",
+        "phone_number": "555-0101",
+        "relationships": [
+          "co-curator"
+        ],
+        "birthday": null,
+        "home_address": null,
+        "work_address": null,
+        "created_at": "2026-03-15T09:30:00"
+      },
+      {
+        "id": 201,
+        "user_id": 76,
+        "first_name": "Alice",
+        "last_name": "Walker",
+        "email": "alice.walker@example.com",
+        "phone_number": "555-0102",
+        "relationships": [
+          "friend"
+        ],
+        "birthday": null,
+        "home_address": null,
+        "work_address": null,
+        "created_at": "2025-11-20T14:15:00"
+      },
+      {
+        "id": 202,
+        "user_id": 76,
+        "first_name": "Global",
+        "last_name": "Threads",
+        "email": "contact@globalthreads.com",
+        "phone_number": "555-0999",
+        "relationships": [
+          "vendor"
+        ],
+        "birthday": null,
+        "home_address": null,
+        "work_address": null,
+        "created_at": "2026-04-01T11:00:00"
+      }
+    ],
+    "simple_note.notes": [
+      {
+        "id": 3200,
+        "user_id": 76,
+        "title": "Exhibit Needs",
+        "content": "Items to source: Manila shawl, chiton, \u0420\u0443\u0431\u0430\u0445\u0430, kimono, sari.",
+        "tags": [],
+        "created_at": "2026-04-10T10:00:00",
+        "updated_at": "2026-04-10T10:00:00",
+        "pinned": false,
+        "data": null
+      }
+    ],
+    "gmail.users": [
+      {
+        "id": 200,
+        "first_name": "Alice",
+        "last_name": "Chen",
+        "email": "alice.chen@example.com",
+        "password": "default_password",
+        "status": "active",
+        "created_at": "2025-01-01T00:00:00",
+        "last_logged_in": "2025-01-01T00:00:00"
+      },
+      {
+        "id": 201,
+        "first_name": "Alice",
+        "last_name": "Walker",
+        "email": "alice.walker@example.com",
+        "password": "default_password",
+        "status": "active",
+        "created_at": "2025-01-01T00:00:00",
+        "last_logged_in": "2025-01-01T00:00:00"
+      },
+      {
+        "id": 202,
+        "first_name": "Global",
+        "last_name": "Threads",
+        "email": "contact@globalthreads.com",
+        "password": "default_password",
+        "status": "active",
+        "created_at": "2025-01-01T00:00:00",
+        "last_logged_in": "2025-01-01T00:00:00"
+      }
+    ],
+    "phone.users": [
+      {
+        "id": 200,
+        "first_name": "Alice",
+        "last_name": "Chen",
+        "phone_number": "555-0101",
+        "password": "default_password",
+        "created_at": "2025-01-01T00:00:00",
+        "last_logged_in": "2025-01-01T00:00:00"
+      },
+      {
+        "id": 201,
+        "first_name": "Alice",
+        "last_name": "Walker",
+        "phone_number": "555-0102",
+        "password": "default_password",
+        "created_at": "2025-01-01T00:00:00",
+        "last_logged_in": "2025-01-01T00:00:00"
+      },
+      {
+        "id": 202,
+        "first_name": "Global",
+        "last_name": "Threads",
+        "phone_number": "555-0999",
+        "password": "default_password",
+        "created_at": "2025-01-01T00:00:00",
+        "last_logged_in": "2025-01-01T00:00:00"
+      }
+    ]
+  },
+  "image_paths": [
+    "worldvqa/images/1319.jpg",
+    "worldvqa/images/1322.jpg",
+    "worldvqa/images/1326.jpg"
+  ],
+  "messages": [
+    {
+      "sender": "SYSTEM",
+      "recipient": "USER",
+      "content": "{{USER_INSTRUCTION}}ROUND 1 [provide: image_1, image_2]\nQuery: I just picked up the garments shown in these two pictures. Check my 'Exhibit Needs' note to see if they're on there, and if they are, text Alice to let her know we've acquired them.\nInstructions: Ask the assistant to identify the traditional garments in the provided images and cross-reference them with your 'Exhibit Needs' note. Instruct it to send a text to Alice confirming that you have acquired them. Because there are multiple contacts named Alice, the assistant should ask for clarification; when it does, specify that you mean Alice Chen. Once the text is sent, proceed to the next round.\n\nROUND 2\nQuery: Actually, go ahead and delete those two items from the note so the list is up to date.\nInstructions: Instruct the assistant to update the 'Exhibit Needs' note by removing the two items you just acquired. Await confirmation that the note has been successfully updated and the items are crossed off before moving on.\n\nROUND 3 [provide: image_3]\nQuery: A vendor just sent me this new picture. Figure out what traditional clothing this is, check if we still need it on the exhibit list, and if we do, text Global Threads to reserve it.\nInstructions: Direct the assistant to look at the new image, identify the traditional clothing shown, and check if it's still needed on the exhibit list. Since it is, tell the assistant to text the vendor 'Global Threads' to reserve it. If the assistant misidentifies the garment, point it back to the visual details in the image. Move to the final round once the text is sent.\n\nROUND 4\nQuery: Take that last one off the list too. Then text Alice again with the remaining items we still need to source.\nInstructions: Ask the assistant to remove the recently reserved item from the note as well. Then, instruct it to text Alice again, this time listing the remaining garments that still need to be sourced based on the updated note. Conclude the conversation once the final text is sent.\n\nYou have 3 images available to share with the agent using the send_message_with_image tool.\nIMPORTANT: Image IDs are ZERO-INDEXED integers (0, 1, 2, ...). Do NOT add 1 to the IDs.\nAvailable image IDs: [0, 1, 2]\nImage mapping:\n  image_1.jpg -> image ID 0\n  image_2.jpg -> image ID 1\n  image_3.jpg -> image ID 2\n\n## IMAGE DELIVERY\n\n\u26a0\ufe0f IMPORTANT: You MUST use the `send_message_with_image` tool to share images with User B. Do NOT just describe images in text \u2014 you MUST call the tool.\n\nImage delivery schedule:\n\n  Round 3: YOU MUST call the send_message_with_image tool with image_ids='2' \u2014 do NOT write the tool name as text; use the actual function call. Include a natural, conversational message to the assistant."
+    },
+    {
+      "sender": "USER",
+      "recipient": "AGENT",
+      "content": "I just picked up the garments shown in these two pictures. Check my 'Exhibit Needs' note to see if they're on there, and if they are, text Alice to let her know we've acquired them.",
+      "image_ids": [
+        0,
+        1
+      ]
+    }
+  ],
+  "milestones": [],
+  "entity_diff_specs": [
+    {
+      "operation": "create",
+      "source": "appworld",
+      "table": "phone.global_text_messages",
+      "entity_data": {
+        "sender_id": 76,
+        "receiver_id": 200,
+        "message": "Hi Alice, just wanted to let you know we've acquired the Manila shawl and the chiton for the exhibit.",
+        "created_at": "2026-04-16T23:58:58"
+      },
+      "column_similarity_measure": {
+        "sender_id": "column_exact_match_similarity",
+        "receiver_id": "column_exact_match_similarity",
+        "message": "column_rouge_l_similarity",
+        "created_at": "column_ignore_similarity"
+      }
+    },
+    {
+      "operation": "create",
+      "source": "appworld",
+      "table": "phone.user_text_messages",
+      "entity_data": {
+        "global_text_message_id": 200,
+        "user_id": 76,
+        "created_at": "2026-04-16T23:58:58"
+      },
+      "column_similarity_measure": {
+        "global_text_message_id": "column_ignore_similarity",
+        "user_id": "column_exact_match_similarity",
+        "created_at": "column_ignore_similarity"
+      }
+    },
+    {
+      "operation": "create",
+      "source": "appworld",
+      "table": "phone.global_text_messages",
+      "entity_data": {
+        "sender_id": 76,
+        "receiver_id": 202,
+        "message": "Hello, I would like to reserve the \u0420\u0443\u0431\u0430\u0445\u0430 for our exhibit.",
+        "created_at": "2026-04-16T23:58:58"
+      },
+      "column_similarity_measure": {
+        "sender_id": "column_exact_match_similarity",
+        "receiver_id": "column_exact_match_similarity",
+        "message": "column_rouge_l_similarity",
+        "created_at": "column_ignore_similarity"
+      }
+    },
+    {
+      "operation": "create",
+      "source": "appworld",
+      "table": "phone.user_text_messages",
+      "entity_data": {
+        "global_text_message_id": 201,
+        "user_id": 76,
+        "created_at": "2026-04-16T23:58:58"
+      },
+      "column_similarity_measure": {
+        "global_text_message_id": "column_ignore_similarity",
+        "user_id": "column_exact_match_similarity",
+        "created_at": "column_ignore_similarity"
+      }
+    },
+    {
+      "operation": "create",
+      "source": "appworld",
+      "table": "phone.global_text_messages",
+      "entity_data": {
+        "sender_id": 76,
+        "receiver_id": 200,
+        "message": "Update on the exhibit: the remaining items we still need to source are the kimono and the sari.",
+        "created_at": "2026-04-16T23:58:58"
+      },
+      "column_similarity_measure": {
+        "sender_id": "column_exact_match_similarity",
+        "receiver_id": "column_exact_match_similarity",
+        "message": "column_rouge_l_similarity",
+        "created_at": "column_ignore_similarity"
+      }
+    },
+    {
+      "operation": "create",
+      "source": "appworld",
+      "table": "phone.user_text_messages",
+      "entity_data": {
+        "global_text_message_id": 202,
+        "user_id": 76,
+        "created_at": "2026-04-16T23:58:58"
+      },
+      "column_similarity_measure": {
+        "global_text_message_id": "column_ignore_similarity",
+        "user_id": "column_exact_match_similarity",
+        "created_at": "column_ignore_similarity"
+      }
+    },
+    {
+      "operation": "update",
+      "source": "appworld",
+      "table": "simple_note.notes",
+      "entity_id_column": "id",
+      "entity_id_value": 3200,
+      "expected_fields": {
+        "updated_at": "2026-04-10T10:00:00",
+        "content": "Items to source: kimono, sari.",
+        "tags": []
+      },
+      "column_similarity_measure": {
+        "updated_at": "column_ignore_similarity",
+        "content": "column_rouge_l_similarity",
+        "id": "column_exact_match_similarity"
+      }
+    },
+    {
+      "operation": "create",
+      "source": "appworld",
+      "table": "phone.user_text_messages",
+      "entity_data": {
+        "global_text_message_id": 200,
+        "user_id": 200,
+        "created_at": "2026-04-16T23:58:58"
+      },
+      "column_similarity_measure": {
+        "global_text_message_id": "column_ignore_similarity",
+        "user_id": "column_exact_match_similarity",
+        "created_at": "column_ignore_similarity"
+      }
+    },
+    {
+      "operation": "create",
+      "source": "appworld",
+      "table": "phone.user_text_messages",
+      "entity_data": {
+        "global_text_message_id": 201,
+        "user_id": 202,
+        "created_at": "2026-04-16T23:58:58"
+      },
+      "column_similarity_measure": {
+        "global_text_message_id": "column_ignore_similarity",
+        "user_id": "column_exact_match_similarity",
+        "created_at": "column_ignore_similarity"
+      }
+    },
+    {
+      "operation": "create",
+      "source": "appworld",
+      "table": "phone.user_text_messages",
+      "entity_data": {
+        "global_text_message_id": 202,
+        "user_id": 200,
+        "created_at": "2026-04-16T23:58:58"
+      },
+      "column_similarity_measure": {
+        "global_text_message_id": "column_ignore_similarity",
+        "user_id": "column_exact_match_similarity",
+        "created_at": "column_ignore_similarity"
+      }
+    }
+  ],
+  "task_completion_criteria": "Identify the Manila shawl and chiton from the first two images, and the \u0420\u0443\u0431\u0430\u0445\u0430 from the third image. Cross-reference these with the 'Exhibit Needs' note. Text Alice Chen that the Manila shawl and chiton were acquired, and text Global Threads to reserve the \u0420\u0443\u0431\u0430\u0445\u0430. Update the 'Exhibit Needs' note by removing these three items, and send a final text to Alice Chen listing the remaining items (kimono, sari).",
+  "categories": [
+    "APPWORLD",
+    "MULTIPLE_USER_TURN"
+  ],
+  "max_messages": 100,
+  "metadata": {
+    "original_scenario_id": "scenario_0286",
+    "expected_tools": [
+      "simple_note_show_note",
+      "messages_send_text_message",
+      "simple_note_update_note"
+    ],
+    "image_arrival": {
+      "1": [
+        "image_1",
+        "image_2"
+      ],
+      "3": [
+        "image_3"
+      ]
+    },
+    "image_delivery_map": [
+      {
+        "query": "A vendor just sent me this new picture. Figure out what traditional clothing this is, check if we still need it on the exhibit list, and if we do, text Global Threads to reserve it.",
+        "image_ids": [
+          2
+        ]
+      }
+    ],
+    "scenario_metadata": {
+      "num_images": 3,
+      "num_user_rounds": 4,
+      "selected_flow_type": "cross_reference",
+      "image_arrival": "mixed",
+      "challenge_type": "none",
+      "require_disambiguation": true,
+      "dataset_type": "worldvqa"
+    }
+  }
+}

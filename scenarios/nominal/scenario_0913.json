@@ -1,0 +1,251 @@
+{
+  "name": "scenario_0913",
+  "base_scenario": "base",
+  "description": "The user is organizing a batch of historical financial and administrative documents and needs help extracting information, managing contacts, and recording totals.",
+  "difficulty": "easy",
+  "appworld_base_task": "_base_",
+  "device_state_id": "lindseysimpson@gmail.com",
+  "reference_time": "2026-04-17T00:17:50.400400+00:00",
+  "agentsandbox_entities": {},
+  "appworld_entities": {
+    "phone.contacts": [
+      {
+        "id": 200,
+        "user_id": 62,
+        "first_name": "Garver",
+        "last_name": "Travel",
+        "email": "boston@garvertravel.com",
+        "phone_number": "+1-555-0100",
+        "relationships": [],
+        "birthday": null,
+        "home_address": null,
+        "work_address": "Boston",
+        "created_at": "2025-01-01T10:00:00"
+      },
+      {
+        "id": 201,
+        "user_id": 62,
+        "first_name": "Garver",
+        "last_name": "Travel",
+        "email": "seattle@garvertravel.com",
+        "phone_number": "+1-555-0200",
+        "relationships": [],
+        "birthday": null,
+        "home_address": null,
+        "work_address": "Seattle",
+        "created_at": "2025-01-01T10:00:00"
+      }
+    ],
+    "gmail.users": [
+      {
+        "id": 200,
+        "first_name": "Garver",
+        "last_name": "Travel",
+        "email": "boston@garvertravel.com",
+        "password": "default_password",
+        "status": "active",
+        "created_at": "2025-01-01T00:00:00",
+        "last_logged_in": "2025-01-01T00:00:00"
+      },
+      {
+        "id": 201,
+        "first_name": "Garver",
+        "last_name": "Travel",
+        "email": "seattle@garvertravel.com",
+        "password": "default_password",
+        "status": "active",
+        "created_at": "2025-01-01T00:00:00",
+        "last_logged_in": "2025-01-01T00:00:00"
+      },
+      {
+        "id": 202,
+        "first_name": "Alex",
+        "last_name": "Feng",
+        "email": "accountant@example.com",
+        "password": "default_password",
+        "status": "active",
+        "created_at": "2025-01-01T00:00:00",
+        "last_logged_in": "2025-01-01T00:00:00"
+      }
+    ],
+    "phone.users": [
+      {
+        "id": 200,
+        "first_name": "Garver",
+        "last_name": "Travel",
+        "phone_number": "+1-555-0100",
+        "password": "default_password",
+        "created_at": "2025-01-01T00:00:00",
+        "last_logged_in": "2025-01-01T00:00:00"
+      },
+      {
+        "id": 201,
+        "first_name": "Garver",
+        "last_name": "Travel",
+        "phone_number": "+1-555-0200",
+        "password": "default_password",
+        "created_at": "2025-01-01T00:00:00",
+        "last_logged_in": "2025-01-01T00:00:00"
+      }
+    ]
+  },
+  "image_paths": [
+    "docvqa/images/50285.jpg",
+    "docvqa/images/50875.jpg",
+    "docvqa/images/50901.jpg",
+    "docvqa/images/58836.jpg",
+    "docvqa/images/59035.jpg",
+    "docvqa/images/61523.jpg"
+  ],
+  "messages": [
+    {
+      "sender": "SYSTEM",
+      "recipient": "USER",
+      "content": "{{USER_INSTRUCTION}}ROUND 1 [provide: image_1, image_2, image_3, image_4, image_5, image_6]\nQuery: I've got a batch of old documents here. Please scan through them and find any that have a phone number. For each one you find, create a new contact using the organization's name and that phone number.\nInstructions: Ask the assistant to scan the provided images, identify the ones containing phone numbers, and create a new contact for each using the organization's name and the phone number. If it misses any or includes documents without phone numbers, point it back to the images. Once it confirms the contacts are created, proceed to the next round.\n\nROUND 2\nQuery: Wait, delete the contact you just made for Garver Travel. I already have them in my contacts. Instead, just update my existing Garver Travel contact to include Michael's extension number from that message slip.\nInstructions: Ask the assistant to delete the 'Garver Travel' contact it just created, and instead update your existing 'Garver Travel' contact with Michael's extension from the message slip. If the assistant asks which existing Garver Travel contact to update, tell it to use the one in Boston, since the slip mentions Boston. Once the update is done, move on.\n\nROUND 3\nQuery: Now filter the documents to find just the bank checks. Calculate the total sum of the amounts on those checks, and create a new note titled '1974 Check Totals' with that sum.\nInstructions: Ask the assistant to identify only the bank checks among the documents, add up their amounts, and create a note titled '1974 Check Totals' with the final sum. If the assistant tries to include the tax form or pay statement in the math, correct it to only use the two actual checks. Once the note is ready, proceed.\n\nROUND 4\nQuery: Finally, find the donation receipt in the batch. Send an email to accountant@example.com letting them know the name of the organization that made the contribution and the exact amount, so they can log it.\nInstructions: Ask the assistant to find the donation receipt and email accountant@example.com with the contributing organization's name and the donation amount. If it mistakenly names the school as the contributor, correct it to use the donor organization's name. End the conversation once the email is sent.\n\nYou have 6 images available to share with the agent using the send_message_with_image tool.\nIMPORTANT: Image IDs are ZERO-INDEXED integers (0, 1, 2, ...). Do NOT add 1 to the IDs.\nAvailable image IDs: [0, 1, 2, 3, 4, 5]\nImage mapping:\n  image_1.jpg -> image ID 0\n  image_2.jpg -> image ID 1\n  image_3.jpg -> image ID 2\n  image_4.jpg -> image ID 3\n  image_5.jpg -> image ID 4\n  image_6.jpg -> image ID 5"
+    },
+    {
+      "sender": "USER",
+      "recipient": "AGENT",
+      "content": "I've got a batch of old documents here. Please scan through them and find any that have a phone number. For each one you find, create a new contact using the organization's name and that phone number.",
+      "image_ids": [
+        0,
+        1,
+        2,
+        3,
+        4,
+        5
+      ]
+    }
+  ],
+  "milestones": [],
+  "entity_diff_specs": [
+    {
+      "operation": "create",
+      "source": "appworld",
+      "table": "phone.contacts",
+      "entity_data": {
+        "user_id": 62,
+        "first_name": "CITIZENS' COMMISSION",
+        "last_name": "ON SCIENCE, LAW&FOOD SUPPLY",
+        "email": "",
+        "phone_number": "212-360-1797",
+        "relationships": [],
+        "birthday": null,
+        "home_address": null,
+        "work_address": null,
+        "created_at": "2026-04-17T00:17:50"
+      },
+      "column_similarity_measure": {
+        "user_id": "column_exact_match_similarity",
+        "first_name": "column_exact_match_similarity",
+        "last_name": "column_exact_match_similarity",
+        "email": "column_ignore_similarity",
+        "phone_number": "column_exact_match_similarity",
+        "relationships": "column_ignore_similarity",
+        "birthday": "column_ignore_similarity",
+        "home_address": "column_ignore_similarity",
+        "work_address": "column_ignore_similarity",
+        "created_at": "column_ignore_similarity"
+      }
+    },
+    {
+      "operation": "create",
+      "source": "appworld",
+      "table": "gmail.emails",
+      "entity_data": {
+        "sender_id": 62,
+        "recipient_ids": [
+          202
+        ],
+        "subject": "Donation Information",
+        "body": "Hello,\n\nPlease log this contribution: The Nutrition Foundation, Inc. donated exactly $50.00.\n\nThank you.",
+        "response_to_email_id": null,
+        "created_at": "2026-04-17T00:17:50"
+      },
+      "column_similarity_measure": {
+        "sender_id": "column_exact_match_similarity",
+        "recipient_ids": "column_exact_match_similarity",
+        "subject": "column_rouge_l_similarity",
+        "body": "column_rouge_l_similarity",
+        "response_to_email_id": "column_ignore_similarity",
+        "created_at": "column_ignore_similarity"
+      }
+    },
+    {
+      "operation": "create",
+      "source": "appworld",
+      "table": "simple_note.notes",
+      "entity_data": {
+        "user_id": 62,
+        "title": "1974 Check Totals",
+        "content": "$1555.75",
+        "tags": [],
+        "created_at": "2026-04-17T00:17:50",
+        "updated_at": "2026-04-17T00:17:50",
+        "pinned": false,
+        "data": {}
+      },
+      "column_similarity_measure": {
+        "user_id": "column_exact_match_similarity",
+        "title": "column_rouge_l_similarity",
+        "content": "column_rouge_l_similarity",
+        "tags": "column_ignore_similarity",
+        "created_at": "column_ignore_similarity",
+        "updated_at": "column_ignore_similarity",
+        "pinned": "column_exact_match_similarity",
+        "data": "column_ignore_similarity"
+      }
+    },
+    {
+      "operation": "update",
+      "source": "appworld",
+      "table": "phone.contacts",
+      "entity_id_column": "id",
+      "entity_id_value": 200,
+      "expected_fields": {
+        "phone_number": "+1-555-0100 ext 346",
+        "relationships": []
+      },
+      "column_similarity_measure": {
+        "phone_number": "column_exact_match_similarity",
+        "id": "column_exact_match_similarity"
+      }
+    }
+  ],
+  "task_completion_criteria": "Create a contact for 'CITIZENS' COMMISSION ON SCIENCE, LAW&FOOD SUPPLY' with phone number '212-360-1797'. Delete the newly created 'Garver Travel' contact, and update the existing 'Garver Travel' contact (Boston office) to include the extension '346' for Michael. Create a note titled '1974 Check Totals' with the sum of '$1555.75' (from the $1280.75 and $275.00 checks). Send an email to accountant@example.com stating that 'The Nutrition Foundation, Inc.' donated '$50.00'.",
+  "categories": [
+    "APPWORLD",
+    "MULTIPLE_USER_TURN"
+  ],
+  "max_messages": 100,
+  "metadata": {
+    "original_scenario_id": "scenario_0913",
+    "expected_tools": [
+      "contacts_add_contact",
+      "contacts_delete_contact",
+      "contacts_update_contact",
+      "simple_note_create_note",
+      "gmail_send_email"
+    ],
+    "image_arrival": {
+      "1": [
+        "image_1",
+        "image_2",
+        "image_3",
+        "image_4",
+        "image_5",
+        "image_6"
+      ]
+    },
+    "image_delivery_map": [],
+    "scenario_metadata": {
+      "num_images": 6,
+      "num_user_rounds": 4,
+      "selected_flow_type": "filter",
+      "image_arrival": "upfront",
+      "challenge_type": "state_mutation",
+      "require_disambiguation": true,
+      "dataset_type": "docvqa"
+    }
+  }
+}

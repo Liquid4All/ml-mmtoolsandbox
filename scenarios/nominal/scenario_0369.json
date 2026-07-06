@@ -1,0 +1,133 @@
+{
+  "name": "scenario_0369",
+  "base_scenario": "base",
+  "description": "Erica is gathering inspiration for a new landscaping and architecture project, collecting references for garden locations and building materials.",
+  "difficulty": "easy",
+  "appworld_base_task": "_base_",
+  "device_state_id": "eri_powe@gmail.com",
+  "reference_time": "2026-04-17T00:01:19.265278+00:00",
+  "agentsandbox_entities": {},
+  "appworld_entities": {
+    "phone.contacts": [
+      {
+        "id": 200,
+        "user_id": 30,
+        "first_name": "Sarah",
+        "last_name": "Smith",
+        "email": "sarah@architect.com",
+        "phone_number": null,
+        "relationships": [],
+        "birthday": null,
+        "home_address": null,
+        "work_address": null,
+        "created_at": "2025-10-15T12:00:00"
+      }
+    ],
+    "gmail.users": [
+      {
+        "id": 200,
+        "first_name": "Sarah",
+        "last_name": "Smith",
+        "email": "sarah@architect.com",
+        "password": "default_password",
+        "status": "active",
+        "created_at": "2025-01-01T00:00:00",
+        "last_logged_in": "2025-01-01T00:00:00"
+      }
+    ]
+  },
+  "image_paths": [
+    "worldvqa/images/774.jpg",
+    "worldvqa/images/783.jpg",
+    "worldvqa/images/598.jpg"
+  ],
+  "messages": [
+    {
+      "sender": "SYSTEM",
+      "recipient": "USER",
+      "content": "{{USER_INSTRUCTION}}ROUND 1\nQuery: I'm starting a new landscaping and architecture project. Can you create a new note titled 'Garden Architecture Project' to keep track of my ideas?\nInstructions: Instruct the assistant to create a new note titled exactly 'Garden Architecture Project'. If the assistant asks what content to put in the note initially, tell it to just leave the body blank for now. Once the assistant confirms the note has been successfully created, move on to the next round.\n\nROUND 2 [provide: image_1, image_2]\nQuery: I found these two photos of gardens I want to use as inspiration. Can you identify their specific names and locations, and then draft an email to Sarah saying we should visit them?\nInstructions: Ask the assistant to identify the specific gardens and their geographic locations shown in the two provided images. Then, instruct it to draft an email to your contact Sarah suggesting a visit to those exact places. If the assistant asks for Sarah's email, tell it to check your contacts. If it misidentifies the locations, direct it back to the images to look closely at the architectural and landscape features. Do not reveal the names of the locations yourself. Once the assistant confirms the email draft is ready, proceed to the next round.\n\nROUND 3 [provide: image_3]\nQuery: Actually, let's hold off on reaching out. Delete that email draft to Sarah. Instead, identify the building material in this new photo, and add its name along with the two garden locations from before into my 'Garden Architecture Project' note.\nInstructions: Tell the assistant that you have changed your mind and ask it to delete the email draft it just created for Sarah. Then, ask the assistant to identify the ribbed building material shown in the new image. Finally, instruct it to aggregate the name of this material and the two garden locations from the previous round, and append all of this information into the 'Garden Architecture Project' note. If the assistant struggles to identify the material, tell it to search the web for ribbed half-cylindrical architectural components. Do not name the material or the locations yourself. Once the assistant confirms the draft is deleted and the note is updated, end the conversation.\n\nYou have 3 images available to share with the agent using the send_message_with_image tool.\nIMPORTANT: Image IDs are ZERO-INDEXED integers (0, 1, 2, ...). Do NOT add 1 to the IDs.\nAvailable image IDs: [0, 1, 2]\nImage mapping:\n  image_1.jpg -> image ID 0\n  image_2.jpg -> image ID 1\n  image_3.jpg -> image ID 2\n\n## IMAGE DELIVERY\n\n\u26a0\ufe0f IMPORTANT: You MUST use the `send_message_with_image` tool to share images with User B. Do NOT just describe images in text \u2014 you MUST call the tool.\n\nImage delivery schedule:\n\n  Round 2: YOU MUST call the send_message_with_image tool with image_ids='0,1' \u2014 do NOT write the tool name as text; use the actual function call. Include a natural, conversational message to the assistant.\n  Round 3: YOU MUST call the send_message_with_image tool with image_ids='2' \u2014 do NOT write the tool name as text; use the actual function call. Include a natural, conversational message to the assistant."
+    },
+    {
+      "sender": "USER",
+      "recipient": "AGENT",
+      "content": "I'm starting a new landscaping and architecture project. Can you create a new note titled 'Garden Architecture Project' to keep track of my ideas?"
+    }
+  ],
+  "milestones": [],
+  "entity_diff_specs": [
+    {
+      "operation": "create",
+      "source": "appworld",
+      "table": "simple_note.notes",
+      "entity_data": {
+        "user_id": 30,
+        "title": "Garden Architecture Project",
+        "content": "Locations:\n- Palmengarten Frankfurt\n- Gresgarth Hall (Lancaster, Lancashire, England)\n\nBuilding Material:\n- Glass-fiber-reinforced concrete",
+        "tags": [],
+        "created_at": "2026-04-17T00:01:19",
+        "updated_at": "2026-04-17T00:01:19",
+        "pinned": false,
+        "data": null
+      },
+      "column_similarity_measure": {
+        "user_id": "column_exact_match_similarity",
+        "title": "column_rouge_l_similarity",
+        "content": "column_rouge_l_similarity",
+        "tags": "column_ignore_similarity",
+        "created_at": "column_ignore_similarity",
+        "updated_at": "column_ignore_similarity",
+        "pinned": "column_exact_match_similarity",
+        "data": "column_ignore_similarity"
+      }
+    }
+  ],
+  "task_completion_criteria": "Update the note titled 'Garden Architecture Project' to contain the locations Palmengarten Frankfurt and Gresgarth Hall (Lancaster, Lancashire, England), as well as the building material Glass-fiber-reinforced concrete.",
+  "categories": [
+    "APPWORLD",
+    "MULTIPLE_USER_TURN"
+  ],
+  "max_messages": 100,
+  "metadata": {
+    "original_scenario_id": "scenario_0369",
+    "expected_tools": [
+      "simple_note_create_note",
+      "web_search_serper",
+      "gmail_create_draft",
+      "gmail_delete_draft",
+      "simple_note_add_content_to_note"
+    ],
+    "image_arrival": {
+      "2": [
+        "image_1",
+        "image_2"
+      ],
+      "3": [
+        "image_3"
+      ]
+    },
+    "image_delivery_map": [
+      {
+        "query": "I found these two photos of gardens I want to use as inspiration. Can you identify their specific names and locations, and then draft an email to Sarah saying we should visit them?",
+        "image_ids": [
+          0,
+          1
+        ]
+      },
+      {
+        "query": "Actually, let's hold off on reaching out. Delete that email draft to Sarah. Instead, identify the building material in this new photo, and add its name along with the two garden locations from before into my 'Garden Architecture Project' note.",
+        "image_ids": [
+          2
+        ]
+      }
+    ],
+    "scenario_metadata": {
+      "num_images": 3,
+      "num_user_rounds": 3,
+      "selected_flow_type": "aggregate",
+      "image_arrival": "late",
+      "challenge_type": "goal_change",
+      "require_disambiguation": false,
+      "dataset_type": "worldvqa"
+    }
+  }
+}

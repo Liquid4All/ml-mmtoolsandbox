@@ -1,0 +1,134 @@
+{
+  "name": "scenario_0593",
+  "base_scenario": "base",
+  "description": "The user is studying for a midterm exam using various materials, including lecture slides, textbook excerpts, and worked-out math problems.",
+  "difficulty": "easy",
+  "appworld_base_task": "_base_",
+  "device_state_id": "je.simpson@gmail.com",
+  "reference_time": "2026-04-17T00:08:14.818291+00:00",
+  "agentsandbox_entities": {},
+  "appworld_entities": {
+    "phone.contacts": [
+      {
+        "id": 200,
+        "user_id": 59,
+        "first_name": "John",
+        "last_name": "Doe",
+        "email": "johndoe@gmail.com",
+        "phone_number": "+1-555-019-8273",
+        "relationships": [
+          "classmate"
+        ],
+        "birthday": null,
+        "home_address": null,
+        "work_address": null,
+        "created_at": "2026-01-15T09:00:00"
+      }
+    ],
+    "gmail.users": [
+      {
+        "id": 200,
+        "first_name": "John",
+        "last_name": "Doe",
+        "email": "johndoe@gmail.com",
+        "password": "default_password",
+        "status": "active",
+        "created_at": "2025-01-01T00:00:00",
+        "last_logged_in": "2025-01-01T00:00:00"
+      }
+    ],
+    "phone.users": [
+      {
+        "id": 200,
+        "first_name": "John",
+        "last_name": "Doe",
+        "phone_number": "+1-555-019-8273",
+        "password": "default_password",
+        "created_at": "2025-01-01T00:00:00",
+        "last_logged_in": "2025-01-01T00:00:00"
+      }
+    ]
+  },
+  "image_paths": [
+    "omnidocbench/images/000346.jpg",
+    "omnidocbench/images/000443.jpg",
+    "omnidocbench/images/000362.jpg"
+  ],
+  "messages": [
+    {
+      "sender": "SYSTEM",
+      "recipient": "USER",
+      "content": "{{USER_INSTRUCTION}}ROUND 1 [provide: image_1, image_2, image_3]\nQuery: Draft an email to John with the textbook title, edition, and author from the footer of the first slide here.\nInstructions: Ask the assistant to draft an email to John containing the textbook details found in the footer of the first image. If the assistant asks for John's email, tell it to search the contacts. Once the draft is created, confirm and move to the next round.\n\nROUND 2\nQuery: Actually, John just dropped the class, so delete that draft. Instead, create a new note called 'Midterm Study Guide' and put the textbook info in there.\nInstructions: Tell the assistant to delete the draft just created because John dropped the class. Ask it to create a new note titled 'Midterm Study Guide' and save the textbook information there instead. If the assistant confirms the deletion and note creation, proceed to the next round.\n\nROUND 3\nQuery: Now look at the second document. Extract the section number and heading for optimization, and the specific name of the python function used for the disease model, and add them to the study guide note.\nInstructions: Instruct the assistant to extract the optimization section number and heading, along with the Python function name for the disease model from the second image, and append this information to the 'Midterm Study Guide' note. If the assistant misses the function name or section details, direct it back to the second image. Once the note is updated, move on.\n\nROUND 4\nQuery: Finally, check the third image. Extract the equation of the curve being integrated and the final calculated area, and append them to the study guide note to finish it up.\nInstructions: Ask the assistant to find the curve's equation and the final calculated area from the third image, and append them to the study guide note. If the assistant misreads the math or leaves out the area, point it back to the third image to correct it. Once the note is fully updated, end the conversation.\n\nYou have 3 images available to share with the agent using the send_message_with_image tool.\nIMPORTANT: Image IDs are ZERO-INDEXED integers (0, 1, 2, ...). Do NOT add 1 to the IDs.\nAvailable image IDs: [0, 1, 2]\nImage mapping:\n  image_1.jpg -> image ID 0\n  image_2.jpg -> image ID 1\n  image_3.jpg -> image ID 2"
+    },
+    {
+      "sender": "USER",
+      "recipient": "AGENT",
+      "content": "Draft an email to John with the textbook title, edition, and author from the footer of the first slide here.",
+      "image_ids": [
+        0,
+        1,
+        2
+      ]
+    }
+  ],
+  "milestones": [],
+  "entity_diff_specs": [
+    {
+      "operation": "create",
+      "source": "appworld",
+      "table": "simple_note.notes",
+      "entity_data": {
+        "user_id": 59,
+        "title": "Midterm Study Guide",
+        "content": "Textbook: Advanced Engineering Mathematics, 10/e by Edwin Kreyszig\nSection: 10.4 Hybrid Optimization\nPython function: disease_mdl\nCurve equation: y = 3x^2\nFinal area: 56",
+        "tags": [],
+        "created_at": "2026-04-17T00:08:14",
+        "updated_at": "2026-04-17T00:08:14",
+        "pinned": false,
+        "data": null
+      },
+      "column_similarity_measure": {
+        "user_id": "column_exact_match_similarity",
+        "title": "column_rouge_l_similarity",
+        "content": "column_rouge_l_similarity",
+        "tags": "column_ignore_similarity",
+        "created_at": "column_ignore_similarity",
+        "updated_at": "column_ignore_similarity",
+        "pinned": "column_exact_match_similarity",
+        "data": "column_ignore_similarity"
+      }
+    }
+  ],
+  "task_completion_criteria": "Create a note titled 'Midterm Study Guide' containing the textbook reference 'Advanced Engineering Mathematics, 10/e by Edwin Kreyszig', the section '10.4 Hybrid Optimization', the python function 'disease_mdl', the curve equation 'y = 3x^2' (or f(x) = 3x^2), and the final area '56' (or 56 units^2).",
+  "categories": [
+    "APPWORLD",
+    "MULTIPLE_USER_TURN"
+  ],
+  "max_messages": 100,
+  "metadata": {
+    "original_scenario_id": "scenario_0593",
+    "expected_tools": [
+      "gmail_create_draft",
+      "gmail_delete_draft",
+      "simple_note_create_note",
+      "simple_note_update_note"
+    ],
+    "image_arrival": {
+      "1": [
+        "image_1",
+        "image_2",
+        "image_3"
+      ]
+    },
+    "image_delivery_map": [],
+    "scenario_metadata": {
+      "num_images": 3,
+      "num_user_rounds": 4,
+      "selected_flow_type": "aggregate",
+      "image_arrival": "upfront",
+      "challenge_type": "goal_change",
+      "require_disambiguation": false,
+      "dataset_type": "omnidocbench"
+    }
+  }
+}

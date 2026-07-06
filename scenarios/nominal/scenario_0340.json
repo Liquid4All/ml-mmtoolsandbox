@@ -1,0 +1,320 @@
+{
+  "name": "scenario_0340",
+  "base_scenario": "base",
+  "description": "The user is extracting specific data points from various documents, tables, and photos into a structured set of text files for a data extraction project.",
+  "difficulty": "easy",
+  "appworld_base_task": "_base_",
+  "device_state_id": "tra_wils@gmail.com",
+  "reference_time": "2026-04-17T00:00:20.972126+00:00",
+  "agentsandbox_entities": {},
+  "appworld_entities": {
+    "gmail.users": [],
+    "file_system.directories": [
+      {
+        "path": "/home/user/",
+        "tilde_path": "/home/user/",
+        "user_id": 71,
+        "created_at": "2025-01-01T00:00:00",
+        "updated_at": "2025-01-01T00:00:00",
+        "id": 3600
+      }
+    ]
+  },
+  "image_paths": [
+    "screenspotpro/images/common_mac/screenshot_2024-10-23_15-18-14.png",
+    "omnidocbench/images/000048.jpg",
+    "docvqa/images/53610.jpg",
+    "hiertext/images/test/0253cf3a78e8da16.jpg",
+    "omnidocbench/images/000432.jpg",
+    "omnidocbench/images/000319.jpg"
+  ],
+  "messages": [
+    {
+      "sender": "SYSTEM",
+      "recipient": "USER",
+      "content": "{{USER_INSTRUCTION}}ROUND 1 [provide: image_1, image_2]\nQuery: Please create a directory called 'Data_Extraction'. Inside it, make a file named 'paper_link.txt' with the GitHub link from this first screenshot. Also, create 'pcb_mdl.txt' with the MDL value for PCB 138 from this second image's table, which is 2 ng/g.\nInstructions: You are interacting with an assistant. Ask it to create a directory named 'Data_Extraction' and add two files to it based on the images provided. For the first image, ask it to save the GitHub link into 'paper_link.txt'. For the second image, ask it to save the MDL value for PCB 138 into 'pcb_mdl.txt', but explicitly tell the assistant that the value is 2 ng/g. If the assistant correctly points out that the table shows a different value for PCB 138, acknowledge it and hold off on the correction until the next turn. If the assistant blindly creates the file with the wrong value, point out that it should double-check the table.\n\nROUND 2\nQuery: You're right, I misread that table. Please create the 'pcb_mdl.txt' file with the correct value of 19 ng/g for PCB 138.\nInstructions: Acknowledge that you made a mistake reading the table in the previous round. Instruct the assistant to create the 'pcb_mdl.txt' file using the correct value for PCB 138 as shown in the image. Once the assistant confirms the file has been created with the correct value, move on to the next round.\n\nROUND 3 [provide: image_3, image_4]\nQuery: Here are two more images. Create a file 'survey_source.txt' in the directory with the source URL from the bottom of this scanned document. Then, create 'content_ideas.txt' listing the three sticky notes located under the 'Content' heading on this wall.\nInstructions: Provide two new images to the assistant. Ask it to create two more text files in the 'Data_Extraction' directory. For the scanned document, ask it to extract the source URL at the bottom into 'survey_source.txt'. For the photo of the wall, ask it to list the text from the three sticky notes under the 'Content' heading into 'content_ideas.txt'. If the assistant asks for clarification or misses any of the notes, guide it back to the specific sections of the images. Once the assistant confirms both files are created, proceed to the next round.\n\nROUND 4 [provide: image_5, image_6]\nQuery: For these final two images, create 'css_selector.txt' containing the python line that assigns the cssselect result to the 'results' variable from this book page. Also create 'illinois_dept.txt' with the name of the department responsible for LEP in Illinois from this table. After creating these two files, compress the entire 'Data_Extraction' directory into a zip file.\nInstructions: Provide the final two images. Ask the assistant to create 'css_selector.txt' containing the Python code line that assigns the CSS selection to the 'results' variable from the book page. Then, ask for 'illinois_dept.txt' containing the department responsible for LEP in Illinois from the table. Finally, instruct the assistant to compress the entire 'Data_Extraction' directory into a zip file. Once the assistant confirms the files are created and the directory is zipped, end the conversation.\n\nYou have 6 images available to share with the agent using the send_message_with_image tool.\nIMPORTANT: Image IDs are ZERO-INDEXED integers (0, 1, 2, ...). Do NOT add 1 to the IDs.\nAvailable image IDs: [0, 1, 2, 3, 4, 5]\nImage mapping:\n  image_1.jpg -> image ID 0\n  image_2.jpg -> image ID 1\n  image_3.jpg -> image ID 2\n  image_4.jpg -> image ID 3\n  image_5.jpg -> image ID 4\n  image_6.jpg -> image ID 5\n\n## IMAGE DELIVERY\n\n⚠️ IMPORTANT: You MUST use the `send_message_with_image` tool to share images with User B. Do NOT just describe images in text — you MUST call the tool.\n\nImage delivery schedule:\n\n  Round 3: YOU MUST call the send_message_with_image tool with image_ids='2,3' — do NOT write the tool name as text; use the actual function call. Include a natural, conversational message to the assistant.\n  Round 4: YOU MUST call the send_message_with_image tool with image_ids='4,5' — do NOT write the tool name as text; use the actual function call. Include a natural, conversational message to the assistant."
+    },
+    {
+      "sender": "USER",
+      "recipient": "AGENT",
+      "content": "Please create a directory called 'Data_Extraction'. Inside it, make a file named 'paper_link.txt' with the GitHub link from this first screenshot. Also, create 'pcb_mdl.txt' with the MDL value for PCB 138 from this second image's table, which is 2 ng/g.",
+      "image_ids": [
+        0,
+        1
+      ]
+    }
+  ],
+  "milestones": [],
+  "entity_diff_specs": [
+    {
+      "operation": "create",
+      "source": "appworld",
+      "table": "file_system.directories",
+      "entity_data": {
+        "path": "Data_Extraction",
+        "tilde_path": "Data_Extraction",
+        "user_id": 71,
+        "created_at": "2026-04-17T00:00:20",
+        "updated_at": "2026-04-17T00:00:20"
+      },
+      "column_similarity_measure": {
+        "path": "column_contains_similarity",
+        "tilde_path": "column_contains_similarity",
+        "user_id": "column_exact_match_similarity",
+        "created_at": "column_ignore_similarity",
+        "updated_at": "column_ignore_similarity"
+      }
+    },
+    {
+      "operation": "create",
+      "source": "appworld",
+      "table": "file_system.files",
+      "entity_data": {
+        "path": "Data_Extraction/paper_link.txt",
+        "tilde_path": "Data_Extraction/paper_link.txt",
+        "user_id": 71,
+        "content": "https://github.com/zorazrw/agent-workflow-memory",
+        "compressed_data": [],
+        "created_at": "2026-04-17T00:00:20",
+        "updated_at": "2026-04-17T00:00:20"
+      },
+      "column_similarity_measure": {
+        "path": "column_contains_similarity",
+        "tilde_path": "column_contains_similarity",
+        "user_id": "column_exact_match_similarity",
+        "content": "column_rouge_l_similarity",
+        "compressed_data": "column_ignore_similarity",
+        "created_at": "column_ignore_similarity",
+        "updated_at": "column_ignore_similarity"
+      }
+    },
+    {
+      "operation": "create",
+      "source": "appworld",
+      "table": "file_system.files",
+      "entity_data": {
+        "path": "Data_Extraction/pcb_mdl.txt",
+        "tilde_path": "Data_Extraction/pcb_mdl.txt",
+        "user_id": 71,
+        "content": "19 ng/g",
+        "compressed_data": [],
+        "created_at": "2026-04-17T00:00:20",
+        "updated_at": "2026-04-17T00:00:20"
+      },
+      "column_similarity_measure": {
+        "path": "column_contains_similarity",
+        "tilde_path": "column_contains_similarity",
+        "user_id": "column_exact_match_similarity",
+        "content": "column_rouge_l_similarity",
+        "compressed_data": "column_ignore_similarity",
+        "created_at": "column_ignore_similarity",
+        "updated_at": "column_ignore_similarity"
+      }
+    },
+    {
+      "operation": "create",
+      "source": "appworld",
+      "table": "file_system.files",
+      "entity_data": {
+        "path": "Data_Extraction/survey_source.txt",
+        "tilde_path": "Data_Extraction/survey_source.txt",
+        "user_id": 71,
+        "content": "https://www.industrydocuments.ucsf.edu/docs/hsfn0020",
+        "compressed_data": [],
+        "created_at": "2026-04-17T00:00:20",
+        "updated_at": "2026-04-17T00:00:20"
+      },
+      "column_similarity_measure": {
+        "path": "column_contains_similarity",
+        "tilde_path": "column_contains_similarity",
+        "user_id": "column_exact_match_similarity",
+        "content": "column_rouge_l_similarity",
+        "compressed_data": "column_ignore_similarity",
+        "created_at": "column_ignore_similarity",
+        "updated_at": "column_ignore_similarity"
+      }
+    },
+    {
+      "operation": "create",
+      "source": "appworld",
+      "table": "file_system.files",
+      "entity_data": {
+        "path": "Data_Extraction/content_ideas.txt",
+        "tilde_path": "Data_Extraction/content_ideas.txt",
+        "user_id": 71,
+        "content": "Convincing to do open education\nTools\ndifferent exercises",
+        "compressed_data": [],
+        "created_at": "2026-04-17T00:00:20",
+        "updated_at": "2026-04-17T00:00:20"
+      },
+      "column_similarity_measure": {
+        "path": "column_contains_similarity",
+        "tilde_path": "column_contains_similarity",
+        "user_id": "column_exact_match_similarity",
+        "content": "column_rouge_l_similarity",
+        "compressed_data": "column_ignore_similarity",
+        "created_at": "column_ignore_similarity",
+        "updated_at": "column_ignore_similarity"
+      }
+    },
+    {
+      "operation": "create",
+      "source": "appworld",
+      "table": "file_system.files",
+      "entity_data": {
+        "path": "Data_Extraction/css_selector.txt",
+        "tilde_path": "Data_Extraction/css_selector.txt",
+        "user_id": 71,
+        "content": "results = tree.cssselect('h3.r a')",
+        "compressed_data": [],
+        "created_at": "2026-04-17T00:00:20",
+        "updated_at": "2026-04-17T00:00:20"
+      },
+      "column_similarity_measure": {
+        "path": "column_contains_similarity",
+        "tilde_path": "column_contains_similarity",
+        "user_id": "column_exact_match_similarity",
+        "content": "column_rouge_l_similarity",
+        "compressed_data": "column_ignore_similarity",
+        "created_at": "column_ignore_similarity",
+        "updated_at": "column_ignore_similarity"
+      }
+    },
+    {
+      "operation": "create",
+      "source": "appworld",
+      "table": "file_system.files",
+      "entity_data": {
+        "path": "Data_Extraction/illinois_dept.txt",
+        "tilde_path": "Data_Extraction/illinois_dept.txt",
+        "user_id": 71,
+        "content": "Dept. of Children & Family Services.",
+        "compressed_data": [],
+        "created_at": "2026-04-17T00:00:20",
+        "updated_at": "2026-04-17T00:00:20"
+      },
+      "column_similarity_measure": {
+        "path": "column_contains_similarity",
+        "tilde_path": "column_contains_similarity",
+        "user_id": "column_exact_match_similarity",
+        "content": "column_rouge_l_similarity",
+        "compressed_data": "column_ignore_similarity",
+        "created_at": "column_ignore_similarity",
+        "updated_at": "column_ignore_similarity"
+      }
+    },
+    {
+      "operation": "create",
+      "source": "appworld",
+      "table": "file_system.files",
+      "entity_data": {
+        "path": "Data_Extraction.zip",
+        "tilde_path": "Data_Extraction.zip",
+        "user_id": 71,
+        "content": "",
+        "compressed_data": [
+          {
+            "path": "/home/user/Data_Extraction/paper_link.txt",
+            "content": "https://github.com/zorazrw/agent-workflow-memory",
+            "created_at": "2026-04-17T00:00:20Z",
+            "updated_at": "2026-04-17T00:00:20Z"
+          },
+          {
+            "path": "/home/user/Data_Extraction/pcb_mdl.txt",
+            "content": "19 ng/g",
+            "created_at": "2026-04-17T00:00:20Z",
+            "updated_at": "2026-04-17T00:00:20Z"
+          },
+          {
+            "path": "/home/user/Data_Extraction/survey_source.txt",
+            "content": "https://www.industrydocuments.ucsf.edu/docs/hsfn0020",
+            "created_at": "2026-04-17T00:00:20Z",
+            "updated_at": "2026-04-17T00:00:20Z"
+          },
+          {
+            "path": "/home/user/Data_Extraction/content_ideas.txt",
+            "content": "Convincing to do open education\nTools\ndifferent exercises",
+            "created_at": "2026-04-17T00:00:20Z",
+            "updated_at": "2026-04-17T00:00:20Z"
+          },
+          {
+            "path": "/home/user/Data_Extraction/css_selector.txt",
+            "content": "results = tree.cssselect('h3.r a')",
+            "created_at": "2026-04-17T00:00:20Z",
+            "updated_at": "2026-04-17T00:00:20Z"
+          },
+          {
+            "path": "/home/user/Data_Extraction/illinois_dept.txt",
+            "content": "Dept. of Children & Family Services.",
+            "created_at": "2026-04-17T00:00:20Z",
+            "updated_at": "2026-04-17T00:00:20Z"
+          }
+        ],
+        "created_at": "2026-04-17T00:00:20",
+        "updated_at": "2026-04-17T00:00:20"
+      },
+      "column_similarity_measure": {
+        "path": "column_contains_similarity",
+        "tilde_path": "column_contains_similarity",
+        "user_id": "column_exact_match_similarity",
+        "content": "column_ignore_similarity",
+        "compressed_data": "column_ignore_similarity",
+        "created_at": "column_ignore_similarity",
+        "updated_at": "column_ignore_similarity"
+      }
+    }
+  ],
+  "task_completion_criteria": "Create a directory named 'Data_Extraction' and populate it with six text files: 'paper_link.txt' containing 'https://github.com/zorazrw/agent-workflow-memory', 'pcb_mdl.txt' containing '19' or '19 ng/g', 'survey_source.txt' containing 'https://www.industrydocuments.ucsf.edu/docs/hsfn0020', 'content_ideas.txt' containing 'Convincing to do open education', 'Tools', and 'different exercises', 'css_selector.txt' containing \"results = tree.cssselect('h3.r a')\", and 'illinois_dept.txt' containing 'Dept. of Children & Family Services.'. Finally, compress the 'Data_Extraction' directory into a zip file.",
+  "categories": [
+    "APPWORLD",
+    "MULTIPLE_USER_TURN"
+  ],
+  "max_messages": 100,
+  "metadata": {
+    "original_scenario_id": "scenario_0340",
+    "expected_tools": [
+      "file_system_create_directory",
+      "file_system_create_file",
+      "file_system_compress_directory"
+    ],
+    "image_arrival": {
+      "1": [
+        "image_1",
+        "image_2"
+      ],
+      "3": [
+        "image_3",
+        "image_4"
+      ],
+      "4": [
+        "image_5",
+        "image_6"
+      ]
+    },
+    "image_delivery_map": [
+      {
+        "query": "Here are two more images. Create a file 'survey_source.txt' in the directory with the source URL from the bottom of this scanned document. Then, create 'content_ideas.txt' listing the three sticky notes located under the 'Content' heading on this wall.",
+        "image_ids": [
+          2,
+          3
+        ]
+      },
+      {
+        "query": "For these final two images, create 'css_selector.txt' containing the python line that assigns the cssselect result to the 'results' variable from this book page. Also create 'illinois_dept.txt' with the name of the department responsible for LEP in Illinois from this table. After creating these two files, compress the entire 'Data_Extraction' directory into a zip file.",
+        "image_ids": [
+          4,
+          5
+        ]
+      }
+    ],
+    "scenario_metadata": {
+      "num_images": 6,
+      "num_user_rounds": 4,
+      "selected_flow_type": "aggregate",
+      "image_arrival": "mixed",
+      "challenge_type": "error_correction",
+      "require_disambiguation": false,
+      "dataset_type": "omnidocbench"
+    }
+  }
+}

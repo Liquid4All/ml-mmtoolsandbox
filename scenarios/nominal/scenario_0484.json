@@ -1,0 +1,412 @@
+{
+  "name": "scenario_0484",
+  "base_scenario": "base",
+  "description": "The user is gathering music inspiration from various pictures they've taken or saved, and wants to compile them into a single Spotify playlist.",
+  "difficulty": "easy",
+  "appworld_base_task": "_base_",
+  "device_state_id": "deniseburch@gmail.com",
+  "reference_time": "2026-04-17T00:04:56.800889+00:00",
+  "agentsandbox_entities": {},
+  "appworld_entities": {
+    "spotify.artists": [
+      {
+        "id": 200,
+        "name": "Wei Wei",
+        "genre": "Pop",
+        "created_at": "2020-01-01T00:00:00"
+      },
+      {
+        "id": 201,
+        "name": "Mr. Scruff",
+        "genre": "Electronic",
+        "created_at": "2020-01-01T00:00:00"
+      },
+      {
+        "id": 202,
+        "name": "Kina Grannis",
+        "genre": "Acoustic",
+        "created_at": "2020-01-01T00:00:00"
+      },
+      {
+        "id": 203,
+        "name": "Various Artists",
+        "genre": "Soundtrack",
+        "created_at": "2020-01-01T00:00:00"
+      },
+      {
+        "id": 204,
+        "name": "Joey Holiday",
+        "genre": "Indie",
+        "created_at": "2020-01-01T00:00:00"
+      },
+      {
+        "id": 205,
+        "name": "Ray Charles",
+        "genre": "Soul",
+        "created_at": "2020-01-01T00:00:00"
+      },
+      {
+        "id": 206,
+        "name": "Pop Artist",
+        "genre": "Pop",
+        "created_at": "2020-01-01T00:00:00"
+      }
+    ],
+    "spotify.albums": [
+      {
+        "id": 200,
+        "title": "Nick and Norah's Infinite Playlist (Original Motion Picture Soundtrack)",
+        "artist_ids": [
+          203
+        ],
+        "release_date": "2008-08-26T00:00:00",
+        "genre": "Soundtrack",
+        "rating": 4.5,
+        "like_count": 1000,
+        "review_count": 50
+      }
+    ],
+    "spotify.songs": [
+      {
+        "id": 200,
+        "title": "Pop Hit 1",
+        "artist_ids": [
+          206
+        ],
+        "album_id": null,
+        "duration": 180,
+        "release_date": "2021-01-01T00:00:00",
+        "genre": "Pop",
+        "play_count": 10000,
+        "rating": 4.0,
+        "like_count": 500,
+        "review_count": 20
+      },
+      {
+        "id": 201,
+        "title": "Pop Hit 2",
+        "artist_ids": [
+          206
+        ],
+        "album_id": null,
+        "duration": 190,
+        "release_date": "2021-02-01T00:00:00",
+        "genre": "Pop",
+        "play_count": 12000,
+        "rating": 4.2,
+        "like_count": 600,
+        "review_count": 25
+      },
+      {
+        "id": 202,
+        "title": "Wei Wei Hit",
+        "artist_ids": [
+          200
+        ],
+        "album_id": null,
+        "duration": 200,
+        "release_date": "2022-01-01T00:00:00",
+        "genre": "Pop",
+        "play_count": 5000,
+        "rating": 4.1,
+        "like_count": 200,
+        "review_count": 10
+      },
+      {
+        "id": 203,
+        "title": "Get a Move On",
+        "artist_ids": [
+          201
+        ],
+        "album_id": null,
+        "duration": 210,
+        "release_date": "1999-01-01T00:00:00",
+        "genre": "Electronic",
+        "play_count": 8000,
+        "rating": 4.3,
+        "like_count": 300,
+        "review_count": 15
+      },
+      {
+        "id": 204,
+        "title": "Valentine",
+        "artist_ids": [
+          202
+        ],
+        "album_id": null,
+        "duration": 220,
+        "release_date": "2010-01-01T00:00:00",
+        "genre": "Acoustic",
+        "play_count": 9000,
+        "rating": 4.4,
+        "like_count": 400,
+        "review_count": 20
+      },
+      {
+        "id": 205,
+        "title": "Baby, You're My Light",
+        "artist_ids": [
+          203
+        ],
+        "album_id": 200,
+        "duration": 230,
+        "release_date": "2008-08-26T00:00:00",
+        "genre": "Soundtrack",
+        "play_count": 7000,
+        "rating": 4.5,
+        "like_count": 350,
+        "review_count": 18
+      },
+      {
+        "id": 206,
+        "title": "Holiday Tune",
+        "artist_ids": [
+          204
+        ],
+        "album_id": null,
+        "duration": 240,
+        "release_date": "2023-01-01T00:00:00",
+        "genre": "Indie",
+        "play_count": 4000,
+        "rating": 4.0,
+        "like_count": 150,
+        "review_count": 5
+      },
+      {
+        "id": 207,
+        "title": "America the Beautiful",
+        "artist_ids": [
+          205
+        ],
+        "album_id": null,
+        "duration": 250,
+        "release_date": "1972-01-01T00:00:00",
+        "genre": "Soul",
+        "play_count": 20000,
+        "rating": 4.8,
+        "like_count": 1000,
+        "review_count": 100
+      }
+    ],
+    "spotify.playlists": [
+      {
+        "id": 800,
+        "title": "Party Mix",
+        "user_id": 36,
+        "created_at": "2026-04-10T12:00:00",
+        "is_public": false,
+        "rating": 0.0,
+        "like_count": 0,
+        "review_count": 0
+      }
+    ],
+    "spotify.playlist_songs": [
+      {
+        "id": 200,
+        "playlist_id": 800,
+        "song_id": 200,
+        "added_at": "2026-04-10T12:05:00"
+      },
+      {
+        "id": 201,
+        "playlist_id": 800,
+        "song_id": 201,
+        "added_at": "2026-04-10T12:06:00"
+      }
+    ],
+    "gmail.users": []
+  },
+  "image_paths": [
+    "hiertext/images/test/8d94d27b661f3142.jpg",
+    "hiertext/images/test/2e0cb33320757201.jpg",
+    "hiertext/images/test/612c573594ab35cb.jpg",
+    "hiertext/images/test/130d29b8604cc08c.jpg",
+    "hiertext/images/test/b7e7b6383fb3ca17.jpg",
+    "hiertext/images/test/ad449b3b9b3dca2c.jpg"
+  ],
+  "messages": [
+    {
+      "sender": "SYSTEM",
+      "recipient": "USER",
+      "content": "{{USER_INSTRUCTION}}ROUND 1 [provide: image_1, image_4, image_6]\nQuery: Create a new Spotify playlist called 'Visual Mix'. Then add a popular song by the artist shown on this presentation screen, a track by the DJ playing all night on this hand-drawn poster, and a song by the artist doing the CD signing in the bookstore window.\nInstructions: Tell the assistant to create a new Spotify playlist named 'Visual Mix'. Then, ask it to look at the three provided images, identify the musical artists in each (the one on the conference screen, the DJ on the poster, and the artist on the bookstore window), and add one popular song from each of them to the new playlist. If the assistant asks which specific songs to add, tell it to just pick any popular track for each artist. Once it confirms the playlist is created and songs are added, move to the next round.\n\nROUND 2 [provide: image_3, image_5]\nQuery: Now find a song from the soundtrack of the movie advertised on the far left billboard, and a song by the artist whose name is in huge letters on the side of this blue truck. Add both of them to the 'Mix' playlist.\nInstructions: Ask the assistant to identify the movie on the leftmost billboard and the artist on the blue truck from the new images, and add a song from each to the 'Mix' playlist. Because there are multiple playlists with 'Mix' in the name on your account (the preexisting 'Party Mix' and the newly created 'Visual Mix'), the assistant should ask you to clarify which one you mean. Tell it to use the one we just created. Wait for confirmation that both songs have been added before moving on.\n\nROUND 3 [provide: image_2]\nQuery: Finally, identify the famous song whose lyrics are written on this plaque, and add it to the playlist too.\nInstructions: Ask the assistant to identify the well-known song whose lyrics are inscribed on the provided plaque, and add it to the playlist we've been working on. If the assistant asks to confirm the song name, tell it yes. Once the final song is added, you can end the conversation.\n\nYou have 6 images available to share with the agent using the send_message_with_image tool.\nIMPORTANT: Image IDs are ZERO-INDEXED integers (0, 1, 2, ...). Do NOT add 1 to the IDs.\nAvailable image IDs: [0, 1, 2, 3, 4, 5]\nImage mapping:\n  image_1.jpg -> image ID 0\n  image_2.jpg -> image ID 1\n  image_3.jpg -> image ID 2\n  image_4.jpg -> image ID 3\n  image_5.jpg -> image ID 4\n  image_6.jpg -> image ID 5\n\n## IMAGE DELIVERY\n\n\u26a0\ufe0f IMPORTANT: You MUST use the `send_message_with_image` tool to share images with User B. Do NOT just describe images in text \u2014 you MUST call the tool.\n\nImage delivery schedule:\n\n  Round 2: YOU MUST call the send_message_with_image tool with image_ids='2,4' \u2014 do NOT write the tool name as text; use the actual function call. Include a natural, conversational message to the assistant.\n  Round 3: YOU MUST call the send_message_with_image tool with image_ids='1' \u2014 do NOT write the tool name as text; use the actual function call. Include a natural, conversational message to the assistant."
+    },
+    {
+      "sender": "USER",
+      "recipient": "AGENT",
+      "content": "Create a new Spotify playlist called 'Visual Mix'. Then add a popular song by the artist shown on this presentation screen, a track by the DJ playing all night on this hand-drawn poster, and a song by the artist doing the CD signing in the bookstore window.",
+      "image_ids": [
+        0,
+        3,
+        5
+      ]
+    }
+  ],
+  "milestones": [],
+  "entity_diff_specs": [
+    {
+      "operation": "create",
+      "source": "appworld",
+      "table": "spotify.playlists",
+      "entity_data": {
+        "title": "Visual Mix",
+        "user_id": 36,
+        "created_at": "2026-04-17T00:04:56",
+        "is_public": false,
+        "rating": 0.0,
+        "like_count": 0,
+        "review_count": 0
+      },
+      "column_similarity_measure": {
+        "title": "column_rouge_l_similarity",
+        "user_id": "column_exact_match_similarity",
+        "created_at": "column_ignore_similarity",
+        "is_public": "column_exact_match_similarity",
+        "rating": "column_exact_match_similarity",
+        "like_count": "column_exact_match_similarity",
+        "review_count": "column_exact_match_similarity"
+      }
+    },
+    {
+      "operation": "create",
+      "source": "appworld",
+      "table": "spotify.playlist_songs",
+      "entity_data": {
+        "playlist_id": 801,
+        "song_id": 202,
+        "added_at": "2026-04-17T00:04:56"
+      },
+      "column_similarity_measure": {
+        "playlist_id": "column_ignore_similarity",
+        "song_id": "column_exact_match_similarity",
+        "added_at": "column_ignore_similarity"
+      }
+    },
+    {
+      "operation": "create",
+      "source": "appworld",
+      "table": "spotify.playlist_songs",
+      "entity_data": {
+        "playlist_id": 801,
+        "song_id": 203,
+        "added_at": "2026-04-17T00:04:56"
+      },
+      "column_similarity_measure": {
+        "playlist_id": "column_ignore_similarity",
+        "song_id": "column_exact_match_similarity",
+        "added_at": "column_ignore_similarity"
+      }
+    },
+    {
+      "operation": "create",
+      "source": "appworld",
+      "table": "spotify.playlist_songs",
+      "entity_data": {
+        "playlist_id": 801,
+        "song_id": 204,
+        "added_at": "2026-04-17T00:04:56"
+      },
+      "column_similarity_measure": {
+        "playlist_id": "column_ignore_similarity",
+        "song_id": "column_exact_match_similarity",
+        "added_at": "column_ignore_similarity"
+      }
+    },
+    {
+      "operation": "create",
+      "source": "appworld",
+      "table": "spotify.playlist_songs",
+      "entity_data": {
+        "playlist_id": 801,
+        "song_id": 205,
+        "added_at": "2026-04-17T00:04:56"
+      },
+      "column_similarity_measure": {
+        "playlist_id": "column_ignore_similarity",
+        "song_id": "column_exact_match_similarity",
+        "added_at": "column_ignore_similarity"
+      }
+    },
+    {
+      "operation": "create",
+      "source": "appworld",
+      "table": "spotify.playlist_songs",
+      "entity_data": {
+        "playlist_id": 801,
+        "song_id": 206,
+        "added_at": "2026-04-17T00:04:56"
+      },
+      "column_similarity_measure": {
+        "playlist_id": "column_ignore_similarity",
+        "song_id": "column_exact_match_similarity",
+        "added_at": "column_ignore_similarity"
+      }
+    },
+    {
+      "operation": "create",
+      "source": "appworld",
+      "table": "spotify.playlist_songs",
+      "entity_data": {
+        "playlist_id": 801,
+        "song_id": 207,
+        "added_at": "2026-04-17T00:04:56"
+      },
+      "column_similarity_measure": {
+        "playlist_id": "column_ignore_similarity",
+        "song_id": "column_exact_match_similarity",
+        "added_at": "column_ignore_similarity"
+      }
+    }
+  ],
+  "task_completion_criteria": "Create a Spotify playlist named 'Visual Mix' and add a song by Wei Wei, a song by Mr. Scruff, a song by Kina Grannis, a song from the 'Nick and Norah's Infinite Playlist' soundtrack, a song by Joey Holiday, and the song 'America the Beautiful' to it.",
+  "categories": [
+    "APPWORLD",
+    "MULTIPLE_USER_TURN"
+  ],
+  "max_messages": 100,
+  "metadata": {
+    "original_scenario_id": "scenario_0484",
+    "expected_tools": [
+      "spotify_create_playlist",
+      "web_search_serper",
+      "spotify_add_song_to_playlist"
+    ],
+    "image_arrival": {
+      "1": [
+        "image_1",
+        "image_4",
+        "image_6"
+      ],
+      "2": [
+        "image_3",
+        "image_5"
+      ],
+      "3": [
+        "image_2"
+      ]
+    },
+    "image_delivery_map": [
+      {
+        "query": "Now find a song from the soundtrack of the movie advertised on the far left billboard, and a song by the artist whose name is in huge letters on the side of this blue truck. Add both of them to the 'Mix' playlist.",
+        "image_ids": [
+          2,
+          4
+        ]
+      },
+      {
+        "query": "Finally, identify the famous song whose lyrics are written on this plaque, and add it to the playlist too.",
+        "image_ids": [
+          1
+        ]
+      }
+    ],
+    "scenario_metadata": {
+      "num_images": 6,
+      "num_user_rounds": 3,
+      "selected_flow_type": "aggregate",
+      "image_arrival": "mixed",
+      "challenge_type": "none",
+      "require_disambiguation": true,
+      "dataset_type": "hiertext"
+    }
+  }
+}

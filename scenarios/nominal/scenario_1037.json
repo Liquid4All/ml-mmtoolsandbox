@@ -1,0 +1,363 @@
+{
+  "name": "scenario_1037",
+  "base_scenario": "base",
+  "description": "The user is planning a project timeline and budget based on a whiteboard workflow, a notepad recap, and a sketchnote of ideas. They are using multiple applications to track tasks, budgets, and reminders.",
+  "difficulty": "easy",
+  "appworld_base_task": "_base_",
+  "device_state_id": "jack-maldonado@gmail.com",
+  "reference_time": "2026-04-17T00:21:41.474807+00:00",
+  "agentsandbox_entities": {},
+  "appworld_entities": {
+    "todoist.projects": [
+      {
+        "id": 400,
+        "user_id": 84,
+        "name": "Work",
+        "color": "charcoal",
+        "is_inbox": false,
+        "description": "General work tasks",
+        "created_at": "2026-04-10T09:00:00"
+      }
+    ],
+    "todoist.tasks": [
+      {
+        "id": 6500,
+        "project_id": 400,
+        "section_id": null,
+        "user_id": 84,
+        "title": "Story Points - Web Redesign",
+        "description": "",
+        "due_date": null,
+        "priority": "medium",
+        "is_completed": false,
+        "duration": null,
+        "duration_unit": null,
+        "order_index": 0,
+        "assignee_id": null,
+        "assigner_id": null,
+        "created_at": "2026-04-10T09:05:00"
+      },
+      {
+        "id": 6501,
+        "project_id": 400,
+        "section_id": null,
+        "user_id": 84,
+        "title": "Story Points - Mobile App",
+        "description": "",
+        "due_date": null,
+        "priority": "medium",
+        "is_completed": false,
+        "duration": null,
+        "duration_unit": null,
+        "order_index": 1,
+        "assignee_id": null,
+        "assigner_id": null,
+        "created_at": "2026-04-10T09:10:00"
+      }
+    ],
+    "simple_note.notes": [
+      {
+        "id": 3200,
+        "user_id": 84,
+        "title": "Project Budget",
+        "content": "Remaining Budget: $500",
+        "tags": [
+          "project",
+          "budget"
+        ],
+        "created_at": "2026-04-15T10:00:00",
+        "updated_at": "2026-04-15T10:00:00",
+        "pinned": false,
+        "data": null
+      }
+    ],
+    "todoist.project_collaborator_links": [
+      {
+        "id": 50400,
+        "project_id": 400,
+        "user_id": 84,
+        "is_favorite": false,
+        "is_archived": false,
+        "created_at": "2026-04-10T09:00:00"
+      }
+    ],
+    "gmail.users": []
+  },
+  "image_paths": [
+    "hiertext/images/test/133974702d4478ac.jpg",
+    "hiertext/images/test/13f5caa2ebb9e2c6.jpg",
+    "hiertext/images/test/3e995797959b1708.jpg",
+    "hiertext/images/test/7bf927d26f1707ac.jpg"
+  ],
+  "messages": [
+    {
+      "sender": "SYSTEM",
+      "recipient": "USER",
+      "content": "{{USER_INSTRUCTION}}ROUND 1 [provide: image_1, image_4]\nQuery: I'm starting the render phase shown on this whiteboard next Wednesday at 9:00 AM. Figure out exactly when it will finish, and set a reminder for 6 hours before that to check on the project mentioned in the bottom left tweet by warp5 on this screen.\nInstructions: Ask the assistant to calculate the exact finish time for the render phase shown on the whiteboard, assuming it starts next Wednesday at 9:00 AM. Then ask it to set a reminder for 6 hours before that finish time to check on the project mentioned in the bottom-left tweet by 'warp5' on the screen display. If the assistant asks for clarification on the math, confirm it should be exactly the duration shown on the board from the start time, minus 6 hours. Proceed to the next step once the reminder is set.\n\nROUND 2 [provide: image_2]\nQuery: Now look at this notepad recap. Count the bullet points under 'OUTSTANDING WORK', multiply that by 5 to get my total story points, and update my story points task with that number. Also, make new individual tasks for each of the items listed under QUALITIES.\nInstructions: Instruct the assistant to look at the notepad recap, count the number of bullet points specifically under 'OUTSTANDING WORK', multiply that count by 5, and update your existing 'story points' task with that calculated number. Also, ask it to create separate new tasks for each of the items listed under '* QUALITIES *'. The assistant will likely find multiple 'story points' tasks and ask you which one to update; when it does, clarify that you mean the one for 'Web Redesign'. Move on once all tasks are updated and created.\n\nROUND 3 [provide: image_3]\nQuery: Finally, check out this sketchnote. Count the checkboxes under 'Things to try'. Multiply that count by $12 to estimate supply costs, then subtract that from the 'Remaining Budget' in my 'Project Budget' note and update the note with the new balance.\nInstructions: Ask the assistant to count the checkboxes under 'Things to try' in the sketchnote, multiply that number by $12, and then subtract that total from the 'Remaining Budget' in your 'Project Budget' note. Tell it to update the note with the new calculated balance. Once the note is successfully updated, you can end the conversation.\n\nYou have 4 images available to share with the agent using the send_message_with_image tool.\nIMPORTANT: Image IDs are ZERO-INDEXED integers (0, 1, 2, ...). Do NOT add 1 to the IDs.\nAvailable image IDs: [0, 1, 2, 3]\nImage mapping:\n  image_1.jpg -> image ID 0\n  image_2.jpg -> image ID 1\n  image_3.jpg -> image ID 2\n  image_4.jpg -> image ID 3\n\n## IMAGE DELIVERY\n\n⚠️ IMPORTANT: You MUST use the `send_message_with_image` tool to share images with User B. Do NOT just describe images in text — you MUST call the tool.\n\nImage delivery schedule:\n\n  Round 2: YOU MUST call the send_message_with_image tool with image_ids='1' — do NOT write the tool name as text; use the actual function call. Include a natural, conversational message to the assistant.\n  Round 3: YOU MUST call the send_message_with_image tool with image_ids='2' — do NOT write the tool name as text; use the actual function call. Include a natural, conversational message to the assistant."
+    },
+    {
+      "sender": "USER",
+      "recipient": "AGENT",
+      "content": "I'm starting the render phase shown on this whiteboard next Wednesday at 9:00 AM. Figure out exactly when it will finish, and set a reminder for 6 hours before that to check on the project mentioned in the bottom left tweet by warp5 on this screen.",
+      "image_ids": [
+        0,
+        3
+      ]
+    }
+  ],
+  "milestones": [],
+  "entity_diff_specs": [
+    {
+      "operation": "create",
+      "source": "appworld",
+      "table": "todoist.tasks",
+      "entity_data": {
+        "project_id": 400,
+        "section_id": null,
+        "user_id": 84,
+        "title": "Prioritised",
+        "description": null,
+        "due_date": null,
+        "priority": "medium",
+        "is_completed": false,
+        "duration": null,
+        "duration_unit": null,
+        "order_index": 2,
+        "assignee_id": null,
+        "assigner_id": null,
+        "created_at": "2026-04-17T00:21:41"
+      },
+      "column_similarity_measure": {
+        "project_id": "column_exact_match_similarity",
+        "section_id": "column_ignore_similarity",
+        "user_id": "column_exact_match_similarity",
+        "title": "column_rouge_l_similarity",
+        "description": "column_ignore_similarity",
+        "due_date": "column_ignore_similarity",
+        "priority": "column_exact_match_similarity",
+        "is_completed": "column_exact_match_similarity",
+        "duration": "column_ignore_similarity",
+        "duration_unit": "column_ignore_similarity",
+        "order_index": "column_ignore_similarity",
+        "assignee_id": "column_ignore_similarity",
+        "assigner_id": "column_ignore_similarity",
+        "created_at": "column_ignore_similarity"
+      }
+    },
+    {
+      "operation": "create",
+      "source": "appworld",
+      "table": "todoist.tasks",
+      "entity_data": {
+        "project_id": 400,
+        "section_id": null,
+        "user_id": 84,
+        "title": "Detailed appropriately",
+        "description": null,
+        "due_date": null,
+        "priority": "medium",
+        "is_completed": false,
+        "duration": null,
+        "duration_unit": null,
+        "order_index": 3,
+        "assignee_id": null,
+        "assigner_id": null,
+        "created_at": "2026-04-17T00:21:41"
+      },
+      "column_similarity_measure": {
+        "project_id": "column_exact_match_similarity",
+        "section_id": "column_ignore_similarity",
+        "user_id": "column_exact_match_similarity",
+        "title": "column_rouge_l_similarity",
+        "description": "column_ignore_similarity",
+        "due_date": "column_ignore_similarity",
+        "priority": "column_exact_match_similarity",
+        "is_completed": "column_exact_match_similarity",
+        "duration": "column_ignore_similarity",
+        "duration_unit": "column_ignore_similarity",
+        "order_index": "column_ignore_similarity",
+        "assignee_id": "column_ignore_similarity",
+        "assigner_id": "column_ignore_similarity",
+        "created_at": "column_ignore_similarity"
+      }
+    },
+    {
+      "operation": "create",
+      "source": "appworld",
+      "table": "todoist.tasks",
+      "entity_data": {
+        "project_id": 400,
+        "section_id": null,
+        "user_id": 84,
+        "title": "Estimated",
+        "description": null,
+        "due_date": null,
+        "priority": "medium",
+        "is_completed": false,
+        "duration": null,
+        "duration_unit": null,
+        "order_index": 4,
+        "assignee_id": null,
+        "assigner_id": null,
+        "created_at": "2026-04-17T00:21:41"
+      },
+      "column_similarity_measure": {
+        "project_id": "column_exact_match_similarity",
+        "section_id": "column_ignore_similarity",
+        "user_id": "column_exact_match_similarity",
+        "title": "column_rouge_l_similarity",
+        "description": "column_ignore_similarity",
+        "due_date": "column_ignore_similarity",
+        "priority": "column_exact_match_similarity",
+        "is_completed": "column_exact_match_similarity",
+        "duration": "column_ignore_similarity",
+        "duration_unit": "column_ignore_similarity",
+        "order_index": "column_ignore_similarity",
+        "assignee_id": "column_ignore_similarity",
+        "assigner_id": "column_ignore_similarity",
+        "created_at": "column_ignore_similarity"
+      }
+    },
+    {
+      "operation": "create",
+      "source": "appworld",
+      "table": "todoist.tasks",
+      "entity_data": {
+        "project_id": 400,
+        "section_id": null,
+        "user_id": 84,
+        "title": "Emergant",
+        "description": null,
+        "due_date": null,
+        "priority": "medium",
+        "is_completed": false,
+        "duration": null,
+        "duration_unit": null,
+        "order_index": 5,
+        "assignee_id": null,
+        "assigner_id": null,
+        "created_at": "2026-04-17T00:21:41"
+      },
+      "column_similarity_measure": {
+        "project_id": "column_exact_match_similarity",
+        "section_id": "column_ignore_similarity",
+        "user_id": "column_exact_match_similarity",
+        "title": "column_rouge_l_similarity",
+        "description": "column_ignore_similarity",
+        "due_date": "column_ignore_similarity",
+        "priority": "column_exact_match_similarity",
+        "is_completed": "column_exact_match_similarity",
+        "duration": "column_ignore_similarity",
+        "duration_unit": "column_ignore_similarity",
+        "order_index": "column_ignore_similarity",
+        "assignee_id": "column_ignore_similarity",
+        "assigner_id": "column_ignore_similarity",
+        "created_at": "column_ignore_similarity"
+      }
+    },
+    {
+      "operation": "create",
+      "source": "agentsandbox",
+      "namespace": "REMINDER",
+      "entity_data": {
+        "reminder_id": "reminder_100",
+        "content": "Check on the '#SocialMedia Monitoring-Strategie der BSH' project",
+        "latitude": null,
+        "longitude": null,
+        "creation_datetime": "2026-04-17T00:21:41Z",
+        "reminder_datetime": "2026-04-25T15:00:00Z"
+      },
+      "column_similarity_measure": {
+        "reminder_id": "column_ignore_similarity",
+        "content": "column_rouge_l_similarity",
+        "latitude": "column_ignore_similarity",
+        "longitude": "column_ignore_similarity",
+        "creation_datetime": "column_ignore_similarity",
+        "reminder_datetime": "column_datetime_naive_equal_similarity"
+      }
+    },
+    {
+      "operation": "update",
+      "source": "appworld",
+      "table": "todoist.tasks",
+      "entity_id_column": "id",
+      "entity_id_value": 6500,
+      "expected_fields": {
+        "description": "25"
+      },
+      "column_similarity_measure": {
+        "description": "column_rouge_l_similarity",
+        "id": "column_exact_match_similarity"
+      }
+    },
+    {
+      "operation": "update",
+      "source": "appworld",
+      "table": "simple_note.notes",
+      "entity_id_column": "id",
+      "entity_id_value": 3200,
+      "expected_fields": {
+        "updated_at": "2026-04-15T10:00:00",
+        "content": "Remaining Budget: $452",
+        "tags": []
+      },
+      "column_similarity_measure": {
+        "updated_at": "column_ignore_similarity",
+        "content": "column_rouge_l_similarity",
+        "id": "column_exact_match_similarity"
+      }
+    }
+  ],
+  "task_completion_criteria": "Calculate a reminder time for April 25, 2026, at 3:00 PM (based on a 3.5-day render time starting next Wednesday at 9:00 AM minus 6 hours) to check on the '#SocialMedia Monitoring-Strategie der BSH' project, update the 'Story Points - Web Redesign' task to 25 (5 outstanding work bullets * 5), create 4 new tasks for the qualities (Prioritised, Detailed appropriately, Estimated, Emergant), and update the 'Project Budget' note's remaining balance to $452 (subtracting $48, which is 4 checkboxes * $12, from the original $500).",
+  "categories": [
+    "APPWORLD",
+    "MULTIPLE_USER_TURN"
+  ],
+  "max_messages": 100,
+  "metadata": {
+    "original_scenario_id": "scenario_1037",
+    "expected_tools": [
+      "add_reminder",
+      "todoist_show_tasks",
+      "todoist_update_task",
+      "todoist_create_task",
+      "simple_note_show_note",
+      "simple_note_update_note"
+    ],
+    "image_arrival": {
+      "1": [
+        "image_1",
+        "image_4"
+      ],
+      "2": [
+        "image_2"
+      ],
+      "3": [
+        "image_3"
+      ]
+    },
+    "image_delivery_map": [
+      {
+        "query": "Now look at this notepad recap. Count the bullet points under 'OUTSTANDING WORK', multiply that by 5 to get my total story points, and update my story points task with that number. Also, make new individual tasks for each of the items listed under QUALITIES.",
+        "image_ids": [
+          1
+        ]
+      },
+      {
+        "query": "Finally, check out this sketchnote. Count the checkboxes under 'Things to try'. Multiply that count by $12 to estimate supply costs, then subtract that from the 'Remaining Budget' in my 'Project Budget' note and update the note with the new balance.",
+        "image_ids": [
+          2
+        ]
+      }
+    ],
+    "scenario_metadata": {
+      "num_images": 4,
+      "num_user_rounds": 3,
+      "selected_flow_type": "compute",
+      "image_arrival": "mixed",
+      "challenge_type": "none",
+      "require_disambiguation": true,
+      "dataset_type": "hiertext"
+    }
+  }
+}

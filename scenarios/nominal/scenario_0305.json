@@ -1,0 +1,246 @@
+{
+  "name": "scenario_0305",
+  "base_scenario": "base",
+  "description": "The user is shopping for toys on Amazon and wants to compare prices of various items they have taken pictures of to buy the cheapest one.",
+  "difficulty": "easy",
+  "appworld_base_task": "_base_",
+  "device_state_id": "de_ritt@gmail.com",
+  "reference_time": "2026-04-16T23:59:25.946599+00:00",
+  "agentsandbox_entities": {},
+  "appworld_entities": {
+    "amazon.sellers": [
+      {
+        "id": 200,
+        "name": "Disney Store",
+        "rating": 4.8
+      },
+      {
+        "id": 201,
+        "name": "MonsterToys",
+        "rating": 4.2
+      },
+      {
+        "id": 202,
+        "name": "CreativeKids",
+        "rating": 4.5
+      },
+      {
+        "id": 203,
+        "name": "BabyBrain",
+        "rating": 4.9
+      },
+      {
+        "id": 204,
+        "name": "LoopyWorld",
+        "rating": 4.1
+      }
+    ],
+    "amazon.products": [
+      {
+        "id": 200,
+        "product_type": "toys",
+        "name": "Snow White Princess Doll",
+        "description": "Classic Disney Princess Snow White doll",
+        "seller_id": 200,
+        "price": 24.99,
+        "delivery_days": 2,
+        "inventory_quantity": 50,
+        "weight": 0.5,
+        "length": 12.0,
+        "width": 4.0,
+        "height": 2.0,
+        "color": null,
+        "relative_size": null,
+        "rating": 4.7,
+        "seller_rating": 4.8,
+        "has_variations": false
+      },
+      {
+        "id": 201,
+        "product_type": "toys",
+        "name": "Dale Plush Toy",
+        "description": "Chip and Dale plush toy",
+        "seller_id": 200,
+        "price": 18.99,
+        "delivery_days": 2,
+        "inventory_quantity": 40,
+        "weight": 0.4,
+        "length": 8.0,
+        "width": 5.0,
+        "height": 4.0,
+        "color": null,
+        "relative_size": null,
+        "rating": 4.6,
+        "seller_rating": 4.8,
+        "has_variations": false
+      },
+      {
+        "id": 202,
+        "product_type": "toys",
+        "name": "Fuggler Gap-Tooth McGoo",
+        "description": "Funny ugly monster plush toy",
+        "seller_id": 201,
+        "price": 15.99,
+        "delivery_days": 3,
+        "inventory_quantity": 20,
+        "weight": 0.6,
+        "length": 9.0,
+        "width": 6.0,
+        "height": 3.0,
+        "color": "Green",
+        "relative_size": null,
+        "rating": 4.5,
+        "seller_rating": 4.2,
+        "has_variations": true
+      },
+      {
+        "id": 203,
+        "product_type": "toys",
+        "name": "Light-up Drawing Board",
+        "description": "Glow in the dark drawing pad for kids",
+        "seller_id": 202,
+        "price": 22.99,
+        "delivery_days": 2,
+        "inventory_quantity": 100,
+        "weight": 1.0,
+        "length": 14.0,
+        "width": 10.0,
+        "height": 1.0,
+        "color": null,
+        "relative_size": null,
+        "rating": 4.4,
+        "seller_rating": 4.5,
+        "has_variations": false
+      },
+      {
+        "id": 204,
+        "product_type": "toys",
+        "name": "Visual Stimulation Cards",
+        "description": "High contrast baby flashcards",
+        "seller_id": 203,
+        "price": 9.99,
+        "delivery_days": 1,
+        "inventory_quantity": 20,
+        "weight": 0.3,
+        "length": 6.0,
+        "width": 6.0,
+        "height": 0.5,
+        "color": null,
+        "relative_size": null,
+        "rating": 4.8,
+        "seller_rating": 4.9,
+        "has_variations": false
+      },
+      {
+        "id": 205,
+        "product_type": "toys",
+        "name": "Loopy Doll",
+        "description": "Soft plush Loopy character doll",
+        "seller_id": 204,
+        "price": 14.99,
+        "delivery_days": 4,
+        "inventory_quantity": 30,
+        "weight": 0.5,
+        "length": 10.0,
+        "width": 5.0,
+        "height": 4.0,
+        "color": null,
+        "relative_size": null,
+        "rating": 4.3,
+        "seller_rating": 4.1,
+        "has_variations": false
+      }
+    ],
+    "gmail.users": []
+  },
+  "image_paths": [
+    "worldvqa/images/1483.jpg",
+    "worldvqa/images/1745.jpg",
+    "worldvqa/images/1604.jpg",
+    "worldvqa/images/1777.jpg",
+    "worldvqa/images/1482.jpg",
+    "worldvqa/images/1603.jpg"
+  ],
+  "messages": [
+    {
+      "sender": "SYSTEM",
+      "recipient": "USER",
+      "content": "{{USER_INSTRUCTION}}ROUND 1 [provide: image_1, image_3, image_4]\nQuery: Can you search Amazon and compare the prices for the items in these three pictures? I want to see the prices for the Snow White doll, the Dale plush, and that blue Fuggler. Then add the cheapest of the three to my cart.\nInstructions: Ask the assistant to search Amazon to compare the prices of the items in the three provided images, specifically referring to the third item as a 'blue' toy, and request that the cheapest one be added to the cart. If the assistant correctly points out that the toy in the image is actually green, not blue, acknowledge their observation but wait for the next turn to provide the correction and new instructions. If the assistant blindly proceeds to search for a blue version without noticing the color mismatch in the image, point out the mistake.\n\nROUND 2 [provide: image_2, image_5, image_6]\nQuery: Oops, you're right, my mistake\u2014the Fuggler is clearly green! Please remove what you just added to my cart and compare the price of the green Fuggler with the items in these three new pictures instead. Add only the cheapest of these four items to my cart.\nInstructions: Acknowledge the color mistake and confirm the toy is green. Then, provide the three new images and ask the assistant to remove the previously added item from the cart and compare the price of the green toy from the previous round with the items shown in these new pictures. Instruct the assistant to add only the cheapest of these four items to your cart. Once the assistant confirms that the price comparison is complete and the cheapest item has been successfully added to the cart, thank them and end the conversation.\n\nYou have 6 images available to share with the agent using the send_message_with_image tool.\nIMPORTANT: Image IDs are ZERO-INDEXED integers (0, 1, 2, ...). Do NOT add 1 to the IDs.\nAvailable image IDs: [0, 1, 2, 3, 4, 5]\nImage mapping:\n  image_1.jpg -> image ID 0\n  image_2.jpg -> image ID 1\n  image_3.jpg -> image ID 2\n  image_4.jpg -> image ID 3\n  image_5.jpg -> image ID 4\n  image_6.jpg -> image ID 5\n\n## IMAGE DELIVERY\n\n\u26a0\ufe0f IMPORTANT: You MUST use the `send_message_with_image` tool to share images with User B. Do NOT just describe images in text \u2014 you MUST call the tool.\n\nImage delivery schedule:\n\n  Round 2: YOU MUST call the send_message_with_image tool with image_ids='1,4,5' \u2014 do NOT write the tool name as text; use the actual function call. Include a natural, conversational message to the assistant."
+    },
+    {
+      "sender": "USER",
+      "recipient": "AGENT",
+      "content": "Can you search Amazon and compare the prices for the items in these three pictures? I want to see the prices for the Snow White doll, the Dale plush, and that blue Fuggler. Then add the cheapest of the three to my cart.",
+      "image_ids": [
+        0,
+        2,
+        3
+      ]
+    }
+  ],
+  "milestones": [],
+  "entity_diff_specs": [
+    {
+      "operation": "create",
+      "source": "appworld",
+      "table": "amazon.cart_entries",
+      "entity_data": {
+        "user_id": 97,
+        "product_id": 204,
+        "quantity": 1,
+        "gift_wrap_quantity": 0
+      },
+      "column_similarity_measure": {
+        "user_id": "column_exact_match_similarity",
+        "product_id": "column_exact_match_similarity",
+        "quantity": "column_exact_match_similarity",
+        "gift_wrap_quantity": "column_exact_match_similarity"
+      }
+    }
+  ],
+  "task_completion_criteria": "Search Amazon to find the prices for a Fuggler Gap-Tooth McGoo (Green), a light-up drawing board toy, visual stimulation cards, and a Loopy doll, compare their prices, remove any previously carted items from the first round, and add only the cheapest of these four items to the user's cart.",
+  "categories": [
+    "APPWORLD",
+    "MULTIPLE_USER_TURN"
+  ],
+  "max_messages": 100,
+  "metadata": {
+    "original_scenario_id": "scenario_0305",
+    "expected_tools": [
+      "web_search_serper",
+      "amazon_show_product",
+      "amazon_add_product_to_cart"
+    ],
+    "image_arrival": {
+      "1": [
+        "image_1",
+        "image_3",
+        "image_4"
+      ],
+      "2": [
+        "image_2",
+        "image_5",
+        "image_6"
+      ]
+    },
+    "image_delivery_map": [
+      {
+        "query": "Oops, you're right, my mistake\u2014the Fuggler is clearly green! Please remove what you just added to my cart and compare the price of the green Fuggler with the items in these three new pictures instead. Add only the cheapest of these four items to my cart.",
+        "image_ids": [
+          1,
+          4,
+          5
+        ]
+      }
+    ],
+    "scenario_metadata": {
+      "num_images": 6,
+      "num_user_rounds": 2,
+      "selected_flow_type": "compare",
+      "image_arrival": "progressive",
+      "challenge_type": "error_correction",
+      "require_disambiguation": false,
+      "dataset_type": "worldvqa"
+    }
+  }
+}

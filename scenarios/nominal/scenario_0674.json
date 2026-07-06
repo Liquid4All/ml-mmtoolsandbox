@@ -1,0 +1,245 @@
+{
+  "name": "scenario_0674",
+  "base_scenario": "base",
+  "description": "The user is organizing their music library based on data visualizations and sharing some movie trivia they found.",
+  "difficulty": "easy",
+  "appworld_base_task": "_base_",
+  "device_state_id": "thomas.solomon@gmail.com",
+  "reference_time": "2026-04-17T00:11:04.498687+00:00",
+  "agentsandbox_entities": {},
+  "appworld_entities": {
+    "spotify.artists": [
+      {
+        "id": 200,
+        "name": "Billie Eilish",
+        "genre": "Pop",
+        "created_at": "2015-01-01T00:00:00"
+      },
+      {
+        "id": 201,
+        "name": "BTS",
+        "genre": "K-Pop",
+        "created_at": "2013-06-13T00:00:00"
+      },
+      {
+        "id": 202,
+        "name": "The Beatles",
+        "genre": "Rock",
+        "created_at": "1960-01-01T00:00:00"
+      }
+    ],
+    "spotify.songs": [
+      {
+        "id": 200,
+        "title": "bad guy",
+        "artist_ids": [
+          200
+        ],
+        "album_id": null,
+        "duration": 194,
+        "release_date": "2019-03-29T00:00:00",
+        "genre": "Pop",
+        "play_count": 1000000,
+        "rating": 4.8,
+        "like_count": 500000,
+        "review_count": 10000
+      },
+      {
+        "id": 201,
+        "title": "Dynamite",
+        "artist_ids": [
+          201
+        ],
+        "album_id": null,
+        "duration": 199,
+        "release_date": "2020-08-21T00:00:00",
+        "genre": "K-Pop",
+        "play_count": 2000000,
+        "rating": 4.9,
+        "like_count": 1000000,
+        "review_count": 20000
+      }
+    ],
+    "spotify.albums": [
+      {
+        "id": 200,
+        "title": "Revolver",
+        "artist_ids": [
+          202
+        ],
+        "release_date": "1966-08-05T00:00:00",
+        "genre": "Rock",
+        "rating": 5.0,
+        "like_count": 800000,
+        "review_count": 15000
+      },
+      {
+        "id": 201,
+        "title": "Help!",
+        "artist_ids": [
+          202
+        ],
+        "release_date": "1965-08-06T00:00:00",
+        "genre": "Rock",
+        "rating": 4.7,
+        "like_count": 600000,
+        "review_count": 12000
+      }
+    ],
+    "gmail.users": [
+      {
+        "id": 10100,
+        "first_name": "Movies",
+        "last_name": "",
+        "email": "movies@example.com",
+        "password": "placeholder_password",
+        "status": "active"
+      }
+    ]
+  },
+  "image_paths": [
+    "chartqapro/images/chart_0247.jpg",
+    "chartmuseum/images/kendrick_lamar.png",
+    "chartqapro/images/chart_1530.jpg",
+    "chartmuseum/images/songWriterBeetles.png",
+    "chartmuseum/images/Cowboy_Carter.png",
+    "chartmuseum/images/artist_radar.png"
+  ],
+  "messages": [
+    {
+      "sender": "SYSTEM",
+      "recipient": "USER",
+      "content": "{{USER_INSTRUCTION}}ROUND 1 [provide: image_1, image_2, image_3, image_4, image_5, image_6]\nQuery: Create a new playlist called 'Joyful Tunes'. Look at the radar charts in this sixth image and compare the 'joy' levels of the artists. I think Billie Eilish has the highest joy, so add one of her songs to the playlist. Also, compare the box office revenues of 'Barbie' and 'Oppenheimer' in the third image here, and send an email to movies@example.com stating which movie earned more.\nInstructions: Ask the assistant to create a playlist called 'Joyful Tunes'. Direct its attention to the radar charts in the last image, specifically looking at the 'joy' metric. State that you think Billie Eilish has the highest joy level, and ask it to add one of her songs to the playlist. Then, ask it to look at the third image, compare the box office revenues of 'Barbie' and 'Oppenheimer', and send an email to movies@example.com stating which of the two earned more. If the assistant correctly points out that Billie Eilish does not actually have the highest joy level, acknowledge it but tell it to go ahead with your instruction for now and that you'll fix it later. Just make sure the email is sent and the playlist is created. Once the actions are complete, proceed to the next round.\n\nROUND 2\nQuery: You were right about the joy levels, my mistake! Remove the Billie Eilish song from 'Joyful Tunes' and add a song by the artist who actually has the highest joy level in that sixth image. Then, look at the fourth image with the Beatles albums. Compare the number of 'Top 50 playable songs'\u2014the white stars\u2014on the albums 'Help!' and 'Revolver', and add the album that has more of those hits to my Spotify library.\nInstructions: Acknowledge your mistake about the joy levels. Ask the assistant to remove the Billie Eilish song from the 'Joyful Tunes' playlist and instead add a song by the artist who actually has the highest joy level according to the radar charts in the sixth image. Next, direct the assistant to the fourth image showing the Beatles timeline. Ask it to compare the number of 'Top 50 playable songs' (represented by white stars) between the albums 'Help!' and 'Revolver', and add the album with the higher count to your Spotify library. If the assistant miscounts the stars or selects the wrong artist, point it back to the respective images. Once both Spotify tasks are complete, conclude the conversation.\n\nYou have 6 images available to share with the agent using the send_message_with_image tool.\nIMPORTANT: Image IDs are ZERO-INDEXED integers (0, 1, 2, ...). Do NOT add 1 to the IDs.\nAvailable image IDs: [0, 1, 2, 3, 4, 5]\nImage mapping:\n  image_1.jpg -> image ID 0\n  image_2.jpg -> image ID 1\n  image_3.jpg -> image ID 2\n  image_4.jpg -> image ID 3\n  image_5.jpg -> image ID 4\n  image_6.jpg -> image ID 5"
+    },
+    {
+      "sender": "USER",
+      "recipient": "AGENT",
+      "content": "Create a new playlist called 'Joyful Tunes'. Look at the radar charts in this sixth image and compare the 'joy' levels of the artists. I think Billie Eilish has the highest joy, so add one of her songs to the playlist. Also, compare the box office revenues of 'Barbie' and 'Oppenheimer' in the third image here, and send an email to movies@example.com stating which movie earned more.",
+      "image_ids": [
+        0,
+        1,
+        2,
+        3,
+        4,
+        5
+      ]
+    }
+  ],
+  "milestones": [],
+  "entity_diff_specs": [
+    {
+      "operation": "create",
+      "source": "appworld",
+      "table": "gmail.emails",
+      "entity_data": {
+        "sender_id": 8,
+        "recipient_ids": [
+          10100
+        ],
+        "subject": "Box office revenues: Barbie vs Oppenheimer",
+        "body": "Hi,\n\nJust wanted to share that Barbie earned more at the box office than Oppenheimer.\n\nBest,\nThomas",
+        "response_to_email_id": null,
+        "created_at": "2026-04-17T00:11:04"
+      },
+      "column_similarity_measure": {
+        "sender_id": "column_exact_match_similarity",
+        "recipient_ids": "column_exact_match_similarity",
+        "subject": "column_rouge_l_similarity",
+        "body": "column_rouge_l_similarity",
+        "response_to_email_id": "column_ignore_similarity",
+        "created_at": "column_ignore_similarity"
+      }
+    },
+    {
+      "operation": "create",
+      "source": "appworld",
+      "table": "spotify.playlists",
+      "entity_data": {
+        "title": "Joyful Tunes",
+        "user_id": 8,
+        "created_at": "2026-04-17T00:11:04",
+        "is_public": false,
+        "rating": 0.0,
+        "like_count": 0,
+        "review_count": 0
+      },
+      "column_similarity_measure": {
+        "title": "column_rouge_l_similarity",
+        "user_id": "column_exact_match_similarity",
+        "created_at": "column_ignore_similarity",
+        "is_public": "column_exact_match_similarity",
+        "rating": "column_exact_match_similarity",
+        "like_count": "column_exact_match_similarity",
+        "review_count": "column_exact_match_similarity"
+      }
+    },
+    {
+      "operation": "create",
+      "source": "appworld",
+      "table": "spotify.playlist_songs",
+      "entity_data": {
+        "playlist_id": 800,
+        "song_id": 201,
+        "added_at": "2026-04-17T00:11:04"
+      },
+      "column_similarity_measure": {
+        "playlist_id": "column_ignore_similarity",
+        "song_id": "column_exact_match_similarity",
+        "added_at": "column_ignore_similarity"
+      }
+    },
+    {
+      "operation": "create",
+      "source": "appworld",
+      "table": "spotify.user_library_albums",
+      "entity_data": {
+        "user_id": 8,
+        "album_id": 200,
+        "created_at": "2026-04-17T00:11:04"
+      },
+      "column_similarity_measure": {
+        "user_id": "column_exact_match_similarity",
+        "album_id": "column_exact_match_similarity",
+        "created_at": "column_ignore_similarity"
+      }
+    }
+  ],
+  "task_completion_criteria": "Create a Spotify playlist named 'Joyful Tunes' containing a song by BTS, send an email to movies@example.com stating that Barbie earned more at the box office than Oppenheimer (or something similar expressing the same idea), and add the Beatles album 'Revolver' to the user's Spotify library.",
+  "categories": [
+    "APPWORLD",
+    "MULTIPLE_USER_TURN"
+  ],
+  "max_messages": 100,
+  "metadata": {
+    "original_scenario_id": "scenario_0674",
+    "expected_tools": [
+      "spotify_create_playlist",
+      "spotify_show_artist",
+      "spotify_add_song_to_playlist",
+      "gmail_send_email",
+      "spotify_remove_song_from_playlist",
+      "spotify_show_album",
+      "spotify_add_album_to_library"
+    ],
+    "image_arrival": {
+      "1": [
+        "image_1",
+        "image_2",
+        "image_3",
+        "image_4",
+        "image_5",
+        "image_6"
+      ]
+    },
+    "image_delivery_map": [],
+    "scenario_metadata": {
+      "num_images": 6,
+      "num_user_rounds": 2,
+      "selected_flow_type": "compare",
+      "image_arrival": "upfront",
+      "challenge_type": "error_correction",
+      "require_disambiguation": false,
+      "dataset_type": "chartmuseum"
+    }
+  }
+}

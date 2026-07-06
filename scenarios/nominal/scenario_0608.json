@@ -1,0 +1,187 @@
+{
+  "name": "scenario_0608",
+  "base_scenario": "base",
+  "description": "The user is planning a gathering and is using their assistant to calculate quantities and order groceries online.",
+  "difficulty": "easy",
+  "appworld_base_task": "_base_",
+  "device_state_id": "hun.weaver@gmail.com",
+  "reference_time": "2026-04-17T00:08:45.132117+00:00",
+  "agentsandbox_entities": {},
+  "appworld_entities": {
+    "amazon.sellers": [
+      {
+        "id": 200,
+        "name": "Rubino Official",
+        "rating": 4.5
+      },
+      {
+        "id": 201,
+        "name": "Kellogg's Store",
+        "rating": 4.8
+      },
+      {
+        "id": 202,
+        "name": "Nabisco Store",
+        "rating": 4.7
+      }
+    ],
+    "amazon.products": [
+      {
+        "id": 200,
+        "product_type": "groceries",
+        "name": "Rubino Extra Virgin Olive Oil",
+        "description": "Premium extra virgin olive oil, 1 Liter bottle",
+        "seller_id": 200,
+        "price": 15.99,
+        "delivery_days": 2,
+        "inventory_quantity": 50,
+        "weight": 1.0,
+        "length": 3.0,
+        "width": 3.0,
+        "height": 10.0,
+        "color": null,
+        "relative_size": null,
+        "rating": 4.5,
+        "seller_rating": 4.5,
+        "has_variations": false
+      },
+      {
+        "id": 201,
+        "product_type": "groceries",
+        "name": "Kellogg's Pop-Tarts Festival Fun Frosted Vanilla I-Scream Cone",
+        "description": "Toaster pastries, 8 count box",
+        "seller_id": 201,
+        "price": 4.99,
+        "delivery_days": 2,
+        "inventory_quantity": 100,
+        "weight": 0.5,
+        "length": 6.0,
+        "width": 4.0,
+        "height": 8.0,
+        "color": null,
+        "relative_size": null,
+        "rating": 4.8,
+        "seller_rating": 4.8,
+        "has_variations": false
+      },
+      {
+        "id": 202,
+        "product_type": "groceries",
+        "name": "Nabisco Ritz Crackers",
+        "description": "Classic Ritz Crackers",
+        "seller_id": 202,
+        "price": 3.99,
+        "delivery_days": 2,
+        "inventory_quantity": 100,
+        "weight": 0.4,
+        "length": 5.0,
+        "width": 2.5,
+        "height": 9.0,
+        "color": null,
+        "relative_size": null,
+        "rating": 4.7,
+        "seller_rating": 4.7,
+        "has_variations": false
+      }
+    ],
+    "gmail.users": []
+  },
+  "image_paths": [
+    "hiertext/images/test/cacffb3eb9e731e7.jpg",
+    "hiertext/images/test/a8868631d0f5d819.jpg",
+    "hiertext/images/test/2dd29e8dd2ab06a3.jpg"
+  ],
+  "messages": [
+    {
+      "sender": "SYSTEM",
+      "recipient": "USER",
+      "content": "{{USER_INSTRUCTION}}ROUND 1 [provide: image_1]\nQuery: I'm catering a dinner and need exactly 2 liters of this olive oil. Calculate how many bottles I need based on the volume shown on the label, and add that exact quantity to my Amazon cart.\nInstructions: Ask the assistant to calculate the number of bottles needed to get exactly 2 liters based on the volume shown on the bottle's label in the provided image, and then add that calculated quantity of the product to your Amazon cart. If the assistant asks to confirm the math or the product name, tell it to rely on the image. Once the item is successfully added, proceed to the next round.\n\nROUND 2 [provide: image_2, image_3]\nQuery: Actually, the dinner was cancelled and I'm hosting a kids' sleepover instead. Remove the olive oil from my cart. I have 16 kids coming. Based on the pastry count on this box, calculate how many boxes I need so each kid gets exactly one pastry, and add them to my cart. Also, just add 3 boxes of the crackers shown in the last image.\nInstructions: Tell the assistant you changed your mind and ask it to remove the previously added olive oil from the cart. Then, instruct it to calculate how many boxes of the pastries in the first new image are needed to give exactly one pastry to each of the 16 kids, based on the count shown on the packaging, and add that quantity to the cart. Finally, ask it to add 3 boxes of the crackers shown in the second new image. If the agent misidentifies the items or miscalculates, direct it to look closer at the packaging in the images. End the conversation once the cart is correctly updated.\n\nYou have 3 images available to share with the agent using the send_message_with_image tool.\nIMPORTANT: Image IDs are ZERO-INDEXED integers (0, 1, 2, ...). Do NOT add 1 to the IDs.\nAvailable image IDs: [0, 1, 2]\nImage mapping:\n  image_1.jpg -> image ID 0\n  image_2.jpg -> image ID 1\n  image_3.jpg -> image ID 2\n\n## IMAGE DELIVERY\n\n\u26a0\ufe0f IMPORTANT: You MUST use the `send_message_with_image` tool to share images with User B. Do NOT just describe images in text \u2014 you MUST call the tool.\n\nImage delivery schedule:\n\n  Round 2: YOU MUST call the send_message_with_image tool with image_ids='1,2' \u2014 do NOT write the tool name as text; use the actual function call. Include a natural, conversational message to the assistant."
+    },
+    {
+      "sender": "USER",
+      "recipient": "AGENT",
+      "content": "I'm catering a dinner and need exactly 2 liters of this olive oil. Calculate how many bottles I need based on the volume shown on the label, and add that exact quantity to my Amazon cart.",
+      "image_ids": [
+        0
+      ]
+    }
+  ],
+  "milestones": [],
+  "entity_diff_specs": [
+    {
+      "operation": "create",
+      "source": "appworld",
+      "table": "amazon.cart_entries",
+      "entity_data": {
+        "user_id": 56,
+        "product_id": 201,
+        "quantity": 2,
+        "gift_wrap_quantity": 0
+      },
+      "column_similarity_measure": {
+        "user_id": "column_exact_match_similarity",
+        "product_id": "column_exact_match_similarity",
+        "quantity": "column_exact_match_similarity",
+        "gift_wrap_quantity": "column_exact_match_similarity"
+      }
+    },
+    {
+      "operation": "create",
+      "source": "appworld",
+      "table": "amazon.cart_entries",
+      "entity_data": {
+        "user_id": 56,
+        "product_id": 202,
+        "quantity": 3,
+        "gift_wrap_quantity": 0
+      },
+      "column_similarity_measure": {
+        "user_id": "column_exact_match_similarity",
+        "product_id": "column_exact_match_similarity",
+        "quantity": "column_exact_match_similarity",
+        "gift_wrap_quantity": "column_exact_match_similarity"
+      }
+    }
+  ],
+  "task_completion_criteria": "The user's Amazon cart must contain exactly 2 boxes of Kellogg's Pop-Tarts Festival Fun Frosted Vanilla I-Scream Cone and exactly 3 boxes of Nabisco Ritz Crackers. The cart must not contain any Rubino Extra Virgin Olive Oil.",
+  "categories": [
+    "APPWORLD",
+    "MULTIPLE_USER_TURN"
+  ],
+  "max_messages": 100,
+  "metadata": {
+    "original_scenario_id": "scenario_0608",
+    "expected_tools": [
+      "amazon_show_product",
+      "amazon_add_product_to_cart",
+      "amazon_delete_product_from_cart"
+    ],
+    "image_arrival": {
+      "1": [
+        "image_1"
+      ],
+      "2": [
+        "image_2",
+        "image_3"
+      ]
+    },
+    "image_delivery_map": [
+      {
+        "query": "Actually, the dinner was cancelled and I'm hosting a kids' sleepover instead. Remove the olive oil from my cart. I have 16 kids coming. Based on the pastry count on this box, calculate how many boxes I need so each kid gets exactly one pastry, and add them to my cart. Also, just add 3 boxes of the crackers shown in the last image.",
+        "image_ids": [
+          1,
+          2
+        ]
+      }
+    ],
+    "scenario_metadata": {
+      "num_images": 3,
+      "num_user_rounds": 2,
+      "selected_flow_type": "compute",
+      "image_arrival": "progressive",
+      "challenge_type": "goal_change",
+      "require_disambiguation": false,
+      "dataset_type": "hiertext"
+    }
+  }
+}

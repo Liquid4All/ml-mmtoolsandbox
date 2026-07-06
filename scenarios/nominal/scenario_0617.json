@@ -1,0 +1,370 @@
+{
+  "name": "scenario_0617",
+  "base_scenario": "base",
+  "description": "The user is planning a music playlist for an upcoming party and is using various physical media, articles, and posters around their house to brainstorm ideas. They start with a cinematic/classical theme but change their mind halfway through.",
+  "difficulty": "easy",
+  "appworld_base_task": "_base_",
+  "device_state_id": "lindseysimpson@gmail.com",
+  "reference_time": "2026-04-17T00:08:59.197694+00:00",
+  "agentsandbox_entities": {},
+  "appworld_entities": {
+    "spotify.artists": [
+      {
+        "id": 200,
+        "name": "Angelo Badalamenti",
+        "genre": "Soundtrack",
+        "created_at": "2010-01-01T12:00:00"
+      },
+      {
+        "id": 201,
+        "name": "State Radio",
+        "genre": "Reggae Rock",
+        "created_at": "2010-01-01T12:00:00"
+      },
+      {
+        "id": 202,
+        "name": "Iron & Wine",
+        "genre": "Indie Folk",
+        "created_at": "2010-01-01T12:00:00"
+      },
+      {
+        "id": 203,
+        "name": "Metric",
+        "genre": "Indie Rock",
+        "created_at": "2010-01-01T12:00:00"
+      },
+      {
+        "id": 204,
+        "name": "The Raconteurs",
+        "genre": "Alternative Rock",
+        "created_at": "2010-01-01T12:00:00"
+      },
+      {
+        "id": 205,
+        "name": "DJ Burns",
+        "genre": "Bass Music",
+        "created_at": "2018-05-14T10:00:00"
+      },
+      {
+        "id": 206,
+        "name": "John Williams",
+        "genre": "Classical Crossover",
+        "created_at": "2010-01-01T12:00:00"
+      }
+    ],
+    "spotify.songs": [
+      {
+        "id": 200,
+        "title": "Twin Peaks Theme",
+        "artist_ids": [
+          200
+        ],
+        "album_id": null,
+        "duration": 305,
+        "release_date": "1990-09-11T00:00:00",
+        "genre": "Soundtrack",
+        "play_count": 5000000,
+        "rating": 4.8,
+        "like_count": 100000,
+        "review_count": 500
+      },
+      {
+        "id": 201,
+        "title": "Knights of Bostonia",
+        "artist_ids": [
+          201
+        ],
+        "album_id": null,
+        "duration": 270,
+        "release_date": "2007-09-18T00:00:00",
+        "genre": "Reggae Rock",
+        "play_count": 2000000,
+        "rating": 4.5,
+        "like_count": 50000,
+        "review_count": 200
+      },
+      {
+        "id": 202,
+        "title": "Naked As We Came",
+        "artist_ids": [
+          202
+        ],
+        "album_id": null,
+        "duration": 153,
+        "release_date": "2004-02-24T00:00:00",
+        "genre": "Indie Folk",
+        "play_count": 10000000,
+        "rating": 4.9,
+        "like_count": 300000,
+        "review_count": 1000
+      },
+      {
+        "id": 203,
+        "title": "Help I'm Alive",
+        "artist_ids": [
+          203
+        ],
+        "album_id": null,
+        "duration": 285,
+        "release_date": "2009-04-07T00:00:00",
+        "genre": "Indie Rock",
+        "play_count": 8000000,
+        "rating": 4.7,
+        "like_count": 200000,
+        "review_count": 800
+      },
+      {
+        "id": 204,
+        "title": "Steady, As She Goes",
+        "artist_ids": [
+          204
+        ],
+        "album_id": null,
+        "duration": 215,
+        "release_date": "2006-05-16T00:00:00",
+        "genre": "Alternative Rock",
+        "play_count": 15000000,
+        "rating": 4.8,
+        "like_count": 400000,
+        "review_count": 1200
+      },
+      {
+        "id": 205,
+        "title": "Burns Night Bassdrop",
+        "artist_ids": [
+          205
+        ],
+        "album_id": null,
+        "duration": 240,
+        "release_date": "2023-01-25T00:00:00",
+        "genre": "Bass Music",
+        "play_count": 10000,
+        "rating": 4.2,
+        "like_count": 500,
+        "review_count": 10
+      },
+      {
+        "id": 206,
+        "title": "Streichquartett in C Major",
+        "artist_ids": [
+          206
+        ],
+        "album_id": null,
+        "duration": 420,
+        "release_date": "2015-10-10T00:00:00",
+        "genre": "Classical Crossover",
+        "play_count": 50000,
+        "rating": 4.6,
+        "like_count": 1000,
+        "review_count": 50
+      }
+    ],
+    "gmail.users": []
+  },
+  "image_paths": [
+    "hiertext/images/test/be211280709be654.jpg",
+    "omnidocbench/images/000399.jpg",
+    "hiertext/images/test/1b272ba0fb1f1598.jpg",
+    "worldvqa/images/1241.jpg",
+    "hiertext/images/test/b6cac48e91cc0825.jpg",
+    "hiertext/images/test/3654d7018d3badab.jpg"
+  ],
+  "messages": [
+    {
+      "sender": "SYSTEM",
+      "recipient": "USER",
+      "content": "{{USER_INSTRUCTION}}ROUND 1 [provide: image_3]\nQuery: I'm planning a party. Identify the specific movie shown on this poster next to the cereal box. Search the web to find the primary composer of its soundtrack, and create a simple note called 'Party Music Ideas' with their name.\nInstructions: Ask the assistant to identify the movie shown on the provided poster and search the web for the primary composer of its soundtrack. Then, instruct it to create a simple note titled 'Party Music Ideas' with the composer's name. If the assistant asks for clarification on which poster, direct it to the large unfolded one next to the cereal box. Once the note is created, proceed to the next round.\n\nROUND 2 [provide: image_1]\nQuery: Now look at this classical CD back cover. Identify the composer of the 'STREICHQUARTETT'. Search the web to find an album where the composer from my new note conducts a piece by this classical composer, and update the note with the album name.\nInstructions: Direct the assistant to look at the back cover of the classical CD and identify the composer of the 'STREICHQUARTETT'. Ask it to search the web for an album where the composer currently saved in your note conducts a piece by this classical composer, and then update the note with that album name. If the assistant misreads the German text, prompt it to look specifically at the second item listed. Proceed once the note is updated.\n\nROUND 3\nQuery: Search the web for the Spotify Album ID of that specific crossover album. Look it up on Spotify, create a new playlist called 'Party Maestro', and add the first song from the album to the playlist.\nInstructions: Instruct the assistant to search the web for the Spotify Album ID of the crossover album it just found. Then, ask it to look up the album on Spotify, create a new playlist called 'Party Maestro', and add the first song from that album to the playlist. If the assistant cannot find the album on Spotify after a few attempts, acknowledge this and move on to the next round. Confirm when the playlist is ready or when the assistant reports the album is unavailable.\n\nROUND 4 [provide: image_4, image_5]\nQuery: Actually, change of plans for the party theme! Look at the festival being celebrated in this stage performance image and the music style on this banner. Let's do a mashup theme instead. Delete the 'Party Maestro' playlist. Create a new playlist called 'Burns Drop', search the web for a track that mixes the name of that festival with the genre on the banner, find its Spotify track ID, and add it to the new playlist.\nInstructions: Tell the assistant you are changing the party theme. Ask it to look at the stage performance image to identify the festival being celebrated, and the banner image to identify the music style. Instruct it to delete the 'Party Maestro' playlist, create a new one called 'Burns Drop', search the web for a track that mixes the festival name with the banner's genre, find its Spotify track ID, and add it to the new playlist. If it asks for confirmation about deleting the old playlist, approve it.\n\nROUND 5 [provide: image_2, image_6]\nQuery: Let's expand the new playlist based on these last two images. Find the TV show mentioned in the center article of this newspaper and the bands on these posters. Search the web for their Spotify artist IDs, look up the artists on Spotify, add one of their top tracks to the 'Burns Drop' playlist, and delete the obsolete 'Party Music Ideas' note.\nInstructions: Ask the assistant to expand the playlist using the final two images. Instruct it to identify the TV show from the center article of the newspaper and the bands from the gallery posters. It should search the web for their Spotify artist IDs, look them up on Spotify, add one top track for each to the 'Burns Drop' playlist, and finally delete the 'Party Music Ideas' note. End the conversation once the playlist is populated and the note is deleted.\n\nYou have 6 images available to share with the agent using the send_message_with_image tool.\nIMPORTANT: Image IDs are ZERO-INDEXED integers (0, 1, 2, ...). Do NOT add 1 to the IDs.\nAvailable image IDs: [0, 1, 2, 3, 4, 5]\nImage mapping:\n  image_1.jpg -> image ID 0\n  image_2.jpg -> image ID 1\n  image_3.jpg -> image ID 2\n  image_4.jpg -> image ID 3\n  image_5.jpg -> image ID 4\n  image_6.jpg -> image ID 5\n\n## IMAGE DELIVERY\n\n⚠️ IMPORTANT: You MUST use the `send_message_with_image` tool to share images with User B. Do NOT just describe images in text — you MUST call the tool.\n\nImage delivery schedule:\n\n  Round 2: YOU MUST call the send_message_with_image tool with image_ids='0' — do NOT write the tool name as text; use the actual function call. Include a natural, conversational message to the assistant.\n  Round 4: YOU MUST call the send_message_with_image tool with image_ids='3,4' — do NOT write the tool name as text; use the actual function call. Include a natural, conversational message to the assistant.\n  Round 5: YOU MUST call the send_message_with_image tool with image_ids='1,5' — do NOT write the tool name as text; use the actual function call. Include a natural, conversational message to the assistant."
+    },
+    {
+      "sender": "USER",
+      "recipient": "AGENT",
+      "content": "I'm planning a party. Identify the specific movie shown on this poster next to the cereal box. Search the web to find the primary composer of its soundtrack, and create a simple note called 'Party Music Ideas' with their name.",
+      "image_ids": [
+        2
+      ]
+    }
+  ],
+  "milestones": [],
+  "entity_diff_specs": [
+    {
+      "operation": "create",
+      "source": "appworld",
+      "table": "spotify.playlists",
+      "entity_data": {
+        "title": "Burns Drop",
+        "user_id": 62,
+        "created_at": "2026-04-17T00:08:59",
+        "is_public": false,
+        "rating": 0.0,
+        "like_count": 0,
+        "review_count": 0
+      },
+      "column_similarity_measure": {
+        "title": "column_rouge_l_similarity",
+        "user_id": "column_exact_match_similarity",
+        "created_at": "column_ignore_similarity",
+        "is_public": "column_exact_match_similarity",
+        "rating": "column_exact_match_similarity",
+        "like_count": "column_exact_match_similarity",
+        "review_count": "column_exact_match_similarity"
+      }
+    },
+    {
+      "operation": "create",
+      "source": "appworld",
+      "table": "spotify.playlist_songs",
+      "entity_data": {
+        "playlist_id": 800,
+        "song_id": 205,
+        "added_at": "2026-04-17T00:08:59"
+      },
+      "column_similarity_measure": {
+        "playlist_id": "column_ignore_similarity",
+        "song_id": "column_exact_match_similarity",
+        "added_at": "column_ignore_similarity"
+      }
+    },
+    {
+      "operation": "create",
+      "source": "appworld",
+      "table": "spotify.playlist_songs",
+      "entity_data": {
+        "playlist_id": 800,
+        "song_id": 200,
+        "added_at": "2026-04-17T00:08:59"
+      },
+      "column_similarity_measure": {
+        "playlist_id": "column_ignore_similarity",
+        "song_id": "column_exact_match_similarity",
+        "added_at": "column_ignore_similarity"
+      }
+    },
+    {
+      "operation": "create",
+      "source": "appworld",
+      "table": "spotify.playlist_songs",
+      "entity_data": {
+        "playlist_id": 800,
+        "song_id": 201,
+        "added_at": "2026-04-17T00:08:59"
+      },
+      "column_similarity_measure": {
+        "playlist_id": "column_ignore_similarity",
+        "song_id": "column_exact_match_similarity",
+        "added_at": "column_ignore_similarity"
+      }
+    },
+    {
+      "operation": "create",
+      "source": "appworld",
+      "table": "spotify.playlist_songs",
+      "entity_data": {
+        "playlist_id": 800,
+        "song_id": 202,
+        "added_at": "2026-04-17T00:08:59"
+      },
+      "column_similarity_measure": {
+        "playlist_id": "column_ignore_similarity",
+        "song_id": "column_exact_match_similarity",
+        "added_at": "column_ignore_similarity"
+      }
+    },
+    {
+      "operation": "create",
+      "source": "appworld",
+      "table": "spotify.playlist_songs",
+      "entity_data": {
+        "playlist_id": 800,
+        "song_id": 203,
+        "added_at": "2026-04-17T00:08:59"
+      },
+      "column_similarity_measure": {
+        "playlist_id": "column_ignore_similarity",
+        "song_id": "column_exact_match_similarity",
+        "added_at": "column_ignore_similarity"
+      }
+    },
+    {
+      "operation": "create",
+      "source": "appworld",
+      "table": "spotify.playlist_songs",
+      "entity_data": {
+        "playlist_id": 800,
+        "song_id": 204,
+        "added_at": "2026-04-17T00:08:59"
+      },
+      "column_similarity_measure": {
+        "playlist_id": "column_ignore_similarity",
+        "song_id": "column_exact_match_similarity",
+        "added_at": "column_ignore_similarity"
+      }
+    }
+  ],
+  "task_completion_criteria": "A Spotify playlist named 'Burns Drop' containing a track that mixes 'Burns Night' and 'bassdrop' (or bass music), a top track related to the TV show 'Twin Peaks', and top tracks from the artists 'State Radio', 'Iron & Wine', 'Metric', and 'The Raconteurs' (or similar bands listed on the posters). The 'Party Music Ideas' note must be deleted.",
+  "categories": [
+    "APPWORLD",
+    "MULTIPLE_USER_TURN"
+  ],
+  "max_messages": 100,
+  "metadata": {
+    "original_scenario_id": "scenario_0617",
+    "expected_tools": [
+      "web_search_serper",
+      "simple_note_create_note",
+      "simple_note_update_note",
+      "spotify_show_album",
+      "spotify_create_playlist",
+      "spotify_add_song_to_playlist",
+      "spotify_delete_playlist",
+      "spotify_show_artist",
+      "simple_note_delete_note"
+    ],
+    "image_arrival": {
+      "1": [
+        "image_3"
+      ],
+      "2": [
+        "image_1"
+      ],
+      "4": [
+        "image_4",
+        "image_5"
+      ],
+      "5": [
+        "image_2",
+        "image_6"
+      ]
+    },
+    "image_delivery_map": [
+      {
+        "query": "Now look at this classical CD back cover. Identify the composer of the 'STREICHQUARTETT'. Search the web to find an album where the composer from my new note conducts a piece by this classical composer, and update the note with the album name.",
+        "image_ids": [
+          0
+        ]
+      },
+      {
+        "query": "Actually, change of plans for the party theme! Look at the festival being celebrated in this stage performance image and the music style on this banner. Let's do a mashup theme instead. Delete the 'Party Maestro' playlist. Create a new playlist called 'Burns Drop', search the web for a track that mixes the name of that festival with the genre on the banner, find its Spotify track ID, and add it to the new playlist.",
+        "image_ids": [
+          3,
+          4
+        ]
+      },
+      {
+        "query": "Let's expand the new playlist based on these last two images. Find the TV show mentioned in the center article of this newspaper and the bands on these posters. Search the web for their Spotify artist IDs, look up the artists on Spotify, add one of their top tracks to the 'Burns Drop' playlist, and delete the obsolete 'Party Music Ideas' note.",
+        "image_ids": [
+          1,
+          5
+        ]
+      }
+    ],
+    "scenario_metadata": {
+      "num_images": 6,
+      "num_user_rounds": 5,
+      "selected_flow_type": "lookup_chain",
+      "image_arrival": "mixed",
+      "challenge_type": "goal_change",
+      "require_disambiguation": false,
+      "dataset_type": "hiertext"
+    }
+  }
+}

@@ -1,0 +1,286 @@
+{
+  "name": "scenario_0759",
+  "base_scenario": "base",
+  "description": "The user is gathering historical primary sources for a research project, organizing them into a task list, and preparing to share the aggregated list with their professor.",
+  "difficulty": "easy",
+  "appworld_base_task": "_base_",
+  "device_state_id": "robertmartinez@gmail.com",
+  "reference_time": "2026-04-17T00:13:29.442654+00:00",
+  "agentsandbox_entities": {},
+  "appworld_entities": {
+    "phone.contacts": [
+      {
+        "id": 200,
+        "user_id": 77,
+        "first_name": "Professor",
+        "last_name": "Smith",
+        "email": "prof.smith@university.edu",
+        "phone_number": null,
+        "relationships": [
+          "professor"
+        ],
+        "birthday": null,
+        "home_address": null,
+        "work_address": null,
+        "created_at": "2026-01-10T14:00:00"
+      },
+      {
+        "id": 201,
+        "user_id": 77,
+        "first_name": "Professor",
+        "last_name": "Smith",
+        "email": "psmith@college.edu",
+        "phone_number": null,
+        "relationships": [
+          "professor"
+        ],
+        "birthday": null,
+        "home_address": null,
+        "work_address": null,
+        "created_at": "2026-02-15T09:30:00"
+      }
+    ],
+    "gmail.users": [
+      {
+        "id": 200,
+        "first_name": "Professor",
+        "last_name": "Smith",
+        "email": "prof.smith@university.edu",
+        "password": "default_password",
+        "status": "active",
+        "created_at": "2025-01-01T00:00:00",
+        "last_logged_in": "2025-01-01T00:00:00"
+      },
+      {
+        "id": 201,
+        "first_name": "Professor",
+        "last_name": "Smith",
+        "email": "psmith@college.edu",
+        "password": "default_password",
+        "status": "active",
+        "created_at": "2025-01-01T00:00:00",
+        "last_logged_in": "2025-01-01T00:00:00"
+      }
+    ]
+  },
+  "image_paths": [
+    "docvqa/images/61814.jpg",
+    "hiertext/images/test/419055af8052f0bb.jpg",
+    "hiertext/images/test/0e84897edd4ea08b.jpg"
+  ],
+  "messages": [
+    {
+      "sender": "SYSTEM",
+      "recipient": "USER",
+      "content": "{{USER_INSTRUCTION}}ROUND 1 [provide: image_1, image_2]\nQuery: Create a new Todoist project called 'History Sources'. Then, add a task to read the document in the first image, using its exact title. Also, add another task to research the shoe brand advertised in the second image.\nInstructions: Ask the assistant to create a Todoist project named 'History Sources'. Then, instruct it to add two tasks to this project based on the provided images: one to read the document using its exact title from the first image, and another to research the shoe brand from the second image. If the assistant asks for confirmation or successfully completes the tasks, acknowledge it and move to the next round. Do not reveal the title or the brand name yourself.\n\nROUND 2 [provide: image_3]\nQuery: Add one more task to that project to research the thread company named on the giant spool in this new image. After that, grab all the tasks from the project and send an email to Professor Smith with the complete list of sources.\nInstructions: Ask the assistant to add a task to the 'History Sources' project to research the thread company shown on the giant spool in the new image. Then, instruct it to retrieve all tasks from the project and send an email containing this complete list of sources to Professor Smith. Since there are multiple contacts named Professor Smith on the device, the assistant should ask for clarification. When it does, clarify that you mean the one with the 'university.edu' email address. If the assistant misreads the company name, point it back to the giant spool in the image. Once the email is successfully sent, end the conversation.\n\nYou have 3 images available to share with the agent using the send_message_with_image tool.\nIMPORTANT: Image IDs are ZERO-INDEXED integers (0, 1, 2, ...). Do NOT add 1 to the IDs.\nAvailable image IDs: [0, 1, 2]\nImage mapping:\n  image_1.jpg -> image ID 0\n  image_2.jpg -> image ID 1\n  image_3.jpg -> image ID 2\n\n## IMAGE DELIVERY\n\n\u26a0\ufe0f IMPORTANT: You MUST use the `send_message_with_image` tool to share images with User B. Do NOT just describe images in text \u2014 you MUST call the tool.\n\nImage delivery schedule:\n\n  Round 2: YOU MUST call the send_message_with_image tool with image_ids='2' \u2014 do NOT write the tool name as text; use the actual function call. Include a natural, conversational message to the assistant."
+    },
+    {
+      "sender": "USER",
+      "recipient": "AGENT",
+      "content": "Create a new Todoist project called 'History Sources'. Then, add a task to read the document in the first image, using its exact title. Also, add another task to research the shoe brand advertised in the second image.",
+      "image_ids": [
+        0,
+        1
+      ]
+    }
+  ],
+  "milestones": [],
+  "entity_diff_specs": [
+    {
+      "operation": "create",
+      "source": "appworld",
+      "table": "gmail.emails",
+      "entity_data": {
+        "sender_id": 77,
+        "recipient_ids": [
+          200
+        ],
+        "subject": "History Sources",
+        "body": "Professor Smith,\n\nHere is the aggregated list of history sources for my research project:\n1. A REPORT ON HEALTH CARE OF THE POOR\n2. GOODYEAR WELTED SHOES\n3. KERR & CO.\n\nBest regards,\nRobert Martinez",
+        "response_to_email_id": null,
+        "created_at": "2026-04-17T00:13:29"
+      },
+      "column_similarity_measure": {
+        "sender_id": "column_exact_match_similarity",
+        "recipient_ids": "column_exact_match_similarity",
+        "subject": "column_rouge_l_similarity",
+        "body": "column_rouge_l_similarity",
+        "response_to_email_id": "column_ignore_similarity",
+        "created_at": "column_ignore_similarity"
+      }
+    },
+    {
+      "operation": "create",
+      "source": "appworld",
+      "table": "todoist.projects",
+      "entity_data": {
+        "user_id": 77,
+        "name": "History Sources",
+        "color": "charcoal",
+        "is_inbox": false,
+        "description": "",
+        "created_at": "2026-04-17T00:13:29"
+      },
+      "column_similarity_measure": {
+        "user_id": "column_exact_match_similarity",
+        "name": "column_rouge_l_similarity",
+        "color": "column_exact_match_similarity",
+        "is_inbox": "column_exact_match_similarity",
+        "description": "column_ignore_similarity",
+        "created_at": "column_ignore_similarity"
+      }
+    },
+    {
+      "operation": "create",
+      "source": "appworld",
+      "table": "todoist.tasks",
+      "entity_data": {
+        "project_id": 400,
+        "section_id": null,
+        "user_id": 77,
+        "title": "Read A REPORT ON HEALTH CARE OF THE POOR",
+        "description": null,
+        "due_date": null,
+        "priority": "medium",
+        "is_completed": false,
+        "duration": null,
+        "duration_unit": null,
+        "order_index": 0,
+        "assignee_id": null,
+        "assigner_id": null,
+        "created_at": "2026-04-17T00:13:29"
+      },
+      "column_similarity_measure": {
+        "project_id": "column_ignore_similarity",
+        "section_id": "column_ignore_similarity",
+        "user_id": "column_exact_match_similarity",
+        "title": "column_rouge_l_similarity",
+        "description": "column_ignore_similarity",
+        "due_date": "column_ignore_similarity",
+        "priority": "column_exact_match_similarity",
+        "is_completed": "column_exact_match_similarity",
+        "duration": "column_ignore_similarity",
+        "duration_unit": "column_ignore_similarity",
+        "order_index": "column_ignore_similarity",
+        "assignee_id": "column_ignore_similarity",
+        "assigner_id": "column_ignore_similarity",
+        "created_at": "column_ignore_similarity"
+      }
+    },
+    {
+      "operation": "create",
+      "source": "appworld",
+      "table": "todoist.tasks",
+      "entity_data": {
+        "project_id": 400,
+        "section_id": null,
+        "user_id": 77,
+        "title": "Research GOODYEAR WELTED SHOES",
+        "description": null,
+        "due_date": null,
+        "priority": "medium",
+        "is_completed": false,
+        "duration": null,
+        "duration_unit": null,
+        "order_index": 1,
+        "assignee_id": null,
+        "assigner_id": null,
+        "created_at": "2026-04-17T00:13:29"
+      },
+      "column_similarity_measure": {
+        "project_id": "column_ignore_similarity",
+        "section_id": "column_ignore_similarity",
+        "user_id": "column_exact_match_similarity",
+        "title": "column_rouge_l_similarity",
+        "description": "column_ignore_similarity",
+        "due_date": "column_ignore_similarity",
+        "priority": "column_exact_match_similarity",
+        "is_completed": "column_exact_match_similarity",
+        "duration": "column_ignore_similarity",
+        "duration_unit": "column_ignore_similarity",
+        "order_index": "column_ignore_similarity",
+        "assignee_id": "column_ignore_similarity",
+        "assigner_id": "column_ignore_similarity",
+        "created_at": "column_ignore_similarity"
+      }
+    },
+    {
+      "operation": "create",
+      "source": "appworld",
+      "table": "todoist.tasks",
+      "entity_data": {
+        "project_id": 400,
+        "section_id": null,
+        "user_id": 77,
+        "title": "Research KERR & CO.",
+        "description": null,
+        "due_date": null,
+        "priority": "medium",
+        "is_completed": false,
+        "duration": null,
+        "duration_unit": null,
+        "order_index": 2,
+        "assignee_id": null,
+        "assigner_id": null,
+        "created_at": "2026-04-17T00:13:29"
+      },
+      "column_similarity_measure": {
+        "project_id": "column_ignore_similarity",
+        "section_id": "column_ignore_similarity",
+        "user_id": "column_exact_match_similarity",
+        "title": "column_rouge_l_similarity",
+        "description": "column_ignore_similarity",
+        "due_date": "column_ignore_similarity",
+        "priority": "column_exact_match_similarity",
+        "is_completed": "column_exact_match_similarity",
+        "duration": "column_ignore_similarity",
+        "duration_unit": "column_ignore_similarity",
+        "order_index": "column_ignore_similarity",
+        "assignee_id": "column_ignore_similarity",
+        "assigner_id": "column_ignore_similarity",
+        "created_at": "column_ignore_similarity"
+      }
+    }
+  ],
+  "task_completion_criteria": "Create a Todoist project named 'History Sources' with three tasks: one to read 'A REPORT ON HEALTH CARE OF THE POOR', one to research 'GOODYEAR WELTED SHOES', and one to research 'KERR & CO.'. Then, send an email to prof.smith@university.edu containing the aggregated list of these three sources.",
+  "categories": [
+    "APPWORLD",
+    "MULTIPLE_USER_TURN"
+  ],
+  "max_messages": 100,
+  "metadata": {
+    "original_scenario_id": "scenario_0759",
+    "expected_tools": [
+      "todoist_create_project",
+      "todoist_create_task",
+      "todoist_show_tasks",
+      "gmail_send_email"
+    ],
+    "image_arrival": {
+      "1": [
+        "image_1",
+        "image_2"
+      ],
+      "2": [
+        "image_3"
+      ]
+    },
+    "image_delivery_map": [
+      {
+        "query": "Add one more task to that project to research the thread company named on the giant spool in this new image. After that, grab all the tasks from the project and send an email to Professor Smith with the complete list of sources.",
+        "image_ids": [
+          2
+        ]
+      }
+    ],
+    "scenario_metadata": {
+      "num_images": 3,
+      "num_user_rounds": 2,
+      "selected_flow_type": "aggregate",
+      "image_arrival": "mixed",
+      "challenge_type": "none",
+      "require_disambiguation": true,
+      "dataset_type": "hiertext"
+    }
+  }
+}

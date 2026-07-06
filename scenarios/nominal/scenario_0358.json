@@ -1,0 +1,164 @@
+{
+  "name": "scenario_0358",
+  "base_scenario": "base",
+  "description": "The user is organizing project files from various desktop screenshots and scheduling a task based on an engineering specification document while filtering out irrelevant images.",
+  "difficulty": "easy",
+  "appworld_base_task": "_base_",
+  "device_state_id": "roburton@gmail.com",
+  "reference_time": "2026-04-17T00:00:53.372506+00:00",
+  "agentsandbox_entities": {
+    "calendars": [
+      {
+        "calendar_id": "calendar_100",
+        "title": "Work"
+      }
+    ]
+  },
+  "appworld_entities": {
+    "gmail.users": []
+  },
+  "image_paths": [
+    "screenspotpro/images/pycharm_mac/screenshot_2024-11-04_14-34-41.png",
+    "hiertext/images/test/220a3900124d5139.jpg",
+    "screenspotpro/images/vivado_windows/screenshot_2024-12-09_23-48-30.png",
+    "screenspotpro/images/pycharm_mac/screenshot_2024-11-04_16-12-19.png",
+    "screenspotpro/images/vivado_windows/screenshot_2024-12-10_00-16-05.png",
+    "screenspotpro/images/inventor_windows/screenshot_2024-11-24_12-01-34.png"
+  ],
+  "messages": [
+    {
+      "sender": "SYSTEM",
+      "recipient": "USER",
+      "content": "{{USER_INSTRUCTION}}ROUND 1 [provide: image_1, image_3, image_4, image_5]\nQuery: Look at these four screenshots. Find the ones showing the 'VGA-visual-GUI-assistant' project, and create a new note called 'VGA Project Files' listing the exact names of the files currently open in their main editors.\nInstructions: Ask the assistant to review the provided screenshots, identify which ones display the project you named, and extract the names of the files open in their main editor windows to create a note. Do not reveal the actual filenames yourself. If the assistant includes files from the wrong screenshots or misses any, correct it. Once the note is successfully created, proceed to the next round.\n\nROUND 2 [provide: image_2, image_6]\nQuery: Here are two more screenshots. Find the one with the engineering specifications table. Based on that table, create a calendar event for tomorrow at 10 AM to 'Order M12x40 bolts' for the AFAG 19-6 model. For the other screenshot that isn't the table, extract its filename and add it to the 'VGA Project Files' note we just made.\nInstructions: Present the new screenshots and ask the assistant to find the one containing the engineering table. Instruct it to schedule a calendar event for tomorrow at 10 AM to order the bolts you specified for the AFAG 19-6 model. Also, ask it to extract the filename from the non-table screenshot and append it to the previously created note. Do not reveal the filename or the correct bolt size yourself. The assistant should notice that your requested bolt size contradicts the table for that model. If the assistant flags this discrepancy, acknowledge it and wait for the next turn. If the assistant blindly creates the event with the wrong bolts, point out that it should have checked the table.\n\nROUND 3\nQuery: Ah, you're right, I misread the row for the 25-6 model! Please create the calendar event for tomorrow at 10 AM with the correct title 'Order M10x35 bolts'.\nInstructions: Acknowledge your mistake regarding the bolt sizes. Instruct the assistant to create the calendar event for tomorrow at 10 AM using the correct bolt size from the table for the AFAG 19-6 model. Once the assistant confirms the event is scheduled correctly, end the conversation.\n\nYou have 6 images available to share with the agent using the send_message_with_image tool.\nIMPORTANT: Image IDs are ZERO-INDEXED integers (0, 1, 2, ...). Do NOT add 1 to the IDs.\nAvailable image IDs: [0, 1, 2, 3, 4, 5]\nImage mapping:\n  image_1.jpg -> image ID 0\n  image_2.jpg -> image ID 1\n  image_3.jpg -> image ID 2\n  image_4.jpg -> image ID 3\n  image_5.jpg -> image ID 4\n  image_6.jpg -> image ID 5\n\n## IMAGE DELIVERY\n\n⚠️ IMPORTANT: You MUST use the `send_message_with_image` tool to share images with User B. Do NOT just describe images in text — you MUST call the tool.\n\nImage delivery schedule:\n\n  Round 2: YOU MUST call the send_message_with_image tool with image_ids='1,5' — do NOT write the tool name as text; use the actual function call. Include a natural, conversational message to the assistant."
+    },
+    {
+      "sender": "USER",
+      "recipient": "AGENT",
+      "content": "Look at these four screenshots. Find the ones showing the 'VGA-visual-GUI-assistant' project, and create a new note called 'VGA Project Files' listing the exact names of the files currently open in their main editors.",
+      "image_ids": [
+        0,
+        2,
+        3,
+        4
+      ]
+    }
+  ],
+  "milestones": [],
+  "entity_diff_specs": [
+    {
+      "operation": "create",
+      "source": "appworld",
+      "table": "simple_note.notes",
+      "entity_data": {
+        "user_id": 103,
+        "title": "VGA Project Files",
+        "content": "train.py\nattention.png\nIMG_5444.JPG",
+        "tags": [],
+        "created_at": "2026-04-17T00:00:53",
+        "updated_at": "2026-04-17T00:00:53",
+        "pinned": false,
+        "data": null
+      },
+      "column_similarity_measure": {
+        "user_id": "column_exact_match_similarity",
+        "title": "column_rouge_l_similarity",
+        "content": "column_rouge_l_similarity",
+        "tags": "column_ignore_similarity",
+        "created_at": "column_ignore_similarity",
+        "updated_at": "column_ignore_similarity",
+        "pinned": "column_exact_match_similarity",
+        "data": "column_ignore_similarity"
+      }
+    },
+    {
+      "operation": "create",
+      "source": "agentsandbox",
+      "namespace": "CALENDAR_EVENTS",
+      "entity_data": {
+        "calendar_event_id": "event_100",
+        "calendar_id": "calendar_100",
+        "title": "Order M10x35 bolts",
+        "description": null,
+        "start_datetime": "2026-04-18T10:00:00Z",
+        "end_datetime": "2026-04-18T11:00:00Z",
+        "is_all_day": false,
+        "recurrence_frequency": null,
+        "recurrence_interval": null,
+        "recurrence_until_datetime": null,
+        "recurrence_parent_id": null,
+        "recurrence_exclude_datetime": [],
+        "latitude": null,
+        "longitude": null,
+        "place_id": null,
+        "formatted_address": null,
+        "attendee_names": [],
+        "attendee_emails": []
+      },
+      "column_similarity_measure": {
+        "calendar_event_id": "column_ignore_similarity",
+        "calendar_id": "column_ignore_similarity",
+        "title": "column_rouge_l_similarity",
+        "description": "column_ignore_similarity",
+        "start_datetime": "column_datetime_naive_equal_similarity",
+        "end_datetime": "column_datetime_naive_equal_similarity",
+        "is_all_day": "column_exact_match_similarity",
+        "recurrence_frequency": "column_ignore_similarity",
+        "recurrence_interval": "column_ignore_similarity",
+        "recurrence_until_datetime": "column_ignore_similarity",
+        "recurrence_parent_id": "column_ignore_similarity",
+        "recurrence_exclude_datetime": "column_ignore_similarity",
+        "latitude": "column_ignore_similarity",
+        "longitude": "column_ignore_similarity",
+        "place_id": "column_ignore_similarity",
+        "formatted_address": "column_ignore_similarity",
+        "attendee_names": "column_ignore_similarity",
+        "attendee_emails": "column_ignore_similarity"
+      }
+    }
+  ],
+  "task_completion_criteria": "Create a note titled 'VGA Project Files' containing the filenames 'train.py', 'attention.png', and 'IMG_5444.JPG', and create a calendar event for 2026-04-18 at 10:00 AM titled 'Order M10x35 bolts'.",
+  "categories": [
+    "APPWORLD",
+    "MULTIPLE_USER_TURN"
+  ],
+  "max_messages": 100,
+  "metadata": {
+    "original_scenario_id": "scenario_0358",
+    "expected_tools": [
+      "simple_note_create_note",
+      "simple_note_show_note",
+      "simple_note_update_note",
+      "create_calendar_event"
+    ],
+    "image_arrival": {
+      "1": [
+        "image_1",
+        "image_3",
+        "image_4",
+        "image_5"
+      ],
+      "2": [
+        "image_2",
+        "image_6"
+      ]
+    },
+    "image_delivery_map": [
+      {
+        "query": "Here are two more screenshots. Find the one with the engineering specifications table. Based on that table, create a calendar event for tomorrow at 10 AM to 'Order M12x40 bolts' for the AFAG 19-6 model. For the other screenshot that isn't the table, extract its filename and add it to the 'VGA Project Files' note we just made.",
+        "image_ids": [
+          1,
+          5
+        ]
+      }
+    ],
+    "scenario_metadata": {
+      "num_images": 6,
+      "num_user_rounds": 3,
+      "selected_flow_type": "filter",
+      "image_arrival": "mixed",
+      "challenge_type": "error_correction",
+      "require_disambiguation": false,
+      "dataset_type": "screenspotpro"
+    }
+  }
+}

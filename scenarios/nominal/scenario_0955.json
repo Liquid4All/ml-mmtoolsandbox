@@ -1,0 +1,328 @@
+{
+  "name": "scenario_0955",
+  "base_scenario": "base",
+  "description": "The user is curating a museum exhibit on global footwear and artifacts, while also planning a research trip to Barcelona. They are using their device to cross-reference potential exhibit items and locations with their existing notes.",
+  "difficulty": "easy",
+  "appworld_base_task": "_base_",
+  "device_state_id": "kyl_moor@gmail.com",
+  "reference_time": "2026-04-17T00:19:31.353881+00:00",
+  "agentsandbox_entities": {
+    "contact": [
+      {
+        "person_id": "self",
+        "name": "Kyle Moore",
+        "phone_number": "6372953330",
+        "relationship": null,
+        "is_self": true
+      }
+    ],
+    "calendars": [
+      {
+        "calendar_id": "calendar_100",
+        "title": "Personal"
+      }
+    ]
+  },
+  "appworld_entities": {
+    "phone.contacts": [
+      {
+        "id": 200,
+        "user_id": 53,
+        "first_name": "Sarah",
+        "last_name": "Jenkins",
+        "email": "sarah.jenkins@museum.org",
+        "phone_number": "555-0101",
+        "relationships": [
+          "coworker"
+        ],
+        "birthday": null,
+        "home_address": null,
+        "work_address": null,
+        "created_at": "2026-01-10T10:00:00"
+      },
+      {
+        "id": 201,
+        "user_id": 53,
+        "first_name": "Sarah",
+        "last_name": "Miller",
+        "email": "smiller@gmail.com",
+        "phone_number": "555-0202",
+        "relationships": [],
+        "birthday": null,
+        "home_address": null,
+        "work_address": null,
+        "created_at": "2026-01-10T10:05:00"
+      }
+    ],
+    "simple_note.notes": [
+      {
+        "id": 3200,
+        "user_id": 53,
+        "title": "Footwear Exhibit",
+        "content": "Current planned acquisitions: Moroccan leather sandals, Victorian button boots.",
+        "tags": [
+          "exhibit",
+          "footwear"
+        ],
+        "created_at": "2026-04-15T10:00:00",
+        "updated_at": "2026-04-15T10:00:00",
+        "pinned": false,
+        "data": {}
+      },
+      {
+        "id": 3201,
+        "user_id": 53,
+        "title": "Artifacts Catalog",
+        "content": "Ming Dynasty Vase, Roman Silver Coin.",
+        "tags": [
+          "artifacts",
+          "catalog"
+        ],
+        "created_at": "2026-04-15T10:05:00",
+        "updated_at": "2026-04-15T10:05:00",
+        "pinned": false,
+        "data": {}
+      },
+      {
+        "id": 3202,
+        "user_id": 53,
+        "title": "Barcelona Itinerary",
+        "content": "Sagrada Familia, Park Guell, Gothic Quarter.",
+        "tags": [
+          "travel",
+          "barcelona"
+        ],
+        "created_at": "2026-04-15T10:10:00",
+        "updated_at": "2026-04-15T10:10:00",
+        "pinned": false,
+        "data": {}
+      }
+    ],
+    "gmail.users": [
+      {
+        "id": 200,
+        "first_name": "Sarah",
+        "last_name": "Jenkins",
+        "email": "sarah.jenkins@museum.org",
+        "password": "default_password",
+        "status": "active",
+        "created_at": "2025-01-01T00:00:00",
+        "last_logged_in": "2025-01-01T00:00:00"
+      },
+      {
+        "id": 201,
+        "first_name": "Sarah",
+        "last_name": "Miller",
+        "email": "smiller@gmail.com",
+        "password": "default_password",
+        "status": "active",
+        "created_at": "2025-01-01T00:00:00",
+        "last_logged_in": "2025-01-01T00:00:00"
+      }
+    ],
+    "phone.users": [
+      {
+        "id": 200,
+        "first_name": "Sarah",
+        "last_name": "Jenkins",
+        "phone_number": "555-0101",
+        "password": "default_password",
+        "created_at": "2025-01-01T00:00:00",
+        "last_logged_in": "2025-01-01T00:00:00"
+      },
+      {
+        "id": 201,
+        "first_name": "Sarah",
+        "last_name": "Miller",
+        "phone_number": "555-0202",
+        "password": "default_password",
+        "created_at": "2025-01-01T00:00:00",
+        "last_logged_in": "2025-01-01T00:00:00"
+      }
+    ]
+  },
+  "image_paths": [
+    "worldvqa/images/1203.jpg",
+    "worldvqa/images/1370.jpg",
+    "worldvqa/images/1265.jpg",
+    "worldvqa/images/754.jpg"
+  ],
+  "messages": [
+    {
+      "sender": "SYSTEM",
+      "recipient": "USER",
+      "content": "{{USER_INSTRUCTION}}ROUND 1 [provide: image_1, image_2]\nQuery: Check my 'Footwear Exhibit' note. Compare the shoes in these two images to the items on the list. Send a text message to Sarah asking if we should acquire the item that is missing from the list.\nInstructions: Instruct the assistant to read your 'Footwear Exhibit' note, compare its contents with the two footwear images provided, and text Sarah to ask about acquiring the specific shoe that isn't already on the list. If the assistant asks which Sarah you want to text, clarify that you mean Sarah Jenkins, your co-curator. Do not explicitly name the shoes yourself—let the assistant identify them from the images and the note. Once the message is sent, proceed to the next round.\n\nROUND 2 [provide: image_3]\nQuery: Here is another item I'm evaluating. Check my 'Artifacts Catalog' note. Cross-reference this specific cultural relic with the note, and if it's not listed, update the note to include it.\nInstructions: Ask the assistant to check your 'Artifacts Catalog' note and see if the item in the new image is already listed there. Since it is not, tell the assistant to append it to the note. Ensure the assistant uses a descriptive name for the artifact derived from the image, but do not provide the name yourself. Once the note is updated, move to the next round.\n\nROUND 3 [provide: image_4]\nQuery: I plan to visit the location shown in this image. Cross-reference it with my 'Barcelona Itinerary' note. If this location is not already on my itinerary, schedule a calendar event for a visit tomorrow at 10 AM.\nInstructions: Direct the assistant to check your 'Barcelona Itinerary' note to see if the museum shown in the final image is listed. Since it won't be, ask the assistant to schedule a calendar event for tomorrow at 10 AM to visit this specific location. Do not name the museum; rely on the assistant to extract the location from the image. End the conversation once the calendar event is successfully created.\n\nYou have 4 images available to share with the agent using the send_message_with_image tool.\nIMPORTANT: Image IDs are ZERO-INDEXED integers (0, 1, 2, ...). Do NOT add 1 to the IDs.\nAvailable image IDs: [0, 1, 2, 3]\nImage mapping:\n  image_1.jpg -> image ID 0\n  image_2.jpg -> image ID 1\n  image_3.jpg -> image ID 2\n  image_4.jpg -> image ID 3\n\n## IMAGE DELIVERY\n\n⚠️ IMPORTANT: You MUST use the `send_message_with_image` tool to share images with User B. Do NOT just describe images in text — you MUST call the tool.\n\nImage delivery schedule:\n\n  Round 2: YOU MUST call the send_message_with_image tool with image_ids='2' — do NOT write the tool name as text; use the actual function call. Include a natural, conversational message to the assistant.\n  Round 3: YOU MUST call the send_message_with_image tool with image_ids='3' — do NOT write the tool name as text; use the actual function call. Include a natural, conversational message to the assistant."
+    },
+    {
+      "sender": "USER",
+      "recipient": "AGENT",
+      "content": "Check my 'Footwear Exhibit' note. Compare the shoes in these two images to the items on the list. Send a text message to Sarah asking if we should acquire the item that is missing from the list.",
+      "image_ids": [
+        0,
+        1
+      ]
+    }
+  ],
+  "milestones": [],
+  "entity_diff_specs": [
+    {
+      "operation": "create",
+      "source": "appworld",
+      "table": "phone.global_text_messages",
+      "entity_data": {
+        "sender_id": 53,
+        "receiver_id": 200,
+        "message": "Should we acquire the thigh-high boots? They seem to be missing from the Footwear Exhibit list.",
+        "created_at": "2026-04-17T00:19:31"
+      },
+      "column_similarity_measure": {
+        "sender_id": "column_exact_match_similarity",
+        "receiver_id": "column_exact_match_similarity",
+        "message": "column_rouge_l_similarity",
+        "created_at": "column_ignore_similarity"
+      }
+    },
+    {
+      "operation": "create",
+      "source": "appworld",
+      "table": "phone.user_text_messages",
+      "entity_data": {
+        "global_text_message_id": 200,
+        "user_id": 53,
+        "created_at": "2026-04-17T00:19:31"
+      },
+      "column_similarity_measure": {
+        "global_text_message_id": "column_ignore_similarity",
+        "user_id": "column_exact_match_similarity",
+        "created_at": "column_ignore_similarity"
+      }
+    },
+    {
+      "operation": "create",
+      "source": "agentsandbox",
+      "namespace": "CALENDAR_EVENTS",
+      "entity_data": {
+        "calendar_event_id": "event_100",
+        "calendar_id": "calendar_100",
+        "title": "Visit Museum of Natural Sciences of Barcelona",
+        "description": null,
+        "start_datetime": "2026-04-18T10:00:00Z",
+        "end_datetime": "2026-04-18T12:00:00Z",
+        "is_all_day": false,
+        "recurrence_frequency": null,
+        "recurrence_interval": null,
+        "recurrence_until_datetime": null,
+        "recurrence_parent_id": null,
+        "recurrence_exclude_datetime": [],
+        "latitude": null,
+        "longitude": null,
+        "place_id": null,
+        "formatted_address": "Museum of Natural Sciences of Barcelona",
+        "attendee_names": [],
+        "attendee_emails": []
+      },
+      "column_similarity_measure": {
+        "calendar_event_id": "column_ignore_similarity",
+        "calendar_id": "column_ignore_similarity",
+        "title": "column_rouge_l_similarity",
+        "description": "column_ignore_similarity",
+        "start_datetime": "column_datetime_naive_equal_similarity",
+        "end_datetime": "column_datetime_naive_equal_similarity",
+        "is_all_day": "column_exact_match_similarity",
+        "recurrence_frequency": "column_ignore_similarity",
+        "recurrence_interval": "column_ignore_similarity",
+        "recurrence_until_datetime": "column_ignore_similarity",
+        "recurrence_parent_id": "column_ignore_similarity",
+        "recurrence_exclude_datetime": "column_ignore_similarity",
+        "latitude": "column_ignore_similarity",
+        "longitude": "column_ignore_similarity",
+        "place_id": "column_ignore_similarity",
+        "formatted_address": "column_exact_match_similarity",
+        "attendee_names": "column_ignore_similarity",
+        "attendee_emails": "column_ignore_similarity"
+      }
+    },
+    {
+      "operation": "update",
+      "source": "appworld",
+      "table": "simple_note.notes",
+      "entity_id_column": "id",
+      "entity_id_value": 3201,
+      "expected_fields": {
+        "updated_at": "2026-04-15T10:05:00",
+        "content": "Ming Dynasty Vase, Roman Silver Coin.\nHindustan-style jade artifact",
+        "tags": []
+      },
+      "column_similarity_measure": {
+        "updated_at": "column_ignore_similarity",
+        "content": "column_rouge_l_similarity",
+        "id": "column_exact_match_similarity"
+      }
+    },
+    {
+      "operation": "create",
+      "source": "appworld",
+      "table": "phone.user_text_messages",
+      "entity_data": {
+        "global_text_message_id": 200,
+        "user_id": 200,
+        "created_at": "2026-04-17T00:19:31"
+      },
+      "column_similarity_measure": {
+        "global_text_message_id": "column_ignore_similarity",
+        "user_id": "column_exact_match_similarity",
+        "created_at": "column_ignore_similarity"
+      }
+    }
+  ],
+  "task_completion_criteria": "Send a text message to Sarah Jenkins asking if they should acquire the thigh-high boots (or similar description), update the 'Artifacts Catalog' note to include the Hindustan-style jade artifact (or similar description), and create a calendar event for a visit to the Museum of Natural Sciences of Barcelona on April 18, 2026 at 10:00 AM.",
+  "categories": [
+    "APPWORLD",
+    "MULTIPLE_USER_TURN"
+  ],
+  "max_messages": 100,
+  "metadata": {
+    "original_scenario_id": "scenario_0955",
+    "expected_tools": [
+      "simple_note_show_note",
+      "messages_send_text_message",
+      "simple_note_update_note",
+      "create_calendar_event"
+    ],
+    "image_arrival": {
+      "1": [
+        "image_1",
+        "image_2"
+      ],
+      "2": [
+        "image_3"
+      ],
+      "3": [
+        "image_4"
+      ]
+    },
+    "image_delivery_map": [
+      {
+        "query": "Here is another item I'm evaluating. Check my 'Artifacts Catalog' note. Cross-reference this specific cultural relic with the note, and if it's not listed, update the note to include it.",
+        "image_ids": [
+          2
+        ]
+      },
+      {
+        "query": "I plan to visit the location shown in this image. Cross-reference it with my 'Barcelona Itinerary' note. If this location is not already on my itinerary, schedule a calendar event for a visit tomorrow at 10 AM.",
+        "image_ids": [
+          3
+        ]
+      }
+    ],
+    "scenario_metadata": {
+      "num_images": 4,
+      "num_user_rounds": 3,
+      "selected_flow_type": "cross_reference",
+      "image_arrival": "progressive",
+      "challenge_type": "none",
+      "require_disambiguation": true,
+      "dataset_type": "worldvqa"
+    }
+  }
+}

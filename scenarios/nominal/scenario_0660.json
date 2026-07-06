@@ -1,0 +1,309 @@
+{
+  "name": "scenario_0660",
+  "base_scenario": "base",
+  "description": "The user is going through various newspapers and newsletters, extracting important contact information to compile a centralized directory note and add them to their device's contacts.",
+  "difficulty": "easy",
+  "appworld_base_task": "_base_",
+  "device_state_id": "kia_bailey@gmail.com",
+  "reference_time": "2026-04-17T00:10:38.088931+00:00",
+  "agentsandbox_entities": {},
+  "appworld_entities": {
+    "gmail.users": [
+      {
+        "id": 10100,
+        "first_name": "Alistair",
+        "last_name": "Osborne",
+        "email": "alistair.osborne@thetimes.co.uk",
+        "password": "placeholder_password",
+        "status": "active"
+      },
+      {
+        "id": 10101,
+        "first_name": "Guardian",
+        "last_name": "Obituaries",
+        "email": "obituaries@theguardian.com",
+        "password": "placeholder_password",
+        "status": "active"
+      }
+    ]
+  },
+  "image_paths": [
+    "omnidocbench/images/000383.jpg",
+    "omnidocbench/images/000387.jpg",
+    "omnidocbench/images/000391.jpg",
+    "omnidocbench/images/000402.jpg",
+    "docvqa/images/55915.jpg",
+    "omnidocbench/images/000385.jpg"
+  ],
+  "messages": [
+    {
+      "sender": "SYSTEM",
+      "recipient": "USER",
+      "content": "{{USER_INSTRUCTION}}ROUND 1 [provide: image_1, image_2]\nQuery: Create a new note called 'Newspaper Contacts'. Then, add a new contact for 'Tribune Classifieds' using the phone number in the dark 'sell your instruments' ad in the first image. Also, I need to add 'Kohler Baths' from the second image. The number is 202-730-9011, right? Can you check that against the ad before adding it?\nInstructions: Ask the agent to create a note and add the contacts as requested. The agent should notice your mistake regarding the Kohler Baths phone number (it ends in 9010, not 9011) and ask for confirmation before adding it. If the agent points out the mistake, confirm you'll address it next. If the agent adds it with the wrong number without checking, point out that it didn't validate the number against the image as requested.\n\nROUND 2\nQuery: Ah, you're right, it's 9010! Go ahead and add the 'Kohler Baths' contact with that correct number. Once that's done, update the 'Newspaper Contacts' note to include the names and phone numbers of both contacts we just talked about.\nInstructions: Acknowledge the agent's correction of the phone number and instruct it to add the Kohler Baths contact with the correct number. Then, ask it to append both contacts' names and numbers to the note created earlier. Wait for the agent to confirm the note has been updated.\n\nROUND 3 [provide: image_3, image_4]\nQuery: Now look at these two pages. Add an email contact for 'Alistair Osborne' from the business commentary in the first one, and another for 'Guardian Obituaries' from the top of the other page. Just make sure both emails actually use their respective newspaper domain names before saving them. After that, add these two new entries to our directory note.\nInstructions: Ask the agent to add the two email contacts from the new images, ensuring it validates the domain names as requested. Then have it update the directory note with these new contacts. If the agent asks for confirmation about the domains, confirm they look correct. Proceed to the next round once the note is updated.\n\nROUND 4 [provide: image_5, image_6]\nQuery: Finally, add phone contacts for the 'Smokers Rights Hotline' from this newsletter and 'Riviera Travel' from the travel ad. Check that the travel number starts with the 0808 prefix shown in the ad first. Once validated, append these last two contacts to the note.\nInstructions: Instruct the agent to add the two final phone contacts from the provided images, making sure it validates the 0808 prefix for the travel number. Ask it to append these final details to the note. If the agent successfully completes all steps and confirms the final note update, you can end the conversation.\n\nYou have 6 images available to share with the agent using the send_message_with_image tool.\nIMPORTANT: Image IDs are ZERO-INDEXED integers (0, 1, 2, ...). Do NOT add 1 to the IDs.\nAvailable image IDs: [0, 1, 2, 3, 4, 5]\nImage mapping:\n  image_1.jpg -> image ID 0\n  image_2.jpg -> image ID 1\n  image_3.jpg -> image ID 2\n  image_4.jpg -> image ID 3\n  image_5.jpg -> image ID 4\n  image_6.jpg -> image ID 5\n\n## IMAGE DELIVERY\n\n\u26a0\ufe0f IMPORTANT: You MUST use the `send_message_with_image` tool to share images with User B. Do NOT just describe images in text \u2014 you MUST call the tool.\n\nImage delivery schedule:\n\n  Round 3: YOU MUST call the send_message_with_image tool with image_ids='2,3' \u2014 do NOT write the tool name as text; use the actual function call. Include a natural, conversational message to the assistant.\n  Round 4: YOU MUST call the send_message_with_image tool with image_ids='4,5' \u2014 do NOT write the tool name as text; use the actual function call. Include a natural, conversational message to the assistant."
+    },
+    {
+      "sender": "USER",
+      "recipient": "AGENT",
+      "content": "Create a new note called 'Newspaper Contacts'. Then, add a new contact for 'Tribune Classifieds' using the phone number in the dark 'sell your instruments' ad in the first image. Also, I need to add 'Kohler Baths' from the second image. The number is 202-730-9011, right? Can you check that against the ad before adding it?",
+      "image_ids": [
+        0,
+        1
+      ]
+    }
+  ],
+  "milestones": [],
+  "entity_diff_specs": [
+    {
+      "operation": "create",
+      "source": "appworld",
+      "table": "phone.contacts",
+      "entity_data": {
+        "user_id": 80,
+        "first_name": "Tribune",
+        "last_name": "Classifieds",
+        "email": "",
+        "phone_number": "312 222 2222",
+        "relationships": [],
+        "birthday": null,
+        "home_address": null,
+        "work_address": null,
+        "created_at": "2026-04-17T00:10:38"
+      },
+      "column_similarity_measure": {
+        "user_id": "column_exact_match_similarity",
+        "first_name": "column_exact_match_similarity",
+        "last_name": "column_exact_match_similarity",
+        "email": "column_ignore_similarity",
+        "phone_number": "column_exact_match_similarity",
+        "relationships": "column_ignore_similarity",
+        "birthday": "column_ignore_similarity",
+        "home_address": "column_ignore_similarity",
+        "work_address": "column_ignore_similarity",
+        "created_at": "column_ignore_similarity"
+      }
+    },
+    {
+      "operation": "create",
+      "source": "appworld",
+      "table": "phone.contacts",
+      "entity_data": {
+        "user_id": 80,
+        "first_name": "Kohler",
+        "last_name": "Baths",
+        "email": "",
+        "phone_number": "202-730-9010",
+        "relationships": [],
+        "birthday": null,
+        "home_address": null,
+        "work_address": null,
+        "created_at": "2026-04-17T00:10:38"
+      },
+      "column_similarity_measure": {
+        "user_id": "column_exact_match_similarity",
+        "first_name": "column_exact_match_similarity",
+        "last_name": "column_exact_match_similarity",
+        "email": "column_ignore_similarity",
+        "phone_number": "column_exact_match_similarity",
+        "relationships": "column_ignore_similarity",
+        "birthday": "column_ignore_similarity",
+        "home_address": "column_ignore_similarity",
+        "work_address": "column_ignore_similarity",
+        "created_at": "column_ignore_similarity"
+      }
+    },
+    {
+      "operation": "create",
+      "source": "appworld",
+      "table": "phone.contacts",
+      "entity_data": {
+        "user_id": 80,
+        "first_name": "Alistair",
+        "last_name": "Osborne",
+        "email": "alistair.osborne@thetimes.co.uk",
+        "phone_number": null,
+        "relationships": [],
+        "birthday": null,
+        "home_address": null,
+        "work_address": null,
+        "created_at": "2026-04-17T00:10:38"
+      },
+      "column_similarity_measure": {
+        "user_id": "column_exact_match_similarity",
+        "first_name": "column_exact_match_similarity",
+        "last_name": "column_exact_match_similarity",
+        "email": "column_exact_match_similarity",
+        "phone_number": "column_ignore_similarity",
+        "relationships": "column_ignore_similarity",
+        "birthday": "column_ignore_similarity",
+        "home_address": "column_ignore_similarity",
+        "work_address": "column_ignore_similarity",
+        "created_at": "column_ignore_similarity"
+      }
+    },
+    {
+      "operation": "create",
+      "source": "appworld",
+      "table": "phone.contacts",
+      "entity_data": {
+        "user_id": 80,
+        "first_name": "Guardian",
+        "last_name": "Obituaries",
+        "email": "obituaries@theguardian.com",
+        "phone_number": null,
+        "relationships": [],
+        "birthday": null,
+        "home_address": null,
+        "work_address": null,
+        "created_at": "2026-04-17T00:10:38"
+      },
+      "column_similarity_measure": {
+        "user_id": "column_exact_match_similarity",
+        "first_name": "column_exact_match_similarity",
+        "last_name": "column_exact_match_similarity",
+        "email": "column_exact_match_similarity",
+        "phone_number": "column_ignore_similarity",
+        "relationships": "column_ignore_similarity",
+        "birthday": "column_ignore_similarity",
+        "home_address": "column_ignore_similarity",
+        "work_address": "column_ignore_similarity",
+        "created_at": "column_ignore_similarity"
+      }
+    },
+    {
+      "operation": "create",
+      "source": "appworld",
+      "table": "phone.contacts",
+      "entity_data": {
+        "user_id": 80,
+        "first_name": "Smokers Rights",
+        "last_name": "Hotline",
+        "email": "",
+        "phone_number": "800-333-8683",
+        "relationships": [],
+        "birthday": null,
+        "home_address": null,
+        "work_address": null,
+        "created_at": "2026-04-17T00:10:38"
+      },
+      "column_similarity_measure": {
+        "user_id": "column_exact_match_similarity",
+        "first_name": "column_exact_match_similarity",
+        "last_name": "column_exact_match_similarity",
+        "email": "column_ignore_similarity",
+        "phone_number": "column_exact_match_similarity",
+        "relationships": "column_ignore_similarity",
+        "birthday": "column_ignore_similarity",
+        "home_address": "column_ignore_similarity",
+        "work_address": "column_ignore_similarity",
+        "created_at": "column_ignore_similarity"
+      }
+    },
+    {
+      "operation": "create",
+      "source": "appworld",
+      "table": "phone.contacts",
+      "entity_data": {
+        "user_id": 80,
+        "first_name": "Riviera",
+        "last_name": "Travel",
+        "email": "",
+        "phone_number": "0808 291 4718",
+        "relationships": [],
+        "birthday": null,
+        "home_address": null,
+        "work_address": null,
+        "created_at": "2026-04-17T00:10:38"
+      },
+      "column_similarity_measure": {
+        "user_id": "column_exact_match_similarity",
+        "first_name": "column_exact_match_similarity",
+        "last_name": "column_exact_match_similarity",
+        "email": "column_ignore_similarity",
+        "phone_number": "column_exact_match_similarity",
+        "relationships": "column_ignore_similarity",
+        "birthday": "column_ignore_similarity",
+        "home_address": "column_ignore_similarity",
+        "work_address": "column_ignore_similarity",
+        "created_at": "column_ignore_similarity"
+      }
+    },
+    {
+      "operation": "create",
+      "source": "appworld",
+      "table": "simple_note.notes",
+      "entity_data": {
+        "user_id": 80,
+        "title": "Newspaper Contacts",
+        "content": "Tribune Classifieds: 312 222 2222\nKohler Baths: 202-730-9010\nAlistair Osborne: alistair.osborne@thetimes.co.uk\nGuardian Obituaries: obituaries@theguardian.com\nSmokers Rights Hotline: 800-333-8683\nRiviera Travel: 0808 291 4718",
+        "tags": [],
+        "created_at": "2026-04-17T00:10:38",
+        "updated_at": "2026-04-17T00:10:38",
+        "pinned": false,
+        "data": null
+      },
+      "column_similarity_measure": {
+        "user_id": "column_exact_match_similarity",
+        "title": "column_rouge_l_similarity",
+        "content": "column_rouge_l_similarity",
+        "tags": "column_ignore_similarity",
+        "created_at": "column_ignore_similarity",
+        "updated_at": "column_ignore_similarity",
+        "pinned": "column_exact_match_similarity",
+        "data": "column_ignore_similarity"
+      }
+    }
+  ],
+  "task_completion_criteria": "Create a note titled 'Newspaper Contacts' containing the names and contact details for Tribune Classifieds (312 222 2222), Kohler Baths (202-730-9010), Alistair Osborne (alistair.osborne@thetimes.co.uk), Guardian Obituaries (obituaries@theguardian.com), Smokers Rights Hotline (800-333-8683), and Riviera Travel (0808 291 4718). Additionally, create individual contacts in the user's address book for each of these six entities using the specified phone numbers and email addresses.",
+  "categories": [
+    "APPWORLD",
+    "MULTIPLE_USER_TURN"
+  ],
+  "max_messages": 100,
+  "metadata": {
+    "original_scenario_id": "scenario_0660",
+    "expected_tools": [
+      "simple_note_create_note",
+      "contacts_add_contact",
+      "simple_note_add_content_to_note"
+    ],
+    "image_arrival": {
+      "1": [
+        "image_1",
+        "image_2"
+      ],
+      "3": [
+        "image_3",
+        "image_4"
+      ],
+      "4": [
+        "image_5",
+        "image_6"
+      ]
+    },
+    "image_delivery_map": [
+      {
+        "query": "Now look at these two pages. Add an email contact for 'Alistair Osborne' from the business commentary in the first one, and another for 'Guardian Obituaries' from the top of the other page. Just make sure both emails actually use their respective newspaper domain names before saving them. After that, add these two new entries to our directory note.",
+        "image_ids": [
+          2,
+          3
+        ]
+      },
+      {
+        "query": "Finally, add phone contacts for the 'Smokers Rights Hotline' from this newsletter and 'Riviera Travel' from the travel ad. Check that the travel number starts with the 0808 prefix shown in the ad first. Once validated, append these last two contacts to the note.",
+        "image_ids": [
+          4,
+          5
+        ]
+      }
+    ],
+    "scenario_metadata": {
+      "num_images": 6,
+      "num_user_rounds": 4,
+      "selected_flow_type": "validate",
+      "image_arrival": "progressive",
+      "challenge_type": "error_correction",
+      "require_disambiguation": false,
+      "dataset_type": "omnidocbench"
+    }
+  }
+}

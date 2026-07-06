@@ -1,0 +1,177 @@
+{
+  "name": "scenario_1002",
+  "base_scenario": "base",
+  "description": "The user is cataloging a mixed archival box containing botanical specimens and historical documents. They are cross-referencing scanned items against a preexisting digital inventory note to track what is present and what is missing.",
+  "difficulty": "easy",
+  "appworld_base_task": "_base_",
+  "device_state_id": "mir-powe@gmail.com",
+  "reference_time": "2026-04-17T00:20:46.668928+00:00",
+  "agentsandbox_entities": {},
+  "appworld_entities": {
+    "simple_note.notes": [
+      {
+        "id": 3200,
+        "user_id": 31,
+        "title": "Box 42 Inventory - Archival",
+        "content": "Expected Items: 1. Lepturus filiformis (Collector: T.R. Archer Briggs) - Status: Missing. 2. Rottboellia incurvata (Collector: Churchill Babington) - Status: Missing. 3. Medical World News (April 17, 1970) - Status: Missing. 4. Carex diandra Schrank (Collector: Dean Wm. Taylor #19127) - Status: Missing. 5. Fossil leaf specimen (Collector: Mary Anning) - Status: Missing. 6. 19th Century Pharmacopoeia - Status: Missing.",
+        "tags": [
+          "inventory",
+          "archival"
+        ],
+        "created_at": "2026-04-15T10:00:00",
+        "updated_at": "2026-04-15T10:00:00",
+        "pinned": false,
+        "data": null
+      },
+      {
+        "id": 3201,
+        "user_id": 31,
+        "title": "Box 42 Inventory - Unsorted",
+        "content": "Expected Items: 1. Miscellaneous loose correspondence. 2. Unlabeled grass specimens. 3. Blank herbarium sheets.",
+        "tags": [
+          "inventory",
+          "unsorted"
+        ],
+        "created_at": "2026-04-15T10:05:00",
+        "updated_at": "2026-04-15T10:05:00",
+        "pinned": false,
+        "data": null
+      }
+    ],
+    "gmail.users": [
+      {
+        "id": 10100,
+        "first_name": "Archivist",
+        "last_name": "",
+        "email": "archivist@museum.org",
+        "password": "placeholder_password",
+        "status": "active"
+      }
+    ]
+  },
+  "image_paths": [
+    "hiertext/images/test/25b1e20f7c8d0d72.jpg",
+    "docvqa/images/59982.jpg",
+    "hiertext/images/test/ce5be517c252aadc.jpg"
+  ],
+  "messages": [
+    {
+      "sender": "SYSTEM",
+      "recipient": "USER",
+      "content": "{{USER_INSTRUCTION}}ROUND 1 [provide: image_1]\nQuery: I'm cataloging items from Box 42. Look at my 'Box 42 Inventory' note. Cross-reference the species names and collector names on this herbarium sheet with the expected items in the note. Update the note to mark any matching items as 'Present'.\nInstructions: Begin by asking the assistant to open your 'Box 42 Inventory' note and cross-reference the species names and collector names visible on the provided herbarium sheet with the items listed in the note. Instruct it to update the note by marking any matching items as 'Present'. The assistant should notice there are multiple notes with similar titles and ask you to clarify which one you mean; tell it to use the 'Archival' note. If the assistant misses any of the labels on the sheet, prompt it to look closely at all the handwritten tags to find all the matches. Once the note is successfully updated with the first batch of items, confirm and move to the next round.\n\nROUND 2 [provide: image_2]\nQuery: Here is the next scanned item. Cross-reference this medical publication's title and date with the inventory note. If it matches an expected item, update the note to mark it as 'Present' and also append the main headline of the article to the note.\nInstructions: Provide the second image and instruct the assistant to cross-reference this medical publication's title and date with the inventory note. Tell it that if it finds a match, it should update the note to mark that item as 'Present' and also append the main, largest headline from the document to that entry in the note. If the assistant is unsure which text is the main headline, tell it to use the largest bold word at the very top. Once the note is updated, proceed to the next round.\n\nROUND 3 [provide: image_3]\nQuery: Here is the third item. Cross-reference its species name and the collector's number with the inventory note. If it matches an entry, update the note to mark it as 'Present'.\nInstructions: Share the third image and ask the assistant to cross-reference its species name and the collector's number with the inventory note. Instruct it to mark the corresponding entry as 'Present' if there is a match. If the assistant has trouble locating the collector's number, direct it to look at the detailed label in the bottom right corner. Once it confirms the note has been updated, move on to the final round.\n\nROUND 4\nQuery: Now, review the inventory note to identify the delta\u2014any items that are still missing and not marked as 'Present'. Create an email draft to archivist@museum.org listing these missing items, and ask if they might have been misplaced in a different box.\nInstructions: For the final step, ask the assistant to review the inventory note to identify the delta\u2014specifically, any items that are still marked as 'Missing' and not updated to 'Present'. Instruct it to draft an email to 'archivist@museum.org' listing exactly these missing items, and to ask in the email if they might have been misplaced in a different box. Ensure the assistant only includes the items that were NOT found in the three images. Once the draft is created, conclude the conversation.\n\nYou have 3 images available to share with the agent using the send_message_with_image tool.\nIMPORTANT: Image IDs are ZERO-INDEXED integers (0, 1, 2, ...). Do NOT add 1 to the IDs.\nAvailable image IDs: [0, 1, 2]\nImage mapping:\n  image_1.jpg -> image ID 0\n  image_2.jpg -> image ID 1\n  image_3.jpg -> image ID 2\n\n## IMAGE DELIVERY\n\n\u26a0\ufe0f IMPORTANT: You MUST use the `send_message_with_image` tool to share images with User B. Do NOT just describe images in text \u2014 you MUST call the tool.\n\nImage delivery schedule:\n\n  Round 2: YOU MUST call the send_message_with_image tool with image_ids='1' \u2014 do NOT write the tool name as text; use the actual function call. Include a natural, conversational message to the assistant.\n  Round 3: YOU MUST call the send_message_with_image tool with image_ids='2' \u2014 do NOT write the tool name as text; use the actual function call. Include a natural, conversational message to the assistant."
+    },
+    {
+      "sender": "USER",
+      "recipient": "AGENT",
+      "content": "I'm cataloging items from Box 42. Look at my 'Box 42 Inventory' note. Cross-reference the species names and collector names on this herbarium sheet with the expected items in the note. Update the note to mark any matching items as 'Present'.",
+      "image_ids": [
+        0
+      ]
+    }
+  ],
+  "milestones": [],
+  "entity_diff_specs": [
+    {
+      "operation": "create",
+      "source": "appworld",
+      "table": "gmail.drafts",
+      "entity_data": {
+        "user_id": 31,
+        "recipient_ids": [
+          10100
+        ],
+        "recipient_email_addresses": [
+          "archivist@museum.org"
+        ],
+        "recipient_names": [
+          "Archivist"
+        ],
+        "subject": "Missing items from Box 42",
+        "body": "Hello,\n\nI am currently cataloging Box 42 and it appears the following items are missing from the inventory:\n- Fossil leaf specimen\n- 19th Century Pharmacopoeia\n\nCould they have been misplaced in a different box?\n\nBest,\nMiranda",
+        "belongs_to_email_thread_id": null,
+        "response_to_email_id": null,
+        "scheduled_send_at": null,
+        "created_at": "2026-04-17T00:20:46",
+        "updated_at": "2026-04-17T00:20:46"
+      },
+      "column_similarity_measure": {
+        "user_id": "column_exact_match_similarity",
+        "recipient_ids": "column_exact_match_similarity",
+        "recipient_email_addresses": "column_exact_match_similarity",
+        "recipient_names": "column_ignore_similarity",
+        "subject": "column_rouge_l_similarity",
+        "body": "column_rouge_l_similarity",
+        "belongs_to_email_thread_id": "column_ignore_similarity",
+        "response_to_email_id": "column_ignore_similarity",
+        "scheduled_send_at": "column_ignore_similarity",
+        "created_at": "column_ignore_similarity",
+        "updated_at": "column_ignore_similarity"
+      }
+    },
+    {
+      "operation": "update",
+      "source": "appworld",
+      "table": "simple_note.notes",
+      "entity_id_column": "id",
+      "entity_id_value": 3200,
+      "expected_fields": {
+        "updated_at": "2026-04-15T10:00:00",
+        "content": "Expected Items: 1. Lepturus filiformis (Collector: T.R. Archer Briggs) - Status: Present. 2. Rottboellia incurvata (Collector: Churchill Babington) - Status: Present. 3. Medical World News (April 17, 1970) - Status: Present. Headline: ATHEROSCLEROSIS. 4. Carex diandra Schrank (Collector: Dean Wm. Taylor #19127) - Status: Present. 5. Fossil leaf specimen (Collector: Mary Anning) - Status: Missing. 6. 19th Century Pharmacopoeia - Status: Missing.",
+        "tags": []
+      },
+      "column_similarity_measure": {
+        "updated_at": "column_ignore_similarity",
+        "content": "column_rouge_l_similarity",
+        "id": "column_exact_match_similarity"
+      }
+    }
+  ],
+  "task_completion_criteria": "Update the 'Box 42 Inventory - Archival' note to mark the items 'Lepturus filiformis (Collector: T.R. Archer Briggs)', 'Rottboellia incurvata (Collector: Churchill Babington)', 'Medical World News (April 17, 1970)', and 'Carex diandra Schrank (Collector: Dean Wm. Taylor #19127)' as 'Present'. Append the headline 'ATHEROSCLEROSIS' to the note. Draft an email to 'archivist@museum.org' listing the remaining missing items from the note ('Fossil leaf specimen' and '19th Century Pharmacopoeia') and asking if they were misplaced in a different box.",
+  "categories": [
+    "APPWORLD",
+    "MULTIPLE_USER_TURN"
+  ],
+  "max_messages": 100,
+  "metadata": {
+    "original_scenario_id": "scenario_1002",
+    "expected_tools": [
+      "simple_note_show_note",
+      "simple_note_update_note",
+      "gmail_create_draft"
+    ],
+    "image_arrival": {
+      "1": [
+        "image_1"
+      ],
+      "2": [
+        "image_2"
+      ],
+      "3": [
+        "image_3"
+      ]
+    },
+    "image_delivery_map": [
+      {
+        "query": "Here is the next scanned item. Cross-reference this medical publication's title and date with the inventory note. If it matches an expected item, update the note to mark it as 'Present' and also append the main headline of the article to the note.",
+        "image_ids": [
+          1
+        ]
+      },
+      {
+        "query": "Here is the third item. Cross-reference its species name and the collector's number with the inventory note. If it matches an entry, update the note to mark it as 'Present'.",
+        "image_ids": [
+          2
+        ]
+      }
+    ],
+    "scenario_metadata": {
+      "num_images": 3,
+      "num_user_rounds": 4,
+      "selected_flow_type": "cross_reference",
+      "image_arrival": "progressive",
+      "challenge_type": "none",
+      "require_disambiguation": true,
+      "dataset_type": "hiertext"
+    }
+  }
+}

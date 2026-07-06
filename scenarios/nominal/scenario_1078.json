@@ -1,0 +1,429 @@
+{
+  "name": "scenario_1078",
+  "base_scenario": "base",
+  "description": "Christina is gathering items for a care package based on a wishlist email from her friend. She is taking photos of the items she has already purchased and asking her assistant to cross-reference them with the email to determine what is still missing and update her shopping list and Amazon cart accordingly.",
+  "difficulty": "easy",
+  "appworld_base_task": "_base_",
+  "device_state_id": "chrharrison@gmail.com",
+  "reference_time": "2026-04-17T00:22:49.344538+00:00",
+  "agentsandbox_entities": {},
+  "appworld_entities": {
+    "gmail.emails": [
+      {
+        "id": 5100,
+        "sender_id": 200,
+        "recipient_ids": [
+          13
+        ],
+        "subject": "Care Package Wishlist",
+        "body": "Hey! Here is my wishlist for the care package. Treats: Patric Chocolate, Rogue Chocolatier, Harrods Traditional English Biscuit Selection, and Walkers Shortbread. Spa: Marius Fabre soaps in Lavande, Figue, Verveine, and Rose scents. Crafts: Rowan Denim yarn (must be Lot: 28C5 to match my project), Blacker Breeds Pure Jacob yarn (must be DK weight), and a starter kit for the craft shown in the picture you sent me.",
+        "response_to_email_id": null,
+        "created_at": "2026-04-16T10:00:00"
+      },
+      {
+        "id": 5101,
+        "sender_id": 201,
+        "recipient_ids": [
+          13
+        ],
+        "subject": "Care Package Wishlist",
+        "body": "Just a reminder of my wishlist: gummy bears, lip balm, and fuzzy socks!",
+        "response_to_email_id": null,
+        "created_at": "2026-04-15T09:00:00"
+      }
+    ],
+    "amazon.sellers": [
+      {
+        "id": 200,
+        "name": "Walkers Official",
+        "rating": 4.8
+      },
+      {
+        "id": 201,
+        "name": "Marius Fabre Store",
+        "rating": 4.9
+      },
+      {
+        "id": 202,
+        "name": "KnitPro",
+        "rating": 4.6
+      },
+      {
+        "id": 203,
+        "name": "Crafty Kits",
+        "rating": 4.7
+      }
+    ],
+    "amazon.products": [
+      {
+        "id": 200,
+        "product_type": "snacks",
+        "name": "Walkers Shortbread",
+        "description": "Pure butter shortbread cookies",
+        "seller_id": 200,
+        "price": 15.99,
+        "delivery_days": 2,
+        "inventory_quantity": 50,
+        "weight": 0.5,
+        "length": 10.0,
+        "width": 5.0,
+        "height": 2.0,
+        "color": null,
+        "relative_size": null,
+        "rating": 4.7,
+        "seller_rating": 4.8,
+        "has_variations": false
+      },
+      {
+        "id": 201,
+        "product_type": "soap",
+        "name": "Marius Fabre Rose soap",
+        "description": "French milled rose scented soap",
+        "seller_id": 201,
+        "price": 8.5,
+        "delivery_days": 3,
+        "inventory_quantity": 30,
+        "weight": 0.2,
+        "length": 3.0,
+        "width": 2.0,
+        "height": 1.0,
+        "color": null,
+        "relative_size": null,
+        "rating": 4.5,
+        "seller_rating": 4.9,
+        "has_variations": true
+      },
+      {
+        "id": 202,
+        "product_type": "knitting needles",
+        "name": "DK weight knitting needles",
+        "description": "Wooden knitting needles for DK weight yarn",
+        "seller_id": 202,
+        "price": 12.0,
+        "delivery_days": 2,
+        "inventory_quantity": 100,
+        "weight": 0.1,
+        "length": 14.0,
+        "width": 0.5,
+        "height": 0.5,
+        "color": null,
+        "relative_size": null,
+        "rating": 4.8,
+        "seller_rating": 4.6,
+        "has_variations": true
+      },
+      {
+        "id": 203,
+        "product_type": "craft kits",
+        "name": "Wool felt DIY starter kit",
+        "description": "Beginner needle felting kit with wool and tools",
+        "seller_id": 203,
+        "price": 24.99,
+        "delivery_days": 4,
+        "inventory_quantity": 20,
+        "weight": 0.8,
+        "length": 8.0,
+        "width": 6.0,
+        "height": 4.0,
+        "color": null,
+        "relative_size": null,
+        "rating": 4.6,
+        "seller_rating": 4.7,
+        "has_variations": false
+      }
+    ],
+    "gmail.global_email_threads": [
+      {
+        "id": 200,
+        "email_ids": [
+          5100
+        ],
+        "created_at": "2026-04-16T10:00:00",
+        "updated_at": "2026-04-16T10:00:00"
+      },
+      {
+        "id": 201,
+        "email_ids": [
+          5101
+        ],
+        "created_at": "2026-04-15T09:00:00",
+        "updated_at": "2026-04-15T09:00:00"
+      }
+    ],
+    "gmail.user_email_threads": [
+      {
+        "id": 48000,
+        "global_email_thread_id": 200,
+        "user_id": 13,
+        "email_ids": [
+          5100
+        ],
+        "incoming": true,
+        "outgoing": false,
+        "read": true,
+        "label": "INBOX",
+        "starred": false,
+        "archived": false,
+        "spam": false,
+        "sender_email_addresses": [
+          "jessica.miller@gmail.com"
+        ],
+        "sender_names": [
+          "Jessica Miller"
+        ],
+        "recipient_email_addresses": [
+          "chrharrison@gmail.com"
+        ],
+        "recipient_names": [
+          "Christina Harrison"
+        ],
+        "created_at": "2026-04-16T10:00:00",
+        "updated_at": "2026-04-16T10:00:00",
+        "has_attachments": false,
+        "snoozed_until": null
+      },
+      {
+        "id": 48001,
+        "global_email_thread_id": 201,
+        "user_id": 13,
+        "email_ids": [
+          5101
+        ],
+        "incoming": true,
+        "outgoing": false,
+        "read": true,
+        "label": "INBOX",
+        "starred": false,
+        "archived": false,
+        "spam": false,
+        "sender_email_addresses": [
+          "lisa.chen@gmail.com"
+        ],
+        "sender_names": [
+          "Lisa Chen"
+        ],
+        "recipient_email_addresses": [
+          "chrharrison@gmail.com"
+        ],
+        "recipient_names": [
+          "Christina Harrison"
+        ],
+        "created_at": "2026-04-15T09:00:00",
+        "updated_at": "2026-04-15T09:00:00",
+        "has_attachments": false,
+        "snoozed_until": null
+      }
+    ],
+    "gmail.users": [
+      {
+        "id": 200,
+        "first_name": "Jessica",
+        "last_name": "Miller",
+        "email": "jessica.miller@gmail.com",
+        "password": "default_password",
+        "status": "active",
+        "created_at": "2025-01-01T00:00:00",
+        "last_logged_in": "2025-01-01T00:00:00"
+      },
+      {
+        "id": 201,
+        "first_name": "Lisa",
+        "last_name": "Chen",
+        "email": "lisa.chen@gmail.com",
+        "password": "default_password",
+        "status": "active",
+        "created_at": "2025-01-01T00:00:00",
+        "last_logged_in": "2025-01-01T00:00:00"
+      }
+    ]
+  },
+  "image_paths": [
+    "hiertext/images/test/28d156207190b922.jpg",
+    "hiertext/images/test/2c63a30a0bb6cf24.jpg",
+    "hiertext/images/test/d3652e34be4440a7.jpg",
+    "hiertext/images/test/ddc304d966ed3834.jpg",
+    "hiertext/images/test/e45cc09f49dc405a.jpg",
+    "worldvqa/images/1512.jpg"
+  ],
+  "messages": [
+    {
+      "sender": "SYSTEM",
+      "recipient": "USER",
+      "content": "{{USER_INSTRUCTION}}ROUND 1 [provide: image_1, image_2]\nQuery: My friend sent me an email titled 'Care Package Wishlist'. I've started gathering items. Here are the treats I already bought. Cross-reference these photos with her email, create a new note called 'Items to Buy' listing the treats I still need to get, and search Amazon to add the missing treat to my cart.\nInstructions: Ask the assistant to check the 'Care Package Wishlist' email, compare the requested treats with the ones shown in the photos, create an 'Items to Buy' note for the missing ones, and add the missing treat to your Amazon cart. Since there are multiple emails with this exact title on the device, the assistant should ask you to clarify which friend sent it. When asked, specify that you mean the one from Jessica. If the assistant misidentifies the treats in the images, politely point it back to the brand names clearly visible on the labels. Once it confirms the note is created and the missing treat is in the cart, move to the next round.\n\nROUND 2 [provide: image_5]\nQuery: Here are the soaps I got. Check her email again for the 'Spa' section. Cross-reference the scents she requested with the ones in this photo. Add any missing Marius Fabre soap scents to my 'Items to Buy' note and add them to my Amazon cart.\nInstructions: Tell the assistant to compare the soap scents requested in the 'Spa' section of Jessica's email with the ones visible in the provided image. It should add any requested scents that are missing from the photo to the 'Items to Buy' note and also search Amazon to add them to your cart. If it tries to add the scents you already have, remind it to only add the missing ones. Once confirmed, proceed to the next round.\n\nROUND 3 [provide: image_3]\nQuery: She mentioned needing a specific dye lot of this Rowan Denim yarn in her email. Check if the lot number on these skeins matches what she asked for. If it doesn't match, add the correct lot number she actually needs to my 'Items to Buy' note.\nInstructions: Instruct the assistant to check the required lot number for the yarn in the email's craft section and compare it to the lot number visible on the skeins in the image. Since they won't match, tell it to add the lot number she actually requested to your 'Items to Buy' note. If the assistant claims they match, point it back to the specific lot number printed next to the barcode on the label in the image. Proceed once the note is updated.\n\nROUND 4 [provide: image_4]\nQuery: I also found this Blacker Breeds yarn. Check her email for the required yarn weight. If the weight on these labels matches her project needs, search Amazon for knitting needles appropriate for this weight and add them to my cart, then update my note to reflect that I have the yarn.\nInstructions: Ask the assistant to verify if the yarn weight shown on the labels in the new image matches the weight requested for the Blacker Breeds yarn in the email. Since it does match, instruct it to search Amazon for knitting needles suitable for this specific yarn weight, add them to your cart, and update the 'Items to Buy' note to indicate you already have the yarn. Once it completes these actions, move to the final round.\n\nROUND 5 [provide: image_6]\nQuery: Finally, her email asked for a starter kit for the craft shown in this image. Identify the name of this craft, update my 'Items to Buy' note with the craft name, and search Amazon to add a starter kit for it to my cart.\nInstructions: Tell the assistant to identify the type of craft shown in the image, add a starter kit for this craft to your 'Items to Buy' note, and search Amazon to add the kit to your cart. If the assistant struggles to identify the craft, give a gentle hint that it involves making small figures out of those colorful bundles of fuzz. End the conversation once the final item is added to the note and the cart.\n\nYou have 6 images available to share with the agent using the send_message_with_image tool.\nIMPORTANT: Image IDs are ZERO-INDEXED integers (0, 1, 2, ...). Do NOT add 1 to the IDs.\nAvailable image IDs: [0, 1, 2, 3, 4, 5]\nImage mapping:\n  image_1.jpg -> image ID 0\n  image_2.jpg -> image ID 1\n  image_3.jpg -> image ID 2\n  image_4.jpg -> image ID 3\n  image_5.jpg -> image ID 4\n  image_6.jpg -> image ID 5\n\n## IMAGE DELIVERY\n\n\u26a0\ufe0f IMPORTANT: You MUST use the `send_message_with_image` tool to share images with User B. Do NOT just describe images in text \u2014 you MUST call the tool.\n\nImage delivery schedule:\n\n  Round 2: YOU MUST call the send_message_with_image tool with image_ids='4' \u2014 do NOT write the tool name as text; use the actual function call. Include a natural, conversational message to the assistant.\n  Round 3: YOU MUST call the send_message_with_image tool with image_ids='2' \u2014 do NOT write the tool name as text; use the actual function call. Include a natural, conversational message to the assistant.\n  Round 4: YOU MUST call the send_message_with_image tool with image_ids='3' \u2014 do NOT write the tool name as text; use the actual function call. Include a natural, conversational message to the assistant.\n  Round 5: YOU MUST call the send_message_with_image tool with image_ids='5' \u2014 do NOT write the tool name as text; use the actual function call. Include a natural, conversational message to the assistant."
+    },
+    {
+      "sender": "USER",
+      "recipient": "AGENT",
+      "content": "My friend sent me an email titled 'Care Package Wishlist'. I've started gathering items. Here are the treats I already bought. Cross-reference these photos with her email, create a new note called 'Items to Buy' listing the treats I still need to get, and search Amazon to add the missing treat to my cart.",
+      "image_ids": [
+        0,
+        1
+      ]
+    }
+  ],
+  "milestones": [],
+  "entity_diff_specs": [
+    {
+      "operation": "create",
+      "source": "appworld",
+      "table": "amazon.cart_entries",
+      "entity_data": {
+        "user_id": 13,
+        "product_id": 200,
+        "quantity": 1,
+        "gift_wrap_quantity": 0
+      },
+      "column_similarity_measure": {
+        "user_id": "column_exact_match_similarity",
+        "product_id": "column_exact_match_similarity",
+        "quantity": "column_exact_match_similarity",
+        "gift_wrap_quantity": "column_exact_match_similarity"
+      }
+    },
+    {
+      "operation": "create",
+      "source": "appworld",
+      "table": "amazon.cart_entries",
+      "entity_data": {
+        "user_id": 13,
+        "product_id": 201,
+        "quantity": 1,
+        "gift_wrap_quantity": 0
+      },
+      "column_similarity_measure": {
+        "user_id": "column_exact_match_similarity",
+        "product_id": "column_exact_match_similarity",
+        "quantity": "column_exact_match_similarity",
+        "gift_wrap_quantity": "column_exact_match_similarity"
+      }
+    },
+    {
+      "operation": "create",
+      "source": "appworld",
+      "table": "amazon.cart_entries",
+      "entity_data": {
+        "user_id": 13,
+        "product_id": 202,
+        "quantity": 1,
+        "gift_wrap_quantity": 0
+      },
+      "column_similarity_measure": {
+        "user_id": "column_exact_match_similarity",
+        "product_id": "column_exact_match_similarity",
+        "quantity": "column_exact_match_similarity",
+        "gift_wrap_quantity": "column_exact_match_similarity"
+      }
+    },
+    {
+      "operation": "create",
+      "source": "appworld",
+      "table": "amazon.cart_entries",
+      "entity_data": {
+        "user_id": 13,
+        "product_id": 203,
+        "quantity": 1,
+        "gift_wrap_quantity": 0
+      },
+      "column_similarity_measure": {
+        "user_id": "column_exact_match_similarity",
+        "product_id": "column_exact_match_similarity",
+        "quantity": "column_exact_match_similarity",
+        "gift_wrap_quantity": "column_exact_match_similarity"
+      }
+    },
+    {
+      "operation": "create",
+      "source": "appworld",
+      "table": "simple_note.notes",
+      "entity_data": {
+        "user_id": 13,
+        "title": "Items to Buy",
+        "content": "- Walkers Shortbread\n- Marius Fabre Rose soap\n- Rowan Denim yarn Lot 28C5\n- Blacker Breeds DK yarn (already have)\n- Wool felt DIY starter kit",
+        "tags": [],
+        "created_at": "2026-04-17T00:22:49",
+        "updated_at": "2026-04-17T00:22:49",
+        "pinned": false,
+        "data": null
+      },
+      "column_similarity_measure": {
+        "user_id": "column_exact_match_similarity",
+        "title": "column_rouge_l_similarity",
+        "content": "column_rouge_l_similarity",
+        "tags": "column_ignore_similarity",
+        "created_at": "column_ignore_similarity",
+        "updated_at": "column_ignore_similarity",
+        "pinned": "column_exact_match_similarity",
+        "data": "column_ignore_similarity"
+      }
+    }
+  ],
+  "task_completion_criteria": "Cross-reference the provided images with Jessica Miller's 'Care Package Wishlist' email. Create a note titled 'Items to Buy' containing 'Walkers Shortbread', 'Marius Fabre Rose soap', 'Rowan Denim yarn Lot 28C5', a confirmation of having 'Blacker Breeds DK yarn', and a 'Wool felt DIY starter kit'. Search Amazon and add Walkers Shortbread, Marius Fabre Rose soap, DK weight knitting needles, and a Wool felt DIY starter kit to the user's cart.",
+  "categories": [
+    "APPWORLD",
+    "MULTIPLE_USER_TURN"
+  ],
+  "max_messages": 100,
+  "metadata": {
+    "original_scenario_id": "scenario_1078",
+    "expected_tools": [
+      "gmail_show_thread",
+      "create_note",
+      "amazon_show_product",
+      "amazon_add_product_to_cart",
+      "simple_note_update_note"
+    ],
+    "image_arrival": {
+      "1": [
+        "image_1",
+        "image_2"
+      ],
+      "2": [
+        "image_5"
+      ],
+      "3": [
+        "image_3"
+      ],
+      "4": [
+        "image_4"
+      ],
+      "5": [
+        "image_6"
+      ]
+    },
+    "image_delivery_map": [
+      {
+        "query": "Here are the soaps I got. Check her email again for the 'Spa' section. Cross-reference the scents she requested with the ones in this photo. Add any missing Marius Fabre soap scents to my 'Items to Buy' note and add them to my Amazon cart.",
+        "image_ids": [
+          4
+        ]
+      },
+      {
+        "query": "She mentioned needing a specific dye lot of this Rowan Denim yarn in her email. Check if the lot number on these skeins matches what she asked for. If it doesn't match, add the correct lot number she actually needs to my 'Items to Buy' note.",
+        "image_ids": [
+          2
+        ]
+      },
+      {
+        "query": "I also found this Blacker Breeds yarn. Check her email for the required yarn weight. If the weight on these labels matches her project needs, search Amazon for knitting needles appropriate for this weight and add them to my cart, then update my note to reflect that I have the yarn.",
+        "image_ids": [
+          3
+        ]
+      },
+      {
+        "query": "Finally, her email asked for a starter kit for the craft shown in this image. Identify the name of this craft, update my 'Items to Buy' note with the craft name, and search Amazon to add a starter kit for it to my cart.",
+        "image_ids": [
+          5
+        ]
+      }
+    ],
+    "scenario_metadata": {
+      "num_images": 6,
+      "num_user_rounds": 5,
+      "selected_flow_type": "cross_reference",
+      "image_arrival": "progressive",
+      "challenge_type": "none",
+      "require_disambiguation": true,
+      "dataset_type": "worldvqa"
+    }
+  }
+}

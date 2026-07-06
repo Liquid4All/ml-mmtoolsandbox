@@ -1,0 +1,293 @@
+{
+  "name": "scenario_0347",
+  "base_scenario": "base",
+  "description": "The user is managing their weekly review process and wants to ensure all business divisions have a corresponding review task in their Todoist project.",
+  "difficulty": "easy",
+  "appworld_base_task": "_base_",
+  "device_state_id": "robertmartinez@gmail.com",
+  "reference_time": "2026-04-17T00:00:38.370063+00:00",
+  "agentsandbox_entities": {},
+  "appworld_entities": {
+    "todoist.projects": [
+      {
+        "id": 400,
+        "user_id": 77,
+        "name": "Weekly Reviews",
+        "color": "charcoal",
+        "is_inbox": false,
+        "description": "Weekly dashboard reviews",
+        "created_at": "2026-04-10T10:00:00"
+      }
+    ],
+    "todoist.tasks": [
+      {
+        "id": 6500,
+        "project_id": 400,
+        "section_id": null,
+        "user_id": 77,
+        "title": "Review Food and Beverage Dashboard",
+        "description": null,
+        "due_date": "2026-04-19T23:59:59",
+        "priority": "medium",
+        "is_completed": false,
+        "duration": null,
+        "duration_unit": null,
+        "order_index": 1,
+        "assignee_id": null,
+        "assigner_id": null,
+        "created_at": "2026-04-10T10:00:00"
+      },
+      {
+        "id": 6501,
+        "project_id": 400,
+        "section_id": null,
+        "user_id": 77,
+        "title": "Review Sales Dashboard",
+        "description": null,
+        "due_date": "2026-04-19T23:59:59",
+        "priority": "medium",
+        "is_completed": false,
+        "duration": null,
+        "duration_unit": null,
+        "order_index": 2,
+        "assignee_id": null,
+        "assigner_id": null,
+        "created_at": "2026-04-10T10:05:00"
+      },
+      {
+        "id": 6502,
+        "project_id": 400,
+        "section_id": null,
+        "user_id": 77,
+        "title": "Review Marketing Dashboard",
+        "description": null,
+        "due_date": "2026-04-19T23:59:59",
+        "priority": "medium",
+        "is_completed": false,
+        "duration": null,
+        "duration_unit": null,
+        "order_index": 3,
+        "assignee_id": null,
+        "assigner_id": null,
+        "created_at": "2026-04-10T10:10:00"
+      }
+    ],
+    "todoist.project_collaborator_links": [
+      {
+        "id": 50400,
+        "project_id": 400,
+        "user_id": 77,
+        "is_favorite": false,
+        "is_archived": false,
+        "created_at": "2026-04-10T10:00:00"
+      }
+    ],
+    "gmail.users": []
+  },
+  "image_paths": [
+    "chartqapro/images/chart_1054.jpg",
+    "chartqapro/images/chart_1584.jpg",
+    "chartqapro/images/chart_1559.jpg",
+    "chartqapro/images/chart_1548.jpg",
+    "chartqapro/images/chart_1200.jpg",
+    "chartqapro/images/chart_1478.jpg"
+  ],
+  "messages": [
+    {
+      "sender": "SYSTEM",
+      "recipient": "USER",
+      "content": "{{USER_INSTRUCTION}}ROUND 1 [provide: image_1, image_2, image_3, image_4, image_5, image_6]\nQuery: I need to make sure I review all these division dashboards this week. Check my 'Weekly Reviews' project in Todoist to see which of these 6 divisions already have a 'Review [Division] Dashboard' task, and create new tasks for the ones that are missing.\nInstructions: Tell the assistant that you need to review the six division dashboards shown in the images. Ask it to check your 'Weekly Reviews' project in Todoist, cross-reference the divisions represented in the images with the existing tasks, and create a 'Review [Division] Dashboard' task for any division that is missing. If the assistant asks for the division names, tell it to use the main industry or function from each dashboard's title. Once the assistant confirms it has created the missing tasks, proceed to the next round.\n\nROUND 2\nQuery: For the SaaS dashboard review task, add a sub-task to investigate the drop in Active Trial Accounts.\nInstructions: Ask the assistant to add a sub-task to the newly created SaaS review task to 'investigate the drop in Active Trial Accounts'. This instruction contains a factual error based on the image, as that metric actually increased. If the assistant blindly creates the sub-task without noticing the error, point out that it should check the image data first. If the assistant correctly flags that the metric increased, acknowledge the catch and wait for the next round.\n\nROUND 3\nQuery: Ah, my mistake, I misread the trend for trial accounts. Please add a sub-task to investigate the drop in CAC instead.\nInstructions: Acknowledge your mistake about the trial accounts trend. Ask the assistant to instead create a sub-task to investigate the drop in CAC, which is the metric that actually decreased in the image. Once the assistant confirms this correct sub-task has been created, end the conversation.\n\nYou have 6 images available to share with the agent using the send_message_with_image tool.\nIMPORTANT: Image IDs are ZERO-INDEXED integers (0, 1, 2, ...). Do NOT add 1 to the IDs.\nAvailable image IDs: [0, 1, 2, 3, 4, 5]\nImage mapping:\n  image_1.jpg -> image ID 0\n  image_2.jpg -> image ID 1\n  image_3.jpg -> image ID 2\n  image_4.jpg -> image ID 3\n  image_5.jpg -> image ID 4\n  image_6.jpg -> image ID 5"
+    },
+    {
+      "sender": "USER",
+      "recipient": "AGENT",
+      "content": "I need to make sure I review all these division dashboards this week. Check my 'Weekly Reviews' project in Todoist to see which of these 6 divisions already have a 'Review [Division] Dashboard' task, and create new tasks for the ones that are missing.",
+      "image_ids": [
+        0,
+        1,
+        2,
+        3,
+        4,
+        5
+      ]
+    }
+  ],
+  "milestones": [],
+  "entity_diff_specs": [
+    {
+      "operation": "create",
+      "source": "appworld",
+      "table": "todoist.tasks",
+      "entity_data": {
+        "project_id": 400,
+        "section_id": null,
+        "user_id": 77,
+        "title": "Review SaaS Dashboard",
+        "description": null,
+        "due_date": "2026-04-19T00:00:00",
+        "priority": "medium",
+        "is_completed": false,
+        "duration": null,
+        "duration_unit": null,
+        "order_index": 4,
+        "assignee_id": null,
+        "assigner_id": null,
+        "created_at": "2026-04-17T00:00:38"
+      },
+      "column_similarity_measure": {
+        "project_id": "column_exact_match_similarity",
+        "section_id": "column_ignore_similarity",
+        "user_id": "column_exact_match_similarity",
+        "title": "column_rouge_l_similarity",
+        "description": "column_ignore_similarity",
+        "due_date": "column_datetime_naive_equal_similarity",
+        "priority": "column_exact_match_similarity",
+        "is_completed": "column_exact_match_similarity",
+        "duration": "column_ignore_similarity",
+        "duration_unit": "column_ignore_similarity",
+        "order_index": "column_ignore_similarity",
+        "assignee_id": "column_ignore_similarity",
+        "assigner_id": "column_ignore_similarity",
+        "created_at": "column_ignore_similarity"
+      }
+    },
+    {
+      "operation": "create",
+      "source": "appworld",
+      "table": "todoist.tasks",
+      "entity_data": {
+        "project_id": 400,
+        "section_id": null,
+        "user_id": 77,
+        "title": "Review Network Dashboard",
+        "description": null,
+        "due_date": "2026-04-19T00:00:00",
+        "priority": "medium",
+        "is_completed": false,
+        "duration": null,
+        "duration_unit": null,
+        "order_index": 5,
+        "assignee_id": null,
+        "assigner_id": null,
+        "created_at": "2026-04-17T00:00:38"
+      },
+      "column_similarity_measure": {
+        "project_id": "column_exact_match_similarity",
+        "section_id": "column_ignore_similarity",
+        "user_id": "column_exact_match_similarity",
+        "title": "column_rouge_l_similarity",
+        "description": "column_ignore_similarity",
+        "due_date": "column_datetime_naive_equal_similarity",
+        "priority": "column_exact_match_similarity",
+        "is_completed": "column_exact_match_similarity",
+        "duration": "column_ignore_similarity",
+        "duration_unit": "column_ignore_similarity",
+        "order_index": "column_ignore_similarity",
+        "assignee_id": "column_ignore_similarity",
+        "assigner_id": "column_ignore_similarity",
+        "created_at": "column_ignore_similarity"
+      }
+    },
+    {
+      "operation": "create",
+      "source": "appworld",
+      "table": "todoist.tasks",
+      "entity_data": {
+        "project_id": 400,
+        "section_id": null,
+        "user_id": 77,
+        "title": "Review Insurance Dashboard",
+        "description": null,
+        "due_date": "2026-04-19T00:00:00",
+        "priority": "medium",
+        "is_completed": false,
+        "duration": null,
+        "duration_unit": null,
+        "order_index": 6,
+        "assignee_id": null,
+        "assigner_id": null,
+        "created_at": "2026-04-17T00:00:38"
+      },
+      "column_similarity_measure": {
+        "project_id": "column_exact_match_similarity",
+        "section_id": "column_ignore_similarity",
+        "user_id": "column_exact_match_similarity",
+        "title": "column_rouge_l_similarity",
+        "description": "column_ignore_similarity",
+        "due_date": "column_datetime_naive_equal_similarity",
+        "priority": "column_exact_match_similarity",
+        "is_completed": "column_exact_match_similarity",
+        "duration": "column_ignore_similarity",
+        "duration_unit": "column_ignore_similarity",
+        "order_index": "column_ignore_similarity",
+        "assignee_id": "column_ignore_similarity",
+        "assigner_id": "column_ignore_similarity",
+        "created_at": "column_ignore_similarity"
+      }
+    },
+    {
+      "operation": "create",
+      "source": "appworld",
+      "table": "todoist.sub_tasks",
+      "entity_data": {
+        "task_id": 6503,
+        "title": "Investigate the drop in CAC",
+        "description": null,
+        "due_date": "2026-04-19T00:00:00",
+        "priority": "medium",
+        "is_completed": false,
+        "duration": null,
+        "duration_unit": null,
+        "order_index": 1,
+        "created_at": "2026-04-17T00:00:38"
+      },
+      "column_similarity_measure": {
+        "task_id": "column_ignore_similarity",
+        "title": "column_rouge_l_similarity",
+        "description": "column_ignore_similarity",
+        "due_date": "column_datetime_naive_equal_similarity",
+        "priority": "column_exact_match_similarity",
+        "is_completed": "column_exact_match_similarity",
+        "duration": "column_ignore_similarity",
+        "duration_unit": "column_ignore_similarity",
+        "order_index": "column_ignore_similarity",
+        "created_at": "column_ignore_similarity"
+      }
+    }
+  ],
+  "task_completion_criteria": "Create tasks in the 'Weekly Reviews' Todoist project for 'Review SaaS Dashboard', 'Review Network Dashboard', and 'Review Insurance Dashboard'. Additionally, create a sub-task under the 'Review SaaS Dashboard' task to 'Investigate the drop in CAC'.",
+  "categories": [
+    "APPWORLD",
+    "MULTIPLE_USER_TURN"
+  ],
+  "max_messages": 100,
+  "metadata": {
+    "original_scenario_id": "scenario_0347",
+    "expected_tools": [
+      "todoist_show_project",
+      "todoist_show_tasks",
+      "todoist_create_task",
+      "todoist_create_sub_task"
+    ],
+    "image_arrival": {
+      "1": [
+        "image_1",
+        "image_2",
+        "image_3",
+        "image_4",
+        "image_5",
+        "image_6"
+      ]
+    },
+    "image_delivery_map": [],
+    "scenario_metadata": {
+      "num_images": 6,
+      "num_user_rounds": 3,
+      "selected_flow_type": "cross_reference",
+      "image_arrival": "upfront",
+      "challenge_type": "error_correction",
+      "require_disambiguation": false,
+      "dataset_type": "chartqapro"
+    }
+  }
+}

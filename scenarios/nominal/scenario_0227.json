@@ -1,0 +1,161 @@
+{
+  "name": "scenario_0227",
+  "base_scenario": "base",
+  "description": "Glenn is compiling specific data points from various charts for a research project and needs to extract them into a single note to share with his professor.",
+  "difficulty": "easy",
+  "appworld_base_task": "_base_",
+  "device_state_id": "glenn.burton@gmail.com",
+  "reference_time": "2026-04-16T23:57:02.280930+00:00",
+  "agentsandbox_entities": {},
+  "appworld_entities": {
+    "phone.contacts": [
+      {
+        "id": 200,
+        "user_id": 102,
+        "first_name": "Professor",
+        "last_name": "University",
+        "email": "prof@university.edu",
+        "phone_number": null,
+        "relationships": [
+          "professor"
+        ],
+        "birthday": null,
+        "home_address": null,
+        "work_address": null,
+        "created_at": "2025-08-20T10:00:00"
+      }
+    ],
+    "gmail.users": [
+      {
+        "id": 200,
+        "first_name": "Professor",
+        "last_name": "University",
+        "email": "prof@university.edu",
+        "password": "default_password",
+        "status": "active",
+        "created_at": "2025-01-01T00:00:00",
+        "last_logged_in": "2025-01-01T00:00:00"
+      }
+    ]
+  },
+  "image_paths": [
+    "chartqapro/images/chart_0957.jpg",
+    "chartqapro/images/chart_0159.jpg",
+    "chartqapro/images/chart_1819.jpg"
+  ],
+  "messages": [
+    {
+      "sender": "SYSTEM",
+      "recipient": "USER",
+      "content": "{{USER_INSTRUCTION}}ROUND 1 [provide: image_1]\nQuery: Create a new note called 'Research Data'. Look at this first chart and check the topics in the 'Least time is spent on...' section. Find the ones highlighted in yellow and add them to the note.\nInstructions: Tell the agent to create a note named 'Research Data' and extract the specific topics highlighted in yellow from the bottom section of the provided chart. Instruct the agent to add these topics to the newly created note. If the agent asks for clarification on which topics, point out they are the two yellow-highlighted ones in the lower half of the image. Once the note is created and updated, proceed to the next round.\n\nROUND 2 [provide: image_2]\nQuery: Add a heading 'Congress Demographics' to the note. Then, look at this second chart, find the group with exactly 11 Republican members in the House, and add that group under the heading.\nInstructions: Ask the agent to add a 'Congress Demographics' heading to the note, then extract the group from the second chart that has exactly 11 Republican House members and add it under the heading. The agent should notice that no group matches this exact criteria, as the group with 11 total members only has 3 Republican House members according to the legend. If the agent points out this discrepancy, confirm you will check and move to the next round. If the agent blindly adds a group without checking the legend properly, point out the mistake and tell it to wait for your correction.\n\nROUND 3\nQuery: Oops, I misread the chart's legend. I meant the group with 11 members in total. Update the note to add that group under the heading.\nInstructions: Acknowledge the mistake from the previous round and clarify that you meant the group with 11 members in total, not 11 Republican House members. Ask the agent to find the group that matches this corrected criteria in the previously shared chart and add it under the heading in the note. Once the agent confirms the update, proceed to the next step.\n\nROUND 4 [provide: image_3]\nQuery: Now look at this third chart. Find the political party that stayed at exactly 19% support both before and after the leadership change. Add it to the note, then email the complete note to my professor at prof@university.edu.\nInstructions: Instruct the agent to look at the third chart, identify the political party that maintained exactly 19% support across both time periods shown, and add it to the note. Then, tell the agent to email the full contents of the note to the professor's email address. If the agent asks for an email subject, suggest 'Research Data Notes'. Once the email is sent, end the conversation.\n\nYou have 3 images available to share with the agent using the send_message_with_image tool.\nIMPORTANT: Image IDs are ZERO-INDEXED integers (0, 1, 2, ...). Do NOT add 1 to the IDs.\nAvailable image IDs: [0, 1, 2]\nImage mapping:\n  image_1.jpg -> image ID 0\n  image_2.jpg -> image ID 1\n  image_3.jpg -> image ID 2\n\n## IMAGE DELIVERY\n\n\u26a0\ufe0f IMPORTANT: You MUST use the `send_message_with_image` tool to share images with User B. Do NOT just describe images in text \u2014 you MUST call the tool.\n\nImage delivery schedule:\n\n  Round 2: YOU MUST call the send_message_with_image tool with image_ids='1' \u2014 do NOT write the tool name as text; use the actual function call. Include a natural, conversational message to the assistant.\n  Round 4: YOU MUST call the send_message_with_image tool with image_ids='2' \u2014 do NOT write the tool name as text; use the actual function call. Include a natural, conversational message to the assistant."
+    },
+    {
+      "sender": "USER",
+      "recipient": "AGENT",
+      "content": "Create a new note called 'Research Data'. Look at this first chart and check the topics in the 'Least time is spent on...' section. Find the ones highlighted in yellow and add them to the note.",
+      "image_ids": [
+        0
+      ]
+    }
+  ],
+  "milestones": [],
+  "entity_diff_specs": [
+    {
+      "operation": "create",
+      "source": "appworld",
+      "table": "gmail.emails",
+      "entity_data": {
+        "sender_id": 102,
+        "recipient_ids": [
+          200
+        ],
+        "subject": "Research Data Notes",
+        "body": "Community policing strategies\nMediation/conflict mgmt.\n\nCongress Demographics\nAsian American\n\nLabour Party",
+        "response_to_email_id": null,
+        "created_at": "2026-04-16T23:57:02"
+      },
+      "column_similarity_measure": {
+        "sender_id": "column_exact_match_similarity",
+        "recipient_ids": "column_exact_match_similarity",
+        "subject": "column_rouge_l_similarity",
+        "body": "column_rouge_l_similarity",
+        "response_to_email_id": "column_ignore_similarity",
+        "created_at": "column_ignore_similarity"
+      }
+    },
+    {
+      "operation": "create",
+      "source": "appworld",
+      "table": "simple_note.notes",
+      "entity_data": {
+        "user_id": 102,
+        "title": "Research Data",
+        "content": "Community policing strategies\nMediation/conflict mgmt.\n\nCongress Demographics\nAsian American\n\nLabour Party",
+        "tags": [],
+        "created_at": "2026-04-16T23:57:02",
+        "updated_at": "2026-04-16T23:57:02",
+        "pinned": false,
+        "data": {}
+      },
+      "column_similarity_measure": {
+        "user_id": "column_exact_match_similarity",
+        "title": "column_rouge_l_similarity",
+        "content": "column_rouge_l_similarity",
+        "tags": "column_ignore_similarity",
+        "created_at": "column_ignore_similarity",
+        "updated_at": "column_ignore_similarity",
+        "pinned": "column_exact_match_similarity",
+        "data": "column_ignore_similarity"
+      }
+    }
+  ],
+  "task_completion_criteria": "Create a note titled 'Research Data' containing the topics 'Community policing strategies' and 'Mediation/conflict mgmt.', a heading 'Congress Demographics' with the group 'Asian American', and the 'Labour Party'. Then, email the complete note's contents to prof@university.edu.",
+  "categories": [
+    "APPWORLD",
+    "MULTIPLE_USER_TURN"
+  ],
+  "max_messages": 100,
+  "metadata": {
+    "original_scenario_id": "scenario_0227",
+    "expected_tools": [
+      "simple_note_create_note",
+      "simple_note_add_content_to_note",
+      "simple_note_show_note",
+      "gmail_send_email"
+    ],
+    "image_arrival": {
+      "1": [
+        "image_1"
+      ],
+      "2": [
+        "image_2"
+      ],
+      "4": [
+        "image_3"
+      ]
+    },
+    "image_delivery_map": [
+      {
+        "query": "Add a heading 'Congress Demographics' to the note. Then, look at this second chart, find the group with exactly 11 Republican members in the House, and add that group under the heading.",
+        "image_ids": [
+          1
+        ]
+      },
+      {
+        "query": "Now look at this third chart. Find the political party that stayed at exactly 19% support both before and after the leadership change. Add it to the note, then email the complete note to my professor at prof@university.edu.",
+        "image_ids": [
+          2
+        ]
+      }
+    ],
+    "scenario_metadata": {
+      "num_images": 3,
+      "num_user_rounds": 4,
+      "selected_flow_type": "filter",
+      "image_arrival": "mixed",
+      "challenge_type": "error_correction",
+      "require_disambiguation": false,
+      "dataset_type": "chartqapro"
+    }
+  }
+}

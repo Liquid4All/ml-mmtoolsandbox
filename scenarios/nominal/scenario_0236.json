@@ -1,0 +1,368 @@
+{
+  "name": "scenario_0236",
+  "base_scenario": "base",
+  "description": "The user is digitizing a stack of old paper documents and business records, extracting contact information to save to their device.",
+  "difficulty": "easy",
+  "appworld_base_task": "_base_",
+  "device_state_id": "robertmartinez@gmail.com",
+  "reference_time": "2026-04-16T23:57:22.071497+00:00",
+  "agentsandbox_entities": {},
+  "appworld_entities": {
+    "gmail.users": [
+      {
+        "id": 10100,
+        "first_name": "Roger",
+        "last_name": "Emerson Jr. MD",
+        "email": "roger.emerson@email.com",
+        "password": "placeholder_password",
+        "status": "active"
+      },
+      {
+        "id": 10101,
+        "first_name": "J.R.",
+        "last_name": "O'Connell",
+        "email": "jr.oconnell@email.com",
+        "password": "placeholder_password",
+        "status": "active"
+      },
+      {
+        "id": 10102,
+        "first_name": "Harold Levinson",
+        "last_name": "Associates, Inc.",
+        "email": "contact@haroldlevinson.com",
+        "password": "placeholder_password",
+        "status": "active"
+      },
+      {
+        "id": 10103,
+        "first_name": "Barbara A.",
+        "last_name": "Underwood",
+        "email": "barbara.underwood@email.com",
+        "password": "placeholder_password",
+        "status": "active"
+      },
+      {
+        "id": 10104,
+        "first_name": "Dr. Fred",
+        "last_name": "Kern, Jr.",
+        "email": "fred.kern@email.com",
+        "password": "placeholder_password",
+        "status": "active"
+      },
+      {
+        "id": 10105,
+        "first_name": "Nathan",
+        "last_name": "Allan",
+        "email": "nathan.allan@email.com",
+        "password": "placeholder_password",
+        "status": "active"
+      },
+      {
+        "id": 10106,
+        "first_name": "Jason",
+        "last_name": "Luginbill",
+        "email": "jason.luginbill@email.com",
+        "password": "placeholder_password",
+        "status": "active"
+      },
+      {
+        "id": 10107,
+        "first_name": "Admin",
+        "last_name": "",
+        "email": "admin@office.com",
+        "password": "placeholder_password",
+        "status": "active"
+      }
+    ]
+  },
+  "image_paths": [
+    "docvqa/images/43512.jpg",
+    "docvqa/images/2312.jpg",
+    "docvqa/images/54470.jpg",
+    "docvqa/images/47948.jpg",
+    "docvqa/images/61101.jpg",
+    "omnidocbench/images/000215.jpg"
+  ],
+  "messages": [
+    {
+      "sender": "SYSTEM",
+      "recipient": "USER",
+      "content": "{{USER_INSTRUCTION}}ROUND 1 [provide: image_1, image_2, image_3, image_4, image_5, image_6]\nQuery: I'm organizing contacts from this stack of scanned files. Please create contacts for Roger Emerson from the first document, J.R. O'Connell from the second, Harold Levinson Associates from the third, Barbara Underwood from the fourth, and Dr. Fred Kern from the fifth, using their respective addresses or phone numbers. Also, add Nathan Allan from the table in the last image, and use the phone number 785-539-3474 for him.\nInstructions: Ask the assistant to create contacts for the primary person or company in each of the first five scanned documents, extracting their addresses or phone numbers. For the sixth document, ask it to add the first person listed in the table, but explicitly instruct it to use the phone number belonging to the second person in that table. If the assistant flags that the phone number you requested actually belongs to the person in the second row, acknowledge the catch and wait for the next round. If the assistant proceeds to create the contact without noticing the mismatch, point out that it should have checked the table rows more carefully.\n\nROUND 2\nQuery: Oh, my mistake, I read the wrong row in that table! Please add Nathan Allan with his correct number, and also create a contact for Jason Luginbill with that 785 number I gave you earlier. Once that's done, send an email to admin@office.com letting them know the new scanned contacts have been fully saved.\nInstructions: Apologize for the mistake. Ask the assistant to correct it by saving the first person from the table with his actual phone number, and creating an additional contact for the second person using the phone number you mistakenly provided earlier. Finally, ask the assistant to send an email to admin@office.com stating that the new scanned contacts have been fully saved. Once the assistant confirms all contacts are created and the email is sent, conclude the conversation.\n\nYou have 6 images available to share with the agent using the send_message_with_image tool.\nIMPORTANT: Image IDs are ZERO-INDEXED integers (0, 1, 2, ...). Do NOT add 1 to the IDs.\nAvailable image IDs: [0, 1, 2, 3, 4, 5]\nImage mapping:\n  image_1.jpg -> image ID 0\n  image_2.jpg -> image ID 1\n  image_3.jpg -> image ID 2\n  image_4.jpg -> image ID 3\n  image_5.jpg -> image ID 4\n  image_6.jpg -> image ID 5"
+    },
+    {
+      "sender": "USER",
+      "recipient": "AGENT",
+      "content": "I'm organizing contacts from this stack of scanned files. Please create contacts for Roger Emerson from the first document, J.R. O'Connell from the second, Harold Levinson Associates from the third, Barbara Underwood from the fourth, and Dr. Fred Kern from the fifth, using their respective addresses or phone numbers. Also, add Nathan Allan from the table in the last image, and use the phone number 785-539-3474 for him.",
+      "image_ids": [
+        0,
+        1,
+        2,
+        3,
+        4,
+        5
+      ]
+    }
+  ],
+  "milestones": [],
+  "entity_diff_specs": [
+    {
+      "operation": "create",
+      "source": "appworld",
+      "table": "phone.contacts",
+      "entity_data": {
+        "user_id": 77,
+        "first_name": "Roger",
+        "last_name": "Emerson Jr. MD",
+        "email": "roger.emerson@email.com",
+        "phone_number": null,
+        "relationships": [],
+        "birthday": null,
+        "home_address": null,
+        "work_address": "3 Castle Creek Court, Dallas, TX 75225-1821",
+        "created_at": "2026-04-16T23:57:22"
+      },
+      "column_similarity_measure": {
+        "user_id": "column_exact_match_similarity",
+        "first_name": "column_exact_match_similarity",
+        "last_name": "column_exact_match_similarity",
+        "email": "column_exact_match_similarity",
+        "phone_number": "column_ignore_similarity",
+        "relationships": "column_ignore_similarity",
+        "birthday": "column_ignore_similarity",
+        "home_address": "column_ignore_similarity",
+        "work_address": "column_exact_match_similarity",
+        "created_at": "column_ignore_similarity"
+      }
+    },
+    {
+      "operation": "create",
+      "source": "appworld",
+      "table": "phone.contacts",
+      "entity_data": {
+        "user_id": 77,
+        "first_name": "J.R.",
+        "last_name": "O'Connell",
+        "email": "jr.oconnell@email.com",
+        "phone_number": "202-628-0189",
+        "relationships": [],
+        "birthday": null,
+        "home_address": null,
+        "work_address": null,
+        "created_at": "2026-04-16T23:57:22"
+      },
+      "column_similarity_measure": {
+        "user_id": "column_exact_match_similarity",
+        "first_name": "column_exact_match_similarity",
+        "last_name": "column_exact_match_similarity",
+        "email": "column_exact_match_similarity",
+        "phone_number": "column_exact_match_similarity",
+        "relationships": "column_ignore_similarity",
+        "birthday": "column_ignore_similarity",
+        "home_address": "column_ignore_similarity",
+        "work_address": "column_ignore_similarity",
+        "created_at": "column_ignore_similarity"
+      }
+    },
+    {
+      "operation": "create",
+      "source": "appworld",
+      "table": "phone.contacts",
+      "entity_data": {
+        "user_id": 77,
+        "first_name": "Harold Levinson",
+        "last_name": "Associates, Inc.",
+        "email": "contact@haroldlevinson.com",
+        "phone_number": null,
+        "relationships": [],
+        "birthday": null,
+        "home_address": null,
+        "work_address": "1 Enterprise Place, Hicksville NY 11801",
+        "created_at": "2026-04-16T23:57:22"
+      },
+      "column_similarity_measure": {
+        "user_id": "column_exact_match_similarity",
+        "first_name": "column_exact_match_similarity",
+        "last_name": "column_exact_match_similarity",
+        "email": "column_exact_match_similarity",
+        "phone_number": "column_ignore_similarity",
+        "relationships": "column_ignore_similarity",
+        "birthday": "column_ignore_similarity",
+        "home_address": "column_ignore_similarity",
+        "work_address": "column_exact_match_similarity",
+        "created_at": "column_ignore_similarity"
+      }
+    },
+    {
+      "operation": "create",
+      "source": "appworld",
+      "table": "phone.contacts",
+      "entity_data": {
+        "user_id": 77,
+        "first_name": "Barbara A.",
+        "last_name": "Underwood",
+        "email": "barbara.underwood@email.com",
+        "phone_number": null,
+        "relationships": [],
+        "birthday": null,
+        "home_address": "26 Minot Place, Newtonville, Mass. 02160",
+        "work_address": null,
+        "created_at": "2026-04-16T23:57:22"
+      },
+      "column_similarity_measure": {
+        "user_id": "column_exact_match_similarity",
+        "first_name": "column_exact_match_similarity",
+        "last_name": "column_exact_match_similarity",
+        "email": "column_exact_match_similarity",
+        "phone_number": "column_ignore_similarity",
+        "relationships": "column_ignore_similarity",
+        "birthday": "column_ignore_similarity",
+        "home_address": "column_exact_match_similarity",
+        "work_address": "column_ignore_similarity",
+        "created_at": "column_ignore_similarity"
+      }
+    },
+    {
+      "operation": "create",
+      "source": "appworld",
+      "table": "phone.contacts",
+      "entity_data": {
+        "user_id": 77,
+        "first_name": "Dr. Fred",
+        "last_name": "Kern, Jr.",
+        "email": "fred.kern@email.com",
+        "phone_number": null,
+        "relationships": [],
+        "birthday": null,
+        "home_address": null,
+        "work_address": "4200 East 9th Avenue, Denver, Colorado",
+        "created_at": "2026-04-16T23:57:22"
+      },
+      "column_similarity_measure": {
+        "user_id": "column_exact_match_similarity",
+        "first_name": "column_exact_match_similarity",
+        "last_name": "column_exact_match_similarity",
+        "email": "column_exact_match_similarity",
+        "phone_number": "column_ignore_similarity",
+        "relationships": "column_ignore_similarity",
+        "birthday": "column_ignore_similarity",
+        "home_address": "column_ignore_similarity",
+        "work_address": "column_exact_match_similarity",
+        "created_at": "column_ignore_similarity"
+      }
+    },
+    {
+      "operation": "create",
+      "source": "appworld",
+      "table": "phone.contacts",
+      "entity_data": {
+        "user_id": 77,
+        "first_name": "Nathan",
+        "last_name": "Allan",
+        "email": "nathan.allan@email.com",
+        "phone_number": "512-490-0057",
+        "relationships": [],
+        "birthday": null,
+        "home_address": null,
+        "work_address": null,
+        "created_at": "2026-04-16T23:57:22"
+      },
+      "column_similarity_measure": {
+        "user_id": "column_exact_match_similarity",
+        "first_name": "column_exact_match_similarity",
+        "last_name": "column_exact_match_similarity",
+        "email": "column_exact_match_similarity",
+        "phone_number": "column_exact_match_similarity",
+        "relationships": "column_ignore_similarity",
+        "birthday": "column_ignore_similarity",
+        "home_address": "column_ignore_similarity",
+        "work_address": "column_ignore_similarity",
+        "created_at": "column_ignore_similarity"
+      }
+    },
+    {
+      "operation": "create",
+      "source": "appworld",
+      "table": "phone.contacts",
+      "entity_data": {
+        "user_id": 77,
+        "first_name": "Jason",
+        "last_name": "Luginbill",
+        "email": "jason.luginbill@email.com",
+        "phone_number": "785-539-3474",
+        "relationships": [],
+        "birthday": null,
+        "home_address": null,
+        "work_address": null,
+        "created_at": "2026-04-16T23:57:22"
+      },
+      "column_similarity_measure": {
+        "user_id": "column_exact_match_similarity",
+        "first_name": "column_exact_match_similarity",
+        "last_name": "column_exact_match_similarity",
+        "email": "column_exact_match_similarity",
+        "phone_number": "column_exact_match_similarity",
+        "relationships": "column_ignore_similarity",
+        "birthday": "column_ignore_similarity",
+        "home_address": "column_ignore_similarity",
+        "work_address": "column_ignore_similarity",
+        "created_at": "column_ignore_similarity"
+      }
+    },
+    {
+      "operation": "create",
+      "source": "appworld",
+      "table": "gmail.emails",
+      "entity_data": {
+        "sender_id": 77,
+        "recipient_ids": [
+          10107
+        ],
+        "subject": "Scanned contacts saved",
+        "body": "The new scanned contacts have been fully saved.",
+        "response_to_email_id": null,
+        "created_at": "2026-04-16T23:57:22"
+      },
+      "column_similarity_measure": {
+        "sender_id": "column_exact_match_similarity",
+        "recipient_ids": "column_exact_match_similarity",
+        "subject": "column_rouge_l_similarity",
+        "body": "column_rouge_l_similarity",
+        "response_to_email_id": "column_ignore_similarity",
+        "created_at": "column_ignore_similarity"
+      }
+    }
+  ],
+  "task_completion_criteria": "Create contacts for Roger Emerson Jr. MD with address 3 Castle Creek Court, Dallas, TX 75225-1821; J.R. O'Connell with phone 202-628-0189; Harold Levinson Associates, Inc. with address 1 Enterprise Place, Hicksville NY 11801; Barbara A. Underwood with address 26 Minot Place, Newtonville, Mass. 02160; Dr. Fred Kern, Jr. with address 4200 East 9th Avenue, Denver, Colorado; Nathan Allan with phone 512-490-0057; and Jason Luginbill with phone 785-539-3474. Then send an email to admin@office.com confirming that the scanned contacts have been saved.",
+  "categories": [
+    "APPWORLD",
+    "MULTIPLE_USER_TURN"
+  ],
+  "max_messages": 100,
+  "metadata": {
+    "original_scenario_id": "scenario_0236",
+    "expected_tools": [
+      "contacts_add_contact",
+      "gmail_send_email"
+    ],
+    "image_arrival": {
+      "1": [
+        "image_1",
+        "image_2",
+        "image_3",
+        "image_4",
+        "image_5",
+        "image_6"
+      ]
+    },
+    "image_delivery_map": [],
+    "scenario_metadata": {
+      "num_images": 6,
+      "num_user_rounds": 2,
+      "selected_flow_type": "validate",
+      "image_arrival": "upfront",
+      "challenge_type": "error_correction",
+      "require_disambiguation": false,
+      "dataset_type": "omnidocbench"
+    }
+  }
+}

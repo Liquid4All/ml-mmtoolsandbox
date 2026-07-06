@@ -1,0 +1,196 @@
+{
+  "name": "scenario_0919",
+  "base_scenario": "base",
+  "description": "The user is organizing a trivia night and is using various infographics they've collected to draft a structured list of questions in a note before emailing it to their teammate.",
+  "difficulty": "easy",
+  "appworld_base_task": "_base_",
+  "device_state_id": "les_ball@gmail.com",
+  "reference_time": "2026-04-17T00:17:58.620613+00:00",
+  "agentsandbox_entities": {},
+  "appworld_entities": {
+    "phone.contacts": [
+      {
+        "id": 200,
+        "user_id": 5,
+        "first_name": "Brian",
+        "last_name": "Davis",
+        "email": "brian.davis@example.com",
+        "phone_number": null,
+        "relationships": [],
+        "birthday": null,
+        "home_address": null,
+        "work_address": null,
+        "created_at": "2025-01-01T12:00:00"
+      }
+    ],
+    "simple_note.notes": [
+      {
+        "id": 3200,
+        "user_id": 5,
+        "title": "Old Trivia Draft",
+        "content": "1. What is the tallest mountain in the world?\nA: Mount Everest\n\n2. Who painted the Mona Lisa?\nA: Leonardo da Vinci",
+        "tags": [
+          "trivia"
+        ],
+        "created_at": "2026-04-15T10:00:00",
+        "updated_at": "2026-04-15T10:00:00",
+        "pinned": false,
+        "data": null
+      }
+    ],
+    "gmail.users": [
+      {
+        "id": 200,
+        "first_name": "Brian",
+        "last_name": "Davis",
+        "email": "brian.davis@example.com",
+        "password": "default_password",
+        "status": "active",
+        "created_at": "2025-01-01T00:00:00",
+        "last_logged_in": "2025-01-01T00:00:00"
+      },
+      {
+        "id": 10101,
+        "first_name": "Br_Ritt",
+        "last_name": "",
+        "email": "br_ritt@gmail.com",
+        "password": "placeholder_password",
+        "status": "active"
+      }
+    ]
+  },
+  "image_paths": [
+    "infographicvqa/images/98360.jpg",
+    "infographicvqa/images/94262.jpg",
+    "chartmuseum/images/methane_zs.png"
+  ],
+  "messages": [
+    {
+      "sender": "SYSTEM",
+      "recipient": "USER",
+      "content": "{{USER_INSTRUCTION}}ROUND 1\nQuery: I'm preparing for a trivia night. Can you delete my old note called 'Old Trivia Draft', and then create a new note titled 'General Knowledge Quiz' with empty sections for 'Technology', 'Economics', and 'Environment'?\nInstructions: Tell the assistant that you are preparing for a trivia night. Ask it to delete your old note called 'Old Trivia Draft', and then create a new note titled 'General Knowledge Quiz' with empty sections for 'Technology', 'Economics', and 'Environment'. If the assistant asks for confirmation to delete the note, approve it. Once the new note is created, move to the next round.\n\nROUND 2\nQuery: Actually, let's update the new note's title to 'Trivia Night Questions' and add a 'Bonus' section at the very end.\nInstructions: Ask the assistant to change the title of the note it just created to 'Trivia Night Questions' and append a 'Bonus' section at the end of the note. Wait for confirmation that the note has been updated before proceeding.\n\nROUND 3 [provide: image_1]\nQuery: I have this infographic about social media history. Add a question and answer to the 'Technology' section about which blogging site was launched in 2007 and who founded it.\nInstructions: Present the new infographic to the assistant. Ask it to add a trivia question and its answer to the 'Technology' section about the blogging site launched in 2007 and its founder, based on the image. Do not mention the platform's name or the founder's name yourself; let the assistant extract them. Once the note is updated, proceed to the next round.\n\nROUND 4 [provide: image_2]\nQuery: Now look at this food security infographic. Add a question and answer to the 'Economics' section about the projected subsidy cost of the National Food Security Bill over 3 years.\nInstructions: Show the food security infographic. Instruct the assistant to add a question and answer to the 'Economics' section regarding the projected subsidy cost of the National Food Security Bill over 3 years, as shown in the image. Do not state the exact number yourself. Wait for the assistant to confirm the note is updated.\n\nROUND 5 [provide: image_3]\nQuery: Finally, check this chart. Add a question and answer to the 'Environment' section about the percentage of methane emissions coming from wetlands. After that, email the finalized note to Brian.\nInstructions: Provide the final chart. Ask the assistant to add a question and answer to the 'Environment' section about the percentage of methane emissions that come from wetlands. Then, ask it to email the finalized note to Brian. If the assistant asks for clarification on which Brian you mean, specify that you mean your friend Brian Ritter. Do not reveal the percentage yourself. End the conversation once the email is successfully sent.\n\nYou have 3 images available to share with the agent using the send_message_with_image tool.\nIMPORTANT: Image IDs are ZERO-INDEXED integers (0, 1, 2, ...). Do NOT add 1 to the IDs.\nAvailable image IDs: [0, 1, 2]\nImage mapping:\n  image_1.jpg -> image ID 0\n  image_2.jpg -> image ID 1\n  image_3.jpg -> image ID 2\n\n## IMAGE DELIVERY\n\n\u26a0\ufe0f IMPORTANT: You MUST use the `send_message_with_image` tool to share images with User B. Do NOT just describe images in text \u2014 you MUST call the tool.\n\nImage delivery schedule:\n\n  Round 3: YOU MUST call the send_message_with_image tool with image_ids='0' \u2014 do NOT write the tool name as text; use the actual function call. Include a natural, conversational message to the assistant.\n  Round 4: YOU MUST call the send_message_with_image tool with image_ids='1' \u2014 do NOT write the tool name as text; use the actual function call. Include a natural, conversational message to the assistant.\n  Round 5: YOU MUST call the send_message_with_image tool with image_ids='2' \u2014 do NOT write the tool name as text; use the actual function call. Include a natural, conversational message to the assistant."
+    },
+    {
+      "sender": "USER",
+      "recipient": "AGENT",
+      "content": "I'm preparing for a trivia night. Can you delete my old note called 'Old Trivia Draft', and then create a new note titled 'General Knowledge Quiz' with empty sections for 'Technology', 'Economics', and 'Environment'?"
+    }
+  ],
+  "milestones": [],
+  "entity_diff_specs": [
+    {
+      "operation": "create",
+      "source": "appworld",
+      "table": "gmail.emails",
+      "entity_data": {
+        "sender_id": 5,
+        "recipient_ids": [
+          10101
+        ],
+        "subject": "Trivia Night Questions",
+        "body": "Technology\nQ: Which blogging site was launched in 2007 and who founded it?\nA: Tumblr, founded by David Karp in 2007.\n\nEconomics\nQ: What is the projected subsidy cost of the National Food Security Bill over 3 years?\nA: 4,50,383.\n\nEnvironment\nQ: What percentage of methane emissions comes from wetlands?\nA: 30%.\n\nBonus\n",
+        "response_to_email_id": null,
+        "created_at": "2026-04-17T00:17:58"
+      },
+      "column_similarity_measure": {
+        "sender_id": "column_exact_match_similarity",
+        "recipient_ids": "column_exact_match_similarity",
+        "subject": "column_rouge_l_similarity",
+        "body": "column_rouge_l_similarity",
+        "response_to_email_id": "column_ignore_similarity",
+        "created_at": "column_ignore_similarity"
+      }
+    },
+    {
+      "operation": "create",
+      "source": "appworld",
+      "table": "simple_note.notes",
+      "entity_data": {
+        "user_id": 5,
+        "title": "Trivia Night Questions",
+        "content": "Technology\nQ: Which blogging site was launched in 2007 and who founded it?\nA: Tumblr was founded by David Karp in 2007.\n\nEconomics\nQ: What is the projected subsidy cost of the National Food Security Bill over 3 years?\nA: 4,50,383\n\nEnvironment\nQ: What percentage of methane emissions come from wetlands?\nA: 30%\n\nBonus\n",
+        "tags": [],
+        "created_at": "2026-04-17T00:17:58",
+        "updated_at": "2026-04-17T00:17:58",
+        "pinned": false,
+        "data": null
+      },
+      "column_similarity_measure": {
+        "user_id": "column_exact_match_similarity",
+        "title": "column_rouge_l_similarity",
+        "content": "column_rouge_l_similarity",
+        "tags": "column_ignore_similarity",
+        "created_at": "column_ignore_similarity",
+        "updated_at": "column_ignore_similarity",
+        "pinned": "column_exact_match_similarity",
+        "data": "column_ignore_similarity"
+      }
+    },
+    {
+      "operation": "delete",
+      "source": "appworld",
+      "table": "simple_note.notes",
+      "entity_id_column": "id",
+      "entity_id_value": 3200,
+      "column_similarity_measure": {
+        "id": "column_exact_match_similarity"
+      }
+    }
+  ],
+  "task_completion_criteria": "The user wants to delete an existing note titled 'Old Trivia Draft', and create a new note titled 'Trivia Night Questions' containing empty sections for 'Technology', 'Economics', 'Environment', and 'Bonus'. The 'Technology' section must be updated with a question and answer about Tumblr being founded by David Karp in 2007. The 'Economics' section must be updated with a question and answer about the projected subsidy cost of the National Food Security Bill being 4,50,383. The 'Environment' section must be updated with a question and answer stating that 30% of methane emissions come from wetlands. Finally, the user wants the completed note emailed to Brian Ritter (br_ritt@gmail.com).",
+  "categories": [
+    "APPWORLD",
+    "MULTIPLE_USER_TURN"
+  ],
+  "max_messages": 100,
+  "metadata": {
+    "original_scenario_id": "scenario_0919",
+    "expected_tools": [
+      "create_note",
+      "simple_note_update_note",
+      "simple_note_add_content_to_note",
+      "simple_note_show_note",
+      "gmail_send_email"
+    ],
+    "image_arrival": {
+      "3": [
+        "image_1"
+      ],
+      "4": [
+        "image_2"
+      ],
+      "5": [
+        "image_3"
+      ]
+    },
+    "image_delivery_map": [
+      {
+        "query": "I have this infographic about social media history. Add a question and answer to the 'Technology' section about which blogging site was launched in 2007 and who founded it.",
+        "image_ids": [
+          0
+        ]
+      },
+      {
+        "query": "Now look at this food security infographic. Add a question and answer to the 'Economics' section about the projected subsidy cost of the National Food Security Bill over 3 years.",
+        "image_ids": [
+          1
+        ]
+      },
+      {
+        "query": "Finally, check this chart. Add a question and answer to the 'Environment' section about the percentage of methane emissions coming from wetlands. After that, email the finalized note to Brian.",
+        "image_ids": [
+          2
+        ]
+      }
+    ],
+    "scenario_metadata": {
+      "num_images": 3,
+      "num_user_rounds": 5,
+      "selected_flow_type": "aggregate",
+      "image_arrival": "late",
+      "challenge_type": "state_mutation",
+      "require_disambiguation": true,
+      "dataset_type": "chartmuseum"
+    }
+  }
+}

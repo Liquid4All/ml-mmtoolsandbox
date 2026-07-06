@@ -1,0 +1,397 @@
+{
+  "name": "scenario_0090",
+  "base_scenario": "base",
+  "description": "Nancy is working on a political analysis project, tracking various international political parties and demographics. She is organizing her watchlist and sharing key data insights with her friend Alex. (UI mode)",
+  "difficulty": "easy",
+  "appworld_base_task": "_base_",
+  "device_state_id": "nan_ritt@gmail.com",
+  "reference_time": "2026-04-16T23:53:23.611513+00:00",
+  "agentsandbox_entities": {},
+  "appworld_entities": {
+    "phone.contacts": [
+      {
+        "id": 200,
+        "user_id": 95,
+        "first_name": "Alex",
+        "last_name": "Johnson",
+        "email": "alex.johnson@gmail.com",
+        "phone_number": "555-0199",
+        "relationships": [],
+        "birthday": null,
+        "home_address": null,
+        "work_address": null,
+        "created_at": "2026-04-01T12:00:00"
+      }
+    ],
+    "gmail.users": [
+      {
+        "id": 200,
+        "first_name": "Alex",
+        "last_name": "Johnson",
+        "email": "alex.johnson@gmail.com",
+        "password": "default_password",
+        "status": "active",
+        "created_at": "2025-01-01T00:00:00",
+        "last_logged_in": "2025-01-01T00:00:00"
+      }
+    ],
+    "phone.users": [
+      {
+        "id": 200,
+        "first_name": "Alex",
+        "last_name": "Johnson",
+        "phone_number": "555-0199",
+        "password": "default_password",
+        "created_at": "2025-01-01T00:00:00",
+        "last_logged_in": "2025-01-01T00:00:00"
+      }
+    ]
+  },
+  "image_paths": [
+    "chartqapro/images/chart_0733.jpg",
+    "chartqapro/images/chart_1450.jpg",
+    "chartqapro/images/chart_1864.jpg",
+    "hiertext/images/test/7b7d7a427b211475.jpg",
+    "chartqapro/images/chart_1827.jpg"
+  ],
+  "messages": [
+    {
+      "sender": "SYSTEM",
+      "recipient": "USER",
+      "content": "{{USER_INSTRUCTION}}ROUND 1\nQuery: Create a new note called 'Election Watchlist' and add these political parties to it: AKP, CHP, BJP, AAP, Lib Dems, Green, and UKIP.\nInstructions: Instruct the assistant to create a new note titled 'Election Watchlist' containing the specified list of political parties. Once the assistant confirms the note has been created successfully, proceed to the next round.\n\nROUND 2 [provide: image_1, image_2, image_3]\nQuery: Now cross-reference these election charts with the parties in my 'Election Watchlist' note. Check the most recent election results for each party — I'll decide which ones are worth texting Alex about.\nInstructions: Ask the assistant to analyze the three election charts and check the most recent election result for each party in the 'Election Watchlist' note. When the assistant presents the results, select the parties that achieved over 45% of the vote (AKP at 49.4%, AAP at 54%, and Lib Dems at 47%) and send a text message for each to Alex saying '[Party] reached [Percentage]% in the latest results'. Use `ui_user_interact` to select the qualifying parties. The assistant should find multiple contacts named Alex. When it asks for clarification or presents contacts, select Alexander Riddle via `ui_user_interact`. If no interactive UI is shown, tell the assistant which parties qualify (over 45%) and that you mean Alexander Riddle. Once the messages are sent, proceed.\n\nROUND 3 [provide: image_4]\nQuery: Look at this political poster. The text box mentions two parties that want this 'US style' system. Check my 'Election Watchlist' note, and if either of those parties are currently in it, update the note to remove them.\nInstructions: Direct the assistant to read the central text box in the provided political poster, identify the two political parties mentioned as wanting the 'US style' system, and remove them from your 'Election Watchlist' note if they are present. Once the assistant confirms the note has been updated, proceed to the next round.\n\nROUND 4 [provide: image_5]\nQuery: One more chart to analyze. Look at the demographic deviation data in this bar chart — I want to text Alex about the groups that stand out with a notable positive deviation. I'll tell you which ones after I see the data.\nInstructions: Ask the assistant to examine the bar chart and identify demographic groups that have their percentage deviation explicitly labeled. When the assistant presents the data, select the groups with a positive deviation of +3.5% or more (Urban and Jat) and send a text message for each to Alex saying 'We need to analyze the [Group] demographic'. Use `ui_user_interact` to select the qualifying groups. If the assistant asks which Alex, confirm it is Alexander Riddle. If no interactive UI is shown, tell the assistant which groups qualify and to text Alexander Riddle. Conclude the conversation once the messages are sent.\n\nYou have 5 images available to share with the agent using the send_message_with_image tool.\nIMPORTANT: Image IDs are ZERO-INDEXED integers (0, 1, 2, ...). Do NOT add 1 to the IDs.\nAvailable image IDs: [0, 1, 2, 3, 4]\nImage mapping:\n  image_1.jpg -> image ID 0\n  image_2.jpg -> image ID 1\n  image_3.jpg -> image ID 2\n  image_4.jpg -> image ID 3\n  image_5.jpg -> image ID 4\n\n## IMAGE DELIVERY\n\n⚠️ IMPORTANT: You MUST use the `send_message_with_image` tool to share images with User B. Do NOT just describe images in text — you MUST call the tool.\n\nImage delivery schedule:\n\n  Round 2: YOU MUST call the send_message_with_image tool with image_ids='0,1,2' — do NOT write the tool name as text; use the actual function call. Include a natural, conversational message to the assistant.\n  Round 3: YOU MUST call the send_message_with_image tool with image_ids='3' — do NOT write the tool name as text; use the actual function call. Include a natural, conversational message to the assistant.\n  Round 4: YOU MUST call the send_message_with_image tool with image_ids='4' — do NOT write the tool name as text; use the actual function call. Include a natural, conversational message to the assistant."
+    },
+    {
+      "sender": "USER",
+      "recipient": "AGENT",
+      "content": "Create a new note called 'Election Watchlist' and add these political parties to it: AKP, CHP, BJP, AAP, Lib Dems, Green, and UKIP."
+    }
+  ],
+  "milestones": [],
+  "entity_diff_specs": [
+    {
+      "operation": "create",
+      "source": "appworld",
+      "table": "phone.global_text_messages",
+      "entity_data": {
+        "sender_id": 95,
+        "receiver_id": 20,
+        "message": "AKP reached 49.4% in the latest results",
+        "created_at": "2026-04-16T23:53:23"
+      },
+      "column_similarity_measure": {
+        "sender_id": "column_exact_match_similarity",
+        "receiver_id": "column_exact_match_similarity",
+        "message": "column_rouge_l_similarity",
+        "created_at": "column_ignore_similarity"
+      }
+    },
+    {
+      "operation": "create",
+      "source": "appworld",
+      "table": "phone.user_text_messages",
+      "entity_data": {
+        "global_text_message_id": 200,
+        "user_id": 95,
+        "created_at": "2026-04-16T23:53:23"
+      },
+      "column_similarity_measure": {
+        "global_text_message_id": "column_ignore_similarity",
+        "user_id": "column_exact_match_similarity",
+        "created_at": "column_ignore_similarity"
+      }
+    },
+    {
+      "operation": "create",
+      "source": "appworld",
+      "table": "phone.global_text_messages",
+      "entity_data": {
+        "sender_id": 95,
+        "receiver_id": 20,
+        "message": "AAP reached 54% in the latest results",
+        "created_at": "2026-04-16T23:53:23"
+      },
+      "column_similarity_measure": {
+        "sender_id": "column_exact_match_similarity",
+        "receiver_id": "column_exact_match_similarity",
+        "message": "column_rouge_l_similarity",
+        "created_at": "column_ignore_similarity"
+      }
+    },
+    {
+      "operation": "create",
+      "source": "appworld",
+      "table": "phone.user_text_messages",
+      "entity_data": {
+        "global_text_message_id": 201,
+        "user_id": 95,
+        "created_at": "2026-04-16T23:53:23"
+      },
+      "column_similarity_measure": {
+        "global_text_message_id": "column_ignore_similarity",
+        "user_id": "column_exact_match_similarity",
+        "created_at": "column_ignore_similarity"
+      }
+    },
+    {
+      "operation": "create",
+      "source": "appworld",
+      "table": "phone.global_text_messages",
+      "entity_data": {
+        "sender_id": 95,
+        "receiver_id": 20,
+        "message": "Lib Dems reached 47% in the latest results",
+        "created_at": "2026-04-16T23:53:23"
+      },
+      "column_similarity_measure": {
+        "sender_id": "column_exact_match_similarity",
+        "receiver_id": "column_exact_match_similarity",
+        "message": "column_rouge_l_similarity",
+        "created_at": "column_ignore_similarity"
+      }
+    },
+    {
+      "operation": "create",
+      "source": "appworld",
+      "table": "phone.user_text_messages",
+      "entity_data": {
+        "global_text_message_id": 202,
+        "user_id": 95,
+        "created_at": "2026-04-16T23:53:23"
+      },
+      "column_similarity_measure": {
+        "global_text_message_id": "column_ignore_similarity",
+        "user_id": "column_exact_match_similarity",
+        "created_at": "column_ignore_similarity"
+      }
+    },
+    {
+      "operation": "create",
+      "source": "appworld",
+      "table": "phone.global_text_messages",
+      "entity_data": {
+        "sender_id": 95,
+        "receiver_id": 20,
+        "message": "We need to analyze the Urban demographic",
+        "created_at": "2026-04-16T23:53:23"
+      },
+      "column_similarity_measure": {
+        "sender_id": "column_exact_match_similarity",
+        "receiver_id": "column_exact_match_similarity",
+        "message": "column_rouge_l_similarity",
+        "created_at": "column_ignore_similarity"
+      }
+    },
+    {
+      "operation": "create",
+      "source": "appworld",
+      "table": "phone.user_text_messages",
+      "entity_data": {
+        "global_text_message_id": 203,
+        "user_id": 95,
+        "created_at": "2026-04-16T23:53:23"
+      },
+      "column_similarity_measure": {
+        "global_text_message_id": "column_ignore_similarity",
+        "user_id": "column_exact_match_similarity",
+        "created_at": "column_ignore_similarity"
+      }
+    },
+    {
+      "operation": "create",
+      "source": "appworld",
+      "table": "phone.global_text_messages",
+      "entity_data": {
+        "sender_id": 95,
+        "receiver_id": 20,
+        "message": "We need to analyze the Jat demographic",
+        "created_at": "2026-04-16T23:53:23"
+      },
+      "column_similarity_measure": {
+        "sender_id": "column_exact_match_similarity",
+        "receiver_id": "column_exact_match_similarity",
+        "message": "column_rouge_l_similarity",
+        "created_at": "column_ignore_similarity"
+      }
+    },
+    {
+      "operation": "create",
+      "source": "appworld",
+      "table": "phone.user_text_messages",
+      "entity_data": {
+        "global_text_message_id": 204,
+        "user_id": 95,
+        "created_at": "2026-04-16T23:53:23"
+      },
+      "column_similarity_measure": {
+        "global_text_message_id": "column_ignore_similarity",
+        "user_id": "column_exact_match_similarity",
+        "created_at": "column_ignore_similarity"
+      }
+    },
+    {
+      "operation": "create",
+      "source": "appworld",
+      "table": "simple_note.notes",
+      "entity_data": {
+        "user_id": 95,
+        "title": "Election Watchlist",
+        "content": "AKP\nCHP\nBJP\nAAP\nLib Dems\nGreen",
+        "tags": [],
+        "created_at": "2026-04-16T23:53:23",
+        "updated_at": "2026-04-16T23:53:23",
+        "pinned": false,
+        "data": null
+      },
+      "column_similarity_measure": {
+        "user_id": "column_exact_match_similarity",
+        "title": "column_rouge_l_similarity",
+        "content": "column_rouge_l_similarity",
+        "tags": "column_ignore_similarity",
+        "created_at": "column_ignore_similarity",
+        "updated_at": "column_ignore_similarity",
+        "pinned": "column_exact_match_similarity",
+        "data": "column_ignore_similarity"
+      }
+    },
+    {
+      "operation": "create",
+      "source": "appworld",
+      "table": "phone.user_text_messages",
+      "entity_data": {
+        "global_text_message_id": 200,
+        "user_id": 20,
+        "created_at": "2026-04-16T23:53:23"
+      },
+      "column_similarity_measure": {
+        "global_text_message_id": "column_ignore_similarity",
+        "user_id": "column_exact_match_similarity",
+        "created_at": "column_ignore_similarity"
+      }
+    },
+    {
+      "operation": "create",
+      "source": "appworld",
+      "table": "phone.user_text_messages",
+      "entity_data": {
+        "global_text_message_id": 201,
+        "user_id": 20,
+        "created_at": "2026-04-16T23:53:23"
+      },
+      "column_similarity_measure": {
+        "global_text_message_id": "column_ignore_similarity",
+        "user_id": "column_exact_match_similarity",
+        "created_at": "column_ignore_similarity"
+      }
+    },
+    {
+      "operation": "create",
+      "source": "appworld",
+      "table": "phone.user_text_messages",
+      "entity_data": {
+        "global_text_message_id": 202,
+        "user_id": 20,
+        "created_at": "2026-04-16T23:53:23"
+      },
+      "column_similarity_measure": {
+        "global_text_message_id": "column_ignore_similarity",
+        "user_id": "column_exact_match_similarity",
+        "created_at": "column_ignore_similarity"
+      }
+    },
+    {
+      "operation": "create",
+      "source": "appworld",
+      "table": "phone.user_text_messages",
+      "entity_data": {
+        "global_text_message_id": 203,
+        "user_id": 20,
+        "created_at": "2026-04-16T23:53:23"
+      },
+      "column_similarity_measure": {
+        "global_text_message_id": "column_ignore_similarity",
+        "user_id": "column_exact_match_similarity",
+        "created_at": "column_ignore_similarity"
+      }
+    },
+    {
+      "operation": "create",
+      "source": "appworld",
+      "table": "phone.user_text_messages",
+      "entity_data": {
+        "global_text_message_id": 204,
+        "user_id": 20,
+        "created_at": "2026-04-16T23:53:23"
+      },
+      "column_similarity_measure": {
+        "global_text_message_id": "column_ignore_similarity",
+        "user_id": "column_exact_match_similarity",
+        "created_at": "column_ignore_similarity"
+      }
+    }
+  ],
+  "task_completion_criteria": "Create a note titled 'Election Watchlist' containing AKP, CHP, BJP, AAP, Lib Dems, Green, and UKIP. Send separate text messages to Alexander Riddle saying 'AKP reached 49.4% in the latest results', 'AAP reached 54% in the latest results', and 'Lib Dems reached 47% in the latest results'. Update the 'Election Watchlist' note to remove UKIP based on the text in the political poster. Finally, send separate text messages to Alexander Riddle saying 'We need to analyze the Urban demographic' and 'We need to analyze the Jat demographic'.\n\nUI Requirements:\n- Round 2: The agent must present the election results for each party alongside the watchlist in a structured interactive UI that lets the user select which parties to text Alex about.\n- Round 4: The agent must present the demographic deviation data in a structured interactive UI that lets the user select which groups to text Alex about.",
+  "categories": [
+    "APPWORLD",
+    "MULTIPLE_USER_TURN",
+    "UI_MODE"
+  ],
+  "max_messages": 100,
+  "metadata": {
+    "original_scenario_id": "scenario_0090",
+    "expected_tools": [
+      "create_note",
+      "simple_note_show_note",
+      "messages_send_text_message",
+      "simple_note_update_note",
+      "render_ui_screen",
+      "show_ui_to_user",
+      "ui_user_interact",
+      "ui_get_quick_start",
+      "ui_get_item_details"
+    ],
+    "image_arrival": {
+      "2": [
+        "image_1",
+        "image_2",
+        "image_3"
+      ],
+      "3": [
+        "image_4"
+      ],
+      "4": [
+        "image_5"
+      ]
+    },
+    "image_delivery_map": [
+      {
+        "query": "Now cross-reference these election charts with the parties in my 'Election Watchlist' note. Check the most recent election results for each party — I'll decide which ones are worth texting Alex about.",
+        "image_ids": [
+          0,
+          1,
+          2
+        ]
+      },
+      {
+        "query": "Look at this political poster. The text box mentions two parties that want this 'US style' system. Check my 'Election Watchlist' note, and if either of those parties are currently in it, update the note to remove them.",
+        "image_ids": [
+          3
+        ]
+      },
+      {
+        "query": "One more chart to analyze. Look at the demographic deviation data in this bar chart — I want to text Alex about the groups that stand out with a notable positive deviation. I'll tell you which ones after I see the data.",
+        "image_ids": [
+          4
+        ]
+      }
+    ],
+    "scenario_metadata": {
+      "num_images": 5,
+      "num_user_rounds": 4,
+      "selected_flow_type": "filter",
+      "image_arrival": "late",
+      "challenge_type": "none",
+      "require_disambiguation": true,
+      "dataset_type": "chartqapro"
+    }
+  }
+}

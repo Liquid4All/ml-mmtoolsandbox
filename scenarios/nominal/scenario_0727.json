@@ -1,0 +1,210 @@
+{
+  "name": "scenario_0727",
+  "base_scenario": "base",
+  "description": "Chris is processing a batch of physical documents, categorizing them and setting reminders to digitize them later based on their topics.",
+  "difficulty": "easy",
+  "appworld_base_task": "_base_",
+  "device_state_id": "chris.mcco@gmail.com",
+  "reference_time": "2026-04-17T00:12:37.802233+00:00",
+  "agentsandbox_entities": {
+    "reminder": [
+      {
+        "reminder_id": "reminder_100",
+        "content": "Digitize math document: 1994 William Lowell Putnam Mathematical Competition",
+        "latitude": null,
+        "longitude": null,
+        "creation_datetime": "2026-04-16T10:00:00Z",
+        "reminder_datetime": "2026-04-18T10:00:00Z"
+      },
+      {
+        "reminder_id": "reminder_101",
+        "content": "Digitize math document: 1995 William Lowell Putnam Mathematical Competition",
+        "latitude": null,
+        "longitude": null,
+        "creation_datetime": "2026-04-16T10:00:00Z",
+        "reminder_datetime": "2026-04-18T10:00:00Z"
+      }
+    ]
+  },
+  "appworld_entities": {
+    "gmail.users": []
+  },
+  "image_paths": [
+    "omnidocbench/images/000549.jpg",
+    "omnidocbench/images/000094.jpg",
+    "docvqa/images/56015.jpg",
+    "docvqa/images/61081.jpg",
+    "docvqa/images/58783.jpg",
+    "docvqa/images/57990.jpg"
+  ],
+  "messages": [
+    {
+      "sender": "SYSTEM",
+      "recipient": "USER",
+      "content": "{{USER_INSTRUCTION}}ROUND 1 [provide: image_1, image_2, image_3]\nQuery: I'm sorting through this batch of documents. Find the ones that contain math problems or exercises and add a reminder for each to 'Digitize math document: [Topic]' for next Monday at 9 AM. You can skip the 1994 Putnam one though, I already set a reminder for that earlier.\nInstructions: Tell the assistant you are sorting through a batch of documents and ask it to identify the ones containing math problems or exercises. Instruct it to add a reminder titled 'Digitize math document: [Topic]' for next Monday at 9 AM for these documents, but explicitly tell it to skip the 1994 Putnam document since you already have a reminder for it. If the assistant asks what topic to use for the others, tell it to use the chapter title. Once it confirms the new reminder is created, proceed.\n\nROUND 2 [provide: image_4, image_5]\nQuery: Here are two more documents. Filter out any related to health or nutrition and add a reminder to 'Digitize health document: [Topic]' for next Tuesday at 10 AM.\nInstructions: Share the next two documents and ask the assistant to filter out any related to health or nutrition. For the matching ones, ask it to add a reminder to 'Digitize health document: [Topic]' for next Tuesday at 10 AM. If it asks for a topic, suggest using the subject line. Wait for confirmation before moving on.\n\nROUND 3 [provide: image_6]\nQuery: Check this last document. If it's medical or health-related, add a reminder to digitize it next Tuesday at 10 AM as well.\nInstructions: Show the final document and ask the assistant to check if it's medical or health-related. If it is, ask it to add the same Tuesday 10 AM digitization reminder for it. Suggest using the drug name or report title if it asks for a topic. Proceed once confirmed.\n\nROUND 4\nQuery: I actually just went ahead and digitized the Putnam competition document myself, so you can delete its reminder.\nInstructions: Tell the assistant that you just digitized the Putnam competition document yourself, so it can delete the reminder for it. The assistant should ask for clarification because you have multiple Putnam-related reminders on your device. When it asks, specify that you mean the 1994 one. Proceed once the deletion is confirmed.\n\nROUND 5\nQuery: Finally, create a new note titled 'Uncategorized Documents' and list the main subjects of the two documents from this whole batch that didn't get any digitization reminders.\nInstructions: Ask the assistant to create a new note titled 'Uncategorized Documents' and to list the main subjects of the two documents from the entire batch that did not get digitization reminders. If the assistant is unsure which ones those are, remind it to look at the documents that didn't match the math or health filters. Once the note is created, end the conversation.\n\nYou have 6 images available to share with the agent using the send_message_with_image tool.\nIMPORTANT: Image IDs are ZERO-INDEXED integers (0, 1, 2, ...). Do NOT add 1 to the IDs.\nAvailable image IDs: [0, 1, 2, 3, 4, 5]\nImage mapping:\n  image_1.jpg -> image ID 0\n  image_2.jpg -> image ID 1\n  image_3.jpg -> image ID 2\n  image_4.jpg -> image ID 3\n  image_5.jpg -> image ID 4\n  image_6.jpg -> image ID 5\n\n## IMAGE DELIVERY\n\n⚠️ IMPORTANT: You MUST use the `send_message_with_image` tool to share images with User B. Do NOT just describe images in text — you MUST call the tool.\n\nImage delivery schedule:\n\n  Round 2: YOU MUST call the send_message_with_image tool with image_ids='3,4' — do NOT write the tool name as text; use the actual function call. Include a natural, conversational message to the assistant.\n  Round 3: YOU MUST call the send_message_with_image tool with image_ids='5' — do NOT write the tool name as text; use the actual function call. Include a natural, conversational message to the assistant."
+    },
+    {
+      "sender": "USER",
+      "recipient": "AGENT",
+      "content": "I'm sorting through this batch of documents. Find the ones that contain math problems or exercises and add a reminder for each to 'Digitize math document: [Topic]' for next Monday at 9 AM. You can skip the 1994 Putnam one though, I already set a reminder for that earlier.",
+      "image_ids": [
+        0,
+        1,
+        2
+      ]
+    }
+  ],
+  "milestones": [],
+  "entity_diff_specs": [
+    {
+      "operation": "create",
+      "source": "appworld",
+      "table": "simple_note.notes",
+      "entity_data": {
+        "user_id": 3,
+        "title": "Uncategorized Documents",
+        "content": "- Godfrey Phillips India statutory dues\n- Coca-Cola Open Wheel Spectacular sponsorship package",
+        "tags": [],
+        "created_at": "2026-04-17T00:12:37",
+        "updated_at": "2026-04-17T00:12:37",
+        "pinned": false,
+        "data": null
+      },
+      "column_similarity_measure": {
+        "user_id": "column_exact_match_similarity",
+        "title": "column_rouge_l_similarity",
+        "content": "column_rouge_l_similarity",
+        "tags": "column_ignore_similarity",
+        "created_at": "column_ignore_similarity",
+        "updated_at": "column_ignore_similarity",
+        "pinned": "column_exact_match_similarity",
+        "data": "column_ignore_similarity"
+      }
+    },
+    {
+      "operation": "create",
+      "source": "agentsandbox",
+      "namespace": "REMINDER",
+      "entity_data": {
+        "reminder_id": "reminder_102",
+        "content": "Digitize math document: Roots and Radicals",
+        "latitude": null,
+        "longitude": null,
+        "creation_datetime": "2026-04-17T00:12:37Z",
+        "reminder_datetime": "2026-04-20T09:00:00Z"
+      },
+      "column_similarity_measure": {
+        "reminder_id": "column_ignore_similarity",
+        "content": "column_rouge_l_similarity",
+        "latitude": "column_ignore_similarity",
+        "longitude": "column_ignore_similarity",
+        "creation_datetime": "column_ignore_similarity",
+        "reminder_datetime": "column_datetime_naive_equal_similarity"
+      }
+    },
+    {
+      "operation": "create",
+      "source": "agentsandbox",
+      "namespace": "REMINDER",
+      "entity_data": {
+        "reminder_id": "reminder_103",
+        "content": "Digitize health document: Nutrition (Shank)",
+        "latitude": null,
+        "longitude": null,
+        "creation_datetime": "2026-04-17T00:12:37Z",
+        "reminder_datetime": "2026-04-21T10:00:00Z"
+      },
+      "column_similarity_measure": {
+        "reminder_id": "column_ignore_similarity",
+        "content": "column_rouge_l_similarity",
+        "latitude": "column_ignore_similarity",
+        "longitude": "column_ignore_similarity",
+        "creation_datetime": "column_ignore_similarity",
+        "reminder_datetime": "column_datetime_naive_equal_similarity"
+      }
+    },
+    {
+      "operation": "create",
+      "source": "agentsandbox",
+      "namespace": "REMINDER",
+      "entity_data": {
+        "reminder_id": "reminder_104",
+        "content": "Digitize health document: Trimegestone 1mg",
+        "latitude": null,
+        "longitude": null,
+        "creation_datetime": "2026-04-17T00:12:37Z",
+        "reminder_datetime": "2026-04-21T10:00:00Z"
+      },
+      "column_similarity_measure": {
+        "reminder_id": "column_ignore_similarity",
+        "content": "column_rouge_l_similarity",
+        "latitude": "column_ignore_similarity",
+        "longitude": "column_ignore_similarity",
+        "creation_datetime": "column_ignore_similarity",
+        "reminder_datetime": "column_datetime_naive_equal_similarity"
+      }
+    },
+    {
+      "operation": "delete",
+      "source": "agentsandbox",
+      "namespace": "REMINDER",
+      "entity_id_column": "reminder_id",
+      "entity_id_value": "reminder_100",
+      "column_similarity_measure": {
+        "reminder_id": "column_exact_match_similarity"
+      }
+    }
+  ],
+  "task_completion_criteria": "The user wants to categorize a batch of 6 documents by setting digitization reminders and taking notes. The agent must:\n1. Create a reminder for next Monday (April 20, 2026) at 9:00 AM to 'Digitize math document: Roots and Radicals' (or similar chapter title) based on the math textbook page.\n2. Create a reminder for next Tuesday (April 21, 2026) at 10:00 AM to 'Digitize health document: Nutrition (Shank)' (or similar subject) based on the nutrition manuscript response.\n3. Create a reminder for next Tuesday (April 21, 2026) at 10:00 AM to 'Digitize health document: Trimegestone 1mg' (or similar title) based on the medical progress report.\n4. Delete the preexisting reminder for 'Digitize math document: 1994 William Lowell Putnam Mathematical Competition'.\n5. Create a note titled 'Uncategorized Documents' that lists the subjects of the two remaining documents that did not receive new reminders: the Godfrey Phillips India statutory dues (financial document) and the Coca-Cola Open Wheel Spectacular sponsorship package.",
+  "categories": [
+    "APPWORLD",
+    "MULTIPLE_USER_TURN"
+  ],
+  "max_messages": 100,
+  "metadata": {
+    "original_scenario_id": "scenario_0727",
+    "expected_tools": [
+      "add_reminder",
+      "remove_reminder",
+      "simple_note_create_note"
+    ],
+    "image_arrival": {
+      "1": [
+        "image_1",
+        "image_2",
+        "image_3"
+      ],
+      "2": [
+        "image_4",
+        "image_5"
+      ],
+      "3": [
+        "image_6"
+      ]
+    },
+    "image_delivery_map": [
+      {
+        "query": "Here are two more documents. Filter out any related to health or nutrition and add a reminder to 'Digitize health document: [Topic]' for next Tuesday at 10 AM.",
+        "image_ids": [
+          3,
+          4
+        ]
+      },
+      {
+        "query": "Check this last document. If it's medical or health-related, add a reminder to digitize it next Tuesday at 10 AM as well.",
+        "image_ids": [
+          5
+        ]
+      }
+    ],
+    "scenario_metadata": {
+      "num_images": 6,
+      "num_user_rounds": 5,
+      "selected_flow_type": "filter",
+      "image_arrival": "mixed",
+      "challenge_type": "state_mutation",
+      "require_disambiguation": true,
+      "dataset_type": "docvqa"
+    }
+  }
+}

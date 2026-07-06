@@ -1,0 +1,379 @@
+{
+  "name": "scenario_1028",
+  "base_scenario": "base",
+  "description": "The user is auditing digitized historical expense documents from the 1970s and 1990s. They are using Splitwise groups and a simple note to track these expenses and need to cross-reference the documents with their current digital records to find missing or incomplete entries.",
+  "difficulty": "easy",
+  "appworld_base_task": "_base_",
+  "device_state_id": "kri-powe@gmail.com",
+  "reference_time": "2026-04-17T00:21:30.244568+00:00",
+  "agentsandbox_entities": {},
+  "appworld_entities": {
+    "simple_note.notes": [
+      {
+        "id": 3200,
+        "user_id": 28,
+        "title": "Catering Costs",
+        "content": "Continental Breakfast: $150.00",
+        "tags": [],
+        "created_at": "2026-04-10T10:00:00",
+        "updated_at": "2026-04-10T10:00:00",
+        "pinned": false,
+        "data": null
+      }
+    ],
+    "splitwise.groups": [
+      {
+        "id": 400,
+        "user_id": 28,
+        "name": "1970s Audit",
+        "description": null,
+        "created_at": "2026-04-01T10:00:00",
+        "invitation_code": "AUDIT70A",
+        "deleted": false
+      },
+      {
+        "id": 401,
+        "user_id": 28,
+        "name": "1970s Audit 2",
+        "description": null,
+        "created_at": "2026-04-01T10:05:00",
+        "invitation_code": "AUDIT70B",
+        "deleted": false
+      },
+      {
+        "id": 402,
+        "user_id": 28,
+        "name": "1990s Audit",
+        "description": null,
+        "created_at": "2026-04-01T10:10:00",
+        "invitation_code": "AUDIT90",
+        "deleted": false
+      }
+    ],
+    "splitwise.group_members": [
+      {
+        "id": 1100,
+        "group_id": 400,
+        "user_id": 28,
+        "joined_at": "2026-04-01T10:00:00"
+      },
+      {
+        "id": 1101,
+        "group_id": 400,
+        "user_id": 106,
+        "joined_at": "2026-04-01T10:01:00"
+      },
+      {
+        "id": 1102,
+        "group_id": 401,
+        "user_id": 28,
+        "joined_at": "2026-04-01T10:05:00"
+      },
+      {
+        "id": 1103,
+        "group_id": 401,
+        "user_id": 9,
+        "joined_at": "2026-04-01T10:06:00"
+      },
+      {
+        "id": 1104,
+        "group_id": 402,
+        "user_id": 28,
+        "joined_at": "2026-04-01T10:10:00"
+      },
+      {
+        "id": 1105,
+        "group_id": 402,
+        "user_id": 6,
+        "joined_at": "2026-04-01T10:11:00"
+      }
+    ],
+    "splitwise.expenses": [
+      {
+        "id": 5200,
+        "user_id": 28,
+        "group_id": 400,
+        "payer_id": 28,
+        "debtor_ids": [
+          106
+        ],
+        "participant_ids": [
+          28,
+          106
+        ],
+        "description": "1979 Airfare",
+        "amount": 84.0,
+        "deleted": false,
+        "receipt_file_name": null,
+        "receipt_file_content": null,
+        "receipt_download_count": 0,
+        "created_at": "2026-04-10T12:00:00"
+      },
+      {
+        "id": 5201,
+        "user_id": 28,
+        "group_id": 402,
+        "payer_id": 28,
+        "debtor_ids": [
+          6
+        ],
+        "participant_ids": [
+          28,
+          6
+        ],
+        "description": "Salem Tavern dinner",
+        "amount": 963.12,
+        "deleted": false,
+        "receipt_file_name": null,
+        "receipt_file_content": null,
+        "receipt_download_count": 0,
+        "created_at": "2026-04-12T18:00:00"
+      }
+    ],
+    "splitwise.expense_shares": [
+      {
+        "id": 200,
+        "expense_id": 5200,
+        "debtor_id": 106,
+        "share_amount": 42.0,
+        "created_at": "2026-04-10T12:00:00"
+      },
+      {
+        "id": 201,
+        "expense_id": 5201,
+        "debtor_id": 6,
+        "share_amount": 481.56,
+        "created_at": "2026-04-12T18:00:00"
+      }
+    ],
+    "gmail.users": []
+  },
+  "image_paths": [
+    "docvqa/images/56570.jpg",
+    "docvqa/images/62955.jpg",
+    "docvqa/images/18644.jpg",
+    "docvqa/images/51804.jpg",
+    "docvqa/images/63119.jpg"
+  ],
+  "messages": [
+    {
+      "sender": "SYSTEM",
+      "recipient": "USER",
+      "content": "{{USER_INSTRUCTION}}ROUND 1 [provide: image_1, image_2]\nQuery: I'm using the '1970s Audit' Splitwise group to track digitized historical expenses. Cross-reference the airfare claims from these two schedules with the group's current expenses. If either airfare is missing, record it as a new expense.\nInstructions: Ask the assistant to check the '1970s Audit' Splitwise group and cross-reference its expenses with the airfare claims shown in the two provided documents. If the assistant asks to clarify which '1970s Audit' group to use (since there are two on the device), tell it to use the one shared with Alex. The assistant should identify which of the two airfare claims from the images is missing from the group and record it as a new expense. Once the missing expense is added, proceed to the next round.\n\nROUND 2 [provide: image_3]\nQuery: Here is a 1990s business expense voucher. Check the '1990s Audit' Splitwise group. See if the dinner expense from this document is already recorded. If it is, update the expense amount by adding the parking fee so the total matches the 'Amount Due Employee' at the bottom.\nInstructions: Direct the assistant to check the '1990s Audit' Splitwise group for the dinner expense listed in the new document. Instruct it to update that expense by adding the parking fee shown on the voucher, ensuring the new total matches the final 'Amount Due Employee' figure at the bottom of the page. If the assistant struggles to find the specific amounts, guide it to look at the 'Expenses Paid By Employee' section for the parking and the bottom right for the final total. Move on once the expense is updated.\n\nROUND 3 [provide: image_4]\nQuery: This is a catering invoice for a large event. Calculate the total cost for the 'Bar Service and Hors D'Oeuvres'. Then, cross-reference this total with my simple note titled 'Catering Costs'. If this calculated amount isn't in the note, add it.\nInstructions: Tell the assistant to calculate the total cost for the 'Bar Service and Hors D'Oeuvres' based on the per-person rate and the total number of people listed in the catering invoice. Then, ask it to check the 'Catering Costs' note. If the calculated total isn't already listed in the note, the assistant should add it. If the assistant miscalculates, point it to the 'Train Service' line to find the number of people, and the specific per-person rate for the bar service lower down. Proceed once the note is updated.\n\nROUND 4 [provide: image_5]\nQuery: Finally, this is a hotel bill. Cross-reference the two restaurant charges from this bill with the '1970s Audit' Splitwise group. If they aren't already recorded, sum them up and add the total as a single new expense to the group.\nInstructions: Ask the assistant to locate the two restaurant charges on the provided hotel bill, sum them up, and check if that total is recorded in the '1970s Audit' Splitwise group (the one with Alex). If the total is missing, instruct the assistant to add it as a new expense. If the assistant includes the room charges or local charge by mistake, correct it to focus only on the two specific restaurant entries. End the conversation once the new expense has been recorded.\n\nYou have 5 images available to share with the agent using the send_message_with_image tool.\nIMPORTANT: Image IDs are ZERO-INDEXED integers (0, 1, 2, ...). Do NOT add 1 to the IDs.\nAvailable image IDs: [0, 1, 2, 3, 4]\nImage mapping:\n  image_1.jpg -> image ID 0\n  image_2.jpg -> image ID 1\n  image_3.jpg -> image ID 2\n  image_4.jpg -> image ID 3\n  image_5.jpg -> image ID 4\n\n## IMAGE DELIVERY\n\n\u26a0\ufe0f IMPORTANT: You MUST use the `send_message_with_image` tool to share images with User B. Do NOT just describe images in text \u2014 you MUST call the tool.\n\nImage delivery schedule:\n\n  Round 2: YOU MUST call the send_message_with_image tool with image_ids='2' \u2014 do NOT write the tool name as text; use the actual function call. Include a natural, conversational message to the assistant.\n  Round 3: YOU MUST call the send_message_with_image tool with image_ids='3' \u2014 do NOT write the tool name as text; use the actual function call. Include a natural, conversational message to the assistant.\n  Round 4: YOU MUST call the send_message_with_image tool with image_ids='4' \u2014 do NOT write the tool name as text; use the actual function call. Include a natural, conversational message to the assistant."
+    },
+    {
+      "sender": "USER",
+      "recipient": "AGENT",
+      "content": "I'm using the '1970s Audit' Splitwise group to track digitized historical expenses. Cross-reference the airfare claims from these two schedules with the group's current expenses. If either airfare is missing, record it as a new expense.",
+      "image_ids": [
+        0,
+        1
+      ]
+    }
+  ],
+  "milestones": [],
+  "entity_diff_specs": [
+    {
+      "operation": "create",
+      "source": "appworld",
+      "table": "splitwise.expenses",
+      "entity_data": {
+        "user_id": 28,
+        "group_id": 400,
+        "payer_id": 28,
+        "debtor_ids": [
+          106
+        ],
+        "participant_ids": [
+          28,
+          106
+        ],
+        "description": "1976 Airfare",
+        "amount": 108.0,
+        "deleted": false,
+        "receipt_file_name": null,
+        "receipt_file_content": null,
+        "receipt_download_count": 0,
+        "created_at": "2026-04-17T00:21:30"
+      },
+      "column_similarity_measure": {
+        "user_id": "column_exact_match_similarity",
+        "group_id": "column_exact_match_similarity",
+        "payer_id": "column_exact_match_similarity",
+        "debtor_ids": "column_ignore_similarity",
+        "participant_ids": "column_ignore_similarity",
+        "description": "column_rouge_l_similarity",
+        "amount": "column_exact_match_similarity",
+        "deleted": "column_ignore_similarity",
+        "receipt_file_name": "column_ignore_similarity",
+        "receipt_file_content": "column_ignore_similarity",
+        "receipt_download_count": "column_exact_match_similarity",
+        "created_at": "column_ignore_similarity"
+      }
+    },
+    {
+      "operation": "create",
+      "source": "appworld",
+      "table": "splitwise.expense_shares",
+      "entity_data": {
+        "expense_id": 5202,
+        "debtor_id": 106,
+        "share_amount": 108.0,
+        "created_at": "2026-04-17T00:21:30"
+      },
+      "column_similarity_measure": {
+        "expense_id": "column_ignore_similarity",
+        "debtor_id": "column_exact_match_similarity",
+        "share_amount": "column_exact_match_similarity",
+        "created_at": "column_ignore_similarity"
+      }
+    },
+    {
+      "operation": "create",
+      "source": "appworld",
+      "table": "splitwise.expenses",
+      "entity_data": {
+        "user_id": 28,
+        "group_id": 400,
+        "payer_id": 28,
+        "debtor_ids": [
+          106
+        ],
+        "participant_ids": [
+          28,
+          106
+        ],
+        "description": "Restaurant charges",
+        "amount": 23.95,
+        "deleted": false,
+        "receipt_file_name": null,
+        "receipt_file_content": null,
+        "receipt_download_count": 0,
+        "created_at": "2026-04-17T00:21:30"
+      },
+      "column_similarity_measure": {
+        "user_id": "column_exact_match_similarity",
+        "group_id": "column_exact_match_similarity",
+        "payer_id": "column_exact_match_similarity",
+        "debtor_ids": "column_ignore_similarity",
+        "participant_ids": "column_ignore_similarity",
+        "description": "column_rouge_l_similarity",
+        "amount": "column_exact_match_similarity",
+        "deleted": "column_ignore_similarity",
+        "receipt_file_name": "column_ignore_similarity",
+        "receipt_file_content": "column_ignore_similarity",
+        "receipt_download_count": "column_exact_match_similarity",
+        "created_at": "column_ignore_similarity"
+      }
+    },
+    {
+      "operation": "create",
+      "source": "appworld",
+      "table": "splitwise.expense_shares",
+      "entity_data": {
+        "expense_id": 5203,
+        "debtor_id": 106,
+        "share_amount": 23.95,
+        "created_at": "2026-04-17T00:21:30"
+      },
+      "column_similarity_measure": {
+        "expense_id": "column_ignore_similarity",
+        "debtor_id": "column_exact_match_similarity",
+        "share_amount": "column_exact_match_similarity",
+        "created_at": "column_ignore_similarity"
+      }
+    },
+    {
+      "operation": "update",
+      "source": "appworld",
+      "table": "simple_note.notes",
+      "entity_id_column": "id",
+      "entity_id_value": 3200,
+      "expected_fields": {
+        "updated_at": "2026-04-10T10:00:00",
+        "content": "Continental Breakfast: $150.00\nBar Service and Hors D'Oeuvres: $675.00",
+        "tags": []
+      },
+      "column_similarity_measure": {
+        "updated_at": "column_ignore_similarity",
+        "content": "column_rouge_l_similarity",
+        "id": "column_exact_match_similarity"
+      }
+    },
+    {
+      "operation": "update",
+      "source": "appworld",
+      "table": "splitwise.expenses",
+      "entity_id_column": "id",
+      "entity_id_value": 5201,
+      "expected_fields": {
+        "amount": 978.12
+      },
+      "column_similarity_measure": {
+        "amount": "column_exact_match_similarity",
+        "id": "column_exact_match_similarity"
+      }
+    }
+  ],
+  "task_completion_criteria": "The user wants to audit historical expenses by cross-referencing document amounts with device data. The end state should be: 1. A new expense of $108.00 (the missing 1976 airfare) added to the '1970s Audit' Splitwise group shared with Alex. 2. The existing 'Salem Tavern dinner' expense in the '1990s Audit' group updated from $963.12 to $978.12 (by adding the $15.00 parking fee). 3. The calculated total of $675.00 for the Bar Service (300 people at $2.25/person) added to the 'Catering Costs' note. 4. A new expense of $23.95 (sum of the $12.40 and $11.55 restaurant charges) added to the '1970s Audit' Splitwise group.",
+  "categories": [
+    "APPWORLD",
+    "MULTIPLE_USER_TURN"
+  ],
+  "max_messages": 100,
+  "metadata": {
+    "original_scenario_id": "scenario_1028",
+    "expected_tools": [
+      "splitwise_show_group",
+      "splitwise_show_group_expenses",
+      "splitwise_record_expense",
+      "splitwise_update_expense",
+      "simple_note_show_note",
+      "simple_note_update_note"
+    ],
+    "image_arrival": {
+      "1": [
+        "image_1",
+        "image_2"
+      ],
+      "2": [
+        "image_3"
+      ],
+      "3": [
+        "image_4"
+      ],
+      "4": [
+        "image_5"
+      ]
+    },
+    "image_delivery_map": [
+      {
+        "query": "Here is a 1990s business expense voucher. Check the '1990s Audit' Splitwise group. See if the dinner expense from this document is already recorded. If it is, update the expense amount by adding the parking fee so the total matches the 'Amount Due Employee' at the bottom.",
+        "image_ids": [
+          2
+        ]
+      },
+      {
+        "query": "This is a catering invoice for a large event. Calculate the total cost for the 'Bar Service and Hors D'Oeuvres'. Then, cross-reference this total with my simple note titled 'Catering Costs'. If this calculated amount isn't in the note, add it.",
+        "image_ids": [
+          3
+        ]
+      },
+      {
+        "query": "Finally, this is a hotel bill. Cross-reference the two restaurant charges from this bill with the '1970s Audit' Splitwise group. If they aren't already recorded, sum them up and add the total as a single new expense to the group.",
+        "image_ids": [
+          4
+        ]
+      }
+    ],
+    "scenario_metadata": {
+      "num_images": 5,
+      "num_user_rounds": 4,
+      "selected_flow_type": "cross_reference",
+      "image_arrival": "progressive",
+      "challenge_type": "none",
+      "require_disambiguation": true,
+      "dataset_type": "docvqa"
+    }
+  }
+}

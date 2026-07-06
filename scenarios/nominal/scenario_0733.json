@@ -1,0 +1,382 @@
+{
+  "name": "scenario_0733",
+  "base_scenario": "base",
+  "description": "Ashley is compiling technical specifications and reference files for a new hydraulic cylinder project. She needs to organize files from a messy WeChat folder and aggregate technical details from various CAD models, spreadsheets, and PDF drawings into a single specification note to send to her engineering team.",
+  "difficulty": "easy",
+  "appworld_base_task": "_base_",
+  "device_state_id": "as_moore@gmail.com",
+  "reference_time": "2026-04-17T00:12:48.655892+00:00",
+  "agentsandbox_entities": {},
+  "appworld_entities": {
+    "phone.contacts": [
+      {
+        "id": 200,
+        "user_id": 54,
+        "first_name": "Engineering",
+        "last_name": "Dept",
+        "email": "engineering@company.com",
+        "phone_number": null,
+        "relationships": [
+          "coworker"
+        ],
+        "birthday": null,
+        "home_address": null,
+        "work_address": null,
+        "created_at": "2025-10-15T09:00:00"
+      },
+      {
+        "id": 201,
+        "user_id": 54,
+        "first_name": "Engineering",
+        "last_name": "Support",
+        "email": "engineering-support@company.com",
+        "phone_number": null,
+        "relationships": [
+          "coworker"
+        ],
+        "birthday": null,
+        "home_address": null,
+        "work_address": null,
+        "created_at": "2025-10-15T09:05:00"
+      }
+    ],
+    "simple_note.notes": [
+      {
+        "id": 3200,
+        "user_id": 54,
+        "title": "Project Specs",
+        "content": "Old specifications from 2023.",
+        "tags": [],
+        "created_at": "2023-05-15T09:30:00",
+        "updated_at": "2023-05-15T09:30:00",
+        "pinned": false,
+        "data": {}
+      }
+    ],
+    "file_system.directories": [
+      {
+        "id": 3600,
+        "path": "/C:/Users/ST023/Documents/WeChat Files/wxid_7qpz2chl1h6z21/FileStorage/File/2024-11/annotations/",
+        "tilde_path": "/C:/Users/ST023/Documents/WeChat Files/wxid_7qpz2chl1h6z21/FileStorage/File/2024-11/annotations/",
+        "user_id": 54,
+        "created_at": "2024-11-01T10:00:00",
+        "updated_at": "2024-11-20T14:33:16"
+      },
+      {
+        "path": "/C:/",
+        "tilde_path": "/C:/",
+        "user_id": 54,
+        "created_at": "2025-01-01T00:00:00",
+        "updated_at": "2025-01-01T00:00:00",
+        "id": 3601
+      },
+      {
+        "path": "/C:/Users/",
+        "tilde_path": "/C:/Users/",
+        "user_id": 54,
+        "created_at": "2025-01-01T00:00:00",
+        "updated_at": "2025-01-01T00:00:00",
+        "id": 3602
+      },
+      {
+        "path": "/C:/Users/ST023/",
+        "tilde_path": "/C:/Users/ST023/",
+        "user_id": 54,
+        "created_at": "2025-01-01T00:00:00",
+        "updated_at": "2025-01-01T00:00:00",
+        "id": 3603
+      },
+      {
+        "path": "/C:/Users/ST023/Documents/",
+        "tilde_path": "/C:/Users/ST023/Documents/",
+        "user_id": 54,
+        "created_at": "2025-01-01T00:00:00",
+        "updated_at": "2025-01-01T00:00:00",
+        "id": 3604
+      },
+      {
+        "path": "/C:/Users/ST023/Documents/WeChat Files/",
+        "tilde_path": "/C:/Users/ST023/Documents/WeChat Files/",
+        "user_id": 54,
+        "created_at": "2025-01-01T00:00:00",
+        "updated_at": "2025-01-01T00:00:00",
+        "id": 3605
+      },
+      {
+        "path": "/C:/Users/ST023/Documents/WeChat Files/wxid_7qpz2chl1h6z21/",
+        "tilde_path": "/C:/Users/ST023/Documents/WeChat Files/wxid_7qpz2chl1h6z21/",
+        "user_id": 54,
+        "created_at": "2025-01-01T00:00:00",
+        "updated_at": "2025-01-01T00:00:00",
+        "id": 3606
+      },
+      {
+        "path": "/C:/Users/ST023/Documents/WeChat Files/wxid_7qpz2chl1h6z21/FileStorage/",
+        "tilde_path": "/C:/Users/ST023/Documents/WeChat Files/wxid_7qpz2chl1h6z21/FileStorage/",
+        "user_id": 54,
+        "created_at": "2025-01-01T00:00:00",
+        "updated_at": "2025-01-01T00:00:00",
+        "id": 3607
+      },
+      {
+        "path": "/C:/Users/ST023/Documents/WeChat Files/wxid_7qpz2chl1h6z21/FileStorage/File/",
+        "tilde_path": "/C:/Users/ST023/Documents/WeChat Files/wxid_7qpz2chl1h6z21/FileStorage/File/",
+        "user_id": 54,
+        "created_at": "2025-01-01T00:00:00",
+        "updated_at": "2025-01-01T00:00:00",
+        "id": 3608
+      },
+      {
+        "path": "/C:/Users/ST023/Documents/WeChat Files/wxid_7qpz2chl1h6z21/FileStorage/File/2024-11/",
+        "tilde_path": "/C:/Users/ST023/Documents/WeChat Files/wxid_7qpz2chl1h6z21/FileStorage/File/2024-11/",
+        "user_id": 54,
+        "created_at": "2025-01-01T00:00:00",
+        "updated_at": "2025-01-01T00:00:00",
+        "id": 3609
+      }
+    ],
+    "file_system.files": [
+      {
+        "id": 26000,
+        "path": "/C:/Users/ST023/Documents/WeChat Files/wxid_7qpz2chl1h6z21/FileStorage/File/2024-11/annotations/annotations1120.rar",
+        "tilde_path": "/C:/Users/ST023/Documents/WeChat Files/wxid_7qpz2chl1h6z21/FileStorage/File/2024-11/annotations/annotations1120.rar",
+        "user_id": 54,
+        "content": "RAR archive binary content",
+        "compressed_data": [],
+        "created_at": "2024-11-20T10:00:00",
+        "updated_at": "2024-11-20T10:00:00"
+      },
+      {
+        "id": 26001,
+        "path": "/C:/Users/ST023/Documents/WeChat Files/wxid_7qpz2chl1h6z21/FileStorage/File/2024-11/annotations/screenshot_2024-11-20_14-33-16.png",
+        "tilde_path": "/C:/Users/ST023/Documents/WeChat Files/wxid_7qpz2chl1h6z21/FileStorage/File/2024-11/annotations/screenshot_2024-11-20_14-33-16.png",
+        "user_id": 54,
+        "content": "PNG image binary data",
+        "compressed_data": [],
+        "created_at": "2024-11-20T14:33:16",
+        "updated_at": "2024-11-20T14:33:16"
+      },
+      {
+        "id": 26002,
+        "path": "/C:/Users/ST023/Documents/Project Specs.txt",
+        "tilde_path": "/C:/Users/ST023/Documents/Project Specs.txt",
+        "user_id": 54,
+        "content": "Old project specifications.",
+        "compressed_data": [],
+        "created_at": "2026-04-01T10:00:00",
+        "updated_at": "2026-04-10T15:00:00"
+      }
+    ],
+    "gmail.users": [
+      {
+        "id": 200,
+        "first_name": "Engineering",
+        "last_name": "Dept",
+        "email": "engineering@company.com",
+        "password": "default_password",
+        "status": "active",
+        "created_at": "2025-01-01T00:00:00",
+        "last_logged_in": "2025-01-01T00:00:00"
+      },
+      {
+        "id": 201,
+        "first_name": "Engineering",
+        "last_name": "Support",
+        "email": "engineering-support@company.com",
+        "password": "default_password",
+        "status": "active",
+        "created_at": "2025-01-01T00:00:00",
+        "last_logged_in": "2025-01-01T00:00:00"
+      }
+    ]
+  },
+  "image_paths": [
+    "screenspotpro/images/inventor_windows/screenshot_2024-11-24_12-38-07.png",
+    "screenspotpro/images/inventor_windows/screenshot_2024-11-23_10-54-59.png",
+    "screenspotpro/images/inventor_windows/screenshot_2024-11-23_10-57-13.png",
+    "screenspotpro/images/inventor_windows/screenshot_2024-11-23_13-40-34.png",
+    "screenspotpro/images/solidworks_windows/screenshot_2024-12-01_21-27-27.png",
+    "screenspotpro/images/inventor_windows/screenshot_2024-11-23_14-27-38.png"
+  ],
+  "messages": [
+    {
+      "sender": "SYSTEM",
+      "recipient": "USER",
+      "content": "{{USER_INSTRUCTION}}ROUND 1 [provide: image_1, image_2]\nQuery: I need to start organizing my hydraulic project. Create a new folder at 'C:\\Hydraulic_Project'. Then, look at the folder path shown in the first screen and find the rar archive shown in the second one. Copy that archive into the new folder.\nInstructions: Ask the assistant to create a new directory at C:\\Hydraulic_Project and copy the RAR archive visible in the provided folder path into it. If the assistant asks for clarification on the file name or path, tell it to read them directly from the images. Once it confirms the directory is created and the file is copied, proceed.\n\nROUND 2 [provide: image_3]\nQuery: Now, copy the currently selected image file from this folder into that same 'C:\\Hydraulic_Project' directory. Also, delete my old 'Project Specs' note and create a fresh one with the same title.\nInstructions: Instruct the assistant to copy the highlighted PNG file from the folder shown in the image to the C:\\Hydraulic_Project directory. Additionally, ask it to delete the existing 'Project Specs' note and create a new, empty note with the same title. If the assistant cannot find the highlighted file, point it to the selected row in the file explorer. Wait for confirmation of the copy and note recreation before moving on.\n\nROUND 3 [provide: image_4, image_6]\nQuery: Let's add some details to the new note. From the spreadsheet here, extract the bolt size and pressure rating for part '13-6'. Also, grab the file path for the CAD drawing shown in the dialog box. Put all of this into the 'Project Specs' note.\nInstructions: Tell the assistant to read the spreadsheet in the images to find the bolt size and pressure rating specifically for part '13-6', and to locate the CAD drawing file path in the dialog box. Ask it to add these three pieces of information to the 'Project Specs' note. If the assistant reads the wrong row or path, correct it by referring back to the images. Proceed once the note is updated.\n\nROUND 4 [provide: image_5]\nQuery: One more thing for the specs. Look at the 2D drawing on the right. Find the English names for the two components shown and append them to the 'Project Specs' note.\nInstructions: Ask the assistant to identify the English names of the two mechanical components labeled in the PDF drawing on the right side of the screen, and to append those names to the 'Project Specs' note. If the assistant includes the Chinese characters instead, clarify that you only want the English names. Move to the final step once the note is updated.\n\nROUND 5\nQuery: We're done. Read the 'Project Specs' note, email its contents to the engineering team with the subject 'Hydraulic Cylinder Specs', and then delete the note to clean up.\nInstructions: Instruct the assistant to read the 'Project Specs' note and email its full contents to the engineering team with the subject 'Hydraulic Cylinder Specs', then delete the note. The assistant may find multiple contacts for 'engineering' and ask for clarification. If it does, specify that you mean the main department, not the support team. If the assistant proceeds directly to the correct contact without asking, that is also acceptable. Once the email is sent and the note is deleted, end the conversation.\n\nYou have 6 images available to share with the agent using the send_message_with_image tool.\nIMPORTANT: Image IDs are ZERO-INDEXED integers (0, 1, 2, ...). Do NOT add 1 to the IDs.\nAvailable image IDs: [0, 1, 2, 3, 4, 5]\nImage mapping:\n  image_1.jpg -> image ID 0\n  image_2.jpg -> image ID 1\n  image_3.jpg -> image ID 2\n  image_4.jpg -> image ID 3\n  image_5.jpg -> image ID 4\n  image_6.jpg -> image ID 5\n\n## IMAGE DELIVERY\n\n⚠️ IMPORTANT: You MUST use the `send_message_with_image` tool to share images with User B. Do NOT just describe images in text — you MUST call the tool.\n\nImage delivery schedule:\n\n  Round 2: YOU MUST call the send_message_with_image tool with image_ids='2' — do NOT write the tool name as text; use the actual function call. Include a natural, conversational message to the assistant.\n  Round 3: YOU MUST call the send_message_with_image tool with image_ids='3,5' — do NOT write the tool name as text; use the actual function call. Include a natural, conversational message to the assistant.\n  Round 4: YOU MUST call the send_message_with_image tool with image_ids='4' — do NOT write the tool name as text; use the actual function call. Include a natural, conversational message to the assistant."
+    },
+    {
+      "sender": "USER",
+      "recipient": "AGENT",
+      "content": "I need to start organizing my hydraulic project. Create a new folder at 'C:\\Hydraulic_Project'. Then, look at the folder path shown in the first screen and find the rar archive shown in the second one. Copy that archive into the new folder.",
+      "image_ids": [
+        0,
+        1
+      ]
+    }
+  ],
+  "milestones": [],
+  "entity_diff_specs": [
+    {
+      "operation": "create",
+      "source": "appworld",
+      "table": "gmail.emails",
+      "entity_data": {
+        "sender_id": 54,
+        "recipient_ids": [
+          200
+        ],
+        "subject": "Hydraulic Cylinder Specs",
+        "body": "Project Specs\n\nPart 13-6:\n- Bolt size: M8*30\n- Pressure rating: 410\n\nCAD file path: D:\\新建文件夹\\24011103HGC液压缸\\缸体.ipt\n\nComponent English names: Moretubeclamp, Mountingplate",
+        "response_to_email_id": null,
+        "created_at": "2026-04-17T00:12:48"
+      },
+      "column_similarity_measure": {
+        "sender_id": "column_exact_match_similarity",
+        "recipient_ids": "column_exact_match_similarity",
+        "subject": "column_rouge_l_similarity",
+        "body": "column_rouge_l_similarity",
+        "response_to_email_id": "column_ignore_similarity",
+        "created_at": "column_ignore_similarity"
+      }
+    },
+    {
+      "operation": "create",
+      "source": "appworld",
+      "table": "file_system.directories",
+      "entity_data": {
+        "path": "Hydraulic_Project",
+        "tilde_path": "Hydraulic_Project",
+        "user_id": 54,
+        "created_at": "2026-04-17T00:12:48",
+        "updated_at": "2026-04-17T00:12:48"
+      },
+      "column_similarity_measure": {
+        "path": "column_contains_similarity",
+        "tilde_path": "column_contains_similarity",
+        "user_id": "column_exact_match_similarity",
+        "created_at": "column_ignore_similarity",
+        "updated_at": "column_ignore_similarity"
+      }
+    },
+    {
+      "operation": "create",
+      "source": "appworld",
+      "table": "file_system.files",
+      "entity_data": {
+        "path": "Hydraulic_Project/annotations1120.rar",
+        "tilde_path": "Hydraulic_Project/annotations1120.rar",
+        "user_id": 54,
+        "content": "RAR archive binary content",
+        "compressed_data": [],
+        "created_at": "2026-04-17T00:12:48",
+        "updated_at": "2026-04-17T00:12:48"
+      },
+      "column_similarity_measure": {
+        "path": "column_contains_similarity",
+        "tilde_path": "column_contains_similarity",
+        "user_id": "column_exact_match_similarity",
+        "content": "column_rouge_l_similarity",
+        "compressed_data": "column_ignore_similarity",
+        "created_at": "column_ignore_similarity",
+        "updated_at": "column_ignore_similarity"
+      }
+    },
+    {
+      "operation": "create",
+      "source": "appworld",
+      "table": "file_system.files",
+      "entity_data": {
+        "path": "Hydraulic_Project/screenshot_2024-11-20_14-33-16.png",
+        "tilde_path": "Hydraulic_Project/screenshot_2024-11-20_14-33-16.png",
+        "user_id": 54,
+        "content": "PNG image binary data",
+        "compressed_data": [],
+        "created_at": "2026-04-17T00:12:48",
+        "updated_at": "2026-04-17T00:12:48"
+      },
+      "column_similarity_measure": {
+        "path": "column_contains_similarity",
+        "tilde_path": "column_contains_similarity",
+        "user_id": "column_exact_match_similarity",
+        "content": "column_rouge_l_similarity",
+        "compressed_data": "column_ignore_similarity",
+        "created_at": "column_ignore_similarity",
+        "updated_at": "column_ignore_similarity"
+      }
+    },
+    {
+      "operation": "delete",
+      "source": "appworld",
+      "table": "simple_note.notes",
+      "entity_id_column": "id",
+      "entity_id_value": 3200,
+      "column_similarity_measure": {
+        "id": "column_exact_match_similarity"
+      }
+    }
+  ],
+  "task_completion_criteria": "Create a new directory 'C:\\Hydraulic_Project', copy 'annotations1120.rar' and 'screenshot_2024-11-20_14-33-16.png' from 'C:\\Users\\ST023\\Documents\\WeChat Files\\wxid_7qpz2chl1h6z21\\FileStorage\\File\\2024-11\\annotations' to it, replace the old 'Project Specs' note with a new one containing the bolt size (M8*30) and pressure rating (410) for part 13-6, the CAD file path 'D:\\新建文件夹\\24011103HGC液压缸\\缸体.ipt', and the English names 'Moretubeclamp' and 'Mountingplate', then email this aggregated note to engineering@company.com with the subject 'Hydraulic Cylinder Specs' and delete the note.",
+  "categories": [
+    "APPWORLD",
+    "MULTIPLE_USER_TURN"
+  ],
+  "max_messages": 100,
+  "metadata": {
+    "original_scenario_id": "scenario_0733",
+    "expected_tools": [
+      "file_system_create_directory",
+      "file_system_copy_file",
+      "simple_note_create_note",
+      "simple_note_add_content_to_note",
+      "simple_note_show_note",
+      "gmail_send_email",
+      "simple_note_delete_note"
+    ],
+    "image_arrival": {
+      "1": [
+        "image_1",
+        "image_2"
+      ],
+      "2": [
+        "image_3"
+      ],
+      "3": [
+        "image_4",
+        "image_6"
+      ],
+      "4": [
+        "image_5"
+      ]
+    },
+    "image_delivery_map": [
+      {
+        "query": "Now, copy the currently selected image file from this folder into that same 'C:\\Hydraulic_Project' directory. Also, delete my old 'Project Specs' note and create a fresh one with the same title.",
+        "image_ids": [
+          2
+        ]
+      },
+      {
+        "query": "Let's add some details to the new note. From the spreadsheet here, extract the bolt size and pressure rating for part '13-6'. Also, grab the file path for the CAD drawing shown in the dialog box. Put all of this into the 'Project Specs' note.",
+        "image_ids": [
+          3,
+          5
+        ]
+      },
+      {
+        "query": "One more thing for the specs. Look at the 2D drawing on the right. Find the English names for the two components shown and append them to the 'Project Specs' note.",
+        "image_ids": [
+          4
+        ]
+      }
+    ],
+    "scenario_metadata": {
+      "num_images": 6,
+      "num_user_rounds": 5,
+      "selected_flow_type": "aggregate",
+      "image_arrival": "mixed",
+      "challenge_type": "state_mutation",
+      "require_disambiguation": true,
+      "dataset_type": "screenspotpro"
+    }
+  }
+}

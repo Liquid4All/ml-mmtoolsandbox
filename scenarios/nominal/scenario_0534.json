@@ -1,0 +1,348 @@
+{
+  "name": "scenario_0534",
+  "base_scenario": "base",
+  "description": "The user is organizing action items and tips from various documents and infographics into their task manager and reminders, ensuring they don't create duplicate entries for things they are already tracking.",
+  "difficulty": "easy",
+  "appworld_base_task": "_base_",
+  "device_state_id": "gl.moore@gmail.com",
+  "reference_time": "2026-04-17T00:06:36.439226+00:00",
+  "agentsandbox_entities": {},
+  "appworld_entities": {
+    "todoist.projects": [
+      {
+        "id": 400,
+        "user_id": 55,
+        "name": "Inbox",
+        "color": "charcoal",
+        "is_inbox": true,
+        "description": "",
+        "created_at": "2026-01-01T10:00:00"
+      }
+    ],
+    "todoist.tasks": [
+      {
+        "id": 6500,
+        "project_id": 400,
+        "section_id": null,
+        "user_id": 55,
+        "title": "ask about LDL-C cholesterol",
+        "description": null,
+        "due_date": null,
+        "priority": "medium",
+        "is_completed": false,
+        "duration": null,
+        "duration_unit": null,
+        "order_index": 1,
+        "assignee_id": null,
+        "assigner_id": null,
+        "created_at": "2026-04-16T10:00:00"
+      },
+      {
+        "id": 6501,
+        "project_id": 400,
+        "section_id": null,
+        "user_id": 55,
+        "title": "Twitter: avoid posting after 8pm",
+        "description": null,
+        "due_date": null,
+        "priority": "medium",
+        "is_completed": false,
+        "duration": null,
+        "duration_unit": null,
+        "order_index": 2,
+        "assignee_id": null,
+        "assigner_id": null,
+        "created_at": "2026-04-16T10:00:00"
+      }
+    ],
+    "todoist.project_collaborator_links": [
+      {
+        "id": 50400,
+        "project_id": 400,
+        "user_id": 55,
+        "is_favorite": false,
+        "is_archived": false,
+        "created_at": "2026-01-01T10:00:00"
+      }
+    ],
+    "gmail.users": []
+  },
+  "image_paths": [
+    "infographicvqa/images/98119.jpg",
+    "hiertext/images/test/2c7e8e2a703a723f.jpg",
+    "infographicvqa/images/92100.jpg"
+  ],
+  "messages": [
+    {
+      "sender": "SYSTEM",
+      "recipient": "USER",
+      "content": "{{USER_INSTRUCTION}}ROUND 1 [provide: image_2]\nQuery: Can you create a reminder for tomorrow at 10 AM to complete all the green checkbox tasks written on this document?\nInstructions: Act as the user asking the assistant to create a single reminder for tomorrow at 10 AM containing the four action items marked with green checkboxes on the provided document. If the assistant asks for clarification on which items to include, point out they are written in green ink with open checkboxes next to them. Once the assistant confirms the reminder has been successfully created, proceed to the next round.\n\nROUND 2\nQuery: Actually, a single reminder isn't ideal. Delete that reminder. Instead, check my Todoist tasks to see which of those 4 green checkbox items I've already added, and create separate tasks for the ones that are missing.\nInstructions: Change your mind about the previous request. Instruct the assistant to delete the reminder it just created. Then, ask it to check your Todoist tasks to see if any of the four green checkbox items from the document are already in your task list. The assistant should only create new, individual Todoist tasks for the items that are missing. If the assistant asks for the items again, remind them to reference the handwritten green notes from the previous image. Once the missing tasks are confirmed added to Todoist, move to the next round.\n\nROUND 3 [provide: image_1]\nQuery: Now look at this social media infographic. Extract the specific tips mentioning optimal posting times for Facebook and Twitter. Check my Todoist tasks to see if I already have tasks to implement these time rules, and add any missing ones.\nInstructions: Present a new image and ask the assistant to find the specific tips regarding optimal posting times for Facebook and Twitter. The assistant needs to check your Todoist tasks again and only add new tasks for the time-related rules that aren't already on your list. If the assistant tries to include non-time-related tips (like character counts, hashtags, or group creation), correct them to focus only on the specific hours or times of day mentioned for posting. Once the missing time-rule tasks are added, proceed to the next round.\n\nROUND 4 [provide: image_3]\nQuery: Finally, from this crypto infographic, locate the three URLs listed under the 'LINKS' section at the bottom. Create a reminder for next Wednesday at 3 PM to review these specific websites.\nInstructions: Provide the final image and ask the assistant to find the 'LINKS' section at the bottom. The assistant should extract the three URLs listed there and create a reminder for next Wednesday at 3 PM to review them. If the assistant extracts the wrong URLs (like the download link or the designer's website), correct them to only use the three specific URLs under the 'LINKS' header. Once the reminder is confirmed created, end the conversation.\n\nYou have 3 images available to share with the agent using the send_message_with_image tool.\nIMPORTANT: Image IDs are ZERO-INDEXED integers (0, 1, 2, ...). Do NOT add 1 to the IDs.\nAvailable image IDs: [0, 1, 2]\nImage mapping:\n  image_1.jpg -> image ID 0\n  image_2.jpg -> image ID 1\n  image_3.jpg -> image ID 2\n\n## IMAGE DELIVERY\n\n⚠️ IMPORTANT: You MUST use the `send_message_with_image` tool to share images with User B. Do NOT just describe images in text — you MUST call the tool.\n\nImage delivery schedule:\n\n  Round 3: YOU MUST call the send_message_with_image tool with image_ids='0' — do NOT write the tool name as text; use the actual function call. Include a natural, conversational message to the assistant.\n  Round 4: YOU MUST call the send_message_with_image tool with image_ids='2' — do NOT write the tool name as text; use the actual function call. Include a natural, conversational message to the assistant."
+    },
+    {
+      "sender": "USER",
+      "recipient": "AGENT",
+      "content": "Can you create a reminder for tomorrow at 10 AM to complete all the green checkbox tasks written on this document?",
+      "image_ids": [
+        1
+      ]
+    }
+  ],
+  "milestones": [],
+  "entity_diff_specs": [
+    {
+      "operation": "create",
+      "source": "appworld",
+      "table": "todoist.tasks",
+      "entity_data": {
+        "project_id": 400,
+        "section_id": null,
+        "user_id": 55,
+        "title": "get links to dietary recommendations",
+        "description": null,
+        "due_date": null,
+        "priority": "medium",
+        "is_completed": false,
+        "duration": null,
+        "duration_unit": null,
+        "order_index": 3,
+        "assignee_id": null,
+        "assigner_id": null,
+        "created_at": "2026-04-17T00:06:36"
+      },
+      "column_similarity_measure": {
+        "project_id": "column_exact_match_similarity",
+        "section_id": "column_ignore_similarity",
+        "user_id": "column_exact_match_similarity",
+        "title": "column_rouge_l_similarity",
+        "description": "column_ignore_similarity",
+        "due_date": "column_ignore_similarity",
+        "priority": "column_exact_match_similarity",
+        "is_completed": "column_exact_match_similarity",
+        "duration": "column_ignore_similarity",
+        "duration_unit": "column_ignore_similarity",
+        "order_index": "column_ignore_similarity",
+        "assignee_id": "column_ignore_similarity",
+        "assigner_id": "column_ignore_similarity",
+        "created_at": "column_ignore_similarity"
+      }
+    },
+    {
+      "operation": "create",
+      "source": "appworld",
+      "table": "todoist.tasks",
+      "entity_data": {
+        "project_id": 400,
+        "section_id": null,
+        "user_id": 55,
+        "title": "Ask about Table 9 page 24",
+        "description": null,
+        "due_date": null,
+        "priority": "medium",
+        "is_completed": false,
+        "duration": null,
+        "duration_unit": null,
+        "order_index": 4,
+        "assignee_id": null,
+        "assigner_id": null,
+        "created_at": "2026-04-17T00:06:36"
+      },
+      "column_similarity_measure": {
+        "project_id": "column_exact_match_similarity",
+        "section_id": "column_ignore_similarity",
+        "user_id": "column_exact_match_similarity",
+        "title": "column_rouge_l_similarity",
+        "description": "column_ignore_similarity",
+        "due_date": "column_ignore_similarity",
+        "priority": "column_exact_match_similarity",
+        "is_completed": "column_exact_match_similarity",
+        "duration": "column_ignore_similarity",
+        "duration_unit": "column_ignore_similarity",
+        "order_index": "column_ignore_similarity",
+        "assignee_id": "column_ignore_similarity",
+        "assigner_id": "column_ignore_similarity",
+        "created_at": "column_ignore_similarity"
+      }
+    },
+    {
+      "operation": "create",
+      "source": "appworld",
+      "table": "todoist.tasks",
+      "entity_data": {
+        "project_id": 400,
+        "section_id": null,
+        "user_id": 55,
+        "title": "Get USDA dietary Pattern Table",
+        "description": null,
+        "due_date": null,
+        "priority": "medium",
+        "is_completed": false,
+        "duration": null,
+        "duration_unit": null,
+        "order_index": 5,
+        "assignee_id": null,
+        "assigner_id": null,
+        "created_at": "2026-04-17T00:06:36"
+      },
+      "column_similarity_measure": {
+        "project_id": "column_exact_match_similarity",
+        "section_id": "column_ignore_similarity",
+        "user_id": "column_exact_match_similarity",
+        "title": "column_rouge_l_similarity",
+        "description": "column_ignore_similarity",
+        "due_date": "column_ignore_similarity",
+        "priority": "column_exact_match_similarity",
+        "is_completed": "column_exact_match_similarity",
+        "duration": "column_ignore_similarity",
+        "duration_unit": "column_ignore_similarity",
+        "order_index": "column_ignore_similarity",
+        "assignee_id": "column_ignore_similarity",
+        "assigner_id": "column_ignore_similarity",
+        "created_at": "column_ignore_similarity"
+      }
+    },
+    {
+      "operation": "create",
+      "source": "appworld",
+      "table": "todoist.tasks",
+      "entity_data": {
+        "project_id": 400,
+        "section_id": null,
+        "user_id": 55,
+        "title": "Facebook optimal posting time: 1pm - 4pm",
+        "description": null,
+        "due_date": null,
+        "priority": "medium",
+        "is_completed": false,
+        "duration": null,
+        "duration_unit": null,
+        "order_index": 6,
+        "assignee_id": null,
+        "assigner_id": null,
+        "created_at": "2026-04-17T00:06:36"
+      },
+      "column_similarity_measure": {
+        "project_id": "column_exact_match_similarity",
+        "section_id": "column_ignore_similarity",
+        "user_id": "column_exact_match_similarity",
+        "title": "column_rouge_l_similarity",
+        "description": "column_ignore_similarity",
+        "due_date": "column_ignore_similarity",
+        "priority": "column_exact_match_similarity",
+        "is_completed": "column_exact_match_similarity",
+        "duration": "column_ignore_similarity",
+        "duration_unit": "column_ignore_similarity",
+        "order_index": "column_ignore_similarity",
+        "assignee_id": "column_ignore_similarity",
+        "assigner_id": "column_ignore_similarity",
+        "created_at": "column_ignore_similarity"
+      }
+    },
+    {
+      "operation": "create",
+      "source": "appworld",
+      "table": "todoist.tasks",
+      "entity_data": {
+        "project_id": 400,
+        "section_id": null,
+        "user_id": 55,
+        "title": "Twitter optimal posting time: afternoon",
+        "description": null,
+        "due_date": null,
+        "priority": "medium",
+        "is_completed": false,
+        "duration": null,
+        "duration_unit": null,
+        "order_index": 7,
+        "assignee_id": null,
+        "assigner_id": null,
+        "created_at": "2026-04-17T00:06:36"
+      },
+      "column_similarity_measure": {
+        "project_id": "column_exact_match_similarity",
+        "section_id": "column_ignore_similarity",
+        "user_id": "column_exact_match_similarity",
+        "title": "column_rouge_l_similarity",
+        "description": "column_ignore_similarity",
+        "due_date": "column_ignore_similarity",
+        "priority": "column_exact_match_similarity",
+        "is_completed": "column_exact_match_similarity",
+        "duration": "column_ignore_similarity",
+        "duration_unit": "column_ignore_similarity",
+        "order_index": "column_ignore_similarity",
+        "assignee_id": "column_ignore_similarity",
+        "assigner_id": "column_ignore_similarity",
+        "created_at": "column_ignore_similarity"
+      }
+    },
+    {
+      "operation": "create",
+      "source": "agentsandbox",
+      "namespace": "REMINDER",
+      "entity_data": {
+        "reminder_id": "reminder_100",
+        "content": "Review websites: www.xrpchat.com, www.xrpcommunity.blog, and www.stedas.hr/ripple",
+        "latitude": null,
+        "longitude": null,
+        "creation_datetime": "2026-04-17T00:06:36Z",
+        "reminder_datetime": "2026-04-22T15:00:00Z"
+      },
+      "column_similarity_measure": {
+        "reminder_id": "column_ignore_similarity",
+        "content": "column_rouge_l_similarity",
+        "latitude": "column_ignore_similarity",
+        "longitude": "column_ignore_similarity",
+        "creation_datetime": "column_ignore_similarity",
+        "reminder_datetime": "column_datetime_naive_equal_similarity"
+      }
+    }
+  ],
+  "task_completion_criteria": "The user wants to end up with Todoist tasks for specific missing items from two documents, and a reminder for URLs from a third document. Specifically, the final state should include: 1) Todoist tasks created for 'get links to dietary recommendations', 'Ask about Table 9 page 24', and 'Get USDA dietary Pattern Table' (filtering out the already existing 'ask about LDL-C cholesterol'). 2) Todoist tasks created for Facebook's optimal posting time (1pm - 4pm) and Twitter's optimal posting time (afternoon) (filtering out the already existing 'avoid posting after 8pm' rule). 3) A reminder set for next Wednesday at 3:00 PM to review the URLs 'www.xrpchat.com', 'www.xrpcommunity.blog', and 'www.stedas.hr/ripple'.",
+  "categories": [
+    "APPWORLD",
+    "MULTIPLE_USER_TURN"
+  ],
+  "max_messages": 100,
+  "metadata": {
+    "original_scenario_id": "scenario_0534",
+    "expected_tools": [
+      "add_reminder",
+      "remove_reminder",
+      "todoist_show_tasks",
+      "todoist_create_task"
+    ],
+    "image_arrival": {
+      "1": [
+        "image_2"
+      ],
+      "3": [
+        "image_1"
+      ],
+      "4": [
+        "image_3"
+      ]
+    },
+    "image_delivery_map": [
+      {
+        "query": "Now look at this social media infographic. Extract the specific tips mentioning optimal posting times for Facebook and Twitter. Check my Todoist tasks to see if I already have tasks to implement these time rules, and add any missing ones.",
+        "image_ids": [
+          0
+        ]
+      },
+      {
+        "query": "Finally, from this crypto infographic, locate the three URLs listed under the 'LINKS' section at the bottom. Create a reminder for next Wednesday at 3 PM to review these specific websites.",
+        "image_ids": [
+          2
+        ]
+      }
+    ],
+    "scenario_metadata": {
+      "num_images": 3,
+      "num_user_rounds": 4,
+      "selected_flow_type": "filter",
+      "image_arrival": "progressive",
+      "challenge_type": "goal_change",
+      "require_disambiguation": false,
+      "dataset_type": "infographicvqa"
+    }
+  }
+}

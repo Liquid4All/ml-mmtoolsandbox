@@ -1,0 +1,207 @@
+{
+  "name": "scenario_0092",
+  "base_scenario": "base",
+  "description": "Alexander is organizing a collection of historical documents, letters, and worksheets. He is extracting contact information for organizations and researchers to update his records and phone contacts.",
+  "difficulty": "easy",
+  "appworld_base_task": "_base_",
+  "device_state_id": "alexander-ridd@gmail.com",
+  "reference_time": "2026-04-16T23:53:29.817674+00:00",
+  "agentsandbox_entities": {},
+  "appworld_entities": {
+    "phone.contacts": [
+      {
+        "id": 200,
+        "user_id": 20,
+        "first_name": "Team",
+        "last_name": "VirtuBotix",
+        "email": "team@virtubotix.com",
+        "phone_number": null,
+        "relationships": [
+          "coworkers"
+        ],
+        "birthday": null,
+        "home_address": null,
+        "work_address": null,
+        "created_at": "2026-04-10T09:00:00"
+      }
+    ],
+    "simple_note.notes": [
+      {
+        "id": 3200,
+        "user_id": 20,
+        "title": "Organization Numbers",
+        "content": "The Nutrition Foundation, Inc. - (212) 687-4830",
+        "tags": [],
+        "created_at": "2026-04-10T14:30:00",
+        "updated_at": "2026-04-10T14:30:00",
+        "pinned": false,
+        "data": {}
+      },
+      {
+        "id": 3201,
+        "user_id": 20,
+        "title": "Researchers",
+        "content": "Barbara Mauger - Annual Review of Nutrition",
+        "tags": [],
+        "created_at": "2026-04-12T09:15:00",
+        "updated_at": "2026-04-12T09:15:00",
+        "pinned": false,
+        "data": {}
+      }
+    ],
+    "gmail.users": [
+      {
+        "id": 200,
+        "first_name": "Team",
+        "last_name": "VirtuBotix",
+        "email": "team@virtubotix.com",
+        "password": "default_password",
+        "status": "active",
+        "created_at": "2025-01-01T00:00:00",
+        "last_logged_in": "2025-01-01T00:00:00"
+      }
+    ]
+  },
+  "image_paths": [
+    "docvqa/images/29620.jpg",
+    "docvqa/images/47049.jpg",
+    "docvqa/images/50167.jpg",
+    "omnidocbench/images/000184.jpg",
+    "docvqa/images/206.jpg",
+    "docvqa/images/61197.jpg"
+  ],
+  "messages": [
+    {
+      "sender": "SYSTEM",
+      "recipient": "USER",
+      "content": "{{USER_INSTRUCTION}}ROUND 1 [provide: image_1, image_2, image_3, image_4, image_5, image_6]\nQuery: I'm sorting through these documents. Can you check my 'Organization Numbers' note and see which of the organizations from the second, third, and fourth images are already in there?\nInstructions: Tell the assistant to check the 'Organization Numbers' note and compare it against the organizations and phone numbers shown in the second, third, and fourth images. If the assistant asks for clarification on which organizations to look for, point it to the cover page with the eye logo, the typed letter from Palo Alto, and the English worksheet. Once the assistant identifies which ones are already in the note and which ones are missing, proceed to the next round.\n\nROUND 2\nQuery: Great, draft an email to the team listing the ones that are missing along with their phone numbers.\nInstructions: Ask the assistant to create an email draft to the 'Team' containing the names and phone numbers of the organizations that were not found in the note. If the assistant asks for the team's email address, tell it to use the Team contact already on the device. Once the assistant confirms the draft is created, move on.\n\nROUND 3\nQuery: Actually, I changed my mind. Delete that draft. Instead of emailing them, just add those missing organizations and their phone numbers directly to my phone contacts.\nInstructions: Tell the assistant to discard the email draft you just asked for. Instruct it to instead create new phone contacts for those missing organizations, using the phone numbers extracted from their respective images. If the assistant asks for confirmation after deleting the draft and creating the contacts, acknowledge it and proceed.\n\nROUND 4\nQuery: Now let's look at the people. Check my 'Researchers' note and see if the senders or authors from the first, third, and fifth images are already listed.\nInstructions: Ask the assistant to read the 'Researchers' note and cross-reference it with the senders and authors found in the first, third, and fifth images. If the assistant needs help identifying the documents, mention you mean the letter from Central Michigan, the letter from Annual Review of Nutrition, and the Shell coal report. Wait for the assistant to tell you who is already in the note and who is missing.\n\nROUND 5\nQuery: Alright, update that note by adding the missing people and their associated institutions from those documents.\nInstructions: Instruct the assistant to update the 'Researchers' note by appending the names and institutions of the authors or senders who were missing. Ensure it uses the exact names and university or company affiliations as printed in the documents. Once the assistant confirms the note has been successfully updated, conclude the conversation.\n\nYou have 6 images available to share with the agent using the send_message_with_image tool.\nIMPORTANT: Image IDs are ZERO-INDEXED integers (0, 1, 2, ...). Do NOT add 1 to the IDs.\nAvailable image IDs: [0, 1, 2, 3, 4, 5]\nImage mapping:\n  image_1.jpg -> image ID 0\n  image_2.jpg -> image ID 1\n  image_3.jpg -> image ID 2\n  image_4.jpg -> image ID 3\n  image_5.jpg -> image ID 4\n  image_6.jpg -> image ID 5"
+    },
+    {
+      "sender": "USER",
+      "recipient": "AGENT",
+      "content": "I'm sorting through these documents. Can you check my 'Organization Numbers' note and see which of the organizations from the second, third, and fourth images are already in there?",
+      "image_ids": [
+        0,
+        1,
+        2,
+        3,
+        4,
+        5
+      ]
+    }
+  ],
+  "milestones": [],
+  "entity_diff_specs": [
+    {
+      "operation": "create",
+      "source": "appworld",
+      "table": "phone.contacts",
+      "entity_data": {
+        "user_id": 20,
+        "first_name": "Annual Review of",
+        "last_name": "Nutrition",
+        "email": "",
+        "phone_number": "415-493-4400",
+        "relationships": [],
+        "birthday": null,
+        "home_address": null,
+        "work_address": null,
+        "created_at": "2026-04-16T23:53:29"
+      },
+      "column_similarity_measure": {
+        "user_id": "column_exact_match_similarity",
+        "first_name": "column_exact_match_similarity",
+        "last_name": "column_exact_match_similarity",
+        "email": "column_ignore_similarity",
+        "phone_number": "column_exact_match_similarity",
+        "relationships": "column_ignore_similarity",
+        "birthday": "column_ignore_similarity",
+        "home_address": "column_ignore_similarity",
+        "work_address": "column_ignore_similarity",
+        "created_at": "column_ignore_similarity"
+      }
+    },
+    {
+      "operation": "create",
+      "source": "appworld",
+      "table": "phone.contacts",
+      "entity_data": {
+        "user_id": 20,
+        "first_name": "Jinghua",
+        "last_name": "School",
+        "email": "",
+        "phone_number": "400-650-7766",
+        "relationships": [],
+        "birthday": null,
+        "home_address": null,
+        "work_address": null,
+        "created_at": "2026-04-16T23:53:29"
+      },
+      "column_similarity_measure": {
+        "user_id": "column_exact_match_similarity",
+        "first_name": "column_exact_match_similarity",
+        "last_name": "column_exact_match_similarity",
+        "email": "column_ignore_similarity",
+        "phone_number": "column_exact_match_similarity",
+        "relationships": "column_ignore_similarity",
+        "birthday": "column_ignore_similarity",
+        "home_address": "column_ignore_similarity",
+        "work_address": "column_ignore_similarity",
+        "created_at": "column_ignore_similarity"
+      }
+    },
+    {
+      "operation": "update",
+      "source": "appworld",
+      "table": "simple_note.notes",
+      "entity_id_column": "id",
+      "entity_id_value": 3201,
+      "expected_fields": {
+        "updated_at": "2026-04-12T09:15:00",
+        "content": "Barbara Mauger - Annual Review of Nutrition\nBob Zimmermann - Central Michigan University\nMaarten van der Burgt - Shell Internationale Petroleum Maatschappij\nJaap van Klinken - Shell Internationale Petroleum Maatschappij",
+        "tags": []
+      },
+      "column_similarity_measure": {
+        "updated_at": "column_ignore_similarity",
+        "content": "column_rouge_l_similarity",
+        "id": "column_exact_match_similarity"
+      }
+    }
+  ],
+  "task_completion_criteria": "Create phone contacts for 'Annual Review of Nutrition' with the phone number 415-493-4400, and 'Jinghua School' with the phone number 400-650-7766. Update the 'Researchers' note to include Bob Zimmermann from Central Michigan University, and Maarten van der Burgt and Jaap van Klinken from Shell Internationale Petroleum Maatschappij.",
+  "categories": [
+    "APPWORLD",
+    "MULTIPLE_USER_TURN"
+  ],
+  "max_messages": 100,
+  "metadata": {
+    "original_scenario_id": "scenario_0092",
+    "expected_tools": [
+      "simple_note_show_note",
+      "gmail_create_draft",
+      "gmail_delete_draft",
+      "add_contact",
+      "simple_note_update_note"
+    ],
+    "image_arrival": {
+      "1": [
+        "image_1",
+        "image_2",
+        "image_3",
+        "image_4",
+        "image_5",
+        "image_6"
+      ]
+    },
+    "image_delivery_map": [],
+    "scenario_metadata": {
+      "num_images": 6,
+      "num_user_rounds": 5,
+      "selected_flow_type": "cross_reference",
+      "image_arrival": "upfront",
+      "challenge_type": "goal_change",
+      "require_disambiguation": false,
+      "dataset_type": "docvqa"
+    }
+  }
+}

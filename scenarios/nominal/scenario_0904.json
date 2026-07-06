@@ -1,0 +1,275 @@
+{
+  "name": "scenario_0904",
+  "base_scenario": "base",
+  "description": "The user is reviewing a collection of historical business and academic documents and wants to extract and organize the key people and organizations found within them.",
+  "difficulty": "easy",
+  "appworld_base_task": "_base_",
+  "device_state_id": "aa_burt@gmail.com",
+  "reference_time": "2026-04-17T00:17:31.961770+00:00",
+  "agentsandbox_entities": {},
+  "appworld_entities": {
+    "gmail.users": []
+  },
+  "image_paths": [
+    "docvqa/images/59446.jpg",
+    "docvqa/images/56413.jpg",
+    "docvqa/images/10307.jpg",
+    "docvqa/images/59721.jpg",
+    "docvqa/images/62850.jpg",
+    "docvqa/images/59309.jpg"
+  ],
+  "messages": [
+    {
+      "sender": "SYSTEM",
+      "recipient": "USER",
+      "content": "{{USER_INSTRUCTION}}ROUND 1 [provide: image_1, image_2]\nQuery: Start an email draft to legal@investigation.com with the subject 'Historical Contacts'. Extract the nominee from the first document and the Chairman from the second document, and list them with their institutions in the draft.\nInstructions: Ask the assistant to create an email draft to the specified address with the subject 'Historical Contacts'. Tell it to extract the nominee's name and institution from the first document, and the Chairman's name and institution from the second document, and put them in the body of the draft. If the assistant hallucinates details or asks for the names, tell it to read them directly from the provided images.\n\nROUND 2 [provide: image_3, image_4]\nQuery: Update the draft to add the sender of this fax and the recruitment officer who signed this letter, including their organizations.\nInstructions: Instruct the assistant to update the email draft it just created by adding two more people. It needs to extract the sender's name and company from the newly provided fax cover sheet, and the recruitment officer's name and office from the formal letter. Tell it to append these to the existing list in the draft. If it misses any details, guide it to look at the 'FROM' field on the fax and the signature block on the letter.\n\nROUND 3 [provide: image_5]\nQuery: Update the draft one more time to include the sender organization and its return address from this envelope.\nInstructions: Ask the assistant to update the draft again, this time adding the organization name and return address shown in the top left corner of the envelope image. Ensure it captures the full street address, city, state, and zip code. Once it confirms the draft is updated, you can proceed.\n\nROUND 4\nQuery: Actually, change of plans. Delete that email draft. I want to save these entities differently. Create a new contact for each of the five people or organizations we've gathered so far.\nInstructions: Tell the assistant that you have changed your mind and no longer need the email draft, so it should delete it. Instead, ask it to create a new contact on your device for each of the five people or organizations it extracted in the previous rounds. It should include their names and the associated institutions, companies, or addresses it already gathered. If the assistant asks for phone numbers or emails, clarify that you don't have them. If it asks how to handle organizations that don't have a specific person's name, tell it to just use the organization's name as the contact name.\n\nROUND 5 [provide: image_6]\nQuery: Finally, add the company from this financial report to my contacts as well, using their Unit-I registered office address.\nInstructions: Instruct the assistant to create one final contact using the company name shown in the logo at the top left of the financial report and the Unit-I registered office address found at the bottom of the page under 'Plant Locations'. If it struggles to find the address, point it to section X at the bottom. Once the assistant confirms this last contact is created, end the conversation.\n\nYou have 6 images available to share with the agent using the send_message_with_image tool.\nIMPORTANT: Image IDs are ZERO-INDEXED integers (0, 1, 2, ...). Do NOT add 1 to the IDs.\nAvailable image IDs: [0, 1, 2, 3, 4, 5]\nImage mapping:\n  image_1.jpg -> image ID 0\n  image_2.jpg -> image ID 1\n  image_3.jpg -> image ID 2\n  image_4.jpg -> image ID 3\n  image_5.jpg -> image ID 4\n  image_6.jpg -> image ID 5\n\n## IMAGE DELIVERY\n\n\u26a0\ufe0f IMPORTANT: You MUST use the `send_message_with_image` tool to share images with User B. Do NOT just describe images in text \u2014 you MUST call the tool.\n\nImage delivery schedule:\n\n  Round 2: YOU MUST call the send_message_with_image tool with image_ids='2,3' \u2014 do NOT write the tool name as text; use the actual function call. Include a natural, conversational message to the assistant.\n  Round 3: YOU MUST call the send_message_with_image tool with image_ids='4' \u2014 do NOT write the tool name as text; use the actual function call. Include a natural, conversational message to the assistant.\n  Round 5: YOU MUST call the send_message_with_image tool with image_ids='5' \u2014 do NOT write the tool name as text; use the actual function call. Include a natural, conversational message to the assistant."
+    },
+    {
+      "sender": "USER",
+      "recipient": "AGENT",
+      "content": "Start an email draft to legal@investigation.com with the subject 'Historical Contacts'. Extract the nominee from the first document and the Chairman from the second document, and list them with their institutions in the draft.",
+      "image_ids": [
+        0,
+        1
+      ]
+    }
+  ],
+  "milestones": [],
+  "entity_diff_specs": [
+    {
+      "operation": "create",
+      "source": "appworld",
+      "table": "phone.contacts",
+      "entity_data": {
+        "user_id": 99,
+        "first_name": "Albert",
+        "last_name": "Siegel",
+        "email": "",
+        "phone_number": null,
+        "relationships": [],
+        "birthday": null,
+        "home_address": null,
+        "work_address": "Wayne State University",
+        "created_at": "2026-04-17T00:17:31"
+      },
+      "column_similarity_measure": {
+        "user_id": "column_exact_match_similarity",
+        "first_name": "column_exact_match_similarity",
+        "last_name": "column_exact_match_similarity",
+        "email": "column_ignore_similarity",
+        "phone_number": "column_ignore_similarity",
+        "relationships": "column_ignore_similarity",
+        "birthday": "column_ignore_similarity",
+        "home_address": "column_ignore_similarity",
+        "work_address": "column_exact_match_similarity",
+        "created_at": "column_ignore_similarity"
+      }
+    },
+    {
+      "operation": "create",
+      "source": "appworld",
+      "table": "phone.contacts",
+      "entity_data": {
+        "user_id": 99,
+        "first_name": "Virginia",
+        "last_name": "Caples",
+        "email": "",
+        "phone_number": null,
+        "relationships": [],
+        "birthday": null,
+        "home_address": null,
+        "work_address": "Alcorn A. & M. College",
+        "created_at": "2026-04-17T00:17:31"
+      },
+      "column_similarity_measure": {
+        "user_id": "column_exact_match_similarity",
+        "first_name": "column_exact_match_similarity",
+        "last_name": "column_exact_match_similarity",
+        "email": "column_ignore_similarity",
+        "phone_number": "column_ignore_similarity",
+        "relationships": "column_ignore_similarity",
+        "birthday": "column_ignore_similarity",
+        "home_address": "column_ignore_similarity",
+        "work_address": "column_exact_match_similarity",
+        "created_at": "column_ignore_similarity"
+      }
+    },
+    {
+      "operation": "create",
+      "source": "appworld",
+      "table": "phone.contacts",
+      "entity_data": {
+        "user_id": 99,
+        "first_name": "Jack",
+        "last_name": "Geeting",
+        "email": "",
+        "phone_number": null,
+        "relationships": [],
+        "birthday": null,
+        "home_address": null,
+        "work_address": "RJ Reynolds Tobacco Company",
+        "created_at": "2026-04-17T00:17:31"
+      },
+      "column_similarity_measure": {
+        "user_id": "column_exact_match_similarity",
+        "first_name": "column_exact_match_similarity",
+        "last_name": "column_exact_match_similarity",
+        "email": "column_ignore_similarity",
+        "phone_number": "column_ignore_similarity",
+        "relationships": "column_ignore_similarity",
+        "birthday": "column_ignore_similarity",
+        "home_address": "column_ignore_similarity",
+        "work_address": "column_exact_match_similarity",
+        "created_at": "column_ignore_similarity"
+      }
+    },
+    {
+      "operation": "create",
+      "source": "appworld",
+      "table": "phone.contacts",
+      "entity_data": {
+        "user_id": 99,
+        "first_name": "D. Marc",
+        "last_name": "Herschler",
+        "email": "",
+        "phone_number": null,
+        "relationships": [],
+        "birthday": null,
+        "home_address": null,
+        "work_address": "Parklawn Personnel Office",
+        "created_at": "2026-04-17T00:17:31"
+      },
+      "column_similarity_measure": {
+        "user_id": "column_exact_match_similarity",
+        "first_name": "column_exact_match_similarity",
+        "last_name": "column_exact_match_similarity",
+        "email": "column_ignore_similarity",
+        "phone_number": "column_ignore_similarity",
+        "relationships": "column_ignore_similarity",
+        "birthday": "column_ignore_similarity",
+        "home_address": "column_ignore_similarity",
+        "work_address": "column_exact_match_similarity",
+        "created_at": "column_ignore_similarity"
+      }
+    },
+    {
+      "operation": "create",
+      "source": "appworld",
+      "table": "phone.contacts",
+      "entity_data": {
+        "user_id": 99,
+        "first_name": "The Nutrition Foundation",
+        "last_name": "Inc.",
+        "email": "",
+        "phone_number": null,
+        "relationships": [],
+        "birthday": null,
+        "home_address": null,
+        "work_address": "489 FIFTH AVENUE, NEW YORK, N.Y. 10017",
+        "created_at": "2026-04-17T00:17:31"
+      },
+      "column_similarity_measure": {
+        "user_id": "column_exact_match_similarity",
+        "first_name": "column_exact_match_similarity",
+        "last_name": "column_exact_match_similarity",
+        "email": "column_ignore_similarity",
+        "phone_number": "column_ignore_similarity",
+        "relationships": "column_ignore_similarity",
+        "birthday": "column_ignore_similarity",
+        "home_address": "column_ignore_similarity",
+        "work_address": "column_exact_match_similarity",
+        "created_at": "column_ignore_similarity"
+      }
+    },
+    {
+      "operation": "create",
+      "source": "appworld",
+      "table": "phone.contacts",
+      "entity_data": {
+        "user_id": 99,
+        "first_name": "GT Golden Tobacco",
+        "last_name": "Limited",
+        "email": "",
+        "phone_number": null,
+        "relationships": [],
+        "birthday": null,
+        "home_address": null,
+        "work_address": "Registered Office Tobacco House, S. V. Road, Vile Parle (West), Mumbai - 400 056",
+        "created_at": "2026-04-17T00:17:31"
+      },
+      "column_similarity_measure": {
+        "user_id": "column_exact_match_similarity",
+        "first_name": "column_exact_match_similarity",
+        "last_name": "column_exact_match_similarity",
+        "email": "column_ignore_similarity",
+        "phone_number": "column_ignore_similarity",
+        "relationships": "column_ignore_similarity",
+        "birthday": "column_ignore_similarity",
+        "home_address": "column_ignore_similarity",
+        "work_address": "column_exact_match_similarity",
+        "created_at": "column_ignore_similarity"
+      }
+    }
+  ],
+  "task_completion_criteria": "Create 6 new contacts on the device using information extracted from the images: 1. Dr. Albert Siegel with company/institution 'Wayne State University', 2. Miss Virginia Caples with company/institution 'Alcorn A. & M. College', 3. Jack Geeting with company/institution 'RJ Reynolds Tobacco Company', 4. D. Marc Herschler with company/institution 'Parklawn Personnel Office', 5. 'The Nutrition Foundation, Inc.' with address '489 FIFTH AVENUE, NEW YORK, N.Y. 10017', and 6. 'GT Golden Tobacco Limited' with address 'Registered Office Tobacco House, S. V. Road, Vile Parle (West), Mumbai - 400 056' (or similar variations capturing the same names and organizational/address details).",
+  "categories": [
+    "APPWORLD",
+    "MULTIPLE_USER_TURN"
+  ],
+  "max_messages": 100,
+  "metadata": {
+    "original_scenario_id": "scenario_0904",
+    "expected_tools": [
+      "gmail_create_draft",
+      "gmail_update_draft",
+      "gmail_delete_draft",
+      "contacts_add_contact"
+    ],
+    "image_arrival": {
+      "1": [
+        "image_1",
+        "image_2"
+      ],
+      "2": [
+        "image_3",
+        "image_4"
+      ],
+      "3": [
+        "image_5"
+      ],
+      "5": [
+        "image_6"
+      ]
+    },
+    "image_delivery_map": [
+      {
+        "query": "Update the draft to add the sender of this fax and the recruitment officer who signed this letter, including their organizations.",
+        "image_ids": [
+          2,
+          3
+        ]
+      },
+      {
+        "query": "Update the draft one more time to include the sender organization and its return address from this envelope.",
+        "image_ids": [
+          4
+        ]
+      },
+      {
+        "query": "Finally, add the company from this financial report to my contacts as well, using their Unit-I registered office address.",
+        "image_ids": [
+          5
+        ]
+      }
+    ],
+    "scenario_metadata": {
+      "num_images": 6,
+      "num_user_rounds": 5,
+      "selected_flow_type": "aggregate",
+      "image_arrival": "mixed",
+      "challenge_type": "goal_change",
+      "require_disambiguation": false,
+      "dataset_type": "docvqa"
+    }
+  }
+}

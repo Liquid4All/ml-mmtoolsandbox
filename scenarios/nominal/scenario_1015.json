@@ -1,0 +1,401 @@
+{
+  "name": "scenario_1015",
+  "base_scenario": "base",
+  "description": "The user is planning their weekend activities, looking at various photos of pubs, events, and shops they took recently.",
+  "difficulty": "easy",
+  "appworld_base_task": "_base_",
+  "device_state_id": "connorbrow@gmail.com",
+  "reference_time": "2026-04-17T00:21:07.223700+00:00",
+  "agentsandbox_entities": {
+    "calendars": [
+      {
+        "calendar_id": "calendar_100",
+        "title": "Default Calendar"
+      }
+    ]
+  },
+  "appworld_entities": {
+    "phone.contacts": [
+      {
+        "id": 200,
+        "user_id": 91,
+        "first_name": "Mark",
+        "last_name": "Davis",
+        "email": "mark.davis@gmail.com",
+        "phone_number": null,
+        "relationships": [
+          "friend"
+        ],
+        "birthday": null,
+        "home_address": null,
+        "work_address": null,
+        "created_at": "2025-10-10T14:00:00"
+      }
+    ],
+    "todoist.projects": [
+      {
+        "id": 400,
+        "user_id": 91,
+        "name": "Inbox",
+        "color": "charcoal",
+        "is_inbox": true,
+        "description": "Default inbox project",
+        "created_at": "2025-01-01T10:00:00"
+      }
+    ],
+    "gmail.users": [
+      {
+        "id": 200,
+        "first_name": "Mark",
+        "last_name": "Davis",
+        "email": "mark.davis@gmail.com",
+        "password": "default_password",
+        "status": "active",
+        "created_at": "2025-01-01T00:00:00",
+        "last_logged_in": "2025-01-01T00:00:00"
+      }
+    ],
+    "todoist.project_collaborator_links": [
+      {
+        "id": 50400,
+        "project_id": 400,
+        "user_id": 91,
+        "is_favorite": false,
+        "is_archived": false,
+        "created_at": "2025-01-01T10:00:00"
+      }
+    ]
+  },
+  "image_paths": [
+    "hiertext/images/test/14611660adef4a3b.jpg",
+    "hiertext/images/test/93bc9b3d573a33fb.jpg",
+    "hiertext/images/test/1bae3b1a6af7286e.jpg",
+    "worldvqa/images/638.jpg",
+    "hiertext/images/test/1dbfbf6b72656838.jpg",
+    "hiertext/images/test/4812875fa886caed.jpg"
+  ],
+  "messages": [
+    {
+      "sender": "SYSTEM",
+      "recipient": "USER",
+      "content": "{{USER_INSTRUCTION}}ROUND 1 [provide: image_1, image_3, image_5]\nQuery: I want to see live music this coming Sunday night. Check these three pub images and validate which one explicitly offers live music on Sundays. Create a calendar event for 9:30 PM this Sunday at the pub that matches. Also, save the phone number shown on the blue and white sign to my contacts as 'Banks Street Bar'.\nInstructions: Ask the assistant to review the three images, identify which pub explicitly advertises live music on Sundays, and schedule a calendar event for 9:30 PM this Sunday at that specific pub. Also, ask it to save the phone number from the blue and white sign as a new contact named 'Banks Street Bar'. If the assistant asks for clarification on which sign, point out it's the one next to the chalkboard quote. Once the event and contact are created, move to the next round.\n\nROUND 2 [provide: image_2]\nQuery: Look at the poster in this new image. Draft an email to my friend Mark inviting him to the performance on the date and time shown.\nInstructions: Ask the assistant to read the poster in the image and draft an email to your friend Mark inviting him to the performance mentioned, using the specific date and time from the poster. If the assistant fails to extract the correct name of the performance or the date, point it back to the poster on the left wall. Once the draft is created, proceed to the next round.\n\nROUND 3\nQuery: Actually, I changed my mind about the plan with Mark. Find that email draft you just created and update it to invite him for shooters instead. List the exact ingredients for the 'Aardvark's Gat' and 'Bethesda Koffie' from the chalkboard menu in that same image so he knows what to expect. Also, schedule a calendar event for drinks with him this coming Saturday at 8 PM.\nInstructions: Tell the assistant that you've changed your mind about the event. Ask it to update the email draft to Mark, replacing the performance invitation with an invitation for shooters instead. Instruct it to include the specific ingredients for the two drinks mentioned in your query, which can be found on the chalkboard menu in the previous image. Finally, ask the assistant to create a calendar event for drinks with Mark this coming Saturday at 8 PM. If it misses any ingredients, correct it. Once confirmed, move to the next round.\n\nROUND 4 [provide: image_4]\nQuery: I want to visit the modern rug exhibition shown in this street scene tomorrow. Validate if 10:00 AM is within their operating hours shown on the sign. If it is, schedule a calendar event for 10:00 AM. If it's not, schedule it for their exact opening time instead. Use the street name of this location as the event location.\nInstructions: Ask the assistant to check the yellow sign in the street scene for the exhibition's operating hours and validate if 10:00 AM falls within that window. Instruct it to schedule a calendar event for tomorrow at 10:00 AM if it does, or at the exact opening time if it doesn't. Tell it to use the street name provided in the image context as the location. If the assistant misreads the hours or schedules it for the wrong time, correct it. Once the event is scheduled, move on.\n\nROUND 5 [provide: image_6]\nQuery: Finally, check this storefront image. Validate if the new 'OSKA' store sells men's or women's clothing based on the sign in the window. If it's for women, create a Todoist task to 'Tell Sarah about OSKA' when it opens in August. If it's for men, create a task for me to visit it.\nInstructions: Ask the assistant to examine the sign in the window of the new store to determine if it sells men's or women's clothing. Based on that validation, ask it to create the appropriate Todoist task as specified in your query. If the assistant creates the wrong task, remind it to look closely at the word before 'Wear' on the sign. Once the task is successfully created, end the conversation.\n\nYou have 6 images available to share with the agent using the send_message_with_image tool.\nIMPORTANT: Image IDs are ZERO-INDEXED integers (0, 1, 2, ...). Do NOT add 1 to the IDs.\nAvailable image IDs: [0, 1, 2, 3, 4, 5]\nImage mapping:\n  image_1.jpg -> image ID 0\n  image_2.jpg -> image ID 1\n  image_3.jpg -> image ID 2\n  image_4.jpg -> image ID 3\n  image_5.jpg -> image ID 4\n  image_6.jpg -> image ID 5\n\n## IMAGE DELIVERY\n\n⚠️ IMPORTANT: You MUST use the `send_message_with_image` tool to share images with User B. Do NOT just describe images in text — you MUST call the tool.\n\nImage delivery schedule:\n\n  Round 2: YOU MUST call the send_message_with_image tool with image_ids='1' — do NOT write the tool name as text; use the actual function call. Include a natural, conversational message to the assistant.\n  Round 4: YOU MUST call the send_message_with_image tool with image_ids='3' — do NOT write the tool name as text; use the actual function call. Include a natural, conversational message to the assistant.\n  Round 5: YOU MUST call the send_message_with_image tool with image_ids='5' — do NOT write the tool name as text; use the actual function call. Include a natural, conversational message to the assistant."
+    },
+    {
+      "sender": "USER",
+      "recipient": "AGENT",
+      "content": "I want to see live music this coming Sunday night. Check these three pub images and validate which one explicitly offers live music on Sundays. Create a calendar event for 9:30 PM this Sunday at the pub that matches. Also, save the phone number shown on the blue and white sign to my contacts as 'Banks Street Bar'.",
+      "image_ids": [
+        0,
+        2,
+        4
+      ]
+    }
+  ],
+  "milestones": [],
+  "entity_diff_specs": [
+    {
+      "operation": "create",
+      "source": "appworld",
+      "table": "phone.contacts",
+      "entity_data": {
+        "user_id": 91,
+        "first_name": "Banks Street",
+        "last_name": "Bar",
+        "email": "",
+        "phone_number": "486-0258",
+        "relationships": [],
+        "birthday": null,
+        "home_address": null,
+        "work_address": null,
+        "created_at": "2026-04-17T00:21:07"
+      },
+      "column_similarity_measure": {
+        "user_id": "column_exact_match_similarity",
+        "first_name": "column_exact_match_similarity",
+        "last_name": "column_exact_match_similarity",
+        "email": "column_ignore_similarity",
+        "phone_number": "column_exact_match_similarity",
+        "relationships": "column_ignore_similarity",
+        "birthday": "column_ignore_similarity",
+        "home_address": "column_ignore_similarity",
+        "work_address": "column_ignore_similarity",
+        "created_at": "column_ignore_similarity"
+      }
+    },
+    {
+      "operation": "create",
+      "source": "appworld",
+      "table": "gmail.drafts",
+      "entity_data": {
+        "user_id": 91,
+        "recipient_ids": [
+          200
+        ],
+        "recipient_email_addresses": [
+          "mark.davis@gmail.com"
+        ],
+        "recipient_names": [
+          "Mark Davis"
+        ],
+        "subject": "Shooters this Saturday",
+        "body": "Hey Mark, I changed my mind about the performance. Let's go for shooters instead! We should try the Aardvark's Gat (Olaf Berg, Milk Stout + Amarula) and the Bethesda Koffie (Rum, Vodka + Cola Tonic). See you Saturday!",
+        "belongs_to_email_thread_id": null,
+        "response_to_email_id": null,
+        "scheduled_send_at": null,
+        "created_at": "2026-04-17T00:21:07",
+        "updated_at": "2026-04-17T00:21:07"
+      },
+      "column_similarity_measure": {
+        "user_id": "column_exact_match_similarity",
+        "recipient_ids": "column_exact_match_similarity",
+        "recipient_email_addresses": "column_exact_match_similarity",
+        "recipient_names": "column_ignore_similarity",
+        "subject": "column_rouge_l_similarity",
+        "body": "column_rouge_l_similarity",
+        "belongs_to_email_thread_id": "column_ignore_similarity",
+        "response_to_email_id": "column_ignore_similarity",
+        "scheduled_send_at": "column_ignore_similarity",
+        "created_at": "column_ignore_similarity",
+        "updated_at": "column_ignore_similarity"
+      }
+    },
+    {
+      "operation": "create",
+      "source": "appworld",
+      "table": "todoist.tasks",
+      "entity_data": {
+        "project_id": 400,
+        "section_id": null,
+        "user_id": 91,
+        "title": "Tell Sarah about OSKA",
+        "description": null,
+        "due_date": "2026-08-01T00:00:00",
+        "priority": "medium",
+        "is_completed": false,
+        "duration": null,
+        "duration_unit": null,
+        "order_index": 0,
+        "assignee_id": null,
+        "assigner_id": null,
+        "created_at": "2026-04-17T00:21:07"
+      },
+      "column_similarity_measure": {
+        "project_id": "column_exact_match_similarity",
+        "section_id": "column_ignore_similarity",
+        "user_id": "column_exact_match_similarity",
+        "title": "column_rouge_l_similarity",
+        "description": "column_ignore_similarity",
+        "due_date": "column_datetime_naive_equal_similarity",
+        "priority": "column_exact_match_similarity",
+        "is_completed": "column_exact_match_similarity",
+        "duration": "column_ignore_similarity",
+        "duration_unit": "column_ignore_similarity",
+        "order_index": "column_ignore_similarity",
+        "assignee_id": "column_ignore_similarity",
+        "assigner_id": "column_ignore_similarity",
+        "created_at": "column_ignore_similarity"
+      }
+    },
+    {
+      "operation": "create",
+      "source": "agentsandbox",
+      "namespace": "CALENDAR_EVENTS",
+      "entity_data": {
+        "calendar_event_id": "event_100",
+        "calendar_id": "calendar_100",
+        "title": "Live music at THE LORD NELSON",
+        "description": null,
+        "start_datetime": "2026-04-19T21:30:00Z",
+        "end_datetime": "2026-04-19T22:30:00Z",
+        "is_all_day": false,
+        "recurrence_frequency": null,
+        "recurrence_interval": null,
+        "recurrence_until_datetime": null,
+        "recurrence_parent_id": null,
+        "recurrence_exclude_datetime": [],
+        "latitude": null,
+        "longitude": null,
+        "place_id": null,
+        "formatted_address": "THE LORD NELSON",
+        "attendee_names": [],
+        "attendee_emails": []
+      },
+      "column_similarity_measure": {
+        "calendar_event_id": "column_ignore_similarity",
+        "calendar_id": "column_ignore_similarity",
+        "title": "column_rouge_l_similarity",
+        "description": "column_ignore_similarity",
+        "start_datetime": "column_datetime_naive_equal_similarity",
+        "end_datetime": "column_datetime_naive_equal_similarity",
+        "is_all_day": "column_exact_match_similarity",
+        "recurrence_frequency": "column_ignore_similarity",
+        "recurrence_interval": "column_ignore_similarity",
+        "recurrence_until_datetime": "column_ignore_similarity",
+        "recurrence_parent_id": "column_ignore_similarity",
+        "recurrence_exclude_datetime": "column_ignore_similarity",
+        "latitude": "column_ignore_similarity",
+        "longitude": "column_ignore_similarity",
+        "place_id": "column_ignore_similarity",
+        "formatted_address": "column_exact_match_similarity",
+        "attendee_names": "column_ignore_similarity",
+        "attendee_emails": "column_ignore_similarity"
+      }
+    },
+    {
+      "operation": "create",
+      "source": "agentsandbox",
+      "namespace": "CALENDAR_EVENTS",
+      "entity_data": {
+        "calendar_event_id": "event_101",
+        "calendar_id": "calendar_100",
+        "title": "Drinks with Mark",
+        "description": null,
+        "start_datetime": "2026-04-18T20:00:00Z",
+        "end_datetime": "2026-04-18T21:00:00Z",
+        "is_all_day": false,
+        "recurrence_frequency": null,
+        "recurrence_interval": null,
+        "recurrence_until_datetime": null,
+        "recurrence_parent_id": null,
+        "recurrence_exclude_datetime": [],
+        "latitude": null,
+        "longitude": null,
+        "place_id": null,
+        "formatted_address": null,
+        "attendee_names": [
+          "Mark Davis"
+        ],
+        "attendee_emails": [
+          "mark.davis@gmail.com"
+        ]
+      },
+      "column_similarity_measure": {
+        "calendar_event_id": "column_ignore_similarity",
+        "calendar_id": "column_ignore_similarity",
+        "title": "column_rouge_l_similarity",
+        "description": "column_ignore_similarity",
+        "start_datetime": "column_datetime_naive_equal_similarity",
+        "end_datetime": "column_datetime_naive_equal_similarity",
+        "is_all_day": "column_exact_match_similarity",
+        "recurrence_frequency": "column_ignore_similarity",
+        "recurrence_interval": "column_ignore_similarity",
+        "recurrence_until_datetime": "column_ignore_similarity",
+        "recurrence_parent_id": "column_ignore_similarity",
+        "recurrence_exclude_datetime": "column_ignore_similarity",
+        "latitude": "column_ignore_similarity",
+        "longitude": "column_ignore_similarity",
+        "place_id": "column_ignore_similarity",
+        "formatted_address": "column_ignore_similarity",
+        "attendee_names": "column_exact_match_similarity",
+        "attendee_emails": "column_exact_match_similarity"
+      }
+    },
+    {
+      "operation": "create",
+      "source": "agentsandbox",
+      "namespace": "CALENDAR_EVENTS",
+      "entity_data": {
+        "calendar_event_id": "event_102",
+        "calendar_id": "calendar_100",
+        "title": "Modern rug exhibition",
+        "description": null,
+        "start_datetime": "2026-04-18T11:00:00Z",
+        "end_datetime": "2026-04-18T12:00:00Z",
+        "is_all_day": false,
+        "recurrence_frequency": null,
+        "recurrence_interval": null,
+        "recurrence_until_datetime": null,
+        "recurrence_parent_id": null,
+        "recurrence_exclude_datetime": [],
+        "latitude": null,
+        "longitude": null,
+        "place_id": null,
+        "formatted_address": "Boulevard Saint-Germain",
+        "attendee_names": [],
+        "attendee_emails": []
+      },
+      "column_similarity_measure": {
+        "calendar_event_id": "column_ignore_similarity",
+        "calendar_id": "column_ignore_similarity",
+        "title": "column_rouge_l_similarity",
+        "description": "column_ignore_similarity",
+        "start_datetime": "column_datetime_naive_equal_similarity",
+        "end_datetime": "column_datetime_naive_equal_similarity",
+        "is_all_day": "column_exact_match_similarity",
+        "recurrence_frequency": "column_ignore_similarity",
+        "recurrence_interval": "column_ignore_similarity",
+        "recurrence_until_datetime": "column_ignore_similarity",
+        "recurrence_parent_id": "column_ignore_similarity",
+        "recurrence_exclude_datetime": "column_ignore_similarity",
+        "latitude": "column_ignore_similarity",
+        "longitude": "column_ignore_similarity",
+        "place_id": "column_ignore_similarity",
+        "formatted_address": "column_exact_match_similarity",
+        "attendee_names": "column_ignore_similarity",
+        "attendee_emails": "column_ignore_similarity"
+      }
+    }
+  ],
+  "task_completion_criteria": "Create a calendar event for live music at THE LORD NELSON this Sunday (April 19, 2026) at 9:30 PM, and save 'Banks Street Bar' with phone number '486-0258' to contacts. Update the drafted email to Mark to invite him for shooters, listing the ingredients for Aardvark's Gat (Olaf Berg, Milk Stout + Amarula) and Bethesda Koffie (Rum, Vodka + Cola Tonic), and schedule a calendar event for drinks with Mark this Saturday (April 18, 2026) at 8 PM. Schedule a calendar event for the modern rug exhibition at Boulevard Saint-Germain tomorrow (April 18, 2026) at 11:00 AM. Create a Todoist task to 'Tell Sarah about OSKA' due in August, as the store sells ladies' wear.",
+  "categories": [
+    "APPWORLD",
+    "MULTIPLE_USER_TURN"
+  ],
+  "max_messages": 100,
+  "metadata": {
+    "original_scenario_id": "scenario_1015",
+    "expected_tools": [
+      "create_calendar_event",
+      "contacts_add_contact",
+      "gmail_create_draft",
+      "gmail_show_draft",
+      "gmail_update_draft",
+      "todoist_create_task"
+    ],
+    "image_arrival": {
+      "1": [
+        "image_1",
+        "image_3",
+        "image_5"
+      ],
+      "2": [
+        "image_2"
+      ],
+      "4": [
+        "image_4"
+      ],
+      "5": [
+        "image_6"
+      ]
+    },
+    "image_delivery_map": [
+      {
+        "query": "Look at the poster in this new image. Draft an email to my friend Mark inviting him to the performance on the date and time shown.",
+        "image_ids": [
+          1
+        ]
+      },
+      {
+        "query": "I want to visit the modern rug exhibition shown in this street scene tomorrow. Validate if 10:00 AM is within their operating hours shown on the sign. If it is, schedule a calendar event for 10:00 AM. If it's not, schedule it for their exact opening time instead. Use the street name of this location as the event location.",
+        "image_ids": [
+          3
+        ]
+      },
+      {
+        "query": "Finally, check this storefront image. Validate if the new 'OSKA' store sells men's or women's clothing based on the sign in the window. If it's for women, create a Todoist task to 'Tell Sarah about OSKA' when it opens in August. If it's for men, create a task for me to visit it.",
+        "image_ids": [
+          5
+        ]
+      }
+    ],
+    "scenario_metadata": {
+      "num_images": 6,
+      "num_user_rounds": 5,
+      "selected_flow_type": "validate",
+      "image_arrival": "mixed",
+      "challenge_type": "goal_change",
+      "require_disambiguation": false,
+      "dataset_type": "hiertext"
+    }
+  }
+}

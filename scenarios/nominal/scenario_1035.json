@@ -1,0 +1,230 @@
+{
+  "name": "scenario_1035",
+  "base_scenario": "base",
+  "description": "Angelica is working on a geography and geology project. She is collecting visual examples of interesting geographical locations, geological structures, and unique transportation methods to compile into a reference note and share with her project partner.",
+  "difficulty": "easy",
+  "appworld_base_task": "_base_",
+  "device_state_id": "angelica.wils@gmail.com",
+  "reference_time": "2026-04-17T00:21:39.724445+00:00",
+  "agentsandbox_entities": {},
+  "appworld_entities": {
+    "phone.contacts": [
+      {
+        "id": 200,
+        "user_id": 70,
+        "first_name": "John",
+        "last_name": "Davis",
+        "email": "john.davis@gmail.com",
+        "phone_number": "555-0101",
+        "relationships": [],
+        "birthday": null,
+        "home_address": null,
+        "work_address": null,
+        "created_at": "2026-04-10T12:00:00"
+      },
+      {
+        "id": 201,
+        "user_id": 70,
+        "first_name": "John",
+        "last_name": "Smith",
+        "email": "john.smith@gmail.com",
+        "phone_number": "555-0102",
+        "relationships": [],
+        "birthday": null,
+        "home_address": null,
+        "work_address": null,
+        "created_at": "2026-04-10T12:05:00"
+      }
+    ],
+    "gmail.users": [
+      {
+        "id": 200,
+        "first_name": "John",
+        "last_name": "Davis",
+        "email": "john.davis@gmail.com",
+        "password": "default_password",
+        "status": "active",
+        "created_at": "2025-01-01T00:00:00",
+        "last_logged_in": "2025-01-01T00:00:00"
+      },
+      {
+        "id": 201,
+        "first_name": "John",
+        "last_name": "Smith",
+        "email": "john.smith@gmail.com",
+        "password": "default_password",
+        "status": "active",
+        "created_at": "2025-01-01T00:00:00",
+        "last_logged_in": "2025-01-01T00:00:00"
+      }
+    ],
+    "phone.users": [
+      {
+        "id": 200,
+        "first_name": "John",
+        "last_name": "Davis",
+        "phone_number": "555-0101",
+        "password": "default_password",
+        "created_at": "2025-01-01T00:00:00",
+        "last_logged_in": "2025-01-01T00:00:00"
+      },
+      {
+        "id": 201,
+        "first_name": "John",
+        "last_name": "Smith",
+        "phone_number": "555-0102",
+        "password": "default_password",
+        "created_at": "2025-01-01T00:00:00",
+        "last_logged_in": "2025-01-01T00:00:00"
+      }
+    ]
+  },
+  "image_paths": [
+    "worldvqa/images/823.jpg",
+    "worldvqa/images/180.jpg",
+    "worldvqa/images/1797.jpg",
+    "worldvqa/images/688.jpg"
+  ],
+  "messages": [
+    {
+      "sender": "SYSTEM",
+      "recipient": "USER",
+      "content": "{{USER_INSTRUCTION}}ROUND 1 [provide: image_1, image_2]\nQuery: I'm collecting interesting geographical and structural examples for a project. Please create a note called 'Geography Project'. In it, write down the name of the Swiss canton shown in the first image, and the specific geological structure shown in the second image.\nInstructions: Ask the assistant to identify the Swiss canton in the first image and the geological structure in the second image, and create a new note titled 'Geography Project' with those two findings. If the assistant asks for permission to search the web to verify the names, grant it. Once the assistant confirms the note has been created, acknowledge it and move on to the next round.\n\nROUND 2 [provide: image_3]\nQuery: Here's another one. Please identify the specific railway shown in this new image and add it to the 'Geography Project' note.\nInstructions: Ask the assistant to identify the railway shown in the newly provided image and append its name to the 'Geography Project' note. If the assistant misidentifies it, point it back to the text clearly visible on the side of the red rail vehicle. Once the assistant confirms the note has been updated, proceed to the final round.\n\nROUND 3 [provide: image_4]\nQuery: One more! Add the name of the jagged natural landmark in this last picture to our note. After that, retrieve the whole note and send its contents as a text message to my project partner John to show him what we have so far.\nInstructions: Tell the assistant to identify the mountain range in the final image, add it to the note, and then send the complete list of four items as a text message to John. The assistant will notice there are multiple contacts named John on the device and ask you to clarify which one you mean. Tell the assistant you want to message John Davis. Once the assistant confirms the text message has been sent with the aggregated note contents, end the conversation.\n\nYou have 4 images available to share with the agent using the send_message_with_image tool.\nIMPORTANT: Image IDs are ZERO-INDEXED integers (0, 1, 2, ...). Do NOT add 1 to the IDs.\nAvailable image IDs: [0, 1, 2, 3]\nImage mapping:\n  image_1.jpg -> image ID 0\n  image_2.jpg -> image ID 1\n  image_3.jpg -> image ID 2\n  image_4.jpg -> image ID 3\n\n## IMAGE DELIVERY\n\n\u26a0\ufe0f IMPORTANT: You MUST use the `send_message_with_image` tool to share images with User B. Do NOT just describe images in text \u2014 you MUST call the tool.\n\nImage delivery schedule:\n\n  Round 2: YOU MUST call the send_message_with_image tool with image_ids='2' \u2014 do NOT write the tool name as text; use the actual function call. Include a natural, conversational message to the assistant.\n  Round 3: YOU MUST call the send_message_with_image tool with image_ids='3' \u2014 do NOT write the tool name as text; use the actual function call. Include a natural, conversational message to the assistant."
+    },
+    {
+      "sender": "USER",
+      "recipient": "AGENT",
+      "content": "I'm collecting interesting geographical and structural examples for a project. Please create a note called 'Geography Project'. In it, write down the name of the Swiss canton shown in the first image, and the specific geological structure shown in the second image.",
+      "image_ids": [
+        0,
+        1
+      ]
+    }
+  ],
+  "milestones": [],
+  "entity_diff_specs": [
+    {
+      "operation": "create",
+      "source": "appworld",
+      "table": "phone.global_text_messages",
+      "entity_data": {
+        "sender_id": 70,
+        "receiver_id": 200,
+        "message": "Geography Project:\n- Ticino\n- horizontal fold\n- Pilatus cogwheel Railway\n- The Teeth of Navarino",
+        "created_at": "2026-04-17T00:21:39"
+      },
+      "column_similarity_measure": {
+        "sender_id": "column_exact_match_similarity",
+        "receiver_id": "column_exact_match_similarity",
+        "message": "column_rouge_l_similarity",
+        "created_at": "column_ignore_similarity"
+      }
+    },
+    {
+      "operation": "create",
+      "source": "appworld",
+      "table": "phone.user_text_messages",
+      "entity_data": {
+        "global_text_message_id": 200,
+        "user_id": 70,
+        "created_at": "2026-04-17T00:21:39"
+      },
+      "column_similarity_measure": {
+        "global_text_message_id": "column_ignore_similarity",
+        "user_id": "column_exact_match_similarity",
+        "created_at": "column_ignore_similarity"
+      }
+    },
+    {
+      "operation": "create",
+      "source": "appworld",
+      "table": "simple_note.notes",
+      "entity_data": {
+        "user_id": 70,
+        "title": "Geography Project",
+        "content": "- Ticino\n- horizontal fold\n- Pilatus cogwheel Railway\n- The Teeth of Navarino",
+        "tags": [],
+        "created_at": "2026-04-17T00:21:39",
+        "updated_at": "2026-04-17T00:21:39",
+        "pinned": false,
+        "data": {}
+      },
+      "column_similarity_measure": {
+        "user_id": "column_exact_match_similarity",
+        "title": "column_rouge_l_similarity",
+        "content": "column_rouge_l_similarity",
+        "tags": "column_ignore_similarity",
+        "created_at": "column_ignore_similarity",
+        "updated_at": "column_ignore_similarity",
+        "pinned": "column_exact_match_similarity",
+        "data": "column_ignore_similarity"
+      }
+    },
+    {
+      "operation": "create",
+      "source": "appworld",
+      "table": "phone.user_text_messages",
+      "entity_data": {
+        "global_text_message_id": 200,
+        "user_id": 200,
+        "created_at": "2026-04-17T00:21:39"
+      },
+      "column_similarity_measure": {
+        "global_text_message_id": "column_ignore_similarity",
+        "user_id": "column_exact_match_similarity",
+        "created_at": "column_ignore_similarity"
+      }
+    }
+  ],
+  "task_completion_criteria": "Create a note named 'Geography Project' containing the identified locations and structures: 'Ticino', 'horizontal fold', 'Pilatus cogwheel Railway', and 'The Teeth of Navarino'. Then, send a text message to John Davis containing these four aggregated items.",
+  "categories": [
+    "APPWORLD",
+    "MULTIPLE_USER_TURN"
+  ],
+  "max_messages": 100,
+  "metadata": {
+    "original_scenario_id": "scenario_1035",
+    "expected_tools": [
+      "web_search_serper",
+      "simple_note_create_note",
+      "simple_note_add_content_to_note",
+      "simple_note_show_note",
+      "messages_send_text_message"
+    ],
+    "image_arrival": {
+      "1": [
+        "image_1",
+        "image_2"
+      ],
+      "2": [
+        "image_3"
+      ],
+      "3": [
+        "image_4"
+      ]
+    },
+    "image_delivery_map": [
+      {
+        "query": "Here's another one. Please identify the specific railway shown in this new image and add it to the 'Geography Project' note.",
+        "image_ids": [
+          2
+        ]
+      },
+      {
+        "query": "One more! Add the name of the jagged natural landmark in this last picture to our note. After that, retrieve the whole note and send its contents as a text message to my project partner John to show him what we have so far.",
+        "image_ids": [
+          3
+        ]
+      }
+    ],
+    "scenario_metadata": {
+      "num_images": 4,
+      "num_user_rounds": 3,
+      "selected_flow_type": "aggregate",
+      "image_arrival": "progressive",
+      "challenge_type": "none",
+      "require_disambiguation": true,
+      "dataset_type": "worldvqa"
+    }
+  }
+}

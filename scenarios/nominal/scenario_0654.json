@@ -1,0 +1,147 @@
+{
+  "name": "scenario_0654",
+  "base_scenario": "base",
+  "description": "Morgan is preparing an economic update email for their team but incorrectly assumes they have a compiled PDF of the charts ready to attach.",
+  "difficulty": "easy",
+  "appworld_base_task": "_base_",
+  "device_state_id": "morgan-harrison@gmail.com",
+  "reference_time": "2026-04-17T00:10:25.500620+00:00",
+  "agentsandbox_entities": {},
+  "appworld_entities": {
+    "phone.contacts": [
+      {
+        "id": 200,
+        "user_id": 17,
+        "first_name": "Team",
+        "last_name": "Members",
+        "email": "team@example.com",
+        "phone_number": null,
+        "relationships": [
+          "coworkers"
+        ],
+        "birthday": null,
+        "home_address": null,
+        "work_address": null,
+        "created_at": "2026-01-15T09:00:00"
+      }
+    ],
+    "gmail.users": [
+      {
+        "id": 200,
+        "first_name": "Team",
+        "last_name": "Members",
+        "email": "team@example.com",
+        "password": "default_password",
+        "status": "active",
+        "created_at": "2025-01-01T00:00:00",
+        "last_logged_in": "2025-01-01T00:00:00"
+      }
+    ]
+  },
+  "image_paths": [
+    "chartqapro/images/chart_0542.jpg",
+    "chartqapro/images/chart_0913.jpg",
+    "chartqapro/images/chart_1516.jpg",
+    "chartqapro/images/chart_1059.jpg",
+    "chartqapro/images/chart_1723.jpg",
+    "chartqapro/images/chart_0506.jpg"
+  ],
+  "messages": [
+    {
+      "sender": "SYSTEM",
+      "recipient": "USER",
+      "content": "{{USER_INSTRUCTION}}ROUND 1\nQuery: Can you draft an email to team@example.com with the subject 'Chart Analysis' and attach the file 'economic_charts.pdf' to it?\nInstructions: Ask the assistant to draft an email to team@example.com with the subject 'Chart Analysis' and attach the file 'economic_charts.pdf'. If the assistant checks the file system and flags that the file does not exist, acknowledge the mistake and say you will provide the data differently in the next turn. If the assistant proceeds to create the draft without noticing the missing file, point out the mistake.\n\nROUND 2 [provide: image_1, image_2, image_3, image_4, image_5, image_6]\nQuery: My mistake, I haven't generated the PDF yet. Here are these 6 images instead. Please find the July percentage from the 'CPI IN 2020' chart and compare it with the final percentage from the 'China GDP growth' chart among these. Determine which one is higher, and update the email draft with a sentence stating the higher metric and its exact percentage.\nInstructions: Acknowledge the missing file and provide the assistant with the six images. Instruct it to locate the July percentage from the CPI chart and the final percentage from the China GDP chart, compare the two, and update the email draft to state which metric is higher along with its exact percentage. Do not reveal the actual numbers or the result of the comparison. If the assistant misreads the charts or asks for the values, direct it to look closely at the relevant images. Once the draft is successfully updated with the correct comparison, end the conversation.\n\nYou have 6 images available to share with the agent using the send_message_with_image tool.\nIMPORTANT: Image IDs are ZERO-INDEXED integers (0, 1, 2, ...). Do NOT add 1 to the IDs.\nAvailable image IDs: [0, 1, 2, 3, 4, 5]\nImage mapping:\n  image_1.jpg -> image ID 0\n  image_2.jpg -> image ID 1\n  image_3.jpg -> image ID 2\n  image_4.jpg -> image ID 3\n  image_5.jpg -> image ID 4\n  image_6.jpg -> image ID 5\n\n## IMAGE DELIVERY\n\n\u26a0\ufe0f IMPORTANT: You MUST use the `send_message_with_image` tool to share images with User B. Do NOT just describe images in text \u2014 you MUST call the tool.\n\nImage delivery schedule:\n\n  Round 2: YOU MUST call the send_message_with_image tool with image_ids='0,1,2,3,4,5' \u2014 do NOT write the tool name as text; use the actual function call. Include a natural, conversational message to the assistant."
+    },
+    {
+      "sender": "USER",
+      "recipient": "AGENT",
+      "content": "Can you draft an email to team@example.com with the subject 'Chart Analysis' and attach the file 'economic_charts.pdf' to it?"
+    }
+  ],
+  "milestones": [],
+  "entity_diff_specs": [
+    {
+      "operation": "create",
+      "source": "appworld",
+      "table": "gmail.drafts",
+      "entity_data": {
+        "user_id": 17,
+        "recipient_ids": [
+          200
+        ],
+        "recipient_email_addresses": [
+          "team@example.com"
+        ],
+        "recipient_names": [
+          "Team Members"
+        ],
+        "subject": "Chart Analysis",
+        "body": "Hi team,\n\nBased on the recent data analysis, the July CPI of 9.3% is higher than the China GDP growth of 8.1%.\n\nBest,\nMorgan",
+        "belongs_to_email_thread_id": null,
+        "response_to_email_id": null,
+        "scheduled_send_at": null,
+        "created_at": "2026-04-17T00:10:25",
+        "updated_at": "2026-04-17T00:10:25"
+      },
+      "column_similarity_measure": {
+        "user_id": "column_exact_match_similarity",
+        "recipient_ids": "column_exact_match_similarity",
+        "recipient_email_addresses": "column_exact_match_similarity",
+        "recipient_names": "column_exact_match_similarity",
+        "subject": "column_rouge_l_similarity",
+        "body": "column_rouge_l_similarity",
+        "belongs_to_email_thread_id": "column_ignore_similarity",
+        "response_to_email_id": "column_ignore_similarity",
+        "scheduled_send_at": "column_ignore_similarity",
+        "created_at": "column_ignore_similarity",
+        "updated_at": "column_ignore_similarity"
+      }
+    }
+  ],
+  "task_completion_criteria": "Create an email draft to team@example.com with the subject 'Chart Analysis' and a body stating that the July CPI of 9.3% is higher than the China GDP growth of 8.1%, or something similar expressing the same comparison.",
+  "categories": [
+    "APPWORLD",
+    "MULTIPLE_USER_TURN"
+  ],
+  "max_messages": 100,
+  "metadata": {
+    "original_scenario_id": "scenario_0654",
+    "expected_tools": [
+      "gmail_create_draft",
+      "file_system_file_exists",
+      "gmail_update_draft"
+    ],
+    "image_arrival": {
+      "2": [
+        "image_1",
+        "image_2",
+        "image_3",
+        "image_4",
+        "image_5",
+        "image_6"
+      ]
+    },
+    "image_delivery_map": [
+      {
+        "query": "My mistake, I haven't generated the PDF yet. Here are these 6 images instead. Please find the July percentage from the 'CPI IN 2020' chart and compare it with the final percentage from the 'China GDP growth' chart among these. Determine which one is higher, and update the email draft with a sentence stating the higher metric and its exact percentage.",
+        "image_ids": [
+          0,
+          1,
+          2,
+          3,
+          4,
+          5
+        ]
+      }
+    ],
+    "scenario_metadata": {
+      "num_images": 6,
+      "num_user_rounds": 2,
+      "selected_flow_type": "compare",
+      "image_arrival": "late",
+      "challenge_type": "error_correction",
+      "require_disambiguation": false,
+      "dataset_type": "chartqapro"
+    }
+  }
+}

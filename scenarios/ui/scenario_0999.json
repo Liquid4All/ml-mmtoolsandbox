@@ -1,0 +1,219 @@
+{
+  "name": "scenario_0999",
+  "base_scenario": "base",
+  "description": "Tammy is planning a Korean Snack Night and is using her assistant to build a shopping list note and manage her Amazon cart by comparing different snack and beverage options. (UI mode)",
+  "difficulty": "easy",
+  "appworld_base_task": "_base_",
+  "device_state_id": "ta.weav@gmail.com",
+  "reference_time": "2026-04-17T00:20:43.135945+00:00",
+  "agentsandbox_entities": {},
+  "appworld_entities": {
+    "amazon.sellers": [
+      {
+        "id": 200,
+        "name": "Bibigo Official",
+        "rating": 4.8
+      }
+    ],
+    "amazon.products": [
+      {
+        "id": 200,
+        "product_type": "groceries",
+        "name": "Bibigo Korean Style Maki",
+        "description": "Frozen Korean style maki with vegetables",
+        "seller_id": 200,
+        "price": 6.99,
+        "delivery_days": 2,
+        "inventory_quantity": 50,
+        "weight": 0.5,
+        "length": 8.0,
+        "width": 6.0,
+        "height": 2.0,
+        "color": null,
+        "relative_size": null,
+        "rating": 4.5,
+        "seller_rating": 4.8,
+        "has_variations": false
+      },
+      {
+        "id": 201,
+        "product_type": "groceries",
+        "name": "Bibigo Mandu Dumplings",
+        "description": "Korean style frozen dumplings",
+        "seller_id": 200,
+        "price": 8.99,
+        "delivery_days": 2,
+        "inventory_quantity": 50,
+        "weight": 0.6,
+        "length": 8.0,
+        "width": 6.0,
+        "height": 2.0,
+        "color": null,
+        "relative_size": null,
+        "rating": 4.6,
+        "seller_rating": 4.8,
+        "has_variations": false
+      },
+      {
+        "id": 202,
+        "product_type": "groceries",
+        "name": "Bibigo Radish Kimchi",
+        "description": "Authentic Korean sliced radish kimchi",
+        "seller_id": 200,
+        "price": 12.99,
+        "delivery_days": 2,
+        "inventory_quantity": 50,
+        "weight": 1.0,
+        "length": 5.0,
+        "width": 5.0,
+        "height": 6.0,
+        "color": null,
+        "relative_size": null,
+        "rating": 4.7,
+        "seller_rating": 4.8,
+        "has_variations": false
+      }
+    ],
+    "simple_note.notes": [
+      {
+        "id": 3200,
+        "user_id": 58,
+        "title": "Movie Snack Night",
+        "content": "Popcorn and M&Ms",
+        "tags": [],
+        "created_at": "2026-04-10T12:00:00",
+        "updated_at": "2026-04-10T12:00:00",
+        "pinned": false,
+        "data": {}
+      }
+    ],
+    "gmail.users": []
+  },
+  "image_paths": [
+    "hiertext/images/test/a420330023949b7a.jpg",
+    "worldvqa/images/1701.jpg",
+    "worldvqa/images/1702.jpg",
+    "worldvqa/images/1703.jpg"
+  ],
+  "messages": [
+    {
+      "sender": "SYSTEM",
+      "recipient": "USER",
+      "content": "{{USER_INSTRUCTION}}ROUND 1\nQuery: I'm planning a get-together. Create a new note called 'Korean Snack Night' and add 'Soju' to it.\nInstructions: Ask the agent to create a new note titled 'Korean Snack Night' and add 'Soju' to it. Once the agent confirms the note has been created, move on to the next round.\n\nROUND 2\nQuery: Actually, update my snack night note to also include Paper plates and napkins.\nInstructions: Instruct the agent to add 'Paper plates and napkins' to your snack night note. Because you have multiple notes with 'snack night' in the title, the agent should ask you to clarify which one you mean. When it asks, specify that you mean the Korean one. Once the correct note is updated, proceed to the next round.\n\nROUND 3 [provide: image_2, image_3]\nQuery: I want to buy a snack for the party. Search for the items in these two images on Amazon — I'll decide which one I want.\nInstructions: Ask the assistant to identify the specific food items from the two images and find them on Amazon. When the assistant presents the items with prices, select the cheaper one and add it to your cart via `ui_user_interact`. If no interactive UI is shown, tell the assistant to add the cheaper one to your cart. Once the item is in your cart, proceed.\n\nROUND 4 [provide: image_4]\nQuery: I found another snack option. Look this one up on Amazon too — I want to compare it with what's in my cart before I decide.\nInstructions: Ask the assistant to identify the item in the new image, find it on Amazon, and compare it with the item in your cart. When the assistant presents the comparison, decide you prefer the new item and swap it in — remove the old item from your cart and add this one via `ui_user_interact`. If no interactive UI is shown, tell the assistant to swap: remove the current cart item and add the new one instead. Once the swap is confirmed, proceed.\n\nROUND 5 [provide: image_1]\nQuery: Look at the teas in this image. Compare the caffeine levels of 'mint mosaic' and 'orange chiffon' for me — I want to add one to my 'Korean Snack Night' note.\nInstructions: Ask the assistant to look at the tea image and compare the caffeine level indicators (dots) for 'mint mosaic' and 'orange chiffon'. If the assistant asks how to interpret the dots, clarify that fewer filled dots means less caffeine. When the assistant presents the comparison, select the tea with lower caffeine and add it to the 'Korean Snack Night' note via `ui_user_interact`. If no interactive UI is shown, tell the assistant to add the lower-caffeine tea to the note. End the conversation once the note is updated.\n\nYou have 4 images available to share with the agent using the send_message_with_image tool.\nIMPORTANT: Image IDs are ZERO-INDEXED integers (0, 1, 2, ...). Do NOT add 1 to the IDs.\nAvailable image IDs: [0, 1, 2, 3]\nImage mapping:\n  image_1.jpg -> image ID 0\n  image_2.jpg -> image ID 1\n  image_3.jpg -> image ID 2\n  image_4.jpg -> image ID 3\n\n## IMAGE DELIVERY\n\n⚠️ IMPORTANT: You MUST use the `send_message_with_image` tool to share images with User B. Do NOT just describe images in text — you MUST call the tool.\n\nImage delivery schedule:\n\n  Round 3: YOU MUST call the send_message_with_image tool with image_ids='1,2' — do NOT write the tool name as text; use the actual function call. Include a natural, conversational message to the assistant.\n  Round 4: YOU MUST call the send_message_with_image tool with image_ids='3' — do NOT write the tool name as text; use the actual function call. Include a natural, conversational message to the assistant.\n  Round 5: YOU MUST call the send_message_with_image tool with image_ids='0' — do NOT write the tool name as text; use the actual function call. Include a natural, conversational message to the assistant."
+    },
+    {
+      "sender": "USER",
+      "recipient": "AGENT",
+      "content": "I'm planning a get-together. Create a new note called 'Korean Snack Night' and add 'Soju' to it."
+    }
+  ],
+  "milestones": [],
+  "entity_diff_specs": [
+    {
+      "operation": "create",
+      "source": "appworld",
+      "table": "amazon.cart_entries",
+      "entity_data": {
+        "user_id": 58,
+        "product_id": 202,
+        "quantity": 1,
+        "gift_wrap_quantity": 0
+      },
+      "column_similarity_measure": {
+        "user_id": "column_exact_match_similarity",
+        "product_id": "column_exact_match_similarity",
+        "quantity": "column_exact_match_similarity",
+        "gift_wrap_quantity": "column_exact_match_similarity"
+      }
+    },
+    {
+      "operation": "create",
+      "source": "appworld",
+      "table": "simple_note.notes",
+      "entity_data": {
+        "user_id": 58,
+        "title": "Korean Snack Night",
+        "content": "- Soju\n- Paper plates and napkins\n- mint mosaic",
+        "tags": [],
+        "created_at": "2026-04-17T00:20:43",
+        "updated_at": "2026-04-17T00:20:43",
+        "pinned": false,
+        "data": {}
+      },
+      "column_similarity_measure": {
+        "user_id": "column_exact_match_similarity",
+        "title": "column_rouge_l_similarity",
+        "content": "column_rouge_l_similarity",
+        "tags": "column_ignore_similarity",
+        "created_at": "column_ignore_similarity",
+        "updated_at": "column_ignore_similarity",
+        "pinned": "column_exact_match_similarity",
+        "data": "column_ignore_similarity"
+      }
+    }
+  ],
+  "task_completion_criteria": "The user wants a note titled 'Korean Snack Night' containing 'Soju', 'Paper plates and napkins', and 'mint mosaic' (the tea with the lower caffeine level of 1 dot compared to orange chiffon's 3 dots). Additionally, the user wants 'Bibigo radish kimchi' added to their Amazon cart, with the previously added cheaper item (either Bibigo maki or Bibigo dumplings) completely removed from the cart.\n\nUI Requirements:\n- Round 3: The agent must present the two snack items with their Amazon prices in a structured interactive UI that lets the user select which item to add to their cart.\n- Round 4: The agent must present the price comparison between the new item and the current cart item in a structured interactive UI that lets the user decide whether to swap.\n- Round 5: The agent must present the caffeine level comparison for the two teas in a structured interactive UI that lets the user select which tea to add to their note.",
+  "categories": [
+    "APPWORLD",
+    "MULTIPLE_USER_TURN",
+    "UI_MODE"
+  ],
+  "max_messages": 100,
+  "metadata": {
+    "original_scenario_id": "scenario_0999",
+    "expected_tools": [
+      "simple_note_create_note",
+      "simple_note_update_note",
+      "web_search_serper",
+      "amazon_add_product_to_cart",
+      "amazon_delete_product_from_cart",
+      "render_ui_screen",
+      "show_ui_to_user",
+      "ui_user_interact",
+      "ui_get_quick_start",
+      "ui_get_item_details"
+    ],
+    "image_arrival": {
+      "3": [
+        "image_2",
+        "image_3"
+      ],
+      "4": [
+        "image_4"
+      ],
+      "5": [
+        "image_1"
+      ]
+    },
+    "image_delivery_map": [
+      {
+        "query": "I want to buy a snack for the party. Search for the items in these two images on Amazon — I'll decide which one I want.",
+        "image_ids": [
+          1,
+          2
+        ]
+      },
+      {
+        "query": "I found another snack option. Look this one up on Amazon too — I want to compare it with what's in my cart before I decide.",
+        "image_ids": [
+          3
+        ]
+      },
+      {
+        "query": "Look at the teas in this image. Compare the caffeine levels of 'mint mosaic' and 'orange chiffon' for me — I want to add one to my 'Korean Snack Night' note.",
+        "image_ids": [
+          0
+        ]
+      }
+    ],
+    "scenario_metadata": {
+      "num_images": 4,
+      "num_user_rounds": 5,
+      "selected_flow_type": "compare",
+      "image_arrival": "late",
+      "challenge_type": "state_mutation",
+      "require_disambiguation": true,
+      "dataset_type": "worldvqa"
+    }
+  }
+}

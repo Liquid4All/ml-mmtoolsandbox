@@ -1,0 +1,185 @@
+{
+  "name": "scenario_0990",
+  "base_scenario": "base",
+  "description": "The user is working on an archival project, digitizing information from various vintage and historical documents into their device.",
+  "difficulty": "easy",
+  "appworld_base_task": "_base_",
+  "device_state_id": "an-harrison@gmail.com",
+  "reference_time": "2026-04-17T00:20:29.581682+00:00",
+  "agentsandbox_entities": {},
+  "appworld_entities": {
+    "gmail.users": []
+  },
+  "image_paths": [
+    "docvqa/images/59784.jpg",
+    "docvqa/images/61291.jpg",
+    "docvqa/images/16384.jpg",
+    "hiertext/images/test/4bdd0427361b6949.jpg",
+    "docvqa/images/36146.jpg",
+    "docvqa/images/36410.jpg"
+  ],
+  "messages": [
+    {
+      "sender": "SYSTEM",
+      "recipient": "USER",
+      "content": "{{USER_INSTRUCTION}}ROUND 1 [provide: image_1, image_2]\nQuery: I'm starting an archive project. Create a new note called 'Historical Contacts' and list the organization names and phone numbers from these two documents. Also, add both of these organizations as new phone contacts.\nInstructions: Instruct the assistant to create a new note for your archive project and extract the organization names and phone numbers from the two provided documents into it. Also, ask the assistant to save both of these organizations as new phone contacts. If the assistant asks to confirm the extracted details, agree and proceed to the next round.\n\nROUND 2 [provide: image_4]\nQuery: Here's another one for the archive. Append the school's name and telephone number from this document to that note, and add it as a new phone contact too.\nInstructions: Ask the assistant to take the school's name and telephone number from the newly provided document, append it to the note you just created, and save it as a new phone contact as well. If the assistant confirms the updates, acknowledge it and move on.\n\nROUND 3 [provide: image_3, image_5]\nQuery: Got two more for the note. Add the organization names along with their respective department or address from these two documents to the 'Historical Contacts' note. They don't have full phone numbers, so just the note is fine.\nInstructions: Tell the assistant to extract the organization names along with either their department or address from the two new documents and add them to the existing note. Mention that you don't need contacts created for these since they lack full phone numbers. Once the assistant confirms the note is updated, proceed to the final round.\n\nROUND 4 [provide: image_6]\nQuery: Last one. Extract the venue name and location for the 1961 laboratory from this brochure and add it to the note. Also, I realized I don't need that travel agency contact in my phone anymore, so please delete the travel agency contact.\nInstructions: Ask the assistant to extract the venue name and location for the 1961 laboratory from the brochure and append it to the note. Then, ask it to delete the travel agency contact from your phone. If the assistant asks to clarify which travel agency to delete (since you have more than one on your device), clarify that you mean the vintage one added earlier from the invoice. Once the note is updated and the correct contact is deleted, conclude the conversation.\n\nYou have 6 images available to share with the agent using the send_message_with_image tool.\nIMPORTANT: Image IDs are ZERO-INDEXED integers (0, 1, 2, ...). Do NOT add 1 to the IDs.\nAvailable image IDs: [0, 1, 2, 3, 4, 5]\nImage mapping:\n  image_1.jpg -> image ID 0\n  image_2.jpg -> image ID 1\n  image_3.jpg -> image ID 2\n  image_4.jpg -> image ID 3\n  image_5.jpg -> image ID 4\n  image_6.jpg -> image ID 5\n\n## IMAGE DELIVERY\n\n\u26a0\ufe0f IMPORTANT: You MUST use the `send_message_with_image` tool to share images with User B. Do NOT just describe images in text \u2014 you MUST call the tool.\n\nImage delivery schedule:\n\n  Round 2: YOU MUST call the send_message_with_image tool with image_ids='3' \u2014 do NOT write the tool name as text; use the actual function call. Include a natural, conversational message to the assistant.\n  Round 3: YOU MUST call the send_message_with_image tool with image_ids='2,4' \u2014 do NOT write the tool name as text; use the actual function call. Include a natural, conversational message to the assistant.\n  Round 4: YOU MUST call the send_message_with_image tool with image_ids='5' \u2014 do NOT write the tool name as text; use the actual function call. Include a natural, conversational message to the assistant."
+    },
+    {
+      "sender": "USER",
+      "recipient": "AGENT",
+      "content": "I'm starting an archive project. Create a new note called 'Historical Contacts' and list the organization names and phone numbers from these two documents. Also, add both of these organizations as new phone contacts.",
+      "image_ids": [
+        0,
+        1
+      ]
+    }
+  ],
+  "milestones": [],
+  "entity_diff_specs": [
+    {
+      "operation": "create",
+      "source": "appworld",
+      "table": "phone.contacts",
+      "entity_data": {
+        "user_id": 16,
+        "first_name": "Metropolitan",
+        "last_name": "Opera Guild",
+        "email": "",
+        "phone_number": "(800) 331-1000",
+        "relationships": [],
+        "birthday": null,
+        "home_address": null,
+        "work_address": null,
+        "created_at": "2026-04-17T00:20:29"
+      },
+      "column_similarity_measure": {
+        "user_id": "column_exact_match_similarity",
+        "first_name": "column_exact_match_similarity",
+        "last_name": "column_exact_match_similarity",
+        "email": "column_ignore_similarity",
+        "phone_number": "column_exact_match_similarity",
+        "relationships": "column_ignore_similarity",
+        "birthday": "column_ignore_similarity",
+        "home_address": "column_ignore_similarity",
+        "work_address": "column_ignore_similarity",
+        "created_at": "column_ignore_similarity"
+      }
+    },
+    {
+      "operation": "create",
+      "source": "appworld",
+      "table": "phone.contacts",
+      "entity_data": {
+        "user_id": 16,
+        "first_name": "Crescent College",
+        "last_name": "Comprehensive",
+        "email": "",
+        "phone_number": "061-229655",
+        "relationships": [],
+        "birthday": null,
+        "home_address": null,
+        "work_address": null,
+        "created_at": "2026-04-17T00:20:29"
+      },
+      "column_similarity_measure": {
+        "user_id": "column_exact_match_similarity",
+        "first_name": "column_exact_match_similarity",
+        "last_name": "column_exact_match_similarity",
+        "email": "column_ignore_similarity",
+        "phone_number": "column_exact_match_similarity",
+        "relationships": "column_ignore_similarity",
+        "birthday": "column_ignore_similarity",
+        "home_address": "column_ignore_similarity",
+        "work_address": "column_ignore_similarity",
+        "created_at": "column_ignore_similarity"
+      }
+    },
+    {
+      "operation": "create",
+      "source": "appworld",
+      "table": "simple_note.notes",
+      "entity_data": {
+        "user_id": 16,
+        "title": "Historical Contacts",
+        "content": "Metropolitan Opera Guild: (800) 331-1000\nWilliam L. Strauss & Son Travel Agency: 212 - 644-1250\nCrescent College Comprehensive: 061-229655\nRJRT Public Relations: ext. 7240\nMissouri Association for Social Welfare: 113 1/2 West High, Jefferson City, Mo. 65101\nTahoe Alumni Center: Lake Tahoe, California",
+        "tags": [],
+        "created_at": "2026-04-17T00:20:29",
+        "updated_at": "2026-04-17T00:20:29",
+        "pinned": false,
+        "data": null
+      },
+      "column_similarity_measure": {
+        "user_id": "column_exact_match_similarity",
+        "title": "column_rouge_l_similarity",
+        "content": "column_rouge_l_similarity",
+        "tags": "column_ignore_similarity",
+        "created_at": "column_ignore_similarity",
+        "updated_at": "column_ignore_similarity",
+        "pinned": "column_exact_match_similarity",
+        "data": "column_ignore_similarity"
+      }
+    }
+  ],
+  "task_completion_criteria": "A note named 'Historical Contacts' must exist and contain the extracted information: 'Metropolitan Opera Guild' with phone '(800) 331-1000', 'William L. Strauss & Son Travel Agency' with phone '212 - 644-1250', 'Crescent College Comprehensive' with phone '061-229655', 'RJRT Public Relations' with 'ext. 7240', 'Missouri Association for Social Welfare' with '113 1/2 West High, Jefferson City, Mo. 65101', and 'Tahoe Alumni Center' in 'Lake Tahoe, California' (or similar semantic equivalents). Additionally, device contacts must exist for 'Metropolitan Opera Guild' and 'Crescent College Comprehensive' with their respective phone numbers. The contact for 'William L. Strauss & Son Travel Agency' must be deleted from the device.",
+  "categories": [
+    "APPWORLD",
+    "MULTIPLE_USER_TURN"
+  ],
+  "max_messages": 100,
+  "metadata": {
+    "original_scenario_id": "scenario_0990",
+    "expected_tools": [
+      "simple_note_create_note",
+      "contacts_add_contact",
+      "simple_note_show_note",
+      "simple_note_update_note",
+      "contacts_delete_contact"
+    ],
+    "image_arrival": {
+      "1": [
+        "image_1",
+        "image_2"
+      ],
+      "2": [
+        "image_4"
+      ],
+      "3": [
+        "image_3",
+        "image_5"
+      ],
+      "4": [
+        "image_6"
+      ]
+    },
+    "image_delivery_map": [
+      {
+        "query": "Here's another one for the archive. Append the school's name and telephone number from this document to that note, and add it as a new phone contact too.",
+        "image_ids": [
+          3
+        ]
+      },
+      {
+        "query": "Got two more for the note. Add the organization names along with their respective department or address from these two documents to the 'Historical Contacts' note. They don't have full phone numbers, so just the note is fine.",
+        "image_ids": [
+          2,
+          4
+        ]
+      },
+      {
+        "query": "Last one. Extract the venue name and location for the 1961 laboratory from this brochure and add it to the note. Also, I realized I don't need that travel agency contact in my phone anymore, so please delete the travel agency contact.",
+        "image_ids": [
+          5
+        ]
+      }
+    ],
+    "scenario_metadata": {
+      "num_images": 6,
+      "num_user_rounds": 4,
+      "selected_flow_type": "aggregate",
+      "image_arrival": "progressive",
+      "challenge_type": "state_mutation",
+      "require_disambiguation": true,
+      "dataset_type": "docvqa"
+    }
+  }
+}

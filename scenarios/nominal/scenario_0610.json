@@ -1,0 +1,320 @@
+{
+  "name": "scenario_0610",
+  "base_scenario": "base",
+  "description": "The user is organizing a batch of scanned historical documents and advertisements, sorting them by topic to schedule reviews for relevant health documents and forward legal documents to their team.",
+  "difficulty": "easy",
+  "appworld_base_task": "_base_",
+  "device_state_id": "ja-solomon@gmail.com",
+  "reference_time": "2026-04-17T00:08:48.502337+00:00",
+  "agentsandbox_entities": {
+    "calendars": [
+      {
+        "calendar_id": "calendar_100",
+        "title": "Personal"
+      }
+    ]
+  },
+  "appworld_entities": {
+    "phone.contacts": [
+      {
+        "id": 200,
+        "user_id": 10,
+        "first_name": "Legal",
+        "last_name": "Team",
+        "email": "legal@example.com",
+        "phone_number": null,
+        "relationships": [
+          "coworker"
+        ],
+        "birthday": null,
+        "home_address": null,
+        "work_address": null,
+        "created_at": "2025-10-10T10:00:00"
+      }
+    ],
+    "todoist.projects": [
+      {
+        "id": 400,
+        "user_id": 10,
+        "name": "Inbox",
+        "color": "charcoal",
+        "is_inbox": true,
+        "description": "Default inbox project",
+        "created_at": "2025-01-01T00:00:00"
+      }
+    ],
+    "gmail.users": [
+      {
+        "id": 200,
+        "first_name": "Legal",
+        "last_name": "Team",
+        "email": "legal@example.com",
+        "password": "default_password",
+        "status": "active",
+        "created_at": "2025-01-01T00:00:00",
+        "last_logged_in": "2025-01-01T00:00:00"
+      }
+    ],
+    "todoist.project_collaborator_links": [
+      {
+        "id": 50400,
+        "project_id": 400,
+        "user_id": 10,
+        "is_favorite": false,
+        "is_archived": false,
+        "created_at": "2025-01-01T00:00:00"
+      }
+    ]
+  },
+  "image_paths": [
+    "docvqa/images/46246.jpg",
+    "docvqa/images/61307.jpg",
+    "docvqa/images/58037.jpg",
+    "docvqa/images/58031.jpg",
+    "docvqa/images/18786.jpg",
+    "docvqa/images/46517.jpg"
+  ],
+  "messages": [
+    {
+      "sender": "SYSTEM",
+      "recipient": "USER",
+      "content": "{{USER_INSTRUCTION}}ROUND 1 [provide: image_1, image_2, image_3, image_4, image_5, image_6]\nQuery: I have a batch of documents here. Please filter through these and find the ones related to women's health, hormone replacement therapy, or Premarin. For each of those, create a Todoist task to review it, using the document's title or subject as the task name.\nInstructions: Ask the assistant to review the provided images, filter for documents related to women's health, hormone replacement therapy, or Premarin, and create a Todoist task to review each matching document. If the assistant asks for clarification on which documents match, guide it to look for the meeting agenda, the internal correspondence, and the planning meeting document, without giving away the exact titles. Once the tasks are created, proceed to the next round.\n\nROUND 2\nQuery: Actually, I know myself and I'll probably just ignore those tasks. Can you delete the three tasks you just made? Instead, let's schedule a 1-hour calendar event for each of those three documents for next Monday, Tuesday, and Wednesday at 10 AM. Just use 'Review' and the document title for the event names.\nInstructions: Tell the assistant that you have changed your mind and want to delete the three Todoist tasks it just created. Ask it to instead schedule a 1-hour calendar event for each of those same three documents for next Monday, Tuesday, and Wednesday at 10 AM, using 'Review' followed by the document title for the event names. If the assistant asks for confirmation before deleting or creating the events, approve it. Once the events are scheduled, move on.\n\nROUND 3\nQuery: For the calendar event you made for the Premarin planning meeting, I need you to update its description. Please add the full contact information for DESIGNWRITE that's printed at the very bottom of that specific document.\nInstructions: Ask the assistant to update the calendar event it just made for the Premarin planning meeting to include the full contact information for DESIGNWRITE found at the bottom of that specific document. If the assistant misses any details like the address, phone, or fax numbers, point it back to the bottom of the page to find the missing information. Once the event description is updated, move to the next round.\n\nROUND 4\nQuery: Now let's deal with the rest of the images. Skip the Maui advertisement, but grab the tobacco or cigarette-related documents. Send an email to legal@example.com with the subject 'Tobacco Documents' and list the main titles of those specific documents in the email body.\nInstructions: Instruct the assistant to look at the remaining images, skip the Maui advertisement, and find the tobacco or cigarette-related documents. Ask it to send an email to legal@example.com with the subject 'Tobacco Documents' and list the main titles of those specific documents in the email body. If the assistant accidentally includes the advertisement or any of the women's health documents, correct it. Once the email is sent, proceed to the final round.\n\nROUND 5\nQuery: Finally, take a close look at the tobacco contract document. There are some handwritten notes about expected testing dates. Create a new note called 'RJR Testing Dates' and jot down those exact dates for me.\nInstructions: Ask the assistant to find the handwritten expected testing dates on the tobacco contract document and create a simple note titled 'RJR Testing Dates' containing those exact dates. If the assistant misreads the handwriting, direct its attention to the handwritten notes near the bottom of the page. Once the note is successfully created, end the conversation.\n\nYou have 6 images available to share with the agent using the send_message_with_image tool.\nIMPORTANT: Image IDs are ZERO-INDEXED integers (0, 1, 2, ...). Do NOT add 1 to the IDs.\nAvailable image IDs: [0, 1, 2, 3, 4, 5]\nImage mapping:\n  image_1.jpg -> image ID 0\n  image_2.jpg -> image ID 1\n  image_3.jpg -> image ID 2\n  image_4.jpg -> image ID 3\n  image_5.jpg -> image ID 4\n  image_6.jpg -> image ID 5"
+    },
+    {
+      "sender": "USER",
+      "recipient": "AGENT",
+      "content": "I have a batch of documents here. Please filter through these and find the ones related to women's health, hormone replacement therapy, or Premarin. For each of those, create a Todoist task to review it, using the document's title or subject as the task name.",
+      "image_ids": [
+        0,
+        1,
+        2,
+        3,
+        4,
+        5
+      ]
+    }
+  ],
+  "milestones": [],
+  "entity_diff_specs": [
+    {
+      "operation": "create",
+      "source": "appworld",
+      "table": "gmail.emails",
+      "entity_data": {
+        "sender_id": 10,
+        "recipient_ids": [
+          200
+        ],
+        "subject": "Tobacco Documents",
+        "body": "Here are the titles of the tobacco-related documents:\n- CONTRACT AND PROTOCOL\n- Ascending dose tolerance study of RJR-2403\n- Schedule",
+        "response_to_email_id": null,
+        "created_at": "2026-04-17T00:08:48"
+      },
+      "column_similarity_measure": {
+        "sender_id": "column_exact_match_similarity",
+        "recipient_ids": "column_exact_match_similarity",
+        "subject": "column_rouge_l_similarity",
+        "body": "column_rouge_l_similarity",
+        "response_to_email_id": "column_ignore_similarity",
+        "created_at": "column_ignore_similarity"
+      }
+    },
+    {
+      "operation": "create",
+      "source": "appworld",
+      "table": "simple_note.notes",
+      "entity_data": {
+        "user_id": 10,
+        "title": "RJR Testing Dates",
+        "content": "October 9, 17, 24 and November 7, 14, 21",
+        "tags": [],
+        "created_at": "2026-04-17T00:08:48",
+        "updated_at": "2026-04-17T00:08:48",
+        "pinned": false,
+        "data": null
+      },
+      "column_similarity_measure": {
+        "user_id": "column_exact_match_similarity",
+        "title": "column_rouge_l_similarity",
+        "content": "column_rouge_l_similarity",
+        "tags": "column_ignore_similarity",
+        "created_at": "column_ignore_similarity",
+        "updated_at": "column_ignore_similarity",
+        "pinned": "column_exact_match_similarity",
+        "data": "column_ignore_similarity"
+      }
+    },
+    {
+      "operation": "create",
+      "source": "agentsandbox",
+      "namespace": "CALENDAR_EVENTS",
+      "entity_data": {
+        "calendar_event_id": "event_100",
+        "calendar_id": "calendar_100",
+        "title": "Review Agenda for March's Menopausal Health Publication Management Meeting",
+        "description": null,
+        "start_datetime": "2026-04-20T10:00:00Z",
+        "end_datetime": "2026-04-20T11:00:00Z",
+        "is_all_day": false,
+        "recurrence_frequency": null,
+        "recurrence_interval": null,
+        "recurrence_until_datetime": null,
+        "recurrence_parent_id": null,
+        "recurrence_exclude_datetime": [],
+        "latitude": null,
+        "longitude": null,
+        "place_id": null,
+        "formatted_address": null,
+        "attendee_names": [],
+        "attendee_emails": []
+      },
+      "column_similarity_measure": {
+        "calendar_event_id": "column_ignore_similarity",
+        "calendar_id": "column_ignore_similarity",
+        "title": "column_rouge_l_similarity",
+        "description": "column_ignore_similarity",
+        "start_datetime": "column_datetime_naive_equal_similarity",
+        "end_datetime": "column_datetime_naive_equal_similarity",
+        "is_all_day": "column_exact_match_similarity",
+        "recurrence_frequency": "column_ignore_similarity",
+        "recurrence_interval": "column_ignore_similarity",
+        "recurrence_until_datetime": "column_ignore_similarity",
+        "recurrence_parent_id": "column_ignore_similarity",
+        "recurrence_exclude_datetime": "column_ignore_similarity",
+        "latitude": "column_ignore_similarity",
+        "longitude": "column_ignore_similarity",
+        "place_id": "column_ignore_similarity",
+        "formatted_address": "column_ignore_similarity",
+        "attendee_names": "column_ignore_similarity",
+        "attendee_emails": "column_ignore_similarity"
+      }
+    },
+    {
+      "operation": "create",
+      "source": "agentsandbox",
+      "namespace": "CALENDAR_EVENTS",
+      "entity_data": {
+        "calendar_event_id": "event_101",
+        "calendar_id": "calendar_100",
+        "title": "Review Results of Trimegestone Global Development Team Meeting of September 24, 2001",
+        "description": null,
+        "start_datetime": "2026-04-21T10:00:00Z",
+        "end_datetime": "2026-04-21T11:00:00Z",
+        "is_all_day": false,
+        "recurrence_frequency": null,
+        "recurrence_interval": null,
+        "recurrence_until_datetime": null,
+        "recurrence_parent_id": null,
+        "recurrence_exclude_datetime": [],
+        "latitude": null,
+        "longitude": null,
+        "place_id": null,
+        "formatted_address": null,
+        "attendee_names": [],
+        "attendee_emails": []
+      },
+      "column_similarity_measure": {
+        "calendar_event_id": "column_ignore_similarity",
+        "calendar_id": "column_ignore_similarity",
+        "title": "column_rouge_l_similarity",
+        "description": "column_ignore_similarity",
+        "start_datetime": "column_datetime_naive_equal_similarity",
+        "end_datetime": "column_datetime_naive_equal_similarity",
+        "is_all_day": "column_exact_match_similarity",
+        "recurrence_frequency": "column_ignore_similarity",
+        "recurrence_interval": "column_ignore_similarity",
+        "recurrence_until_datetime": "column_ignore_similarity",
+        "recurrence_parent_id": "column_ignore_similarity",
+        "recurrence_exclude_datetime": "column_ignore_similarity",
+        "latitude": "column_ignore_similarity",
+        "longitude": "column_ignore_similarity",
+        "place_id": "column_ignore_similarity",
+        "formatted_address": "column_ignore_similarity",
+        "attendee_names": "column_ignore_similarity",
+        "attendee_emails": "column_ignore_similarity"
+      }
+    },
+    {
+      "operation": "create",
+      "source": "agentsandbox",
+      "namespace": "CALENDAR_EVENTS",
+      "entity_data": {
+        "calendar_event_id": "event_102",
+        "calendar_id": "calendar_100",
+        "title": "Review Premarin Publication/Presentation Planning Meeting",
+        "description": "DESIGNWRITE, 189 Wall Street, Princeton, New Jersey 08540, Phone: 609/924-1116, Fax: 609/924-6648",
+        "start_datetime": "2026-04-22T10:00:00Z",
+        "end_datetime": "2026-04-22T11:00:00Z",
+        "is_all_day": false,
+        "recurrence_frequency": null,
+        "recurrence_interval": null,
+        "recurrence_until_datetime": null,
+        "recurrence_parent_id": null,
+        "recurrence_exclude_datetime": [],
+        "latitude": null,
+        "longitude": null,
+        "place_id": null,
+        "formatted_address": null,
+        "attendee_names": [],
+        "attendee_emails": []
+      },
+      "column_similarity_measure": {
+        "calendar_event_id": "column_ignore_similarity",
+        "calendar_id": "column_ignore_similarity",
+        "title": "column_rouge_l_similarity",
+        "description": "column_rouge_l_similarity",
+        "start_datetime": "column_datetime_naive_equal_similarity",
+        "end_datetime": "column_datetime_naive_equal_similarity",
+        "is_all_day": "column_exact_match_similarity",
+        "recurrence_frequency": "column_ignore_similarity",
+        "recurrence_interval": "column_ignore_similarity",
+        "recurrence_until_datetime": "column_ignore_similarity",
+        "recurrence_parent_id": "column_ignore_similarity",
+        "recurrence_exclude_datetime": "column_ignore_similarity",
+        "latitude": "column_ignore_similarity",
+        "longitude": "column_ignore_similarity",
+        "place_id": "column_ignore_similarity",
+        "formatted_address": "column_ignore_similarity",
+        "attendee_names": "column_ignore_similarity",
+        "attendee_emails": "column_ignore_similarity"
+      }
+    }
+  ],
+  "task_completion_criteria": "Schedule three 1-hour calendar events for next Monday, Tuesday, and Wednesday at 10 AM to review the three women's health documents ('Agenda for March's Menopausal Health Publication Management Meeting', 'Results of Trimegestone Global Development Team Meeting of September 24, 2001', and 'Premarin Publication/Presentation Planning Meeting'). Update the description of the Premarin planning meeting event to include the contact info for DESIGNWRITE (189 Wall Street, Princeton, New Jersey 08540, Phone: 609/924-1116, Fax: 609/924-6648). Send an email to legal@example.com with the subject 'Tobacco Documents' listing the titles of the tobacco-related documents ('CONTRACT AND PROTOCOL' / 'Ascending dose tolerance study of RJR-2403' and 'Schedule'). Create a note titled 'RJR Testing Dates' containing the handwritten dates 'October 9, 17, 24 and November 7, 14, 21'.",
+  "categories": [
+    "APPWORLD",
+    "MULTIPLE_USER_TURN"
+  ],
+  "max_messages": 100,
+  "metadata": {
+    "original_scenario_id": "scenario_0610",
+    "expected_tools": [
+      "todoist_create_task",
+      "todoist_delete_task",
+      "create_calendar_event",
+      "modify_calendar_event",
+      "gmail_send_email",
+      "simple_note_create_note"
+    ],
+    "image_arrival": {
+      "1": [
+        "image_1",
+        "image_2",
+        "image_3",
+        "image_4",
+        "image_5",
+        "image_6"
+      ]
+    },
+    "image_delivery_map": [],
+    "scenario_metadata": {
+      "num_images": 6,
+      "num_user_rounds": 5,
+      "selected_flow_type": "filter",
+      "image_arrival": "upfront",
+      "challenge_type": "goal_change",
+      "require_disambiguation": false,
+      "dataset_type": "docvqa"
+    }
+  }
+}

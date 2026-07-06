@@ -1,0 +1,298 @@
+{
+  "name": "scenario_0161",
+  "base_scenario": "base",
+  "description": "The user is planning to buy some specific toys, games, and collectibles to display in their newly renovated basement game room. They are cross-referencing items they photographed with their existing notes and wish lists to figure out what they still need to purchase.",
+  "difficulty": "easy",
+  "appworld_base_task": "_base_",
+  "device_state_id": "corwils@gmail.com",
+  "reference_time": "2026-04-16T23:55:20.007829+00:00",
+  "agentsandbox_entities": {},
+  "appworld_entities": {
+    "amazon.sellers": [
+      {
+        "id": 200,
+        "name": "Amazon Toys & Games",
+        "rating": 4.8
+      }
+    ],
+    "amazon.products": [
+      {
+        "id": 200,
+        "product_type": "toys",
+        "name": "Grenade Toy Launcher",
+        "description": "Toy launcher for kids",
+        "seller_id": 200,
+        "price": 19.99,
+        "delivery_days": 2,
+        "inventory_quantity": 50,
+        "weight": 1.5,
+        "length": 12.0,
+        "width": 4.0,
+        "height": 6.0,
+        "color": null,
+        "relative_size": null,
+        "rating": 4.5,
+        "seller_rating": 4.8,
+        "has_variations": false
+      },
+      {
+        "id": 201,
+        "product_type": "toys",
+        "name": "Wind Up Dalek: The Eternal",
+        "description": "Yellow wind-up Doctor Who Dalek toy",
+        "seller_id": 200,
+        "price": 14.99,
+        "delivery_days": 3,
+        "inventory_quantity": 20,
+        "weight": 0.5,
+        "length": 3.0,
+        "width": 3.0,
+        "height": 5.0,
+        "color": "yellow",
+        "relative_size": "small",
+        "rating": 4.7,
+        "seller_rating": 4.8,
+        "has_variations": false
+      },
+      {
+        "id": 202,
+        "product_type": "toys",
+        "name": "Combat Sound Flash Gun",
+        "description": "Toy rifle with sound and flash effects",
+        "seller_id": 200,
+        "price": 24.99,
+        "delivery_days": 2,
+        "inventory_quantity": 30,
+        "weight": 2.0,
+        "length": 20.0,
+        "width": 2.0,
+        "height": 8.0,
+        "color": null,
+        "relative_size": null,
+        "rating": 4.2,
+        "seller_rating": 4.8,
+        "has_variations": false
+      },
+      {
+        "id": 203,
+        "product_type": "board games",
+        "name": "Cash 'n Guns",
+        "description": "Party board game of bluffing and gangsters",
+        "seller_id": 200,
+        "price": 39.99,
+        "delivery_days": 2,
+        "inventory_quantity": 15,
+        "weight": 2.0,
+        "length": 10.0,
+        "width": 10.0,
+        "height": 3.0,
+        "color": null,
+        "relative_size": null,
+        "rating": 4.8,
+        "seller_rating": 4.8,
+        "has_variations": false
+      },
+      {
+        "id": 204,
+        "product_type": "toys",
+        "name": "Pop Battle Figures",
+        "description": "Collectible battle figures in blister packs",
+        "seller_id": 200,
+        "price": 12.99,
+        "delivery_days": 4,
+        "inventory_quantity": 100,
+        "weight": 0.3,
+        "length": 6.0,
+        "width": 4.0,
+        "height": 2.0,
+        "color": null,
+        "relative_size": null,
+        "rating": 4.1,
+        "seller_rating": 4.8,
+        "has_variations": true
+      },
+      {
+        "id": 205,
+        "product_type": "shoes",
+        "name": "Zoom Kobe VI",
+        "description": "Yellow and purple basketball shoes",
+        "seller_id": 200,
+        "price": 250.0,
+        "delivery_days": 5,
+        "inventory_quantity": 5,
+        "weight": 2.5,
+        "length": 14.0,
+        "width": 9.0,
+        "height": 5.0,
+        "color": "yellow and purple",
+        "relative_size": null,
+        "rating": 4.9,
+        "seller_rating": 4.8,
+        "has_variations": true
+      }
+    ],
+    "simple_note.notes": [
+      {
+        "id": 3200,
+        "user_id": 72,
+        "title": "Game Room Ideas - Basement",
+        "content": "Items to get: Cash 'n Guns board game, Pop Battle figures, Zoom Kobe VI shoes, Arcade cabinet.",
+        "tags": [
+          "game room",
+          "ideas",
+          "basement"
+        ],
+        "created_at": "2026-04-10T15:30:00",
+        "updated_at": "2026-04-15T12:00:00",
+        "pinned": false,
+        "data": null
+      },
+      {
+        "id": 3201,
+        "user_id": 72,
+        "title": "Game Room Ideas - Office",
+        "content": "Items to get: Mini fridge, bean bag chair, LED lights.",
+        "tags": [
+          "game room",
+          "ideas",
+          "office"
+        ],
+        "created_at": "2026-04-10T15:35:00",
+        "updated_at": "2026-04-12T09:00:00",
+        "pinned": false,
+        "data": null
+      },
+      {
+        "id": 3202,
+        "user_id": 72,
+        "title": "Already Owned",
+        "content": "Stuff I already have in storage: Cash 'n Guns board game, Combat Sound Flash Gun, Nerf darts.",
+        "tags": [
+          "inventory",
+          "storage"
+        ],
+        "created_at": "2026-04-01T10:00:00",
+        "updated_at": "2026-04-14T14:20:00",
+        "pinned": false,
+        "data": null
+      }
+    ],
+    "gmail.users": []
+  },
+  "image_paths": [
+    "worldvqa/images/1751.jpg",
+    "hiertext/images/test/12d5fb117f3e56c2.jpg",
+    "hiertext/images/test/0de57901c86db588.jpg",
+    "hiertext/images/test/e4997c41274e5b7b.jpg",
+    "infographicvqa/images/92012.jpg",
+    "hiertext/images/test/a0cda0575536a40e.jpg"
+  ],
+  "messages": [
+    {
+      "sender": "SYSTEM",
+      "recipient": "USER",
+      "content": "{{USER_INSTRUCTION}}ROUND 1 [provide: image_1, image_2, image_3, image_4, image_5, image_6]\nQuery: I'm putting together a display. Look at these 6 photos. I need you to cross-reference the specific toy attachment the man is holding in the first image, the board game at the very bottom of the main stack in the second image, the figures in the blister packs on the right in the third image, the toy rifle the boy is holding in the fourth image, the yellow and purple shoes on the bottom right of the infographic, and the yellow toy on the left of the shelf in the last image. Check my 'Game Room Ideas' note. For any of these items that are NOT already in the note, find them on Amazon and add them to my wish list.\nInstructions: Ask the assistant to cross-reference the six specific items from the provided images with your 'Game Room Ideas' note. If the assistant points out that you have multiple notes with 'Game Room Ideas' in the title and asks for clarification, specify that you want the 'Basement' one. Instruct the assistant to search Amazon for any of the six items that are missing from that note and add them to your wish list. Do not reveal the names of the items; let the assistant identify them from the images. Once the assistant confirms the missing items have been added to the wish list, proceed to the next round.\n\nROUND 2\nQuery: Wait, check my 'Already Owned' note. If any of those exact same 6 items from the photos happen to be listed there, it means I forgot I already had them! Please remove any of those already-owned items from my Amazon wish list, and also update the 'Game Room Ideas' note to delete them from that list too.\nInstructions: Ask the assistant to check your 'Already Owned' note to see if any of the six items from the photos are listed there. If they are, instruct the assistant to remove those specific items from your Amazon wish list (if they were just added) and delete them from the 'Game Room Ideas - Basement' note. End the conversation once the assistant confirms the wish list and note have been successfully updated.\n\nYou have 6 images available to share with the agent using the send_message_with_image tool.\nIMPORTANT: Image IDs are ZERO-INDEXED integers (0, 1, 2, ...). Do NOT add 1 to the IDs.\nAvailable image IDs: [0, 1, 2, 3, 4, 5]\nImage mapping:\n  image_1.jpg -> image ID 0\n  image_2.jpg -> image ID 1\n  image_3.jpg -> image ID 2\n  image_4.jpg -> image ID 3\n  image_5.jpg -> image ID 4\n  image_6.jpg -> image ID 5"
+    },
+    {
+      "sender": "USER",
+      "recipient": "AGENT",
+      "content": "I'm putting together a display. Look at these 6 photos. I need you to cross-reference the specific toy attachment the man is holding in the first image, the board game at the very bottom of the main stack in the second image, the figures in the blister packs on the right in the third image, the toy rifle the boy is holding in the fourth image, the yellow and purple shoes on the bottom right of the infographic, and the yellow toy on the left of the shelf in the last image. Check my 'Game Room Ideas' note. For any of these items that are NOT already in the note, find them on Amazon and add them to my wish list.",
+      "image_ids": [
+        0,
+        1,
+        2,
+        3,
+        4,
+        5
+      ]
+    }
+  ],
+  "milestones": [],
+  "entity_diff_specs": [
+    {
+      "operation": "create",
+      "source": "appworld",
+      "table": "amazon.wish_list_entries",
+      "entity_data": {
+        "user_id": 72,
+        "product_id": 200,
+        "quantity": 1
+      },
+      "column_similarity_measure": {
+        "user_id": "column_exact_match_similarity",
+        "product_id": "column_exact_match_similarity",
+        "quantity": "column_exact_match_similarity"
+      }
+    },
+    {
+      "operation": "create",
+      "source": "appworld",
+      "table": "amazon.wish_list_entries",
+      "entity_data": {
+        "user_id": 72,
+        "product_id": 201,
+        "quantity": 1
+      },
+      "column_similarity_measure": {
+        "user_id": "column_exact_match_similarity",
+        "product_id": "column_exact_match_similarity",
+        "quantity": "column_exact_match_similarity"
+      }
+    },
+    {
+      "operation": "update",
+      "source": "appworld",
+      "table": "simple_note.notes",
+      "entity_id_column": "id",
+      "entity_id_value": 3200,
+      "expected_fields": {
+        "updated_at": "2026-04-15T12:00:00",
+        "content": "Items to get: Pop Battle figures, Zoom Kobe VI shoes, Arcade cabinet.",
+        "tags": ["game room", "ideas", "basement"]
+      },
+      "column_similarity_measure": {
+        "updated_at": "column_ignore_similarity",
+        "content": "column_rouge_l_similarity",
+        "tags": "column_ignore_similarity",
+        "id": "column_exact_match_similarity"
+      }
+    }
+  ],
+  "task_completion_criteria": "Cross-reference the 6 items from the images ('grenade toy launcher', 'Cash 'n Guns', 'Pop Battle' figures, 'Combat Sound Flash Gun', 'Zoom Kobe VI', and 'Wind Up Dalek: The Eternal') with the user's notes and Amazon wish list. The final state should result in the 'grenade toy launcher' and 'Wind Up Dalek: The Eternal' being added to the Amazon wish list. The 'Combat Sound Flash Gun' should NOT be on the wish list (or removed if added), and 'Cash 'n Guns' must be deleted from the 'Game Room Ideas - Basement' note because both are listed in the 'Already Owned' note.",
+  "categories": [
+    "APPWORLD",
+    "MULTIPLE_USER_TURN"
+  ],
+  "max_messages": 100,
+  "metadata": {
+    "original_scenario_id": "scenario_0161",
+    "expected_tools": [
+      "simple_note_show_note",
+      "web_search_serper",
+      "amazon_show_product",
+      "amazon_add_product_to_wish_list",
+      "amazon_delete_product_from_wish_list",
+      "simple_note_update_note"
+    ],
+    "image_arrival": {
+      "1": [
+        "image_1",
+        "image_2",
+        "image_3",
+        "image_4",
+        "image_5",
+        "image_6"
+      ]
+    },
+    "image_delivery_map": [],
+    "scenario_metadata": {
+      "num_images": 6,
+      "num_user_rounds": 2,
+      "selected_flow_type": "cross_reference",
+      "image_arrival": "upfront",
+      "challenge_type": "none",
+      "require_disambiguation": true,
+      "dataset_type": "hiertext"
+    }
+  }
+}

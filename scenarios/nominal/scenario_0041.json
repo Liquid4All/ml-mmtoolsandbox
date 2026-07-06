@@ -1,0 +1,263 @@
+{
+  "name": "scenario_0041",
+  "base_scenario": "base",
+  "description": "The user is a historical researcher compiling data from various archival documents, including invoices, applications, scripts, reservations, and government publications.",
+  "difficulty": "easy",
+  "appworld_base_task": "_base_",
+  "device_state_id": "she_bailey@gmail.com",
+  "reference_time": "2026-04-16T23:52:06.294375+00:00",
+  "agentsandbox_entities": {},
+  "appworld_entities": {
+    "simple_note.notes": [
+      {
+        "id": 3200,
+        "user_id": 83,
+        "title": "Historical Landmarks",
+        "content": "List of 19th-century monuments:\n- Statue of Liberty\n- Washington Monument\n- Eiffel Tower\n- Brooklyn Bridge",
+        "tags": [
+          "history",
+          "landmarks"
+        ],
+        "created_at": "2026-04-10T12:00:00",
+        "updated_at": "2026-04-10T12:00:00",
+        "pinned": false,
+        "data": null
+      }
+    ],
+    "gmail.users": [
+      {
+        "id": 10100,
+        "first_name": "Leroy",
+        "last_name": "Gerald",
+        "email": "leroy.gerald@example.com",
+        "password": "placeholder_password",
+        "status": "active"
+      },
+      {
+        "id": 10101,
+        "first_name": "Lawrence Irwin",
+        "last_name": "Glass",
+        "email": "lawrence.glass@example.com",
+        "password": "placeholder_password",
+        "status": "active"
+      },
+      {
+        "id": 10102,
+        "first_name": "Dr. William J",
+        "last_name": "Darby",
+        "email": "william.darby@example.com",
+        "password": "placeholder_password",
+        "status": "active"
+      },
+      {
+        "id": 10103,
+        "first_name": "Historian",
+        "last_name": "",
+        "email": "historian@example.com",
+        "password": "placeholder_password",
+        "status": "active"
+      }
+    ]
+  },
+  "image_paths": [
+    "docvqa/images/62453.jpg",
+    "docvqa/images/51361.jpg",
+    "docvqa/images/18883.jpg",
+    "docvqa/images/23110.jpg",
+    "omnidocbench/images/000143.jpg",
+    "docvqa/images/60939.jpg"
+  ],
+  "messages": [
+    {
+      "sender": "SYSTEM",
+      "recipient": "USER",
+      "content": "{{USER_INSTRUCTION}}ROUND 1 [provide: image_1, image_2, image_3, image_4, image_5, image_6]\nQuery: I'm organizing my archival findings. Please create new phone contacts for the individuals listed in the third, fourth, and sixth documents here, making sure to include their addresses and phone numbers where available.\nInstructions: Ask the assistant to create new contacts for the people listed in the third, fourth, and sixth images, including their addresses and phone numbers. If the assistant asks for clarification on which documents, point out that you mean the test order form, the graduate application, and the invoice. Do not provide the actual names or details yourself. Once the assistant confirms the contacts are created, proceed to the next round.\n\nROUND 2\nQuery: Now, create a new note titled 'Historical Organizations' and write down the names and addresses of the organizations found on the first and fifth pages.\nInstructions: Instruct the assistant to create a note titled 'Historical Organizations' that includes the names and addresses of the organizations from the first and fifth images (the script title page and the Federal Register page). If the assistant misses any details or asks which ones, guide it back to those specific images. Wait for confirmation that the note has been saved before moving on.\n\nROUND 3\nQuery: Finally, send an email to my co-researcher at historian@example.com with the subject 'Aspen 69 Checked Names'. In the body, list all the names from the second document that have a handwritten checkmark next to them, and then append the full text of my 'Historical' note.\nInstructions: Tell the assistant to send an email to historian@example.com with the subject 'Aspen 69 Checked Names'. Explain that the email body should list the names from the second image (the Aspen reservations list) that have a checkmark next to them, followed by the text of your 'Historical' note. Because there is a preexisting note called 'Historical Landmarks' on the device, the assistant should ask you to clarify which note you mean. When it does, specify that you want the 'Historical Organizations' note you just created. Once the email is sent, end the conversation.\n\nYou have 6 images available to share with the agent using the send_message_with_image tool.\nIMPORTANT: Image IDs are ZERO-INDEXED integers (0, 1, 2, ...). Do NOT add 1 to the IDs.\nAvailable image IDs: [0, 1, 2, 3, 4, 5]\nImage mapping:\n  image_1.jpg -> image ID 0\n  image_2.jpg -> image ID 1\n  image_3.jpg -> image ID 2\n  image_4.jpg -> image ID 3\n  image_5.jpg -> image ID 4\n  image_6.jpg -> image ID 5"
+    },
+    {
+      "sender": "USER",
+      "recipient": "AGENT",
+      "content": "I'm organizing my archival findings. Please create new phone contacts for the individuals listed in the third, fourth, and sixth documents here, making sure to include their addresses and phone numbers where available.",
+      "image_ids": [
+        0,
+        1,
+        2,
+        3,
+        4,
+        5
+      ]
+    }
+  ],
+  "milestones": [],
+  "entity_diff_specs": [
+    {
+      "operation": "create",
+      "source": "appworld",
+      "table": "phone.contacts",
+      "entity_data": {
+        "user_id": 83,
+        "first_name": "Leroy",
+        "last_name": "Gerald",
+        "email": "leroy.gerald@example.com",
+        "phone_number": "919-741-5897",
+        "relationships": [],
+        "birthday": null,
+        "home_address": "P.O. Box 2955, Winston-Salem, NC 27102",
+        "work_address": null,
+        "created_at": "2026-04-16T23:52:06"
+      },
+      "column_similarity_measure": {
+        "user_id": "column_exact_match_similarity",
+        "first_name": "column_exact_match_similarity",
+        "last_name": "column_exact_match_similarity",
+        "email": "column_exact_match_similarity",
+        "phone_number": "column_exact_match_similarity",
+        "relationships": "column_ignore_similarity",
+        "birthday": "column_ignore_similarity",
+        "home_address": "column_exact_match_similarity",
+        "work_address": "column_ignore_similarity",
+        "created_at": "column_ignore_similarity"
+      }
+    },
+    {
+      "operation": "create",
+      "source": "appworld",
+      "table": "phone.contacts",
+      "entity_data": {
+        "user_id": 83,
+        "first_name": "Lawrence Irwin",
+        "last_name": "Glass",
+        "email": "lawrence.glass@example.com",
+        "phone_number": "827-6656",
+        "relationships": [],
+        "birthday": null,
+        "home_address": "717 W. 28th St. #2, MPLS, MN 55408",
+        "work_address": null,
+        "created_at": "2026-04-16T23:52:06"
+      },
+      "column_similarity_measure": {
+        "user_id": "column_exact_match_similarity",
+        "first_name": "column_exact_match_similarity",
+        "last_name": "column_exact_match_similarity",
+        "email": "column_exact_match_similarity",
+        "phone_number": "column_exact_match_similarity",
+        "relationships": "column_ignore_similarity",
+        "birthday": "column_ignore_similarity",
+        "home_address": "column_exact_match_similarity",
+        "work_address": "column_ignore_similarity",
+        "created_at": "column_ignore_similarity"
+      }
+    },
+    {
+      "operation": "create",
+      "source": "appworld",
+      "table": "phone.contacts",
+      "entity_data": {
+        "user_id": 83,
+        "first_name": "Dr. William J",
+        "last_name": "Darby",
+        "email": "william.darby@example.com",
+        "phone_number": null,
+        "relationships": [],
+        "birthday": null,
+        "home_address": "Homestead Manor, RT 2 Box 218, Thompson Station TN 37179",
+        "work_address": null,
+        "created_at": "2026-04-16T23:52:06"
+      },
+      "column_similarity_measure": {
+        "user_id": "column_exact_match_similarity",
+        "first_name": "column_exact_match_similarity",
+        "last_name": "column_exact_match_similarity",
+        "email": "column_exact_match_similarity",
+        "phone_number": "column_ignore_similarity",
+        "relationships": "column_ignore_similarity",
+        "birthday": "column_ignore_similarity",
+        "home_address": "column_exact_match_similarity",
+        "work_address": "column_ignore_similarity",
+        "created_at": "column_ignore_similarity"
+      }
+    },
+    {
+      "operation": "create",
+      "source": "appworld",
+      "table": "gmail.emails",
+      "entity_data": {
+        "sender_id": 83,
+        "recipient_ids": [
+          10103
+        ],
+        "subject": "Aspen 69 Checked Names",
+        "body": "Michael Baum\nLarry DuBois\nAllen Boyar\nMr. and Mrs. Dave Bruns\nMr. and Mrs. Richard Von Kaenel\nMr. John L. Crum, Jr.\n\nNational Dairy Council (111 North Canal Street, Chicago, Illinois)\nSecurities and Exchange Commission (450 Fifth Street, N.W., Washington, D.C. 20549)",
+        "response_to_email_id": null,
+        "created_at": "2026-04-16T23:52:06"
+      },
+      "column_similarity_measure": {
+        "sender_id": "column_exact_match_similarity",
+        "recipient_ids": "column_exact_match_similarity",
+        "subject": "column_rouge_l_similarity",
+        "body": "column_rouge_l_similarity",
+        "response_to_email_id": "column_ignore_similarity",
+        "created_at": "column_ignore_similarity"
+      }
+    },
+    {
+      "operation": "create",
+      "source": "appworld",
+      "table": "simple_note.notes",
+      "entity_data": {
+        "user_id": 83,
+        "title": "Historical Organizations",
+        "content": "National Dairy Council\n111 North Canal Street, Chicago, Illinois\n\nSecurities and Exchange Commission\n450 Fifth Street, N.W., Washington, D.C. 20549",
+        "tags": [],
+        "created_at": "2026-04-16T23:52:06",
+        "updated_at": "2026-04-16T23:52:06",
+        "pinned": false,
+        "data": null
+      },
+      "column_similarity_measure": {
+        "user_id": "column_exact_match_similarity",
+        "title": "column_rouge_l_similarity",
+        "content": "column_rouge_l_similarity",
+        "tags": "column_ignore_similarity",
+        "created_at": "column_ignore_similarity",
+        "updated_at": "column_ignore_similarity",
+        "pinned": "column_exact_match_similarity",
+        "data": "column_ignore_similarity"
+      }
+    }
+  ],
+  "task_completion_criteria": "Create contacts for Leroy Gerald (with address P.O. Box 2955, Winston-Salem, NC 27102 and phone 919-741-5897), Lawrence Irwin Glass (with address 717 W. 28th St. #2, MPLS, MN 55408 and phone 827-6656), and Dr. William J Darby (with address Homestead Manor, RT 2 Box 218, Thompson Station TN 37179). Create a note titled 'Historical Organizations' containing the names and addresses for the National Dairy Council (111 North Canal Street, Chicago, Illinois) and the Securities and Exchange Commission (450 Fifth Street, N.W., Washington, D.C. 20549). Send an email to historian@example.com with the subject 'Aspen 69 Checked Names', listing Michael Baum, Larry DuBois, Allen Boyar, Mr. and Mrs. Dave Bruns, Mr. and Mrs. Richard Von Kaenel, and Mr. John L. Crum, Jr., and appending the contents of the 'Historical Organizations' note.",
+  "categories": [
+    "APPWORLD",
+    "MULTIPLE_USER_TURN"
+  ],
+  "max_messages": 100,
+  "metadata": {
+    "original_scenario_id": "scenario_0041",
+    "expected_tools": [
+      "contacts_add_contact",
+      "simple_note_create_note",
+      "simple_note_show_note",
+      "gmail_send_email"
+    ],
+    "image_arrival": {
+      "1": [
+        "image_1",
+        "image_2",
+        "image_3",
+        "image_4",
+        "image_5",
+        "image_6"
+      ]
+    },
+    "image_delivery_map": [],
+    "scenario_metadata": {
+      "num_images": 6,
+      "num_user_rounds": 3,
+      "selected_flow_type": "aggregate",
+      "image_arrival": "upfront",
+      "challenge_type": "none",
+      "require_disambiguation": true,
+      "dataset_type": "docvqa"
+    }
+  }
+}
