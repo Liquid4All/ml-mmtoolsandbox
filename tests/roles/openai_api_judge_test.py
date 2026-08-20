@@ -350,7 +350,7 @@ def test_format_database_diff_no_changes(mock_openai_cls: MagicMock) -> None:
 
     judge = OpenAIAPIJudge()
     diff = judge._format_database_diff(context)
-    assert "No database changes" in diff
+    assert "No state changes detected." in diff
 
 
 @patch("mmtoolsandbox.roles.openai_judge.OpenAI")
@@ -368,7 +368,7 @@ def test_format_database_diff_skips_sandbox_and_image(
 
     judge = OpenAIAPIJudge()
     diff = judge._format_database_diff(context)
-    assert "No database changes" in diff
+    assert "No state changes detected." in diff
 
 
 # ---------------------------------------------------------------------------
@@ -682,12 +682,16 @@ def test_format_images_dedup_and_cap(mock_openai_cls: MagicMock) -> None:
     context.get_database.side_effect = get_database
 
     judge = OpenAIAPIJudge()
-    images = judge._format_images(sandbox_rows, context)
+    parts = judge._format_images(sandbox_rows, context)
 
+    images = [p for p in parts if p.get("type") == "image_url"]
     assert len(images) == 10  # Capped at _MAX_IMAGES
     # No duplicates — image_id=3 should appear only once
     urls = [img["image_url"]["url"] for img in images]
     assert len(set(urls)) == 10
+    # Each image is preceded by its [image_id=N] label, and labels are id-sorted.
+    labels = [p["text"] for p in parts if p.get("type") == "text"]
+    assert labels == [f"[image_id={i}]" for i in range(1, 11)]
 
 
 @patch("mmtoolsandbox.roles.openai_judge.OpenAI")
@@ -714,10 +718,14 @@ def test_format_images_missing_image_id(mock_openai_cls: MagicMock) -> None:
     context.get_database.side_effect = get_database
 
     judge = OpenAIAPIJudge()
-    images = judge._format_images(sandbox_rows, context)
+    parts = judge._format_images(sandbox_rows, context)
 
+    images = [p for p in parts if p.get("type") == "image_url"]
     assert len(images) == 1
     assert "b64_1" in images[0]["image_url"]["url"]
+    # The surviving image is labeled with its id (999 is absent, so no label).
+    labels = [p["text"] for p in parts if p.get("type") == "text"]
+    assert labels == ["[image_id=1]"]
 
 
 # ---------------------------------------------------------------------------
@@ -779,6 +787,51 @@ def test_format_database_diff_multiple_namespaces(mock_openai_cls: MagicMock) ->
 
 
 @patch("mmtoolsandbox.roles.openai_judge.OpenAI")
+def test_format_images_collects_all_user_turns(mock_openai_cls: MagicMock) -> None:
+    """Images delivered across multiple user turns are all captured.
+
+    Later-turn images arrive via intercepted ``send_message_with_image`` calls,
+    which the user role rewrites into USER→AGENT messages.
+    """
+    context = MagicMock(spec=ExecutionContext)
+
+    # 6 images delivered progressively across 3 user turns.
+    sandbox_rows = [
+        {"sender": RoleType.USER, "recipient": RoleType.AGENT, "image_ids": [0, 1]},
+        {"sender": RoleType.AGENT, "recipient": RoleType.USER, "image_ids": None},
+        {"sender": RoleType.USER, "recipient": RoleType.AGENT, "image_ids": [2, 3]},
+        {"sender": RoleType.USER, "recipient": RoleType.AGENT, "image_ids": [4, 5]},
+    ]
+    image_data = {
+        "image_id": list(range(6)),
+        "image_content": [f"b64_{i}" for i in range(6)],
+    }
+    image_df = pl.DataFrame(image_data)
+
+    def get_database(namespace: DatabaseNamespace, **kwargs: Any) -> pl.DataFrame:
+        if namespace == DatabaseNamespace.IMAGE:
+            return image_df
+        return pl.DataFrame()
+
+    context.get_database.side_effect = get_database
+
+    judge = OpenAIAPIJudge()
+    parts = judge._format_images(sandbox_rows, context)  # type: ignore[arg-type]
+
+    images = [p for p in parts if p.get("type") == "image_url"]
+    labels = [p["text"] for p in parts if p.get("type") == "text"]
+    # All 6 images across the 3 user turns are captured, labeled and id-sorted.
+    assert len(images) == 6
+    assert labels == [f"[image_id={i}]" for i in range(6)]
+    # Each label immediately precedes its image part.
+    for idx in range(0, len(parts), 2):
+        assert parts[idx]["type"] == "text"
+        assert parts[idx + 1]["type"] == "image_url"
+        expected_id = int(parts[idx]["text"].strip("[]").split("=")[1])
+        assert f"b64_{expected_id}" in parts[idx + 1]["image_url"]["url"]
+
+
+@patch("mmtoolsandbox.roles.openai_judge.OpenAI")
 def test_format_images_from_tool_trace(mock_openai_cls: MagicMock) -> None:
     """Images referenced in tool_trace (view_image, crop_image) are included."""
     context = MagicMock(spec=ExecutionContext)
@@ -823,10 +876,13 @@ def test_format_images_from_tool_trace(mock_openai_cls: MagicMock) -> None:
     context.get_database.side_effect = get_database
 
     judge = OpenAIAPIJudge()
-    images = judge._format_images(sandbox_rows, context)  # type: ignore[arg-type]
+    parts = judge._format_images(sandbox_rows, context)  # type: ignore[arg-type]
 
+    images = [p for p in parts if p.get("type") == "image_url"]
     assert len(images) == 1
     assert "b64_pizza_menu" in images[0]["image_url"]["url"]
+    labels = [p["text"] for p in parts if p.get("type") == "text"]
+    assert labels == ["[image_id=0]"]
 
 
 # ---------------------------------------------------------------------------

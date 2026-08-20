@@ -195,7 +195,9 @@ class AnthropicAPIJudge(OpenAIAPIJudge):
     ) -> dict[str, Any]:
         """Evaluate the execution context against the task-completion criteria."""
         evidence_parts = self._format_evidence(
-            execution_context, criteria, appworld_initial
+            execution_context,
+            criteria,
+            appworld_tables=self._appworld_table_diffs(appworld_initial),
         )
         self.last_evidence["main"] = evidence_parts
         response = self._messages_create(_SYSTEM_PROMPT, evidence_parts)

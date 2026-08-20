@@ -15,6 +15,7 @@ from tenacity import retry, stop_after_attempt, wait_random_exponential
 
 from mmtoolsandbox.common.databases import DatabaseNamespace
 from mmtoolsandbox.common.execution_context import ExecutionContext, RoleType
+from mmtoolsandbox.common.state_diff import TableDiff, render_state_diff
 from mmtoolsandbox.common.utils import all_logging_disabled
 from mmtoolsandbox.roles.base_judge import (
     _INFRASTRUCTURE_NAMESPACES,
@@ -244,26 +245,19 @@ class OpenAIAPIJudge:
 
         return "\n".join(lines) if lines else "No agent actions."
 
-    def _format_database_diff(
-        self,
-        execution_context: ExecutionContext,
-        appworld_initial: dict[str, Any] | None = None,
-    ) -> str:
-        """Compute initial→final database diff for all active databases.
+    def _native_table_diffs(
+        self, execution_context: ExecutionContext
+    ) -> list[TableDiff]:
+        """Gather initial→final row sets for MMToolSandbox native namespaces.
 
-        Includes both MMToolSandbox polars namespaces and AppWorld SQLite tables
-        so the judge sees the complete picture of what the agent changed.
-
-        Args:
-            execution_context: MMToolSandbox execution context.
-            appworld_initial: Optional dict mapping AppWorld table keys to
-                initial-state DataFrames (from EntityDiffEvaluator).
+        Returns one :class:`TableDiff` per changed namespace (skipping
+        infrastructure namespaces and unchanged ones). Rows are plain dicts, so
+        the shared renderer can key + classify them uniformly.
         """
         initial_idx = execution_context.first_user_sandbox_message_index
         final_idx = execution_context.max_sandbox_message_index
-        diffs: list[str] = []
+        tables: list[TableDiff] = []
 
-        # --- MMToolSandbox polars namespaces ---
         for ns in execution_context.get_active_database_namespaces():
             if ns in _INFRASTRUCTURE_NAMESPACES:
                 continue
@@ -279,78 +273,94 @@ class OpenAIAPIJudge:
 
             if initial.is_empty() and final.is_empty():
                 continue
-
-            # Skip if the database is unchanged. This check is necessary
-            # because polars anti-join treats NULL != NULL, which causes
-            # unchanged rows with null columns (e.g. image_ids) to appear
-            # as spurious additions.
+            # Cheap short-circuit for unchanged namespaces (avoids a to_dicts
+            # on large tables). The renderer would also emit nothing, but this
+            # skips the work.
             if initial.equals(final):
                 continue
 
-            # Anti-join to find rows added in final that don't exist in initial
-            if initial.is_empty():
-                added = final
-            elif set(final.columns) == set(initial.columns):
-                added = final.join(initial, on=final.columns, how="anti")
-            else:
-                added = final
-
-            if not added.is_empty():
-                diffs.append(f"[{ns}] +{added.height} row(s) added: {added.to_dicts()}")
-
-        # --- AppWorld SQLite tables ---
-        if appworld_initial:
-            try:
-                from mmtoolsandbox.common.entity_diff_evaluator import (
-                    read_appworld_table,
+            tables.append(
+                TableDiff(
+                    label=str(ns),
+                    initial=initial.to_dicts(),
+                    final=final.to_dicts(),
                 )
+            )
+        return tables
 
-                appworld_summary: list[str] = []
-                for table_key, initial_df in appworld_initial.items():
-                    try:
-                        final_df = read_appworld_table(table_key)
-                        for col in ["sandbox_message_index"]:
-                            if col in initial_df.columns:
-                                initial_df = initial_df.drop(col)
-                            if col in final_df.columns:
-                                final_df = final_df.drop(col)
+    def _appworld_table_diffs(
+        self, appworld_initial: dict[str, Any] | None
+    ) -> list[TableDiff]:
+        """Gather initial→final row sets for AppWorld tables.
 
-                        initial_count = initial_df.height
-                        final_count = final_df.height
-                        added = final_count - initial_count
-                        if added > 0:
-                            appworld_summary.append(
-                                f"[AppWorld:{table_key}] +{added} row(s) added "
-                                f"({initial_count} -> {final_count})"
-                            )
-                        elif added < 0:
-                            appworld_summary.append(
-                                f"[AppWorld:{table_key}] {added} row(s) removed "
-                                f"({initial_count} -> {final_count})"
-                            )
-                    except Exception:
-                        pass
+        Initial rows come from the pre-agent snapshots captured by the entity
+        diff evaluator; final rows are read live from the AppWorld SQLite.
+        """
+        if not appworld_initial:
+            return []
+        try:
+            from mmtoolsandbox.common.entity_diff_evaluator import (
+                read_appworld_table,
+            )
+        except Exception:
+            return []
 
-                if appworld_summary:
-                    diffs.append(
-                        "AppWorld database summary:\n" + "\n".join(appworld_summary)
+        tables: list[TableDiff] = []
+        for table_key, initial_df in appworld_initial.items():
+            try:
+                final_df = read_appworld_table(table_key)
+                tables.append(
+                    TableDiff(
+                        label=table_key,
+                        initial=initial_df.to_dicts() if initial_df is not None else [],
+                        final=final_df.to_dicts() if final_df is not None else [],
                     )
+                )
             except Exception:
-                pass
+                continue
+        return tables
 
-        return "\n".join(diffs) if diffs else "No database changes detected."
+    def _format_database_diff(
+        self,
+        execution_context: ExecutionContext,
+        appworld_tables: list[TableDiff] | None = None,
+    ) -> str:
+        """Render a unified initial→final state diff for the judge.
+
+        Combines MMToolSandbox native namespaces (gathered from the execution
+        context) with any pre-built AppWorld ``TableDiff``s, then delegates to
+        the shared :func:`render_state_diff`, which classifies added / updated /
+        deleted rows with content — the same view regardless of storage backend.
+
+        Args:
+            execution_context: MMToolSandbox execution context.
+            appworld_tables: Pre-built AppWorld table diffs. ``None`` or empty
+                means no external tables.
+        """
+        tables = self._native_table_diffs(execution_context)
+        if appworld_tables:
+            tables += appworld_tables
+        return render_state_diff(tables)
 
     def _format_images(
         self,
         sandbox_rows: list[dict[str, Any]],
         execution_context: ExecutionContext,
     ) -> list[dict[str, Any]]:
-        """Collect relevant images, deduplicated and capped.
+        """Collect relevant images, labeled with their id, deduped and capped.
 
-        Sources (in priority order):
-        1. First USER→AGENT message image_ids (user-provided images)
-        2. Tool results that reference images (view_image, crop_image, etc.)
-        3. Last AGENT→USER message image_ids (agent output images)
+        Selection priority (for the ``_MAX_IMAGES`` cap):
+        1. Images from every USER→AGENT message (user-provided). Images delivered
+           in later turns via ``send_message_with_image`` are intercepted into
+           USER→AGENT messages rather than the tool trace, so every user turn
+           must be scanned for them to be visible to the judge.
+        2. Tool results that reference images (view_image, crop_image, etc.).
+        3. Last AGENT→USER message images (agent output).
+
+        Each returned image is preceded by a ``[image_id=N]`` text part so the
+        judge can bind it to the ``[image_id=N]`` references in the conversation
+        text. Images are displayed sorted by id (ordering is otherwise
+        meaningless once labeled).
         """
         try:
             image_db = execution_context.get_database(DatabaseNamespace.IMAGE)
@@ -364,8 +374,7 @@ class OpenAIAPIJudge:
         for row in image_db.to_dicts():
             image_lookup[row["image_id"]] = row["image_content"]
 
-        relevant_ids: list[int] = []
-        first_user_found = False
+        user_ids: list[int] = []
         last_agent_ids: list[int] = []
         tool_image_ids: list[int] = []
 
@@ -373,16 +382,11 @@ class OpenAIAPIJudge:
             sender = row.get("sender")
             recipient = row.get("recipient")
 
-            # Source 1: first USER→AGENT message
+            # Source 1: every USER→AGENT message.
             image_ids = row.get("image_ids")
             if image_ids:
-                if (
-                    sender == RoleType.USER
-                    and recipient == RoleType.AGENT
-                    and not first_user_found
-                ):
-                    relevant_ids.extend(i for i in image_ids if i is not None)
-                    first_user_found = True
+                if sender == RoleType.USER and recipient == RoleType.AGENT:
+                    user_ids.extend(i for i in image_ids if i is not None)
                 if sender == RoleType.AGENT and recipient == RoleType.USER:
                     last_agent_ids = [i for i in image_ids if i is not None]
 
@@ -400,27 +404,31 @@ class OpenAIAPIJudge:
                         except (json.JSONDecodeError, TypeError):
                             continue
 
-        # Combine: user images first, then tool-referenced images, then agent response
-        relevant_ids.extend(tool_image_ids)
-        relevant_ids.extend(last_agent_ids)
-
-        # Deduplicate preserving order, then cap
+        # Priority order for the cap: user-delivered, then tool-referenced, then
+        # the agent's output images. Dedup preserving first-seen so user images
+        # are never truncated in favor of tool/agent ones.
+        ordered = user_ids + tool_image_ids + last_agent_ids
         seen: set[int] = set()
-        unique_ids: list[int] = []
-        for img_id in relevant_ids:
+        selected: list[int] = []
+        for img_id in ordered:
             if img_id not in seen and img_id in image_lookup:
                 seen.add(img_id)
-                unique_ids.append(img_id)
-        unique_ids = unique_ids[:_MAX_IMAGES]
+                selected.append(img_id)
+        selected = selected[:_MAX_IMAGES]
 
-        return [
-            {
-                "type": "image_url",
-                "image_url": {"url": f"data:image/jpeg;base64,{image_lookup[img_id]}"},
-            }
-            for img_id in unique_ids
-            if img_id in image_lookup
-        ]
+        # Display sorted by id, each image preceded by its [image_id=N] label.
+        parts: list[dict[str, Any]] = []
+        for img_id in sorted(selected):
+            parts.append({"type": "text", "text": f"[image_id={img_id}]"})
+            parts.append(
+                {
+                    "type": "image_url",
+                    "image_url": {
+                        "url": f"data:image/jpeg;base64,{image_lookup[img_id]}"
+                    },
+                }
+            )
+        return parts
 
     # ------------------------------------------------------------------
     # Evidence assembly
@@ -430,7 +438,7 @@ class OpenAIAPIJudge:
         self,
         execution_context: ExecutionContext,
         criteria: str,
-        appworld_initial: dict[str, Any] | None = None,
+        appworld_tables: list[TableDiff] | None = None,
     ) -> list[dict[str, Any]]:
         """Build a curated evidence package for the judge model."""
         sandbox_db = execution_context.get_database(
@@ -442,7 +450,7 @@ class OpenAIAPIJudge:
 
         conversation = self._format_user_assistant_conversation(sandbox_rows)
         agent_actions = self._format_agent_environment_interactions(sandbox_rows)
-        db_diff = self._format_database_diff(execution_context, appworld_initial)
+        db_diff = self._format_database_diff(execution_context, appworld_tables)
 
         text = f"Task Completion Criteria:\n{criteria}\n\n"
         text += f"Conversation:\n{conversation}\n\n"
@@ -1106,7 +1114,9 @@ class OpenAIAPIJudge:
             A dictionary containing the evaluation result with per-criterion rubric scores.
         """
         evidence_parts = self._format_evidence(
-            execution_context, criteria, appworld_initial
+            execution_context,
+            criteria,
+            appworld_tables=self._appworld_table_diffs(appworld_initial),
         )
         self.last_evidence["main"] = evidence_parts
 

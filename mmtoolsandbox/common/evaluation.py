@@ -14,6 +14,7 @@ that combines entity-diff scoring with an LLM judge.
 from __future__ import annotations
 
 import json
+import re
 from copy import deepcopy
 from logging import getLogger
 from pathlib import Path
@@ -1199,19 +1200,26 @@ class EvaluationCriteria:
 def _save_judge_evidence(path: Path, evidence: list[dict[str, Any]]) -> None:
     """Save judge evidence parts to a JSON file.
 
-    Images are stored as truncated placeholders to keep file sizes manageable.
-    The full images are already in execution_context.json.
+    Images are stored as placeholders to keep file sizes manageable (the full
+    base64 images live in execution_context.json). The placeholder embeds the
+    image's id — read from the preceding ``[image_id=N]`` label part — so a
+    reader can restore images by identity rather than by position.
     """
     serializable = []
+    last_image_id: int | None = None
     for part in evidence:
-        if part.get("type") == "image_url":
-            # Store a placeholder instead of the full base64 blob
-            serializable.append(
-                {
-                    "type": "image_url",
-                    "image_url": {"url": "(saved in execution_context.json)"},
-                }
-            )
+        if part.get("type") == "text":
+            match = re.fullmatch(r"\[image_id=(\d+)\]", part.get("text", "").strip())
+            last_image_id = int(match.group(1)) if match else None
+            serializable.append(part)
+        elif part.get("type") == "image_url":
+            # Store an id-tagged placeholder instead of the full base64 blob.
+            if last_image_id is not None:
+                url = f"(image_id={last_image_id} saved in execution_context.json)"
+            else:
+                url = "(saved in execution_context.json)"
+            serializable.append({"type": "image_url", "image_url": {"url": url}})
+            last_image_id = None
         else:
             serializable.append(part)
     with open(path, "w") as f:
