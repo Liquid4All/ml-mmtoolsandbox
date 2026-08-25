@@ -478,6 +478,25 @@ class TestReasoningTraceExtracted:
         assert meta[0] is not None
         assert meta[0]["reasoning_trace"] == "The user wants to find Alice."
 
+    def test_native_reasoning_content_in_tool_calling_mode(self) -> None:
+        messages = [
+            Message(
+                sender=RoleType.AGENT,
+                recipient=RoleType.EXECUTION_ENVIRONMENT,
+                content=_make_tool_call_content("call_1", "search_contacts"),
+                openai_tool_call_id="call_1",
+                openai_function_name="search_contacts",
+                finish_reason="tool_calls",
+                reasoning_trace="The user wants to find Alice.",
+                openai_reasoning_content="The user wants to find Alice.",
+            ),
+        ]
+
+        openai_msgs, _, _ = to_openai_messages(messages)
+
+        assert openai_msgs[0]["content"] == ""
+        assert openai_msgs[0]["reasoning_content"] == "The user wants to find Alice."
+
     def test_no_reasoning_trace_empty_content(self) -> None:
         """Without reasoning_trace, assistant content is empty string in tool_calling mode."""
         messages = [

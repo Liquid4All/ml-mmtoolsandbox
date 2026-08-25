@@ -137,8 +137,10 @@ class Message:
         claude_extended_thinking: Extended thinking text from Claude.
         claude_extended_thinking_signature: Signature for Claude extended
             thinking verification.
-        reasoning_trace: ReACT-style reasoning trace extracted from
+        reasoning_trace: Reasoning text extracted from a native field or inline
             ``<think>`` tags.
+        openai_reasoning_content: Reasoning returned in OpenAI-compatible APIs'
+            native ``reasoning_content`` extension.
         image_ids: List of ``ImageId`` references attached to this message.
     """
 
@@ -181,8 +183,11 @@ class Message:
     # claude_text_response instead.
     tool_call_text_response: str | None = None
 
-    # Optional field for storing reasoning traces (ReACT-style)
+    # Optional field for storing reasoning traces
     reasoning_trace: str | None = None
+
+    # Optional field for round-tripping the Chat Completions reasoning_content extension
+    openai_reasoning_content: str | None = None
 
     # Optional field for storing serialized OpenAI Responses API reasoning
     # output items (JSON).  Includes encrypted_content for round-tripping
@@ -552,7 +557,14 @@ def to_openai_messages(
 ) -> tuple[
     list[
         dict[
-            Literal["role", "content", "tool_call_id", "name", "tool_calls"],
+            Literal[
+                "role",
+                "content",
+                "tool_call_id",
+                "name",
+                "tool_calls",
+                "reasoning_content",
+            ],
             Any,
         ]
     ],
@@ -627,7 +639,14 @@ def to_openai_messages(
     """
     openai_messages: list[
         dict[
-            Literal["role", "content", "tool_call_id", "name", "tool_calls"],
+            Literal[
+                "role",
+                "content",
+                "tool_call_id",
+                "name",
+                "tool_calls",
+                "reasoning_content",
+            ],
             Any,
         ]
     ] = []
@@ -969,7 +988,10 @@ def to_openai_messages(
                     # the assistant text content from reasoning traces and
                     # any text response that accompanied the tool calls.
                     parts = []
-                    if message.reasoning_trace:
+                    if (
+                        message.reasoning_trace
+                        and message.openai_reasoning_content is None
+                    ):
                         parts.append(f"<think>{message.reasoning_trace}</think>")
                     text_resp = (
                         message.tool_call_text_response or message.claude_text_response
@@ -977,13 +999,16 @@ def to_openai_messages(
                     if text_resp:
                         parts.append(text_resp)
                     assistant_content = "\n\n".join(parts) if parts else ""
-                    openai_messages.append(
-                        {
-                            "role": "assistant",
-                            "content": assistant_content,
-                            "tool_calls": [],
-                        }
-                    )
+                    assistant_message = {
+                        "role": "assistant",
+                        "content": assistant_content,
+                        "tool_calls": [],
+                    }
+                    if message.openai_reasoning_content is not None:
+                        assistant_message["reasoning_content"] = (
+                            message.openai_reasoning_content
+                        )
+                    openai_messages.append(assistant_message)
                     choices_metadata_list.append(
                         {
                             "finish_reason": message.finish_reason,
@@ -1043,11 +1068,18 @@ def to_openai_messages(
                 continue
             else:
                 assistant_content = message.content
-                if is_code_exec and message.reasoning_trace:
+                if (
+                    is_code_exec
+                    and message.reasoning_trace
+                    and message.openai_reasoning_content is None
+                ):
                     assistant_content = f"<think>{message.reasoning_trace}</think>\n\n{assistant_content}"
-                openai_messages.append(
-                    {"role": "assistant", "content": assistant_content}
-                )
+                assistant_message = {"role": "assistant", "content": assistant_content}
+                if message.openai_reasoning_content is not None:
+                    assistant_message["reasoning_content"] = (
+                        message.openai_reasoning_content
+                    )
+                openai_messages.append(assistant_message)
                 choices_metadata_list.append(
                     {
                         "finish_reason": message.finish_reason,

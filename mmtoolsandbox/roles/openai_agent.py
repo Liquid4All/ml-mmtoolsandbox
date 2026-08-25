@@ -17,6 +17,7 @@ from openai import OpenAI
 from openai._types import NOT_GIVEN, NotGiven
 from openai.types.chat import (
     ChatCompletion,
+    ChatCompletionMessage,
     ChatCompletionMessageParam,
     ChatCompletionToolParam,
 )
@@ -46,6 +47,20 @@ from mmtoolsandbox.common.tool_conversion import convert_to_openai_tools
 from mmtoolsandbox.common.utils import all_logging_disabled
 from mmtoolsandbox.roles.base_role import BaseRole
 from mmtoolsandbox.roles.registry import register_role_class
+
+
+def _extract_openai_reasoning(
+    message: ChatCompletionMessage,
+) -> tuple[str | None, str, str | None]:
+    """Extract reasoning while preserving its OpenAI-compatible wire format."""
+    content = message.content or ""
+    inline_reasoning, content = extract_reasoning(content)
+    native_reasoning = getattr(message, "reasoning_content", None)
+    if native_reasoning is None:
+        native_reasoning = getattr(message, "reasoning", None)
+    assert native_reasoning is None or isinstance(native_reasoning, str)
+    reasoning = native_reasoning if native_reasoning is not None else inline_reasoning
+    return reasoning, content, native_reasoning
 
 
 # TODO: Refactor all this mess
@@ -170,15 +185,16 @@ class OpenAIAPIAgent(BaseRole):
         # covering both tool_calls = None and tool_calls = []
         if not openai_response_message.tool_calls:
             assert openai_response_message.content is not None
-            content = openai_response_message.content
-            # Extract <think>...</think> reasoning if present
-            reasoning_trace, content = extract_reasoning(content)
+            reasoning_trace, content, native_reasoning = _extract_openai_reasoning(
+                openai_response_message
+            )
             response_messages = [
                 Message(
                     sender=self.role_type,
                     recipient=RoleType.USER,
                     content=content,
                     reasoning_trace=reasoning_trace,
+                    openai_reasoning_content=native_reasoning,
                     finish_reason=openai_response_finish_reason,
                     logprobs=openai_response_log_probs,
                     generation=openai_response_raw_generation,
@@ -191,14 +207,10 @@ class OpenAIAPIAgent(BaseRole):
             # Text inside <think> tags → reasoning_trace.
             # Remaining text → text_response (preserved for
             # round-tripping to the model on subsequent turns).
-            reasoning_trace = None
-            text_response = None
-            if openai_response_message.content:
-                reasoning_trace, remaining = extract_reasoning(
-                    openai_response_message.content
-                )
-                if remaining:
-                    text_response = remaining
+            reasoning_trace, text_response, native_reasoning = (
+                _extract_openai_reasoning(openai_response_message)
+            )
+            text_response = text_response or None
             for tool_call in openai_response_message.tool_calls:
                 # The response contains the agent facing tool name so we need to get
                 # the execution facing tool name when creating the Python code.
@@ -228,6 +240,7 @@ class OpenAIAPIAgent(BaseRole):
                         openai_tool_call_id=tool_call.id,
                         openai_function_name=tool_call.function.name,
                         reasoning_trace=reasoning_trace,
+                        openai_reasoning_content=native_reasoning,
                         tool_call_text_response=text_response,
                         finish_reason=openai_response_finish_reason,
                         logprobs=openai_response_log_probs,
@@ -238,6 +251,7 @@ class OpenAIAPIAgent(BaseRole):
                 # Only attach reasoning and text to the first tool call in a
                 # parallel batch, matching the pattern used by the Claude agent.
                 reasoning_trace = None
+                native_reasoning = None
                 text_response = None
         return response_messages, {}
 

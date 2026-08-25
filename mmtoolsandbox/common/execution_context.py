@@ -194,6 +194,7 @@ class ExecutionContext:
             "tool_call_text_response": pl.String,
             "image_ids": pl.List(pl.Int32),
             "reasoning_trace": pl.String,
+            "openai_reasoning_content": pl.String,
             "openai_reasoning_items": pl.String,
         },
         # Database for image storage and management

@@ -1004,6 +1004,7 @@ _default_dbs_column_similarities: dict[str, dict[str, ColumnSimilarityMeasureTyp
         "tool_call_text_response": column_exact_match_similarity,
         "image_ids": column_exact_match_similarity,
         "reasoning_trace": column_one_similarity,
+        "openai_reasoning_content": column_one_similarity,
         "openai_reasoning_items": column_one_similarity,
     },
     DatabaseNamespace.IMAGE: {
