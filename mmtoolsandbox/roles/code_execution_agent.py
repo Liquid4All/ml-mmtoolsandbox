@@ -41,13 +41,15 @@ from mmtoolsandbox.common.introspection_databases import IntrospectionDatabaseNa
 from mmtoolsandbox.common.message_conversion import (
     ConversionMode,
     Message,
-    extract_reasoning,
     to_openai_messages,
 )
 from mmtoolsandbox.common.tool_conversion import (
     generate_tool_call_id,
 )
-from mmtoolsandbox.roles.openai_agent import OpenAIAPIAgent
+from mmtoolsandbox.roles.openai_agent import (
+    OpenAIAPIAgent,
+    _extract_openai_reasoning,
+)
 
 LOGGER = logging.getLogger(__name__)
 
@@ -165,15 +167,14 @@ class CodeExecutionAgent(OpenAIAPIAgent):
                 response.usage.prompt_tokens, response.usage.completion_tokens
             )
 
-        response_content = response.choices[0].message.content
+        openai_response_message = response.choices[0].message
         openai_response_finish_reason: str = response.choices[0].finish_reason
 
-        if response_content is None:
-            response_content = ""
-
-        # Extract <think> reasoning before code extraction so tags don't
-        # interfere with code block parsing or end up in executed code.
-        reasoning_trace, cleaned_content = extract_reasoning(response_content)
+        # Extract reasoning before code extraction so it does not interfere
+        # with code block parsing or end up in executed code.
+        reasoning_trace, cleaned_content, native_reasoning = (
+            _extract_openai_reasoning(openai_response_message)
+        )
 
         # Extract code blocks from the cleaned (tag-free) content
         code_blocks = extract_code_blocks(cleaned_content)
@@ -186,6 +187,7 @@ class CodeExecutionAgent(OpenAIAPIAgent):
                     recipient=RoleType.USER,
                     content=cleaned_content,
                     reasoning_trace=reasoning_trace,
+                    openai_reasoning_content=native_reasoning,
                     finish_reason=openai_response_finish_reason,
                 )
             ]
@@ -222,6 +224,7 @@ class CodeExecutionAgent(OpenAIAPIAgent):
                     openai_tool_call_id=tool_call_id,
                     openai_function_name=self._get_execution_function_name(),
                     reasoning_trace=reasoning_trace,
+                    openai_reasoning_content=native_reasoning,
                     finish_reason=openai_response_finish_reason,
                 )
             )

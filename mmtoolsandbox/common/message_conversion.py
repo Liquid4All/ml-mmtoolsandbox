@@ -966,11 +966,17 @@ def to_openai_messages(
                 # CODE_EXEC mode: plain assistant message with code content
                 awaiting_exec_result = True
                 assistant_content = message.content
-                if message.reasoning_trace:
+                if (
+                    message.reasoning_trace
+                    and message.openai_reasoning_content is None
+                ):
                     assistant_content = f"<think>{message.reasoning_trace}</think>\n\n{assistant_content}"
-                openai_messages.append(
-                    {"role": "assistant", "content": assistant_content}
-                )
+                assistant_message = {"role": "assistant", "content": assistant_content}
+                if message.openai_reasoning_content is not None:
+                    assistant_message["reasoning_content"] = (
+                        message.openai_reasoning_content
+                    )
+                openai_messages.append(assistant_message)
                 choices_metadata_list.append(
                     {
                         "finish_reason": message.finish_reason,

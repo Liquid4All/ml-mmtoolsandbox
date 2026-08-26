@@ -2,13 +2,21 @@
 
 """Tests for reasoning traces in code-execution mode."""
 
+from types import SimpleNamespace
+from unittest.mock import patch
+
+from openai.types.chat import ChatCompletionMessage
+
 from mmtoolsandbox.common.execution_context import RoleType
 from mmtoolsandbox.common.message_conversion import (
     Message,
     extract_reasoning,
     to_openai_messages_for_code_exec,
 )
-from mmtoolsandbox.roles.code_execution_agent import extract_code_blocks
+from mmtoolsandbox.roles.code_execution_agent import (
+    CodeExecutionAgent,
+    extract_code_blocks,
+)
 
 
 def test_extract_reasoning_then_code_blocks() -> None:
@@ -49,6 +57,49 @@ def test_code_exec_roundtrip_with_reasoning() -> None:
     assert openai_msgs[0]["role"] == "assistant"
     assert openai_msgs[0]["content"].startswith("<think>I should print hello.</think>")
     assert "```python" in openai_msgs[0]["content"]
+
+
+def test_code_exec_native_reasoning_roundtrip() -> None:
+    content = "```python\nprint('hello')\n```"
+    response = SimpleNamespace(
+        usage=None,
+        choices=[
+            SimpleNamespace(
+                message=ChatCompletionMessage.model_validate({
+                    "role": "assistant",
+                    "content": content,
+                    "reasoning": "I should print hello.",
+                }),
+                finish_reason="stop",
+            )
+        ],
+    )
+    messages = [
+        Message(
+            sender=RoleType.USER,
+            recipient=RoleType.AGENT,
+            content="Print hello.",
+        )
+    ]
+    agent = CodeExecutionAgent.__new__(CodeExecutionAgent)
+
+    with (
+        patch.object(agent, "messages_validation"),
+        patch.object(agent, "filter_messages", return_value=messages),
+        patch.object(agent, "_convert_messages", return_value=[]),
+        patch.object(agent, "model_inference", return_value=response),
+        patch("mmtoolsandbox.roles.code_execution_agent.get_current_context"),
+    ):
+        response_messages, _ = agent.respond(messages, {})
+
+    assert len(response_messages) == 1
+    message = response_messages[0]
+    assert message.reasoning_trace == "I should print hello."
+    assert message.openai_reasoning_content == message.reasoning_trace
+
+    openai_msgs = to_openai_messages_for_code_exec(response_messages)
+    assert openai_msgs[0]["content"] == content
+    assert openai_msgs[0]["reasoning_content"] == "I should print hello."
 
 
 def test_code_exec_roundtrip_without_reasoning() -> None:
