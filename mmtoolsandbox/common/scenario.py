@@ -41,7 +41,6 @@ from mmtoolsandbox.common.evaluation import (
     EvaluationCriteria,
     EvaluationResult,
     evaluate,
-    get_effective_turn_count,
 )
 from mmtoolsandbox.common.execution_context import (
     ExecutionContext,
@@ -582,51 +581,6 @@ class Scenario:
         if output_directory is not None:
             scenario_output_directory = (
                 output_directory / "trajectories" / scenario_name
-            )
-
-        # Extract scenario_metadata for the user judge.  AppWorld scenarios
-        # store design parameters (challenge_type, image_arrival, etc.) under
-        # runtime_metadata["scenario_metadata"].  These are passed through to
-        # the user judge so it can interpret intentional script behaviors
-        # (e.g., error_correction challenges) rather than penalizing them.
-        scenario_metadata = None
-        if self.runtime_metadata and "scenario_metadata" in self.runtime_metadata:
-            scenario_metadata = self.runtime_metadata["scenario_metadata"]
-
-        # Judge failures (e.g., auth token expired mid-run, rate-limit)
-        # MUST NOT lose the agent trajectory.  Save what we have with a stub
-        # EvaluationResult so the conversation.json write still happens;
-        # operators can re-run the judge via ``backfill_judges.py`` later to
-        # populate the missing judge_result.
-        try:
-            evaluation_result = evaluate(
-                evaluation_criteria=self.evaluation_criteria,
-                execution_context=execution_context,
-                max_turn_count=self.max_messages,
-                judge_name=judge_name,
-                output_directory=scenario_output_directory,
-                scenario_metadata=scenario_metadata,
-            )
-        except Exception:
-            LOGGER.exception(
-                "Judge evaluation failed for %s; saving agent trajectory with "
-                "empty judge result. Re-run backfill_judges.py to populate it.",
-                scenario_name,
-            )
-            turn_count = get_effective_turn_count(
-                execution_context.get_database(
-                    DatabaseNamespace.SANDBOX, get_all_history_snapshots=True
-                )
-            )
-            entity_diff_result = None
-            if scenario_output_directory is not None:
-                ed_path = scenario_output_directory / "entity_diff_evidence.json"
-                if ed_path.exists():
-                    with open(ed_path) as f:
-                        entity_diff_result = json.load(f).get("result")
-            evaluation_result = EvaluationResult(
-                turn_count=turn_count,
-                entity_diff_result=entity_diff_result,
             )
 
         # Write the conversation to a JSON file in a generic format.

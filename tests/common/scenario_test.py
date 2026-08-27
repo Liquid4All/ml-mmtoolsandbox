@@ -150,7 +150,7 @@ def test_play_and_evaluate_saves_trajectory_when_judge_fails(
         patch(
             "mmtoolsandbox.common.scenario.evaluate",
             side_effect=RuntimeError("simulated judge failure"),
-        ),
+        ) as evaluate_mock,
     ):
         result, _, _ = scenario.play_and_evaluate(
             roles={},
@@ -159,6 +159,8 @@ def test_play_and_evaluate_saves_trajectory_when_judge_fails(
             dataset_name="test_dataset",
             judge_name=None,
         )
+
+    assert evaluate_mock.call_count == 1
 
     # Trajectory is saved even though the judge raised.
     trajectory_dir = output_dir / "trajectories" / "save_path_test"
