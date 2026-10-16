@@ -184,7 +184,6 @@ class OpenAIAPIAgent(BaseRole):
         # This is intentionally casting tool_calls to boolean,
         # covering both tool_calls = None and tool_calls = []
         if not openai_response_message.tool_calls:
-            assert openai_response_message.content is not None
             reasoning_trace, content, native_reasoning = _extract_openai_reasoning(
                 openai_response_message
             )
