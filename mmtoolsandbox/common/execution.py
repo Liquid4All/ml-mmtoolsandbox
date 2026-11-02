@@ -525,6 +525,7 @@ def run_scenario(
             "ui_judge_result": result.evaluation_result.ui_judge_result,
             "user_judge_result": result.evaluation_result.user_judge_result,
             "token_usage": result.token_usage,
+            "judge_token_usage": result.evaluation_result.judge_token_usage,
         }
     except Exception as e:
         if fail_on_error:
@@ -551,6 +552,7 @@ def run_scenario(
             "ui_judge_result": None,
             "user_judge_result": None,
             "token_usage": {},
+            "judge_token_usage": {},
         }
     finally:
         for role in roles.values():

@@ -25,6 +25,7 @@ from mmtoolsandbox.roles.base_judge import (
     JudgeResult,
     get_user_system_prompt,
 )
+from mmtoolsandbox.roles.base_role import TokenUsage
 
 LOGGER = logging.getLogger(__name__)
 
@@ -157,6 +158,9 @@ class OpenAIAPIJudge:
         # Cached evidence from the most recent evaluate* calls.
         # Keys: "main", "user", "ui".  Values: list of OpenAI content parts.
         self.last_evidence: dict[str, list[dict[str, Any]]] = {}
+        # Token usage of the most recent evaluate* calls, with the keys of
+        # ``last_evidence``.
+        self.last_usage: dict[str, TokenUsage] = {}
 
     # ------------------------------------------------------------------
     # Evidence formatting helpers
@@ -1027,6 +1031,17 @@ class OpenAIAPIJudge:
     # Public API
     # ------------------------------------------------------------------
 
+    def _record_usage(
+        self, key: str, prompt_tokens: int, completion_tokens: int
+    ) -> None:
+        """Keep the token usage of one judge call under ``key``."""
+        self.last_usage[key] = TokenUsage(
+            prompt_tokens=prompt_tokens,
+            completion_tokens=completion_tokens,
+            total_tokens=prompt_tokens + completion_tokens,
+            api_calls=1,
+        )
+
     def _extra_headers(self) -> dict[str, str]:
         """Per-call headers to inject into the API request.
 
@@ -1135,6 +1150,13 @@ class OpenAIAPIJudge:
                 extra_headers=self._extra_headers(),
             )
 
+        if response.usage is not None:
+            self._record_usage(
+                "main",
+                response.usage.prompt_tokens,
+                response.usage.completion_tokens,
+            )
+
         content = response.choices[0].message.content
         if content is None:
             return {"result": False, "reasoning": "No response from judge model."}
@@ -1189,6 +1211,13 @@ class OpenAIAPIJudge:
                 response_format={"type": "json_object"},
                 temperature=self._temperature,
                 extra_headers=self._extra_headers(),
+            )
+
+        if response.usage is not None:
+            self._record_usage(
+                "ui",
+                response.usage.prompt_tokens,
+                response.usage.completion_tokens,
             )
 
         content = response.choices[0].message.content
@@ -1251,6 +1280,13 @@ class OpenAIAPIJudge:
                 temperature=self._temperature,
                 response_format={"type": "json_object"},
                 extra_headers=self._extra_headers(),
+            )
+
+        if response.usage is not None:
+            self._record_usage(
+                "user",
+                response.usage.prompt_tokens,
+                response.usage.completion_tokens,
             )
 
         content = response.choices[0].message.content or ""

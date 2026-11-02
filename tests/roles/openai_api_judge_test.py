@@ -2,6 +2,7 @@
 
 """Unit tests for OpenAIAPIJudge."""
 
+import dataclasses
 import json
 from typing import Any
 from unittest.mock import MagicMock, patch
@@ -419,6 +420,39 @@ def test_evaluate_backward_compat(
     assert "reasoning" in result
     assert isinstance(result["result"], bool)
     assert isinstance(result["reasoning"], str)
+
+
+@patch("mmtoolsandbox.roles.openai_judge.OpenAI")
+def test_evaluate_records_usage_per_call(
+    mock_openai_cls: MagicMock, multi_turn_context: ExecutionContext
+) -> None:
+    """Each judge call keeps its own token usage; a call without usage keeps none."""
+    mock_client = MagicMock()
+    mock_openai_cls.return_value = mock_client
+
+    def response(usage: tuple[int, int] | None) -> MagicMock:
+        r = MagicMock()
+        r.choices[0].message.content = json.dumps(RUBRIC_RESPONSE)
+        r.usage = None
+        if usage is not None:
+            r.usage = MagicMock(prompt_tokens=usage[0], completion_tokens=usage[1])
+        return r
+
+    mock_client.chat.completions.create.side_effect = [
+        response((1000, 50)),
+        response((700, 30)),
+        response(None),
+    ]
+
+    judge = OpenAIAPIJudge()
+    judge.evaluate(multi_turn_context, "Create a note.")
+    judge.evaluate_user(multi_turn_context)
+    judge.evaluate_ui(multi_turn_context, "Create a note.")
+
+    assert {k: dataclasses.astuple(u) for k, u in judge.last_usage.items()} == {
+        "main": (1000, 50, 1050, 1),
+        "user": (700, 30, 730, 1),
+    }
 
 
 # ---------------------------------------------------------------------------
