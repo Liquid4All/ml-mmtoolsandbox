@@ -1232,11 +1232,19 @@ def _save_judge_evidence(path: Path, evidence: list[dict[str, Any]]) -> None:
         json.dump(serializable, f, indent=2)
 
 
+def get_judge_token_usage(judge: Any | None) -> dict[str, Any]:
+    """Token usage of each call of ``judge``, keyed like its evidence."""
+    return {
+        key: dataclasses.asdict(usage)
+        for key, usage in getattr(judge, "last_usage", {}).items()
+    }
+
+
 def evaluate(
     evaluation_criteria: EvaluationCriteria,
     execution_context: ExecutionContext,
     max_turn_count: int,
-    judge_name: str | None = None,
+    judge: Any | None = None,
     output_directory: Path | None = None,
     scenario_metadata: dict[str, Any] | None = None,
 ) -> EvaluationResult:
@@ -1248,7 +1256,8 @@ def evaluate(
         evaluation_criteria:    The criteria defining how to evaluate the ExecutionContext.
         execution_context:      ExecutionContext to be evaluated.
         max_turn_count:         Maximum number of turns allowed.
-        judge_name:             Judge class name (from _JUDGE_REGISTRY). If None, uses default.
+        judge:                  Judge instance (see ``get_judge_instance``). Required
+                                when task_completion_criteria is set.
         output_directory:       Optional directory to save judge evidence for later replay.
         scenario_metadata:      Optional scenario metadata for the user judge
                                 (challenge_type, require_disambiguation, etc.).
@@ -1291,15 +1300,11 @@ def evaluate(
         LOGGER.debug("No entity_diff_evaluator set — skipping entity diff evaluation")
 
     if evaluation_criteria.task_completion_criteria:
-        # Avoid circular import.
-        from mmtoolsandbox.roles.base_judge import get_judge_instance
-
-        if judge_name is None:
+        if judge is None:
             raise ValueError(
-                "judge_name is required when task_completion_criteria is set. "
+                "judge is required when task_completion_criteria is set. "
                 "Pass --judge on the CLI or provide judge_name explicitly."
             )
-        judge = get_judge_instance(judge_name)
 
         # Pass AppWorld initial state to the judge so the "Database Changes"
         # section includes AppWorld diffs (not just MMToolSandbox namespaces).
@@ -1337,10 +1342,7 @@ def evaluate(
             evidence_dir.mkdir(exist_ok=True, parents=True)
             for key, evidence in judge.last_evidence.items():
                 _save_judge_evidence(evidence_dir / f"{key}.json", evidence)
-        judge_token_usage = {
-            key: dataclasses.asdict(usage)
-            for key, usage in getattr(judge, "last_usage", {}).items()
-        }
+        judge_token_usage = get_judge_token_usage(judge)
 
     return EvaluationResult(
         turn_count=turn_count,

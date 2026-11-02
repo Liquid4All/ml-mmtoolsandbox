@@ -11,7 +11,7 @@ from mmtoolsandbox.common.execution import run_scenario
 from mmtoolsandbox.common.execution_context import set_current_context
 from mmtoolsandbox.common.scenario import Scenario, ScenarioExtension, ScenarioResult
 from mmtoolsandbox.datasets.base_scenario import create_base_scenario
-from mmtoolsandbox.roles.base_role import BaseRole
+from mmtoolsandbox.roles.base_role import BaseRole, TokenUsage
 from mmtoolsandbox.toolbox.toolbox import Toolbox, ToolboxConfig
 from mmtoolsandbox.tools.tool_sandbox.user_tools import end_conversation
 
@@ -173,6 +173,45 @@ def test_play_and_evaluate_saves_trajectory_when_judge_fails(
     assert isinstance(result.evaluation_result, EvaluationResult)
     assert result.evaluation_result.judge_result is None
     assert result.evaluation_result.entity_diff_result is None
+
+
+def test_play_and_evaluate_keeps_judge_usage_when_judge_fails(
+    toolbox: Toolbox, tmp_path: Path
+) -> None:
+    """A judge call that fails must not drop the usage of the judge calls that ran before it."""
+    scenario = _make_scenario_with_starting_context(toolbox)
+    judge = MagicMock(last_usage={"main": TokenUsage(1000, 50, 1050, 1)})
+
+    with (
+        patch.object(
+            Scenario,
+            "play",
+            autospec=True,
+            side_effect=lambda self, **kw: _noop_play_that_sets_context(self),
+        ),
+        patch("mmtoolsandbox.roles.base_judge.get_judge_instance", return_value=judge),
+        patch(
+            "mmtoolsandbox.common.scenario.evaluate",
+            side_effect=RuntimeError("simulated user judge failure"),
+        ),
+    ):
+        result, _, _ = scenario.play_and_evaluate(
+            roles={},
+            output_directory=tmp_path,
+            scenario_name="judge_usage_test",
+            dataset_name="test_dataset",
+            judge_name="Test_Judge",
+        )
+
+    assert result.evaluation_result.judge_result is None
+    assert result.evaluation_result.judge_token_usage == {
+        "main": {
+            "prompt_tokens": 1000,
+            "completion_tokens": 50,
+            "total_tokens": 1050,
+            "api_calls": 1,
+        }
+    }
 
 
 def test_play_and_evaluate_does_not_save_when_play_fails(
