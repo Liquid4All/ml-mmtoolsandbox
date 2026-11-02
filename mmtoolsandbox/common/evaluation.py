@@ -13,6 +13,7 @@ that combines entity-diff scoring with an LLM judge.
 
 from __future__ import annotations
 
+import dataclasses
 import json
 import re
 from copy import deepcopy
@@ -27,7 +28,7 @@ from typing import (
 
 import numpy as np
 import polars as pl
-from attrs import define, field
+from attrs import Factory, define, field
 from polars.exceptions import SchemaError
 from rouge_score import rouge_scorer  # type: ignore[import-untyped]
 from scipy.optimize import linear_sum_assignment  # type: ignore[import-untyped]
@@ -1145,6 +1146,8 @@ class EvaluationResult:
             and guardrail pass/fail, or None.
         ui_judge_result: Result from the UI quality judge, or None.
         user_judge_result: Result from the user simulator quality judge, or None.
+        judge_token_usage: Token usage of each judge call, keyed like the judge
+            evidence ("main", "ui", "user").
     """
 
     # Combined similarity score (entity diff F1, set in __attrs_post_init__)
@@ -1161,6 +1164,8 @@ class EvaluationResult:
     ui_judge_result: dict[str, Any] | None = None
     # Result from the user simulator quality judge
     user_judge_result: dict[str, Any] | None = None
+    # Token usage of each judge call
+    judge_token_usage: dict[str, Any] = Factory(dict)
 
     def __attrs_post_init__(self) -> None:
         # Similarity is computed from entity diff F1
@@ -1261,6 +1266,7 @@ def evaluate(
     judge_result = None
     ui_judge_result = None
     user_judge_result = None
+    judge_token_usage: dict[str, Any] = {}
 
     entity_diff_result = None
     if evaluation_criteria.entity_diff_evaluator is not None:
@@ -1331,6 +1337,10 @@ def evaluate(
             evidence_dir.mkdir(exist_ok=True, parents=True)
             for key, evidence in judge.last_evidence.items():
                 _save_judge_evidence(evidence_dir / f"{key}.json", evidence)
+        judge_token_usage = {
+            key: dataclasses.asdict(usage)
+            for key, usage in getattr(judge, "last_usage", {}).items()
+        }
 
     return EvaluationResult(
         turn_count=turn_count,
@@ -1339,4 +1349,5 @@ def evaluate(
         entity_diff_result=entity_diff_result,
         ui_judge_result=ui_judge_result,
         user_judge_result=user_judge_result,
+        judge_token_usage=judge_token_usage,
     )

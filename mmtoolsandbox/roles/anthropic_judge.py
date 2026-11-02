@@ -150,6 +150,7 @@ class AnthropicAPIJudge(OpenAIAPIJudge):
         self.model_name = model_name
         self.anthropic_client: anthropic.Anthropic = anthropic.Anthropic(max_retries=10)
         self.last_evidence: dict[str, list[dict[str, Any]]] = {}
+        self.last_usage = {}
 
     def _messages_create(
         self,
@@ -201,6 +202,9 @@ class AnthropicAPIJudge(OpenAIAPIJudge):
         )
         self.last_evidence["main"] = evidence_parts
         response = self._messages_create(_SYSTEM_PROMPT, evidence_parts)
+        self._record_usage(
+            "main", response.usage.input_tokens, response.usage.output_tokens
+        )
         return _parse_judge_response(response, "judge model")
 
     @retry(
@@ -216,6 +220,9 @@ class AnthropicAPIJudge(OpenAIAPIJudge):
         evidence_parts = self._format_ui_evidence(execution_context, criteria)
         self.last_evidence["ui"] = evidence_parts
         response = self._messages_create(_UI_SYSTEM_PROMPT, evidence_parts)
+        self._record_usage(
+            "ui", response.usage.input_tokens, response.usage.output_tokens
+        )
         return _parse_judge_response(response, "UI judge model")
 
     @retry(
@@ -240,6 +247,9 @@ class AnthropicAPIJudge(OpenAIAPIJudge):
         self.last_evidence["user"] = evidence_parts
         system_prompt = get_user_system_prompt(enable_ui=enable_ui)
         response = self._messages_create(system_prompt, evidence_parts)
+        self._record_usage(
+            "user", response.usage.input_tokens, response.usage.output_tokens
+        )
         return _parse_judge_response(response, "user judge model")
 
 
