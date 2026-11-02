@@ -1303,7 +1303,7 @@ def evaluate(
         if judge is None:
             raise ValueError(
                 "judge is required when task_completion_criteria is set. "
-                "Pass --judge on the CLI or provide judge_name explicitly."
+                "Pass a judge from get_judge_instance(judge_name) as judge=."
             )
 
         # Pass AppWorld initial state to the judge so the "Database Changes"
