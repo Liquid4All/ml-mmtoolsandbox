@@ -41,6 +41,7 @@ from mmtoolsandbox.common.evaluation import (
     EvaluationCriteria,
     EvaluationResult,
     evaluate,
+    get_judge_token_usage,
 )
 from mmtoolsandbox.common.execution_context import (
     ExecutionContext,
@@ -713,12 +714,22 @@ class Scenario:
 
         # Run the judge. If it fails, use a sentinel result (-1 similarity)
         # so trajectories are preserved and the judge can be backfilled later.
+        # The sentinel keeps the token usage of the judge calls that ran.
+        judge = None
         try:
+            # Avoid circular import.
+            from mmtoolsandbox.roles.base_judge import get_judge_instance
+
+            if (
+                judge_name is not None
+                and self.evaluation_criteria.task_completion_criteria
+            ):
+                judge = get_judge_instance(judge_name)
             evaluation_result = evaluate(
                 evaluation_criteria=self.evaluation_criteria,
                 execution_context=execution_context,
                 max_turn_count=self.max_messages,
-                judge_name=judge_name,
+                judge=judge,
                 output_directory=scenario_output_directory,
                 scenario_metadata=scenario_metadata,
             )
@@ -733,6 +744,7 @@ class Scenario:
                 turn_count=self.max_messages,
                 judge_result=None,
                 entity_diff_result=None,
+                judge_token_usage=get_judge_token_usage(judge),
             )
 
         return (
