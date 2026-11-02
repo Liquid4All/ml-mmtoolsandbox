@@ -6,7 +6,7 @@ from unittest.mock import MagicMock, patch
 
 import pytest
 
-from mmtoolsandbox.common.evaluation import EvaluationResult
+from mmtoolsandbox.common.evaluation import EvaluationCriteria, EvaluationResult
 from mmtoolsandbox.common.execution import run_scenario
 from mmtoolsandbox.common.execution_context import set_current_context
 from mmtoolsandbox.common.scenario import Scenario, ScenarioExtension, ScenarioResult
@@ -180,6 +180,9 @@ def test_play_and_evaluate_keeps_judge_usage_when_judge_fails(
 ) -> None:
     """A judge call that fails must not drop the usage of the judge calls that ran before it."""
     scenario = _make_scenario_with_starting_context(toolbox)
+    scenario.evaluation_criteria = EvaluationCriteria(
+        task_completion_criteria="Create a note."
+    )
     judge = MagicMock(last_usage={"main": TokenUsage(1000, 50, 1050, 1)})
 
     with (
@@ -212,6 +215,36 @@ def test_play_and_evaluate_keeps_judge_usage_when_judge_fails(
             "api_calls": 1,
         }
     }
+
+
+def test_play_and_evaluate_skips_judge_without_criteria(
+    toolbox: Toolbox, tmp_path: Path
+) -> None:
+    """A scenario without task completion criteria must not create the judge, so a judge that cannot start does not replace the entity diff result."""
+    scenario = _make_scenario_with_starting_context(toolbox)
+
+    with (
+        patch.object(
+            Scenario,
+            "play",
+            autospec=True,
+            side_effect=lambda self, **kw: _noop_play_that_sets_context(self),
+        ),
+        patch(
+            "mmtoolsandbox.roles.base_judge.get_judge_instance",
+            side_effect=RuntimeError("no API key"),
+        ) as get_judge_mock,
+    ):
+        result, _, _ = scenario.play_and_evaluate(
+            roles={},
+            output_directory=tmp_path,
+            scenario_name="no_criteria_test",
+            dataset_name="test_dataset",
+            judge_name="Test_Judge",
+        )
+
+    assert get_judge_mock.call_count == 0
+    assert result.evaluation_result.turn_count != scenario.max_messages
 
 
 def test_play_and_evaluate_does_not_save_when_play_fails(

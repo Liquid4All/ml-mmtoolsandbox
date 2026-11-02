@@ -720,7 +720,10 @@ class Scenario:
             # Avoid circular import.
             from mmtoolsandbox.roles.base_judge import get_judge_instance
 
-            if judge_name is not None:
+            if (
+                judge_name is not None
+                and self.evaluation_criteria.task_completion_criteria
+            ):
                 judge = get_judge_instance(judge_name)
             evaluation_result = evaluate(
                 evaluation_criteria=self.evaluation_criteria,
