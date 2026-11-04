@@ -2,9 +2,17 @@
 
 """Tests for OpenAIAPIUser, specifically tool-calling message conversion."""
 
+from types import SimpleNamespace
+from typing import Any
+from unittest.mock import patch
+
+import pytest
+from openai.types.chat import ChatCompletionMessage
+
 from mmtoolsandbox.common.execution_context import RoleType
 from mmtoolsandbox.common.message_conversion import Message, _get_message_views
 from mmtoolsandbox.roles.openai_user import OpenAIAPIUser
+from mmtoolsandbox.tools.tool_sandbox.user_tools import end_conversation
 
 
 class TestToOpenAIMessages:
@@ -396,3 +404,139 @@ class TestFilterMessages:
         assert "agent prompt" not in contents
         assert "agent tool call" not in contents
         assert "agent tool result" not in contents
+
+
+def _completion(message: dict[str, Any]) -> SimpleNamespace:
+    return SimpleNamespace(
+        usage=None,
+        choices=[
+            SimpleNamespace(
+                message=ChatCompletionMessage.model_validate(
+                    {"role": "assistant", **message}
+                )
+            )
+        ],
+    )
+
+
+_END = _completion(
+    {
+        "content": None,
+        "tool_calls": [
+            {
+                "id": "call_end",
+                "type": "function",
+                "function": {"name": "end_conversation", "arguments": "{}"},
+            }
+        ],
+    }
+)
+_ROUND_2 = _completion({"content": "Now add a reminder for Monday."})
+
+_SCRIPT = (
+    "## YOUR TASK\n\n"
+    "ROUND 1 [provide: image_1]\nQuery: Make a note.\nInstructions: Wait.\n\n"
+    "ROUND 2\nQuery: Now add a reminder for Monday.\nInstructions: Wait.\n\n"
+    "ROUND 3\nQuery: Delete the note.\nInstructions: Then end.\n"
+)
+
+
+def _conversation(script: str, num_sent: int) -> list[Message]:
+    """User prompt, then `num_sent` user messages, each with an agent reply."""
+    messages = [
+        Message(sender=RoleType.SYSTEM, recipient=RoleType.USER, content=script)
+    ]
+    for i in range(num_sent):
+        messages.append(
+            Message(sender=RoleType.USER, recipient=RoleType.AGENT, content=f"ask {i}")
+        )
+        messages.append(
+            Message(sender=RoleType.AGENT, recipient=RoleType.USER, content="Done!")
+        )
+    return messages
+
+
+def _respond(
+    messages: list[Message], max_early_end_rejections: int, replies: list[Any]
+) -> tuple[list[Message], list[list[dict[str, Any]]]]:
+    """Run one user turn and return the response and the model requests."""
+    user = OpenAIAPIUser.__new__(OpenAIAPIUser)
+    user.max_early_end_rejections = max_early_end_rejections
+    requests: list[list[dict[str, Any]]] = []
+
+    def model_inference(
+        openai_messages: list[dict[str, Any]], openai_tools: Any
+    ) -> Any:
+        requests.append(list(openai_messages))
+        return replies[len(requests) - 1]
+
+    with patch.object(user, "model_inference", side_effect=model_inference):
+        response_messages, _ = user.respond(
+            messages, {"end_conversation": end_conversation}
+        )
+    return response_messages, requests
+
+
+class TestEarlyEndRejection:
+    """Test that the user cannot end before it sends all scripted rounds."""
+
+    def test_end_after_round_1_of_3_is_rejected(self) -> None:
+        response_messages, requests = _respond(
+            _conversation(_SCRIPT, num_sent=1),
+            max_early_end_rejections=2,
+            replies=[_END, _ROUND_2],
+        )
+        assert len(requests) == 2
+        rejection = requests[1][-1]
+        assert rejection["role"] == "tool"
+        assert rejection["tool_call_id"] == "call_end"
+        assert "3 scripted rounds" in rejection["content"]
+        assert "only 1 messages" in rejection["content"]
+        assert response_messages == [
+            Message(
+                sender=RoleType.USER,
+                recipient=RoleType.AGENT,
+                content="Now add a reminder for Monday.",
+            )
+        ]
+
+    def test_end_is_allowed_after_the_cap(self) -> None:
+        response_messages, requests = _respond(
+            _conversation(_SCRIPT, num_sent=2),
+            max_early_end_rejections=2,
+            replies=[_END, _END, _END],
+        )
+        assert len(requests) == 3
+        # The second rejection follows the first one in the same request.
+        assert [m["role"] for m in requests[2][-4:]] == [
+            "assistant",
+            "tool",
+            "assistant",
+            "tool",
+        ]
+        assert len(response_messages) == 1
+        assert response_messages[0].recipient == RoleType.EXECUTION_ENVIRONMENT
+        assert response_messages[0].openai_function_name == "end_conversation"
+
+    @pytest.mark.parametrize(
+        ("script", "num_sent", "max_early_end_rejections"),
+        [
+            # The user sent one message for each scripted round.
+            (_SCRIPT, 3, 2),
+            # The check is off.
+            (_SCRIPT, 1, 0),
+            # The task has no scripted rounds.
+            ("## YOUR TASK\n\nBook a table.", 1, 2),
+        ],
+    )
+    def test_end_is_allowed_at_once(
+        self, script: str, num_sent: int, max_early_end_rejections: int
+    ) -> None:
+        response_messages, requests = _respond(
+            _conversation(script, num_sent),
+            max_early_end_rejections=max_early_end_rejections,
+            replies=[_END],
+        )
+        assert len(requests) == 1
+        assert len(response_messages) == 1
+        assert response_messages[0].openai_function_name == "end_conversation"

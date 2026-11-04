@@ -49,12 +49,19 @@ LOGGER = getLogger(__name__)
 
 _SENT_IMAGE_IDS_PATTERN = re.compile(r"\n*\[Sent image IDs: [\d, ]+\]")
 
+# A scripted task starts each round with a "ROUND N" header line.
+_ROUND_HEADER_PATTERN = re.compile(r"^ROUND (\d+)\b", re.MULTILINE)
+
+_EARLY_END_REJECTION = "Error: you cannot end the conversation yet. Your task has {num_rounds} scripted rounds, but you sent only {num_sent} messages to the assistant, so you did not deliver all rounds. Consider sending your next scripted round to the assistant."
+
 
 class OpenAIAPIUser(BaseRole):
     """Simulated user role for any model that conforms to OpenAI tool use API"""
 
     role_type: RoleType = RoleType.USER
     model_name: str
+    max_early_end_rejections: int = 0
+    """Maximum number of end_conversation calls that one user turn rejects while scripted rounds are not delivered. Each rejection samples the turn again. After this number of rejections, the turn can end the conversation. 0 disables the check."""
 
     def __init__(self) -> None:
         super().__init__()
@@ -108,22 +115,73 @@ class OpenAIAPIUser(BaseRole):
 
         # Convert to OpenAI messages
         openai_messages = self.to_openai_messages(messages=messages)
-        # Call model
-        # We need a cast here since `convert_to_openai_tool` returns a plain dict, but
-        # `ChatCompletionToolParam` is a `TypedDict`.
-        response = self.model_inference(
-            openai_messages=openai_messages,
-            openai_tools=cast(
-                list[ChatCompletionToolParam] | NotGiven,
-                openai_tools,
+
+        # Each scripted round needs at least one USER→AGENT message. Thus, if the
+        # user sent fewer messages than the script has rounds, at least one round
+        # is not delivered. Clarification answers and nudges also count as sent
+        # messages, so this check can miss an undelivered round, but it does not
+        # reject an end after the user delivered all rounds.
+        num_rounds = max(
+            (
+                int(round_number)
+                for message in messages
+                if message.sender == RoleType.SYSTEM
+                for round_number in _ROUND_HEADER_PATTERN.findall(message.content)
             ),
+            default=0,
         )
-        if response.usage is not None:
-            self._record_token_usage(
-                response.usage.prompt_tokens, response.usage.completion_tokens
+        num_sent = sum(
+            message.sender == RoleType.USER and message.recipient == RoleType.AGENT
+            for message in messages
+        )
+        # An end before the user sent all scripted rounds is rejected, and the turn is
+        # sampled again, at most max_early_end_rejections times. The rejected samples
+        # stay out of the trajectory.
+        max_rejections = self.max_early_end_rejections if num_sent < num_rounds else 0
+        for num_rejections in range(max_rejections + 1):
+            # Call model
+            # We need a cast here since `convert_to_openai_tool` returns a plain dict,
+            # but `ChatCompletionToolParam` is a `TypedDict`.
+            response = self.model_inference(
+                openai_messages=openai_messages,
+                openai_tools=cast(
+                    list[ChatCompletionToolParam] | NotGiven,
+                    openai_tools,
+                ),
             )
-        # Parse response
-        openai_response_message = response.choices[0].message
+            if response.usage is not None:
+                self._record_token_usage(
+                    response.usage.prompt_tokens, response.usage.completion_tokens
+                )
+            # Parse response
+            openai_response_message = response.choices[0].message
+            tool_calls = openai_response_message.tool_calls or []
+            ends = any(
+                isinstance(tool_call, ChatCompletionMessageFunctionToolCall)
+                and tool_call.function.name == "end_conversation"
+                for tool_call in tool_calls
+            )
+            if not ends or num_rejections == max_rejections:
+                break
+            LOGGER.info(
+                "Rejected end_conversation: %d messages sent for %d scripted rounds.",
+                num_sent,
+                num_rounds,
+            )
+            # The API needs a result for each tool call of the message.
+            openai_messages.append(
+                openai_response_message.model_dump(exclude_none=True)
+            )
+            openai_messages.extend(
+                {
+                    "role": "tool",
+                    "tool_call_id": tool_call.id,
+                    "content": _EARLY_END_REJECTION.format(
+                        num_rounds=num_rounds, num_sent=num_sent
+                    ),
+                }
+                for tool_call in tool_calls
+            )
 
         # Message contains no tool call, aka addressed to agent
         if openai_response_message.tool_calls is None:
