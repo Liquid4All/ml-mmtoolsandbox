@@ -513,6 +513,7 @@ class Scenario:
         *,
         dataset_name: str,
         judge_name: str | None = None,
+        judge: Any | None = None,
     ) -> tuple[ScenarioResult, list[dict[str, Any]], list[dict[str, Any]]]:
         """Play out the scenario and evaluate according to evaluation criteria.
 
@@ -525,6 +526,8 @@ class Scenario:
             dataset_name: The name of the dataset to which the scenario belongs.
             judge_name: Judge class name from ``_JUDGE_REGISTRY`` in
                 ``base_judge.py``. If None, uses the default judge.
+            judge: Judge instance to use instead of one built from ``judge_name``.
+                Give at most one of ``judge_name`` and ``judge``.
 
         Returns:
             A tuple of (ScenarioResult, serialized conversation, available tools).
@@ -715,7 +718,8 @@ class Scenario:
         # Run the judge. If it fails, use a sentinel result (-1 similarity)
         # so trajectories are preserved and the judge can be backfilled later.
         # The sentinel keeps the token usage of the judge calls that ran.
-        judge = None
+        if judge is not None and judge_name is not None:
+            raise ValueError("Give at most one of judge_name and judge.")
         try:
             # Avoid circular import.
             from mmtoolsandbox.roles.base_judge import get_judge_instance
