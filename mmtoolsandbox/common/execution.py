@@ -414,6 +414,7 @@ def run_scenario(
     enable_ui: bool = False,
     image_input: bool = False,
     judge_name: str | None = None,
+    judge: Any | None = None,
 ) -> dict[str, Any]:
     """Play and evaluate a scenario.
 
@@ -437,6 +438,8 @@ def run_scenario(
         image_input: If True, enable multimodal image input.
         judge_name: Judge class name from ``_JUDGE_REGISTRY``. If None, uses
             the default judge.
+        judge: Judge instance to use instead of one built from ``judge_name``.
+            Give at most one of ``judge_name`` and ``judge``.
 
     Returns:
         A dictionary containing evaluation results (similarity, turn_count,
@@ -511,6 +514,7 @@ def run_scenario(
                 scenario_name=name,
                 dataset_name=dataset_name,
                 judge_name=judge_name,
+                judge=judge,
             )
         return {
             "name": name,
